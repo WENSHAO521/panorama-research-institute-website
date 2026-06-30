@@ -4,6 +4,8 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import { clientTranslations } from '../i18n/clientTranslations';
 import { clientTranslationsExtra } from '../i18n/clientTranslationsExtra';
+import { clientTranslationsCoverage } from '../i18n/clientTranslationsCoverage';
+import { clientTranslationsCharter } from '../i18n/clientTranslationsCharter';
 import { getBasePath, type Lang } from '../i18n/utils';
 
 interface Props {
@@ -29,10 +31,14 @@ const phraseTranslations = {
   'zh-cn': {
     ...clientTranslations['zh-cn'],
     ...clientTranslationsExtra['zh-cn'],
+    ...clientTranslationsCoverage['zh-cn'],
+    ...clientTranslationsCharter['zh-cn'],
   },
   'zh-tw': {
     ...clientTranslations['zh-tw'],
     ...clientTranslationsExtra['zh-tw'],
+    ...clientTranslationsCoverage['zh-tw'],
+    ...clientTranslationsCharter['zh-tw'],
   },
 };
 ---

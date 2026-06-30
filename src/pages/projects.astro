@@ -13,7 +13,7 @@ const allProjects = [
   },
 ];
 
-const filters = ["All", "Active", "In Development", "Call for Participation", "Completed"];
+const filters = ["All", "Active", "Awaiting Launch", "In Development", "Call for Participation", "Completed"];
 ---
 
 <BaseLayout
@@ -46,7 +46,7 @@ const filters = ["All", "Active", "In Development", "Call for Participation", "C
         {allProjects.map((p) => (
           <div class="project-card" style="border:none;border-radius:0;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
-              <span class={`tag ${p.status === 'Active' ? 'tag-active' : p.status === 'Call for Participation' ? 'tag-steel' : ''}`}>
+              <span class={`tag ${p.status === 'Active' || p.status === 'Awaiting Launch' ? 'tag-active' : p.status === 'Call for Participation' ? 'tag-steel' : ''}`}>
                 {p.status}
               </span>
             </div>

@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="研究中心" description="全景研究院四大研究中心介紹，包括三個活躍中心及一個籌建中心。" lang="zh-tw">
+  <PageHero title="研究中心" description="全景研究院的研究工作由四個專業研究中心組織開展，每個中心聚焦特定研究領域，主持相關研究項目並組織學術活動。" breadcrumbs={[{ label: "研究中心" }]} homeLabel="首頁" homeHref="/zh-tw" />
+
+  <!-- Active centers -->
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div class="section-label">活躍研究中心</div>
+      <div style="display:flex;flex-direction:column;gap:0;margin-top:8px;">
+        {[
+          {
+            name:"學術出版研究中心", en:"Center for Scholarly Publishing Studies", href:"/research-centers/scholarly-publishing-studies", status:"活躍", year:"2026",
+            desc:"研究學術出版生態系統的各個面向，包括同儕審查機制、開放獲取政策、出版商行為及出版標準。中心的研究成果旨在推動學術出版透明度與品質的持續提升。",
+            projects:["學術出版標準研究項目"]
+          },
+          {
+            name:"學術索引與評價研究中心", en:"Center for Scholarly Indexing and Evaluation", href:"/research-centers/scholarly-indexing-evaluation", status:"活躍", year:"2026",
+            desc:"研究學術期刊索引系統的架構、標準與影響。中心主持全景開放學術索引項目（POSI），致力於建立透明、全面的開放學術索引基礎設施，為學術界提供可靠的期刊評估工具。",
+            projects:["全景開放學術索引項目（POSI）"]
+          },
+          {
+            name:"政策與社會研究中心", en:"Center for Policy and Social Research", href:"/research-centers/policy-social-research", status:"活躍", year:"2026",
+            desc:"研究教育政策、社會治理及青少年數位公民議題。中心現正開展第十五個五年規劃研究與青少年數位治理研究兩個主要研究項目，系統分析相關政策的社會影響。",
+            projects:["第十五個五年規劃研究","青少年數位治理研究"]
+          },
+        ].map((center) => (
+          <div style="display:grid;grid-template-columns:1fr 240px;gap:48px;padding:40px 0;border-bottom:1px solid var(--border-light);align-items:start;">
+            <div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:6px;font-weight:400;">{center.name}</h2>
+              <div style="font-size:11px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:14px;">{center.en}</div>
+              <p style="font-size:15px;color:var(--text-secondary);line-height:1.8;margin-bottom:14px;">{center.desc}</p>
+              <a href={center.href} style="font-size:13px;color:var(--accent-steel);">查看中心詳情（英文）→</a>
+            </div>
+            <div>
+              <div style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">當前項目</div>
+              {center.projects.map((p) => (
+                <div style="font-size:13.5px;color:var(--text-secondary);padding:6px 0;border-bottom:1px solid var(--border-light);">{p}</div>
+              ))}
+              <div style="margin-top:16px;display:flex;gap:12px;align-items:center;">
+                <span class="tag tag-active">{center.status}</span>
+                <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);">成立於{center.year}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Planned center -->
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">籌建中研究中心</div>
+      <div style="display:grid;grid-template-columns:1fr 240px;gap:48px;padding:40px 0;align-items:start;border:1px solid var(--border-light);padding:32px;background:var(--bg-white);">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:6px;font-weight:400;">人工智慧與未來社會研究中心</h2>
+          <div style="font-size:11px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:14px;">Center for AI and Future Society</div>
+          <p style="font-size:15px;color:var(--text-secondary);line-height:1.8;">
+            研究人工智慧治理、倫理規範及AI對學術傳播與知識生產的影響，探討AI時代學術誠信、知識生產模式與人機協作的未來走向。中心計劃於2027年正式啟動，目前處於籌備階段，已啟動前期研究工作。
+          </p>
+        </div>
+        <div>
+          <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;">
+            <span class="tag tag-steel">籌建中</span>
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);">預計2027年啟動</span>
+          </div>
+          <a href="/research-centers/ai-future-society" style="font-size:13px;color:var(--accent-steel);">查看籌建詳情（英文）→</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-dark);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:#fff;margin-bottom:8px;font-weight:400;">加入研究中心</h2>
+          <p style="font-size:15px;color:rgba(255,255,255,0.6);margin:0;">歡迎申請各研究中心的研究員職位，參與研究院的學術研究工作。</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="/zh-tw/people"        class="btn btn-primary">研究員申請</a>
+          <a href="/zh-tw/collaboration" class="btn btn-secondary" style="color:#fff;border-color:rgba(255,255,255,0.3);">機構合作</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:1fr 240px"] { display: block !important; }
+}
+</style>

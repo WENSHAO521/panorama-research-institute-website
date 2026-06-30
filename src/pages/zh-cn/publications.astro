@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="出版物" description="全景研究院的出版物，包括研究报告、工作论文、政策简报及年度报告。" lang="zh-cn">
+  <PageHero title="出版物" description="全景研究院的全部出版物均以开放获取形式发布，并向Crossref注册数字对象识别符（DOI），永久免费提供给研究人员、机构及公众。" breadcrumbs={[{ label: "出版物" }]} homeLabel="首页" homeHref="/zh-cn" />
+
+  <!-- Publication Types -->
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div class="section-label">出版物类型</div>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        {[
+          { type:"研究报告", en:"Research Reports", desc:"呈现原创研究成果的全长报告，采用严格的研究方法，经内部评审与外部同行评审。研究报告是研究院最主要的知识贡献形式，通常涵盖文献综述、方法论、研究发现、政策含义及研究局限性。", href:"/publications/research-reports", length:"20,000–60,000字" },
+          { type:"工作论文", en:"Working Papers",     desc:"呈现初步研究发现、理论框架或学术论点的简短学术文章，经内部编辑评审。工作论文是学术界分享前沿研究发现、征集学术意见的重要形式，也是研究院快速传播新研究思路的渠道。", href:"/publications/working-papers", length:"5,000–15,000字" },
+          { type:"政策简报", en:"Policy Briefs",      desc:"基于证据的简洁文件，向政策受众呈现研究发现与建议，经内部编辑评审。政策简报以结论为先，强调实际的政策建议，是研究院连接研究成果与政策实践的重要桥梁。", href:"/publications/policy-briefs", length:"1,500–4,000字" },
+          { type:"主编学术文集", en:"Edited Volumes", desc:"多位学者围绕特定主题合作撰写的学术文集，由研究院与合作学术出版社联合出版。文集通常由研究院学者担任主编，征集领域内的原创研究论文，通过同行评审和编辑加工形成具有整体性的学术文集。", href:"/publications/edited-volumes", length:"多篇论文" },
+          { type:"年度报告", en:"Annual Reports",     desc:"年度机构报告，全面记录研究院每年的研究活动、出版物、学术活动、研究员项目及治理情况，并对未来一年的工作进行展望。年度报告是研究院履行透明度与问责制承诺的核心文件。", href:"/publications/annual-reports", length:"年度" },
+          { type:"指南与标准", en:"Guidelines",       desc:"基于研究院研究成果开发、供期刊、出版社及学术机构参考使用的实用标准文件。这类出版物将研究成果转化为可供实践者直接参考的操作规范，是研究院连接学术研究与行业实践的重要方式。", href:"/publications/guidelines", length:"视情况而定" },
+        ].map((item) => (
+          <div style="display:grid;grid-template-columns:200px 1fr 120px;gap:32px;padding:32px 0;border-bottom:1px solid var(--border-light);align-items:start;">
+            <div>
+              <div style="font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:4px;">{item.type}</div>
+              <div style="font-size:11px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px;">{item.en}</div>
+              <div style="font-size:12px;color:var(--text-muted);">长度：{item.length}</div>
+            </div>
+            <p style="font-size:15px;line-height:1.8;color:var(--text-secondary);">{item.desc}</p>
+            <div style="text-align:right;">
+              <a href={item.href} style="font-size:13px;color:var(--accent-steel);">查看系列→</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Citation -->
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="max-width:720px;">
+        <div class="section-label">引用格式</div>
+        <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">如何引用研究院出版物</h2>
+        <div style="background:var(--bg-white);border:1px solid var(--border-light);padding:24px 28px;font-family:var(--font-mono);font-size:13.5px;line-height:1.7;color:var(--text-secondary);">
+          Panorama Research Institute. (2026). <em>报告标题</em>. Panorama Scholarly Group.
+        </div>
+        <div style="margin-top:16px;">
+          <a href="/publications/citation" class="btn btn-secondary">完整引用指南（英文）</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="/publications/research-reports"  class="btn btn-primary">研究报告</a>
+        <a href="/publications/working-papers"    class="btn btn-secondary">工作论文</a>
+        <a href="/publications/policy-briefs"     class="btn btn-secondary">政策简报</a>
+        <a href="/publications/annual-reports"    class="btn btn-secondary">年度报告</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:200px 1fr 120px"] { display: block !important; }
+}
+</style>

@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="人员" description="全景研究院的学者团队，包括研究员、副研究员、访问学者及顾问委员会。" lang="zh-cn">
+  <PageHero title="人员" description="全景研究院通过研究员项目汇聚来自不同机构、不同学科背景的学者，共同推动研究院各领域的学术发展。" breadcrumbs={[{ label: "人员" }]} homeLabel="首页" homeHref="/zh-cn" />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div class="section-label">学者类别</div>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        {[
+          { title:"研究员", en:"Research Fellow", href:"/people/research-fellows", desc:"研究员是研究院的核心学术成员，通常持有博士学位或同等资历，以正式承诺参与研究院的研究项目、学术出版及共同体活动。研究员任期通常为一至三年，可续期。", req:"博士学位或同等资历 · 原创研究能力 · 参与研究院学术活动的承诺" },
+          { title:"副研究员", en:"Associate Research Fellow", href:"/people/associate-research-fellows", desc:"副研究员为早期职业研究人员或博士研究生，通过参与研究项目和学术活动为研究院作出贡献。任期通常为一年，可续期，表现优秀者可晋升为研究员。", req:"在读博士生或早期职业研究人员 · 明确的研究兴趣与研究院匹配" },
+          { title:"访问学者", en:"Visiting Scholar", href:"/people/visiting-scholars", desc:"访问学者是在特定时期（通常三至十二个月）与研究院学者开展合作研究的成熟研究人员，可驻场或远程参与。访问学者身份不涉及雇用关系。", req:"成熟研究人员 · 明确的访问研究计划 · 与研究院研究领域相关" },
+          { title:"研究助理", en:"Research Assistant", href:"/people/research-assistants", desc:"研究助理为在读研究生或早期职业研究人员，在研究员或中心主任监督下，以项目为基础参与研究工作，承担数据收集、文献整理等具体研究任务。", req:"在读硕士或博士研究生 · 具体项目参与意愿" },
+          { title:"顾问委员会", en:"Advisory Board", href:"/people/advisory-board", desc:"顾问委员会由杰出学者与业界人士组成，就研究优先领域、学术标准及机构发展提供独立咨询意见，不具备行政权力。", req:"杰出学者或业界人士 · 邀请制" },
+        ].map((role) => (
+          <div style="display:grid;grid-template-columns:200px 1fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--border-light);align-items:start;">
+            <div>
+              <div style="font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:4px;">{role.title}</div>
+              <div style="font-size:11px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px;">{role.en}</div>
+              <a href={role.href} style="font-size:13px;color:var(--accent-steel);">查看详情（英文）→</a>
+            </div>
+            <div>
+              <p style="font-size:15px;line-height:1.8;color:var(--text-secondary);margin-bottom:12px;">{role.desc}</p>
+              <div style="font-size:12.5px;color:var(--text-muted);font-family:var(--font-mono);">基本要求：{role.req}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div style="max-width:600px;">
+        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:20px;">加入研究团队</div>
+        <h2 style="font-family:var(--font-serif);font-size:28px;color:#fff;margin-bottom:16px;font-weight:400;">申请加入全景研究院</h2>
+        <p style="font-size:16px;color:rgba(255,255,255,0.65);line-height:1.75;margin-bottom:32px;">
+          研究院欢迎来自全球各学科领域的学者申请研究员、副研究员及访问学者职位。申请者须在研究院指定研究领域有明确的研究方向与研究计划。
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="/collaboration/research-fellow-application"   class="btn btn-primary">申请研究员</a>
+          <a href="/collaboration/visiting-scholar-application"  class="btn btn-secondary" style="color:#fff;border-color:rgba(255,255,255,0.3);">申请访问学者</a>
+          <a href="/people/join"                                 class="btn btn-secondary" style="color:#fff;border-color:rgba(255,255,255,0.3);">了解更多（英文）</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:200px 1fr"] { display: block !important; }
+}
+</style>

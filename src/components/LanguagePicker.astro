@@ -1,0 +1,58 @@
+---
+import { getLangFromUrl, getLocalizedPath, type Lang } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const path = Astro.url.pathname;
+
+const langs: { code: Lang; label: string }[] = [
+  { code: 'en',    label: 'English' },
+  { code: 'zh-cn', label: '简体中文' },
+  { code: 'zh-tw', label: '繁體中文' },
+];
+---
+
+<div class="lang-picker" aria-label="Language selection">
+  {langs.map((l, i) => (
+    <>
+      {i > 0 && <span class="lang-sep">·</span>}
+      <a
+        href={getLocalizedPath(l.code, path)}
+        class={`lang-opt${lang === l.code ? ' lang-active' : ''}`}
+        aria-current={lang === l.code ? 'true' : undefined}
+        hreflang={l.code}
+      >
+        {l.label}
+      </a>
+    </>
+  ))}
+</div>
+
+<style>
+.lang-picker {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.lang-opt {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  padding: 2px 5px;
+  border: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.lang-opt:hover,
+.lang-active {
+  color: var(--text-main);
+  border-color: var(--border-light);
+}
+.lang-sep {
+  font-size: 10px;
+  color: var(--border-light);
+  line-height: 1;
+  pointer-events: none;
+}
+</style>

@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="資源" description="全景研究院的模板、指南、標識資產及研究資源下載。" lang="zh-tw">
+  <PageHero title="資源" description="全景研究院為合作學者、研究人員及合作夥伴機構提供的模板、指南及機構資源。" breadcrumbs={[{ label: "資源" }]} homeLabel="首頁" homeHref="/zh-tw" />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div class="section-label">資源分類</div>
+      <div style="display:flex;flex-direction:column;gap:0;margin-top:8px;">
+
+        <div style="padding:32px 0;border-bottom:1px solid var(--border-light);">
+          <div style="font-size:18px;font-weight:600;color:var(--text-main);margin-bottom:16px;">研究模板</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+            {[
+              { name:"研究報告模板",  href:"/resources/report-template",            desc:"用於研究院正式研究報告的標準化寫作模板，包含標題頁、摘要、目錄、方法論、研究發現、結論及參考文獻各部分。" },
+              { name:"工作論文模板",  href:"/resources/working-paper-template",      desc:"用於提交工作論文的寫作模板，包含標準封面格式、腳注規範及參考文獻格式要求。" },
+              { name:"政策簡報模板",  href:"/resources/policy-brief-template",      desc:"政策簡報寫作模板，包含執行摘要、背景分析、政策建議及參考資料各部分，適合非學術讀者。" },
+              { name:"研究提案模板", href:"/resources/research-proposal-template",  desc:"向研究院提交新研究項目或合作申請時使用的標準提案格式，包含研究問題、方法論、時間安排及預期成果各部分。" },
+            ].map((item) => (
+              <a href={item.href} class="card" style="border-radius:0;border:none;display:block;">
+                <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:8px;">{item.name}</div>
+                <p style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">{item.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div style="padding:32px 0;border-bottom:1px solid var(--border-light);">
+          <div style="font-size:18px;font-weight:600;color:var(--text-main);margin-bottom:16px;">機構文件</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+            {[
+              { name:"研究院章程（PDF）", href:"/resources/charter-pdf",         desc:"研究院官方章程PDF版本，包含全部二十條款，適用於正式引用與檔案儲存。" },
+              { name:"標識使用指南",     href:"/resources/logo-usage-guidelines", desc:"全景研究院官方標識的使用規範，包含允許使用的場景、色彩規範、最小尺寸要求及禁止事項。" },
+              { name:"全部模板",         href:"/resources/templates",             desc:"研究院全部可用模板的匯總頁面，包括研究報告、工作論文、政策簡報及研究提案模板。" },
+            ].map((item) => (
+              <a href={item.href} class="card" style="border-radius:0;border:none;display:block;">
+                <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:8px;">{item.name}</div>
+                <p style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">{item.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div style="padding:32px 0;">
+          <div style="font-size:18px;font-weight:600;color:var(--text-main);margin-bottom:16px;">出版引用</div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+            {[
+              { name:"引用格式指南", href:"/publications/citation",      desc:"引用研究院出版物的完整格式指南，包含APA、MLA、芝加哥格式，以及DOI引用規範。" },
+              { name:"開放獲取政策", href:"/governance/publication-report-policy", desc:"研究院出版物的開放獲取政策，包含知識共享許可協議條款、DOI註冊及檔案儲存要求。" },
+            ].map((item) => (
+              <a href={item.href} class="card" style="border-radius:0;border:none;display:block;">
+                <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:8px;">{item.name}</div>
+                <p style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">{item.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="/resources/templates"            class="btn btn-primary">全部模板</a>
+        <a href="/resources/logo-usage-guidelines" class="btn btn-secondary">標識使用指南</a>
+        <a href="/zh-tw/contact"                   class="btn btn-secondary">聯繫我們</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

@@ -8,37 +8,47 @@ export const site = {
   website: "research.panorama-sg.com",
   parent: "Panorama Scholarly Group",
   legalNote: "Panorama Research Institute is not a separate legal entity. It operates under the governance and administration of Panorama Scholarly Group.",
-  year: "2024",
+  year: "2026",
 };
 
 export const platforms = [
   {
     name: "Panorama Scholarly Group",
     href: "https://www.panorama-sg.com",
+    logo: "https://panorama-sg.com/logo-dark.svg",
+    logoTheme: "light",
     desc: "Official institutional website",
     external: true,
   },
   {
     name: "Panorama Journals",
     href: "https://journals.panorama-sg.com",
+    logo: "https://panorama-sg.com/journals-logo.svg",
+    logoTheme: "dark",
     desc: "Academic journal publishing platform",
     external: true,
   },
   {
     name: "Panorama Books",
     href: "https://books.panorama-sg.com",
+    logo: "https://panorama-sg.com/books-logo-light.svg",
+    logoTheme: "dark",
     desc: "Book publishing and edited volume platform",
     external: true,
   },
   {
     name: "POSI Database",
     href: "https://posi.panorama-sg.com",
-    desc: "Open scholarly indexing and journal information platform",
+    logo: "https://panorama-sg.com/posi-logo-light.svg",
+    logoTheme: "dark",
+    desc: "Open scholarly indexing platform developed and awaiting official launch",
     external: true,
   },
   {
     name: "Panorama Scholar Profiles",
     href: "https://scholars.panorama-sg.com",
+    logo: "https://panorama-sg.com/editorial-directory-logo-transparent.png",
+    logoTheme: "light",
     desc: "Scholar profile and academic record platform",
     external: true,
   },
@@ -81,28 +91,24 @@ export const researchCenters = [
   {
     num: "01",
     name: "Center for Scholarly Publishing Studies",
-    nameZh: "学术出版研究中心",
     areas: ["Open Access", "Peer Review", "Publication Ethics", "Editorial Policy"],
     href: "/research-centers/scholarly-publishing-studies",
   },
   {
     num: "02",
     name: "Center for Scholarly Indexing and Evaluation",
-    nameZh: "学术索引与评价中心",
     areas: ["Journal Indexing", "Metadata Transparency", "Quality Indicators", "Evaluation Frameworks"],
     href: "/research-centers/scholarly-indexing-evaluation",
   },
   {
     num: "03",
     name: "Center for Policy and Social Research",
-    nameZh: "政策与社会研究中心",
     areas: ["Public Policy", "Governance", "Youth Issues", "Digital Society"],
     href: "/research-centers/policy-social-research",
   },
   {
     num: "04",
     name: "Center for AI and Future Society",
-    nameZh: "AI与未来社会研究中心",
     areas: ["AI Governance", "Digital Transformation", "Academic Infrastructure", "Social Impact"],
     href: "/research-centers/ai-future-society",
     upcoming: true,
@@ -111,9 +117,9 @@ export const researchCenters = [
 
 export const featuredProjects = [
   {
-    status: "Active",
+    status: "Awaiting Launch",
     title: "POSI Scholarly Indexing Project",
-    desc: "An open scholarly indexing and journal information initiative supporting metadata transparency, journal discovery, and evaluation research.",
+    desc: "An open scholarly indexing and journal information initiative. The database has been developed and is awaiting official launch.",
     href: "/projects/posi-scholarly-indexing",
   },
   {

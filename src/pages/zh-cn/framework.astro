@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="研究院框架" description="全景研究院的组织框架、治理体系与发展路线图。" lang="zh-cn">
+  <PageHero title="研究院框架" description="全景研究院的组织框架概述，涵盖机构治理体系、研究架构、发展路线图及长期战略方向。" breadcrumbs={[{ label: "研究院", href: "/zh-cn/about" }, { label: "框架" }]} homeLabel="首页" homeHref="/zh-cn" />
+
+  <!-- Governance -->
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div class="section-label">治理框架</div>
+      <h2 class="section-title">机构治理体系</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { role:"全景学术集团", desc:"母机构，拥有最终治理权威，负责批准章程、管理财务及签署正式法律文件。" },
+          { role:"研究院院长",   desc:"最高负责人，负责整体学术方向、治理合规、外部代表及机构发展。" },
+          { role:"研究中心主任", desc:"各研究中心主任负责中心的研究项目、研究员管理及学术活动。" },
+          { role:"顾问委员会",   desc:"独立咨询机构，由杰出学者与业界人士组成，就研究优先领域、学术标准及机构发展提供建议。" },
+        ].map((item) => (
+          <div class="card" style="border-radius:0;border:none;">
+            <div style="font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:8px;">{item.role}</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);line-height:1.7;">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Documents -->
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">核心文件</div>
+      <h2 class="section-title">治理文件体系</h2>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        {[
+          { name:"研究院章程",         href:"/zh-cn/charter",                    status:"生效中", desc:"确立研究院机构性质、使命、研究领域、组织架构及治理规则的创始文件。" },
+          { name:"治理规则",           href:"/governance/rules",                  status:"生效中", desc:"补充章程的详细治理程序与操作规范（英文版）。" },
+          { name:"研究伦理政策",       href:"/governance/research-ethics",        status:"生效中", desc:"规定研究院全体研究人员必须遵守的研究伦理原则与标准（英文版）。" },
+          { name:"利益冲突政策",       href:"/governance/conflict-of-interest",   status:"生效中", desc:"规定利益冲突的认定、披露与管理程序（英文版）。" },
+          { name:"学术独立声明",       href:"/governance/academic-independence",  status:"生效中", desc:"阐明研究院学术独立性原则及其与全景学术集团关系的正式声明（英文版）。" },
+          { name:"出版与报告政策",     href:"/governance/publication-report-policy", status:"生效中", desc:"规定研究院出版物的编辑标准、质量控制及开放获取要求（英文版）。" },
+        ].map((doc) => (
+          <div style="display:grid;grid-template-columns:1fr 120px auto;gap:24px;padding:18px 0;border-bottom:1px solid var(--border-light);align-items:center;">
+            <div>
+              <a href={doc.href} style="font-size:15px;font-weight:600;color:var(--text-main);">{doc.name}</a>
+              <p style="font-size:13.5px;color:var(--text-secondary);margin-top:4px;line-height:1.5;">{doc.desc}</p>
+            </div>
+            <span class="tag tag-active" style="justify-self:start;">{doc.status}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">发展路线图</div>
+      <h2 class="section-title">分阶段发展规划</h2>
+      <div style="max-width:720px;">
+        {[
+          { phase:"第一阶段", label:"创建与奠基", year:"2026", status:"当前", items:["建立研究院治理框架、章程及核心政策","启动研究院官方网站及数字形象","设立三个初始研究中心：学术出版研究中心、学术索引与评价研究中心、政策与社会研究中心","完成POSI数据库开发并准备正式上线","启动第十五个五年规划研究项目","招募首批研究员与访问学者","发布首批工作论文","启动合作申请与研究员招募流程"] },
+          { phase:"第二阶段", label:"发展与拓展", year:"2027", status:"即将开展", items:["设立人工智能与未来社会研究中心（第四个研究中心）","将研究员网络扩展至至少五个国家的学者","启动正式访问学者项目","发布全景研究院首份年度报告","正式上线并运营POSI数据库","发布进行中项目的首批全长研究报告","组织首届研究院品牌学术研讨会系列","建立研究院顾问委员会","开始与合作机构的正式合作洽谈"] },
+          { phase:"第三阶段", label:"扩展与深化", year:"2028+", status:"规划中", items:["建立国际合作网络","开展更广泛的政策咨询活动","扩大出版项目规模","组织学术会议系列"] },
+        ].map((phase) => (
+          <div style="display:grid;grid-template-columns:120px 1fr;gap:28px;padding:28px 0;border-bottom:1px solid var(--border-light);">
+            <div>
+              <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{phase.phase}</div>
+              <div style="font-size:18px;font-weight:600;color:var(--text-main);">{phase.label}</div>
+              <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);margin-top:4px;">{phase.year}</div>
+              <span class={`tag ${phase.status === '当前' ? 'tag-active' : phase.status === '即将开展' ? 'tag-steel' : ''}`} style="margin-top:8px;display:inline-block;">{phase.status}</span>
+            </div>
+            <div style="padding-top:4px;">
+              {phase.items.map((item) => (
+                <div style="display:flex;gap:10px;padding:6px 0;font-size:14.5px;color:var(--text-secondary);">
+                  <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{item}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="/zh-cn/charter"          class="btn btn-primary">研究院章程</a>
+        <a href="/zh-cn/research-centers" class="btn btn-secondary">研究中心</a>
+        <a href="/framework/development-roadmap" class="btn btn-secondary">完整路线图（英文）</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"],
+  div[style*="grid-template-columns:120px 1fr"],
+  div[style*="grid-template-columns:1fr 120px auto"] { display: block !important; }
+}
+</style>

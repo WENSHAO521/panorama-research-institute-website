@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="聯繫" description="聯繫全景研究院的方式，包括一般諮詢、合作申請及媒體聯繫。" lang="zh-tw">
+  <PageHero title="聯繫" description="如需了解研究合作、研究員申請、出版查詢或一般學術事務，歡迎通過以下方式聯繫全景研究院。" breadcrumbs={[{ label: "聯繫" }]} homeLabel="首頁" homeHref="/zh-tw" />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:80px;align-items:start;">
+
+        <div>
+          <div class="section-label">聯繫方式</div>
+          <div style="display:flex;flex-direction:column;gap:0;margin-top:8px;">
+            {[
+              { type:"一般諮詢",     en:"General Inquiries",       href:"/contact",                          desc:"關於研究院的一般性問題，包括研究活動、出版物及機構資訊查詢。", email:"contact@panoramaresearch.org" },
+              { type:"學術合作申請", en:"Research Collaboration",   href:"/collaboration",                    desc:"機構合作、聯合研究項目及訪問學者申請等學術合作事務。", email:"collaboration@panoramaresearch.org" },
+              { type:"出版查詢",     en:"Publication Inquiries",    href:"/publications",                     desc:"投稿須知、稿件狀態、引用許可及出版物相關事務。", email:"publications@panoramaresearch.org" },
+              { type:"媒體與新聞",   en:"Media & Press",            href:"/contact/media",                    desc:"媒體採訪申請、研究發現引用及新聞發布相關事務。", email:"media@panoramaresearch.org" },
+              { type:"研究員項目",   en:"Fellowship Program",       href:"/collaboration/research-fellow-application", desc:"研究員、副研究員及訪問學者職位申請查詢。", email:"fellowship@panoramaresearch.org" },
+            ].map((item) => (
+              <div style="display:grid;grid-template-columns:160px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--border-light);align-items:start;">
+                <div>
+                  <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:3px;">{item.type}</div>
+                  <div style="font-size:11px;color:var(--text-muted);font-family:var(--font-mono);">{item.en}</div>
+                </div>
+                <div>
+                  <p style="font-size:14.5px;color:var(--text-secondary);line-height:1.65;margin-bottom:8px;">{item.desc}</p>
+                  <a href={`mailto:${item.email}`} style="font-size:13px;font-family:var(--font-mono);color:var(--accent-steel);">{item.email}</a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style="padding:28px;background:var(--bg-main);border:1px solid var(--border-light);">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">機構資訊</div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div>
+              <div style="font-size:12px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:4px;">機構全稱</div>
+              <div style="font-size:14px;color:var(--text-main);line-height:1.5;">全景研究院<br/><span style="color:var(--text-secondary);font-size:13px;">Panorama Research Institute</span></div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:4px;">所屬機構</div>
+              <div style="font-size:14px;color:var(--text-main);">全景學術集團<br/><span style="color:var(--text-secondary);font-size:13px;">Panorama Scholarly Group</span></div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:4px;">成立年份</div>
+              <div style="font-size:14px;color:var(--text-main);">2026</div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:4px;">營運模式</div>
+              <div style="font-size:14px;color:var(--text-main);">全球數位化營運<br/><span style="color:var(--text-secondary);font-size:13px;">無固定實體地址</span></div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:4px;">通用聯繫郵箱</div>
+              <a href="mailto:contact@panoramaresearch.org" style="font-size:13px;font-family:var(--font-mono);color:var(--accent-steel);">contact@panoramaresearch.org</a>
+            </div>
+          </div>
+
+          <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">回覆時限</div>
+            <p style="font-size:13.5px;color:var(--text-secondary);line-height:1.65;margin:0;">
+              一般查詢通常在五個工作日內回覆。合作申請可能需要較長的評估週期，研究院將在收到申請後三至四週內作出初步回應。
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="/zh-tw/collaboration" class="btn btn-primary">合作申請</a>
+        <a href="/zh-tw/people"        class="btn btn-secondary">研究員項目</a>
+        <a href="/contact"             class="btn btn-secondary">聯繫頁面（英文）</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 320px"],
+  div[style*="grid-template-columns:160px 1fr"] { display: block !important; }
+}
+</style>

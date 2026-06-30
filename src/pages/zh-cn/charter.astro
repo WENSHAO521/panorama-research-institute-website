@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const articles = [
+  { num:"1",  title:"名称" },
+  { num:"2",  title:"机构性质" },
+  { num:"3",  title:"附属关系" },
+  { num:"4",  title:"使命" },
+  { num:"5",  title:"活动范围" },
+  { num:"6",  title:"研究领域" },
+  { num:"7",  title:"组织架构" },
+  { num:"8",  title:"治理" },
+  { num:"9",  title:"研究中心" },
+  { num:"10", title:"研究项目" },
+  { num:"11", title:"出版物" },
+  { num:"12", title:"学术活动" },
+  { num:"13", title:"学者与研究员" },
+  { num:"14", title:"合作" },
+  { num:"15", title:"研究伦理" },
+  { num:"16", title:"利益冲突" },
+  { num:"17", title:"知识产权" },
+  { num:"18", title:"名称与标志的使用" },
+  { num:"19", title:"财务与行政" },
+  { num:"20", title:"修订与解释" },
+];
+---
+
+<BaseLayout title="研究院章程" description="全景研究院创始章程，确立研究院的治理框架、使命与运营规则。" lang="zh-cn">
+  <PageHero
+    title="研究院章程"
+    description="全景研究院创始章程，确立研究院的机构性质、治理框架、研究使命及运营程序。"
+    breadcrumbs={[{ label: "治理" }, { label: "研究院章程" }]}
+    tag="治理文件"
+    homeLabel="首页" homeHref="/zh-cn"
+  >
+    <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="/resources/charter-pdf" class="btn btn-primary">下载PDF版</a>
+      <a href="/governance/rules"       class="btn btn-secondary">治理规则</a>
+    </div>
+  </PageHero>
+
+  <div style="background:var(--bg-main);padding:72px 0 96px;">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:260px 1fr;gap:64px;align-items:start;">
+
+        <!-- TOC -->
+        <div style="position:sticky;top:calc(var(--nav-height) + 24px);">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:20px;">目录</div>
+          {articles.map((a) => (
+            <a href={`#article-${a.num}`} style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border-light);transition:color 0.15s;">
+              <span>第{a.num}条 &nbsp;{a.title}</span>
+            </a>
+          ))}
+        </div>
+
+        <!-- Content -->
+        <div>
+          <div style="background:var(--bg-white);border:1px solid var(--border-light);padding:56px;margin-bottom:32px;">
+
+            <!-- Header -->
+            <div style="text-align:center;margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">治理文件</div>
+              <h1 style="font-family:var(--font-serif);font-size:30px;color:var(--text-main);margin-bottom:12px;letter-spacing:-0.01em;">全景研究院章程</h1>
+              <p style="font-size:13px;color:var(--text-muted);font-family:var(--font-mono);">Panorama Research Institute &mdash; 2026年生效</p>
+            </div>
+
+            <!-- Article 1 -->
+            <div id="article-1" style="margin-bottom:48px;">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第一条</div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">名称</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">本机构的全称为<strong style="color:var(--text-main);">全景研究院</strong>（Panorama Research Institute），缩写为<strong style="color:var(--text-main);">PRI</strong>。</p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">研究院在正式文件、出版物及对外通信中，可使用"全景研究院"、"Panorama Research Institute"、"PRI"或"本院"等称谓。除上述形式外，其他缩写形式不得在正式场合使用。</p>
+            </div>
+
+            <!-- Article 2 -->
+            <div id="article-2" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第二条</div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">机构性质</h2>
+              <div class="statement-box" style="margin-bottom:20px;">
+                <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">全景研究院不具备独立法人资格，依托全景学术集团的治理体系与行政管理框架运作。</p>
+              </div>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">研究院作为全景学术集团的内部学术部门，在研究工作、出版决策、编辑判断及学术职能方面保持独立性，同时服从全景学术集团的整体治理框架与行政管理权威。</p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">所有正式法律文件、合同及具有约束力的协议均由全景学术集团代表研究院签署执行。研究院不持有独立金融账户、不具备法律注册资格，在任何司法管辖区均不具备独立法律人格。</p>
+            </div>
+
+            <!-- Article 3 -->
+            <div id="article-3" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第三条</div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">附属关系</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">全景研究院是全景学术集团内部的研究与学术发展部门。在所有正式通信、出版物、机构介绍及正式协议中，研究院应被描述为"全景学术集团的内部研究与学术发展部门"。</p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">研究院可以全景研究院的名义签署学术合作安排、谅解备忘录及合作协议，但此类安排的正式签署由全景学术集团负责执行。</p>
+            </div>
+
+            <!-- Article 4 -->
+            <div id="article-4" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第四条</div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">使命</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">全景研究院的使命是：通过严谨、独立、跨学科的研究推动学术知识进步；支持全球学术传播基础设施的发展；促进学术出版与科研实践中的开放性、透明度与诚信精神。</p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">在践行使命的过程中，研究院坚守学术质量、研究伦理与机构治理的最高标准，支持各阶段学者的成长，促进跨学科与跨机构合作，并确保研究成果面向公众开放，以扎实的学术实践为基础。</p>
+            </div>
+
+            <!-- Article 5 -->
+            <div id="article-5" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第五条</div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">活动范围</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:16px;">研究院开展并支持以下类别的活动：</p>
+              {[
+                "在指定研究领域开展跨学科研究，通过研究中心和研究项目推进",
+                "在研究院指定研究领域内设立、发展和管理研究中心",
+                "发起、管理和支持隶属于研究院研究中心的研究项目",
+                "出版研究报告、工作论文、政策简报、主编学术文集、指南及年度报告",
+                "组织和联合组织学术会议、研讨会、工作坊及培训项目",
+                "管理学者与研究员项目，包括研究员、副研究员、访问学者及研究助理",
+                "与高校、研究机构、出版社及学术组织开展机构合作与研究伙伴关系",
+                "开发开放学术基础设施，包括数据库、评价框架及元数据体系",
+                "开展与研究院研究领域相关的政策分析与咨询活动",
+                "为研究人员、期刊编辑及学术实践者提供能力建设服务",
+              ].map((item) => (
+                <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--bg-soft);">
+                  <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>
+                  <span style="font-size:15px;color:var(--text-secondary);line-height:1.7;">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <!-- Article 6 -->
+            <div id="article-6" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第六条</div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">研究领域</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">研究院设定以下研究领域，研究中心、研究项目、出版物及学术活动均在此框架内开展。研究领域的扩展或调整须依据第二十条的规定，通过正式章程修订程序进行。</p>
+              {[
+                { num:"I",   name:"学术出版研究",       desc:"研究开放获取模式、同行评审制度、出版伦理、编辑标准、学术诚信及学术出版的结构与实践。" },
+                { num:"II",  name:"学术索引与评价研究", desc:"研究期刊索引体系、引文指标、期刊质量框架、数据库治理与透明度，以及开放学术评价基础设施。" },
+                { num:"III", name:"政策与社会研究",     desc:"研究高等教育政策、科技与创新治理、社会治理、数字治理，以及学术传播的政策维度。" },
+                { num:"IV",  name:"人工智能与未来社会", desc:"研究人工智能治理、AI伦理、人机交互、AI对学术传播与知识生产的影响，以及数字未来议题。" },
+                { num:"V",   name:"教育与学习研究",     desc:"研究教育体制、教学法、学习科学、教育政策，以及技术在学习环境中的作用。" },
+                { num:"VI",  name:"艺术、文化与具身研究", desc:"研究艺术实践、文化研究、具身认知、创意探索，以及艺术与人文学科同学术与社会研究的交叉领域。" },
+              ].map((a) => (
+                <div style="display:grid;grid-template-columns:28px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--bg-soft);align-items:start;">
+                  <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);padding-top:2px;">{a.num}</span>
+                  <div>
+                    <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:4px;">{a.name}</div>
+                    <div style="font-size:14px;line-height:1.65;color:var(--text-secondary);">{a.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <!-- Article 7 -->
+            <div id="article-7" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第七条</div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">组织架构</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">研究院设置以下组织单元，各单元负责特定领域的机构职能，并向院长负责。</p>
+              {[
+                { unit:"院务办公室",     desc:"负责整体行政管理、治理合规、内部协调、对外通信及官方档案的维护，由院长主持工作。" },
+                { unit:"研究中心",       desc:"研究院的核心学术单元。各中心设有主任，并配有明确的研究职责及研究项目、出版物和学术活动计划。现有研究中心详见第九条。" },
+                { unit:"出版部门",       desc:"负责研究院全部出版物（包括研究报告、工作论文、政策简报、主编文集及年度报告）的编辑管理、制作及开放获取发布。" },
+                { unit:"学术活动部门",   desc:"负责研究院学术会议、研讨会、工作坊、培训项目及征稿活动的策划、协调与执行。" },
+                { unit:"学者与研究员项目", desc:"负责研究员、副研究员、访问学者及研究助理的招募、入职与支持工作，并维护研究院学术共同体。" },
+                { unit:"合作办公室",     desc:"负责管理研究院的外部伙伴关系、机构合作协议、研究项目方案、学术文集方案及学术活动联合组织事宜。" },
+              ].map((item) => (
+                <div style="padding:14px 0;border-bottom:1px solid var(--bg-soft);">
+                  <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:5px;">{item.unit}</div>
+                  <div style="font-size:14.5px;line-height:1.7;color:var(--text-secondary);">{item.desc}</div>
+                </div>
+              ))}
+            </div>
+
+            <!-- Article 8 -->
+            <div id="article-8" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第八条</div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">治理</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">研究院依据以下治理架构运作，所有治理活动须符合本章程及全景学术集团整体治理框架的要求。</p>
+              {[
+                { role:"院长",         desc:"院长是研究院的最高负责人，负责研究院的整体学术方向、治理合规、外部代表及机构发展。院长由全景学术集团任命。" },
+                { role:"研究中心主任", desc:"各研究中心设主任一名，负责中心的研究项目、研究员管理及学术活动。中心主任由院长任命。" },
+                { role:"顾问委员会",   desc:"顾问委员会是独立咨询机构，由杰出学者与业界人士组成，就研究优先领域、学术标准及机构发展提供建议，不具备行政权力。" },
+                { role:"全景学术集团", desc:"作为母机构，全景学术集团对研究院拥有最终治理权威。其负责批准章程及重大修订，管理研究院财务，并代表研究院签署正式法律文件。" },
+              ].map((item) => (
+                <div style="padding:14px 0;border-bottom:1px solid var(--bg-soft);">
+                  <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:5px;">{item.role}</div>
+                  <div style="font-size:14.5px;line-height:1.7;color:var(--text-secondary);">{item.desc}</div>
+                </div>
+              ))}
+            </div>
+
+            <!-- Articles 9–20 condensed for space; full text follows English Charter -->
+            {[
+              { num:"9",  title:"研究中心", body:"研究中心是研究院的核心学术单元。每个中心须在一个或多个指定研究领域内开展工作，负责管理研究项目、开展出版、组织活动及构建学术网络。各中心设主任，配备隶属研究员及其他学者。院长经全景学术集团批准，可设立新的研究中心，前提是拟设中心须落于指定研究领域范围之内。研究中心的设立、变更或撤销无需修订本章程，除非涉及第六条的调整。当前已设立研究中心：（01）学术出版研究中心；（02）学术索引与评价研究中心；（03）政策与社会研究中心；（04）人工智能与未来社会研究中心（即将开展）。" },
+              { num:"10", title:"研究项目", body:"研究项目是经研究院认可、隶属于一个或多个研究中心的正式研究计划。每个项目须有明确的研究范围、研究问题、方法论、时间表及预期成果。项目须通过正式立项申请，经相关研究中心主任审核后报院长批准。项目可由隶属研究员、访问学者或外部研究人员主持，前提是其工作须符合研究院的质量与伦理标准。所有以研究院名义开展的研究工作，均须与本章程规定的价值观、政策及伦理标准保持一致。研究院在其官方网站上公开记录所有进行中及已完成的研究项目。" },
+              { num:"11", title:"出版物", body:"研究院出版以下类别的出版物，所有出版物在发布前须经编辑审核、质量控制及出版伦理合规审查：（一）研究报告：呈现原创研究成果的全长报告，经内部评审与外部同行评审；（二）工作论文：呈现初步研究发现或理论框架的简短学术文章，经内部编辑评审；（三）政策简报：向政策受众呈现研究发现与建议的简洁文件，经内部编辑评审；（四）主编学术文集：多位学者围绕特定主题合作撰写的文集，与合作学术出版社联合出版；（五）年度报告：记录研究院每年研究活动、出版物、活动、研究员项目及治理情况的年度机构报告；（六）指南与标准：基于研究成果开发、供期刊和机构参考的实用标准文件。所有出版物均以开放获取形式发布，并向Crossref注册数字对象识别符（DOI）。" },
+              { num:"12", title:"学术活动", body:"研究院组织和联合组织各类学术活动，以推动指定研究领域内的学术交流，支持学术共同体建设。活动形式包括国际学术会议、学术研讨会、研究工作坊、培训项目及其他相关学术聚会。联合举办的活动须经院长批准，并须符合研究院的学术标准、伦理要求及品牌规范。所有联合活动均不得损害研究院的学术独立性或学术共同体的诚信。学术活动部门负责征稿管理、活动后勤协调、发言人与参与者联络，以及会议记录与论文集的制作（如适用）。" },
+              { num:"13", title:"学者与研究员", body:"研究院通过以下正式类别维系隶属学者共同体。每类别均有明确的职责与权利。隶属关系不构成与全景研究院或全景学术集团的雇用关系，除非另有单独约定。（一）研究员：通常持有博士学位或同等资历的成熟研究人员，正式承诺通过原创出版、参与活动及融入学术共同体为研究院研究项目作出贡献；任期一至三年，可续期；（二）副研究员：为研究院研究项目和活动作出贡献的早期职业研究人员或博士研究生，通常任期一年，可续期，表现优秀者可晋升为研究员；（三）访问学者：在特定时期（通常三至十二个月）与研究院学者开展合作研究的成熟研究人员，可驻场或远程；（四）研究助理：在研究员或中心主任监督下，以项目为基础参与研究工作的研究生或早期职业研究人员。所有隶属学者须遵守研究院的研究伦理政策、利益冲突政策及其他治理文件。" },
+              { num:"14", title:"合作", body:"研究院与高校、研究机构、出版社、学术协会及其他组织开展学术合作。合作活动须与研究院的使命、研究领域及价值观相符，且不得损害研究院的学术独立性或学者的诚信。本章程确认以下合作形式：（一）机构合作协议及谅解备忘录；（二）联合研究项目与合作出版；（三）联合主编学术文集及联合组织期刊特刊；（四）联合组织学术会议、研讨会、工作坊及培训项目；（五）学者与访问研究员交流项目；（六）联合能力建设与培训活动。鉴于研究院不具备独立法人资格，正式合作协议由全景学术集团代表研究院签署执行。合作办公室负责处理所有合作咨询、方案及持续伙伴关系管理事宜。" },
+              { num:"15", title:"研究伦理", body:"研究院致力于坚守最高研究伦理标准。所有以研究院名义开展的研究工作须符合适用的伦理原则，包括尊重人、有益性、无害性、公正性与透明性。以下原则构成研究院研究伦理的最低标准，并在研究院研究伦理政策（作为本章程附属治理文件采纳）中详细阐述：（一）涉及人类受试者的研究须符合适用的伦理审查要求，并在必要时获得知情同意；（二）研究数据须依据研究院数据与文档政策进行收集、管理、保存和共享；（三）研究发现须诚实、准确地报告，不得选择性遗漏重要证据；（四）研究方法和局限性须在所有出版物中透明披露；（五）捏造、篡改及抄袭行为被严格禁止，构成立即撤销隶属关系及撤回受影响出版物的理由；（六）作者须如实反映其对出版作品的贡献，不得将未作出实质性贡献的人列为作者。疑似违反研究伦理标准的行为须向院长报告。院长将对举报的违规行为进行调查，并可采取补救措施，包括撤回出版物、撤销隶属关系或转交当事人所在机构处理。" },
+              { num:"16", title:"利益冲突", body:"所有与研究院有隶属关系的人员——包括研究员、副研究员、访问学者、研究助理、研究中心主任及院长——须披露任何实际存在的、潜在的或可能被视为存在的利益冲突，该冲突可能影响或被认为影响其以研究院名义开展的研究工作、出版物、编辑判断或其他职业活动的诚信性。当一个人的经济利益、机构关系、个人关系或其他利益可能影响或被认为影响其职业判断时，即存在利益冲突。披露的门槛较低：如有疑问，须进行披露。利益冲突须在所有相关研究院出版物中予以披露，并须在开始隶属关系时及每当出现新的冲突时向院长报告。未披露重大利益冲突可能构成第十五条规定的研究伦理违规。利益冲突的认定、披露及管理的完整规定载于研究院利益冲突政策（作为本章程附属治理文件采纳）。" },
+              { num:"17", title:"知识产权", body:"在研究院主持下产生的研究出版物的版权由具名作者保留。作者授予全景研究院非独占、永久、不可撤销、全球范围内的免版税许可，允许研究院以任何形式（包括数字形式）对其作品进行出版、复制、传播、存档及提供获取。所有研究院出版物均以知识共享署名4.0国际许可协议（CC BY 4.0）发布，除非在出版前以书面形式与作者另行商定采用其他开放许可协议。CC BY 4.0许可协议允许任何人以任何目的共享、改编和使用该作品，前提是须向作者和研究院给予适当的署名。研究院隶属研究项目所产生的研究数据，应在符合适用隐私、保密及法律要求的范围内，最大限度地向公众开放。所有研究出版物须包含数据获取声明。研究院的名称、标志及视觉识别系统为全景学术集团的财产，其使用受第十八条及据此采纳的附属治理文件约束。" },
+              { num:"18", title:"名称与标志的使用", body:"全景研究院的名称及标志只能由经授权的人员和机构使用。授权由院长授予，在正式机构使用的情况下由全景学术集团授予。获授权的使用情形包括：隶属学者在研究院批准的研究与出版活动中的使用；合作机构在经研究院正式批准的文件中引用与研究院的合作；媒体关于研究院及其活动的如实报道；经研究院活动部门正式批准为联合组织活动的活动材料中的使用。明确禁止的使用情形包括：暗示研究院对任何未经授权的立场、产品或机构的认可；在研究院未正式批准的出版物的标题或封面上使用研究院名称；对研究院标志进行改动、扭曲或与其他视觉元素组合；在隶属关系终止后继续使用研究院名称或标志。详细使用要求（包括标志规格）载于研究院名称与标志使用政策（作为本章程附属治理文件采纳）。" },
+              { num:"19", title:"财务与行政", body:"鉴于研究院不具备独立法人资格或独立金融账户，研究院所有财务事务均由全景学术集团管理。研究院不以自身名义签订金融合同、持有资金或承担负债。研究院研究、出版、活动及学者项目的运营预算由全景学术集团与院长协商后划拨。院长负责在划拨预算范围内管理支出，并按要求向全景学术集团提供财务报告。隶属学者所获的奖学金、讲课费或报酬由全景学术集团管理。此类款项的发放与金额由个案决定，并非仅凭隶属关系即可保证。研究院在所有出版物、官方网站及正式通信中公开披露其机构附属关系和运营状况。研究院不以自身名义接受外部研究经费。涉及第三方经费或捐助的经费安排由全景学术集团负责，并在相关出版物中予以披露。" },
+              { num:"20", title:"修订与解释", body:"本章程可由院长在获得全景学术集团批准的情况下进行修订。拟议修订须在采纳前至少三十天向所有研究中心主任及顾问委员会传阅，以听取意见。在此期间收到的意见须在最终决策前予以考量，但不具有约束力。修订自采纳之日起生效，除非另行规定较晚的生效日期。章程的版本号及生效日期记录于文件封面。章程的完整版本历史由院务办公室保存，可应要求提供。附属治理文件——包括研究伦理政策、利益冲突政策、出版与报告政策、数据与文档政策、学术独立政策及名称与标志使用政策——可由院长在无需正式修订章程的情况下予以采纳、修订或替换，前提是不得与本章程的规定相抵触。院长对本章程各条款的解释具有最终权威。对任何条款的解释如存在歧义，应优先选择与第四条规定的研究院使命最为一致的解释。本章程与任何附属治理文件发生冲突时，以本章程为准。" },
+            ].map((art) => (
+              <div id={`article-${art.num}`} style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+                <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第{art.num}条</div>
+                <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">{art.title}</h2>
+                <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">{art.body}</p>
+              </div>
+            ))}
+
+          </div>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="/resources/charter-pdf"     class="btn btn-primary">下载章程PDF</a>
+            <a href="/governance/rules"           class="btn btn-secondary">治理规则</a>
+            <a href="/governance/research-ethics" class="btn btn-secondary">研究伦理</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:260px 1fr"] { display: block !important; }
+  div[style*="grid-template-columns:260px 1fr"] > div:first-child { display: none !important; }
+}
+div[style*="grid-template-columns:28px 1fr"] { display: grid; }
+</style>

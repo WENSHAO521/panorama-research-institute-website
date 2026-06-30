@@ -2,10 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 ---
-<BaseLayout title="POSI Scholarly Indexing Project" description="The Panorama Open Scholarly Indexing project — building a transparent, comprehensive index of academic journals.">
+<BaseLayout title="POSI Scholarly Indexing Project" description="The Panorama Open Scholarly Indexing project — a developed scholarly database awaiting official launch.">
   <PageHero
     title="POSI Scholarly Indexing Project"
-    description="A long-term scholarly infrastructure initiative to develop a transparent, comprehensive, and methodologically rigorous open index of academic journals."
+    description="A long-term scholarly infrastructure initiative for a transparent, comprehensive, and methodologically rigorous open index of academic journals. The database has been developed and is awaiting official launch."
     breadcrumbs={[{ label: "Research", href: "/research-areas" }, { label: "Projects", href: "/projects" }, { label: "POSI Scholarly Indexing" }]}
     tag="Active Project"
   >
@@ -18,10 +18,10 @@ import PageHero from '../../components/PageHero.astro';
           <div class="section-label">Project Details</div>
           <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
             {[
-              { label: "Status",          value: "Active" },
-              { label: "Phase",           value: "Initial Development" },
+              { label: "Status",          value: "Developed — Awaiting Official Launch" },
+              { label: "Phase",           value: "Pre-launch" },
               { label: "Start Date",      value: "2026" },
-              { label: "Expected Release", value: "2027 (Phase 1 Dataset)" },
+              { label: "Expected Release", value: "Official launch pending" },
               { label: "Lead Center",     value: "Center for Scholarly Indexing and Evaluation" },
               { label: "Project Type",    value: "Open Scholarly Infrastructure" },
             ].map((item) => (
@@ -45,7 +45,7 @@ import PageHero from '../../components/PageHero.astro';
             POSI operates on principles of openness and transparency: its methodology is publicly documented, its evaluation criteria are subject to academic peer scrutiny, and its data will be freely accessible to researchers, institutions, publishers, funders, and policymakers. Unlike commercial indexing systems, POSI has no financial stake in the inclusion or exclusion of any journal.
           </p>
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
-            POSI is designed as a long-term infrastructure project. Phase 1, currently under development, focuses on establishing the methodology, data model, and initial journal coverage. Subsequent phases will expand coverage, deepen the data dimensions, and develop tools for data access and visualization.
+            POSI is designed as a long-term infrastructure project. The database has been developed and is now in the pre-launch stage, with final checks focused on methodology documentation, data quality, access workflows, and public presentation. Subsequent phases will expand coverage, deepen the data dimensions, and develop additional tools for data access and visualization.
           </p>
         </div>
       </div>
@@ -81,8 +81,8 @@ import PageHero from '../../components/PageHero.astro';
       <h2 class="section-title">Development Phases</h2>
       <div style="max-width:780px;margin-top:8px;">
         {[
-          { phase:"Phase 1", period:"2026–2027", status:"Current", items:["Design and document the POSI methodology and evaluation framework","Define data model and metadata schema for journal records","Establish the initial journal coverage list","Begin data collection for Phase 1 journals","Develop internal data management tools","Publish Phase 1 dataset (planned: 2027)"] },
-          { phase:"Phase 2", period:"2027–2028", status:"Upcoming", items:["Expand journal coverage to additional disciplines and regions","Develop public-facing database interface","Publish API for data access","Conduct peer review of POSI methodology by external scholars","Launch institutional user program"] },
+          { phase:"Phase 1", period:"2026", status:"Current", items:["Complete the POSI database development work","Finalize and document the POSI methodology and evaluation framework","Review the data model and metadata schema for journal records","Prepare the initial journal coverage list for public release","Complete pre-launch data quality checks","Prepare the official launch of the public database"] },
+          { phase:"Phase 2", period:"After launch", status:"Upcoming", items:["Expand journal coverage to additional disciplines and regions","Refine the public-facing database interface based on user feedback","Publish API or structured data access options","Conduct peer review of POSI methodology by external scholars","Launch institutional user program"] },
           { phase:"Phase 3", period:"2028+", status:"Planned", items:["Expand to become a recognized global resource","Integrate POSI data with open scholarly infrastructure (OpenAlex, Crossref)","Establish regular update and review cycles","Develop extended data dimensions based on user feedback","Explore governance model for long-term sustainability"] },
         ].map((phase) => (
           <div style="margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--border-light);">

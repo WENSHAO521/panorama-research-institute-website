@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="關於研究院" description="全景研究院的使命、機構性質、研究領域與組織架構概覽。" lang="zh-tw">
+  <PageHero title="關於研究院" description="全景研究院是全景學術集團旗下的獨立研究機構，以嚴謹的學術研究、開放獲取的知識傳播理念，推動學術出版與政策研究領域的前沿發展。" breadcrumbs={[{ label: "關於" }]} homeLabel="首頁" homeHref="/zh-tw" />
+
+  <!-- Mission & Vision -->
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;">
+        <div>
+          <div class="section-label">使命</div>
+          <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:16px;font-weight:400;">研究院使命</h2>
+          <p style="font-size:16px;color:var(--text-secondary);line-height:1.8;">
+            全景研究院的使命是通過嚴謹的學術研究、透明的知識傳播及積極的國際學術合作，推動學術出版、學術索引、政策研究及人工智慧與未來社會研究領域的學術進步。研究院致力於成為上述領域內受到學術界廣泛認可的獨立研究力量。
+          </p>
+        </div>
+        <div>
+          <div class="section-label">願景</div>
+          <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:16px;font-weight:400;">研究院願景</h2>
+          <p style="font-size:16px;color:var(--text-secondary);line-height:1.8;">
+            研究院的長遠願景是在全球學術研究生態系統中確立其獨特的學術地位，通過高品質的學術成果及廣泛的學術影響力，為學術界的知識積累與實踐改進作出持久貢獻。研究院的成果應具備跨越地域與學科界限的學術影響力。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Institutional status -->
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">機構性質</div>
+      <h2 class="section-title">機構架構說明</h2>
+      <div style="display:flex;flex-direction:column;gap:0;max-width:720px;margin-top:8px;">
+        {[
+          { q:"研究院的機構性質？", a:"全景研究院是在全景學術集團框架下運作的正式研究機構。研究院不附屬於任何大學或政府機構，具有完全的學術獨立性，研究議程由研究人員根據學術需求自主決定。" },
+          { q:"研究院與全景學術集團的關係？", a:"全景學術集團是研究院的母機構，負責最終的治理監督和行政支持，但不干預具體的研究活動、出版決定或學術立場。研究院在學術事務上完全獨立。" },
+          { q:"研究院如何資助運營？", a:"研究院通過多元化管道籌集資金，包括機構資金、研究項目資助及合作安排，所有資金來源均在研究成果發布時予以明確披露。" },
+          { q:"研究院的運營模式？", a:"研究院採用全球數位化分散運營模式，無固定實體地址。研究員分布於全球各地，通過數位協作平台開展合作研究。" },
+        ].map((item) => (
+          <div style="padding:20px 0;border-bottom:1px solid var(--border-light);">
+            <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:8px;">{item.q}</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);line-height:1.7;margin:0;">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Areas overview -->
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">研究領域</div>
+      <h2 class="section-title">六大研究領域</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { name:"學術出版研究",     desc:"同儕審查、開放獲取、出版倫理及出版商行為研究。" },
+          { name:"學術索引與評價",   desc:"期刊索引系統、引用指標與學術期刊評價標準研究。" },
+          { name:"政策與社會研究",   desc:"教育政策、社會治理及青少年數位公民研究。" },
+          { name:"人工智慧與社會",   desc:"人工智慧治理、倫理規範及AI對學術傳播的影響研究。" },
+          { name:"知識傳播研究",     desc:"學術傳播管道、讀者研究及學術影響力評估。" },
+          { name:"學術共同體研究",   desc:"學術共同體規範、研究人員行為及機構文化研究。" },
+        ].map((area) => (
+          <div class="card" style="border-radius:0;border:none;">
+            <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:8px;">{area.name}</div>
+            <p style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">{area.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:24px;">
+        <a href="/zh-tw/research-areas" class="btn btn-secondary">詳細研究領域說明</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick links -->
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="/zh-tw/charter"          class="btn btn-primary">研究院章程</a>
+        <a href="/zh-tw/framework"        class="btn btn-secondary">治理框架</a>
+        <a href="/zh-tw/research-centers" class="btn btn-secondary">研究中心</a>
+        <a href="/zh-tw/people"           class="btn btn-secondary">研究員</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:1fr 1fr"],
+  div[style*="grid-template-columns:repeat(3,1fr)"] { display: block !important; }
+}
+</style>

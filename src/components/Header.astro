@@ -1,13 +1,23 @@
 ---
 import Logo from './Logo.astro';
-import { navigation } from '../data/navigation';
+import LanguagePicker from './LanguagePicker.astro';
+import { getNavigation } from '../i18n/navigation';
+import { useTranslations } from '../i18n/ui';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'en' } = Astro.props;
+const navigation = getNavigation(lang);
+const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
 ---
 
 <header class="site-header" id="site-header">
   <div class="container site-header-inner">
     <!-- Logo -->
-    <a href="/" class="site-logo" aria-label="Panorama Research Institute - Home">
+    <a href={lang === 'en' ? '/' : `/${lang}`} class="site-logo" aria-label="Panorama Research Institute - Home">
       <Logo />
     </a>
 
@@ -18,7 +28,7 @@ const currentPath = Astro.url.pathname;
           {item.mega ? (
             <>
               <button
-                class={`nav-trigger${currentPath.startsWith('/research') || currentPath.startsWith('/projects') ? ' active' : ''}`}
+                class={`nav-trigger${currentPath.includes('/research') || currentPath.includes('/projects') ? ' active' : ''}`}
                 aria-haspopup="true"
                 aria-expanded="false"
                 type="button"
@@ -44,7 +54,7 @@ const currentPath = Astro.url.pathname;
           ) : item.children ? (
             <>
               <button
-                class={`nav-trigger${currentPath.startsWith(item.href) && item.href !== '#' ? ' active' : ''}`}
+                class={`nav-trigger${item.href !== '#' && currentPath.startsWith(item.href) ? ' active' : ''}`}
                 aria-haspopup="true"
                 aria-expanded="false"
                 type="button"
@@ -76,12 +86,11 @@ const currentPath = Astro.url.pathname;
     </nav>
 
     <!-- Right -->
-    <div class="header-right">
-      <a href="/contact" class="btn btn-primary">Contact</a>
+    <div class="header-right" style="display:flex;align-items:center;gap:8px;">
+      <LanguagePicker />
+      <a href={lang === 'en' ? '/contact' : `/${lang}/contact`} class="btn btn-primary">{t('btn.contact')}</a>
       <button class="menu-toggle" aria-label="Open menu" id="menu-toggle" type="button">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
   </div>
@@ -90,7 +99,7 @@ const currentPath = Astro.url.pathname;
 <!-- Mobile Nav Overlay -->
 <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <div class="mobile-nav-header">
-    <a href="/" class="site-logo">
+    <a href={lang === 'en' ? '/' : `/${lang}`} class="site-logo">
       <Logo />
     </a>
     <button class="mobile-close" id="mobile-close" aria-label="Close menu" type="button">&#x2715;</button>
@@ -108,11 +117,7 @@ const currentPath = Astro.url.pathname;
           </button>
           <div class="mobile-sub" id={`msub-${idx}`}>
             {item.children?.map((child) => (
-              <a
-                href={child.href}
-                target={child.external ? '_blank' : undefined}
-                rel={child.external ? 'noopener noreferrer' : undefined}
-              >
+              <a href={child.href} target={child.external ? '_blank' : undefined} rel={child.external ? 'noopener noreferrer' : undefined}>
                 {child.label}
               </a>
             ))}
@@ -122,62 +127,46 @@ const currentPath = Astro.url.pathname;
           </div>
         </>
       ) : (
-        <a href={item.href} class="mobile-nav-trigger" style="display:block;text-align:left;">
-          {item.label}
-        </a>
+        <a href={item.href} class="mobile-nav-trigger" style="display:block;text-align:left;">{item.label}</a>
       )}
     </div>
   ))}
 
-  <div style="margin-top:32px;">
-    <a href="/contact" class="btn btn-primary" style="width:100%;justify-content:center;">Contact</a>
+  <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;">
+    <a href={lang === 'en' ? '/contact' : `/${lang}/contact`} class="btn btn-primary" style="width:100%;justify-content:center;">{t('btn.contact')}</a>
+    <div style="display:flex;justify-content:center;"><LanguagePicker /></div>
   </div>
 </div>
 
 <script>
-  const toggle   = document.getElementById('menu-toggle');
-  const closeBtn = document.getElementById('mobile-close');
+  const toggle    = document.getElementById('menu-toggle');
+  const closeBtn  = document.getElementById('mobile-close');
   const mobileNav = document.getElementById('mobile-nav');
 
-  toggle?.addEventListener('click', () => {
-    mobileNav?.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  });
-  closeBtn?.addEventListener('click', () => {
-    mobileNav?.classList.remove('open');
-    document.body.style.overflow = '';
-  });
+  toggle?.addEventListener('click', () => { mobileNav?.classList.add('open'); document.body.style.overflow = 'hidden'; });
+  closeBtn?.addEventListener('click', () => { mobileNav?.classList.remove('open'); document.body.style.overflow = ''; });
 
-  // Mobile accordion
   document.querySelectorAll('.mobile-nav-trigger[data-target]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      const target = (btn as HTMLElement).dataset.target;
-      const sub = document.getElementById(target!);
+      const sub = document.getElementById((btn as HTMLElement).dataset.target!);
       sub?.classList.toggle('open');
     });
   });
 
-  // Close mobile nav on escape
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      mobileNav?.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+    if (e.key === 'Escape') { mobileNav?.classList.remove('open'); document.body.style.overflow = ''; }
   });
 
-  // Keyboard: close dropdowns when tabbing away
   document.querySelectorAll('.nav-item').forEach((item) => {
     item.addEventListener('focusout', (e) => {
-      if (!item.contains((e as FocusEvent).relatedTarget as Node)) {
+      if (!item.contains((e as FocusEvent).relatedTarget as Node))
         (item.querySelector('.nav-trigger') as HTMLElement)?.setAttribute('aria-expanded', 'false');
-      }
     });
   });
 
   document.querySelectorAll('.nav-trigger[aria-haspopup]').forEach((btn) => {
     btn.addEventListener('click', function(this: HTMLElement) {
-      const expanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', (!expanded).toString());
+      this.setAttribute('aria-expanded', (this.getAttribute('aria-expanded') !== 'true').toString());
     });
   });
 </script>

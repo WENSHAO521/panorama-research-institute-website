@@ -20,7 +20,7 @@ import PageHero from '../../components/PageHero.astro';
 
       <div style="margin-top:8px;">
         {[
-          { status:"Active", center:"Scholarly Indexing and Evaluation", title:"POSI Scholarly Indexing Project", desc:"Building a transparent, comprehensive, and methodologically rigorous open index of academic journals covering editorial practices, indexing status, peer review standards, open access policies, and publication ethics.", href:"/projects/posi-scholarly-indexing" },
+          { status:"Awaiting Launch", center:"Scholarly Indexing and Evaluation", title:"POSI Scholarly Indexing Project", desc:"The POSI database has been developed and is awaiting official launch. It will provide a transparent, comprehensive, and methodologically rigorous open index of academic journals.", href:"/projects/posi-scholarly-indexing" },
           { status:"Active", center:"Center for Policy and Social Research", title:"Fifteenth Five-Year Plan Studies", desc:"A systematic study of China's Fifteenth Five-Year Plan (2026–2030), examining its implications for research priorities, higher education development, science governance, and social policy.", href:"/projects/fifteenth-five-year-plan-studies" },
           { status:"Active", center:"Center for Scholarly Publishing Studies", title:"Scholarly Publishing Standards Project", desc:"Developing editorial standards, publication ethics guidance, peer review frameworks, and scholarly communication benchmarks for academic journals and publishers.", href:"/projects/scholarly-publishing-standards" },
           { status:"Active", center:"Center for Policy and Social Research", title:"Youth Digital Governance Research", desc:"An investigation into the digital governance challenges facing young people in contemporary online environments, including platform regulation, algorithmic influence, digital literacy, and rights frameworks.", href:"/projects/youth-digital-governance" },
@@ -28,7 +28,7 @@ import PageHero from '../../components/PageHero.astro';
         ].map((p) => (
           <div class="project-card" style="border-radius:0;border-bottom:1px solid var(--border-light);margin-bottom:0;">
             <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
-              <span class={`tag ${p.status === 'Active' ? 'tag-active' : 'tag-steel'}`}>{p.status}</span>
+              <span class={`tag ${p.status === 'Active' || p.status === 'Awaiting Launch' ? 'tag-active' : 'tag-steel'}`}>{p.status}</span>
               <span style="font-size:12px;font-family:var(--font-mono);color:var(--text-muted);padding-top:2px;">{p.center}</span>
             </div>
             <h3 class="project-title">{p.title}</h3>

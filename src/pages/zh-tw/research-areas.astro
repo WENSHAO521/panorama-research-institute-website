@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="研究領域" description="全景研究院六大核心研究領域詳細說明。" lang="zh-tw">
+  <PageHero title="研究領域" description="全景研究院的研究工作分佈於六個相互關聯的核心研究領域，共同構成研究院的學術研究版圖。" breadcrumbs={[{ label: "研究", href: "/zh-tw/research-centers" }, { label: "研究領域" }]} homeLabel="首頁" homeHref="/zh-tw" />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:flex;flex-direction:column;gap:0;">
+        {[
+          {
+            num:"01", name:"學術出版研究",
+            desc:"研究學術出版生態系統的各個面向，包括同儕審查的品質與效率、開放獲取的政策與實施、出版商的商業模式與倫理行為，以及學術出版標準的制定與實施情況。研究院尤其關注學術出版的透明度、問責機制及作者權益保護問題。",
+            topics:["同儕審查機制與品質","開放獲取政策分析","出版商行為與倫理","學術出版標準","作者貢獻聲明規範","預印本發展趨勢"]
+          },
+          {
+            num:"02", name:"學術索引與評價",
+            desc:"研究學術期刊索引系統的架構、標準與影響，分析現有索引平台的選取標準、評估方法及潛在偏差。研究院主持「全景開放學術索引項目（POSI）」，致力於建立透明、全面的開放學術索引基礎設施。",
+            topics:["期刊索引標準分析","引用指標與評價方法","索引系統偏差研究","開放索引基礎設施","期刊品質評估","學術影響力衡量"]
+          },
+          {
+            num:"03", name:"政策與社會研究",
+            desc:"研究教育政策、社會治理及公共政策的制定過程與實施效果，尤其關注中國的高等教育政策、科研評估制度及青少年社會政策。研究院現正開展第十五個五年規劃研究，系統分析其政策含義與社會影響。",
+            topics:["高等教育政策分析","科研評估制度研究","青少年數位公民","中國五年規劃研究","社會治理框架","政策影響評估"]
+          },
+          {
+            num:"04", name:"人工智慧與社會",
+            desc:"研究人工智慧技術對社會的廣泛影響，涵蓋人工智慧治理框架、演算法問責、AI在學術傳播中的應用及AI時代學術誠信問題。研究院的人工智慧與未來社會研究中心正在籌建中，將於2027年正式啟動。",
+            topics:["人工智慧治理框架","演算法透明度與問責","AI與學術傳播","AI生成內容的學術誠信","人機協作研究","AI倫理規範"]
+          },
+          {
+            num:"05", name:"知識傳播研究",
+            desc:"研究學術知識的傳播管道、傳播效率及受眾獲取模式，探討開放獲取、社交媒體學術傳播及知識民主化議題，分析不同傳播方式對學術影響力的差異化影響。",
+            topics:["開放獲取傳播效果","社交媒體學術傳播","知識獲取公平性","學術影響力路徑","科學傳播模式","讀者行為研究"]
+          },
+          {
+            num:"06", name:"學術共同體研究",
+            desc:"研究學術共同體的規範形成、維持機制及違規後果，關注研究人員行為、機構文化及學術誠信的制度性保障，探討學術共同體如何應對造假、剽竊及其他學術不端行為的挑戰。",
+            topics:["學術規範與誠信","研究倫理制度","機構學術文化","撤稿機制研究","學術不端行為分析","學術共同體建設"]
+          },
+        ].map((area) => (
+          <div style="display:grid;grid-template-columns:56px 1fr 240px;gap:32px;padding:36px 0;border-bottom:1px solid var(--border-light);align-items:start;">
+            <span style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);padding-top:4px;">{area.num}</span>
+            <div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{area.name}</h2>
+              <p style="font-size:15px;color:var(--text-secondary);line-height:1.8;">{area.desc}</p>
+            </div>
+            <div>
+              <div style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">研究主題</div>
+              {area.topics.map((t) => (
+                <div style="font-size:13px;color:var(--text-secondary);padding:4px 0;border-bottom:1px solid var(--border-light);">{t}</div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="/zh-tw/research-centers" class="btn btn-primary">研究中心</a>
+        <a href="/zh-tw/projects"         class="btn btn-secondary">研究項目</a>
+        <a href="/research-areas"          class="btn btn-secondary">詳細資訊（英文）</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:56px 1fr 240px"] { display: block !important; }
+}
+</style>

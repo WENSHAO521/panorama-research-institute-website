@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="合作" description="與全景研究院開展學術合作、機構合作及研究員申請的途徑。" lang="zh-tw">
+  <PageHero title="合作" description="全景研究院歡迎來自全球學術機構、研究組織及學術出版社的合作申請，共同推進研究院核心研究領域的學術發展。" breadcrumbs={[{ label: "合作" }]} homeLabel="首頁" homeHref="/zh-tw" />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div class="section-label">合作形式</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title:"研究員申請", en:"Research Fellowship Application", href:"/collaboration/research-fellow-application", desc:"學者可申請全景研究院研究員、副研究員及訪問學者職位，以正式成員身份參與研究院學術項目與出版活動。研究員申請全年開放，隨時接受。" },
+          { title:"學術機構合作", en:"Institutional Collaboration", href:"/collaboration/institutional", desc:"大學、研究中心及學術機構可與研究院簽署正式合作協議，建立共同研究項目、學者交流及聯合出版等合作框架。" },
+          { title:"訪問學者申請", en:"Visiting Scholar Application", href:"/collaboration/visiting-scholar-application", desc:"成熟研究人員可申請短期或長期駐院訪問研究，參與特定研究項目，在研究院國際研究網絡中開展學術合作。訪問期通常為三至十二個月。" },
+          { title:"學術出版合作", en:"Publishing Collaboration", href:"/collaboration/publishing", desc:"學術出版社及期刊可就聯合出版、編輯合作或學術文集開發項目與研究院開展合作，共同推進學術出版標準與開放獲取實踐。" },
+          { title:"會議與活動合作", en:"Event Partnership", href:"/collaboration/events", desc:"研究機構、學術學會及大學可就學術會議、研討會及工作坊與研究院開展合作共同舉辦，共同推動特定研究領域的學術交流。" },
+          { title:"研究合作提案", en:"Research Collaboration Proposal", href:"/collaboration/research-proposal", desc:"來自其他機構的研究人員可向研究院提交聯合研究提案。研究院根據研究主題與核心研究領域的契合程度及資源情況評估合作可行性。" },
+        ].map((item) => (
+          <a href={item.href} class="card" style="border-radius:0;border:none;display:block;">
+            <div style="font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:4px;">{item.title}</div>
+            <div style="font-size:11px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:10px;">{item.en}</div>
+            <p style="font-size:14px;color:var(--text-secondary);line-height:1.65;">{item.desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="max-width:680px;">
+        <div class="section-label">合作原則</div>
+        <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:20px;font-weight:400;">我們的合作立場</h2>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          {[
+            { title:"學術獨立", desc:"所有合作均須尊重研究院的學術獨立性。合作方不得以任何方式影響研究成果、出版決定或學術立場。" },
+            { title:"開放獲取", desc:"研究院的研究成果依照開放獲取原則發布，合作協議須支持這一原則，或明確約定例外安排。" },
+            { title:"研究倫理", desc:"合作研究須遵守研究院研究倫理政策，包括研究誠信、利益衝突披露及資料管理標準。" },
+            { title:"透明度",   desc:"涉及外部資助的合作須在研究成果發布時予以明確披露。" },
+          ].map((p) => (
+            <div style="display:grid;grid-template-columns:160px 1fr;gap:24px;padding:18px 0;border-bottom:1px solid var(--border-light);">
+              <div style="font-size:15px;font-weight:600;color:var(--text-main);">{p.title}</div>
+              <p style="font-size:14.5px;color:var(--text-secondary);line-height:1.7;margin:0;">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-dark);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:#fff;margin-bottom:8px;font-weight:400;">立即開始合作洽談</h2>
+          <p style="font-size:15px;color:rgba(255,255,255,0.6);margin:0;">如有合作意向，歡迎通過聯繫頁面與研究院取得聯繫。</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="/zh-tw/contact" class="btn btn-primary">聯繫研究院</a>
+          <a href="/collaboration"  class="btn btn-secondary" style="color:#fff;border-color:rgba(255,255,255,0.3);">合作詳情（英文）</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"],
+  div[style*="grid-template-columns:160px 1fr"] { display: block !important; }
+}
+</style>

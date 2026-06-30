@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="POSI Scholarly Indexing Project" description="The Panorama Open Scholarly Indexing project — building a transparent, comprehensive index of academic journals.">
+  <PageHero
+    title="POSI Scholarly Indexing Project"
+    description="A long-term scholarly infrastructure initiative to develop a transparent, comprehensive, and methodologically rigorous open index of academic journals."
+    breadcrumbs={[{ label: "Research", href: "/research-areas" }, { label: "Projects", href: "/projects" }, { label: "POSI Scholarly Indexing" }]}
+    tag="Active Project"
+  >
+    <div style="margin-top:4px;font-size:14px;color:var(--text-muted);font-family:var(--font-sans);">全景开放学术索引项目</div>
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">Project Details</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "Status",          value: "Active" },
+              { label: "Phase",           value: "Initial Development" },
+              { label: "Start Date",      value: "2024" },
+              { label: "Expected Release", value: "2025 (Phase 1 Dataset)" },
+              { label: "Lead Center",     value: "Center for Scholarly Indexing and Evaluation" },
+              { label: "Project Type",    value: "Open Scholarly Infrastructure" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/research-centers/scholarly-indexing-evaluation" class="btn btn-primary" style="justify-content:center;">Lead Center</a>
+            <a href="/collaboration/research-project-proposal" class="btn btn-secondary" style="justify-content:center;">Collaborate</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">About the Project</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Panorama Open Scholarly Indexing (POSI) project is a flagship research and infrastructure initiative of Panorama Research Institute. Its primary goal is to develop a comprehensive, publicly accessible, and methodologically transparent index of academic journals — covering their editorial practices, indexing status, peer review standards, open access policies, publication ethics commitments, and other dimensions relevant to scholarly quality.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            POSI operates on principles of openness and transparency: its methodology is publicly documented, its evaluation criteria are subject to academic peer scrutiny, and its data will be freely accessible to researchers, institutions, publishers, funders, and policymakers. Unlike commercial indexing systems, POSI has no financial stake in the inclusion or exclusion of any journal.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            POSI is designed as a long-term infrastructure project. Phase 1, currently under development, focuses on establishing the methodology, data model, and initial journal coverage. Subsequent phases will expand coverage, deepen the data dimensions, and develop tools for data access and visualization.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Methodology</div>
+      <h2 class="section-title">Evaluation Dimensions</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { num:"01", dim:"Editorial Standards",        desc:"Assessment of editorial policies, author guidelines, scope statements, and the transparency of editorial decision processes." },
+          { num:"02", dim:"Peer Review Practice",       desc:"Documentation of peer review model (single-blind, double-blind, open review), reviewer guidelines, and quality assurance processes." },
+          { num:"03", dim:"Indexing and Discoverability", desc:"Coverage in major and minor indexes (Scopus, WoS, DOAJ, ESCI, Google Scholar, Dimensions, etc.) with dates and coverage level." },
+          { num:"04", dim:"Open Access Status",         desc:"Classification of OA model (gold, diamond, green, hybrid), APC levels, licensing terms, and rights retention policies." },
+          { num:"05", dim:"Publication Ethics Compliance", desc:"Documented commitment to COPE guidelines, retraction policy, correction policy, authorship standards, and conflict of interest disclosure." },
+          { num:"06", dim:"Journal Metadata Quality",   desc:"Completeness and accuracy of journal metadata including ISSN, DOI registration, article-level metadata, and ORCID integration." },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);margin-bottom:8px;">{item.num}</div>
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.dim}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Project Roadmap</div>
+      <h2 class="section-title">Development Phases</h2>
+      <div style="max-width:780px;margin-top:8px;">
+        {[
+          { phase:"Phase 1", period:"2024–2025", status:"Current", items:["Design and document the POSI methodology and evaluation framework","Define data model and metadata schema for journal records","Establish the initial journal coverage list","Begin data collection for Phase 1 journals","Develop internal data management tools","Publish Phase 1 dataset (planned: 2025)"] },
+          { phase:"Phase 2", period:"2025–2026", status:"Upcoming", items:["Expand journal coverage to additional disciplines and regions","Develop public-facing database interface","Publish API for data access","Conduct peer review of POSI methodology by external scholars","Launch institutional user program"] },
+          { phase:"Phase 3", period:"2026+", status:"Planned", items:["Expand to become a recognized global resource","Integrate POSI data with open scholarly infrastructure (OpenAlex, Crossref)","Establish regular update and review cycles","Develop extended data dimensions based on user feedback","Explore governance model for long-term sustainability"] },
+        ].map((phase) => (
+          <div style="margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--border-light);">
+            <div style="display:grid;grid-template-columns:160px 1fr;gap:40px;align-items:start;">
+              <div>
+                <div style="font-family:var(--font-serif);font-size:20px;color:var(--text-main);margin-bottom:4px;">{phase.phase}</div>
+                <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);margin-bottom:12px;">{phase.period}</div>
+                <span class={`tag ${phase.status === 'Current' ? 'tag-active' : phase.status === 'Upcoming' ? 'tag-steel' : ''}`}>{phase.status}</span>
+              </div>
+              <div>
+                {phase.items.map((item) => (
+                  <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--bg-soft);">
+                    <span style="color:var(--text-muted);flex-shrink:0;font-size:14px;">&#8212;</span>
+                    <span style="font-size:14.5px;color:var(--text-secondary);line-height:1.7;">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"],
+  div[style*="grid-template-columns:160px 1fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

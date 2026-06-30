@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Workshops" description="Academic workshops organized by Panorama Research Institute.">
+  <PageHero
+    title="Workshops"
+    description="Focused academic workshops organized by Panorama Research Institute, providing intensive, participatory settings for researchers to develop work in progress and engage with methodological and conceptual questions."
+    breadcrumbs={[{ label: "Events", href: "/events" }, { label: "Workshops" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:48px;">
+          Panorama Research Institute plans to organize a program of academic workshops as part of its event calendar. Workshops are smaller, more intensive gatherings than conferences or seminars, typically focused on a specific research question or methodological challenge. They are designed to be participatory and productive — providing a space where researchers can develop work in progress with structured feedback from peers.
+        </p>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-bottom:48px;">
+          {[
+            { type:"Research Workshops",   desc:"Small gatherings of researchers to develop work in progress, test frameworks, and exchange methods on a specific research theme." },
+            { type:"Editorial Workshops",  desc:"Workshops for journal editors and publishers focusing on editorial practice, publication ethics, peer review management, and standards." },
+            { type:"Writing Workshops",    desc:"Intensive writing workshops for early-career researchers, focusing on academic writing, publication strategy, and scholarly communication." },
+          ].map((item) => (
+            <div class="card" style="border:none;border-radius:0;">
+              <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.type}</h3>
+              <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div style="padding:32px;background:var(--bg-soft);border:1px solid var(--border-light);margin-bottom:40px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Program Status</div>
+          <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;margin:0;">
+            The Institute's workshop program is in planning. The first Institute-organized workshop is planned for 2025. See the <a href="/events/training-programs" style="color:var(--accent-steel);">training programs</a> page for the Institute's current capacity-building activities.
+          </p>
+        </div>
+
+        <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">Propose a Workshop</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:24px;">
+          Researchers and institutions interested in co-organizing a workshop with Panorama Research Institute are invited to submit a proposal. Successful proposals will receive institutional support, event coordination assistance, and may be eligible for Institute branding and publication of workshop outcomes.
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/collaboration/event-cooperation" class="btn btn-primary">Submit Workshop Proposal</a>
+          <a href="/events/training-programs" class="btn btn-secondary">Training Programs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"] { display: block !important; }
+}
+</style>

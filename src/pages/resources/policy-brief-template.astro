@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Policy Brief Template" description="Download the official policy brief template from Panorama Research Institute.">
+  <PageHero
+    title="Policy Brief Template"
+    description="The official template for preparing policy briefs for Panorama Research Institute's policy brief series. Designed for concise, evidence-based, and audience-focused policy communication."
+    breadcrumbs={[{ label: "Resources", href: "/resources" }, { label: "Templates", href: "/resources/templates" }, { label: "Policy Brief Template" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">Template Details</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"Format",         value:"Microsoft Word (.docx)" },
+              { label:"Version",        value:"v1.0 (2024)" },
+              { label:"Typical Length", value:"1,500–4,000 words" },
+              { label:"Target Audience","": "", value:"Policymakers, institutional leaders, practitioners" },
+              { label:"Language",       value:"English" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/resources/templates" class="btn btn-primary" style="justify-content:center;">Download Template</a>
+            <a href="/publications/policy-briefs" class="btn btn-secondary" style="justify-content:center;">Policy Briefs</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Policy Brief Structure</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:28px;">
+            Policy briefs follow a structured format designed to communicate effectively with policy audiences. Unlike academic papers, policy briefs lead with conclusions and emphasize practical recommendations. The template enforces this structure and includes style guidance for each section.
+          </p>
+
+          <div style="border:1px solid var(--border-light);margin-bottom:28px;">
+            {[
+              { sec:"Cover",                    note:"Title, brief number, author(s), research center, date, DOI" },
+              { sec:"Key Messages",             note:"3–5 bullet points; the brief's essential conclusions; appears before the text body" },
+              { sec:"Executive Summary",        note:"150–250 words; for readers who will read no further" },
+              { sec:"1. Policy Context",        note:"The policy problem or question the brief addresses; why it matters now" },
+              { sec:"2. Evidence and Analysis", note:"The evidence base; structured analysis; clearly distinguished from opinion" },
+              { sec:"3. Policy Options",        note:"Realistic options for action; advantages and limitations of each" },
+              { sec:"4. Recommendations",       note:"Specific, actionable recommendations; addressed to a named audience" },
+              { sec:"References",               note:"Essential references only; inline or endnote style; not a full bibliography" },
+              { sec:"About the Institute",      note:"Standard Institute description (pre-filled, do not alter)" },
+            ].map((item) => (
+              <div style="display:grid;grid-template-columns:180px 1fr;gap:16px;padding:12px 20px;border-bottom:1px solid var(--border-light);">
+                <div style="font-size:13.5px;font-weight:600;color:var(--text-main);">{item.sec}</div>
+                <div style="font-size:13px;color:var(--text-secondary);">{item.note}</div>
+              </div>
+            ))}
+          </div>
+
+          <div style="padding:20px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Writing Guidance</div>
+            <p style="font-size:14px;color:var(--text-secondary);margin:0;line-height:1.7;">
+              Policy briefs should be written for readers who are knowledgeable but not academic specialists. Avoid jargon, define technical terms, and use active sentences. Recommendations should be specific enough that a reader can act on them: "the Ministry of Education should..." not "policymakers should consider...".
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:180px 1fr"] { display: block !important; }
+}
+</style>

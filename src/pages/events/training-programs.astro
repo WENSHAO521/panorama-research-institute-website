@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Training Programs" description="Training programs for researchers, journal editors, and scholars organized by Panorama Research Institute.">
+  <PageHero
+    title="Training Programs"
+    description="Capacity-building training programs organized by Panorama Research Institute for researchers, journal editors, and scholarly practitioners in the Institute's focus areas."
+    breadcrumbs={[{ label: "Events", href: "/events" }, { label: "Training Programs" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:48px;">
+          Panorama Research Institute plans to develop a program of training workshops and capacity-building programs for researchers, journal editors, and other scholarly practitioners. Training programs are designed to translate research insights from the Institute's projects into practical skills and knowledge that participants can apply directly in their work.
+        </p>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-bottom:48px;">
+          {[
+            { audience:"Journal Editors", programs:["Editorial standards and processes","Peer review management","Publication ethics and COPE guidelines","Managing author relationships","Handling retractions and corrections"] },
+            { audience:"Researchers",     programs:["Research integrity and open science","Working with preprints and open access","Data management and sharing","Citation and referencing best practices","Academic writing for international journals"] },
+            { audience:"Research Teams",  programs:["Research project management","Collaborative writing and co-authorship","Research data management","Ethical review and institutional compliance","Dissemination and impact planning"] },
+          ].map((item) => (
+            <div class="card" style="border:none;border-radius:0;">
+              <h3 style="font-family:var(--font-sans);font-size:14.5px;font-weight:600;color:var(--text-main);margin-bottom:12px;">{item.audience}</h3>
+              <div style="display:flex;flex-direction:column;gap:4px;">
+                {item.programs.map((p) => (
+                  <div style="display:flex;gap:8px;font-size:13px;color:var(--text-secondary);">
+                    <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{p}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style="padding:32px;background:var(--bg-soft);border:1px solid var(--border-light);margin-bottom:40px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Program Status</div>
+          <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;">
+            The Institute's training program is currently in development. The first training programs are planned for 2026, beginning with workshops for journal editors on editorial standards and publication ethics.
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);margin:0;line-height:1.6;">
+            Organizations interested in co-organizing training programs with the Institute are invited to contact us through the Collaboration Office.
+          </p>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/collaboration/event-cooperation" class="btn btn-primary">Co-organize a Training Program</a>
+          <a href="/events/workshops" class="btn btn-secondary">Workshops</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

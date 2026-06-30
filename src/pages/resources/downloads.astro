@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Downloads" description="All downloadable resources from Panorama Research Institute.">
+  <PageHero
+    title="Downloads"
+    description="All downloadable resources from Panorama Research Institute, including publications, forms, templates, guidelines, and institutional documents."
+    breadcrumbs={[{ label: "Resources", href: "/resources" }, { label: "Downloads" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      {[
+        {
+          cat: "Publications",
+          items: [
+            { name:"Working Paper: Peer Review Models and Publication Ethics", type:"PDF", size:"~0.8 MB", href:"/publications/working-papers" },
+            { name:"Working Paper: Toward a Transparent Journal Evaluation Framework", type:"PDF", size:"~0.7 MB", href:"/publications/working-papers" },
+            { name:"Policy Brief: Open Access Mandates in Asia-Pacific", type:"PDF", size:"~0.3 MB", href:"/publications/policy-briefs" },
+            { name:"Policy Brief: Governance of Scholarly Database Operators", type:"PDF", size:"~0.3 MB", href:"/publications/policy-briefs" },
+            { name:"Policy Brief: Youth Online Safety and Platform Accountability", type:"PDF", size:"~0.4 MB", href:"/publications/policy-briefs" },
+          ]
+        },
+        {
+          cat: "Forms",
+          items: [
+            { name:"Research Project Proposal Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
+            { name:"Visiting Scholar Application Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
+            { name:"Research Fellow Application Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
+            { name:"Event Cooperation Proposal Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
+          ]
+        },
+        {
+          cat: "Templates",
+          items: [
+            { name:"Research Proposal Template (Word)", type:"DOCX", size:"~0.1 MB", href:"/resources/research-proposal-template" },
+            { name:"Research Report Template (Word)", type:"DOCX", size:"~0.1 MB", href:"/resources/report-template" },
+            { name:"Policy Brief Template (Word)", type:"DOCX", size:"~0.1 MB", href:"/resources/policy-brief-template" },
+          ]
+        },
+        {
+          cat: "Institutional Documents",
+          items: [
+            { name:"Institute Charter (PDF)", type:"PDF", size:"~0.6 MB", href:"/resources/charter-pdf" },
+            { name:"Logo and Name Usage Guidelines", type:"PDF", size:"~0.4 MB", href:"/resources/logo-usage-guidelines" },
+          ]
+        },
+      ].map((section) => (
+        <div style="margin-bottom:48px;">
+          <div class="section-label" style="margin-bottom:12px;">{section.cat}</div>
+          <div style="border:1px solid var(--border-light);">
+            {section.items.map((item) => (
+              <div style="display:grid;grid-template-columns:1fr auto auto;gap:20px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border-light);">
+                <div style="font-size:15px;color:var(--text-main);">{item.name}</div>
+                <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);">{item.type}</div>
+                <a href={item.href} class="btn btn-secondary" style="font-size:13px;white-space:nowrap;">Download &rarr;</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:1fr auto auto"] { display: block !important; }
+}
+</style>

@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Research Project Proposal" description="Submit a research project proposal to Panorama Research Institute.">
+  <PageHero
+    title="Research Project Proposal"
+    description="Submit a proposal for a new research project to be conducted under the auspices of Panorama Research Institute, affiliated with one of the Institute's research centers."
+    breadcrumbs={[{ label: "Collaboration", href: "/collaboration" }, { label: "Research Project Proposal" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">Proposal Requirements</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"Proposal Length",  value:"1,000–3,000 words" },
+              { label:"Response Time",    value:"Within 20 working days" },
+              { label:"Decision",         value:"Accept / Revise / Decline" },
+              { label:"If Accepted",      value:"Assigned to relevant research center" },
+              { label:"Affiliation Required", value:"Not required (proposals from non-affiliated scholars welcome)" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Proposal Guidelines</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            Panorama Research Institute invites research project proposals from scholars who wish to conduct research under the Institute's auspices. Accepted proposals are affiliated with a relevant research center and receive institutional support including publication access, network engagement, and advisory input.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            Proposals must fall within the Institute's designated research areas. They will be assessed on scholarly quality, feasibility, fit with the Institute's research program, and the proposer's qualifications and track record.
+          </p>
+
+          <div class="section-label" style="margin-bottom:14px;">Proposal Content Requirements</div>
+          <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border-light);margin-bottom:40px;">
+            {[
+              { sec:"1. Project Title and Overview",      desc:"A concise title and 200-word summary of the proposed project." },
+              { sec:"2. Research Questions",              desc:"Clear articulation of the specific questions the project will address." },
+              { sec:"3. Background and Rationale",        desc:"Context, existing literature, and justification for the research." },
+              { sec:"4. Methodology",                     desc:"The research methods to be employed, with justification." },
+              { sec:"5. Expected Outputs",                desc:"Planned publications, datasets, or other outputs, with an indicative timeline." },
+              { sec:"6. Proposed Research Center",        desc:"The Institute research center with which the project should be affiliated." },
+              { sec:"7. Lead Researcher Profile",         desc:"Brief academic bio and relevant publications of the lead researcher." },
+              { sec:"8. Co-investigators (if applicable)", desc:"Names, institutional affiliations, and roles of any co-investigators." },
+            ].map((item) => (
+              <div style="padding:16px 20px;border-bottom:1px solid var(--border-light);">
+                <div style="font-size:13.5px;font-weight:600;color:var(--text-main);margin-bottom:4px;">{item.sec}</div>
+                <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid var(--border-light);padding-top:48px;">
+        <div class="section-label" style="margin-bottom:8px;">Proposal Form</div>
+        <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:24px;font-weight:400;">Submit Your Proposal</h2>
+        <form style="max-width:740px;display:flex;flex-direction:column;gap:0;" action="#" method="post">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+            {[
+              { label:"Your Name",       id:"name",   type:"text",  placeholder:"Full name" },
+              { label:"Email Address",   id:"email",  type:"email", placeholder:"your@email.com" },
+              { label:"Institution",     id:"inst",   type:"text",  placeholder:"Current institutional affiliation" },
+              { label:"Position/Title",  id:"title",  type:"text",  placeholder:"e.g. Associate Professor" },
+            ].map((f) => (
+              <div style="padding:12px;border:1px solid var(--border-light);border-collapse:collapse;margin:-0.5px;">
+                <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+              </div>
+            ))}
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <label for="center" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Proposed Research Center</label>
+            <select id="center" name="center" class="form-input" style="width:100%;">
+              <option value="">Select a research center...</option>
+              <option>Center for Scholarly Publishing Studies</option>
+              <option>Center for Scholarly Indexing and Evaluation</option>
+              <option>Center for Policy and Social Research</option>
+              <option>Center for AI and Future Society</option>
+              <option>Not sure — please advise</option>
+            </select>
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <label for="proposal" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Research Proposal (1,000–3,000 words)</label>
+            <textarea id="proposal" name="proposal" rows="12" placeholder="Please include all required sections as described in the proposal guidelines above." class="form-input" style="width:100%;resize:vertical;"></textarea>
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
+            <input type="checkbox" id="consent" name="consent" style="margin-top:3px;flex-shrink:0;" />
+            <label for="consent" style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">I confirm that the research described in this proposal is original, does not involve substantial plagiarism, and has not been submitted simultaneously to another institution for equivalent consideration.</label>
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Submit Proposal</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+}
+</style>

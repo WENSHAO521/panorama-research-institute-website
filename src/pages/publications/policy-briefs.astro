@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Policy Briefs" description="Policy briefs from Panorama Research Institute presenting evidence-based recommendations for policymakers and institutional leaders.">
+  <PageHero
+    title="Policy Briefs"
+    description="Concise, evidence-based policy briefs presenting actionable recommendations for policymakers, institutional leaders, and scholarly community stakeholders based on the Institute's research."
+    breadcrumbs={[{ label: "Publications", href: "/publications" }, { label: "Policy Briefs" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">About This Series</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label: "Format",          value: "Policy brief" },
+              { label: "Typical Length",  value: "1,500–4,000 words" },
+              { label: "Review",          value: "Internal editorial review" },
+              { label: "Access",          value: "Open access" },
+              { label: "Target Audience", value: "Policymakers, institutional leaders, scholarly community" },
+              { label: "DOI",             value: "Registered (Crossref)" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">About Policy Briefs</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            Policy briefs are a key output of Panorama Research Institute's policy-facing research. They translate research findings into concise, accessible documents targeted at policymakers, institutional decision-makers, and stakeholders in the scholarly communication ecosystem. Each policy brief presents a specific policy challenge or question, summarizes relevant evidence, and provides clear, actionable recommendations.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            Policy briefs are published open access and are designed for use in policy discussions, institutional deliberations, and advocacy. They are an important mechanism through which the Institute contributes to real-world policy debates in its research areas.
+          </p>
+
+          <div class="section-label" style="margin-bottom:12px;">Published Policy Briefs</div>
+          {[
+            { num:"PB-2026-001", title:"Open Access Mandates and Their Implementation in Asia-Pacific Institutions", center:"Center for Scholarly Publishing Studies", date:"2026" },
+            { num:"PB-2026-002", title:"Governance and Transparency Requirements for Scholarly Database Operators", center:"Center for Scholarly Indexing and Evaluation", date:"2026" },
+            { num:"PB-2026-003", title:"Youth Online Safety and Platform Accountability: A Comparative Policy Analysis", center:"Center for Policy and Social Research", date:"2026" },
+          ].map((pub) => (
+            <div class="publication-item">
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:6px;">{pub.num} &bull; {pub.center}</div>
+                <div class="pub-title">{pub.title}</div>
+              </div>
+              <div style="text-align:right;flex-shrink:0;">
+                <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.date}</div>
+                <a href="/publications" class="btn btn-ghost" style="font-size:13px;padding:0;">Download &rarr;</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

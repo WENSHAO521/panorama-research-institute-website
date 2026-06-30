@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Current Projects" description="All active and in-development research projects at Panorama Research Institute.">
+  <PageHero
+    title="Current Projects"
+    description="All active and in-development research projects across Panorama Research Institute's four research centers."
+    breadcrumbs={[{ label: "Research", href: "/research-areas" }, { label: "Projects", href: "/projects" }, { label: "Current Projects" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:flex;gap:16px;align-items:center;margin-bottom:40px;flex-wrap:wrap;">
+        <div class="section-label" style="margin:0;">Filter by Center</div>
+        {["All Centers","Scholarly Publishing Studies","Scholarly Indexing & Evaluation","Policy & Social Research","AI & Future Society"].map((f,i) => (
+          <span style={`font-size:13px;font-family:var(--font-sans);padding:4px 12px;border:1px solid var(--border-light);color:${i===0?'var(--text-main)':'var(--text-muted)'};background:${i===0?'var(--bg-main)':'transparent'};cursor:pointer;`}>{f}</span>
+        ))}
+      </div>
+
+      <div style="margin-top:8px;">
+        {[
+          { status:"Active", center:"Scholarly Indexing and Evaluation", title:"POSI Scholarly Indexing Project", desc:"Building a transparent, comprehensive, and methodologically rigorous open index of academic journals covering editorial practices, indexing status, peer review standards, open access policies, and publication ethics.", href:"/projects/posi-scholarly-indexing" },
+          { status:"Active", center:"Center for Policy and Social Research", title:"Fifteenth Five-Year Plan Studies", desc:"A systematic study of China's Fifteenth Five-Year Plan (2026–2030), examining its implications for research priorities, higher education development, science governance, and social policy.", href:"/projects/fifteenth-five-year-plan-studies" },
+          { status:"Active", center:"Center for Scholarly Publishing Studies", title:"Scholarly Publishing Standards Project", desc:"Developing editorial standards, publication ethics guidance, peer review frameworks, and scholarly communication benchmarks for academic journals and publishers.", href:"/projects/scholarly-publishing-standards" },
+          { status:"Active", center:"Center for Policy and Social Research", title:"Youth Digital Governance Research", desc:"An investigation into the digital governance challenges facing young people in contemporary online environments, including platform regulation, algorithmic influence, digital literacy, and rights frameworks.", href:"/projects/youth-digital-governance" },
+          { status:"In Development", center:"Center for AI and Future Society", title:"AI and Future Society Research Project", desc:"An inaugural initiative examining the governance, ethics, and social implications of artificial intelligence, with a focus on AI's effects on scholarly communication, knowledge production, and academic publishing.", href:"/projects/ai-future-society" },
+        ].map((p) => (
+          <div class="project-card" style="border-radius:0;border-bottom:1px solid var(--border-light);margin-bottom:0;">
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+              <span class={`tag ${p.status === 'Active' ? 'tag-active' : 'tag-steel'}`}>{p.status}</span>
+              <span style="font-size:12px;font-family:var(--font-mono);color:var(--text-muted);padding-top:2px;">{p.center}</span>
+            </div>
+            <h3 class="project-title">{p.title}</h3>
+            <p class="project-desc">{p.desc}</p>
+            <a href={p.href} style="display:inline-flex;margin-top:16px;font-size:13.5px;color:var(--accent-steel);">View Project &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">Interested in collaborating on a project?</h2>
+          <p style="font-size:15px;color:var(--text-secondary);">The Institute welcomes research proposals and collaboration inquiries from scholars and institutions worldwide.</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/collaboration/research-project-proposal" class="btn btn-primary">Submit a Proposal</a>
+          <a href="/projects/archive" class="btn btn-secondary">Completed Projects</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

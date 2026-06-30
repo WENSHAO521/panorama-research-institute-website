@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Institute Leadership" description="The leadership of Panorama Research Institute, including the Director and unit heads.">
+  <PageHero
+    title="Institute Leadership"
+    description="The leadership team of Panorama Research Institute, responsible for the Institute's overall direction, governance, research program, and institutional operations."
+    breadcrumbs={[{ label: "People", href: "/people" }, { label: "Leadership" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:48px;">
+          Panorama Research Institute is led by a Director who is responsible for the Institute's overall academic direction, governance compliance, external representation, and institutional development. The Director is supported by unit coordinators who manage the Institute's operational activities across research, publications, events, scholars, and collaboration.
+        </p>
+
+        <div class="section-label" style="margin-bottom:16px;">Institute Leadership</div>
+        <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border-light);margin-bottom:48px;">
+          {[
+            { role:"Director, Panorama Research Institute", name:"To be announced", note:"The Institute Director is responsible for overall academic direction, governance, external representation, and institutional development." },
+            { role:"Director of Research / Research Centers Coordination", name:"To be announced", note:"Responsible for coordination across research centers, project oversight, and research quality assurance." },
+            { role:"Publications Coordinator", name:"To be announced", note:"Responsible for the Institute's publication program, editorial processes, and open access compliance." },
+            { role:"Events Coordinator", name:"To be announced", note:"Responsible for the Institute's conference, seminar, workshop, and training event programs." },
+            { role:"Scholar Program Coordinator", name:"To be announced", note:"Responsible for recruitment, onboarding, and support of research fellows, visiting scholars, and research assistants." },
+            { role:"Collaboration Coordinator", name:"To be announced", note:"Responsible for external partnerships, institutional cooperation agreements, and collaboration inquiries." },
+          ].map((item) => (
+            <div style="padding:24px;border-bottom:1px solid var(--border-light);">
+              <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{item.role}</div>
+              <div style="font-size:16px;color:var(--text-main);font-weight:500;margin-bottom:8px;">{item.name}</div>
+              <div style="font-size:14px;color:var(--text-secondary);line-height:1.6;">{item.note}</div>
+            </div>
+          ))}
+        </div>
+
+        <div class="section-label" style="margin-bottom:16px;">Research Center Directors</div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+          {[
+            { center:"Center for Scholarly Publishing Studies", director:"To be announced" },
+            { center:"Center for Scholarly Indexing and Evaluation", director:"To be announced" },
+            { center:"Center for Policy and Social Research", director:"To be announced" },
+            { center:"Center for AI and Future Society", director:"To be announced (est. 2025)" },
+          ].map((item) => (
+            <div class="card" style="border:none;border-radius:0;">
+              <div style="font-size:13px;font-family:var(--font-sans);font-weight:600;color:var(--text-main);margin-bottom:8px;">{item.center}</div>
+              <div style="font-size:13.5px;color:var(--text-muted);">{item.director}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

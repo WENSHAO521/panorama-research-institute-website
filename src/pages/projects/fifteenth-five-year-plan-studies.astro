@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Fifteenth Five-Year Plan Studies" description="Research project examining China's Fifteenth Five-Year Plan and its implications for research, higher education, and social policy.">
+  <PageHero
+    title="Fifteenth Five-Year Plan Studies"
+    description="A systematic research initiative examining China's Fifteenth Five-Year Plan (2026–2030), with analysis of implications for higher education, scientific research priorities, and social policy development."
+    breadcrumbs={[{ label: "Research", href: "/research-areas" }, { label: "Projects", href: "/projects" }, { label: "Fifteenth Five-Year Plan Studies" }]}
+    tag="Active Project"
+  >
+    <div style="margin-top:4px;font-size:14px;color:var(--text-muted);font-family:var(--font-sans);">第十五个五年规划研究项目</div>
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">Project Details</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "Status",       value: "Active" },
+              { label: "Start Date",   value: "2024" },
+              { label: "Plan Period",  value: "2026–2030" },
+              { label: "Lead Center",  value: "Center for Policy and Social Research" },
+              { label: "Focus Areas",  value: "Higher education, science policy, social development" },
+              { label: "Project Type", value: "Policy Research" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/research-centers/policy-social-research" class="btn btn-primary" style="justify-content:center;">Lead Center</a>
+            <a href="/publications" class="btn btn-secondary" style="justify-content:center;">Publications</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">About the Project</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Fifteenth Five-Year Plan Studies project is a systematic research initiative examining China's Fifteenth Five-Year Plan (2026–2030) and its implications for higher education, scientific research, social governance, and academic publishing. The project builds on accumulated research into preceding Five-Year Plans and applies a structured analytical framework to the new planning cycle.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The project is particularly concerned with how national planning frameworks shape the research priorities of universities and research institutions; how they influence the development of academic publishing and scholarly communication infrastructure; and how planning goals interact with the international academic environment.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            Research outputs from this project are intended to be useful to scholars studying Chinese higher education and science policy, to institutions navigating the policy environment shaped by the Plan, and to policymakers and international organizations engaged with China's academic sector.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Research Scope</div>
+      <h2 class="section-title">Analytical Dimensions</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title:"Higher Education Development", desc:"Analysis of the Plan's goals for higher education expansion, university governance reform, talent development, and internationalisation." },
+          { title:"Science and Technology Policy", desc:"Analysis of research and development targets, innovation system goals, key technology priorities, and science governance frameworks." },
+          { title:"Social Policy Dimensions",      desc:"Analysis of social development goals relevant to academic and knowledge work, including employment, social security, and digital inclusion." },
+          { title:"Academic Publishing Implications", desc:"Assessment of how Plan policies on publishing, open science, intellectual property, and data governance affect scholarly communication." },
+          { title:"International Engagement",     desc:"Analysis of the Plan's framing of international academic cooperation, foreign talent programs, and engagement with global research networks." },
+          { title:"Historical and Comparative Analysis", desc:"Systematic comparison with the Fourteenth Five-Year Plan, identifying continuities, shifts, and new priorities in the Fifteenth Plan." },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Project Outputs</div>
+      <h2 class="section-title">Expected Publications</h2>
+      <div style="margin-top:8px;">
+        {[
+          { type:"Research Report", title:"China's Fifteenth Five-Year Plan: Implications for Higher Education and Scientific Research", status:"In preparation" },
+          { type:"Policy Brief", title:"Science Governance and Research Priority-Setting in the Fifteenth Five-Year Plan", status:"In preparation" },
+          { type:"Working Paper", title:"Academic Publishing and Scholarly Communication in China's Planning Framework: A Longitudinal Analysis", status:"In preparation" },
+        ].map((pub) => (
+          <div class="publication-item">
+            <div class="pub-type">{pub.type}</div>
+            <div class="pub-title">{pub.title}</div>
+            <div style="text-align:right;">
+              <div style="font-family:var(--font-mono);font-size:13px;color:var(--accent-steel);margin-bottom:10px;">{pub.status}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(2,1fr)"] { grid-template-columns: 1fr !important; }
+}
+</style>

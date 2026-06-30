@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Youth Digital Governance Research" description="Research project on governance of digital environments for young people, including platform regulation, digital rights, and online safety.">
+  <PageHero
+    title="Youth Digital Governance Research"
+    description="An investigation into the digital governance challenges facing young people in contemporary online environments, examining platform regulation, algorithmic influence, digital literacy, and rights frameworks."
+    breadcrumbs={[{ label: "Research", href: "/research-areas" }, { label: "Projects", href: "/projects" }, { label: "Youth Digital Governance" }]}
+    tag="Active Project"
+  >
+    <div style="margin-top:4px;font-size:14px;color:var(--text-muted);font-family:var(--font-sans);">青少年数字治理研究项目</div>
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">Project Details</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "Status",       value: "Active" },
+              { label: "Start Date",   value: "2024" },
+              { label: "Lead Center",  value: "Center for Policy and Social Research" },
+              { label: "Project Type", value: "Policy and Social Research" },
+              { label: "Focus Group",  value: "Young people (under 25)" },
+              { label: "Contact",      value: "research@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/research-centers/policy-social-research" class="btn btn-primary" style="justify-content:center;">Lead Center</a>
+            <a href="/publications" class="btn btn-secondary" style="justify-content:center;">Publications</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">About the Project</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Youth Digital Governance Research project investigates the governance challenges and policy frameworks that shape the digital environments experienced by young people. It takes a multidisciplinary approach, drawing on political science, education, sociology, and communication studies to examine how platforms, governments, and institutions govern the digital spaces in which young people spend increasing amounts of their time.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The project addresses a wide range of governance dimensions, from platform content moderation and algorithmic recommendation systems to legal frameworks for online safety, digital literacy education, and the rights of young people in digital environments. It pays particular attention to the tension between protection and participation — between shielding young people from harms and enabling their agency as digital citizens.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            Research outputs are intended to be useful to policymakers, educators, platform operators, and civil society organizations working on issues of youth digital welfare and rights.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Research Scope</div>
+      <h2 class="section-title">Key Research Themes</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title:"Platform Regulation",         desc:"Analysis of regulatory frameworks governing platforms used by young people, including age verification, content moderation, and data privacy." },
+          { title:"Algorithmic Influence",        desc:"Research on how recommendation algorithms shape the information environments of young people, including exposure to harmful content and filter bubbles." },
+          { title:"Digital Literacy and Education", desc:"Research on digital literacy frameworks, curricula, and educational interventions designed to support young people's critical engagement with digital environments." },
+          { title:"Online Safety Policy",         desc:"Comparative analysis of national and regional online safety policies and legislation affecting young people, including their implementation and effectiveness." },
+          { title:"Youth Digital Rights",         desc:"Research on the rights of young people in digital environments, including data rights, freedom of expression, and the right to be forgotten." },
+          { title:"Civic Participation Online",   desc:"Research on the potential and limitations of digital civic participation for young people, including online political engagement and digital activism." },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Project Outputs</div>
+      <h2 class="section-title">Expected Publications</h2>
+      <div style="margin-top:8px;">
+        {[
+          { type:"Research Report", title:"Youth Digital Governance: A Comparative Analysis of Policy Frameworks in Asia-Pacific", status:"In preparation" },
+          { type:"Policy Brief",    title:"Platform Accountability for Youth Safety: Recommendations for Policymakers", status:"In preparation" },
+          { type:"Working Paper",   title:"Digital Citizenship and the Rights of Young People: A Framework for Policy and Practice", status:"In preparation" },
+        ].map((pub) => (
+          <div class="publication-item">
+            <div class="pub-type">{pub.type}</div>
+            <div class="pub-title">{pub.title}</div>
+            <div style="text-align:right;">
+              <div style="font-family:var(--font-mono);font-size:13px;color:var(--accent-steel);">{pub.status}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Templates" description="Official publication and document templates from Panorama Research Institute.">
+  <PageHero
+    title="Templates"
+    description="Official document templates for research proposals, research reports, policy briefs, and other publication formats used by Panorama Research Institute."
+    breadcrumbs={[{ label: "Resources", href: "/resources" }, { label: "Templates" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);max-width:720px;margin-bottom:48px;">
+        The templates below are provided to help researchers, fellows, and contributors prepare documents that meet the Institute's formatting and structural standards. Using the official templates ensures that submissions are complete, consistently formatted, and ready for the Institute's editorial review process.
+      </p>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+        {[
+          {
+            name:    "Research Proposal Template",
+            desc:    "Template for submitting research project proposals to the Institute. Includes all required sections, formatting guidance, and example content.",
+            format:  "Word (.docx)",
+            version: "v1.0 (2024)",
+            href:    "/resources/research-proposal-template",
+          },
+          {
+            name:    "Research Report Template",
+            desc:    "Template for full-length research reports. Includes title page, abstract, body structure, referencing guidance, and appendix format.",
+            format:  "Word (.docx)",
+            version: "v1.0 (2024)",
+            href:    "/resources/report-template",
+          },
+          {
+            name:    "Policy Brief Template",
+            desc:    "Template for policy briefs following the Institute's standard structure: executive summary, context, evidence, recommendations, and references.",
+            format:  "Word (.docx)",
+            version: "v1.0 (2024)",
+            href:    "/resources/policy-brief-template",
+          },
+          {
+            name:    "Working Paper Template",
+            desc:    "Template for working papers in the Institute's working paper series. Includes cover page, abstract, keywords, body sections, and reference format.",
+            format:  "Word (.docx)",
+            version: "v1.0 (2024)",
+            href:    "/resources/templates",
+          },
+          {
+            name:    "Event Proceedings Summary Template",
+            desc:    "Template for producing post-event proceedings summaries, including speaker bios, session summaries, and key conclusions.",
+            format:  "Word (.docx)",
+            version: "v1.0 (2024)",
+            href:    "/resources/templates",
+          },
+          {
+            name:    "Edited Volume Chapter Template",
+            desc:    "Template for chapters submitted to Institute-associated edited volumes. Includes contributor details, abstract, chapter structure, and reference format.",
+            format:  "Word (.docx)",
+            version: "v1.0 (2024)",
+            href:    "/resources/templates",
+          },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;display:flex;flex-direction:column;">
+            <div style="flex:1;">
+              <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.name}</h3>
+              <p style="font-size:13.5px;line-height:1.65;color:var(--text-secondary);margin-bottom:14px;">{item.desc}</p>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--border-light);">
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);">{item.format} &bull; {item.version}</span>
+              <a href={item.href} style="font-size:13px;color:var(--accent-steel);">Download &rarr;</a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div style="margin-top:48px;padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);max-width:720px;">
+        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Usage Note</div>
+        <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+          All templates are provided in Microsoft Word format (.docx) for ease of editing. If you require a template in a different format (e.g., LaTeX or Google Docs), please contact the Publications Unit at <span style="color:var(--accent-steel);">publications@panorama-sg.com</span>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

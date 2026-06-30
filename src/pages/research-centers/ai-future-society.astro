@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Center for AI and Future Society" description="Research center focused on artificial intelligence governance, AI ethics, digital futures, and the social implications of intelligent systems.">
+  <PageHero
+    title="Center for AI and Future Society"
+    description="Research on artificial intelligence governance, AI ethics, the social and epistemic implications of intelligent systems, and futures of human-AI interaction in academic and civic contexts."
+    breadcrumbs={[{ label: "Research", href: "/research-areas" }, { label: "Research Centers", href: "/research-centers" }, { label: "AI and Future Society" }]}
+    tag="Upcoming Research Center"
+  >
+    <div style="margin-top:4px;font-size:14px;color:var(--text-muted);font-family:var(--font-sans);">人工智能与未来社会研究中心</div>
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">At a Glance</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "Center Status",    value: "Upcoming — Est. 2025" },
+              { label: "Announced",        value: "2024" },
+              { label: "Research Area",    value: "AI and Future Society" },
+              { label: "Inaugural Project","": "" , value: "AI and Future Society Research" },
+              { label: "Active Projects",  value: "1 (inaugural)" },
+              { label: "Contact",          value: "research@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/collaboration/research-fellow-application" class="btn btn-primary" style="justify-content:center;">Research Fellow</a>
+            <a href="/collaboration/visiting-scholar-application" class="btn btn-secondary" style="justify-content:center;">Visiting Scholar</a>
+          </div>
+        </div>
+        <div>
+          <div style="background:var(--bg-soft);border:1px solid var(--border-light);padding:20px 24px;margin-bottom:28px;display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-steel);flex-shrink:0;">Status Notice</span>
+            <p style="font-size:14px;color:var(--text-secondary);margin:0;line-height:1.6;">The Center for AI and Future Society is currently in its establishment phase. It is expected to become fully operational in 2025. Researchers interested in affiliating with the Center may express interest through the fellowship application process.</p>
+          </div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">About the Center</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Center for AI and Future Society will be Panorama Research Institute's fourth research center, addressing one of the most urgent and multifaceted research agendas of the present decade: the governance, ethics, and social consequences of artificial intelligence.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Center will examine AI not only as a technology but as a social, epistemic, and political phenomenon — one that reshapes knowledge production, alters labor markets, challenges governance frameworks, and raises fundamental questions about agency, accountability, and human futures.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            A particular focus of the Center will be the implications of AI for scholarly communication and research practice — including AI-generated content in academic publishing, AI-assisted peer review, the use of large language models in research, and the governance challenges these developments create.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Planned Research Focus</div>
+      <h2 class="section-title">Core Research Themes</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title: "AI Governance",             desc: "Research on the governance of AI systems at institutional, national, and international levels, including regulation, standards, and accountability frameworks." },
+          { title: "AI Ethics",                 desc: "Research on the ethical dimensions of AI development and deployment, including fairness, bias, transparency, privacy, and human rights implications." },
+          { title: "AI in Scholarly Publishing", desc: "Research on the use and governance of AI in academic publishing, including AI-generated content, AI-assisted peer review, and plagiarism detection." },
+          { title: "Human-AI Interaction",       desc: "Research on how humans engage with AI systems in academic, civic, and professional contexts, including trust, delegation, augmentation, and dependency." },
+          { title: "Digital Futures",            desc: "Research on long-term societal scenarios arising from AI and digital transformation, including automation, labor, education, and democratic governance." },
+          { title: "AI and Knowledge Production", desc: "Research on how AI systems shape the production, validation, and dissemination of knowledge in academic and public contexts." },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Research Projects</div>
+      <h2 class="section-title">Inaugural Project</h2>
+      <div style="margin-top:8px;">
+        <div class="project-card" style="margin-bottom:1px;border-radius:0;border-bottom:1px solid var(--border-light);">
+          <span class="tag tag-steel" style="margin-bottom:12px;display:inline-flex;">In Development</span>
+          <h3 class="project-title">AI and Future Society Research Project</h3>
+          <p class="project-desc">An inaugural research project for the Center for AI and Future Society, examining the social, ethical, and governance dimensions of artificial intelligence — with a particular focus on AI's implications for scholarly communication, research practice, and academic publishing.</p>
+          <a href="/projects/ai-future-society" style="display:inline-flex;margin-top:16px;font-size:13.5px;color:var(--accent-steel);">View Project &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="max-width:700px;">
+        <div class="section-label">Get Involved</div>
+        <h2 class="section-title">Join the Center at Its Foundation</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+          The Center for AI and Future Society is actively seeking researchers to join its inaugural cohort of affiliated scholars. Researchers with expertise in AI, digital governance, science and technology studies, media studies, philosophy of technology, or related fields are encouraged to apply.
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/collaboration/research-fellow-application"  class="btn btn-primary">Apply as Research Fellow</a>
+          <a href="/collaboration/visiting-scholar-application" class="btn btn-secondary">Visiting Scholar Program</a>
+          <a href="/collaboration/research-project-proposal"   class="btn btn-secondary">Submit Research Proposal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

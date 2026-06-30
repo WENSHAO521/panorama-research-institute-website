@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Guidelines and Standards" description="Publication guidelines and scholarly standards documents from Panorama Research Institute.">
+  <PageHero
+    title="Guidelines and Standards"
+    description="Editorial guidelines, scholarly communication standards, and publication ethics frameworks developed and published by Panorama Research Institute for use by journals, publishers, and academic institutions."
+    breadcrumbs={[{ label: "Publications", href: "/publications" }, { label: "Guidelines" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);max-width:720px;margin-bottom:48px;">
+        Panorama Research Institute develops and publishes practical guidelines and standards documents alongside its research reports and working papers. These documents are produced by the Scholarly Publishing Standards Project and related initiatives, and are intended for use by journal editors, publishers, institutions, and researchers.
+      </p>
+
+      <div style="margin-bottom:48px;">
+        <div class="section-label" style="margin-bottom:16px;">Published Guidelines</div>
+        {[
+          { type:"Standards Draft", num:"SPS-2026-D01", title:"Editorial Standards for Academic Journals: Draft for Comment", center:"Center for Scholarly Publishing Studies", date:"2026", status:"Open for comment" },
+        ].map((g) => (
+          <div class="publication-item">
+            <div>
+              <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:6px;">{g.type} &bull; {g.num}</div>
+              <div class="pub-title">{g.title}</div>
+              <div style="font-size:13px;color:var(--text-muted);margin-top:6px;">{g.center}</div>
+            </div>
+            <div style="text-align:right;flex-shrink:0;">
+              <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);margin-bottom:4px;">{g.date}</div>
+              <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent-steel);">{g.status}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div>
+        <div class="section-label" style="margin-bottom:16px;">In Development</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+          {[
+            { title:"Peer Review Standards for Academic Journals", center:"Scholarly Publishing Studies", est:"2026" },
+            { title:"Publication Ethics Standards", center:"Scholarly Publishing Studies", est:"2026" },
+            { title:"Open Access Policy Disclosure Standards", center:"Scholarly Publishing Studies", est:"2026" },
+            { title:"Journal Indexing Evaluation Framework", center:"Scholarly Indexing and Evaluation", est:"2026" },
+            { title:"Research Data Management Standards for Journals", center:"Scholarly Publishing Studies", est:"2027" },
+            { title:"AI in Academic Publishing: Guidance for Editors", center:"AI and Future Society", est:"2027" },
+          ].map((item) => (
+            <div class="card" style="border:none;border-radius:0;">
+              <div style="font-size:11px;font-family:var(--font-mono);color:var(--accent-steel);margin-bottom:6px;">Est. {item.est}</div>
+              <h3 style="font-family:var(--font-sans);font-size:14.5px;font-weight:600;color:var(--text-main);margin-bottom:8px;">{item.title}</h3>
+              <div style="font-size:12.5px;color:var(--text-muted);">{item.center}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:20px;color:var(--text-main);margin-bottom:8px;">Comment on a draft standard</h2>
+          <p style="font-size:14.5px;color:var(--text-secondary);">The Institute welcomes feedback from the scholarly community on draft standards documents.</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/collaboration/research-project-proposal" class="btn btn-primary">Submit Feedback</a>
+          <a href="/resources/guidelines" class="btn btn-secondary">Download All</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

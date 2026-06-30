@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Edited Volumes" description="Edited academic volumes published in association with Panorama Research Institute.">
+  <PageHero
+    title="Edited Volumes"
+    description="Edited academic volumes bringing together original contributions from multiple scholars on themes central to Panorama Research Institute's research program."
+    breadcrumbs={[{ label: "Publications", href: "/publications" }, { label: "Edited Volumes" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+          <div>
+            <div class="section-label">About This Series</div>
+            <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+              {[
+                { label: "Format",          value: "Edited academic volume" },
+                { label: "Publisher",       value: "Partner academic publisher (TBD)" },
+                { label: "Peer Review",     value: "External peer review (chapter level)" },
+                { label: "Access",          value: "Open access (planned)" },
+                { label: "Chapter Proposals", value: "Via call for chapters" },
+                { label: "First Volume",    value: "Planned 2026" },
+              ].map((item) => (
+                <div>
+                  <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                  <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+                </div>
+              ))}
+            </div>
+            <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+              <a href="/collaboration/edited-volume-proposal" class="btn btn-primary" style="justify-content:center;">Propose a Volume</a>
+              <a href="/events/calls-for-chapters" class="btn btn-secondary" style="justify-content:center;">Open Calls for Chapters</a>
+            </div>
+          </div>
+          <div>
+            <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">About Edited Volumes</h2>
+            <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+              Panorama Research Institute plans to develop a program of edited academic volumes, published in association with partner academic publishers. Edited volumes bring together original contributions from multiple scholars on themes that are central to the Institute's research program.
+            </p>
+            <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+              Volume proposals may be submitted by researchers with a clear thematic vision and the capacity to lead an editorial process. The Institute provides institutional affiliation, editorial support, and assistance in identifying contributors and a suitable publisher. Volume editors receive support from the Publications Unit throughout the production process.
+            </p>
+            <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+              Calls for chapters for active edited volume projects are published on the Institute's events and calls pages. Chapter contributors do not need to be affiliated with the Institute, but their contributions must fall within the scope of the volume and meet the Institute's publication standards.
+            </p>
+
+            <div style="margin-top:40px;padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Current Status</div>
+              <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+                The Institute's edited volume program is currently in its planning stage. The first edited volume is expected to be announced in 2026. Researchers wishing to propose a volume may do so at any time using the proposal form.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

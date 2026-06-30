@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Citation Guide" description="How to cite Panorama Research Institute publications in academic work.">
+  <PageHero
+    title="Citation Guide"
+    description="Guidance on how to cite Panorama Research Institute publications, including recommended citation formats for research reports, working papers, policy briefs, and other Institute outputs."
+    breadcrumbs={[{ label: "Publications", href: "/publications" }, { label: "Citation Guide" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:48px;">
+          All Panorama Research Institute publications have registered DOIs and should be cited using the citation details provided on each publication's record. The examples below provide recommended formats for each publication type using common citation styles.
+        </p>
+
+        <div style="display:flex;flex-direction:column;gap:48px;">
+          {[
+            {
+              type: "Research Report",
+              apa: "Author, A., & Author, B. (Year). <em>Title of research report</em> (Research Report No. RR-YYYY-00X). Panorama Research Institute. https://doi.org/10.XXXXX/YYYYY",
+              chicago: "Author, A., and B. Author. <em>Title of Research Report.</em> Research Report No. RR-YYYY-00X. Singapore: Panorama Research Institute, Year. https://doi.org/10.XXXXX/YYYYY",
+              mla: 'Author, A., and B. Author. <em>Title of Research Report.</em> Research Report No. RR-YYYY-00X, Panorama Research Institute, Year, doi:10.XXXXX/YYYYY.',
+            },
+            {
+              type: "Working Paper",
+              apa: "Author, A. (Year). <em>Title of working paper</em> (Working Paper No. WP-YYYY-00X). Panorama Research Institute. https://doi.org/10.XXXXX/YYYYY",
+              chicago: "Author, A. <em>Title of Working Paper.</em> Working Paper No. WP-YYYY-00X. Singapore: Panorama Research Institute, Year. https://doi.org/10.XXXXX/YYYYY",
+              mla: 'Author, A. <em>Title of Working Paper.</em> Working Paper No. WP-YYYY-00X, Panorama Research Institute, Year, doi:10.XXXXX/YYYYY.',
+            },
+            {
+              type: "Policy Brief",
+              apa: "Author, A. (Year). <em>Title of policy brief</em> (Policy Brief No. PB-YYYY-00X). Panorama Research Institute. https://doi.org/10.XXXXX/YYYYY",
+              chicago: "Author, A. <em>Title of Policy Brief.</em> Policy Brief No. PB-YYYY-00X. Singapore: Panorama Research Institute, Year. https://doi.org/10.XXXXX/YYYYY",
+              mla: 'Author, A. <em>Title of Policy Brief.</em> Policy Brief No. PB-YYYY-00X, Panorama Research Institute, Year, doi:10.XXXXX/YYYYY.',
+            },
+          ].map((item) => (
+            <div style="padding-bottom:48px;border-bottom:1px solid var(--border-light);">
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:24px;font-weight:400;">{item.type}</h2>
+              <div style="display:flex;flex-direction:column;gap:20px;">
+                {[
+                  { style: "APA 7th Edition", content: item.apa },
+                  { style: "Chicago 18th Edition", content: item.chicago },
+                  { style: "MLA 9th Edition", content: item.mla },
+                ].map((cs) => (
+                  <div>
+                    <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:8px;">{cs.style}</div>
+                    <div style="background:var(--bg-soft);border:1px solid var(--border-light);padding:16px 20px;font-family:var(--font-sans);font-size:14.5px;color:var(--text-secondary);line-height:1.7;" set:html={cs.content}></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style="margin-top:48px;">
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Institutional Citation</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            When citing the Institute as a whole (for example, in a reference to the Institute's general position or ongoing work), use the following form:
+          </p>
+          <div style="background:var(--bg-soft);border:1px solid var(--border-light);padding:16px 20px;font-family:var(--font-sans);font-size:14.5px;color:var(--text-secondary);line-height:1.7;">
+            Panorama Research Institute. (Year). <em>[Description of cited content]</em>. Panorama Research Institute. Retrieved from [URL]
+          </div>
+          <p style="font-size:15px;line-height:1.8;color:var(--text-secondary);margin-top:16px;">
+            Note: When institutional authorship is used, the institution is listed in the author position. Panorama Research Institute operates as an internal division of Panorama Scholarly Group; when a specific author is named on a publication, that author should be listed, followed by the institutional affiliation.
+          </p>
+        </div>
+
+        <div style="margin-top:40px;display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/publications" class="btn btn-primary">All Publications</a>
+          <a href="/governance/publication-report-policy" class="btn btn-secondary">Publication Policy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

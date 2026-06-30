@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Calls for Papers" description="Open calls for paper submissions for Panorama Research Institute events.">
+  <PageHero
+    title="Calls for Papers"
+    description="Open calls for paper and abstract submissions for conferences, seminars, and other events organized or co-organized by Panorama Research Institute."
+    breadcrumbs={[{ label: "Events", href: "/events" }, { label: "Calls for Papers" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <div style="padding:32px;background:var(--bg-soft);border:1px solid var(--border-light);margin-bottom:48px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Current Status</div>
+          <p style="font-size:15.5px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;">
+            Panorama Research Institute is currently in its foundational phase. No calls for papers are currently open. Calls for papers will be published here and distributed via the Institute's mailing list when announced.
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);margin:0;line-height:1.6;">
+            The Institute's first major conference is planned for 2026. Calls for papers will be issued approximately six months before the event.
+          </p>
+        </div>
+
+        <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">How Calls Work</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+          When a call for papers is open, it will be listed here with the event name, submission deadline, format requirements, themes, and submission link. Submissions may be for full papers, extended abstracts, or panel proposals, depending on the event.
+        </p>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+          All submissions are reviewed by the event's scientific committee. Accepted papers will be notified and invited to present. Selected presentations from Institute-organized conferences and seminars may be developed into publications in the Institute's working paper or other series.
+        </p>
+
+        <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Planned Future Calls</h2>
+        <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border-light);">
+          {[
+            { event:"First Panorama International Conference on Scholarly Communication", type:"Call for Papers", year:"2026 (planned)", status:"Upcoming" },
+            { event:"Panorama Research Seminar Series — Inaugural Session", type:"Speaker Proposals", year:"2025 (planned)", status:"Upcoming" },
+            { event:"First Workshop on Journal Evaluation and Indexing", type:"Workshop Proposals", year:"2025 (planned)", status:"Upcoming" },
+          ].map((item) => (
+            <div style="display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;padding:20px 24px;border-bottom:1px solid var(--border-light);">
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.08em;">{item.type}</div>
+                <div style="font-size:15px;color:var(--text-main);font-weight:500;">{item.event}</div>
+                <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">{item.year}</div>
+              </div>
+              <span class="tag tag-steel">{item.status}</span>
+            </div>
+          ))}
+        </div>
+
+        <div style="margin-top:40px;display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/events/conferences" class="btn btn-primary">Conferences</a>
+          <a href="/events/calls-for-chapters" class="btn btn-secondary">Calls for Chapters</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:1fr auto"] { display: block !important; }
+}
+</style>

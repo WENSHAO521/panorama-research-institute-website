@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Working Papers" description="Working papers presenting preliminary research findings and scholarly arguments from Panorama Research Institute.">
+  <PageHero
+    title="Working Papers"
+    description="Working papers presenting preliminary research findings, theoretical arguments, and ongoing scholarly work from researchers affiliated with Panorama Research Institute."
+    breadcrumbs={[{ label: "Publications", href: "/publications" }, { label: "Working Papers" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">About This Series</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label: "Format",         value: "Working paper" },
+              { label: "Typical Length", value: "5,000–15,000 words" },
+              { label: "Review",         value: "Internal editorial review" },
+              { label: "Access",         value: "Open access" },
+              { label: "DOI",            value: "Registered (Crossref)" },
+              { label: "ISSN",           value: "Applied for" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;">
+            <a href="/people/research-fellows" class="btn btn-primary" style="width:100%;justify-content:center;">Become a Fellow</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">About Working Papers</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            Working papers are a key publication format for Panorama Research Institute, enabling rapid dissemination of research findings, theoretical contributions, and scholarly arguments before or alongside the formal peer review process. Working papers may present preliminary findings, theoretical frameworks, systematic literature reviews, or commentary on emerging developments in the Institute's research areas.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            All working papers are published under open access terms and receive DOIs. The Institute's working paper series is open to submissions from affiliated research fellows, visiting scholars, and invited contributors working within the Institute's research areas.
+          </p>
+
+          <div class="section-label" style="margin-bottom:12px;">Published Working Papers</div>
+          {[
+            { num:"WP-2026-001", title:"Peer Review Models and Publication Ethics in the Digital Age", authors:"Panorama Research Institute", center:"Center for Scholarly Publishing Studies", date:"2026" },
+            { num:"WP-2026-002", title:"Toward a Transparent Journal Evaluation Framework: Principles and Criteria for Scholarly Indexing", authors:"Panorama Research Institute", center:"Center for Scholarly Indexing and Evaluation", date:"2026" },
+          ].map((pub) => (
+            <div class="publication-item">
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:6px;">{pub.num} &bull; {pub.center}</div>
+                <div class="pub-title">{pub.title}</div>
+                <div style="font-size:13px;color:var(--text-muted);margin-top:6px;">{pub.authors}</div>
+              </div>
+              <div style="text-align:right;flex-shrink:0;">
+                <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.date}</div>
+                <a href="/publications" class="btn btn-ghost" style="font-size:13px;padding:0;">Download &rarr;</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

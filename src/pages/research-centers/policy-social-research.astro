@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Center for Policy and Social Research" description="Research center focused on higher education policy, science policy, youth digital governance, and social dimensions of scholarly communication.">
+  <PageHero
+    title="Center for Policy and Social Research"
+    description="Research on higher education policy, science and innovation policy, youth digital governance, and the social dimensions of scholarly communication and academic publishing."
+    breadcrumbs={[{ label: "Research", href: "/research-areas" }, { label: "Research Centers", href: "/research-centers" }, { label: "Policy and Social Research" }]}
+    tag="Active Research Center"
+  >
+    <div style="margin-top:4px;font-size:14px;color:var(--text-muted);font-family:var(--font-sans);">政策与社会研究中心</div>
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">At a Glance</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "Center Status",   value: "Active" },
+              { label: "Established",     value: "2024" },
+              { label: "Research Area",   value: "Policy and Social Research" },
+              { label: "Active Projects", value: "2" },
+              { label: "Publications",    value: "1 Research Report, 1 Policy Brief" },
+              { label: "Contact",         value: "research@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/collaboration/research-project-proposal"  class="btn btn-primary" style="justify-content:center;">Submit a Proposal</a>
+            <a href="/collaboration/visiting-scholar-application" class="btn btn-secondary" style="justify-content:center;">Visiting Scholar</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">About the Center</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Center for Policy and Social Research addresses the interface between academic knowledge production and public policy, with particular attention to higher education policy, science and innovation governance, and the social implications of digital transformation in academic and civic life.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Center leads the Institute's research on China's Fifteenth Five-Year Plan, examining how national planning frameworks shape scientific research priorities, university governance, and higher education development. It also leads the Youth Digital Governance project, which investigates the experiences, challenges, and needs of young people in digital environments.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            The Center's work is inherently interdisciplinary, drawing on political science, sociology, education studies, science and technology studies, and communication research. It contributes to policy debates through its research reports and policy briefs, and maintains close collaboration with researchers in related fields across the Institute.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Research Focus</div>
+      <h2 class="section-title">Core Research Areas</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title: "Higher Education Policy",    desc: "Research on university governance, higher education regulation, accreditation systems, academic freedom, and institutional policy frameworks." },
+          { title: "Science and Innovation Policy", desc: "Research on national research agendas, science funding, innovation systems, research priority-setting, and the governance of science." },
+          { title: "Five-Year Plan Studies",     desc: "Research on China's national five-year plan framework, with analysis of implications for research, higher education, technology, and social policy." },
+          { title: "Youth Digital Governance",   desc: "Research on the governance of digital environments for young people, including platform regulation, digital rights, online safety, and civic participation." },
+          { title: "Open Science Policy",        desc: "Research on national and institutional policies for open science, open access, research data management, and FAIR data principles." },
+          { title: "Academic Publishing Policy", desc: "Research on government and institutional policies relating to academic publishing, including journal allowlists, evaluation frameworks, and researcher assessment policies." },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Research Projects</div>
+      <h2 class="section-title">Current Projects</h2>
+      <div style="margin-top:8px;">
+        {[
+          { status: "Active", title: "Fifteenth Five-Year Plan Studies", desc: "A systematic study of China's Fifteenth Five-Year Plan (2026–2030), examining implications for research priorities, higher education development, science governance, and social policy.", href: "/projects/fifteenth-five-year-plan-studies" },
+          { status: "Active", title: "Youth Digital Governance Research", desc: "An investigation into the digital governance challenges facing young people in contemporary online environments, including platform regulation, algorithmic influence, digital literacy, and rights frameworks.", href: "/projects/youth-digital-governance" },
+        ].map((p) => (
+          <div class="project-card" style="margin-bottom:1px;border-radius:0;border-bottom:1px solid var(--border-light);">
+            <span class="tag tag-active" style="margin-bottom:12px;display:inline-flex;">{p.status}</span>
+            <h3 class="project-title">{p.title}</h3>
+            <p class="project-desc">{p.desc}</p>
+            <a href={p.href} style="display:inline-flex;margin-top:16px;font-size:13.5px;color:var(--accent-steel);">View Project &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Publications</div>
+      <h2 class="section-title">Center Publications</h2>
+      <div style="margin-top:8px;">
+        {[
+          { type: "Research Report", title: "Higher Education Policy Trends in the Context of China's Fourteenth Five-Year Plan: Lessons for the Fifteenth", year: "2026" },
+          { type: "Policy Brief",    title: "Youth Online Safety and Platform Accountability: A Comparative Policy Analysis", year: "2026" },
+        ].map((pub) => (
+          <div class="publication-item">
+            <div class="pub-type">{pub.type}</div>
+            <div class="pub-title">{pub.title}</div>
+            <div style="text-align:right;">
+              <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.year}</div>
+              <a href="/publications" class="btn-ghost btn" style="font-size:13px;padding:0;">Details &rarr;</a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:32px;">
+        <a href="/publications" class="btn btn-secondary">All Publications</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

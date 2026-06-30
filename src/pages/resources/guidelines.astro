@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Guidelines" description="Editorial and institutional guidelines from Panorama Research Institute.">
+  <PageHero
+    title="Guidelines"
+    description="Editorial guidelines, submission requirements, institutional policies, and scholarly standards documents issued by Panorama Research Institute for use by contributors, fellows, and partners."
+    breadcrumbs={[{ label: "Resources", href: "/resources" }, { label: "Guidelines" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:flex;flex-direction:column;gap:48px;">
+        {[
+          {
+            category: "Publication Guidelines",
+            items: [
+              { name:"Author Guidelines for the Working Paper Series",          desc:"Submission requirements, formatting standards, abstract requirements, referencing style, and review process for the Institute's working paper series.",   href:"/publications/working-papers" },
+              { name:"Author Guidelines for Research Reports",                  desc:"Detailed guidelines for preparing full-length research report submissions, including structure, formatting, data presentation, and ethical disclosure requirements.", href:"/publications/research-reports" },
+              { name:"Author Guidelines for Policy Briefs",                     desc:"Guidance on structure, length, audience, and style for policy brief submissions, including standards for evidence presentation and recommendations.",       href:"/publications/policy-briefs" },
+              { name:"Citation and Referencing Standards",                      desc:"The Institute's preferred citation style and formatting requirements for all submission types.",                                                               href:"/publications/citation" },
+            ]
+          },
+          {
+            category: "Editorial and Ethics Guidelines",
+            items: [
+              { name:"Publication Ethics Policy",                               desc:"The Institute's policy on authorship, plagiarism, data integrity, conflicts of interest, and editorial misconduct.",                                          href:"/governance/publication-report-policy" },
+              { name:"Research Ethics Policy",                                  desc:"The Institute's requirements for ethical research conduct, including human subjects considerations, data collection consent, and ethical review.",             href:"/governance/research-ethics" },
+              { name:"Editorial Standards for Academic Journals (Draft v0.1)", desc:"A draft standards document produced by the Scholarly Publishing Standards Project. Open for community comment.",                                             href:"/publications/guidelines" },
+            ]
+          },
+          {
+            category: "Institutional Guidelines",
+            items: [
+              { name:"Name and Logo Usage Guidelines",                          desc:"How to correctly use Panorama Research Institute's name and logo in publications, presentations, and communications.",                                       href:"/resources/logo-usage-guidelines" },
+              { name:"Data and Documentation Policy",                           desc:"Requirements for research data management, documentation, retention, and sharing for all Institute-affiliated research.",                                     href:"/governance/data-documentation-policy" },
+              { name:"Academic Independence Policy",                            desc:"The Institute's commitments to protecting the academic independence of its research and researchers.",                                                        href:"/governance/academic-independence" },
+            ]
+          },
+        ].map((section) => (
+          <div>
+            <div class="section-label" style="margin-bottom:12px;">{section.category}</div>
+            <div style="border:1px solid var(--border-light);">
+              {section.items.map((item) => (
+                <a href={item.href} style="display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;padding:20px 24px;border-bottom:1px solid var(--border-light);text-decoration:none;">
+                  <div>
+                    <div style="font-size:15px;font-weight:500;color:var(--text-main);margin-bottom:4px;">{item.name}</div>
+                    <div style="font-size:13px;color:var(--text-muted);line-height:1.55;">{item.desc}</div>
+                  </div>
+                  <span style="font-size:13px;color:var(--accent-steel);white-space:nowrap;flex-shrink:0;">View &rarr;</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 600px) {
+  a[style*="grid-template-columns:1fr auto"] { display: block !important; }
+}
+</style>

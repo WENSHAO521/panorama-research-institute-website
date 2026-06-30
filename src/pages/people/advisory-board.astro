@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Advisory Board" description="The Advisory Board of Panorama Research Institute.">
+  <PageHero
+    title="Advisory Board"
+    description="The Advisory Board of Panorama Research Institute provides strategic guidance, scholarly expertise, and external oversight to support the Institute's research quality, governance, and institutional development."
+    breadcrumbs={[{ label: "People", href: "/people" }, { label: "Advisory Board" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;margin-bottom:48px;">
+          <div>
+            <div class="section-label">Board Details</div>
+            <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+              {[
+                { label:"Status",             value:"In formation" },
+                { label:"Target Size",        value:"5–9 members" },
+                { label:"Term",               value:"2 years, renewable" },
+                { label:"Meeting Frequency",  value:"Annual (minimum)" },
+                { label:"Role",               value:"Advisory (non-executive)" },
+              ].map((item) => (
+                <div>
+                  <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                  <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">About the Advisory Board</h2>
+            <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+              The Panorama Research Institute Advisory Board is an independent body that provides strategic guidance and scholarly expertise to the Institute. Advisory Board members are distinguished scholars, institutional leaders, and practitioners with deep expertise in the Institute's research areas. They serve in a purely advisory capacity and have no executive authority over the Institute's operations.
+            </p>
+            <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+              The Advisory Board advises the Institute on research priorities, publication quality, governance matters, and strategic development. It also provides a mechanism for external peer oversight of the Institute's academic standards and independence.
+            </p>
+          </div>
+        </div>
+
+        <div class="section-label" style="margin-bottom:16px;">Advisory Board Functions</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-bottom:48px;">
+          {[
+            { fn:"Strategic Guidance", desc:"Advise on research priorities, institutional strategy, and the long-term development of the Institute's programs." },
+            { fn:"Quality Oversight",  desc:"Provide external peer oversight of the Institute's publication standards, research ethics, and academic governance." },
+            { fn:"Network Support",    desc:"Help to connect the Institute with relevant scholarly networks, partner institutions, and academic communities." },
+          ].map((item) => (
+            <div class="card" style="border:none;border-radius:0;">
+              <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.fn}</h3>
+              <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div style="padding:28px;background:var(--bg-soft);border:1px solid var(--border-light);">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">Formation Status</div>
+          <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;">
+            The Institute's Advisory Board is currently in its formation phase. Advisory Board members are expected to be announced in 2025. The Institute is in discussions with potential members from the scholarly publishing, academic research, and higher education policy communities.
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);margin:0;line-height:1.6;">
+            Scholars interested in contributing to the Institute's academic governance and development are welcome to express interest through the Institute's contact address.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

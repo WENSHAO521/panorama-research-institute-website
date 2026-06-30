@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Special Issue Proposal" description="Submit a proposal for a special journal issue in collaboration with Panorama Research Institute.">
+  <PageHero
+    title="Special Issue Proposal"
+    description="Submit a proposal for a special issue of an academic journal to be organized and guest-edited in association with Panorama Research Institute. The Institute supports guest editors with institutional engagement and scholarly coordination."
+    breadcrumbs={[{ label: "Collaboration", href: "/collaboration" }, { label: "Special Issue Proposal" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">At a Glance</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"Type",          value:"Special issue of an existing academic journal" },
+              { label:"Proposal",      value:"Up to 1,500 words" },
+              { label:"Review Time",   value:"Within 15 working days" },
+              { label:"Journal",       value:"Proposer identifies target journal" },
+              { label:"Institute Role","": "", value:"Co-branding, scholarly coordination, publication support" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            Panorama Research Institute is open to co-organizing special journal issues in partnership with guest editors and host journals. The Institute's involvement adds institutional credibility and scholarly coordination support to the special issue. The proposer is responsible for engaging the target journal and leading the guest editorial process.
+          </p>
+
+          <div class="section-label" style="margin-bottom:14px;">Proposal Requirements</div>
+          <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border-light);margin-bottom:40px;">
+            {[
+              "Title and 200-word description of the special issue theme",
+              "Target journal and reason for selection",
+              "Status of journal engagement (inquired, in discussion, approved)",
+              "Guest editor(s) profile and relevant expertise",
+              "Provisional list of 4–8 paper topics or expected contributors",
+              "Proposed call for papers timeline and submission deadline",
+              "Proposed publication date",
+            ].map((item, i) => (
+              <div style="padding:14px 20px;border-bottom:1px solid var(--border-light);display:flex;gap:12px;">
+                <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);flex-shrink:0;padding-top:2px;">{String(i+1).padStart(2,'0')}</span>
+                <span style="font-size:14px;color:var(--text-secondary);line-height:1.6;">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid var(--border-light);padding-top:48px;">
+        <div class="section-label" style="margin-bottom:8px;">Proposal Form</div>
+        <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:24px;font-weight:400;">Submit Your Proposal</h2>
+        <form style="max-width:740px;" action="#" method="post">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+            {[
+              { label:"Guest Editor Name", id:"ge-name",    type:"text",  placeholder:"Full name" },
+              { label:"Email Address",     id:"ge-email",   type:"email", placeholder:"your@email.com" },
+              { label:"Target Journal",    id:"ge-journal", type:"text",  placeholder:"Journal name" },
+              { label:"Issue Theme",       id:"ge-theme",   type:"text",  placeholder:"Working title" },
+            ].map((f) => (
+              <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
+                <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+              </div>
+            ))}
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <label for="si-proposal" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Full Proposal</label>
+            <textarea id="si-proposal" name="si-proposal" rows="8" placeholder="Include all required information as listed in the proposal requirements." class="form-input" style="width:100%;resize:vertical;"></textarea>
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Submit Proposal</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+}
+</style>

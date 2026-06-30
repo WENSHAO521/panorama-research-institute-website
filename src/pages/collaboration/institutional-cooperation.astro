@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Institutional Cooperation" description="Institutional cooperation and partnership opportunities with Panorama Research Institute.">
+  <PageHero
+    title="Institutional Cooperation"
+    description="Panorama Research Institute is open to formal institutional cooperation agreements with universities, research institutions, publishers, and scholarly organizations sharing its commitment to independent research and open scholarly communication."
+    breadcrumbs={[{ label: "Collaboration", href: "/collaboration" }, { label: "Institutional Cooperation" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">Cooperation Details</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"Instrument",     value:"Memorandum of Understanding (MoU) or Cooperation Agreement" },
+              { label:"Duration",       value:"Typically 2–5 years, renewable" },
+              { label:"Execution",      value:"By Panorama Scholarly Group on behalf of the Institute" },
+              { label:"Target Partners","": "", value:"Universities, research institutes, publishers, scholarly organizations" },
+              { label:"Contact",        value:"collaboration@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;">
+            <a href="/collaboration/submit" class="btn btn-primary" style="width:100%;justify-content:center;">Submit Inquiry</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">About Institutional Cooperation</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            Panorama Research Institute is open to establishing formal institutional cooperation relationships with universities, research institutes, academic publishers, and scholarly organizations whose work aligns with the Institute's mission and research areas. Institutional cooperation agreements provide a framework for sustained collaboration on research, publications, events, and scholar exchange.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            Formal cooperation is typically documented through a Memorandum of Understanding (MoU) or Cooperation Agreement. As the Institute does not hold independent legal personality, such instruments are executed by Panorama Scholarly Group on behalf of the Institute. The terms, scope, and duration of cooperation are negotiated individually with each partner institution.
+          </p>
+
+          <div class="section-label" style="margin-bottom:14px;">Typical Cooperation Activities</div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-bottom:32px;">
+            {[
+              { act:"Joint Research",          desc:"Co-designing and conducting research projects of mutual scholarly interest." },
+              { act:"Scholar Exchange",         desc:"Facilitating visiting scholar placements and fellowship opportunities between institutions." },
+              { act:"Joint Publications",       desc:"Co-publishing research reports, working papers, or edited volumes." },
+              { act:"Co-organized Events",      desc:"Co-organizing conferences, seminars, workshops, and training programs." },
+              { act:"Data and Resource Sharing", desc:"Sharing research data, methodological tools, and academic resources." },
+              { act:"Capacity Building",        desc:"Supporting researcher training and development in the Institute's areas of expertise." },
+            ].map((item) => (
+              <div class="card" style="border:none;border-radius:0;">
+                <h3 style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--text-main);margin-bottom:6px;">{item.act}</h3>
+                <p style="font-size:13.5px;line-height:1.6;color:var(--text-secondary);">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:12px;">How to Initiate</h3>
+          <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;margin-bottom:20px;">
+            Institutions interested in cooperation are invited to submit an initial inquiry describing the institution, the proposed areas of collaboration, and the intended scope and duration of the arrangement. The Collaboration Office will respond within 15 working days.
+          </p>
+          <a href="/collaboration/submit" class="btn btn-primary">Submit Cooperation Inquiry</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

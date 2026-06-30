@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Research Report Template" description="Download the official research report template from Panorama Research Institute.">
+  <PageHero
+    title="Research Report Template"
+    description="The official template for preparing research reports for Panorama Research Institute's report series. Includes full structure, formatting specifications, and section guidance."
+    breadcrumbs={[{ label: "Resources", href: "/resources" }, { label: "Templates", href: "/resources/templates" }, { label: "Research Report Template" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">Template Details</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"Format",         value:"Microsoft Word (.docx)" },
+              { label:"Version",        value:"v1.0 (2024)" },
+              { label:"Typical Length", value:"20,000–60,000 words" },
+              { label:"Citation Style", value:"APA 7th (preferred) or Chicago 18th" },
+              { label:"Language",       value:"English" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/resources/templates" class="btn btn-primary" style="justify-content:center;">Download Template</a>
+            <a href="/publications/research-reports" class="btn btn-secondary" style="justify-content:center;">Research Reports</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Report Structure</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:28px;">
+            Research reports must follow the Institute's standard structure. The template provides pre-formatted sections, style definitions, and placeholder content for all required elements. Authors should not alter the section order or remove required elements.
+          </p>
+
+          <div style="border:1px solid var(--border-light);">
+            {[
+              { sec:"Cover Page",          note:"Title, report number, author(s), date, research center, DOI" },
+              { sec:"Disclaimer",          note:"Standard Institute disclaimer (pre-filled, do not alter)" },
+              { sec:"Abstract",            note:"200–300 words; no citations in abstract" },
+              { sec:"Keywords",            note:"5–8 keywords, comma-separated" },
+              { sec:"Table of Contents",   note:"Auto-generated from headings" },
+              { sec:"List of Tables / Figures", note:"Required if >3 tables or figures" },
+              { sec:"Executive Summary",   note:"800–1,200 words; self-contained summary for non-specialist readers" },
+              { sec:"1. Introduction",     note:"Context, rationale, research questions, report structure" },
+              { sec:"2–N. Main Chapters",  note:"Methodology, literature, findings, analysis (structure varies by project)" },
+              { sec:"Conclusions",         note:"Key findings, policy implications, limitations, future research" },
+              { sec:"References",          note:"APA 7th or Chicago 18th, consistent throughout" },
+              { sec:"Appendices (if any)", note:"Data, instruments, additional tables" },
+              { sec:"About the Authors",   note:"Brief bio (50–100 words per author)" },
+              { sec:"About the Institute", note:"Standard Institute description (pre-filled, do not alter)" },
+            ].map((item) => (
+              <div style="display:grid;grid-template-columns:200px 1fr;gap:16px;padding:12px 20px;border-bottom:1px solid var(--border-light);">
+                <div style="font-size:13.5px;font-weight:600;color:var(--text-main);">{item.sec}</div>
+                <div style="font-size:13px;color:var(--text-secondary);">{item.note}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:200px 1fr"] { display: block !important; }
+}
+</style>

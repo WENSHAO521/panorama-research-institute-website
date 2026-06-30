@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Associate Research Fellows" description="Associate Research Fellows affiliated with Panorama Research Institute.">
+  <PageHero
+    title="Associate Research Fellows"
+    description="Associate Research Fellows are early-career and emerging researchers affiliated with Panorama Research Institute, contributing to research projects and developing their scholarly profile within the Institute's programs."
+    breadcrumbs={[{ label: "People", href: "/people" }, { label: "Associate Research Fellows" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">Fellowship Details</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"Title",       value:"Associate Research Fellow, Panorama Research Institute" },
+              { label:"Target",      value:"Doctoral students and early-career researchers" },
+              { label:"Duration",    value:"Typically 1 year, renewable" },
+              { label:"Format",      value:"Remote / distributed" },
+              { label:"Output",      value:"Active contribution to Institute projects" },
+              { label:"Application", value:"Open (rolling)" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/collaboration/research-fellow-application" class="btn btn-primary" style="width:100%;justify-content:center;">Apply Now</a>
+            <a href="/people/research-fellows" class="btn btn-secondary" style="width:100%;justify-content:center;">Research Fellows</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">About Associate Research Fellows</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Associate Research Fellow designation is intended for doctoral students and early-career researchers who are actively working in the Institute's research areas and wish to contribute to the Institute's programs. Associate Fellows contribute to ongoing projects, participate in Institute events, and may publish in the Institute's working paper series.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Associate Research Fellowship is an entry-level affiliation that allows emerging scholars to build their research profile within the Institute's community. Successful Associate Fellows may be considered for promotion to Research Fellow upon demonstrating a sustained contribution to the Institute's programs.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            The Institute particularly encourages applications from doctoral students working on theses related to the Institute's research areas, and from early-career researchers seeking to develop an active research publishing record.
+          </p>
+
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Current Cohort</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+              The Institute is currently accepting applications for its inaugural cohort of Associate Research Fellows. Applications are reviewed on a rolling basis. Accepted fellows will be listed on this page upon appointment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

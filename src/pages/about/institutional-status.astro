@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Institutional Status" description="The legal and institutional status of Panorama Research Institute.">
+  <PageHero
+    title="Institutional Status"
+    description="The legal position, governance structure, and institutional relationship of Panorama Research Institute within Panorama Scholarly Group."
+    breadcrumbs={[{ label: "Institute", href: "/about" }, { label: "Institutional Status" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:800px;">
+        <div class="statement-box" style="margin-bottom:48px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Official Institutional Statement</div>
+          <p style="font-size:17px;line-height:1.8;color:var(--text-secondary);margin-bottom:12px;font-family:var(--font-serif);font-style:italic;">
+            "Panorama Research Institute is not a separate legal entity. It operates under the governance and administration of Panorama Scholarly Group."
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);">
+            全景研究院并非单独法人实体，其相关事务由 Panorama Scholarly Group 统一治理和管理。
+          </p>
+        </div>
+
+        {[
+          {
+            title: "Legal Status",
+            body: "Panorama Research Institute is an internal division of Panorama Scholarly Group. It does not hold separate legal personality, independent registration, or independent financial accounts. All legal obligations, contracts, and formal instruments are executed by Panorama Scholarly Group on behalf of the Institute."
+          },
+          {
+            title: "Operational Independence",
+            body: "While the Institute operates under the administrative governance of Panorama Scholarly Group, it maintains academic independence in its research activities, publication decisions, event organization, and scholarly functions. Administrative governance does not extend to research direction, academic judgment, or editorial decisions."
+          },
+          {
+            title: "Governance Framework",
+            body: "The Institute is governed by its own charter and set of internal governance policies, adopted under the authority of Panorama Scholarly Group. These documents establish the Institute's mission, research areas, organizational structure, ethical principles, and operational procedures."
+          },
+          {
+            title: "Official Name Usage",
+            body: 'The Institute operates under the name "Panorama Research Institute" and may be described as "An internal research and academic development division of Panorama Scholarly Group." This description must appear in all official publications, communications, and formal agreements.'
+          },
+          {
+            title: "Financial Administration",
+            body: "All financial matters related to the Institute are administered by Panorama Scholarly Group. Research funding, publication costs, event budgets, and fellowship payments are managed within the financial governance framework of Panorama Scholarly Group."
+          },
+          {
+            title: "External Representation",
+            body: "The Institute may enter into academic partnerships, collaboration agreements, and memoranda of understanding under the name of Panorama Research Institute, with formal execution by Panorama Scholarly Group. The Institute does not independently sign legally binding agreements."
+          },
+        ].map((s) => (
+          <div style="margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{s.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+          </div>
+        ))}
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+          <a href="/charter"     class="btn btn-primary">Institute Charter</a>
+          <a href="/about"       class="btn btn-secondary">Institute Overview</a>
+          <a href="/governance/rules" class="btn btn-secondary">Governance Rules</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

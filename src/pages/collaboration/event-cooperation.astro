@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Event Cooperation" description="Co-organize an academic event with Panorama Research Institute.">
+  <PageHero
+    title="Event Cooperation"
+    description="Submit a proposal to co-organize a conference, seminar, workshop, or training program with Panorama Research Institute. The Institute welcomes event cooperation with academic institutions and scholarly organizations."
+    breadcrumbs={[{ label: "Collaboration", href: "/collaboration" }, { label: "Event Cooperation" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">Event Types</div>
+          <div style="display:flex;flex-direction:column;gap:0;margin-top:8px;border:1px solid var(--border-light);">
+            {[
+              { type:"Conference",    note:"International academic gathering" },
+              { type:"Seminar",       note:"Single-session scholarly presentation" },
+              { type:"Workshop",      note:"Participatory research development" },
+              { type:"Training",      note:"Capacity-building program" },
+              { type:"Roundtable",    note:"Closed expert discussion" },
+            ].map((item) => (
+              <div style="padding:12px 16px;border-bottom:1px solid var(--border-light);">
+                <div style="font-size:14px;font-weight:600;color:var(--text-main);">{item.type}</div>
+                <div style="font-size:12.5px;color:var(--text-muted);margin-top:2px;">{item.note}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:20px;">
+            <a href="/events" class="btn btn-secondary" style="width:100%;justify-content:center;">Events Overview</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            Panorama Research Institute welcomes proposals for co-organized academic events from universities, research institutes, scholarly associations, and individual researchers. Co-organized events benefit from the Institute's institutional affiliation, editorial support, and scholarly network. The Institute is particularly interested in events that align with its research areas and contribute to scholarly community development.
+          </p>
+
+          <div class="section-label" style="margin-bottom:14px;">What the Institute Offers Co-organizers</div>
+          <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:32px;">
+            {[
+              "Institutional co-branding as a Panorama Research Institute event",
+              "Support in identifying invited speakers from the Institute's scholarly network",
+              "Publication of event proceedings or summaries in the Institute's repository",
+              "Promotion through the Institute's communication channels",
+              "Event coordination support and guidance from the Academic Events Unit",
+            ].map((item) => (
+              <div style="display:flex;gap:10px;font-size:14px;color:var(--text-secondary);padding:6px 0;border-bottom:1px solid var(--bg-main);">
+                <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{item}
+              </div>
+            ))}
+          </div>
+
+          <div class="section-label" style="margin-bottom:14px;">Proposal Form</div>
+          <form style="display:flex;flex-direction:column;gap:0;" action="#" method="post">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              {[
+                { label:"Contact Name",       id:"ec-name",  type:"text",  placeholder:"Full name" },
+                { label:"Email Address",      id:"ec-email", type:"email", placeholder:"your@email.com" },
+                { label:"Organization",       id:"ec-org",   type:"text",  placeholder:"Institution or organization" },
+                { label:"Proposed Event Type", id:"ec-type", type:"text",  placeholder:"e.g. Workshop, Seminar" },
+              ].map((f) => (
+                <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
+                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+                </div>
+              ))}
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:-0.5px;">
+              {[
+                { label:"Proposed Date / Period", id:"ec-date",   type:"text", placeholder:"e.g. March 2026" },
+                { label:"Expected Participants",  id:"ec-size",   type:"text", placeholder:"e.g. 30–50" },
+              ].map((f) => (
+                <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
+                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+                </div>
+              ))}
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="ec-desc" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Event Description and Cooperation Proposal (up to 600 words)</label>
+              <textarea id="ec-desc" name="ec-desc" rows="7" placeholder="Describe the event concept, the proposed cooperation with the Institute, and how the event relates to the Institute's research areas." class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Submit Proposal</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+}
+</style>

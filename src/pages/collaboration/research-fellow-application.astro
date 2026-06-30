@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Research Fellow Application" description="Apply to become a Research Fellow or Associate Research Fellow at Panorama Research Institute.">
+  <PageHero
+    title="Research Fellow Application"
+    description="Apply to become a Research Fellow or Associate Research Fellow at Panorama Research Institute. Applications are accepted on a rolling basis from scholars at all career stages."
+    breadcrumbs={[{ label: "Collaboration", href: "/collaboration" }, { label: "Research Fellow Application" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">Application Details</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"Application Type",  value:"Research Fellow or Associate Research Fellow" },
+              { label:"Deadline",          value:"Rolling (no fixed deadline)" },
+              { label:"Response Time",     value:"Within 20 working days" },
+              { label:"Duration (if accepted)", value:"1–3 years (Fellow) / 1 year (Associate Fellow)" },
+              { label:"Format",            value:"Remote — no relocation required" },
+              { label:"Contact",           value:"fellows@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/people/research-fellows" class="btn btn-secondary" style="width:100%;justify-content:center;">About Research Fellows</a>
+            <a href="/people/associate-research-fellows" class="btn btn-secondary" style="width:100%;justify-content:center;">About Associate Fellows</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            Use this form to apply for a Research Fellow or Associate Research Fellow position at Panorama Research Institute. All applications are reviewed by the Institute's research leadership. Successful applicants will be contacted to discuss their appointment, research plan, and contribution to the Institute's programs.
+          </p>
+
+          <form style="display:flex;flex-direction:column;gap:0;" action="#" method="post">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              {[
+                { label:"Full Name",          id:"rf-name",    type:"text",  placeholder:"Full name" },
+                { label:"Email Address",      id:"rf-email",   type:"email", placeholder:"your@email.com" },
+                { label:"Current Institution","": "", id:"rf-inst", type:"text", placeholder:"University or research institution" },
+                { label:"Position/Title",     id:"rf-title",   type:"text",  placeholder:"e.g. PhD Candidate, Postdoctoral Researcher" },
+              ].map((f) => (
+                <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
+                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+                </div>
+              ))}
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="rf-type" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Fellowship Type</label>
+              <select id="rf-type" name="rf-type" class="form-input" style="width:100%;">
+                <option value="">Select fellowship type...</option>
+                <option>Research Fellow (mid- or senior-career, PhD required)</option>
+                <option>Associate Research Fellow (early-career or doctoral student)</option>
+              </select>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="rf-center" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Preferred Research Center</label>
+              <select id="rf-center" name="rf-center" class="form-input" style="width:100%;">
+                <option value="">Select a research center...</option>
+                <option>Center for Scholarly Publishing Studies</option>
+                <option>Center for Scholarly Indexing and Evaluation</option>
+                <option>Center for Policy and Social Research</option>
+                <option>Center for AI and Future Society</option>
+                <option>Open to suggestion</option>
+              </select>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="rf-research" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Research Interests and Contribution Statement (400–1,000 words)</label>
+              <textarea id="rf-research" name="rf-research" rows="10" placeholder="Describe your research interests, how they relate to the Institute's program, and what you intend to contribute as a Fellow (publications, events, mentoring, etc.)." class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="rf-cv" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Academic Profile / Publication List (up to 500 words)</label>
+              <textarea id="rf-cv" name="rf-cv" rows="6" placeholder="Academic bio and list of relevant publications, presentations, or other scholarly outputs." class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
+              <input type="checkbox" id="rf-consent" name="rf-consent" style="margin-top:3px;flex-shrink:0;" />
+              <label for="rf-consent" style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">I have read and understood the Institute's fellowship expectations and confirm that the information provided is accurate.</label>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Submit Application</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+}
+</style>

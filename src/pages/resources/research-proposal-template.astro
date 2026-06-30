@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Research Proposal Template" description="Download the official research project proposal template from Panorama Research Institute.">
+  <PageHero
+    title="Research Proposal Template"
+    description="The official template for submitting research project proposals to Panorama Research Institute. Use this template to prepare a complete, correctly structured proposal for submission."
+    breadcrumbs={[{ label: "Resources", href: "/resources" }, { label: "Templates", href: "/resources/templates" }, { label: "Research Proposal Template" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">Template Details</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"Format",        value:"Microsoft Word (.docx)" },
+              { label:"Version",       value:"v1.0 (2024)" },
+              { label:"Access",        value:"Open — no registration required" },
+              { label:"For Use With",  value:"Research Project Proposal submissions" },
+              { label:"Related Form",  value:"Research Project Proposal (web form)" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/resources/templates" class="btn btn-primary" style="justify-content:center;">Download Template</a>
+            <a href="/collaboration/research-project-proposal" class="btn btn-secondary" style="justify-content:center;">Submit via Web Form</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Using the Template</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:28px;">
+            The Research Proposal Template provides a structured format for preparing submissions to the Institute. It includes placeholder text, formatting guidance, and section instructions. Complete all sections before submitting; incomplete proposals will be returned.
+          </p>
+
+          <div class="section-label" style="margin-bottom:14px;">Template Structure</div>
+          <div style="border:1px solid var(--border-light);">
+            {[
+              { sec:"Cover Page",                      note:"Project title, lead researcher details, proposed research center, submission date" },
+              { sec:"1. Project Title and Overview",   note:"Concise title and 200-word summary" },
+              { sec:"2. Research Questions",           note:"Specific, clearly stated research questions" },
+              { sec:"3. Background and Rationale",     note:"Context, literature review summary, justification" },
+              { sec:"4. Methodology",                  note:"Research design, methods, and justification" },
+              { sec:"5. Expected Outputs",             note:"Publications, datasets, or other outputs with timeline" },
+              { sec:"6. Proposed Research Center",     note:"Preferred Institute research center affiliation" },
+              { sec:"7. Lead Researcher Profile",      note:"Academic bio and relevant publications" },
+              { sec:"8. Co-investigators (if any)",    note:"Names, institutions, and roles" },
+              { sec:"Ethics Declaration",              note:"Identification of any ethical considerations" },
+            ].map((item) => (
+              <div style="display:grid;grid-template-columns:180px 1fr;gap:16px;padding:14px 20px;border-bottom:1px solid var(--border-light);">
+                <div style="font-size:13.5px;font-weight:600;color:var(--text-main);">{item.sec}</div>
+                <div style="font-size:13px;color:var(--text-secondary);">{item.note}</div>
+              </div>
+            ))}
+          </div>
+
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.6;margin-top:20px;">
+            Proposals may be submitted by email attachment to <span style="color:var(--accent-steel);">research@panorama-sg.com</span> or via the web form. Email submissions should use the subject line: "Research Proposal — [Your Name] — [Working Title]".
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:180px 1fr"] { display: block !important; }
+}
+</style>

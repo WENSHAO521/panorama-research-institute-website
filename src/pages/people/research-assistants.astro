@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Research Assistants" description="Research assistants working with Panorama Research Institute.">
+  <PageHero
+    title="Research Assistants"
+    description="Research assistants working on specific Institute projects under the supervision of Research Fellows and Research Center Directors."
+    breadcrumbs={[{ label: "People", href: "/people" }, { label: "Research Assistants" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:48px;">
+          Panorama Research Institute engages research assistants to support specific research projects, editorial tasks, and administrative functions of the Institute's research centers. Research assistants typically work under the supervision of Research Fellows or Research Center Directors.
+        </p>
+
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:48px;margin-bottom:48px;">
+          <div>
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">Research Assistant Roles</h2>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              {[
+                "Literature review and systematic searching",
+                "Data collection and coding for research projects",
+                "Reference management and bibliography preparation",
+                "Translation and language editing support",
+                "Event coordination and administrative support",
+                "Website content and documentation support",
+              ].map((item) => (
+                <div style="display:flex;gap:10px;font-size:14.5px;color:var(--text-secondary);padding:8px 0;border-bottom:1px solid var(--bg-main);">
+                  <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{item}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">Eligibility</h2>
+            <p style="font-size:15px;line-height:1.8;color:var(--text-secondary);margin-bottom:16px;">
+              Research assistant positions are typically suited for students enrolled in postgraduate programs (Masters or PhD) or recent graduates with relevant research experience. Research assistants are engaged on a project-by-project basis, with terms and duration determined by the specific project.
+            </p>
+            <p style="font-size:15px;line-height:1.8;color:var(--text-secondary);">
+              Candidates should have strong research skills, excellent attention to detail, proficiency in relevant research tools, and genuine interest in the Institute's research areas. Positions may be compensated or voluntary depending on funding availability.
+            </p>
+          </div>
+        </div>
+
+        <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);margin-bottom:32px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Current Openings</div>
+          <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+            No research assistant positions are currently advertised. When positions become available, they will be listed here and announced through the Institute's communication channels.
+          </p>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/people/join" class="btn btn-primary">Join the Institute</a>
+          <a href="/people/research-fellows" class="btn btn-secondary">Research Fellows</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

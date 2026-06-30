@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Logo and Name Usage Guidelines" description="Guidelines for the correct use of the Panorama Research Institute name and logo.">
+  <PageHero
+    title="Logo and Name Usage Guidelines"
+    description="Official guidelines for the correct use of Panorama Research Institute's name, logo, and visual identity in publications, presentations, events, and digital communications."
+    breadcrumbs={[{ label: "Resources", href: "/resources" }, { label: "Logo Usage Guidelines" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <div class="statement-box" style="margin-bottom:48px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">Usage Notice</div>
+          <p style="font-size:16px;line-height:1.8;color:var(--text-secondary);margin:0;">
+            Panorama Research Institute's name and logo may only be used in connection with work that has been formally authorized by the Institute. Unauthorized use of the Institute's name or logo — including in publications, events, websites, or communications — is prohibited without explicit written permission.
+          </p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:48px;">
+          {[
+            {
+              title: "Permitted Uses",
+              content: "The Institute's name and logo may be used by:",
+              items: [
+                "Research Fellows, Associate Research Fellows, and Visiting Scholars, in connection with work conducted under the Institute's auspices",
+                "Co-authors of Institute publications, in citing their affiliation with the Institute",
+                "Partner institutions, when referencing cooperation with the Institute in formal documents",
+                "Event co-organizers, in event materials that have been approved by the Institute's Events Unit",
+                "Media and press, in accurate factual reporting about the Institute and its activities",
+              ],
+            },
+            {
+              title: "Prohibited Uses",
+              content: "The following uses of the Institute's name and logo are explicitly prohibited:",
+              items: [
+                "Implying Institute endorsement of a position, product, publication, or event that has not been formally authorized by the Institute",
+                "Using the Institute's name or logo in connection with commercial activities without explicit written permission",
+                "Altering, distorting, or combining the Institute's logo with other visual elements",
+                "Using the Institute's name or logo to represent affiliation that does not exist or has ended",
+                "Including the Institute's name in the title or cover of a publication that the Institute has not formally approved",
+              ],
+            },
+            {
+              title: "Name Usage",
+              content: "When referring to the Institute in text, use the following forms:",
+              items: [
+                "Full name: Panorama Research Institute",
+                'Short form (after first mention): the Institute',
+                'With parent entity: "Panorama Research Institute, an internal research division of Panorama Scholarly Group"',
+                'In formal instruments: "Panorama Research Institute (an internal research division of Panorama Scholarly Group)"',
+                'Romanization of Chinese name: 全景研究院 (used in Chinese-language contexts only)',
+              ],
+            },
+            {
+              title: "Logo Usage",
+              content: "When using the Institute's logo, follow these requirements:",
+              items: [
+                "Use only the official logo files available from the Institute's Publications Unit",
+                "Maintain the minimum clear space around the logo (equal to the height of the 'P' in PANORAMA on all sides)",
+                "Do not scale the logo below 24px height in digital use or 15mm in print",
+                "Use the dark version (PANORAMA on dark or white backgrounds); use the light version (PANORAMA in white) on dark backgrounds only",
+                "Do not use the logo at reduced opacity, in outline only, or in non-brand colours",
+              ],
+            },
+          ].map((section) => (
+            <div style="padding-bottom:48px;border-bottom:1px solid var(--border-light);">
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:12px;font-weight:400;">{section.title}</h2>
+              <p style="font-size:15px;color:var(--text-secondary);margin-bottom:16px;">{section.content}</p>
+              <div style="display:flex;flex-direction:column;gap:4px;">
+                {section.items.map((item) => (
+                  <div style="display:flex;gap:10px;font-size:14.5px;color:var(--text-secondary);padding:8px 0;border-bottom:1px solid var(--bg-main);">
+                    <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style="margin-top:8px;">
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">Request Logo Files or Permission</h2>
+          <p style="font-size:15.5px;color:var(--text-secondary);line-height:1.7;margin-bottom:24px;">
+            To request the Institute's logo files or to seek permission for a specific use not covered by these guidelines, contact the Institute Office at <span style="color:var(--accent-steel);">office@panorama-sg.com</span>. Please describe the intended use, the context, and the estimated reach or distribution.
+          </p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="/collaboration/submit" class="btn btn-primary">Request Permission</a>
+            <a href="/governance/name-logo-usage" class="btn btn-secondary">Governance Policy</a>
+            <a href="/resources" class="btn btn-secondary">All Resources</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

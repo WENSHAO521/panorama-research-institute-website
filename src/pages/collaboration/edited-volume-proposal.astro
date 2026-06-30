@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Edited Volume Proposal" description="Submit a proposal to edit an academic volume in association with Panorama Research Institute.">
+  <PageHero
+    title="Edited Volume Proposal"
+    description="Submit a proposal to edit an academic volume to be published in association with Panorama Research Institute. The Institute supports volume editors with institutional affiliation, editorial guidance, and publisher engagement."
+    breadcrumbs={[{ label: "Collaboration", href: "/collaboration" }, { label: "Edited Volume Proposal" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">Proposal Requirements</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"Volume Type",  value:"Edited academic volume" },
+              { label:"Proposal",     value:"Up to 2,000 words + chapter list" },
+              { label:"Review Time",  value:"Within 20 working days" },
+              { label:"Support",      value:"Institutional affiliation, editorial guidance, publisher engagement" },
+              { label:"Open Access",  value:"Preferred; APC support subject to availability" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            Researchers wishing to edit an academic volume in association with Panorama Research Institute are invited to submit a proposal. The Institute considers proposals that fall within its designated research areas and that represent a coherent and significant scholarly contribution.
+          </p>
+
+          <div class="section-label" style="margin-bottom:14px;">Proposal Content</div>
+          <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border-light);margin-bottom:40px;">
+            {[
+              { sec:"1. Volume Title and Synopsis",    desc:"Working title and 300-word synopsis of the volume's scope and significance." },
+              { sec:"2. Editor(s) Profile",            desc:"Academic bio and relevant publications of the proposed volume editor(s)." },
+              { sec:"3. Target Audience",              desc:"Primary and secondary readership for the volume." },
+              { sec:"4. Proposed Chapter Structure",   desc:"Provisional chapter list with working titles and 50-word abstracts." },
+              { sec:"5. Proposed Publisher",           desc:"Target publisher or publishers, with any existing discussions noted." },
+              { sec:"6. Timeline",                     desc:"Proposed call for chapters, submission, and publication timeline." },
+              { sec:"7. Open Access Plan",             desc:"Proposed open access model and any existing APC funding." },
+            ].map((item) => (
+              <div style="padding:14px 20px;border-bottom:1px solid var(--border-light);">
+                <div style="font-size:13.5px;font-weight:600;color:var(--text-main);margin-bottom:4px;">{item.sec}</div>
+                <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid var(--border-light);padding-top:48px;">
+        <div class="section-label" style="margin-bottom:8px;">Proposal Form</div>
+        <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:24px;font-weight:400;">Submit Your Proposal</h2>
+        <form style="max-width:740px;" action="#" method="post">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:-0.5px;">
+            {[
+              { label:"Lead Editor Name",  id:"editor-name",  type:"text",  placeholder:"Full name" },
+              { label:"Email Address",     id:"editor-email", type:"email", placeholder:"your@email.com" },
+              { label:"Institution",       id:"editor-inst",  type:"text",  placeholder:"Current institutional affiliation" },
+              { label:"Working Title",     id:"vol-title",    type:"text",  placeholder:"Proposed volume title" },
+            ].map((f) => (
+              <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
+                <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+              </div>
+            ))}
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <label for="synopsis" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Volume Proposal (see guidelines above)</label>
+            <textarea id="synopsis" name="synopsis" rows="10" placeholder="Include all required sections as listed in the proposal guidelines." class="form-input" style="width:100%;resize:vertical;"></textarea>
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Submit Volume Proposal</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+}
+</style>

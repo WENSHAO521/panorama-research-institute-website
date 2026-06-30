@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Annual Reports" description="Annual reports of Panorama Research Institute presenting institutional activity, research outputs, and governance disclosures.">
+  <PageHero
+    title="Annual Reports"
+    description="Annual reports presenting the Institute's activity, research outputs, governance disclosures, and institutional development over each reporting year."
+    breadcrumbs={[{ label: "Publications", href: "/publications" }, { label: "Annual Reports" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">About This Series</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label: "Format",        value: "Annual institutional report" },
+              { label: "Frequency",     value: "Annual" },
+              { label: "Covers",        value: "Calendar year" },
+              { label: "First Report",  value: "Annual Report 2024 (due 2025)" },
+              { label: "Access",        value: "Open access" },
+              { label: "DOI",           value: "Registered (Crossref)" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">About Annual Reports</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            Panorama Research Institute publishes an annual report covering each calendar year of institutional activity. The annual report is a core transparency and accountability mechanism, providing a comprehensive record of the Institute's research activity, publications, events, fellowship program, governance decisions, and institutional development.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            Annual reports include a message from the Institute Director, a summary of research progress by center, a full list of publications and events, governance and policy disclosures, and an institutional outlook for the coming year. Reports are published open access and are permanently available in the Institute's repository.
+          </p>
+
+          <div class="section-label" style="margin-bottom:16px;">Annual Reports</div>
+          {[
+            { year:"2024", title:"Annual Report 2024 — Inaugural Year", status:"In preparation", note:"The Institute's inaugural annual report, covering the foundational year of operations." },
+          ].map((rep) => (
+            <div style="padding:24px;border:1px solid var(--border-light);background:var(--bg-soft);">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
+                <span style="font-family:var(--font-mono);font-size:13px;color:var(--accent-steel);">{rep.status}</span>
+                <span style="font-family:var(--font-mono);font-size:14px;font-weight:600;color:var(--text-main);">{rep.year}</span>
+              </div>
+              <h3 style="font-family:var(--font-serif);font-size:20px;color:var(--text-main);margin-bottom:8px;font-weight:400;">{rep.title}</h3>
+              <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin:0;">{rep.note}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

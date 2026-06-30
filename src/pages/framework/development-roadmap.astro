@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Development Roadmap" description="The phased development roadmap of Panorama Research Institute.">
+  <PageHero
+    title="Development Roadmap"
+    description="The phased development plan of Panorama Research Institute, outlining priorities, milestones, and targets across a multi-year horizon."
+    breadcrumbs={[{ label: "Institute", href: "/about" }, { label: "Framework", href: "/framework" }, { label: "Development Roadmap" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:840px;">
+        <p style="font-size:17px;line-height:1.85;color:var(--text-secondary);margin-bottom:48px;">
+          Panorama Research Institute follows a phased development approach, building institutional capacity progressively while maintaining high standards of academic quality and governance. The roadmap below outlines the key milestones, priorities, and expected outputs for each phase.
+        </p>
+
+        {[
+          {
+            phase: "Phase 1",
+            label: "Foundation",
+            period: "2024",
+            status: "Current",
+            color: "var(--text-main)",
+            goals: [
+              "Establish the Institute's governance framework, charter, and core policies",
+              "Launch the Institute's public website and digital presence",
+              "Establish three initial research centers: Scholarly Publishing Studies, Scholarly Indexing and Evaluation, and Policy and Social Research",
+              "Initiate the POSI Scholarly Indexing Project as the first major research initiative",
+              "Initiate the Fifteenth Five-Year Plan Studies Project",
+              "Recruit initial research fellows and visiting scholars",
+              "Publish the inaugural set of working papers",
+              "Launch the Institute's collaboration and fellowship application processes",
+            ],
+          },
+          {
+            phase: "Phase 2",
+            label: "Development",
+            period: "2025",
+            status: "Upcoming",
+            color: "var(--accent-steel)",
+            goals: [
+              "Establish the Center for AI and Future Society as the fourth research center",
+              "Expand the research fellow network to include scholars from at least five countries",
+              "Launch the Institute's formal visiting scholar program",
+              "Publish the first annual report of Panorama Research Institute",
+              "Release the first POSI database version covering core journal metadata",
+              "Produce and publish the first full-length research reports from active projects",
+              "Organize the first Institute-branded academic seminar series",
+              "Establish the Institute's advisory board",
+              "Begin formal institutional cooperation discussions with partner institutions",
+            ],
+          },
+          {
+            phase: "Phase 3",
+            label: "Expansion",
+            period: "2026",
+            status: "Planned",
+            color: "var(--text-muted)",
+            goals: [
+              "Establish the Center for Education and Learning Research (fifth center)",
+              "Launch the first Institute-organized international conference",
+              "Establish formal institutional cooperation agreements with at least three partner institutions",
+              "Expand the POSI database to a broader range of scholarly journals",
+              "Launch the first Institute-edited volume in partnership with an academic publisher",
+              "Initiate the Youth Digital Governance Research Project",
+              "Introduce training programs for journal editors and research teams",
+              "Begin planning for the Center for Arts, Culture and Embodiment",
+            ],
+          },
+          {
+            phase: "Phase 4",
+            label: "Consolidation",
+            period: "2027+",
+            status: "Long-term",
+            color: "var(--text-muted)",
+            goals: [
+              "Establish all six research centers and bring each to full operational capacity",
+              "Achieve a sustained annual publication output across all publication types",
+              "Develop a recognized and regularly cited journal and policy evaluation framework",
+              "Establish a multi-year research grant program in collaboration with partner institutions",
+              "Build a community of practice around the Institute's research themes",
+              "Develop a major conference series on scholarly communication and academic publishing",
+              "Expand the POSI database to become a recognized global resource",
+            ],
+          },
+        ].map((phase) => (
+          <div style="margin-bottom:56px;padding-bottom:56px;border-bottom:1px solid var(--border-light);">
+            <div style="display:grid;grid-template-columns:160px 1fr;gap:40px;align-items:start;">
+              <div>
+                <div style={`font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:${phase.color};margin-bottom:8px;`}>{phase.phase}</div>
+                <div style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:6px;">{phase.label}</div>
+                <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);">{phase.period}</div>
+                <div style="margin-top:12px;">
+                  <span class={`tag ${phase.status === 'Current' ? 'tag-active' : phase.status === 'Upcoming' ? 'tag-steel' : ''}`}>{phase.status}</span>
+                </div>
+              </div>
+              <div>
+                {phase.goals.map((goal) => (
+                  <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--bg-soft);">
+                    <span style="color:var(--text-muted);flex-shrink:0;font-size:14px;">&#8212;</span>
+                    <span style="font-size:15px;color:var(--text-secondary);line-height:1.7;">{goal}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">Learn more about the Institute</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/framework"                          class="btn btn-primary">Institute Framework</a>
+          <a href="/framework/organizational-structure" class="btn btn-secondary">Organizational Structure</a>
+          <a href="/research-centers"                   class="btn btn-secondary">Research Centers</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:160px 1fr"] { display: block !important; }
+}
+</style>

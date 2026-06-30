@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Mission & Vision" description="The mission and vision of Panorama Research Institute.">
+  <PageHero
+    title="Mission &amp; Vision"
+    description="The guiding mission and long-term vision that define the academic identity and strategic direction of Panorama Research Institute."
+    breadcrumbs={[{ label: "Institute", href: "/about" }, { label: "Mission & Vision" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;">
+        <div>
+          <div class="section-label">Mission</div>
+          <h2 style="font-family:var(--font-serif);font-size:32px;color:var(--text-main);margin-bottom:24px;font-weight:400;line-height:1.25;letter-spacing:-0.02em;">
+            To advance scholarly knowledge through rigorous, independent, and interdisciplinary research
+          </h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            Panorama Research Institute is committed to producing research that is intellectually rigorous, methodologically sound, and publicly relevant. The Institute advances knowledge across its designated research areas and builds the infrastructure that strengthens scholarly communication globally.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            The Institute supports scholars at all career stages, fosters collaborative research across disciplines and institutions, and ensures that its outputs are accessible, transparent, and grounded in ethical research practice.
+          </p>
+        </div>
+        <div>
+          <div class="section-label">Vision</div>
+          <h2 style="font-family:var(--font-serif);font-size:32px;color:var(--text-main);margin-bottom:24px;font-weight:400;line-height:1.25;letter-spacing:-0.02em;">
+            A trusted and enduring platform for independent academic inquiry
+          </h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Institute envisions a future where scholarly communication infrastructure is open, transparent, and equitable; where research on publishing, policy, technology, and society is conducted with genuine independence; and where the Institute's outputs contribute meaningfully to academic discourse worldwide.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            Over time, the Institute aims to be recognized as a credible, authoritative voice on matters of scholarly publishing, journal evaluation, academic policy, and research integrity — trusted by researchers, institutions, editors, and policymakers across the globe.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Core Values</div>
+      <h2 class="section-title">What We Stand For</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { value: "Academic Independence",  desc: "The Institute's research is conducted free from commercial, political, or institutional pressure. Findings are reported honestly and without interference." },
+          { value: "Intellectual Rigor",     desc: "All research must meet high standards of methodological soundness, evidential support, and scholarly integrity." },
+          { value: "Transparency",           desc: "The Institute discloses its institutional affiliations, funding sources, and potential conflicts of interest in all publications and communications." },
+          { value: "Openness",               desc: "The Institute supports open access to its research outputs and open scholarly infrastructure, including the POSI indexing initiative." },
+          { value: "Interdisciplinarity",    desc: "The Institute values research that crosses traditional disciplinary boundaries and brings together scholars from diverse fields." },
+          { value: "Long-term Commitment",   desc: "The Institute builds durable scholarly infrastructure and sustains long-term research programs rather than pursuing short-term outputs." },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.value}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="max-width:760px;">
+        <div class="section-label">Strategic Priorities</div>
+        <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:24px;font-weight:400;">Five-Year Strategic Priorities</h2>
+        {[
+          { num: "01", title: "Build durable research infrastructure",     desc: "Establish research centers, project management systems, and publication platforms that will serve the Institute and its scholars for the long term." },
+          { num: "02", title: "Expand the scholar and fellowship network",  desc: "Recruit and support a diverse network of research fellows, visiting scholars, and project contributors from institutions worldwide." },
+          { num: "03", title: "Develop open scholarly infrastructure",      desc: "Advance the POSI scholarly indexing platform and related initiatives that improve transparency and discoverability in academic publishing." },
+          { num: "04", title: "Produce policy-relevant research",           desc: "Ensure that the Institute's research on publishing, governance, and social policy contributes to real-world policy debates and institutional reform." },
+          { num: "05", title: "Establish international partnerships",       desc: "Build formal collaboration agreements with academic institutions, research organizations, and scholarly infrastructure providers worldwide." },
+        ].map((p) => (
+          <div style="display:grid;grid-template-columns:48px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);padding-top:3px;">{p.num}</div>
+            <div>
+              <h3 style="font-family:var(--font-sans);font-size:15.5px;font-weight:600;color:var(--text-main);margin-bottom:8px;">{p.title}</h3>
+              <p style="font-size:14.5px;color:var(--text-secondary);line-height:1.7;">{p.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">Learn more about the Institute</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/about"    class="btn btn-primary">Institute Overview</a>
+          <a href="/charter"  class="btn btn-secondary">Institute Charter</a>
+          <a href="/framework"class="btn btn-secondary">Institute Framework</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { display: block !important; }
+}
+</style>

@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Forms" description="Application and submission forms for Panorama Research Institute.">
+  <PageHero
+    title="Forms"
+    description="Application forms, submission forms, and inquiry forms for Panorama Research Institute's fellowship, collaboration, publication, and event programs."
+    breadcrumbs={[{ label: "Resources", href: "/resources" }, { label: "Forms" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);max-width:720px;margin-bottom:48px;">
+        All forms are available as online web forms accessible via the links below. PDF versions are also available for download where indicated. Online form submissions are preferred.
+      </p>
+
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+        {[
+          { category:"Fellowship Applications", forms:[
+            { name:"Research Fellow Application",          href:"/collaboration/research-fellow-application" },
+            { name:"Associate Research Fellow Application", href:"/collaboration/research-fellow-application" },
+            { name:"Visiting Scholar Application",          href:"/collaboration/visiting-scholar-application" },
+          ]},
+          { category:"Research Proposals", forms:[
+            { name:"Research Project Proposal",   href:"/collaboration/research-project-proposal" },
+            { name:"Edited Volume Proposal",       href:"/collaboration/edited-volume-proposal" },
+            { name:"Special Issue Proposal",       href:"/collaboration/special-issue-proposal" },
+          ]},
+          { category:"Event and Cooperation", forms:[
+            { name:"Event Cooperation Proposal",     href:"/collaboration/event-cooperation" },
+            { name:"Institutional Cooperation Inquiry", href:"/collaboration/institutional-cooperation" },
+            { name:"General Collaboration Inquiry",  href:"/collaboration/submit" },
+          ]},
+          { category:"Other Forms", forms:[
+            { name:"General Contact / Inquiry",     href:"/collaboration/submit" },
+          ]},
+        ].map((group) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--text-main);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.05em;">{group.category}</h3>
+            <div style="display:flex;flex-direction:column;gap:0;">
+              {group.forms.map((f) => (
+                <a href={f.href} style="display:block;font-size:14px;color:var(--accent-steel);padding:8px 0;border-bottom:1px solid var(--border-light);">{f.name} &rarr;</a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

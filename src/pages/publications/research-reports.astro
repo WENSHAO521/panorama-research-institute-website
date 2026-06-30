@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Research Reports" description="Full-length research reports published by Panorama Research Institute.">
+  <PageHero
+    title="Research Reports"
+    description="Full-length research reports presenting substantial original findings from Panorama Research Institute's research projects. Research reports represent the Institute's primary long-form publication format."
+    breadcrumbs={[{ label: "Publications", href: "/publications" }, { label: "Research Reports" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">About This Series</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label: "Format",          value: "Full-length research report" },
+              { label: "Typical Length",  value: "20,000–60,000 words" },
+              { label: "Peer Review",     value: "Internal review + external peer review" },
+              { label: "Access",          value: "Open access" },
+              { label: "DOI",             value: "Registered (Crossref)" },
+              { label: "Language",        value: "English (primary); Chinese (selected)" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;">
+            <a href="/collaboration/research-project-proposal" class="btn btn-primary" style="justify-content:center;width:100%;">Propose a Project</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">About Research Reports</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            Research reports are Panorama Research Institute's primary format for presenting substantial research findings. They are full-length academic documents presenting original research, systematic analysis, and evidence-based conclusions. Research reports go through both internal review and external peer review before publication.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            All research reports are published under open access terms and are freely available for download. Each report receives a DOI for permanent citation and discoverability. Reports are typically associated with one of the Institute's active research projects.
+          </p>
+
+          <div style="margin-top:40px;">
+            <div class="section-label">Current Reports</div>
+            <div style="margin-top:12px;padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Notice</div>
+              <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+                Panorama Research Institute is currently in its foundational phase. Research reports from active projects are currently in preparation and will be published as they are completed. Please check back or see the <a href="/publications" style="color:var(--accent-steel);">publications overview</a> for the most recent outputs.
+              </p>
+            </div>
+          </div>
+
+          <div style="margin-top:32px;">
+            <div class="section-label">In Preparation</div>
+            <div style="margin-top:12px;">
+              {[
+                { project:"Fifteenth Five-Year Plan Studies", title:"China's Fifteenth Five-Year Plan: Implications for Higher Education and Scientific Research", est:"2026" },
+                { project:"Youth Digital Governance Research", title:"Youth Digital Governance: A Comparative Analysis of Policy Frameworks in Asia-Pacific", est:"2026" },
+              ].map((pub) => (
+                <div class="publication-item">
+                  <div>
+                    <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{pub.project}</div>
+                    <div class="pub-title">{pub.title}</div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0;">
+                    <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent-steel);">Est. {pub.est}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

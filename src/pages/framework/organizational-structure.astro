@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Organizational Structure" description="The organizational structure of Panorama Research Institute.">
+  <PageHero
+    title="Organizational Structure"
+    description="The internal organizational structure of Panorama Research Institute, including its administrative units, research centers, and academic programs."
+    breadcrumbs={[{ label: "Institute", href: "/about" }, { label: "Framework", href: "/framework" }, { label: "Organizational Structure" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div class="section-label">Governance Hierarchy</div>
+      <h2 class="section-title">Position within Panorama Scholarly Group</h2>
+      <div style="background:var(--bg-white);border:1px solid var(--border-light);padding:48px;max-width:900px;margin-top:8px;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="border:1px solid var(--border-medium);padding:14px 48px;font-size:14px;font-weight:500;color:var(--text-muted);background:var(--bg-soft);font-family:var(--font-sans);letter-spacing:0.03em;">
+            Panorama Scholarly Group
+          </div>
+          <div style="width:1px;height:32px;background:var(--border-medium);"></div>
+          <div style="border:2px solid var(--text-main);padding:16px 48px;font-size:15px;font-weight:700;color:var(--text-main);font-family:var(--font-sans);letter-spacing:0.03em;">
+            Panorama Research Institute
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border-light);width:100%;max-width:780px;margin-top:0;">
+            <div style="width:1px;height:32px;background:var(--border-medium);margin:0 auto;grid-column:span 3;"></div>
+            {[
+              { unit: "Institute Office",             role: "Administration, governance, communications" },
+              { unit: "Research Centers",             role: "Academic research and project management" },
+              { unit: "Publications Unit",            role: "Research reports, working papers, briefs" },
+              { unit: "Academic Events Unit",         role: "Conferences, seminars, workshops" },
+              { unit: "Scholar & Fellowship Program", role: "Fellows, visiting scholars, research assistants" },
+              { unit: "Collaboration Office",         role: "Partnerships, proposals, institutional MoUs" },
+            ].map((u) => (
+              <div style="padding:18px 16px;border-right:1px solid var(--border-light);border-bottom:1px solid var(--border-light);background:var(--bg-soft);">
+                <div style="font-size:13.5px;font-weight:600;color:var(--text-main);font-family:var(--font-sans);margin-bottom:6px;">{u.unit}</div>
+                <div style="font-size:12px;color:var(--text-muted);line-height:1.5;">{u.role}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Administrative Units</div>
+      <h2 class="section-title">Units and Functions</h2>
+      <div style="margin-top:8px;">
+        {[
+          {
+            unit: "Institute Office",
+            head: "Director, Panorama Research Institute",
+            desc: "The Institute Office is responsible for overall administration, governance compliance, communications, human resources, and coordination between units. It maintains the Institute's official records, manages institutional correspondence, and serves as the primary point of contact for external inquiries.",
+            functions: ["Governance administration and compliance", "Official communications and media", "Scholar and staff coordination", "Budget coordination with Panorama Scholarly Group", "Website and digital presence management"],
+          },
+          {
+            unit: "Research Centers",
+            head: "Director of Research / Center Directors",
+            desc: "The Research Centers are the primary academic units of the Institute. Each center has a defined thematic mandate, a dedicated director, and a team of affiliated researchers. Centers develop and manage research projects, produce publications, organize events, and build partnerships relevant to their domain.",
+            functions: ["Development and management of research projects", "Center-specific publication programs", "Center-organized academic events and seminars", "Engagement of visiting scholars and project contributors", "Partnership development within the center's domain"],
+          },
+          {
+            unit: "Publications Unit",
+            head: "Publications Coordinator",
+            desc: "The Publications Unit manages the editorial, production, and dissemination processes for all Institute publications, including research reports, working papers, policy briefs, edited volumes, and the annual report.",
+            functions: ["Editorial review and quality control", "Publication formatting and production", "Open access dissemination", "Citation and metadata management", "Publication ethics compliance"],
+          },
+          {
+            unit: "Academic Events Unit",
+            head: "Events Coordinator",
+            desc: "The Academic Events Unit plans and manages the Institute's program of conferences, seminars, workshops, and training programs. It coordinates calls for papers and chapters, manages registration and logistics, and produces event proceedings where applicable.",
+            functions: ["Conference and seminar planning and coordination", "Workshop and training program delivery", "Call for papers / chapters administration", "Event proceedings and documentation", "Speaker and participant management"],
+          },
+          {
+            unit: "Scholar & Fellowship Program",
+            head: "Scholar Program Coordinator",
+            desc: "The Scholar and Fellowship Program manages the recruitment, onboarding, and support of research fellows, associate research fellows, visiting scholars, and research assistants. It maintains scholar profiles and coordinates with research centers on scholar assignments.",
+            functions: ["Fellowship application review and onboarding", "Visiting scholar coordination", "Research assistant supervision", "Scholar profile maintenance", "Advisory board engagement"],
+          },
+          {
+            unit: "Collaboration Office",
+            head: "Collaboration Coordinator",
+            desc: "The Collaboration Office manages the Institute's external partnership activities, including institutional cooperation agreements, research project proposals from external parties, edited volume and special issue proposals, and event co-organization requests.",
+            functions: ["Institutional cooperation agreements", "External research proposal review", "Partnership and MoU administration", "Event co-organization management", "Collaboration inquiry responses"],
+          },
+        ].map((unit) => (
+          <div style="padding:36px 0;border-bottom:1px solid var(--border-light);">
+            <div style="display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:start;">
+              <div>
+                <h2 style="font-family:var(--font-serif);font-size:20px;color:var(--text-main);margin-bottom:8px;font-weight:400;">{unit.unit}</h2>
+                <div style="font-size:12.5px;color:var(--text-muted);font-family:var(--font-sans);line-height:1.5;">{unit.head}</div>
+              </div>
+              <div>
+                <p style="font-size:15px;line-height:1.8;color:var(--text-secondary);margin-bottom:16px;">{unit.desc}</p>
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  {unit.functions.map((fn) => (
+                    <div style="display:flex;gap:10px;font-size:13.5px;color:var(--text-secondary);">
+                      <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{fn}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Research Centers</div>
+      <h2 class="section-title">Active and Planned Centers</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { num: "01", name: "Center for Scholarly Publishing Studies",        status: "Active",   href: "/research-centers/scholarly-publishing-studies" },
+          { num: "02", name: "Center for Scholarly Indexing and Evaluation",   status: "Active",   href: "/research-centers/scholarly-indexing-evaluation" },
+          { num: "03", name: "Center for Policy and Social Research",          status: "Active",   href: "/research-centers/policy-social-research" },
+          { num: "04", name: "Center for AI and Future Society",               status: "Upcoming", href: "/research-centers/ai-future-society" },
+          { num: "05", name: "Center for Education and Learning Research",     status: "Planned",  href: "/research-centers" },
+          { num: "06", name: "Center for Arts, Culture and Embodiment",        status: "Planned",  href: "/research-centers" },
+        ].map((c) => (
+          <a href={c.href} class="card" style="border:none;border-radius:0;display:block;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+              <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);">{c.num}</span>
+              <span class={`tag ${c.status === 'Active' ? 'tag-active' : c.status === 'Upcoming' ? 'tag-steel' : ''}`}>{c.status}</span>
+            </div>
+            <div style="font-family:var(--font-serif);font-size:17px;color:var(--text-main);line-height:1.3;">{c.name}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:220px 1fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
+}
+</style>

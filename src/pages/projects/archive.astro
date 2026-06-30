@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Project Archive" description="Completed and closed research projects at Panorama Research Institute.">
+  <PageHero
+    title="Project Archive"
+    description="Completed and closed research projects of Panorama Research Institute. All outputs remain available through the Institute's publications repository."
+    breadcrumbs={[{ label: "Research", href: "/research-areas" }, { label: "Projects", href: "/projects" }, { label: "Archive" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:780px;">
+        <div class="statement-box" style="margin-bottom:40px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">Archive Notice</div>
+          <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);margin:0;">
+            Panorama Research Institute was established in 2024 and is currently in its foundational phase. No research projects have been formally closed or archived at this time. All current projects are ongoing. This page will be updated as projects reach completion.
+          </p>
+        </div>
+
+        <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:16px;font-weight:400;">About the Archive</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+          Upon completion, all Panorama Research Institute projects are archived here. Archived project records include the project's original scope and objectives, outputs produced, affiliated researchers, and the timeline of activity.
+        </p>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+          All publications produced by archived projects remain permanently available through the Institute's publications repository. Archived project pages include direct links to all associated outputs.
+        </p>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/projects/current" class="btn btn-primary">Current Projects</a>
+          <a href="/publications"     class="btn btn-secondary">Publications</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

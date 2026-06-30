@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Center for Scholarly Indexing and Evaluation" description="Research center focused on journal indexing, evaluation frameworks, citation analysis, and database transparency.">
+  <PageHero
+    title="Center for Scholarly Indexing and Evaluation"
+    description="Research on journal indexing criteria, scholarly database design, journal quality evaluation frameworks, citation analysis, and transparency in scholarly infrastructure."
+    breadcrumbs={[{ label: "Research", href: "/research-areas" }, { label: "Research Centers", href: "/research-centers" }, { label: "Scholarly Indexing and Evaluation" }]}
+    tag="Active Research Center"
+  >
+    <div style="margin-top:4px;font-size:14px;color:var(--text-muted);font-family:var(--font-sans);">学术索引与评价研究中心</div>
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">At a Glance</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "Center Status",   value: "Active" },
+              { label: "Established",     value: "2024" },
+              { label: "Research Area",   value: "Scholarly Indexing and Evaluation" },
+              { label: "Flagship Project",value: "POSI Scholarly Indexing" },
+              { label: "Active Projects", value: "1" },
+              { label: "Contact",         value: "research@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/projects/posi-scholarly-indexing" class="btn btn-primary" style="justify-content:center;">POSI Project</a>
+            <a href="/collaboration/research-project-proposal" class="btn btn-secondary" style="justify-content:center;">Submit a Proposal</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">About the Center</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Center for Scholarly Indexing and Evaluation is the home of Panorama Research Institute's research on the systems and frameworks used to index, evaluate, and rank academic journals and publications. The Center conducts original research on indexing criteria, database design, citation metrics, and the governance of scholarly evaluation systems.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Center is the institutional home of the POSI (Panorama Open Scholarly Indexing) project, which aims to build and maintain a transparent, comprehensive, and methodologically rigorous index of academic journals. POSI is designed to be a resource for researchers, institutions, publishers, and policymakers who need reliable information about journal standards and quality.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            Beyond the POSI project, the Center conducts comparative research on existing indexing and ranking systems, assesses the social and epistemic effects of journal evaluation frameworks, and develops policy recommendations for improving the transparency and fairness of scholarly evaluation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Research Focus</div>
+      <h2 class="section-title">Core Research Areas</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title: "Journal Indexing Systems",     desc: "Research on the design, criteria, and governance of journal indexing systems including Web of Science, Scopus, DOAJ, ESCI, and emerging alternatives." },
+          { title: "Citation Metrics",             desc: "Research on citation-based journal evaluation metrics, including impact factor, CiteScore, h-index, and their limitations and applications." },
+          { title: "Journal Quality Frameworks",   desc: "Research on non-citation-based journal quality assessment, including editorial standards, peer review quality, and publication ethics compliance." },
+          { title: "Database Transparency",        desc: "Research on the governance, ownership, transparency, and methodology disclosure of major scholarly databases and indexing platforms." },
+          { title: "Predatory Publishing Detection", desc: "Research on identification frameworks, characteristics, and policies for addressing predatory journals and questionable publishers." },
+          { title: "Open Scholarly Infrastructure", desc: "Research on open, community-governed alternatives to commercial indexing and evaluation, including DOI registration, metadata standards, and linked data." },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Flagship Initiative</div>
+      <h2 class="section-title">POSI: Panorama Open Scholarly Indexing</h2>
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:64px;align-items:start;margin-top:8px;">
+        <div>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            POSI is a long-term scholarly infrastructure project led by the Center for Scholarly Indexing and Evaluation. Its goal is to develop a comprehensive, transparent, and publicly accessible index of academic journals with detailed metadata on editorial practices, indexing status, publication ethics, open access policies, and peer review standards.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            Unlike commercial indexing systems, POSI operates on open data principles: its methodology is publicly documented, its data is freely accessible, and its governance is subject to academic oversight. The POSI database is designed to complement existing indexes rather than replace them, providing additional dimensions of journal quality information not captured by citation-based metrics alone.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            POSI is currently in its initial development phase, with journal coverage being expanded progressively. The first public dataset is expected to be released in 2025.
+          </p>
+          <div style="margin-top:28px;">
+            <a href="/projects/posi-scholarly-indexing" class="btn btn-primary">View POSI Project</a>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border-light);">
+          {[
+            { label: "Type",           value: "Open Scholarly Infrastructure" },
+            { label: "Status",         value: "Active — Initial Phase" },
+            { label: "Data Access",    value: "Planned: Open / Free" },
+            { label: "Coverage (Goal)", value: "Multi-disciplinary, global" },
+            { label: "First Release",  value: "2025 (est.)" },
+            { label: "Governed by",    value: "Panorama Research Institute" },
+          ].map((item) => (
+            <div style="padding:16px 20px;border-bottom:1px solid var(--border-light);">
+              <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+              <div style="font-size:14px;color:var(--text-main);">{item.value}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Publications</div>
+      <h2 class="section-title">Center Publications</h2>
+      <div style="margin-top:8px;">
+        {[
+          { type: "Working Paper", title: "Toward a Transparent Journal Evaluation Framework: Principles and Criteria for Scholarly Indexing", year: "2026" },
+          { type: "Policy Brief",  title: "Governance and Transparency Requirements for Scholarly Database Operators", year: "2026" },
+        ].map((pub) => (
+          <div class="publication-item">
+            <div class="pub-type">{pub.type}</div>
+            <div class="pub-title">{pub.title}</div>
+            <div style="text-align:right;">
+              <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.year}</div>
+              <a href="/publications" class="btn-ghost btn" style="font-size:13px;padding:0;">Details &rarr;</a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:32px;">
+        <a href="/publications" class="btn btn-secondary">All Publications</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"],
+  div[style*="grid-template-columns:2fr 1fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

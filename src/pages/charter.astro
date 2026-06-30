@@ -3,26 +3,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 
 const articles = [
-  { num: "1",  title: "Name",                   zh: "名称" },
-  { num: "2",  title: "Institutional Status",   zh: "机构性质" },
-  { num: "3",  title: "Affiliation",             zh: "隶属关系" },
-  { num: "4",  title: "Mission",                 zh: "宗旨" },
-  { num: "5",  title: "Scope of Activities",     zh: "工作范围" },
-  { num: "6",  title: "Research Areas",          zh: "研究方向" },
-  { num: "7",  title: "Organizational Structure",zh: "组织架构" },
-  { num: "8",  title: "Governance",              zh: "治理机制" },
-  { num: "9",  title: "Research Centers",        zh: "研究中心" },
-  { num: "10", title: "Research Projects",       zh: "研究项目" },
-  { num: "11", title: "Publications",            zh: "研究出版物" },
-  { num: "12", title: "Academic Events",         zh: "学术活动" },
-  { num: "13", title: "Scholars and Fellows",    zh: "研究人员与访问学者" },
-  { num: "14", title: "Collaboration",           zh: "学术合作" },
-  { num: "15", title: "Research Ethics",         zh: "研究伦理" },
-  { num: "16", title: "Conflict of Interest",    zh: "利益冲突" },
-  { num: "17", title: "Intellectual Property",   zh: "知识产权" },
-  { num: "18", title: "Use of Name and Logo",    zh: "名称与标识使用" },
-  { num: "19", title: "Finance and Administration", zh: "财务与行政管理" },
-  { num: "20", title: "Amendment and Interpretation", zh: "修改与解释" },
+  { num: "1",  title: "Name" },
+  { num: "2",  title: "Institutional Status" },
+  { num: "3",  title: "Affiliation" },
+  { num: "4",  title: "Mission" },
+  { num: "5",  title: "Scope of Activities" },
+  { num: "6",  title: "Research Areas" },
+  { num: "7",  title: "Organizational Structure" },
+  { num: "8",  title: "Governance" },
+  { num: "9",  title: "Research Centers" },
+  { num: "10", title: "Research Projects" },
+  { num: "11", title: "Publications" },
+  { num: "12", title: "Academic Events" },
+  { num: "13", title: "Scholars and Fellows" },
+  { num: "14", title: "Collaboration" },
+  { num: "15", title: "Research Ethics" },
+  { num: "16", title: "Conflict of Interest" },
+  { num: "17", title: "Intellectual Property" },
+  { num: "18", title: "Use of Name and Logo" },
+  { num: "19", title: "Finance and Administration" },
+  { num: "20", title: "Amendment and Interpretation" },
 ];
 ---
 
@@ -45,16 +45,12 @@ const articles = [
   <div style="background:var(--bg-main);padding:72px 0 96px;">
     <div class="container">
       <div style="display:grid;grid-template-columns:280px 1fr;gap:64px;align-items:start;">
+
         <!-- Sidebar TOC -->
         <div style="position:sticky;top:calc(var(--nav-height) + 24px);">
-          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:20px;">
-            Contents
-          </div>
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:20px;">Contents</div>
           {articles.map((a) => (
-            <a
-              href={`#article-${a.num}`}
-              style="display:flex;justify-content:space-between;padding:8px 0;font-size:13.5px;color:var(--text-secondary);border-bottom:1px solid var(--border-light);transition:color 0.15s;"
-            >
+            <a href={`#article-${a.num}`} style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border-light);transition:color 0.15s;">
               <span>Art. {a.num}. {a.title}</span>
             </a>
           ))}
@@ -63,83 +59,83 @@ const articles = [
         <!-- Charter Content -->
         <div>
           <div style="background:var(--bg-white);border:1px solid var(--border-light);padding:56px;margin-bottom:32px;">
+
+            <!-- Header -->
             <div style="text-align:center;margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">
-                Governance Document
-              </div>
-              <h1 style="font-family:var(--font-serif);font-size:32px;color:var(--text-main);margin-bottom:8px;letter-spacing:-0.02em;">
-                Institute Charter
-              </h1>
-              <p style="font-size:20px;color:var(--text-secondary);font-family:var(--font-sans);font-weight:300;margin-bottom:16px;">
-                全景研究院章程
-              </p>
-              <p style="font-size:13px;color:var(--text-muted);font-family:var(--font-mono);">
-                Panorama Research Institute &mdash; Effective 2024
-              </p>
+              <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Governance Document</div>
+              <h1 style="font-family:var(--font-serif);font-size:32px;color:var(--text-main);margin-bottom:16px;letter-spacing:-0.02em;">Institute Charter</h1>
+              <p style="font-size:13px;color:var(--text-muted);font-family:var(--font-mono);">Panorama Research Institute &mdash; Effective 2026</p>
             </div>
 
-            {/* Article 1 */}
+            <!-- Article 1 -->
             <div id="article-1" style="margin-bottom:48px;">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 1 / 第一条</div>
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 1</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Name</h2>
-              <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);margin-bottom:12px;">
-                The full name of this institution in English is <strong style="color:var(--text-main);">Panorama Research Institute</strong>. The abbreviated name is PRI. The full name in Chinese is <strong style="color:var(--text-main);">全景研究院</strong>.
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                The full name of this institution is <strong style="color:var(--text-main);">Panorama Research Institute</strong>. The abbreviated name is <strong style="color:var(--text-main);">PRI</strong>.
               </p>
-              <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">
-                The Institute may be referred to as "Panorama Research Institute", "PRI", or "the Institute" in official documents, publications, and communications.
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                The Institute may be referred to as "Panorama Research Institute", "PRI", or "the Institute" in official documents, publications, and communications. No other abbreviated form is authorized for use in formal contexts.
               </p>
             </div>
 
-            {/* Article 2 */}
+            <!-- Article 2 -->
             <div id="article-2" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 2 / 第二条</div>
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 2</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Institutional Status</h2>
               <div class="statement-box" style="margin-bottom:20px;">
-                <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);margin-bottom:10px;">
+                <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">
                   Panorama Research Institute is not a separate legal entity. It operates under the governance and administration of Panorama Scholarly Group.
                 </p>
-                <p style="font-size:13.5px;color:var(--text-muted);">
-                  全景研究院并非单独法人实体，其相关事务由 Panorama Scholarly Group 统一治理和管理。
-                </p>
               </div>
-              <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">
-                The Institute functions as an internal academic division with independence in its research activities, publication decisions, and academic functions, subject to the overall governance framework of Panorama Scholarly Group.
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                The Institute functions as an internal academic division of Panorama Scholarly Group. It maintains independence in its research activities, publication decisions, editorial judgments, and academic functions, while remaining subject to the overall governance framework and administrative authority of Panorama Scholarly Group.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                All formal legal instruments, contracts, and binding agreements are executed by Panorama Scholarly Group on behalf of the Institute. The Institute does not hold independent financial accounts, legal registration, or separate legal personality in any jurisdiction.
               </p>
             </div>
 
-            {/* Article 3 */}
+            <!-- Article 3 -->
             <div id="article-3" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 3 / 第三条</div>
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 3</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Affiliation</h2>
-              <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">
-                Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group. All governance, administrative, and legal matters are handled by Panorama Scholarly Group. The Institute operates as "An internal research and academic development division of Panorama Scholarly Group."
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group. In all official communications, publications, institutional descriptions, and formal agreements, the Institute shall be described as "an internal research and academic development division of Panorama Scholarly Group."
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                The Institute may enter into academic cooperation arrangements, memoranda of understanding, and collaboration agreements under the name of Panorama Research Institute. Formal execution of such arrangements is the responsibility of Panorama Scholarly Group.
               </p>
             </div>
 
-            {/* Article 4 */}
+            <!-- Article 4 -->
             <div id="article-4" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 4 / 第四条</div>
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 4</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Mission</h2>
-              <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
                 The mission of Panorama Research Institute is to advance scholarly knowledge through rigorous, independent, and interdisciplinary research; to support the development of global scholarly communication infrastructure; and to promote openness, transparency, and integrity in academic publishing and research practice.
               </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                In pursuing this mission, the Institute commits to the highest standards of academic quality, research ethics, and institutional governance. It supports scholars at all career stages, fosters collaboration across disciplines and institutions, and ensures that its outputs are publicly accessible and grounded in sound scholarly practice.
+              </p>
             </div>
 
-            {/* Article 5 */}
+            <!-- Article 5 -->
             <div id="article-5" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 5 / 第五条</div>
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 5</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Scope of Activities</h2>
-              <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);margin-bottom:16px;">The Institute conducts and supports the following activities:</p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:16px;">The Institute conducts and supports the following categories of activity:</p>
               {[
-                "Interdisciplinary research across its designated research areas",
-                "Development and maintenance of research centers",
-                "Management and support of research projects",
-                "Publication of research reports, working papers, policy briefs, and edited volumes",
-                "Organization of academic conferences, seminars, workshops, and training programs",
-                "Management of scholar and fellowship programs",
-                "Institutional collaboration and research partnership activities",
-                "Development of open scholarly infrastructure and databases",
-                "Policy analysis and advisory activities",
+                "Interdisciplinary research across its designated research areas, conducted through research centers and projects",
+                "Establishment, development, and management of research centers within the Institute's research areas",
+                "Initiation, management, and support of research projects affiliated with the Institute's research centers",
+                "Publication of research reports, working papers, policy briefs, edited volumes, guidelines, and annual reports",
+                "Organization and co-organization of academic conferences, seminars, workshops, and training programs",
+                "Management of scholar and fellowship programs, including Research Fellows, Associate Research Fellows, Visiting Scholars, and Research Assistants",
+                "Institutional collaboration and research partnership activities with universities, research institutions, publishers, and scholarly organizations",
+                "Development of open scholarly infrastructure, including databases, evaluation frameworks, and metadata systems",
+                "Policy analysis and advisory activities relevant to the Institute's research areas",
+                "Capacity-building activities for researchers, journal editors, and scholarly practitioners",
               ].map((item) => (
                 <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--bg-soft);">
                   <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>
@@ -148,18 +144,324 @@ const articles = [
               ))}
             </div>
 
-            {/* Articles 6-20: abbreviated for brevity */}
-            {articles.slice(5).map((article) => (
-              <div id={`article-${article.num}`} style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-                <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">
-                  Article {article.num} / 第{article.zh.includes("条") ? "" : ""}条
+            <!-- Article 6 -->
+            <div id="article-6" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 6</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Research Areas</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+                The Institute designates the following research areas within which its research centers, projects, publications, and events are organized. Research areas may be expanded or revised through a formal amendment to this Charter in accordance with Article 20.
+              </p>
+              {[
+                { num:"I",   area:"Scholarly Publishing Studies",       desc:"Research on open access models, peer review systems, publication ethics, editorial standards, research integrity, and the structures and practices of academic publishing." },
+                { num:"II",  area:"Scholarly Indexing and Evaluation",  desc:"Research on journal indexing systems, citation metrics, journal quality frameworks, database governance and transparency, and open scholarly infrastructure for evaluation." },
+                { num:"III", area:"Policy and Social Research",         desc:"Research on higher education policy, science and innovation governance, social governance, digital governance, and the policy dimensions of scholarly communication." },
+                { num:"IV",  area:"AI and Future Society",              desc:"Research on artificial intelligence governance, AI ethics, human-AI interaction, the implications of AI for scholarly communication and knowledge production, and digital futures." },
+                { num:"V",   area:"Education and Learning Research",    desc:"Research on education systems, pedagogical practice, learning science, educational policy, and the role of technology in learning environments." },
+                { num:"VI",  area:"Arts, Culture and Embodiment",       desc:"Research on artistic practice, cultural studies, embodied cognition, creative inquiry, and the intersections of arts and humanities with academic and social inquiry." },
+              ].map((item) => (
+                <div style="display:grid;grid-template-columns:32px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--bg-soft);align-items:start;">
+                  <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);padding-top:2px;">{item.num}</span>
+                  <div>
+                    <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:4px;">{item.area}</div>
+                    <div style="font-size:14px;line-height:1.65;color:var(--text-secondary);">{item.desc}</div>
+                  </div>
                 </div>
-                <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">{article.title}</h2>
-                <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">
-                  This article governs the Institute's {article.title.toLowerCase()} policies and procedures. Full provisions are available in the downloadable Charter PDF. For inquiries, contact <a href="mailto:research@panorama-sg.com" style="color:var(--accent-steel);">research@panorama-sg.com</a>.
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            <!-- Article 7 -->
+            <div id="article-7" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 7</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Organizational Structure</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+                The Institute comprises the following organizational units. Each unit is responsible for a defined domain of institutional activity and reports to the Institute Director.
+              </p>
+              {[
+                { unit:"Institute Office",              desc:"Responsible for overall administration, governance compliance, internal coordination, external communications, and the maintenance of official records. Headed by the Institute Director." },
+                { unit:"Research Centers",              desc:"The primary academic units of the Institute. Each center has a defined thematic mandate, a Director, and a program of research projects, publications, and events. Currently active centers are listed in Article 9." },
+                { unit:"Publications Unit",             desc:"Responsible for the editorial management, production, and open access dissemination of all Institute publications, including research reports, working papers, policy briefs, edited volumes, and the annual report." },
+                { unit:"Academic Events Unit",          desc:"Responsible for planning, coordinating, and delivering the Institute's program of conferences, seminars, workshops, training programs, and calls for papers and chapters." },
+                { unit:"Scholar and Fellowship Program","": "", desc:"Responsible for recruiting, onboarding, and supporting Research Fellows, Associate Research Fellows, Visiting Scholars, and Research Assistants, and for maintaining the Institute's scholar community." },
+                { unit:"Collaboration Office",          desc:"Responsible for managing the Institute's external partnerships, institutional cooperation agreements, research project proposals, edited volume proposals, and event co-organization inquiries." },
+              ].map((item) => (
+                <div style="padding:14px 0;border-bottom:1px solid var(--bg-soft);">
+                  <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:5px;">{item.unit}</div>
+                  <div style="font-size:14.5px;line-height:1.7;color:var(--text-secondary);">{item.desc}</div>
+                </div>
+              ))}
+            </div>
+
+            <!-- Article 8 -->
+            <div id="article-8" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 8</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Governance</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:16px;">
+                The Institute is governed through the following structure. All governance activities are conducted in accordance with this Charter and with the overarching governance framework of Panorama Scholarly Group.
+              </p>
+              {[
+                { role:"Institute Director",     desc:"The Director is the head of the Institute and is responsible for its overall academic direction, governance compliance, external representation, and institutional development. The Director is appointed by Panorama Scholarly Group." },
+                { role:"Research Center Directors","": "", desc:"Each Research Center is directed by a Research Center Director responsible for the Center's research program, fellow management, and scholarly activities. Center Directors are appointed by the Institute Director." },
+                { role:"Advisory Board",          desc:"The Advisory Board is an independent consultative body comprising distinguished scholars and practitioners. It advises on research priorities, academic standards, and institutional development. It has no executive authority." },
+                { role:"Panorama Scholarly Group","": "", desc:"As the parent entity, Panorama Scholarly Group holds ultimate governance authority over the Institute. It approves the Charter and material amendments, administers the Institute's finances, and executes formal legal instruments on the Institute's behalf." },
+              ].map((item) => (
+                <div style="padding:14px 0;border-bottom:1px solid var(--bg-soft);">
+                  <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:5px;">{item.role}</div>
+                  <div style="font-size:14.5px;line-height:1.7;color:var(--text-secondary);">{item.desc}</div>
+                </div>
+              ))}
+            </div>
+
+            <!-- Article 9 -->
+            <div id="article-9" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 9</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Research Centers</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:16px;">
+                Research Centers are the primary academic units within the Institute. Each Center is established within one or more of the Institute's designated research areas and is responsible for developing and managing research projects, producing publications, organizing events, and building scholarly networks within its domain. Each Center is headed by a Director and staffed by affiliated Research Fellows and other scholars.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+                New Research Centers may be established by the Institute Director with the approval of Panorama Scholarly Group, provided the proposed Center falls within a designated research area. The establishment, modification, or closure of a Research Center does not require an amendment to this Charter unless the change involves a modification to Article 6.
+              </p>
+              <p style="font-size:14.5px;color:var(--text-muted);margin-bottom:10px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;font-size:11px;">Currently Established Research Centers</p>
+              {[
+                { num:"01", name:"Center for Scholarly Publishing Studies",       status:"Active" },
+                { num:"02", name:"Center for Scholarly Indexing and Evaluation",  status:"Active" },
+                { num:"03", name:"Center for Policy and Social Research",         status:"Active" },
+                { num:"04", name:"Center for AI and Future Society",              status:"Upcoming" },
+              ].map((c) => (
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--bg-soft);">
+                  <div style="display:flex;gap:16px;align-items:center;">
+                    <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);">{c.num}</span>
+                    <span style="font-size:15px;color:var(--text-secondary);">{c.name}</span>
+                  </div>
+                  <span class={`tag ${c.status === 'Active' ? 'tag-active' : 'tag-steel'}`}>{c.status}</span>
+                </div>
+              ))}
+            </div>
+
+            <!-- Article 10 -->
+            <div id="article-10" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 10</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Research Projects</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                Research Projects are formal, Institute-sanctioned research initiatives affiliated with one or more Research Centers. Each project has a defined scope, research questions, methodology, timeline, and expected outputs. Projects are initiated through a formal proposal process reviewed by the relevant Research Center Director and approved by the Institute Director.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                Projects may be led by affiliated Research Fellows, visiting scholars, or external researchers, provided their work meets the Institute's standards for research quality and ethics. All research conducted under the Institute's name must be consistent with the values, policies, and ethical standards established by this Charter.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                The Institute maintains a public record of all active and completed research projects on its website. Project status changes — including initiation, suspension, and completion — are managed by the relevant Research Center Director with notification to the Institute Office.
+              </p>
+            </div>
+
+            <!-- Article 11 -->
+            <div id="article-11" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 11</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Publications</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+                The Institute publishes the following categories of publication. All publications are subject to editorial review, quality control, and compliance with the Institute's publication ethics policy before release.
+              </p>
+              {[
+                { type:"Research Reports",   desc:"Full-length reports presenting substantial original findings from Institute research projects. Subject to internal review and external peer review." },
+                { type:"Working Papers",     desc:"Shorter documents presenting preliminary findings, theoretical frameworks, or scholarly arguments. Subject to internal editorial review." },
+                { type:"Policy Briefs",      desc:"Concise, evidence-based documents presenting policy-relevant findings and recommendations. Subject to internal editorial review." },
+                { type:"Edited Volumes",     desc:"Collaborative academic volumes bringing together original contributions from multiple scholars on a defined research theme. Published in association with partner academic publishers." },
+                { type:"Annual Reports",     desc:"Yearly institutional reports covering the Institute's research activity, publications, events, scholar program, and governance disclosures." },
+                { type:"Guidelines and Standards","": "", desc:"Practical standards and guidance documents developed from Institute research for use by journals, publishers, and academic institutions." },
+              ].map((item) => (
+                <div style="display:grid;grid-template-columns:160px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--bg-soft);align-items:start;">
+                  <div style="font-size:14px;font-weight:600;color:var(--text-main);">{item.type}</div>
+                  <div style="font-size:14px;line-height:1.65;color:var(--text-secondary);">{item.desc}</div>
+                </div>
+              ))}
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-top:20px;">
+                All Institute publications are published under open access terms and are freely available on the Institute's website. Each publication receives a Digital Object Identifier (DOI) registered with Crossref. Authors retain copyright in their work but grant the Institute a non-exclusive, perpetual licence to publish, distribute, and archive the work.
+              </p>
+            </div>
+
+            <!-- Article 12 -->
+            <div id="article-12" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 12</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Academic Events</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                The Institute organizes and co-organizes academic events to advance scholarly exchange in its research areas and to support its research community. Events include international conferences, academic seminars, research workshops, training programs, and related academic gatherings.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                Events may be organized independently by the Institute or co-organized with partner institutions. Co-organized events must be approved by the Institute Director and must comply with the Institute's academic standards, ethical requirements, and branding guidelines. All co-organized events must not compromise the academic independence of the Institute's research or the integrity of its scholarly community.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                The Academic Events Unit is responsible for administering calls for papers, managing event logistics, coordinating speakers and participants, and producing event records and proceedings where applicable.
+              </p>
+            </div>
+
+            <!-- Article 13 -->
+            <div id="article-13" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 13</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Scholars and Fellows</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+                The Institute maintains a community of affiliated scholars through the following formal categories of affiliation. Each category carries defined responsibilities and entitlements. Affiliation does not constitute employment by Panorama Research Institute or Panorama Scholarly Group unless separately specified.
+              </p>
+              {[
+                { title:"Research Fellow",            desc:"An established researcher (typically holding a doctoral degree or equivalent) who makes a formal commitment to contribute to the Institute's research program through original publications, participation in events, and engagement with the Institute's scholarly community. Appointment is for one to three years, renewable." },
+                { title:"Associate Research Fellow",  desc:"An early-career researcher or doctoral student who contributes to Institute research projects and activities. Typically appointed for one year, renewable upon satisfactory contribution. Associate Fellows may be considered for promotion to Research Fellow." },
+                { title:"Visiting Scholar",           desc:"An established researcher who affiliates with the Institute for a defined period (typically three to twelve months) to pursue research in collaboration with the Institute's scholars. Visiting scholars may be resident or remote." },
+                { title:"Research Assistant",         desc:"A postgraduate student or early-career researcher engaged on a project-specific basis to support research tasks under the supervision of a Research Fellow or Research Center Director." },
+              ].map((item) => (
+                <div style="padding:14px 0;border-bottom:1px solid var(--bg-soft);">
+                  <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:5px;">{item.title}</div>
+                  <div style="font-size:14.5px;line-height:1.7;color:var(--text-secondary);">{item.desc}</div>
+                </div>
+              ))}
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-top:20px;">
+                All affiliated scholars are required to adhere to the Institute's research ethics policy, conflict of interest policy, and other governance documents. The Scholar and Fellowship Program is administered by the Scholar Program Coordinator under the oversight of the Institute Director.
+              </p>
+            </div>
+
+            <!-- Article 14 -->
+            <div id="article-14" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 14</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Collaboration</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                The Institute engages in academic collaboration with universities, research institutes, publishers, scholarly associations, and other organizations. Collaboration activities must be consistent with the Institute's mission, research areas, and values, and must not compromise the academic independence of the Institute's research or the integrity of its scholars.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:16px;">
+                The following forms of collaboration are recognized under this Charter:
+              </p>
+              {[
+                "Institutional cooperation agreements and memoranda of understanding",
+                "Joint research projects and collaborative publications",
+                "Co-edited academic volumes and co-organized special journal issues",
+                "Co-organized academic conferences, seminars, workshops, and training programs",
+                "Scholar and visiting researcher exchange programs",
+                "Joint capacity-building and training initiatives",
+              ].map((item) => (
+                <div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid var(--bg-soft);">
+                  <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>
+                  <span style="font-size:15px;color:var(--text-secondary);line-height:1.65;">{item}</span>
+                </div>
+              ))}
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-top:20px;">
+                As the Institute does not hold independent legal personality, formal cooperation agreements are executed by Panorama Scholarly Group on behalf of the Institute. The Collaboration Office manages all collaboration inquiries, proposals, and ongoing partnership arrangements.
+              </p>
+            </div>
+
+            <!-- Article 15 -->
+            <div id="article-15" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 15</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Research Ethics</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                The Institute is committed to the highest standards of research ethics. All research conducted under the Institute's auspices must comply with applicable ethical principles, including respect for persons, beneficence, non-maleficence, justice, and transparency.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:16px;">
+                The following principles constitute the Institute's minimum ethical standards. They are elaborated in the Institute's Research Ethics Policy, which is adopted as a subsidiary governance document to this Charter.
+              </p>
+              {[
+                "Research involving human participants must comply with applicable ethical review requirements and must obtain informed consent where required.",
+                "Research data must be collected, managed, retained, and shared in accordance with the Institute's Data and Documentation Policy.",
+                "Research findings must be reported honestly, accurately, and without selective omission of material evidence.",
+                "Research methods and limitations must be disclosed transparently in all publications.",
+                "Fabrication, falsification, and plagiarism are prohibited and constitute grounds for immediate withdrawal of affiliation and retraction of affected publications.",
+                "Authors must accurately represent their contributions to any published work and must not include persons as authors who have not contributed substantively.",
+              ].map((item) => (
+                <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--bg-soft);">
+                  <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>
+                  <span style="font-size:15px;color:var(--text-secondary);line-height:1.7;">{item}</span>
+                </div>
+              ))}
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-top:20px;">
+                Alleged violations of research ethics standards should be reported to the Institute Director. The Institute Director will investigate reported violations and may take remedial action including retraction of publications, withdrawal of affiliation, or referral to the researcher's home institution.
+              </p>
+            </div>
+
+            <!-- Article 16 -->
+            <div id="article-16" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 16</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Conflict of Interest</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                All persons affiliated with the Institute — including Research Fellows, Associate Research Fellows, Visiting Scholars, Research Assistants, Research Center Directors, and the Institute Director — must disclose any actual, potential, or perceived conflict of interest that may affect, or be seen to affect, the integrity of their research, publications, editorial judgments, or other professional activities conducted under the Institute's name.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                A conflict of interest exists where a person's financial interests, institutional relationships, personal relationships, or other interests could influence or be perceived to influence their professional judgment. The threshold for disclosure is low: where in doubt, disclosure is required.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                Conflict of interest disclosures must be made in all Institute publications where relevant, and must be made to the Institute Director upon commencement of affiliation and whenever a new conflict arises. Failure to disclose a material conflict of interest may constitute a research ethics violation under Article 15.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                Full provisions governing conflict of interest identification, disclosure, and management are set out in the Institute's Conflict of Interest Policy, which is adopted as a subsidiary governance document to this Charter.
+              </p>
+            </div>
+
+            <!-- Article 17 -->
+            <div id="article-17" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 17</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Intellectual Property</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                Copyright in research publications produced under the Institute's auspices is retained by the named authors. Authors grant Panorama Research Institute a non-exclusive, perpetual, irrevocable, worldwide, royalty-free licence to publish, reproduce, distribute, archive, and make available the work in any format, including digitally.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                All Institute publications are released under a Creative Commons Attribution 4.0 International licence (CC BY 4.0) unless an alternative open licence is agreed upon in writing with the author(s) prior to publication. The CC BY 4.0 licence permits any person to share, adapt, and use the work for any purpose, provided that appropriate credit is given to the author(s) and the Institute.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                Research data produced in the course of Institute-affiliated research should be made publicly available to the fullest extent consistent with applicable privacy, confidentiality, and legal requirements. Data availability statements must be included in all research publications.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                The Institute's name, logo, and visual identity are the property of Panorama Scholarly Group. Their use is governed by the Name and Logo Usage Policy set out in Article 18 and the subsidiary governance document adopted pursuant to it.
+              </p>
+            </div>
+
+            <!-- Article 18 -->
+            <div id="article-18" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 18</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Use of Name and Logo</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                The name "Panorama Research Institute" and the Institute's logo may only be used by persons and organizations authorized to do so. Authorization is conferred by the Institute Director or, in the case of formal institutional uses, by Panorama Scholarly Group.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                Authorized uses include: use by affiliated scholars in connection with Institute-sanctioned research and publications; use by partner institutions in documents that have been formally approved by the Institute; use by media in accurate reporting about the Institute; and use in events that have been formally co-organized with the Institute.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                Prohibited uses include: implying Institute endorsement of any position, product, or organization that has not been authorized; using the Institute's name in the title or cover of a publication that the Institute has not approved; altering or distorting the Institute's logo; and using the Institute's name or logo after an affiliation has ended.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                Detailed usage requirements, including logo specifications, are set out in the Institute's Name and Logo Usage Policy, which is adopted as a subsidiary governance document to this Charter.
+              </p>
+            </div>
+
+            <!-- Article 19 -->
+            <div id="article-19" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 19</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Finance and Administration</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                As the Institute does not hold independent legal personality or separate financial accounts, all financial matters pertaining to the Institute are administered by Panorama Scholarly Group. The Institute does not enter into financial contracts, hold funds, or incur liabilities in its own name.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                Operational budgets for the Institute's research, publication, events, and scholar programs are allocated by Panorama Scholarly Group in consultation with the Institute Director. The Institute Director is responsible for managing expenditures within allocated budgets and for providing financial reporting to Panorama Scholarly Group as required.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                Any fellowship stipends, honoraria, or compensation paid to affiliated scholars are administered by Panorama Scholarly Group. The availability and amount of such payments are determined on a case-by-case basis and are not guaranteed by affiliation alone.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                The Institute discloses its institutional affiliation and operational status in all publications, on its website, and in formal communications. It does not accept external research funding in its own name. Funding arrangements involving third-party grants or contributions are handled by Panorama Scholarly Group and disclosed in the relevant publications.
+              </p>
+            </div>
+
+            <!-- Article 20 -->
+            <div id="article-20" style="padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 20</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Amendment and Interpretation</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                This Charter may be amended by the Institute Director with the approval of Panorama Scholarly Group. Proposed amendments must be circulated to all Research Center Directors and the Advisory Board at least thirty days before adoption, to allow for comment. Commentary received during this period must be considered before a final decision on adoption is made, but is not binding.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                Amendments take effect on the date of adoption unless a later effective date is specified. The version number and effective date of the Charter are recorded on the document cover. A complete version history is maintained by the Institute Office and is available upon request.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                Subsidiary governance documents — including the Research Ethics Policy, Conflict of Interest Policy, Publication and Reporting Policy, Data and Documentation Policy, Academic Independence Policy, and Name and Logo Usage Policy — may be adopted, amended, or replaced by the Institute Director without a formal Charter amendment, provided they do not conflict with the provisions of this Charter.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                The Institute Director has final interpretive authority over the provisions of this Charter. Where ambiguity arises in the interpretation of any provision, the interpretation that is most consistent with the Institute's mission as set out in Article 4 shall be preferred. In the event of a conflict between this Charter and any subsidiary governance document, this Charter prevails.
+              </p>
+            </div>
+
           </div>
 
           <div style="display:flex;gap:12px;flex-wrap:wrap;">
@@ -175,11 +477,15 @@ const articles = [
 
 <style>
 @media (max-width: 900px) {
-  .container > div[style*="grid-template-columns:280px"] {
-    display: block !important;
-  }
-  .container > div[style*="grid-template-columns:280px"] > div:first-child {
-    display: none !important;
-  }
+  .container > div[style*="grid-template-columns:280px"] { display: block !important; }
+  .container > div[style*="grid-template-columns:280px"] > div:first-child { display: none !important; }
+}
+div[style*="grid-template-columns:160px 1fr"],
+div[style*="grid-template-columns:32px 1fr"] {
+  display: grid;
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:160px 1fr"],
+  div[style*="grid-template-columns:32px 1fr"] { display: block !important; }
 }
 </style>

@@ -36,7 +36,6 @@ import { researchCenters } from '../data/site';
             <div class="center-num">{center.num}</div>
             <div>
               <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:6px;">{center.name}</h2>
-              <div style="font-size:14px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-sans);">{center.nameZh}</div>
               <div style="display:flex;flex-wrap:wrap;gap:6px;">
                 {center.areas.map((a) => <span class="tag">{a}</span>)}
               </div>
@@ -65,7 +64,6 @@ import { researchCenters } from '../data/site';
             <div class="center-num">{center.num}</div>
             <div>
               <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:6px;">{center.name}</h2>
-              <div style="font-size:14px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-sans);">{center.nameZh}</div>
               <div style="display:flex;flex-wrap:wrap;gap:6px;">
                 {center.areas.map((a) => <span class="tag">{a}</span>)}
               </div>
@@ -77,14 +75,13 @@ import { researchCenters } from '../data/site';
         ))}
 
         {[
-          { num: "05", name: "Center for Education and Learning Research", nameZh: "教育与学习研究中心", areas: ["Education Policy", "Higher Education", "Learning Science"] },
-          { num: "06", name: "Center for Arts, Culture and Embodiment",    nameZh: "艺术、文化与具身研究中心", areas: ["Music", "Dance", "Cultural Studies", "Creative Practice"] },
+          { num: "05", name: "Center for Education and Learning Research", areas: ["Education Policy", "Higher Education", "Learning Science"] },
+          { num: "06", name: "Center for Arts, Culture and Embodiment",    areas: ["Music", "Dance", "Cultural Studies", "Creative Practice"] },
         ].map((center) => (
           <div class="center-card" style="opacity:0.65;">
             <div class="center-num">{center.num}</div>
             <div>
               <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:6px;">{center.name}</h2>
-              <div style="font-size:14px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-sans);">{center.nameZh}</div>
               <div style="display:flex;flex-wrap:wrap;gap:6px;">
                 {center.areas.map((a) => <span class="tag">{a}</span>)}
               </div>

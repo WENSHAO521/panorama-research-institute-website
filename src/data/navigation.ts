@@ -132,6 +132,7 @@ export const navigation: NavItem[] = [
     href: "/collaboration",
     children: [
       { label: "Overview",                      href: "/collaboration" },
+      { label: "Membership Program",            href: "/collaboration/membership" },
       { label: "Institutional Cooperation",     href: "/collaboration/institutional-cooperation" },
       { label: "Research Project Proposal",     href: "/collaboration/research-project-proposal" },
       { label: "Edited Volume Proposal",        href: "/collaboration/edited-volume-proposal" },

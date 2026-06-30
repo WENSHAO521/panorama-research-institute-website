@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<BaseLayout
+  title="Submission Received"
+  description="Your submission to Panorama Research Institute has been received."
+>
+  <PageHero
+    title="Submission Received"
+    description="Your message has been sent to the relevant Institute office."
+    breadcrumbs={[{ label: "Submission Received" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div class="thank-you-panel">
+        <div class="section-label">Thank You</div>
+        <h2>Your submission has been received.</h2>
+        <p>
+          The Institute will review your message and respond through the relevant office when appropriate.
+        </p>
+        <div class="thank-you-actions">
+          <a href="/" class="btn btn-primary">Return Home</a>
+          <a href="/contact" class="btn btn-secondary">Contact the Institute</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.thank-you-panel {
+  max-width: 720px;
+  padding: 40px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-main);
+}
+.thank-you-panel h2 {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  line-height: 1.25;
+  font-weight: 400;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+.thank-you-panel p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+}
+.thank-you-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+</style>

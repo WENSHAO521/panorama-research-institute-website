@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import FormSubmitFields from '../../components/FormSubmitFields.astro';
 ---
 <BaseLayout title="Submit an Inquiry" description="General collaboration inquiry form for Panorama Research Institute.">
   <PageHero
@@ -37,17 +38,18 @@ import PageHero from '../../components/PageHero.astro';
             Use this form if your inquiry does not fit neatly into one of the specific collaboration types listed, or if you would like to discuss collaboration possibilities with the Institute before committing to a specific form. The Collaboration Office will respond within 10 working days.
           </p>
 
-          <form style="display:flex;flex-direction:column;gap:0;" action="#" method="post">
+          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/collaboration@panorama-sg.com" method="POST">
+            <FormSubmitFields subject="Panorama Research Institute General Collaboration Inquiry" source="General Collaboration Inquiry Form" />
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
               {[
                 { label:"Your Name",       id:"inq-name",  type:"text",  placeholder:"Full name" },
-                { label:"Email Address",   id:"inq-email", type:"email", placeholder:"your@email.com" },
+                { label:"Email Address",   id:"inq-email", name:"email", type:"email", placeholder:"your@email.com" },
                 { label:"Organization",    id:"inq-org",   type:"text",  placeholder:"Institution or organization (if applicable)" },
                 { label:"Country",         id:"inq-country",type:"text", placeholder:"Country" },
               ].map((f) => (
                 <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
                   <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
-                  <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+                  <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
                 </div>
               ))}
             </div>
@@ -69,7 +71,7 @@ import PageHero from '../../components/PageHero.astro';
               <textarea id="inq-msg" name="inq-msg" rows="8" placeholder="Please describe your inquiry, proposed collaboration, or question. Include as much relevant detail as possible so the Collaboration Office can respond helpfully." class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
-              <input type="checkbox" id="inq-consent" name="inq-consent" style="margin-top:3px;flex-shrink:0;" />
+              <input type="checkbox" id="inq-consent" name="inq-consent" value="confirmed" style="margin-top:3px;flex-shrink:0;" />
               <label for="inq-consent" style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">I consent to Panorama Research Institute using the information provided to respond to this inquiry and to send relevant institutional communications. I may withdraw this consent at any time.</label>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">

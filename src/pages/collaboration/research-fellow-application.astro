@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import FormSubmitFields from '../../components/FormSubmitFields.astro';
 ---
 <BaseLayout title="Research Fellow Application" description="Apply to become a Research Fellow or Associate Research Fellow at Panorama Research Institute.">
   <PageHero
@@ -39,17 +40,18 @@ import PageHero from '../../components/PageHero.astro';
             Use this form to apply for a Research Fellow or Associate Research Fellow position at Panorama Research Institute. All applications are reviewed by the Institute's research leadership. Successful applicants will be contacted to discuss their appointment, research plan, and contribution to the Institute's programs.
           </p>
 
-          <form style="display:flex;flex-direction:column;gap:0;" action="#" method="post">
+          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/fellows@panorama-sg.com" method="POST">
+            <FormSubmitFields subject="Panorama Research Institute Research Fellow Application" source="Research Fellow Application Form" />
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
               {[
                 { label:"Full Name",          id:"rf-name",    type:"text",  placeholder:"Full name" },
-                { label:"Email Address",      id:"rf-email",   type:"email", placeholder:"your@email.com" },
+                { label:"Email Address",      id:"rf-email",   name:"email", type:"email", placeholder:"your@email.com" },
                 { label:"Current Institution","": "", id:"rf-inst", type:"text", placeholder:"University or research institution" },
                 { label:"Position/Title",     id:"rf-title",   type:"text",  placeholder:"e.g. PhD Candidate, Postdoctoral Researcher" },
               ].map((f) => (
                 <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
                   <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
-                  <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+                  <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
                 </div>
               ))}
             </div>
@@ -81,7 +83,7 @@ import PageHero from '../../components/PageHero.astro';
               <textarea id="rf-cv" name="rf-cv" rows="6" placeholder="Academic bio and list of relevant publications, presentations, or other scholarly outputs." class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
-              <input type="checkbox" id="rf-consent" name="rf-consent" style="margin-top:3px;flex-shrink:0;" />
+              <input type="checkbox" id="rf-consent" name="rf-consent" value="confirmed" style="margin-top:3px;flex-shrink:0;" />
               <label for="rf-consent" style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">I have read and understood the Institute's fellowship expectations and confirm that the information provided is accurate.</label>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">

@@ -689,6 +689,11 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 @media (max-width: 768px) {
   .primary-nav, .header-right .btn { display: none; }
   .menu-toggle { display: flex; }
+  .site-header-inner { gap: 12px; }
+  .site-logo svg {
+    height: 34px;
+    max-width: 158px;
+  }
 
   .section         { padding: 56px 0; }
   .section-compact { padding: 40px 0; }
@@ -706,6 +711,10 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 
 @media (max-width: 480px) {
+  .site-logo svg {
+    height: 32px;
+    max-width: 148px;
+  }
   .platform-grid { grid-template-columns: 1fr; }
   .footer-grid   { grid-template-columns: 1fr; }
   .footer-logo-area { grid-column: span 1; }

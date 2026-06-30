@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import FormSubmitFields from '../../components/FormSubmitFields.astro';
 ---
 <BaseLayout title="Research Project Proposal" description="Submit a research project proposal to Panorama Research Institute.">
   <PageHero
@@ -62,7 +63,8 @@ import PageHero from '../../components/PageHero.astro';
       <div style="border-top:1px solid var(--border-light);padding-top:48px;">
         <div class="section-label" style="margin-bottom:8px;">Proposal Form</div>
         <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:24px;font-weight:400;">Submit Your Proposal</h2>
-        <form style="max-width:740px;display:flex;flex-direction:column;gap:0;" action="#" method="post">
+        <form style="max-width:740px;display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/research@panorama-sg.com" method="POST">
+          <FormSubmitFields subject="Panorama Research Institute Research Project Proposal" source="Research Project Proposal Form" />
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
             {[
               { label:"Your Name",       id:"name",   type:"text",  placeholder:"Full name" },

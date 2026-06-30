@@ -6,6 +6,8 @@ import { clientTranslations } from '../i18n/clientTranslations';
 import { clientTranslationsExtra } from '../i18n/clientTranslationsExtra';
 import { clientTranslationsCoverage } from '../i18n/clientTranslationsCoverage';
 import { clientTranslationsCharter } from '../i18n/clientTranslationsCharter';
+import { clientTranslationsMembership } from '../i18n/clientTranslationsMembership';
+import { clientTranslationsForms } from '../i18n/clientTranslationsForms';
 import { getBasePath, type Lang } from '../i18n/utils';
 
 interface Props {
@@ -33,12 +35,16 @@ const phraseTranslations = {
     ...clientTranslationsExtra['zh-cn'],
     ...clientTranslationsCoverage['zh-cn'],
     ...clientTranslationsCharter['zh-cn'],
+    ...clientTranslationsMembership['zh-cn'],
+    ...clientTranslationsForms['zh-cn'],
   },
   'zh-tw': {
     ...clientTranslations['zh-tw'],
     ...clientTranslationsExtra['zh-tw'],
     ...clientTranslationsCoverage['zh-tw'],
     ...clientTranslationsCharter['zh-tw'],
+    ...clientTranslationsMembership['zh-tw'],
+    ...clientTranslationsForms['zh-tw'],
   },
 };
 ---

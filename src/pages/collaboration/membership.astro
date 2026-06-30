@@ -1,0 +1,817 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FormSubmitFields from '../../components/FormSubmitFields.astro';
+
+const tiers = [
+  {
+    name: 'Student and Early-Career Member',
+    audience: 'Undergraduate students, master\'s students, doctoral students, early-career researchers, research assistants, and young authors',
+    fee: 'USD 80 / year',
+    term: '12 months',
+  },
+  {
+    name: 'Standard Member',
+    audience: 'Scholars, researchers, authors, editors, independent researchers, and academic practitioners',
+    fee: 'USD 200 / year',
+    term: '12 months',
+  },
+  {
+    name: 'Institutional Member',
+    audience: 'Universities, research institutes, scholarly associations, journals, publishers, and research teams',
+    fee: 'USD 800 / year',
+    term: '12 months',
+  },
+  {
+    name: 'Honorary Member',
+    audience: 'Distinguished scholars, advisers, partners, and contributors invited by the Institute',
+    fee: 'By invitation',
+    term: 'Determined by the Institute',
+  },
+];
+
+const tierDetails = [
+  {
+    title: 'Student and Early-Career Member',
+    price: 'USD 80 / year',
+    intro: 'This category is open to students, doctoral candidates, early-career researchers, young authors, research assistants, and academic editorial assistants. It provides basic academic resources, research training opportunities, online event access, and an entry point into the Institute\'s scholarly network.',
+    benefits: [
+      'Student and Early-Career Member certificate',
+      'Basic member profile display on the Institute website, subject to approval',
+      'Access to basic academic resources and templates',
+      'Member newsletters, project notices, event updates, and calls for papers',
+      'Free or discounted access to selected online lectures, public seminars, and early-career scholar events',
+      'Eligibility to submit to the Institute working paper series',
+      'Eligibility to submit policy brief ideas, research topics, or project participation requests',
+      'Priority notices for youth scholar forums, research assistant opportunities, workshops, and academic events',
+      'Selected discounts for academic training, template services, and Institute events',
+    ],
+    exclusions: [
+      'Research fellow status',
+      'Visiting scholar status',
+      'Editorial board status',
+      'Advisory role',
+      'Project admission guarantee',
+      'Publication guarantee',
+      'Book publication guarantee',
+      'Journal indexing guarantee',
+      'Database indexing guarantee',
+      'Recommendation letter guarantee',
+      'Academic certification or official endorsement',
+    ],
+  },
+  {
+    title: 'Standard Member',
+    price: 'USD 200 / year',
+    intro: 'This category is open to scholars, researchers, authors, editors, independent researchers, academic practitioners, and professionals interested in the Institute\'s programs. It is intended for members who wish to participate more deeply in the Institute\'s scholarly network, projects, working papers, policy briefs, events, and collaboration pathways.',
+    benefits: [
+      'Standard Member certificate',
+      'Full member profile display on the Institute website, subject to approval',
+      'Access to basic and advanced academic resources',
+      'Member newsletters, project notices, calls for papers, event information, and publication updates',
+      'Free or discounted access to selected online events, lectures, seminars, and workshops',
+      'Eligibility to submit to the Institute working paper series',
+      'Eligibility to submit research project proposals, policy brief proposals, edited volume chapter proposals, or event cooperation suggestions',
+      'Eligibility to apply for participation in open research projects or project teams',
+      'Priority initial review for collaboration applications',
+      'Selected discounts for academic training, report formatting, template services, book publishing consultation, or event fees',
+      'Priority notices for visiting scholar, research fellow, project contributor, and academic collaboration opportunities',
+    ],
+    exclusions: [
+      'Standard membership does not automatically confer research fellow, visiting scholar, editorial board, adviser, project leader, or governance status.',
+      'Standard membership does not guarantee publication, book publication, indexing, project admission, recommendation letters, or institutional endorsement.',
+    ],
+  },
+  {
+    title: 'Institutional Member',
+    price: 'USD 800 / year',
+    intro: 'This category is open to universities, research institutions, scholarly associations, research teams, journals, publishers, database projects, nonprofit academic organizations, and related scholarly platforms. It is designed for organizations seeking a stable relationship with the Institute and opportunities in research projects, academic events, publishing cooperation, indexing research, policy research, or early-career scholar support.',
+    benefits: [
+      'Institutional Member certificate',
+      'Institutional member information display on the Institute website, subject to approval',
+      'Eligibility to submit institutional cooperation inquiries',
+      'Eligibility to submit joint research project, edited volume, workshop, forum, or research report proposals',
+      'Project, event, report, publication, and cooperation opportunity updates',
+      'Priority initial review for institutional cooperation',
+      'Participation in open academic events and selected cooperation projects',
+      'Eligibility to apply for co-organized online seminars, lectures, workshops, or thematic events',
+      'Eligibility to request display on relevant Institute project pages according to the cooperation content',
+      'Selected discounts for institutional cooperation projects, event services, or publication-related services',
+    ],
+    exclusions: [
+      'Institutional membership does not constitute quality certification, ranking evaluation, academic endorsement, or official recognition by the Institute.',
+      'Institutional membership does not automatically guarantee journal indexing, database indexing, publishing cooperation, project cooperation, or joint authorship.',
+    ],
+  },
+  {
+    title: 'Honorary Member',
+    price: 'By invitation',
+    intro: 'Honorary membership is granted by invitation to scholars, advisers, partners, or contributors who have made important contributions to the Institute\'s development, academic research, publishing studies, policy research, scholarly cooperation, or international scholarly communication.',
+    benefits: [
+      'Honorary membership is normally fee-free.',
+      'Eligibility is invited and confirmed by the Institute based on contribution, cooperation relationship, and scholarly reputation.',
+      'Honorary membership does not automatically confer governance status, research fellow status, adviser status, or editorial board status unless a separate formal appointment document is issued.',
+    ],
+    exclusions: [],
+  },
+];
+
+const comparisonRows = [
+  ['Member certificate', 'Included', 'Included', 'Included'],
+  ['Website member profile', 'Basic display', 'Full display', 'Institutional display'],
+  ['Basic resource downloads', 'Included', 'Included', 'Included'],
+  ['Advanced resource downloads', 'Selected access', 'Included', 'Included'],
+  ['Member newsletter', 'Included', 'Included', 'Included'],
+  ['Online public events', 'Free or discounted', 'Free or discounted', 'Participation available'],
+  ['Advanced workshops', 'Discounted', 'Preferential discount', 'Institutional discount'],
+  ['Working paper submission eligibility', 'Included', 'Included', 'May recommend submissions'],
+  ['Project participation application', 'Included', 'Priority initial review', 'Cooperation application available'],
+  ['Cooperation proposal submission', 'Included', 'Priority initial review', 'Institutional priority initial review'],
+  ['Research report or policy brief proposal', 'Included', 'Included', 'Joint proposal available'],
+  ['Event cooperation application', 'May suggest', 'May apply', 'May co-organize'],
+  ['Publishing-related consultation discount', 'Selected access', 'Included', 'Negotiable'],
+  ['Research fellow status', 'Not included', 'Not included', 'Not included'],
+  ['Publication or book guarantee', 'Not included', 'Not included', 'Not included'],
+  ['Indexing or endorsement guarantee', 'Not included', 'Not included', 'Not included'],
+];
+
+const applicationSteps = [
+  'Applicant submits the membership application form',
+  'The Institute reviews eligibility and submitted information',
+  'After approval, the Institute sends payment instructions',
+  'Applicant pays the annual membership fee to Panorama Scholarly Group',
+  'The Institute confirms payment and activates membership',
+  'The Institute issues a membership confirmation email and certificate',
+  'Member uses resources and application privileges according to the membership category',
+];
+
+const applicationMaterials = [
+  'Full name',
+  'Email address',
+  'Institution or school',
+  'Country or region',
+  'Current status or position',
+  'Membership category applied for',
+  'Research interests',
+  'Short personal bio',
+  'ORCID or personal website, if available',
+  'Student identification or enrollment proof for student member applicants, if applicable',
+  'Institutional profile, website link, or cooperation note for institutional member applicants, if applicable',
+];
+
+const conductRules = [
+  'Observe principles of academic integrity',
+  'Respect the Institute, other members, authors, editors, researchers, and partners',
+  'Do not misuse the Institute name, logo, membership status, or platform resources',
+  'Do not present membership as research fellow, visiting scholar, editorial board, adviser, or official certification status',
+  'Do not use membership for misleading commercial promotion',
+  'Do not claim that membership represents endorsement of papers, books, projects, journals, institutions, or personal qualifications',
+  'Do not engage in plagiarism, fabrication, falsification, false authorship, malicious submission, or other academic misconduct',
+  'Do not damage the reputation or legitimate interests of the Institute, Panorama Scholarly Group, or other members',
+];
+
+const profileFields = [
+  'Name',
+  'Membership category',
+  'School or institution',
+  'Country or region',
+  'Research interests',
+  'ORCID',
+  'Personal website',
+  'Short bio',
+  'Membership year',
+];
+
+const formFields = [
+  'Full Name *',
+  'Email *',
+  'Country / Region *',
+  'School / Institution *',
+  'Current Status *',
+  'Membership Category *',
+  'Research Direction *',
+  'ORCID / Personal Website',
+  'Personal Bio *',
+  'Application Statement *',
+  'Agreement to Membership Policy *',
+  'Attachment Upload',
+];
+---
+
+<BaseLayout
+  title="Membership Program"
+  description="The Panorama Research Institute Membership Program provides academic resources, event access, working paper submission eligibility, project participation channels, and scholarly network connections for students, researchers, practitioners, and institutions."
+>
+  <PageHero
+    title="Panorama Research Institute Membership Program"
+    description="An academic network and resource service program for students, early-career scholars, researchers, authors, editors, academic practitioners, independent researchers, and scholarly institutions."
+    breadcrumbs={[{ label: "Collaboration", href: "/collaboration" }, { label: "Membership Program" }]}
+  />
+
+  <section class="section-compact" style="background:var(--bg-white);">
+    <div class="container membership-lead">
+      <div>
+        <div class="section-label">Program Overview</div>
+        <h2 class="membership-heading">Academic membership, resources, and scholarly participation</h2>
+        <p class="membership-text">
+          The Membership Program provides members with basic academic resources, research project participation channels, academic event information, working paper submission eligibility, Institute resource downloads, scholarly network connections, and collaboration application pathways.
+        </p>
+        <p class="membership-text">
+          The program supports interdisciplinary research, scholarly publishing studies, policy research, journal indexing and evaluation, early-career scholar development, and global scholarly communication infrastructure.
+        </p>
+      </div>
+      <aside class="membership-note">
+        <div class="section-label">Institutional Note</div>
+        <p>
+          Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group. It operates as an independent academic platform and is not a separate legal entity.
+        </p>
+        <p>
+          Membership fees are collected and administered by Panorama Scholarly Group.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Program Nature</div>
+      <h2 class="membership-heading">A scholarly network and resource service program</h2>
+      <div class="membership-two-col">
+        <p class="membership-text">
+          The Membership Program is not a degree program, academic credential program, professional certification program, or official qualification program. Membership indicates participation in the Institute's scholarly network and access to the resources, information, activities, and application pathways available to the relevant membership category.
+        </p>
+        <p class="membership-text">
+          Membership does not automatically confer research fellow, visiting scholar, editorial board, adviser, project leader, research center member, or governance status. It does not guarantee paper publication, book publication, journal indexing, database indexing, project admission, recommendation letters, or institutional endorsement.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Categories and Annual Fees</div>
+      <h2 class="section-title">Membership categories</h2>
+      <div class="membership-tier-grid">
+        {tiers.map((tier) => (
+          <article class="membership-tier">
+            <h3>{tier.name}</h3>
+            <div class="membership-price">{tier.fee}</div>
+            <p>{tier.audience}</p>
+            <div class="membership-term">{tier.term}</div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Membership Details</div>
+      <h2 class="section-title">Rights, access, and limits by category</h2>
+      <div class="membership-detail-list">
+        {tierDetails.map((tier) => (
+          <article class="membership-detail">
+            <div class="membership-detail-header">
+              <h3>{tier.title}</h3>
+              <span>{tier.price}</span>
+            </div>
+            <p class="membership-text">{tier.intro}</p>
+            <div class="membership-list-grid">
+              <div>
+                <h4>Main Benefits</h4>
+                <ul>
+                  {tier.benefits.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+              {tier.exclusions.length > 0 && (
+                <div>
+                  <h4>Not Included</h4>
+                  <ul>
+                    {tier.exclusions.map((item) => <li>{item}</li>)}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Benefits Comparison</div>
+      <h2 class="section-title">Membership benefits at a glance</h2>
+      <div class="membership-table-wrap">
+        <table class="membership-table">
+          <thead>
+            <tr>
+              <th>Benefit Item</th>
+              <th>Student and Early-Career Member USD 80</th>
+              <th>Standard Member USD 200</th>
+              <th>Institutional Member USD 800</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonRows.map((row) => (
+              <tr>
+                {row.map((cell) => <td>{cell}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container membership-policy-grid">
+      <div>
+        <div class="section-label">Application Process</div>
+        <h2 class="membership-heading">How to apply</h2>
+        <ol class="membership-ordered">
+          {applicationSteps.map((step) => <li>{step}</li>)}
+        </ol>
+        <p class="membership-small">
+          The Institute does not normally recommend payment before the application has been approved. Unconfirmed payment does not mean that membership has automatically taken effect.
+        </p>
+      </div>
+      <div>
+        <div class="section-label">Application Materials</div>
+        <h2 class="membership-heading">Information normally required</h2>
+        <ul class="membership-checklist">
+          {applicationMaterials.map((item) => <li>{item}</li>)}
+        </ul>
+        <p class="membership-small">
+          The Institute may request supplementary materials according to the circumstances of the application.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container membership-policy-grid">
+      <article>
+        <div class="section-label">Term and Renewal</div>
+        <h2 class="membership-heading">Annual membership term</h2>
+        <p class="membership-text">
+          Membership is calculated annually and is valid for 12 months. Before expiry, the Institute may send renewal reminders. Members may choose whether to renew.
+        </p>
+        <p class="membership-text">
+          If renewal is not completed after the valid term ends, membership benefits, resource access, and website profile display may be suspended or terminated. Renewal does not require the Institute to provide exactly the same benefits. The Institute may adjust benefits, fees, and services according to operational needs and will explain such changes on the website or in member notices.
+        </p>
+      </article>
+      <article>
+        <div class="section-label">Payment and Receipt</div>
+        <h2 class="membership-heading">Payment administration</h2>
+        <p class="membership-text">
+          Membership fees are collected by Panorama Scholarly Group. The recommended payment item is Annual Membership Fee - Panorama Research Institute Membership Program.
+        </p>
+        <p class="membership-text">
+          After payment, members may request a receipt or invoice according to the actual circumstances. The issuing entity, currency, payment method, and details are subject to the financial arrangements of Panorama Scholarly Group. Bank charges, transfer fees, platform fees, or currency exchange costs are normally borne by the payer unless otherwise agreed in writing.
+        </p>
+      </article>
+      <article>
+        <div class="section-label">Refund Policy</div>
+        <h2 class="membership-heading">Refund principles</h2>
+        <p class="membership-text">
+          Before membership approval, the Institute normally does not require applicants to pay membership fees. If an applicant mistakenly pays before review or approval, a refund may be requested after verification, although bank charges, transaction fees, remittance fees, or third-party payment platform fees may not be refundable.
+        </p>
+        <p class="membership-text">
+          After membership has been confirmed, if the certificate has been issued, the profile has been established, resource access has been opened, or membership benefits have begun to be used, the annual membership fee is generally non-refundable. Special cases may be handled by the Institute on a case-by-case basis.
+        </p>
+      </article>
+      <article>
+        <div class="section-label">Working Papers and Projects</div>
+        <h2 class="membership-heading">Submission and application eligibility</h2>
+        <p class="membership-text">
+          Members may submit working papers, research topics, policy briefs, project participation requests, or cooperation proposals according to their membership category. All submissions are subject to Institute review.
+        </p>
+        <p class="membership-text">
+          Membership only indicates submission or application eligibility. It does not mean that a manuscript will be published, a project will be admitted, cooperation will be approved, or outputs will necessarily carry authorship or attribution.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container membership-policy-grid">
+      <div>
+        <div class="section-label">Member Conduct</div>
+        <h2 class="membership-heading">Basic conduct rules</h2>
+        <ul class="membership-checklist">
+          {conductRules.map((rule) => <li>{rule}</li>)}
+        </ul>
+        <p class="membership-small">
+          If a member violates these rules, the Institute may suspend or terminate membership and revoke related benefits. In serious cases, the Institute may refuse subsequent applications.
+        </p>
+      </div>
+      <div>
+        <div class="section-label">Use of Membership Status</div>
+        <h2 class="membership-heading">Permitted and prohibited wording</h2>
+        <p class="membership-text">Members may accurately use their membership status in personal bios, CVs, or personal webpages.</p>
+        <div class="membership-example">
+          <strong>Recommended wording</strong>
+          <span>Student and Early-Career Member, Panorama Research Institute</span>
+          <span>Standard Member, Panorama Research Institute</span>
+        </div>
+        <div class="membership-example membership-warning">
+          <strong>Do not use unless separately appointed</strong>
+          <span>Research Fellow</span>
+          <span>Visiting Scholar</span>
+          <span>Editorial Board Member</span>
+          <span>Certified Scholar</span>
+          <span>Official Researcher</span>
+          <span>Academic Advisor</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container membership-policy-grid">
+      <div>
+        <div class="section-label">Member Profile Display</div>
+        <h2 class="membership-heading">Optional website profile</h2>
+        <p class="membership-text">
+          Members may apply to display a basic member profile on the Institute website. The Institute decides whether to display the profile according to membership category, completeness of information, and website display rules.
+        </p>
+        <ul class="membership-checklist compact">
+          {profileFields.map((item) => <li>{item}</li>)}
+        </ul>
+        <p class="membership-small">
+          Profile display does not represent endorsement of a member's academic ability, institutional qualification, research outputs, or personal views. Members may request modification or removal of their profile.
+        </p>
+      </div>
+      <div>
+        <div class="section-label">Important Statement</div>
+        <h2 class="membership-heading">No degree, certification, guarantee, or endorsement</h2>
+        <p class="membership-text">
+          The Membership Program does not constitute degree education, academic credential certification, professional qualification certification, official certification, or government-recognized programming.
+        </p>
+        <p class="membership-text">
+          Membership does not automatically confer research fellow, visiting scholar, editorial board, adviser, project leader, research center member, or governance status. It does not guarantee paper publication, book publication, journal acceptance, database indexing, project admission, recommendation letters, ranking improvement, academic evaluation, or institutional endorsement.
+        </p>
+        <p class="membership-text">
+          Research fellows, visiting scholars, project contributors, advisers, and other academic roles are appointed through separate review, invitation, or formal appointment procedures.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container membership-application">
+      <div>
+        <div class="section-label">Membership Application Form</div>
+        <h2 class="membership-heading">Submit a membership application</h2>
+        <p class="membership-text">
+          The official form may include the fields listed here. The agreement to membership policy must be checked before submission.
+        </p>
+        <ul class="membership-checklist compact">
+          {formFields.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <form action="https://formsubmit.co/collaboration@panorama-sg.com" method="POST" enctype="multipart/form-data" class="membership-form">
+        <FormSubmitFields subject="Panorama Research Institute Membership Application" source="Membership Application Form" />
+        <div class="membership-form-grid">
+          <div class="form-group">
+            <label class="form-label" for="member-name">Full Name *</label>
+            <input class="form-input" id="member-name" name="name" type="text" required placeholder="Your full name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="member-email">Email *</label>
+            <input class="form-input" id="member-email" name="email" type="email" required placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="member-country">Country / Region *</label>
+            <input class="form-input" id="member-country" name="country" type="text" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="member-institution">School / Institution *</label>
+            <input class="form-input" id="member-institution" name="institution" type="text" required placeholder="Institution or school" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="member-status">Current Status *</label>
+            <input class="form-input" id="member-status" name="status" type="text" required placeholder="e.g. Doctoral student, editor, researcher" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="member-category">Membership Category *</label>
+            <select class="form-select" id="member-category" name="category" required>
+              <option value="">Select membership category...</option>
+              {tiers.slice(0, 3).map((tier) => <option>{tier.name}</option>)}
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="member-research">Research Direction *</label>
+          <input class="form-input" id="member-research" name="research" type="text" required placeholder="Research interests or academic field" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="member-web">ORCID / Personal Website</label>
+          <input class="form-input" id="member-web" name="website" type="url" placeholder="https://orcid.org/..." />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="member-bio">Personal Bio *</label>
+          <textarea class="form-textarea" id="member-bio" name="bio" required placeholder="Please provide a short academic bio."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="member-statement">Application Statement *</label>
+          <textarea class="form-textarea" id="member-statement" name="statement" required placeholder="Please explain why you are applying for membership."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="member-attachment">Attachment Upload</label>
+          <input class="form-input" id="member-attachment" name="attachment" type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" />
+        </div>
+        <label class="membership-consent">
+          <input type="checkbox" name="membership_policy_agreement" value="confirmed" required />
+          <span>I have read and agree to the membership policy, fee statement, refund policy, conduct rules, and important statements of the Panorama Research Institute Membership Program.</span>
+        </label>
+        <button type="submit" class="btn btn-primary">Submit Application</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section-compact membership-disclaimer" style="background:var(--bg-dark);">
+    <div class="container">
+      <p>
+        Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group. It operates as an independent academic platform and is not a separate legal entity.
+      </p>
+      <p>
+        Membership in Panorama Research Institute does not automatically confer any research appointment, fellowship, editorial role, publication guarantee, indexing guarantee, or institutional endorsement.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.membership-lead,
+.membership-policy-grid,
+.membership-application {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+.membership-heading {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  line-height: 1.25;
+  font-weight: 400;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+.membership-text {
+  font-size: 15.5px;
+  line-height: 1.82;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+}
+.membership-small {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-top: 18px;
+}
+.membership-note {
+  padding: 28px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-soft);
+}
+.membership-note p {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+.membership-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.membership-tier-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin-top: 8px;
+  border: 1px solid var(--border-light);
+  background: var(--border-light);
+}
+.membership-tier {
+  min-height: 260px;
+  padding: 26px;
+  background: var(--bg-white);
+}
+.membership-tier h3 {
+  font-family: var(--font-serif);
+  font-size: 21px;
+  line-height: 1.28;
+  font-weight: 400;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+.membership-price {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent-red);
+  margin-bottom: 18px;
+}
+.membership-tier p {
+  font-size: 14px;
+  line-height: 1.62;
+  color: var(--text-secondary);
+}
+.membership-term {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+.membership-detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.membership-detail {
+  padding: 32px;
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+}
+.membership-detail-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+.membership-detail-header h3 {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 400;
+  color: var(--text-main);
+}
+.membership-detail-header span {
+  flex-shrink: 0;
+  color: var(--accent-red);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.membership-list-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 20px;
+}
+.membership-list-grid h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  font-family: var(--font-sans);
+}
+.membership-list-grid ul,
+.membership-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.membership-list-grid li,
+.membership-checklist li,
+.membership-ordered li {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.membership-checklist.compact {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 18px;
+}
+.membership-ordered {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 20px;
+}
+.membership-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border-light);
+}
+.membership-table {
+  width: 100%;
+  min-width: 860px;
+  border-collapse: collapse;
+  background: var(--bg-white);
+}
+.membership-table th,
+.membership-table td {
+  padding: 15px 16px;
+  border-bottom: 1px solid var(--border-light);
+  border-right: 1px solid var(--border-light);
+  text-align: left;
+  vertical-align: top;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.membership-table th {
+  background: var(--bg-soft);
+  color: var(--text-main);
+  font-weight: 700;
+  font-family: var(--font-sans);
+}
+.membership-table td {
+  color: var(--text-secondary);
+}
+.membership-example {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-white);
+}
+.membership-example strong {
+  font-size: 12px;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.membership-example span {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.membership-warning {
+  background: rgba(138, 34, 34, 0.04);
+}
+.membership-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 32px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-white);
+}
+.membership-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.membership-consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 16px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-soft);
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.membership-consent input {
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+.membership-form .btn {
+  justify-content: center;
+}
+.membership-disclaimer p {
+  max-width: 920px;
+  color: rgba(255,255,255,0.72);
+  font-size: 15px;
+  line-height: 1.78;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 980px) {
+  .membership-lead,
+  .membership-policy-grid,
+  .membership-application,
+  .membership-two-col,
+  .membership-list-grid {
+    grid-template-columns: 1fr;
+  }
+  .membership-tier-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .membership-tier-grid,
+  .membership-form-grid,
+  .membership-checklist.compact {
+    grid-template-columns: 1fr;
+  }
+  .membership-detail {
+    padding: 24px;
+  }
+  .membership-detail-header {
+    display: block;
+  }
+  .membership-detail-header span {
+    display: inline-block;
+    margin-top: 8px;
+  }
+}
+</style>

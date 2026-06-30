@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import FormSubmitFields from '../../components/FormSubmitFields.astro';
 ---
 <BaseLayout title="Visiting Scholar Application" description="Apply for the Panorama Research Institute Visiting Scholar Program.">
   <PageHero
@@ -38,17 +39,18 @@ import PageHero from '../../components/PageHero.astro';
             Use this form to apply to affiliate with Panorama Research Institute as a Visiting Scholar. Applications are reviewed by the Scholar Program Coordinator and the relevant Research Center Director. Successful applicants will be contacted to discuss the terms and scope of the visiting affiliation.
           </p>
 
-          <form style="display:flex;flex-direction:column;gap:0;" action="#" method="post">
+          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/scholars@panorama-sg.com" method="POST">
+            <FormSubmitFields subject="Panorama Research Institute Visiting Scholar Application" source="Visiting Scholar Application Form" />
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
               {[
                 { label:"Full Name",      id:"vs-name",    type:"text",  placeholder:"Full name" },
-                { label:"Email Address",  id:"vs-email",   type:"email", placeholder:"your@email.com" },
+                { label:"Email Address",  id:"vs-email",   name:"email", type:"email", placeholder:"your@email.com" },
                 { label:"Current Institution", id:"vs-inst", type:"text", placeholder:"University or research institution" },
                 { label:"Position/Title", id:"vs-title",   type:"text",  placeholder:"e.g. Senior Lecturer" },
               ].map((f) => (
                 <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
                   <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
-                  <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+                  <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
                 </div>
               ))}
             </div>
@@ -83,7 +85,7 @@ import PageHero from '../../components/PageHero.astro';
               <textarea id="vs-cv" name="vs-cv" rows="5" placeholder="Academic bio, key publications, and any other relevant experience." class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
-              <input type="checkbox" id="vs-consent" name="vs-consent" style="margin-top:3px;flex-shrink:0;" />
+              <input type="checkbox" id="vs-consent" name="vs-consent" value="confirmed" style="margin-top:3px;flex-shrink:0;" />
               <label for="vs-consent" style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">I confirm the information above is accurate and that I am genuinely interested in pursuing the research described during the proposed visiting period.</label>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">

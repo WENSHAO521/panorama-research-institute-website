@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import FormSubmitFields from '../../components/FormSubmitFields.astro';
 ---
 <BaseLayout title="Event Cooperation" description="Co-organize an academic event with Panorama Research Institute.">
   <PageHero
@@ -53,17 +54,18 @@ import PageHero from '../../components/PageHero.astro';
           </div>
 
           <div class="section-label" style="margin-bottom:14px;">Proposal Form</div>
-          <form style="display:flex;flex-direction:column;gap:0;" action="#" method="post">
+          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/events@panorama-sg.com" method="POST">
+            <FormSubmitFields subject="Panorama Research Institute Event Cooperation Proposal" source="Event Cooperation Form" />
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
               {[
                 { label:"Contact Name",       id:"ec-name",  type:"text",  placeholder:"Full name" },
-                { label:"Email Address",      id:"ec-email", type:"email", placeholder:"your@email.com" },
+                { label:"Email Address",      id:"ec-email", name:"email", type:"email", placeholder:"your@email.com" },
                 { label:"Organization",       id:"ec-org",   type:"text",  placeholder:"Institution or organization" },
                 { label:"Proposed Event Type", id:"ec-type", type:"text",  placeholder:"e.g. Workshop, Seminar" },
               ].map((f) => (
                 <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
                   <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
-                  <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+                  <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
                 </div>
               ))}
             </div>

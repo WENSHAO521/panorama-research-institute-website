@@ -16,12 +16,12 @@ import PageHero from '../../components/PageHero.astro';
       <div class="section-label" style="margin-bottom:32px;">活動類型</div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
         {[
-          { type:"學術會議",   en:"Conferences",       href:"/events/conferences",       desc:"聚焦研究院核心研究領域的國際學術會議，接受原創研究論文，經同儕審查遴選發言人。" },
-          { type:"學術研討會", en:"Seminars",           href:"/events/seminars",           desc:"小型專題研討會，邀請研究院學者及訪問研究人員就特定研究議題深入交流。" },
-          { type:"研究工作坊", en:"Workshops",          href:"/events/workshops",          desc:"以實踐為導向的小型學術工作坊，聚焦方法論、研究設計或具體研究議題。" },
-          { type:"培訓項目",   en:"Training Programs",  href:"/events/training-programs",  desc:"面向期刊編輯、研究人員及學術實踐者的能力建設培訓項目。" },
-          { type:"徵稿啟事",   en:"Calls for Papers",   href:"/events/calls-for-papers",  desc:"面向會議和特刊的學術論文徵集公告，歡迎符合研究領域的原創投稿。" },
-          { type:"徵集書稿",   en:"Calls for Chapters", href:"/events/calls-for-chapters", desc:"面向研究院主編學術文集的書稿徵集公告，歡迎學術界同仁參與投稿。" },
+          { type:"學術會議",   en:"學術會議",       href:"/events/conferences",       desc:"聚焦研究院核心研究領域的國際學術會議，接受原創研究論文，經同儕審查遴選發言人。" },
+          { type:"學術研討會", en:"學術研討會",           href:"/events/seminars",           desc:"小型專題研討會，邀請研究院學者及訪問研究人員就特定研究議題深入交流。" },
+          { type:"研究工作坊", en:"研究工作坊",          href:"/events/workshops",          desc:"以實踐為導向的小型學術工作坊，聚焦方法論、研究設計或具體研究議題。" },
+          { type:"培訓項目",   en:"培訓項目",  href:"/events/training-programs",  desc:"面向期刊編輯、研究人員及學術實踐者的能力建設培訓項目。" },
+          { type:"徵稿啟事",   en:"徵稿啟事",   href:"/events/calls-for-papers",  desc:"面向會議和特刊的學術論文徵集公告，歡迎符合研究領域的原創投稿。" },
+          { type:"徵集書稿",   en:"徵集書稿", href:"/events/calls-for-chapters", desc:"面向研究院主編學術文集的書稿徵集公告，歡迎學術界同仁參與投稿。" },
         ].map((item) => (
           <a href={item.href} class="card" style="border-radius:0;border:none;display:block;">
             <div style="font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:4px;">{item.type}</div>

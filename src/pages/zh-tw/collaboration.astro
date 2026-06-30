@@ -10,12 +10,12 @@ import PageHero from '../../components/PageHero.astro';
       <div class="section-label">合作形式</div>
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
         {[
-          { title:"研究員申請", en:"Research Fellowship Application", href:"/collaboration/research-fellow-application", desc:"學者可申請全景研究院研究員、副研究員及訪問學者職位，以正式成員身份參與研究院學術項目與出版活動。研究員申請全年開放，隨時接受。" },
-          { title:"學術機構合作", en:"Institutional Collaboration", href:"/collaboration/institutional", desc:"大學、研究中心及學術機構可與研究院簽署正式合作協議，建立共同研究項目、學者交流及聯合出版等合作框架。" },
-          { title:"訪問學者申請", en:"Visiting Scholar Application", href:"/collaboration/visiting-scholar-application", desc:"成熟研究人員可申請短期或長期駐院訪問研究，參與特定研究項目，在研究院國際研究網絡中開展學術合作。訪問期通常為三至十二個月。" },
-          { title:"學術出版合作", en:"Publishing Collaboration", href:"/collaboration/publishing", desc:"學術出版社及期刊可就聯合出版、編輯合作或學術文集開發項目與研究院開展合作，共同推進學術出版標準與開放獲取實踐。" },
-          { title:"會議與活動合作", en:"Event Partnership", href:"/collaboration/events", desc:"研究機構、學術學會及大學可就學術會議、研討會及工作坊與研究院開展合作共同舉辦，共同推動特定研究領域的學術交流。" },
-          { title:"研究合作提案", en:"Research Collaboration Proposal", href:"/collaboration/research-proposal", desc:"來自其他機構的研究人員可向研究院提交聯合研究提案。研究院根據研究主題與核心研究領域的契合程度及資源情況評估合作可行性。" },
+          { title:"研究員申請", en:"研究員申請", href:"/collaboration/research-fellow-application", desc:"學者可申請全景研究院研究員、副研究員及訪問學者職位，以正式成員身份參與研究院學術項目與出版活動。研究員申請全年開放，隨時接受。" },
+          { title:"學術機構合作", en:"學術機構合作", href:"/collaboration/institutional", desc:"大學、研究中心及學術機構可與研究院簽署正式合作協議，建立共同研究項目、學者交流及聯合出版等合作框架。" },
+          { title:"訪問學者申請", en:"訪問學者申請", href:"/collaboration/visiting-scholar-application", desc:"成熟研究人員可申請短期或長期駐院訪問研究，參與特定研究項目，在研究院國際研究網絡中開展學術合作。訪問期通常為三至十二個月。" },
+          { title:"學術出版合作", en:"學術出版合作", href:"/collaboration/publishing", desc:"學術出版社及期刊可就聯合出版、編輯合作或學術文集開發項目與研究院開展合作，共同推進學術出版標準與開放獲取實踐。" },
+          { title:"會議與活動合作", en:"會議與活動合作", href:"/collaboration/events", desc:"研究機構、學術學會及大學可就學術會議、研討會及工作坊與研究院開展合作共同舉辦，共同推動特定研究領域的學術交流。" },
+          { title:"研究合作提案", en:"研究合作提案", href:"/collaboration/research-proposal", desc:"來自其他機構的研究人員可向研究院提交聯合研究提案。研究院根據研究主題與核心研究領域的契合程度及資源情況評估合作可行性。" },
         ].map((item) => (
           <a href={item.href} class="card" style="border-radius:0;border:none;display:block;">
             <div style="font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:4px;">{item.title}</div>

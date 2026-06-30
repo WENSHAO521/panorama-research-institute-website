@@ -9,12 +9,12 @@ import PageHero from '../../components/PageHero.astro';
     <div class="container">
       <div style="display:flex;flex-direction:column;gap:0;">
         {[
-          { num:"I",   name:"学术出版研究",         en:"Scholarly Publishing Studies",       desc:"本领域研究开放获取模式、同行评审制度、出版伦理、编辑标准、学术诚信及学术出版体系的演变。研究问题涵盖：哪些出版模式有助于学术知识的广泛传播？同行评审如何影响研究成果的质量与可信度？学术出版中存在哪些伦理挑战？", center:"学术出版研究中心", href:"/research-centers/scholarly-publishing-studies", status:"进行中" },
-          { num:"II",  name:"学术索引与评价研究",   en:"Scholarly Indexing and Evaluation",  desc:"本领域研究期刊索引体系、引文指标、期刊质量框架、数据库治理与透明度，以及开放学术评价基础设施。研究关注：现有索引系统如何影响学术产出的可见度？质量评价框架的局限性何在？如何构建更公平、更透明的评价体系？", center:"学术索引与评价研究中心", href:"/research-centers/scholarly-indexing-evaluation", status:"进行中" },
-          { num:"III", name:"政策与社会研究",       en:"Policy and Social Research",         desc:"本领域研究高等教育政策、科技与创新治理、社会治理、数字治理及学术传播的政策维度。研究关注：政策框架如何塑造研究环境？高等教育改革对学术生态的影响何在？数字化转型对社会治理模式的影响如何？", center:"政策与社会研究中心", href:"/research-centers/policy-social-research", status:"进行中" },
-          { num:"IV",  name:"人工智能与未来社会",   en:"AI and Future Society",              desc:"本领域研究人工智能治理、AI伦理、人机交互、AI对学术传播与知识生产的影响，以及数字未来议题。核心问题包括：AI技术如何改变学术写作、同行评审与知识验证的方式？AI治理框架应如何设计？", center:"人工智能与未来社会研究中心", href:"/research-centers/ai-future-society", status:"即将开展" },
-          { num:"V",   name:"教育与学习研究",       en:"Education and Learning Research",    desc:"本领域研究教育体制、教学法、学习科学、教育政策及技术在学习环境中的作用。研究问题涵盖：何种教学模式最有助于深度学习？教育技术如何重塑学习体验？教育政策改革的有效性如何评估？", center:"（规划中）", href:"/research-areas", status:"规划中" },
-          { num:"VI",  name:"艺术、文化与具身研究", en:"Arts, Culture and Embodiment",       desc:"本领域研究艺术实践、文化研究、具身认知、创意探索，以及艺术与人文学科同学术与社会研究的交叉。研究探讨：艺术实践如何产生知识？具身认知理论对理解学习与创造力有何启示？文化研究如何回应当代社会议题？", center:"（规划中）", href:"/research-areas", status:"规划中" },
+          { num:"I",   name:"学术出版研究",         en:"学术出版研究",       desc:"本领域研究开放获取模式、同行评审制度、出版伦理、编辑标准、学术诚信及学术出版体系的演变。研究问题涵盖：哪些出版模式有助于学术知识的广泛传播？同行评审如何影响研究成果的质量与可信度？学术出版中存在哪些伦理挑战？", center:"学术出版研究中心", href:"/research-centers/scholarly-publishing-studies", status:"进行中" },
+          { num:"II",  name:"学术索引与评价研究",   en:"学术索引与评价研究",  desc:"本领域研究期刊索引体系、引文指标、期刊质量框架、数据库治理与透明度，以及开放学术评价基础设施。研究关注：现有索引系统如何影响学术产出的可见度？质量评价框架的局限性何在？如何构建更公平、更透明的评价体系？", center:"学术索引与评价研究中心", href:"/research-centers/scholarly-indexing-evaluation", status:"进行中" },
+          { num:"III", name:"政策与社会研究",       en:"政策与社会研究",         desc:"本领域研究高等教育政策、科技与创新治理、社会治理、数字治理及学术传播的政策维度。研究关注：政策框架如何塑造研究环境？高等教育改革对学术生态的影响何在？数字化转型对社会治理模式的影响如何？", center:"政策与社会研究中心", href:"/research-centers/policy-social-research", status:"进行中" },
+          { num:"IV",  name:"人工智能与未来社会",   en:"人工智能与未来社会",              desc:"本领域研究人工智能治理、AI伦理、人机交互、AI对学术传播与知识生产的影响，以及数字未来议题。核心问题包括：AI技术如何改变学术写作、同行评审与知识验证的方式？AI治理框架应如何设计？", center:"人工智能与未来社会研究中心", href:"/research-centers/ai-future-society", status:"即将开展" },
+          { num:"V",   name:"教育与学习研究",       en:"教育与学习研究",    desc:"本领域研究教育体制、教学法、学习科学、教育政策及技术在学习环境中的作用。研究问题涵盖：何种教学模式最有助于深度学习？教育技术如何重塑学习体验？教育政策改革的有效性如何评估？", center:"（规划中）", href:"/research-areas", status:"规划中" },
+          { num:"VI",  name:"艺术、文化与具身研究", en:"艺术、文化与具身研究",       desc:"本领域研究艺术实践、文化研究、具身认知、创意探索，以及艺术与人文学科同学术与社会研究的交叉。研究探讨：艺术实践如何产生知识？具身认知理论对理解学习与创造力有何启示？文化研究如何回应当代社会议题？", center:"（规划中）", href:"/research-areas", status:"规划中" },
         ].map((a) => (
           <div style="display:grid;grid-template-columns:56px 1fr 200px;gap:32px;padding:40px 0;border-bottom:1px solid var(--border-light);align-items:start;">
             <div style="font-family:var(--font-mono);font-size:18px;color:var(--text-muted);">{a.num}</div>

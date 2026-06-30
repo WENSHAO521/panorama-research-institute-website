@@ -10,11 +10,11 @@ import PageHero from '../../components/PageHero.astro';
       <div class="section-label">學者類別</div>
       <div style="display:flex;flex-direction:column;gap:0;">
         {[
-          { title:"研究員", en:"Research Fellow", href:"/people/research-fellows", desc:"研究員是研究院的核心學術成員，通常持有博士學位或同等資歷，以正式承諾參與研究院的研究項目、學術出版及共同體活動。研究員任期通常為一至三年，可續期。", req:"博士學位或同等資歷 · 原創研究能力 · 參與研究院學術活動的承諾" },
-          { title:"副研究員", en:"Associate Research Fellow", href:"/people/associate-research-fellows", desc:"副研究員為早期職業研究人員或博士研究生，通過參與研究項目和學術活動為研究院作出貢獻。任期通常為一年，可續期，表現優秀者可晉升為研究員。", req:"在讀博士生或早期職業研究人員 · 明確的研究興趣與研究院匹配" },
-          { title:"訪問學者", en:"Visiting Scholar", href:"/people/visiting-scholars", desc:"訪問學者是在特定時期（通常三至十二個月）與研究院學者開展合作研究的成熟研究人員，可駐場或遠端參與。訪問學者身份不涉及僱用關係。", req:"成熟研究人員 · 明確的訪問研究計劃 · 與研究院研究領域相關" },
-          { title:"研究助理", en:"Research Assistant", href:"/people/research-assistants", desc:"研究助理為在讀研究生或早期職業研究人員，在研究員或中心主任監督下，以項目為基礎參與研究工作，承擔資料收集、文獻整理等具體研究任務。", req:"在讀碩士或博士研究生 · 具體項目參與意願" },
-          { title:"顧問委員會", en:"Advisory Board", href:"/people/advisory-board", desc:"顧問委員會由傑出學者與業界人士組成，就研究優先領域、學術標準及機構發展提供獨立諮詢意見，不具備行政權力。", req:"傑出學者或業界人士 · 邀請制" },
+          { title:"研究員", en:"研究員", href:"/people/research-fellows", desc:"研究員是研究院的核心學術成員，通常持有博士學位或同等資歷，以正式承諾參與研究院的研究項目、學術出版及共同體活動。研究員任期通常為一至三年，可續期。", req:"博士學位或同等資歷 · 原創研究能力 · 參與研究院學術活動的承諾" },
+          { title:"副研究員", en:"副研究員", href:"/people/associate-research-fellows", desc:"副研究員為早期職業研究人員或博士研究生，通過參與研究項目和學術活動為研究院作出貢獻。任期通常為一年，可續期，表現優秀者可晉升為研究員。", req:"在讀博士生或早期職業研究人員 · 明確的研究興趣與研究院匹配" },
+          { title:"訪問學者", en:"訪問學者", href:"/people/visiting-scholars", desc:"訪問學者是在特定時期（通常三至十二個月）與研究院學者開展合作研究的成熟研究人員，可駐場或遠端參與。訪問學者身份不涉及僱用關係。", req:"成熟研究人員 · 明確的訪問研究計劃 · 與研究院研究領域相關" },
+          { title:"研究助理", en:"研究助理", href:"/people/research-assistants", desc:"研究助理為在讀研究生或早期職業研究人員，在研究員或中心主任監督下，以項目為基礎參與研究工作，承擔資料收集、文獻整理等具體研究任務。", req:"在讀碩士或博士研究生 · 具體項目參與意願" },
+          { title:"顧問委員會", en:"顧問委員會", href:"/people/advisory-board", desc:"顧問委員會由傑出學者與業界人士組成，就研究優先領域、學術標準及機構發展提供獨立諮詢意見，不具備行政權力。", req:"傑出學者或業界人士 · 邀請制" },
         ].map((role) => (
           <div style="display:grid;grid-template-columns:200px 1fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--border-light);align-items:start;">
             <div>

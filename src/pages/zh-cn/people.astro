@@ -10,11 +10,11 @@ import PageHero from '../../components/PageHero.astro';
       <div class="section-label">学者类别</div>
       <div style="display:flex;flex-direction:column;gap:0;">
         {[
-          { title:"研究员", en:"Research Fellow", href:"/people/research-fellows", desc:"研究员是研究院的核心学术成员，通常持有博士学位或同等资历，以正式承诺参与研究院的研究项目、学术出版及共同体活动。研究员任期通常为一至三年，可续期。", req:"博士学位或同等资历 · 原创研究能力 · 参与研究院学术活动的承诺" },
-          { title:"副研究员", en:"Associate Research Fellow", href:"/people/associate-research-fellows", desc:"副研究员为早期职业研究人员或博士研究生，通过参与研究项目和学术活动为研究院作出贡献。任期通常为一年，可续期，表现优秀者可晋升为研究员。", req:"在读博士生或早期职业研究人员 · 明确的研究兴趣与研究院匹配" },
-          { title:"访问学者", en:"Visiting Scholar", href:"/people/visiting-scholars", desc:"访问学者是在特定时期（通常三至十二个月）与研究院学者开展合作研究的成熟研究人员，可驻场或远程参与。访问学者身份不涉及雇用关系。", req:"成熟研究人员 · 明确的访问研究计划 · 与研究院研究领域相关" },
-          { title:"研究助理", en:"Research Assistant", href:"/people/research-assistants", desc:"研究助理为在读研究生或早期职业研究人员，在研究员或中心主任监督下，以项目为基础参与研究工作，承担数据收集、文献整理等具体研究任务。", req:"在读硕士或博士研究生 · 具体项目参与意愿" },
-          { title:"顾问委员会", en:"Advisory Board", href:"/people/advisory-board", desc:"顾问委员会由杰出学者与业界人士组成，就研究优先领域、学术标准及机构发展提供独立咨询意见，不具备行政权力。", req:"杰出学者或业界人士 · 邀请制" },
+          { title:"研究员", en:"研究员", href:"/people/research-fellows", desc:"研究员是研究院的核心学术成员，通常持有博士学位或同等资历，以正式承诺参与研究院的研究项目、学术出版及共同体活动。研究员任期通常为一至三年，可续期。", req:"博士学位或同等资历 · 原创研究能力 · 参与研究院学术活动的承诺" },
+          { title:"副研究员", en:"副研究员", href:"/people/associate-research-fellows", desc:"副研究员为早期职业研究人员或博士研究生，通过参与研究项目和学术活动为研究院作出贡献。任期通常为一年，可续期，表现优秀者可晋升为研究员。", req:"在读博士生或早期职业研究人员 · 明确的研究兴趣与研究院匹配" },
+          { title:"访问学者", en:"访问学者", href:"/people/visiting-scholars", desc:"访问学者是在特定时期（通常三至十二个月）与研究院学者开展合作研究的成熟研究人员，可驻场或远程参与。访问学者身份不涉及雇用关系。", req:"成熟研究人员 · 明确的访问研究计划 · 与研究院研究领域相关" },
+          { title:"研究助理", en:"研究助理", href:"/people/research-assistants", desc:"研究助理为在读研究生或早期职业研究人员，在研究员或中心主任监督下，以项目为基础参与研究工作，承担数据收集、文献整理等具体研究任务。", req:"在读硕士或博士研究生 · 具体项目参与意愿" },
+          { title:"顾问委员会", en:"顾问委员会", href:"/people/advisory-board", desc:"顾问委员会由杰出学者与业界人士组成，就研究优先领域、学术标准及机构发展提供独立咨询意见，不具备行政权力。", req:"杰出学者或业界人士 · 邀请制" },
         ].map((role) => (
           <div style="display:grid;grid-template-columns:200px 1fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--border-light);align-items:start;">
             <div>

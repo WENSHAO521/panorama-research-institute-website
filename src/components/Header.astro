@@ -87,8 +87,8 @@ const currentPath = Astro.url.pathname;
 
     <!-- Right -->
     <div class="header-right" style="display:flex;align-items:center;gap:8px;">
-      <LanguagePicker />
       <a href={lang === 'en' ? '/contact' : `/${lang}/contact`} class="btn btn-primary">{t('btn.contact')}</a>
+      <LanguagePicker />
       <button class="menu-toggle" aria-label="Open menu" id="menu-toggle" type="button">
         <span></span><span></span><span></span>
       </button>

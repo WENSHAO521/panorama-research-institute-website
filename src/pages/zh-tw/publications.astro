@@ -10,12 +10,12 @@ import PageHero from '../../components/PageHero.astro';
       <div class="section-label">出版物類型</div>
       <div style="display:flex;flex-direction:column;gap:0;">
         {[
-          { type:"研究報告", en:"Research Reports", desc:"呈現原創研究成果的全長報告，採用嚴格的研究方法，經內部評審與外部同儕審查。研究報告是研究院最主要的知識貢獻形式，通常涵蓋文獻綜述、方法論、研究發現、政策含義及研究局限性。", href:"/publications/research-reports", length:"20,000–60,000字" },
-          { type:"工作論文", en:"Working Papers",     desc:"呈現初步研究發現、理論框架或學術論點的簡短學術文章，經內部編輯評審。工作論文是學術界分享前沿研究發現、徵集學術意見的重要形式，也是研究院快速傳播新研究思路的管道。", href:"/publications/working-papers", length:"5,000–15,000字" },
-          { type:"政策簡報", en:"Policy Briefs",      desc:"基於證據的簡潔文件，向政策受眾呈現研究發現與建議，經內部編輯評審。政策簡報以結論為先，強調實際的政策建議，是研究院連接研究成果與政策實踐的重要橋樑。", href:"/publications/policy-briefs", length:"1,500–4,000字" },
-          { type:"主編學術文集", en:"Edited Volumes", desc:"多位學者圍繞特定主題合作撰寫的學術文集，由研究院與合作學術出版社聯合出版。文集通常由研究院學者擔任主編，徵集領域內的原創研究論文，通過同儕審查和編輯加工形成具有整體性的學術文集。", href:"/publications/edited-volumes", length:"多篇論文" },
-          { type:"年度報告", en:"Annual Reports",     desc:"年度機構報告，全面記錄研究院每年的研究活動、出版物、學術活動、研究員項目及治理情況，並對未來一年的工作進行展望。年度報告是研究院履行透明度與問責制承諾的核心文件。", href:"/publications/annual-reports", length:"年度" },
-          { type:"指南與標準", en:"Guidelines",       desc:"基於研究院研究成果開發、供期刊、出版社及學術機構參考使用的實用標準文件。這類出版物將研究成果轉化為可供實踐者直接參考的操作規範，是研究院連接學術研究與行業實踐的重要方式。", href:"/publications/guidelines", length:"視情況而定" },
+          { type:"研究報告", en:"研究報告", desc:"呈現原創研究成果的全長報告，採用嚴格的研究方法，經內部評審與外部同儕審查。研究報告是研究院最主要的知識貢獻形式，通常涵蓋文獻綜述、方法論、研究發現、政策含義及研究局限性。", href:"/publications/research-reports", length:"20,000–60,000字" },
+          { type:"工作論文", en:"工作論文",     desc:"呈現初步研究發現、理論框架或學術論點的簡短學術文章，經內部編輯評審。工作論文是學術界分享前沿研究發現、徵集學術意見的重要形式，也是研究院快速傳播新研究思路的管道。", href:"/publications/working-papers", length:"5,000–15,000字" },
+          { type:"政策簡報", en:"政策簡報",      desc:"基於證據的簡潔文件，向政策受眾呈現研究發現與建議，經內部編輯評審。政策簡報以結論為先，強調實際的政策建議，是研究院連接研究成果與政策實踐的重要橋樑。", href:"/publications/policy-briefs", length:"1,500–4,000字" },
+          { type:"主編學術文集", en:"主編學術文集", desc:"多位學者圍繞特定主題合作撰寫的學術文集，由研究院與合作學術出版社聯合出版。文集通常由研究院學者擔任主編，徵集領域內的原創研究論文，通過同儕審查和編輯加工形成具有整體性的學術文集。", href:"/publications/edited-volumes", length:"多篇論文" },
+          { type:"年度報告", en:"年度報告",     desc:"年度機構報告，全面記錄研究院每年的研究活動、出版物、學術活動、研究員項目及治理情況，並對未來一年的工作進行展望。年度報告是研究院履行透明度與問責制承諾的核心文件。", href:"/publications/annual-reports", length:"年度" },
+          { type:"指南與標準", en:"指南與標準",       desc:"基於研究院研究成果開發、供期刊、出版社及學術機構參考使用的實用標準文件。這類出版物將研究成果轉化為可供實踐者直接參考的操作規範，是研究院連接學術研究與行業實踐的重要方式。", href:"/publications/guidelines", length:"視情況而定" },
         ].map((item) => (
           <div style="display:grid;grid-template-columns:200px 1fr 120px;gap:32px;padding:32px 0;border-bottom:1px solid var(--border-light);align-items:start;">
             <div>

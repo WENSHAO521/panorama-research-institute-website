@@ -10,11 +10,11 @@ import PageHero from '../../components/PageHero.astro';
       <div class="section-label" style="margin-bottom:32px;">當前項目</div>
       <div style="display:flex;flex-direction:column;gap:0;">
         {[
-          { num:"01", name:"全景開放學術索引項目（POSI）", en:"POSI Scholarly Indexing Project", status:"待上線", center:"學術索引與評價研究中心", start:"2026", href:"/projects/posi-scholarly-indexing", desc:"旗艦研究與基礎設施建設項目。POSI資料庫已開發完畢，正在等待正式上線；平台將提供透明、全面、方法嚴謹的學術期刊開放索引資訊。" },
-          { num:"02", name:"第十五個五年規劃研究",         en:"Fifteenth Five-Year Plan Studies", status:"進行中", center:"政策與社會研究中心", start:"2026", href:"/projects/fifteenth-five-year-plan-studies", desc:"系統研究中國第十五個五年規劃（2026—2030），深入分析其對高等教育體制、科學研究優先領域及社會政策發展的影響與啟示。" },
-          { num:"03", name:"學術出版標準研究項目",         en:"Scholarly Publishing Standards", status:"進行中", center:"學術出版研究中心", start:"2026", href:"/projects/scholarly-publishing-standards", desc:"系統梳理和分析學術出版領域的現行標準與規範，涵蓋同儕審查、編輯倫理、資料共享及作者貢獻的聲明標準，並研究這些標準在全球範圍內的實施現狀與改進路徑。" },
-          { num:"04", name:"青少年數位治理研究",           en:"Youth Digital Governance", status:"進行中", center:"政策與社會研究中心", start:"2026", href:"/projects/youth-digital-governance", desc:"研究數位治理框架對青少年數位生活環境的影響，關注平台監管、內容審核、數位權利保護及青少年網路安全政策的有效性與局限性。" },
-          { num:"05", name:"人工智慧與未來社會研究",       en:"AI and Future Society Research", status:"籌備中", center:"人工智慧與未來社會研究中心", start:"2026", href:"/projects/ai-future-society", desc:"研究人工智慧治理、倫理規範及AI對學術傳播與知識生產的影響，探討AI時代學術誠信、知識生產模式與人機協作的未來走向。" },
+          { num:"01", name:"全景開放學術索引項目（POSI）", en:"全景開放學術索引項目（POSI）", status:"待上線", center:"學術索引與評價研究中心", start:"2026", href:"/projects/posi-scholarly-indexing", desc:"旗艦研究與基礎設施建設項目。POSI資料庫已開發完畢，正在等待正式上線；平台將提供透明、全面、方法嚴謹的學術期刊開放索引資訊。" },
+          { num:"02", name:"第十五個五年規劃研究",         en:"第十五個五年規劃研究", status:"進行中", center:"政策與社會研究中心", start:"2026", href:"/projects/fifteenth-five-year-plan-studies", desc:"系統研究中國第十五個五年規劃（2026—2030），深入分析其對高等教育體制、科學研究優先領域及社會政策發展的影響與啟示。" },
+          { num:"03", name:"學術出版標準研究項目",         en:"學術出版標準研究項目", status:"進行中", center:"學術出版研究中心", start:"2026", href:"/projects/scholarly-publishing-standards", desc:"系統梳理和分析學術出版領域的現行標準與規範，涵蓋同儕審查、編輯倫理、資料共享及作者貢獻的聲明標準，並研究這些標準在全球範圍內的實施現狀與改進路徑。" },
+          { num:"04", name:"青少年數位治理研究",           en:"青少年數位治理研究", status:"進行中", center:"政策與社會研究中心", start:"2026", href:"/projects/youth-digital-governance", desc:"研究數位治理框架對青少年數位生活環境的影響，關注平台監管、內容審核、數位權利保護及青少年網路安全政策的有效性與局限性。" },
+          { num:"05", name:"人工智慧與未來社會研究",       en:"人工智慧與未來社會研究", status:"籌備中", center:"人工智慧與未來社會研究中心", start:"2026", href:"/projects/ai-future-society", desc:"研究人工智慧治理、倫理規範及AI對學術傳播與知識生產的影響，探討AI時代學術誠信、知識生產模式與人機協作的未來走向。" },
         ].map((p) => (
           <div style="display:grid;grid-template-columns:56px 1fr 160px;gap:32px;padding:36px 0;border-bottom:1px solid var(--border-light);align-items:start;">
             <span style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);padding-top:4px;">{p.num}</span>

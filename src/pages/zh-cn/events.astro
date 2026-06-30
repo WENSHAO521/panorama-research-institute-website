@@ -16,12 +16,12 @@ import PageHero from '../../components/PageHero.astro';
       <div class="section-label" style="margin-bottom:32px;">活动类型</div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
         {[
-          { type:"学术会议", en:"Conferences",      href:"/events/conferences",      desc:"聚焦研究院核心研究领域的国际学术会议，接受原创研究论文，经同行评审遴选发言人。" },
-          { type:"学术研讨会", en:"Seminars",        href:"/events/seminars",          desc:"小型专题研讨会，邀请研究院学者及访问研究人员就特定研究议题深入交流。" },
-          { type:"研究工作坊", en:"Workshops",       href:"/events/workshops",         desc:"以实践为导向的小型学术工作坊，聚焦方法论、研究设计或具体研究议题。" },
-          { type:"培训项目", en:"Training Programs", href:"/events/training-programs",desc:"面向期刊编辑、研究人员及学术实践者的能力建设培训项目。" },
-          { type:"征稿启事", en:"Calls for Papers",  href:"/events/calls-for-papers", desc:"面向会议和特刊的学术论文征集公告，欢迎符合研究领域的原创投稿。" },
-          { type:"征集书稿", en:"Calls for Chapters",href:"/events/calls-for-chapters",desc:"面向研究院主编学术文集的书稿征集公告，欢迎学术界同仁参与投稿。" },
+          { type:"学术会议", en:"学术会议",      href:"/events/conferences",      desc:"聚焦研究院核心研究领域的国际学术会议，接受原创研究论文，经同行评审遴选发言人。" },
+          { type:"学术研讨会", en:"学术研讨会",        href:"/events/seminars",          desc:"小型专题研讨会，邀请研究院学者及访问研究人员就特定研究议题深入交流。" },
+          { type:"研究工作坊", en:"研究工作坊",       href:"/events/workshops",         desc:"以实践为导向的小型学术工作坊，聚焦方法论、研究设计或具体研究议题。" },
+          { type:"培训项目", en:"培训项目", href:"/events/training-programs",desc:"面向期刊编辑、研究人员及学术实践者的能力建设培训项目。" },
+          { type:"征稿启事", en:"征稿启事",  href:"/events/calls-for-papers", desc:"面向会议和特刊的学术论文征集公告，欢迎符合研究领域的原创投稿。" },
+          { type:"征集书稿", en:"征集书稿",href:"/events/calls-for-chapters",desc:"面向研究院主编学术文集的书稿征集公告，欢迎学术界同仁参与投稿。" },
         ].map((item) => (
           <a href={item.href} class="card" style="border-radius:0;border:none;display:block;">
             <div style="font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:4px;">{item.type}</div>

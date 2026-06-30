@@ -58,10 +58,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div style="max-width:680px;margin:0 auto;text-align:center;">
       <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:24px;">机构声明</div>
       <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:20px;font-weight:400;line-height:1.5;">
-        An Academic Platform within Panorama Scholarly Group
+        全景学术集团旗下的学术平台
       </h2>
       <p style="font-size:15.5px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;">
-        Panorama Research Institute operates as an independent academic platform under the governance of Panorama Scholarly Group. It is an internal research and academic development division and is not a separate legal entity.
+        全景研究院在全景学术集团治理框架下作为独立学术平台运行，是集团内部研究与学术发展部门，不具备独立法人资格。
       </p>
       <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
         <a href="/zh-cn/about"   class="btn btn-secondary">了解更多</a>
@@ -80,10 +80,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
       {[
-        { num:"01", name:"学术出版研究中心",       en:"Center for Scholarly Publishing Studies",      status:"进行中", desc:"研究开放获取模式、同行评审制度、出版伦理及学术传播体系的演变。" },
-        { num:"02", name:"学术索引与评价研究中心", en:"Center for Scholarly Indexing and Evaluation", status:"进行中", desc:"研究期刊索引体系、引文指标、期刊质量框架及数据库透明度问题。" },
-        { num:"03", name:"政策与社会研究中心",     en:"Center for Policy and Social Research",         status:"进行中", desc:"研究高等教育政策、科学治理、社会治理及数字治理的政策维度。" },
-        { num:"04", name:"人工智能与未来社会研究中心","en":"Center for AI and Future Society",          status:"即将开展", desc:"研究人工智能治理、AI伦理、人机交互及AI对学术传播的影响。" },
+        { num:"01", name:"学术出版研究中心",       en:"学术出版研究中心",      status:"进行中", desc:"研究开放获取模式、同行评审制度、出版伦理及学术传播体系的演变。" },
+        { num:"02", name:"学术索引与评价研究中心", en:"学术索引与评价研究中心", status:"进行中", desc:"研究期刊索引体系、引文指标、期刊质量框架及数据库透明度问题。" },
+        { num:"03", name:"政策与社会研究中心",     en:"政策与社会研究中心",         status:"进行中", desc:"研究高等教育政策、科学治理、社会治理及数字治理的政策维度。" },
+        { num:"04", name:"人工智能与未来社会研究中心",en:"人工智能与未来社会研究中心",          status:"即将开展", desc:"研究人工智能治理、AI伦理、人机交互及AI对学术传播的影响。" },
       ].map((c) => (
         <div class="card" style="border-radius:0;border:none;">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
@@ -141,12 +141,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <h2 class="section-title">出版物类型</h2>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
       {[
-        { type:"研究报告",   en:"Research Reports",   desc:"呈现原创研究成果的全长报告，经内部评审与外部同行评审。" },
-        { type:"工作论文",   en:"Working Papers",     desc:"呈现初步研究发现或理论框架的简短学术文章，经内部编辑评审。" },
-        { type:"政策简报",   en:"Policy Briefs",      desc:"基于证据的简洁文件，向决策者呈现研究发现与政策建议。" },
-        { type:"主编学术文集", en:"Edited Volumes",   desc:"多位学者围绕特定主题合作撰写的学术文集，与学术出版社合作出版。" },
-        { type:"年度报告",   en:"Annual Reports",     desc:"年度机构报告，全面记录研究院的研究活动、出版物、活动及治理情况。" },
-        { type:"指南与标准", en:"Guidelines",         desc:"基于研究成果开发，供期刊、出版社及学术机构参考使用的实用标准文件。" },
+        { type:"研究报告",   en:"研究报告",   desc:"呈现原创研究成果的全长报告，经内部评审与外部同行评审。" },
+        { type:"工作论文",   en:"工作论文",     desc:"呈现初步研究发现或理论框架的简短学术文章，经内部编辑评审。" },
+        { type:"政策简报",   en:"政策简报",      desc:"基于证据的简洁文件，向决策者呈现研究发现与政策建议。" },
+        { type:"主编学术文集", en:"主编学术文集",   desc:"多位学者围绕特定主题合作撰写的学术文集，与学术出版社合作出版。" },
+        { type:"年度报告",   en:"年度报告",     desc:"年度机构报告，全面记录研究院的研究活动、出版物、活动及治理情况。" },
+        { type:"指南与标准", en:"指南与标准",         desc:"基于研究成果开发，供期刊、出版社及学术机构参考使用的实用标准文件。" },
       ].map((item) => (
         <div class="card" style="border-radius:0;border:none;">
           <div style="font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:4px;">{item.type}</div>

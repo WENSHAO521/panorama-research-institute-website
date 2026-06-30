@@ -79,7 +79,7 @@ const currentPath = Astro.url.pathname;
               </div>
             </>
           ) : (
-            <a href={item.href} class="nav-trigger">{item.label}</a>
+            <a href={item.href} class={`nav-trigger${currentPath === item.href ? ' active' : ''}`}>{item.label}</a>
           )}
         </div>
       ))}

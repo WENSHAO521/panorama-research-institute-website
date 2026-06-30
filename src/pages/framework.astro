@@ -34,22 +34,24 @@ const frameworkUnits = [
         </p>
       </div>
 
-      <div class="framework-map-card">
-        <div class="framework-map-core">
-          <div class="framework-map-parent">
+      <div class="org-structure-card">
+        <div class="org-hierarchy">
+          <div class="org-node org-node-parent">
             Panorama Scholarly Group
           </div>
-          <div class="framework-map-institute">
+          <div class="org-connector"></div>
+          <div class="org-node org-node-institute">
             Panorama Research Institute
           </div>
-        </div>
-        <div class="framework-map-grid">
-          {frameworkUnits.map((unit, index) => (
-            <div class="framework-map-unit">
-              <div class="framework-map-unit-num">{String(index + 1).padStart(2, '0')}</div>
-              <div class="framework-map-unit-title">{unit}</div>
-            </div>
-          ))}
+          <div class="org-branch"></div>
+          <div class="org-unit-grid org-unit-grid-compact">
+            {frameworkUnits.map((unit, index) => (
+              <div class="org-unit-card">
+                <div class="org-unit-index">{String(index + 1).padStart(2, '0')}</div>
+                <div class="org-unit-title">{unit}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

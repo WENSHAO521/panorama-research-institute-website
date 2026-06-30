@@ -328,100 +328,6 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   color: var(--text-muted);
 }
 
-/* ── Institute Framework Map ── */
-.framework-map-card {
-  position: relative;
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 1px;
-  max-width: 920px;
-  margin-top: 8px;
-  border: 1px solid var(--border-light);
-  background: var(--border-light);
-  overflow: hidden;
-}
-.framework-map-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 100%;
-  background: var(--text-main);
-}
-.framework-map-core {
-  position: relative;
-  min-height: 300px;
-  padding: 30px 28px;
-  background: var(--bg-white);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 18px;
-}
-.framework-map-core::after {
-  content: "";
-  position: absolute;
-  right: -21px;
-  top: 50%;
-  width: 42px;
-  height: 1px;
-  background: var(--border-medium);
-  z-index: 2;
-}
-.framework-map-parent,
-.framework-map-institute {
-  font-family: var(--font-sans);
-  letter-spacing: 0.03em;
-  line-height: 1.35;
-}
-.framework-map-parent {
-  padding: 16px 18px;
-  border: 1px solid var(--border-light);
-  color: var(--text-muted);
-  font-size: 13.5px;
-  font-weight: 600;
-  background: var(--bg-soft);
-}
-.framework-map-institute {
-  padding: 18px;
-  border: 1px solid var(--text-main);
-  box-shadow: inset 0 0 0 1px var(--text-main);
-  color: var(--text-main);
-  font-size: 15px;
-  font-weight: 700;
-  background: var(--bg-white);
-}
-.framework-map-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
-  background: var(--border-light);
-}
-.framework-map-unit {
-  min-height: 128px;
-  padding: 22px;
-  background: var(--bg-white);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: background 0.16s ease;
-}
-.framework-map-unit:hover { background: var(--bg-soft); }
-.framework-map-unit-num {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-muted);
-  line-height: 1;
-}
-.framework-map-unit-title {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.35;
-  color: var(--text-main);
-}
-
 /* ── Publication Item ── */
 .publication-item {
   display: grid;
@@ -936,20 +842,6 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   .org-unit-grid-compact {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .framework-map-card {
-    grid-template-columns: 1fr;
-  }
-  .framework-map-core {
-    min-height: auto;
-  }
-  .framework-map-core::after {
-    right: auto;
-    left: 50%;
-    top: auto;
-    bottom: -21px;
-    width: 1px;
-    height: 42px;
-  }
 
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .footer-logo-area { grid-column: span 2; }
@@ -968,11 +860,6 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
     grid-template-columns: 1fr;
   }
   .org-unit-card { min-height: 108px; }
-  .framework-map-grid { grid-template-columns: 1fr; }
-  .framework-map-core,
-  .framework-map-unit {
-    padding: 22px;
-  }
   .footer-grid   { grid-template-columns: 1fr; }
   .footer-logo-area { grid-column: span 1; }
 }

@@ -1,5 +1,5 @@
 ---
-import Logo from './Logo.astro';
+import OriginalResearchLogo from './OriginalResearchLogo.astro';
 import LanguagePicker from './LanguagePicker.astro';
 import { getNavigation } from '../i18n/navigation';
 import { useTranslations } from '../i18n/ui';
@@ -18,7 +18,7 @@ const currentPath = Astro.url.pathname;
   <div class="container site-header-inner">
     <!-- Logo -->
     <a href={lang === 'en' ? '/' : `/${lang}`} class="site-logo" aria-label="Panorama Research Institute - Home" data-no-translate>
-      <Logo />
+      <OriginalResearchLogo />
     </a>
 
     <!-- Desktop Nav -->
@@ -100,7 +100,7 @@ const currentPath = Astro.url.pathname;
 <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <div class="mobile-nav-header">
     <a href={lang === 'en' ? '/' : `/${lang}`} class="site-logo" data-no-translate>
-      <Logo />
+      <OriginalResearchLogo />
     </a>
     <button class="mobile-close" id="mobile-close" aria-label="Close menu" type="button">&#x2715;</button>
   </div>

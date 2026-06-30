@@ -193,10 +193,30 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 /* ── Statement Box ── */
 .statement-box {
-  background: var(--bg-white);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-soft) 100%);
   border: 1px solid var(--border-light);
-  border-left: 4px solid var(--text-main);
-  padding: 28px 32px;
+  padding: 32px 36px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.72);
+}
+.statement-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--text-main) 0 76px, var(--border-light) 76px 100%);
+}
+.statement-box::after {
+  content: "";
+  position: absolute;
+  top: 22px;
+  bottom: 22px;
+  left: 18px;
+  width: 1px;
+  background: var(--border-light);
 }
 
 /* ── Publication Item ── */

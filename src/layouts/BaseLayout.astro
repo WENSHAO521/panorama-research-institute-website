@@ -118,8 +118,13 @@ const phraseTranslations = {
         const activeOption = document.querySelector(`[data-language-option="${lang}"]`);
         const activeLabel = activeOption?.querySelector('.lang-name')?.textContent?.trim()
           || activeOption?.textContent?.trim();
+        const activeCode = activeOption?.querySelector('.lang-code, .lang-inline-code')?.textContent?.trim()
+          || (lang === 'en' ? 'EN' : lang === 'zh-cn' ? 'CN' : 'TW');
         document.querySelectorAll('.lang-current').forEach((node) => {
           if (activeLabel) node.textContent = activeLabel;
+        });
+        document.querySelectorAll('.lang-current-short').forEach((node) => {
+          node.textContent = activeCode;
         });
       }
 

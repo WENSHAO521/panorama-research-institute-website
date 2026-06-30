@@ -245,25 +245,30 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .platform-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  border-top: 1px solid var(--border-light);
-  border-left: 1px solid var(--border-light);
+  gap: 14px;
 }
 .platform-card {
-  padding: 28px 24px;
-  border-right: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
+  min-height: 278px;
+  padding: 18px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
   background: var(--bg-white);
-  transition: background 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
-.platform-card:hover { background: var(--bg-soft); }
+.platform-card:hover {
+  border-color: var(--border-medium);
+  box-shadow: 0 14px 32px rgba(31, 35, 38, 0.07);
+  transform: translateY(-2px);
+}
 .platform-card-name {
   font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 700;
   color: var(--text-main);
   margin-bottom: 8px;
 }
-.platform-card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+.platform-card-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.55; }
 
 /* ── Nav Header ── */
 .site-header {

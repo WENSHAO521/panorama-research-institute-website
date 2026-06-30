@@ -1,9 +1,13 @@
 ---
 import { getBasePath, getLangFromUrl, type Lang } from '../i18n/utils';
 
+interface Props {
+  variant?: 'dropdown' | 'inline';
+}
+
+const { variant = 'dropdown' } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
-const path = Astro.url.pathname;
-const basePath = getBasePath(path);
+const basePath = getBasePath(Astro.url.pathname);
 
 const langs: { code: Lang; label: string }[] = [
   { code: 'en',    label: 'English' },
@@ -12,37 +16,56 @@ const langs: { code: Lang; label: string }[] = [
 ];
 
 const currentLang = langs.find((l) => l.code === lang) ?? langs[0];
+const currentCode = currentLang.code === 'en' ? 'EN' : currentLang.code === 'zh-cn' ? 'CN' : 'TW';
 ---
 
-<details class="lang-picker">
-  <summary class="lang-trigger" aria-label="Language selection">
-    <span class="lang-icon" aria-hidden="true">
-      <svg viewBox="0 0 20 20" focusable="false">
-        <circle cx="10" cy="10" r="7.25"></circle>
-        <path d="M3 10h14"></path>
-        <path d="M10 2.75c2 2.05 3 4.47 3 7.25s-1 5.2-3 7.25"></path>
-        <path d="M10 2.75C8 4.8 7 7.22 7 10s1 5.2 3 7.25"></path>
-      </svg>
-    </span>
-    <span class="lang-current">{currentLang.label}</span>
-    <span class="lang-chevron" aria-hidden="true"></span>
-  </summary>
-  <div class="lang-menu" role="menu" aria-label="Language selection">
+{variant === 'inline' ? (
+  <div class="lang-inline" role="group" aria-label="Language selection">
     {langs.map((l) => (
       <a
         href={basePath}
         data-language-option={l.code}
-        class={`lang-opt${lang === l.code ? ' lang-active' : ''}`}
+        class={`lang-inline-opt${lang === l.code ? ' lang-active' : ''}`}
         aria-current={lang === l.code ? 'true' : undefined}
         hreflang={l.code}
-        role="menuitem"
       >
-        <span class="lang-name">{l.label}</span>
-        <span class="lang-code">{l.code === 'en' ? 'EN' : l.code === 'zh-cn' ? 'CN' : 'TW'}</span>
+        <span class="lang-inline-name">{l.label}</span>
+        <span class="lang-inline-code">{l.code === 'en' ? 'EN' : l.code === 'zh-cn' ? 'CN' : 'TW'}</span>
       </a>
     ))}
   </div>
-</details>
+) : (
+  <details class="lang-picker">
+    <summary class="lang-trigger" aria-label="Language selection">
+      <span class="lang-icon" aria-hidden="true">
+        <svg viewBox="0 0 20 20" focusable="false">
+          <circle cx="10" cy="10" r="7.25"></circle>
+          <path d="M3 10h14"></path>
+          <path d="M10 2.75c2 2.05 3 4.47 3 7.25s-1 5.2-3 7.25"></path>
+          <path d="M10 2.75C8 4.8 7 7.22 7 10s1 5.2 3 7.25"></path>
+        </svg>
+      </span>
+      <span class="lang-current">{currentLang.label}</span>
+      <span class="lang-current-short" aria-hidden="true">{currentCode}</span>
+      <span class="lang-chevron" aria-hidden="true"></span>
+    </summary>
+    <div class="lang-menu" role="menu" aria-label="Language selection">
+      {langs.map((l) => (
+        <a
+          href={basePath}
+          data-language-option={l.code}
+          class={`lang-opt${lang === l.code ? ' lang-active' : ''}`}
+          aria-current={lang === l.code ? 'true' : undefined}
+          hreflang={l.code}
+          role="menuitem"
+        >
+          <span class="lang-name">{l.label}</span>
+          <span class="lang-code">{l.code === 'en' ? 'EN' : l.code === 'zh-cn' ? 'CN' : 'TW'}</span>
+        </a>
+      ))}
+    </div>
+  </details>
+)}
 
 <style>
 .lang-picker {
@@ -110,6 +133,14 @@ const currentLang = langs.find((l) => l.code === lang) ?? langs[0];
   font-weight: 600;
   line-height: 1;
 }
+.lang-current-short {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
 .lang-chevron {
   width: 7px;
   height: 7px;
@@ -160,7 +191,7 @@ const currentLang = langs.find((l) => l.code === lang) ?? langs[0];
 .lang-active .lang-code {
   color: var(--accent-steel);
 }
-.lang-active::after {
+.lang-opt.lang-active::after {
   content: "";
   width: 5px;
   height: 5px;
@@ -171,19 +202,70 @@ const currentLang = langs.find((l) => l.code === lang) ?? langs[0];
 
 @media (max-width: 768px) {
   .lang-picker {
-    width: 100%;
+    width: auto;
   }
   .lang-trigger {
-    width: 100%;
+    min-height: 38px;
+    padding: 0 10px;
     justify-content: center;
-    border-radius: 2px;
   }
   .lang-menu {
-    position: static;
-    width: 100%;
-    margin-top: 8px;
-    box-shadow: none;
-    border-radius: 2px;
+    min-width: 176px;
+    max-width: calc(100vw - 32px);
+  }
+  .lang-current {
+    display: none;
+  }
+  .lang-current-short {
+    display: inline-flex;
+  }
+}
+
+.lang-inline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  width: 100%;
+  padding: 6px;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  background: var(--bg-soft);
+}
+.lang-inline-opt {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 7px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  transition: background 0.12s ease, color 0.12s ease, box-shadow 0.12s ease;
+  white-space: nowrap;
+}
+.lang-inline-opt:hover,
+.lang-inline-opt.lang-active {
+  background: var(--bg-white);
+  color: var(--text-main);
+  box-shadow: 0 1px 3px rgba(31, 35, 38, 0.08);
+}
+.lang-inline-code {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 420px) {
+  .lang-inline-opt {
+    gap: 0;
+    font-size: 12.5px;
+    padding: 0 4px;
+  }
+  .lang-inline-code {
+    display: none;
   }
 }
 </style>

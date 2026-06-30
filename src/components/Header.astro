@@ -134,6 +134,6 @@ const currentPath = Astro.url.pathname;
 
   <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;">
     <a href={lang === 'en' ? '/contact' : `/${lang}/contact`} class="btn btn-primary" style="width:100%;justify-content:center;">{t('btn.contact')}</a>
-    <div style="display:flex;justify-content:center;"><LanguagePicker /></div>
+    <LanguagePicker variant="inline" />
   </div>
 </div>

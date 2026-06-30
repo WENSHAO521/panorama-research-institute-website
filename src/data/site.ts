@@ -46,7 +46,7 @@ export const platforms = [
   },
   {
     name: "Panorama Scholar Profiles",
-    href: "https://scholars.panorama-sg.com",
+    href: "https://profiles.panorama-sg.com",
     logo: "https://panorama-sg.com/editorial-directory-logo-transparent.png",
     logoTheme: "light",
     desc: "Scholar profile and academic record platform",

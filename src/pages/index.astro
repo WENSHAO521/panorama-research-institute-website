@@ -386,15 +386,20 @@ import { site, platforms, researchAreas, researchCenters, featuredProjects, feat
     <div style="margin-bottom:40px;">
       <h2 class="section-title">Part of the Panorama Scholarly Ecosystem</h2>
     </div>
-    <div class="platform-grid">
+    <div class="platform-grid platform-grid-refined">
       {platforms.map((p) => (
         <a href={p.href} target="_blank" rel="noopener noreferrer" class="platform-card">
           <div class={`platform-logo-box ${p.logoTheme === 'dark' ? 'platform-logo-box-dark' : ''}`}>
             <img src={p.logo} alt={`${p.name} logo`} loading="lazy" class="platform-logo" />
+            <span class="platform-logo-fallback">{p.name}</span>
           </div>
-          <div class="platform-card-name">{p.name}</div>
-          <div class="platform-card-desc">{p.desc}</div>
-          <div style="margin-top:14px;font-size:12px;color:var(--accent-steel);">Visit &rarr;</div>
+          <div class="platform-card-body">
+            <div>
+              <div class="platform-card-name">{p.name}</div>
+              <div class="platform-card-desc">{p.desc}</div>
+            </div>
+            <div class="platform-card-action">Visit <span aria-hidden="true">&rarr;</span></div>
+          </div>
         </a>
       ))}
     </div>
@@ -460,23 +465,62 @@ import { site, platforms, researchAreas, researchCenters, featuredProjects, feat
   background: var(--bg-soft);
 }
 .platform-logo-box {
-  height: 64px;
+  height: 96px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 12px 0;
-  margin-bottom: 18px;
+  justify-content: center;
+  gap: 8px;
+  padding: 18px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(31, 35, 38, 0.10);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247,247,245,0.92));
 }
 .platform-logo-box-dark {
-  background: var(--bg-dark);
-  padding: 14px 16px;
-  border-radius: 2px;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255,255,255,0.10), transparent 32%),
+    linear-gradient(135deg, #252A2E, #15191C);
+  border-color: rgba(31, 35, 38, 0.28);
 }
 .platform-logo {
   width: auto;
-  max-width: 100%;
-  max-height: 38px;
+  max-width: 84%;
+  max-height: 34px;
   object-fit: contain;
+}
+.platform-logo-fallback {
+  max-width: 100%;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.25;
+  text-align: center;
+  text-transform: uppercase;
+}
+.platform-logo-box-dark .platform-logo-fallback {
+  color: rgba(255,255,255,0.72);
+}
+.platform-card-body {
+  min-height: 132px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+}
+.platform-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--accent-steel);
+  border-bottom: 1px solid rgba(55, 90, 107, 0.28);
+  line-height: 1.35;
 }
 
 @media (max-width: 900px) {

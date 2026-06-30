@@ -161,7 +161,7 @@ export const navigation: NavItem[] = [
       { label: "Panorama Journals",           href: "https://journals.panorama-sg.com",    external: true },
       { label: "Panorama Books",              href: "https://books.panorama-sg.com",       external: true },
       { label: "POSI Database",               href: "https://posi.panorama-sg.com",        external: true },
-      { label: "Panorama Scholar Profiles",   href: "https://scholars.panorama-sg.com",   external: true },
+      { label: "Panorama Scholar Profiles",   href: "https://profiles.panorama-sg.com",   external: true },
     ],
   },
 ];

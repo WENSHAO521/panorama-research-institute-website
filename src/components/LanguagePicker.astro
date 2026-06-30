@@ -1,8 +1,9 @@
 ---
-import { getLangFromUrl, getLocalizedPath, type Lang } from '../i18n/utils';
+import { getBasePath, getLangFromUrl, getLocalizedPath, type Lang } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const path = Astro.url.pathname;
+const basePath = getBasePath(path);
 
 const langs: { code: Lang; label: string }[] = [
   { code: 'en',    label: 'English' },
@@ -22,7 +23,9 @@ const currentLang = langs.find((l) => l.code === lang) ?? langs[0];
   <div class="lang-menu" role="menu" aria-label="Language selection">
     {langs.map((l) => (
       <a
-        href={getLocalizedPath(l.code, path)}
+        href={basePath}
+        data-language-option={l.code}
+        data-localized-path={getLocalizedPath(l.code, path)}
         class={`lang-opt${lang === l.code ? ' lang-active' : ''}`}
         aria-current={lang === l.code ? 'true' : undefined}
         hreflang={l.code}

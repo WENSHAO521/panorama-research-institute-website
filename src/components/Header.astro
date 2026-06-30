@@ -137,36 +137,3 @@ const currentPath = Astro.url.pathname;
     <div style="display:flex;justify-content:center;"><LanguagePicker /></div>
   </div>
 </div>
-
-<script>
-  const toggle    = document.getElementById('menu-toggle');
-  const closeBtn  = document.getElementById('mobile-close');
-  const mobileNav = document.getElementById('mobile-nav');
-
-  toggle?.addEventListener('click', () => { mobileNav?.classList.add('open'); document.body.style.overflow = 'hidden'; });
-  closeBtn?.addEventListener('click', () => { mobileNav?.classList.remove('open'); document.body.style.overflow = ''; });
-
-  document.querySelectorAll('.mobile-nav-trigger[data-target]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const sub = document.getElementById((btn as HTMLElement).dataset.target!);
-      sub?.classList.toggle('open');
-    });
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') { mobileNav?.classList.remove('open'); document.body.style.overflow = ''; }
-  });
-
-  document.querySelectorAll('.nav-item').forEach((item) => {
-    item.addEventListener('focusout', (e) => {
-      if (!item.contains((e as FocusEvent).relatedTarget as Node))
-        (item.querySelector('.nav-trigger') as HTMLElement)?.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  document.querySelectorAll('.nav-trigger[aria-haspopup]').forEach((btn) => {
-    btn.addEventListener('click', function(this: HTMLElement) {
-      this.setAttribute('aria-expanded', (this.getAttribute('aria-expanded') !== 'true').toString());
-    });
-  });
-</script>

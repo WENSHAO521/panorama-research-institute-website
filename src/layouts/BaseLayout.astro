@@ -2,7 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-import type { Lang } from '../i18n/utils';
+import { getBasePath, type Lang } from '../i18n/utils';
 
 interface Props {
   title?: string;
@@ -18,7 +18,7 @@ const {
   lang = 'en',
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://research.panorama-sg.com');
+const canonicalURL = new URL(getBasePath(Astro.url.pathname), Astro.site ?? 'https://research.panorama-sg.com');
 const fullTitle = title === 'Panorama Research Institute'
   ? title
   : `${title} | Panorama Research Institute`;
@@ -33,6 +33,7 @@ const fullTitle = title === 'Panorama Research Institute'
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {lang !== 'en' && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph -->
@@ -54,5 +55,266 @@ const fullTitle = title === 'Panorama Research Institute'
       <slot />
     </main>
     <Footer lang={lang} />
+    <script>
+      const LANGUAGE_STORAGE_KEY = 'panorama-language';
+      const SUPPORTED_LANGUAGES = ['en', 'zh-cn', 'zh-tw'];
+
+      function getPathLanguage(pathname) {
+        const firstSegment = pathname.split('/')[1];
+        return SUPPORTED_LANGUAGES.includes(firstSegment) && firstSegment !== 'en' ? firstSegment : null;
+      }
+
+      function getBasePath(pathname) {
+        const pathLanguage = getPathLanguage(pathname);
+        if (!pathLanguage) return pathname || '/';
+        const basePath = pathname.slice(pathLanguage.length + 1);
+        return basePath || '/';
+      }
+
+      function getLocalizedPath(lang, pathname) {
+        const basePath = getBasePath(pathname);
+        if (lang === 'en') return basePath;
+        return `/${lang}${basePath === '/' ? '' : basePath}`;
+      }
+
+      function getStoredLanguage() {
+        const stored = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+        return SUPPORTED_LANGUAGES.includes(stored) ? stored : 'en';
+      }
+
+      function setStoredLanguage(lang) {
+        window.localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+      }
+
+      function closeMobileNav() {
+        const mobileNav = document.getElementById('mobile-nav');
+        mobileNav?.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      function updateLanguagePicker(lang) {
+        document.querySelectorAll('[data-language-option]').forEach((node) => {
+          const link = node;
+          const optionLang = link.getAttribute('data-language-option');
+          const isActive = optionLang === lang;
+          link.classList.toggle('lang-active', isActive);
+          if (isActive) {
+            link.setAttribute('aria-current', 'true');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+
+        const activeLabel = document.querySelector(`[data-language-option="${lang}"]`)?.textContent?.trim();
+        document.querySelectorAll('.lang-current').forEach((node) => {
+          if (activeLabel) node.textContent = activeLabel;
+        });
+      }
+
+      function rewriteInternalLinks(lang) {
+        const origin = window.location.origin;
+
+        document.querySelectorAll('a[href]').forEach((anchor) => {
+          const href = anchor.getAttribute('href');
+          if (!href || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('#')) return;
+
+          let url;
+          try {
+            url = new URL(href, origin);
+          } catch {
+            return;
+          }
+
+          if (url.origin !== origin) return;
+
+          const basePath = getBasePath(url.pathname);
+          const cleanHref = `${basePath}${url.search}${url.hash}`;
+          anchor.setAttribute('href', cleanHref);
+
+          const localizedPath = getLocalizedPath(lang, basePath);
+          anchor.setAttribute('data-localized-path', `${localizedPath}${url.search}${url.hash}`);
+        });
+
+        document.querySelectorAll('[data-language-option]').forEach((node) => {
+          const optionLang = node.getAttribute('data-language-option') || 'en';
+          const targetPath = getLocalizedPath(optionLang, window.location.pathname);
+          node.setAttribute('href', getBasePath(window.location.pathname));
+          node.setAttribute('data-localized-path', `${targetPath}${window.location.search}${window.location.hash}`);
+        });
+
+        updateLanguagePicker(lang);
+      }
+
+      function mergeTextNode(currentNode, incomingNode) {
+        const incomingText = incomingNode.textContent || '';
+        if (!incomingText.trim() && !(currentNode.textContent || '').trim()) return;
+        currentNode.textContent = incomingText;
+      }
+
+      function mergeContentAttributes(currentElement, incomingElement) {
+        ['alt', 'aria-label', 'title', 'placeholder'].forEach((attribute) => {
+          const incomingValue = incomingElement.getAttribute(attribute);
+          if (incomingValue !== null) currentElement.setAttribute(attribute, incomingValue);
+        });
+      }
+
+      function syncContentOnly(currentNode, incomingNode) {
+        if (!currentNode || !incomingNode) return;
+
+        if (currentNode.nodeType === Node.TEXT_NODE && incomingNode.nodeType === Node.TEXT_NODE) {
+          mergeTextNode(currentNode, incomingNode);
+          return;
+        }
+
+        if (currentNode.nodeType !== Node.ELEMENT_NODE || incomingNode.nodeType !== Node.ELEMENT_NODE) return;
+
+        const currentElement = currentNode;
+        const incomingElement = incomingNode;
+        const ignoredTags = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEMPLATE']);
+        if (ignoredTags.has(currentElement.tagName) || ignoredTags.has(incomingElement.tagName)) return;
+
+        mergeContentAttributes(currentElement, incomingElement);
+
+        const currentChildren = Array.from(currentElement.childNodes);
+        const incomingChildren = Array.from(incomingElement.childNodes);
+        const length = Math.min(currentChildren.length, incomingChildren.length);
+
+        for (let i = 0; i < length; i += 1) {
+          syncContentOnly(currentChildren[i], incomingChildren[i]);
+        }
+      }
+
+      function syncSectionContent(selector, incomingDocument) {
+        const current = document.querySelector(selector);
+        const incoming = incomingDocument.querySelector(selector);
+        if (current && incoming) syncContentOnly(current, incoming);
+      }
+
+      async function applyLanguage(lang, options = {}) {
+        const shouldPersist = options.persist !== false;
+        const shouldScroll = options.scroll === true;
+        const basePath = getBasePath(window.location.pathname);
+        const fetchPath = `${getLocalizedPath(lang, basePath)}${window.location.search}`;
+
+        if (shouldPersist) setStoredLanguage(lang);
+
+        try {
+          const response = await fetch(fetchPath, { headers: { 'X-Requested-With': 'fetch' } });
+          if (!response.ok) throw new Error(`Unable to load ${fetchPath}`);
+
+          const html = await response.text();
+          const incomingDocument = new DOMParser().parseFromString(html, 'text/html');
+
+          document.title = incomingDocument.title;
+          document.documentElement.lang = lang;
+
+          const incomingDescription = incomingDocument.querySelector('meta[name="description"]');
+          const currentDescription = document.querySelector('meta[name="description"]');
+          if (incomingDescription && currentDescription) {
+            currentDescription.setAttribute('content', incomingDescription.getAttribute('content') || '');
+          }
+
+          syncSectionContent('#site-header', incomingDocument);
+          syncSectionContent('#mobile-nav', incomingDocument);
+          syncSectionContent('#main-content', incomingDocument);
+          syncSectionContent('.site-footer', incomingDocument);
+
+          closeMobileNav();
+          rewriteInternalLinks(lang);
+          if (shouldScroll) window.scrollTo({ top: 0, behavior: 'instant' });
+        } catch {
+          rewriteInternalLinks(lang);
+        }
+      }
+
+      function normalizeInitialUrl() {
+        const pathLanguage = getPathLanguage(window.location.pathname);
+        if (!pathLanguage) return null;
+
+        const basePath = getBasePath(window.location.pathname);
+        setStoredLanguage(pathLanguage);
+        window.location.replace(`${basePath}${window.location.search}${window.location.hash}`);
+        return pathLanguage;
+      }
+
+      document.addEventListener('click', (event) => {
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+
+        const languageLink = target.closest('[data-language-option]');
+        if (languageLink) {
+          event.preventDefault();
+          const lang = languageLink.getAttribute('data-language-option') || 'en';
+          document.querySelectorAll('.lang-picker[open]').forEach((picker) => picker.removeAttribute('open'));
+          applyLanguage(lang);
+          return;
+        }
+
+        const menuToggle = target.closest('#menu-toggle');
+        if (menuToggle) {
+          const mobileNav = document.getElementById('mobile-nav');
+          mobileNav?.classList.add('open');
+          document.body.style.overflow = 'hidden';
+          return;
+        }
+
+        const mobileClose = target.closest('#mobile-close');
+        if (mobileClose) {
+          closeMobileNav();
+          return;
+        }
+
+        const mobileTrigger = target.closest('.mobile-nav-trigger[data-target]');
+        if (mobileTrigger) {
+          const targetId = mobileTrigger.getAttribute('data-target');
+          if (targetId) document.getElementById(targetId)?.classList.toggle('open');
+          return;
+        }
+
+        const dropdownTrigger = target.closest('.nav-trigger[aria-haspopup]');
+        if (dropdownTrigger) {
+          dropdownTrigger.setAttribute('aria-expanded', String(dropdownTrigger.getAttribute('aria-expanded') !== 'true'));
+          return;
+        }
+
+        const link = target.closest('a[href]');
+        if (!link || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        if (link.target || link.hasAttribute('download')) return;
+
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+
+        const url = new URL(href, window.location.origin);
+        if (url.origin !== window.location.origin) return;
+
+        link.setAttribute('href', `${getBasePath(url.pathname)}${url.search}${url.hash}`);
+      });
+
+      document.addEventListener('focusout', (event) => {
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+        const navItem = target.closest('.nav-item');
+        if (!navItem || navItem.contains(event.relatedTarget)) return;
+        navItem.querySelector('.nav-trigger')?.setAttribute('aria-expanded', 'false');
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMobileNav();
+      });
+
+      window.addEventListener('popstate', () => {
+        const lang = getStoredLanguage();
+        if (lang !== 'en') applyLanguage(lang, { persist: false });
+      });
+
+      const redirectedLanguage = normalizeInitialUrl();
+      if (!redirectedLanguage) {
+        const initialLanguage = getStoredLanguage();
+        rewriteInternalLinks(initialLanguage);
+        if (initialLanguage !== 'en') {
+          applyLanguage(initialLanguage, { persist: false });
+        }
+      }
+    </script>
   </body>
 </html>

@@ -2,6 +2,7 @@ export const clientTranslationsCharter = {
   "zh-cn": {
     "The founding charter of Panorama Research Institute, establishing its institutional status, governance framework, research mission, and operational procedures.": "全景研究院创始章程，确立其机构性质、治理框架、研究使命和运行程序。",
     "Panorama Research Institute ? Effective 2026": "全景研究院 - 2026 年生效",
+    "Panorama Research Institute — Effective 2026": "全景研究院 - 2026 年生效",
     "The full name of this institution is": "本机构全称为",
     ". The abbreviated name is": "。简称为",
     "The Institute may be referred to as \"Panorama Research Institute\", \"PRI\", or \"the Institute\" in official documents, publications, and communications. No other abbreviated form is authorized for use in formal contexts.": "在官方文件、出版物和通信中，本院可称为“Panorama Research Institute”“PRI”或“the Institute”。正式语境中不得使用其他简称。",
@@ -113,6 +114,7 @@ export const clientTranslationsCharter = {
   "zh-tw": {
     "The founding charter of Panorama Research Institute, establishing its institutional status, governance framework, research mission, and operational procedures.": "全景研究院創始章程，確立其機構性質、治理框架、研究使命和運行程序。",
     "Panorama Research Institute ? Effective 2026": "全景研究院 - 2026 年生效",
+    "Panorama Research Institute — Effective 2026": "全景研究院 - 2026 年生效",
     "The full name of this institution is": "本機構全稱為",
     ". The abbreviated name is": "。簡稱為",
     "The Institute may be referred to as \"Panorama Research Institute\", \"PRI\", or \"the Institute\" in official documents, publications, and communications. No other abbreviated form is authorized for use in formal contexts.": "在官方文件、出版物和通信中，本院可稱為「Panorama Research Institute」「PRI」或「the Institute」。正式語境中不得使用其他簡稱。",

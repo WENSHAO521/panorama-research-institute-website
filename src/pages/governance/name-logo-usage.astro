@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Name and Logo Usage" description="Guidelines for authorized use of the Panorama Research Institute name and logo.">
+  <PageHero
+    title="Name and Logo Usage"
+    description="Guidelines for the authorized use of the Panorama Research Institute name, logo, and institutional identity in publications, events, and communications."
+    breadcrumbs={[{ label: "Governance", href: "/charter" }, { label: "Name and Logo Usage" }]}
+    tag="Governance Document"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        <div class="statement-box" style="margin-bottom:40px;">
+          <p style="font-size:15.5px;line-height:1.75;color:var(--text-secondary);">
+            Use of the Panorama Research Institute name, logo, and institutional identity is restricted to authorized purposes. Unauthorized use is prohibited and may constitute misrepresentation.
+          </p>
+        </div>
+        {[
+          { title: "Authorized Use", body: "The Institute's name and logo may be used in publications, presentations, and communications by affiliated researchers and official partners where the use accurately represents a genuine affiliation with or contribution to the Institute's work." },
+          { title: "Prohibited Uses", body: "The Institute's name and logo may not be used to imply endorsement of products, services, or positions not approved by the Institute; to misrepresent affiliation; or in any manner that is false, misleading, or likely to bring the Institute into disrepute." },
+          { title: "Logo Specifications", body: "The Institute's logo must be used in its original form without modification. Color variations, resizing, and alternative formats must comply with the logo usage guidelines available in the Resources section." },
+          { title: "Publication Use", body: "Institute publications must carry the Institute's name and, where appropriate, logo on the cover or title page. The institutional statement regarding the Institute's relationship to Panorama Scholarly Group must be included." },
+          { title: "Event Use", body: "Events organized or co-organized by the Institute may use the Institute's name and logo in accordance with these guidelines. Co-organized events must clearly distinguish the Institute's name from those of co-organizers." },
+          { title: "Third-Party Use", body: "Third parties wishing to reference the Institute's work must do so accurately and must not imply affiliation or endorsement without written authorization from the Institute." },
+          { title: "Requesting Authorization", body: "Requests for authorization to use the Institute's name or logo for purposes not covered above should be submitted to research@panorama-sg.com." },
+        ].map((s) => (
+          <div style="margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{s.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+          </div>
+        ))}
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/resources/logo-usage-guidelines" class="btn btn-primary">Logo Usage Guidelines PDF</a>
+          <a href="/contact"                          class="btn btn-secondary">Request Authorization</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

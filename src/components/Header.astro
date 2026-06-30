@@ -1,0 +1,183 @@
+---
+import Logo from './Logo.astro';
+import { navigation } from '../data/navigation';
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header" id="site-header">
+  <div class="container site-header-inner">
+    <!-- Logo -->
+    <a href="/" class="site-logo" aria-label="Panorama Research Institute - Home">
+      <Logo />
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="primary-nav" aria-label="Primary navigation">
+      {navigation.map((item) => (
+        <div class="nav-item" data-mega={item.mega ? 'true' : undefined}>
+          {item.mega ? (
+            <>
+              <button
+                class={`nav-trigger${currentPath.startsWith('/research') || currentPath.startsWith('/projects') ? ' active' : ''}`}
+                aria-haspopup="true"
+                aria-expanded="false"
+                type="button"
+              >
+                {item.label}
+                <svg class="nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M2 3.5L5 6.5L8 3.5" />
+                </svg>
+              </button>
+              <div class="mega-menu" role="region" aria-label={`${item.label} menu`}>
+                <div class="mega-menu-inner">
+                  {item.groups?.map((group) => (
+                    <div class="mega-col">
+                      <div class="mega-col-title">{group.title}</div>
+                      {group.links.map((link) => (
+                        <a href={link.href} class="mega-link">{link.label}</a>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          ) : item.children ? (
+            <>
+              <button
+                class={`nav-trigger${currentPath.startsWith(item.href) && item.href !== '#' ? ' active' : ''}`}
+                aria-haspopup="true"
+                aria-expanded="false"
+                type="button"
+              >
+                {item.label}
+                <svg class="nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M2 3.5L5 6.5L8 3.5" />
+                </svg>
+              </button>
+              <div class="dropdown" role="menu">
+                {item.children.map((child) => (
+                  <a
+                    href={child.href}
+                    class={`dropdown-link${child.external ? ' external' : ''}`}
+                    role="menuitem"
+                    target={child.external ? '_blank' : undefined}
+                    rel={child.external ? 'noopener noreferrer' : undefined}
+                  >
+                    {child.label}
+                  </a>
+                ))}
+              </div>
+            </>
+          ) : (
+            <a href={item.href} class="nav-trigger">{item.label}</a>
+          )}
+        </div>
+      ))}
+    </nav>
+
+    <!-- Right -->
+    <div class="header-right">
+      <a href="/contact" class="btn btn-primary">Contact</a>
+      <button class="menu-toggle" aria-label="Open menu" id="menu-toggle" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mobile-nav-header">
+    <a href="/" class="site-logo">
+      <Logo />
+    </a>
+    <button class="mobile-close" id="mobile-close" aria-label="Close menu" type="button">&#x2715;</button>
+  </div>
+
+  {navigation.map((item, idx) => (
+    <div class="mobile-nav-item">
+      {item.children || item.groups ? (
+        <>
+          <button class="mobile-nav-trigger" data-target={`msub-${idx}`} type="button">
+            {item.label}
+            <svg width="12" height="12" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M2 3.5L5 6.5L8 3.5" />
+            </svg>
+          </button>
+          <div class="mobile-sub" id={`msub-${idx}`}>
+            {item.children?.map((child) => (
+              <a
+                href={child.href}
+                target={child.external ? '_blank' : undefined}
+                rel={child.external ? 'noopener noreferrer' : undefined}
+              >
+                {child.label}
+              </a>
+            ))}
+            {item.groups?.flatMap((g) => g.links).map((link) => (
+              <a href={link.href}>{link.label}</a>
+            ))}
+          </div>
+        </>
+      ) : (
+        <a href={item.href} class="mobile-nav-trigger" style="display:block;text-align:left;">
+          {item.label}
+        </a>
+      )}
+    </div>
+  ))}
+
+  <div style="margin-top:32px;">
+    <a href="/contact" class="btn btn-primary" style="width:100%;justify-content:center;">Contact</a>
+  </div>
+</div>
+
+<script>
+  const toggle   = document.getElementById('menu-toggle');
+  const closeBtn = document.getElementById('mobile-close');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  toggle?.addEventListener('click', () => {
+    mobileNav?.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+  closeBtn?.addEventListener('click', () => {
+    mobileNav?.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+
+  // Mobile accordion
+  document.querySelectorAll('.mobile-nav-trigger[data-target]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = (btn as HTMLElement).dataset.target;
+      const sub = document.getElementById(target!);
+      sub?.classList.toggle('open');
+    });
+  });
+
+  // Close mobile nav on escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      mobileNav?.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Keyboard: close dropdowns when tabbing away
+  document.querySelectorAll('.nav-item').forEach((item) => {
+    item.addEventListener('focusout', (e) => {
+      if (!item.contains((e as FocusEvent).relatedTarget as Node)) {
+        (item.querySelector('.nav-trigger') as HTMLElement)?.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  document.querySelectorAll('.nav-trigger[aria-haspopup]').forEach((btn) => {
+    btn.addEventListener('click', function(this: HTMLElement) {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', (!expanded).toString());
+    });
+  });
+</script>

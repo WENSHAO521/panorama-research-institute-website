@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const categories = ["All", "Research Reports", "Working Papers", "Policy Briefs", "Edited Volumes", "Annual Reports"];
+
+const publications = [
+  { type: "Research Report", title: "Open Scholarly Indexing and Journal Transparency",     team: "Panorama Research Institute Research Team", year: "2026", status: "Published" },
+  { type: "Working Paper",   title: "Peer Review Models and Publication Ethics in the Digital Age", team: "Center for Scholarly Publishing Studies", year: "2026", status: "Published" },
+  { type: "Policy Brief",    title: "Youth Privacy and Platform Governance: Emerging Frameworks",   team: "Center for Policy and Social Research", year: "2026", status: "Published" },
+  { type: "Working Paper",   title: "AI-Assisted Peer Review: Opportunities and Ethical Boundaries", team: "Center for AI and Future Society", year: "2026", status: "Forthcoming" },
+  { type: "Research Report", title: "China's Fifteenth Five-Year Plan: Education and Research Policy Analysis", team: "Center for Policy and Social Research", year: "2026", status: "In Progress" },
+  { type: "Policy Brief",    title: "Journal Metadata Transparency: A Framework for Open Indexing", team: "Center for Scholarly Indexing and Evaluation", year: "2025", status: "Published" },
+];
+---
+
+<BaseLayout
+  title="Publications"
+  description="Research reports, working papers, policy briefs, edited volumes, and annual reports produced or supported by Panorama Research Institute."
+>
+  <PageHero
+    title="Publications"
+    description="Research reports, working papers, policy briefs, edited volumes, and annual reports produced or supported by the Institute."
+    breadcrumbs={[{ label: "Publications" }]}
+  />
+
+  <!-- Category Filter -->
+  <section style="background:var(--bg-white);border-bottom:1px solid var(--border-light);padding:20px 0;">
+    <div class="container">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        {categories.map((c, i) => (
+          <button class={`tag ${i === 0 ? 'tag-active' : ''}`} style="cursor:pointer;" type="button">{c}</button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications List -->
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      {publications.map((pub) => (
+        <div class="publication-item">
+          <div>
+            <div class="pub-type">{pub.type}</div>
+            <div style="margin-top:8px;">
+              <span class={`tag ${pub.status === 'Published' ? 'tag-active' : pub.status === 'Forthcoming' ? 'tag-steel' : ''}`} style="font-size:11px;">
+                {pub.status}
+              </span>
+            </div>
+          </div>
+          <div>
+            <div class="pub-title">{pub.title}</div>
+            <div class="pub-meta" style="margin-top:6px;">{pub.team}</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:16px;">{pub.year}</div>
+            {pub.status === 'Published' && (
+              <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+                <a href="#" class="btn btn-secondary" style="font-size:12px;padding:7px 14px;">PDF</a>
+                <a href="#" class="btn-ghost btn" style="font-size:12.5px;padding:0;">Cite &rarr;</a>
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Citation Format -->
+  <section class="section-compact" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="max-width:760px;">
+        <div class="section-label">Suggested Citation Format</div>
+        <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:20px;font-weight:400;">How to Cite Our Publications</h2>
+        <div style="background:var(--bg-soft);border:1px solid var(--border-light);padding:24px 28px;margin-bottom:20px;font-family:var(--font-mono);font-size:13.5px;line-height:1.7;color:var(--text-secondary);">
+          Panorama Research Institute. (2026). <em>Title of the report</em>. Panorama Scholarly Group.
+        </div>
+        <div style="background:var(--bg-soft);border:1px solid var(--border-light);padding:24px 28px;font-family:var(--font-mono);font-size:13px;line-height:1.7;color:var(--text-secondary);">
+          全景研究院：《报告标题》，Panorama Scholarly Group，2026年。
+        </div>
+        <div style="margin-top:24px;">
+          <a href="/publications/citation" class="btn btn-secondary">Full Citation Guidelines</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publication Guidelines -->
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">Publication Guidelines</h2>
+          <p style="font-size:14.5px;color:var(--text-secondary);">Standards and procedures for publications produced under the Institute's name.</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/publications/guidelines" class="btn btn-primary">View Guidelines</a>
+          <a href="/collaboration/research-project-proposal" class="btn btn-secondary">Submit a Proposal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

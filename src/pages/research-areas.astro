@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { researchAreas } from '../data/site';
+---
+
+<BaseLayout
+  title="Research Areas"
+  description="The six research areas of Panorama Research Institute, spanning scholarly publishing, journal evaluation, policy, AI, education, and cultural studies."
+>
+  <PageHero
+    title="Research Areas"
+    description="The Institute focuses on research fields that connect scholarly communication, journal evaluation, public policy, education, technology, and cultural studies."
+    breadcrumbs={[{ label: "Research" }, { label: "Research Areas" }]}
+  />
+
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+        {researchAreas.map((area) => (
+          <div class="area-card" style="border:none;border-radius:0;">
+            <div class="area-num">{area.num}</div>
+            <h2 class="area-title">{area.title}</h2>
+            <p class="area-text">{area.desc}</p>
+            <div style="margin-top:24px;">
+              <a href="/research-centers" class="btn-ghost btn" style="padding-left:0;font-size:13.5px;">
+                Related Centers &rarr;
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cross-cutting themes -->
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Cross-cutting Themes</div>
+      <h2 class="section-title">Connecting Research Across Areas</h2>
+      <p class="section-desc" style="margin-bottom:48px;">
+        The Institute's research areas share cross-cutting themes that connect work across centers and projects.
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;">
+        {[
+          { theme: "Open Access & Transparency",     desc: "How openness in research, data, and publishing infrastructure improves scholarly communication." },
+          { theme: "Governance & Accountability",    desc: "How institutions, platforms, and systems are governed and made accountable to scholarly communities." },
+          { theme: "Digital Transformation",         desc: "How digital technologies reshape academic publishing, education, policy, and cultural practice." },
+          { theme: "Ethics & Integrity",             desc: "How ethical principles guide research conduct, publication practices, and institutional behavior." },
+        ].map((t) => (
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <h3 style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{t.theme}</h3>
+            <p style="font-size:13.5px;line-height:1.65;color:var(--text-secondary);">{t.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:8px;">Interested in collaborating on research?</h2>
+          <p style="font-size:15px;color:var(--text-secondary);">Submit a research project proposal or contact the Institute.</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/collaboration/research-project-proposal" class="btn btn-primary">Submit a Proposal</a>
+          <a href="/research-centers" class="btn btn-secondary">View Research Centers</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
+  div[style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(4,1fr)"] { display: block !important; }
+}
+</style>

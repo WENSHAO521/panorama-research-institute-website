@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Amendment Procedure" description="The procedure for amending the Institute Charter and governance documents of Panorama Research Institute.">
+  <PageHero
+    title="Amendment Procedure"
+    description="The procedure for proposing, reviewing, approving, and implementing amendments to the Institute Charter and governance policies."
+    breadcrumbs={[{ label: "Governance", href: "/charter" }, { label: "Amendment Procedure" }]}
+    tag="Governance Document"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        {[
+          { step: "1", title: "Proposal Submission", body: "Any amendment to the Institute Charter or governance policies may be proposed by the Institute's leadership, affiliated researchers, or Panorama Scholarly Group. Proposals must be submitted in writing, setting out the proposed amendment and the reasons for it." },
+          { step: "2", title: "Review Period", body: "Proposed amendments are subject to a review period of not less than 30 days, during which relevant stakeholders may submit comments or objections. Review may be conducted by the Institute's leadership or a designated review committee." },
+          { step: "3", title: "Approval", body: "Amendments to the Institute Charter require approval by Panorama Scholarly Group. Amendments to governance policies require approval by the Institute's leadership. Approval must be documented in writing." },
+          { step: "4", title: "Implementation", body: "Approved amendments take effect from the date specified in the approval document. Where an effective date is not specified, the amendment takes effect 30 days after the date of approval." },
+          { step: "5", title: "Publication", body: "Approved amendments are published on the Institute's website as soon as practicable following approval. The version history of the Charter and governance documents is maintained for transparency." },
+          { step: "6", title: "Interpretation", body: "Questions of interpretation regarding the Charter or governance documents are resolved by the Institute's leadership in consultation with Panorama Scholarly Group. Interpretations are documented and published where appropriate." },
+        ].map((s) => (
+          <div style="display:grid;grid-template-columns:48px 1fr;gap:20px;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:28px;color:var(--border-medium);font-weight:700;line-height:1;">{s.step}</div>
+            <div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:12px;font-weight:400;">{s.title}</h2>
+              <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+            </div>
+          </div>
+        ))}
+        <a href="/charter" class="btn btn-primary">Return to Charter</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

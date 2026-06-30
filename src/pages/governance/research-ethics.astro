@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Research Ethics" description="The research ethics principles and guidelines of Panorama Research Institute.">
+  <PageHero
+    title="Research Ethics"
+    description="The ethical principles and standards guiding all research activities conducted or supported by Panorama Research Institute."
+    breadcrumbs={[{ label: "Governance", href: "/charter" }, { label: "Research Ethics" }]}
+    tag="Governance Document"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        {[
+          { title: "Integrity and Honesty", body: "All research must be conducted and reported with integrity and honesty. Fabrication, falsification, and plagiarism are strictly prohibited. Researchers must accurately represent their methods, data, and findings." },
+          { title: "Research Design and Methodology", body: "Research must be designed and conducted using appropriate and rigorous methodology. Researchers are responsible for ensuring the validity and reliability of their methods and data." },
+          { title: "Informed Consent and Participant Protection", body: "Research involving human participants must obtain appropriate informed consent. Participant privacy, confidentiality, and wellbeing must be protected at all stages of the research process." },
+          { title: "Data Management and Transparency", body: "Research data must be collected, managed, and stored in accordance with the Institute's Data and Documentation Policy. Data transparency and openness are encouraged wherever possible and appropriate." },
+          { title: "Authorship and Attribution", body: "Authorship must reflect genuine intellectual contribution to the research. Honorary or gift authorship is prohibited. All contributors must be appropriately acknowledged." },
+          { title: "Peer Review Integrity", body: "Researchers participating in peer review must maintain confidentiality, avoid conflicts of interest, and provide honest and constructive evaluations." },
+          { title: "Reporting and Disclosure", body: "Researchers must disclose all relevant affiliations, funding sources, and potential conflicts of interest in publications and presentations." },
+          { title: "Handling Misconduct", body: "Allegations of research misconduct are to be reported to the Institute's leadership and will be investigated in accordance with the Institute's governance procedures. Retaliation against those who report misconduct in good faith is prohibited." },
+        ].map((s) => (
+          <div style="margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{s.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+          </div>
+        ))}
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/charter"                             class="btn btn-primary">Institute Charter</a>
+          <a href="/governance/conflict-of-interest"     class="btn btn-secondary">Conflict of Interest</a>
+          <a href="/governance/publication-report-policy"class="btn btn-secondary">Publication Policy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

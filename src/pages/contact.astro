@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact Panorama Research Institute for research inquiries, collaboration proposals, and general information."
+>
+  <PageHero
+    title="Contact"
+    description="Reach the Institute for research inquiries, collaboration proposals, media requests, and general information."
+    breadcrumbs={[{ label: "Contact" }]}
+  />
+
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:72px;align-items:start;">
+
+        <!-- Left: Contact Info -->
+        <div>
+          <div style="margin-bottom:40px;">
+            <div class="section-label">Panorama Research Institute</div>
+            <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:20px;font-weight:400;">Get in Touch</h2>
+            <div style="display:flex;flex-direction:column;gap:20px;">
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:6px;">Email</div>
+                <a href="mailto:research@panorama-sg.com" style="font-size:16px;color:var(--accent-steel);">research@panorama-sg.com</a>
+              </div>
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:6px;">Website</div>
+                <a href="https://research.panorama-sg.com" style="font-size:15px;color:var(--text-secondary);">research.panorama-sg.com</a>
+              </div>
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:6px;">Parent Organization</div>
+                <a href="https://www.panorama-sg.com" target="_blank" rel="noopener" style="font-size:15px;color:var(--text-secondary);">Panorama Scholarly Group</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="statement-box">
+            <div style="font-size:12px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:10px;">Institutional Status</div>
+            <p style="font-size:13.5px;line-height:1.65;color:var(--text-secondary);">
+              An internal research and academic development division of Panorama Scholarly Group. Not a separate legal entity.
+            </p>
+          </div>
+
+          <div style="margin-top:32px;">
+            <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:16px;">Common Inquiries</div>
+            {[
+              { label: "Research Collaboration",   href: "/collaboration" },
+              { label: "Visiting Scholar Application", href: "/collaboration/visiting-scholar-application" },
+              { label: "Institute Charter",         href: "/charter" },
+              { label: "Publications",              href: "/publications" },
+            ].map((link) => (
+              <a href={link.href} style="display:flex;justify-content:space-between;padding:10px 0;font-size:14px;color:var(--text-secondary);border-bottom:1px solid var(--border-light);">
+                {link.label}
+                <span style="color:var(--text-muted);">&rarr;</span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <form style="background:var(--bg-white);border:1px solid var(--border-light);padding:40px;display:flex;flex-direction:column;gap:20px;">
+          <div style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:4px;font-weight:400;">Send a Message</div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label class="form-label" for="c-name">Name <span style="color:var(--accent-red);">*</span></label>
+              <input type="text" id="c-name" name="name" class="form-input" required placeholder="Your full name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="c-email">Email <span style="color:var(--accent-red);">*</span></label>
+              <input type="email" id="c-email" name="email" class="form-input" required placeholder="your@email.com" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="c-subject">Subject <span style="color:var(--accent-red);">*</span></label>
+            <input type="text" id="c-subject" name="subject" class="form-input" required placeholder="What is your inquiry about?" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="c-message">Message <span style="color:var(--accent-red);">*</span></label>
+            <textarea id="c-message" name="message" class="form-textarea" required placeholder="Please describe your inquiry in detail." style="min-height:180px;"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="justify-content:center;">Send Message</button>
+
+          <p style="font-size:12.5px;color:var(--text-muted);text-align:center;line-height:1.5;">
+            The Institute aims to respond to all inquiries within 10 working days.
+          </p>
+        </form>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 1.5fr"] { display: block !important; }
+  form > div[style*="grid-template-columns:1fr 1fr"] { display: block !important; gap: 16px !important; }
+}
+</style>

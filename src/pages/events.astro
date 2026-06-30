@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { upcomingEvents } from '../data/site';
+
+const calls = [
+  { type: "Call for Papers", deadline: "FEB 2026", title: "Scholarly Communication in the Age of AI", journal: "Annual Conference on Scholarly Publishing Studies" },
+  { type: "Call for Chapters", deadline: "MAR 2026", title: "Open Access and Institutional Policy", book: "Edited Volume: The Future of Scholarly Publishing" },
+  { type: "Call for Papers", deadline: "APR 2026", title: "Youth Privacy and Platform Governance", journal: "Policy and Social Research Seminar Series" },
+];
+---
+
+<BaseLayout
+  title="Events"
+  description="Upcoming conferences, seminars, workshops, calls for papers, and training programs organized or supported by Panorama Research Institute."
+>
+  <PageHero
+    title="Events &amp; Calls"
+    description="Upcoming conferences, seminars, workshops, calls for papers and chapters, and training programs organized or supported by the Institute."
+    breadcrumbs={[{ label: "Events" }]}
+  />
+
+  <!-- Event types nav -->
+  <section style="background:var(--bg-white);border-bottom:1px solid var(--border-light);padding:20px 0;">
+    <div class="container">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        {["All Events", "Conferences", "Seminars", "Workshops", "Calls for Papers", "Calls for Chapters", "Training Programs", "Past Events"].map((t, i) => (
+          <button class={`tag ${i === 0 ? 'tag-active' : ''}`} style="cursor:pointer;" type="button">{t}</button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Events -->
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div class="section-label">Upcoming Events</div>
+      <h2 class="section-title">Scheduled Events</h2>
+      <div style="margin-top:8px;">
+        {upcomingEvents.map((ev) => (
+          <div class="event-item">
+            <div class="event-date">
+              {ev.date.split(' ')[0]}<br />
+              {ev.date.split(' ')[1]}
+            </div>
+            <div>
+              <span class="tag" style="margin-bottom:12px;display:inline-flex;">{ev.type}</span>
+              <h3 class="event-title">{ev.title}</h3>
+              <p class="event-meta">{ev.location}</p>
+            </div>
+            <div style="text-align:right;padding-top:4px;">
+              <span class="tag tag-steel">{ev.status}</span>
+              <div style="margin-top:12px;">
+                <a href="/contact" class="btn btn-secondary" style="font-size:12.5px;padding:8px 14px;">Register</a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Calls -->
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Active Calls</div>
+      <h2 class="section-title">Calls for Papers &amp; Chapters</h2>
+      <div style="margin-top:8px;">
+        {calls.map((c) => (
+          <div style="display:grid;grid-template-columns:120px 1fr 180px;gap:28px;padding:28px 0;border-bottom:1px solid var(--border-light);align-items:start;">
+            <div>
+              <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:6px;">Deadline</div>
+              <div style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--accent-red);">{c.deadline}</div>
+            </div>
+            <div>
+              <span class="tag tag-steel" style="margin-bottom:10px;display:inline-flex;">{c.type}</span>
+              <h3 style="font-family:var(--font-serif);font-size:19px;color:var(--text-main);margin-bottom:6px;">{c.title}</h3>
+              <p style="font-size:13.5px;color:var(--text-muted);">{c.journal || c.book}</p>
+            </div>
+            <div style="text-align:right;">
+              <a href="/events/calls-for-papers" class="btn btn-secondary" style="font-size:12.5px;padding:8px 14px;">View Details</a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="/events/calls-for-papers"   class="btn btn-primary">All Calls for Papers</a>
+        <a href="/events/calls-for-chapters" class="btn btn-secondary">Calls for Chapters</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Training Programs -->
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Training Programs</div>
+      <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Capacity Building and Training</h2>
+      <p style="font-size:16px;line-height:1.75;color:var(--text-secondary);max-width:640px;margin-bottom:28px;">
+        The Institute offers training workshops and programs for researchers, journal editors, and academic professionals in areas including scholarly publishing, research methodology, peer review, and publication ethics.
+      </p>
+      <a href="/events/training-programs" class="btn btn-secondary">View Training Programs</a>
+    </div>
+  </section>
+
+  <!-- Propose an Event -->
+  <section class="section-compact" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">Interested in co-organizing an event?</h2>
+          <p style="font-size:14.5px;color:var(--text-secondary);">The Institute welcomes proposals for academic event cooperation.</p>
+        </div>
+        <a href="/collaboration/event-cooperation" class="btn btn-primary">Event Cooperation Proposal</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:120px 1fr 180px"] { grid-template-columns: 1fr !important; }
+}
+</style>

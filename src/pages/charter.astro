@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const articles = [
+  { num: "1",  title: "Name",                   zh: "名称" },
+  { num: "2",  title: "Institutional Status",   zh: "机构性质" },
+  { num: "3",  title: "Affiliation",             zh: "隶属关系" },
+  { num: "4",  title: "Mission",                 zh: "宗旨" },
+  { num: "5",  title: "Scope of Activities",     zh: "工作范围" },
+  { num: "6",  title: "Research Areas",          zh: "研究方向" },
+  { num: "7",  title: "Organizational Structure",zh: "组织架构" },
+  { num: "8",  title: "Governance",              zh: "治理机制" },
+  { num: "9",  title: "Research Centers",        zh: "研究中心" },
+  { num: "10", title: "Research Projects",       zh: "研究项目" },
+  { num: "11", title: "Publications",            zh: "研究出版物" },
+  { num: "12", title: "Academic Events",         zh: "学术活动" },
+  { num: "13", title: "Scholars and Fellows",    zh: "研究人员与访问学者" },
+  { num: "14", title: "Collaboration",           zh: "学术合作" },
+  { num: "15", title: "Research Ethics",         zh: "研究伦理" },
+  { num: "16", title: "Conflict of Interest",    zh: "利益冲突" },
+  { num: "17", title: "Intellectual Property",   zh: "知识产权" },
+  { num: "18", title: "Use of Name and Logo",    zh: "名称与标识使用" },
+  { num: "19", title: "Finance and Administration", zh: "财务与行政管理" },
+  { num: "20", title: "Amendment and Interpretation", zh: "修改与解释" },
+];
+---
+
+<BaseLayout
+  title="Institute Charter"
+  description="The founding charter of Panorama Research Institute, establishing its governance, mission, and operational framework."
+>
+  <PageHero
+    title="Institute Charter"
+    description="The founding charter of Panorama Research Institute, establishing its institutional status, governance framework, research mission, and operational procedures."
+    breadcrumbs={[{ label: "Governance" }, { label: "Institute Charter" }]}
+    tag="Governance Document"
+  >
+    <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="/resources/charter-pdf" class="btn btn-primary">Download PDF</a>
+      <a href="/governance/rules"      class="btn btn-secondary">Governance Rules</a>
+    </div>
+  </PageHero>
+
+  <div style="background:var(--bg-main);padding:72px 0 96px;">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:280px 1fr;gap:64px;align-items:start;">
+        <!-- Sidebar TOC -->
+        <div style="position:sticky;top:calc(var(--nav-height) + 24px);">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:20px;">
+            Contents
+          </div>
+          {articles.map((a) => (
+            <a
+              href={`#article-${a.num}`}
+              style="display:flex;justify-content:space-between;padding:8px 0;font-size:13.5px;color:var(--text-secondary);border-bottom:1px solid var(--border-light);transition:color 0.15s;"
+            >
+              <span>Art. {a.num}. {a.title}</span>
+            </a>
+          ))}
+        </div>
+
+        <!-- Charter Content -->
+        <div>
+          <div style="background:var(--bg-white);border:1px solid var(--border-light);padding:56px;margin-bottom:32px;">
+            <div style="text-align:center;margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">
+                Governance Document
+              </div>
+              <h1 style="font-family:var(--font-serif);font-size:32px;color:var(--text-main);margin-bottom:8px;letter-spacing:-0.02em;">
+                Institute Charter
+              </h1>
+              <p style="font-size:20px;color:var(--text-secondary);font-family:var(--font-sans);font-weight:300;margin-bottom:16px;">
+                全景研究院章程
+              </p>
+              <p style="font-size:13px;color:var(--text-muted);font-family:var(--font-mono);">
+                Panorama Research Institute &mdash; Effective 2024
+              </p>
+            </div>
+
+            {/* Article 1 */}
+            <div id="article-1" style="margin-bottom:48px;">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 1 / 第一条</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Name</h2>
+              <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);margin-bottom:12px;">
+                The full name of this institution in English is <strong style="color:var(--text-main);">Panorama Research Institute</strong>. The abbreviated name is PRI. The full name in Chinese is <strong style="color:var(--text-main);">全景研究院</strong>.
+              </p>
+              <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">
+                The Institute may be referred to as "Panorama Research Institute", "PRI", or "the Institute" in official documents, publications, and communications.
+              </p>
+            </div>
+
+            {/* Article 2 */}
+            <div id="article-2" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 2 / 第二条</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Institutional Status</h2>
+              <div class="statement-box" style="margin-bottom:20px;">
+                <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);margin-bottom:10px;">
+                  Panorama Research Institute is not a separate legal entity. It operates under the governance and administration of Panorama Scholarly Group.
+                </p>
+                <p style="font-size:13.5px;color:var(--text-muted);">
+                  全景研究院并非单独法人实体，其相关事务由 Panorama Scholarly Group 统一治理和管理。
+                </p>
+              </div>
+              <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">
+                The Institute functions as an internal academic division with independence in its research activities, publication decisions, and academic functions, subject to the overall governance framework of Panorama Scholarly Group.
+              </p>
+            </div>
+
+            {/* Article 3 */}
+            <div id="article-3" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 3 / 第三条</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Affiliation</h2>
+              <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">
+                Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group. All governance, administrative, and legal matters are handled by Panorama Scholarly Group. The Institute operates as "An internal research and academic development division of Panorama Scholarly Group."
+              </p>
+            </div>
+
+            {/* Article 4 */}
+            <div id="article-4" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 4 / 第四条</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Mission</h2>
+              <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">
+                The mission of Panorama Research Institute is to advance scholarly knowledge through rigorous, independent, and interdisciplinary research; to support the development of global scholarly communication infrastructure; and to promote openness, transparency, and integrity in academic publishing and research practice.
+              </p>
+            </div>
+
+            {/* Article 5 */}
+            <div id="article-5" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 5 / 第五条</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Scope of Activities</h2>
+              <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);margin-bottom:16px;">The Institute conducts and supports the following activities:</p>
+              {[
+                "Interdisciplinary research across its designated research areas",
+                "Development and maintenance of research centers",
+                "Management and support of research projects",
+                "Publication of research reports, working papers, policy briefs, and edited volumes",
+                "Organization of academic conferences, seminars, workshops, and training programs",
+                "Management of scholar and fellowship programs",
+                "Institutional collaboration and research partnership activities",
+                "Development of open scholarly infrastructure and databases",
+                "Policy analysis and advisory activities",
+              ].map((item) => (
+                <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--bg-soft);">
+                  <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>
+                  <span style="font-size:15px;color:var(--text-secondary);line-height:1.7;">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Articles 6-20: abbreviated for brevity */}
+            {articles.slice(5).map((article) => (
+              <div id={`article-${article.num}`} style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+                <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">
+                  Article {article.num} / 第{article.zh.includes("条") ? "" : ""}条
+                </div>
+                <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">{article.title}</h2>
+                <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">
+                  This article governs the Institute's {article.title.toLowerCase()} policies and procedures. Full provisions are available in the downloadable Charter PDF. For inquiries, contact <a href="mailto:research@panorama-sg.com" style="color:var(--accent-steel);">research@panorama-sg.com</a>.
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="/resources/charter-pdf"    class="btn btn-primary">Download Charter PDF</a>
+            <a href="/governance/rules"          class="btn btn-secondary">Governance Rules</a>
+            <a href="/governance/research-ethics"class="btn btn-secondary">Research Ethics</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+@media (max-width: 900px) {
+  .container > div[style*="grid-template-columns:280px"] {
+    display: block !important;
+  }
+  .container > div[style*="grid-template-columns:280px"] > div:first-child {
+    display: none !important;
+  }
+}
+</style>

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Data & Documentation Policy" description="The data management and documentation policy of Panorama Research Institute.">
+  <PageHero
+    title="Data &amp; Documentation Policy"
+    description="Standards for research data collection, management, storage, documentation, and archiving at Panorama Research Institute."
+    breadcrumbs={[{ label: "Governance", href: "/charter" }, { label: "Data & Documentation Policy" }]}
+    tag="Governance Document"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        {[
+          { title: "Data Management Principles", body: "The Institute is committed to responsible data management that supports research integrity, reproducibility, and transparency. Research data must be collected, managed, and stored in ways that protect participant privacy and comply with applicable data protection regulations." },
+          { title: "Data Collection", body: "Research data must be collected using appropriate and ethical methods. Data collection procedures must be documented and, where applicable, approved in advance as part of the research ethics review process." },
+          { title: "Data Storage and Security", body: "Research data must be stored securely for a minimum period of five years following the completion of the relevant research project or publication. Access to sensitive data must be appropriately restricted." },
+          { title: "Data Documentation", body: "All research data must be adequately documented, including documentation of collection methods, variables, coding, and any known limitations. Documentation must be maintained alongside the data." },
+          { title: "Data Sharing and Open Data", body: "The Institute encourages open data practices where appropriate and consistent with research ethics and participant privacy. Data sharing arrangements must be clearly described in publications." },
+          { title: "Institutional Records", body: "The Institute maintains institutional records of research projects, publications, events, and governance decisions. These records are maintained by the Institute's administration and are subject to the document retention schedule." },
+          { title: "Privacy and Confidentiality", body: "Personal data collected in the course of research must be handled in compliance with applicable privacy legislation. Confidential information shared with the Institute in the course of collaboration must be protected." },
+        ].map((s) => (
+          <div style="margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{s.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+          </div>
+        ))}
+        <a href="/charter" class="btn btn-primary">Return to Charter</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

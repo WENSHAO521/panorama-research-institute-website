@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const categories = ["All", "Institute Leadership", "Research Fellows", "Associate Research Fellows", "Visiting Scholars", "Advisory Board"];
+---
+
+<BaseLayout
+  title="People"
+  description="The scholars, researchers, fellows, and collaborators associated with Panorama Research Institute."
+>
+  <PageHero
+    title="People"
+    description="The researchers, fellows, visiting scholars, and academic contributors who form the scholarly community of Panorama Research Institute."
+    breadcrumbs={[{ label: "People" }]}
+  />
+
+  <!-- Filter -->
+  <section style="background:var(--bg-white);border-bottom:1px solid var(--border-light);padding:20px 0;">
+    <div class="container">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        {categories.map((c, i) => (
+          <button class={`tag ${i === 0 ? 'tag-active' : ''}`} style="cursor:pointer;" type="button">{c}</button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership Placeholder -->
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div class="section-label">Institute Leadership</div>
+      <h2 class="section-title" style="margin-bottom:8px;">Leadership</h2>
+      <p class="section-desc" style="margin-bottom:40px;">
+        Institute leadership information will be published as appointments are made. Contact the Institute for more information.
+      </p>
+      <div style="border:1px solid var(--border-light);background:var(--bg-white);padding:40px;max-width:560px;">
+        <div style="font-size:14px;color:var(--text-muted);margin-bottom:16px;">Director, Panorama Research Institute</div>
+        <p style="font-size:15px;color:var(--text-secondary);">
+          Leadership appointments are in progress. Please contact <a href="mailto:research@panorama-sg.com" style="color:var(--accent-steel);">research@panorama-sg.com</a> for inquiries.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scholar Categories -->
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Scholar Categories</div>
+      <h2 class="section-title">Roles and Positions</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { role: "Research Fellow",             desc: "Senior researchers affiliated with the Institute, contributing to research projects, publications, and academic events." },
+          { role: "Associate Research Fellow",   desc: "Researchers in earlier career stages contributing to Institute projects under the mentorship of senior fellows." },
+          { role: "Visiting Scholar",            desc: "Scholars from other institutions visiting the Institute for a defined period to undertake collaborative research." },
+          { role: "Research Assistant",          desc: "Graduate students and early-career researchers supporting Institute research projects and publications." },
+          { role: "Advisory Board Member",       desc: "External senior academics providing strategic advice and academic oversight to the Institute." },
+          { role: "Project Contributor",         desc: "Scholars contributing to specific Institute projects without holding a formal fellowship or appointment." },
+        ].map((r) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{r.role}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{r.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Scholar Profile Fields -->
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Scholar Profiles</div>
+      <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Profile Information</h2>
+      <p style="font-size:16px;line-height:1.75;color:var(--text-secondary);max-width:640px;margin-bottom:28px;">
+        Each scholar profile includes name, position, affiliation, research areas, biography, selected publications, research projects, editorial roles, ORCID, and contact information.
+      </p>
+      <a href="https://scholars.panorama-sg.com" target="_blank" rel="noopener" class="btn btn-secondary">Panorama Scholar Profiles &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Join CTA -->
+  <section class="section-compact" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:8px;">Join the Institute as a Researcher</h2>
+          <p style="font-size:15px;color:var(--text-secondary);">Apply as a visiting scholar, research fellow, or associate research fellow.</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/collaboration/research-fellow-application"  class="btn btn-primary">Research Fellow</a>
+          <a href="/collaboration/visiting-scholar-application" class="btn btn-secondary">Visiting Scholar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

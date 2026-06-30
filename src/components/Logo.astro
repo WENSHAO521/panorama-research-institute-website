@@ -1,0 +1,45 @@
+---
+interface Props {
+  variant?: 'dark' | 'light';
+  size?: 'sm' | 'md' | 'lg';
+}
+const { variant = 'dark', size = 'md' } = Astro.props;
+const fill      = variant === 'light' ? '#FFFFFF' : '#333333';
+const fillSub   = variant === 'light' ? 'rgba(255,255,255,0.55)' : '#999999';
+const fillLabel = variant === 'light' ? 'rgba(255,255,255,0.7)' : '#666666';
+const heights   = { sm: '36px', md: '44px', lg: '56px' };
+---
+
+<svg
+  viewBox="0 0 400 120"
+  xmlns="http://www.w3.org/2000/svg"
+  style={`height:${heights[size]};width:auto;display:block;`}
+  aria-label="Panorama Research Institute"
+  role="img"
+>
+  <g transform="translate(40, 70)">
+    <!-- PANORAMA text with hollow O replaced by circle mark -->
+    <text
+      font-family="Helvetica, Arial, sans-serif"
+      font-weight="700"
+      font-size="32"
+      letter-spacing="2"
+      fill={fill}
+    >PAN<tspan fill="none">O</tspan>RAMA</text>
+    <!-- The O lens mark -->
+    <g transform="translate(73, -22)">
+      <circle cx="12" cy="12" r="10" stroke={fill} stroke-width="2" fill="none" />
+      <circle cx="12" cy="12" r="5"  fill={fillSub} />
+    </g>
+    <!-- RESEARCH INSTITUTE -->
+    <text
+      x="2"
+      y="25"
+      font-family="Helvetica, Arial, sans-serif"
+      font-weight="300"
+      font-size="14"
+      letter-spacing="6"
+      fill={fillLabel}
+    >RESEARCH INSTITUTE</text>
+  </g>
+</svg>

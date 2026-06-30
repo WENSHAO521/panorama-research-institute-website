@@ -1,0 +1,93 @@
+---
+import Logo from './Logo.astro';
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div class="footer-logo-area">
+        <a href="/" aria-label="Panorama Research Institute">
+          <Logo variant="light" size="sm" />
+        </a>
+        <div style="margin-top:20px;">
+          <div class="footer-site-name">PANORAMA RESEARCH INSTITUTE</div>
+          <div class="footer-sub-name">A Division of Panorama Scholarly Group</div>
+          <p class="footer-statement">
+            Panorama Research Institute is an internal research and academic development division
+            of Panorama Scholarly Group and is not a separate legal entity.
+          </p>
+          <div style="margin-top:16px;">
+            <a href="mailto:research@panorama-sg.com" class="footer-link" style="font-size:13px;">
+              research@panorama-sg.com
+            </a>
+            <a href="https://research.panorama-sg.com" class="footer-link" style="font-size:13px;">
+              research.panorama-sg.com
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Institute -->
+      <div>
+        <div class="footer-col-title">Institute</div>
+        <a href="/about"                           class="footer-link">Overview</a>
+        <a href="/about/mission-vision"            class="footer-link">Mission &amp; Vision</a>
+        <a href="/framework"                       class="footer-link">Institute Framework</a>
+        <a href="/framework/organizational-structure" class="footer-link">Organizational Structure</a>
+        <a href="/contact"                         class="footer-link">Contact</a>
+      </div>
+
+      <!-- Governance -->
+      <div>
+        <div class="footer-col-title">Governance</div>
+        <a href="/charter"                               class="footer-link">Institute Charter</a>
+        <a href="/governance/research-ethics"            class="footer-link">Research Ethics</a>
+        <a href="/governance/conflict-of-interest"       class="footer-link">Conflict of Interest</a>
+        <a href="/governance/publication-report-policy"  class="footer-link">Publication Policy</a>
+        <a href="/governance/academic-independence"      class="footer-link">Academic Independence</a>
+      </div>
+
+      <!-- Research -->
+      <div>
+        <div class="footer-col-title">Research</div>
+        <a href="/research-centers" class="footer-link">Research Centers</a>
+        <a href="/projects"         class="footer-link">Research Projects</a>
+        <a href="/publications"     class="footer-link">Publications</a>
+        <a href="/events"           class="footer-link">Events &amp; Calls</a>
+        <a href="/people"           class="footer-link">People</a>
+      </div>
+
+      <!-- Platforms -->
+      <div>
+        <div class="footer-col-title">Panorama Platforms</div>
+        <a href="https://www.panorama-sg.com"       class="footer-link" target="_blank" rel="noopener">
+          Panorama Scholarly Group
+        </a>
+        <a href="https://journals.panorama-sg.com"  class="footer-link" target="_blank" rel="noopener">
+          Panorama Journals
+        </a>
+        <a href="https://books.panorama-sg.com"     class="footer-link" target="_blank" rel="noopener">
+          Panorama Books
+        </a>
+        <a href="https://posi.panorama-sg.com"      class="footer-link" target="_blank" rel="noopener">
+          POSI Database
+        </a>
+        <a href="https://scholars.panorama-sg.com"  class="footer-link" target="_blank" rel="noopener">
+          Scholar Profiles
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {new Date().getFullYear()} Panorama Scholarly Group. All rights reserved.</span>
+      <span>
+        <a href="/charter" class="footer-link" style="display:inline;">Charter</a>
+        &nbsp;&middot;&nbsp;
+        <a href="/governance/research-ethics" class="footer-link" style="display:inline;">Research Ethics</a>
+        &nbsp;&middot;&nbsp;
+        <a href="/contact" class="footer-link" style="display:inline;">Contact</a>
+      </span>
+    </div>
+  </div>
+</footer>

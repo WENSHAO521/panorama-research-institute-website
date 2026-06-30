@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Conflict of Interest Policy" description="The conflict of interest policy of Panorama Research Institute.">
+  <PageHero
+    title="Conflict of Interest Policy"
+    description="Guidance on identifying, disclosing, and managing conflicts of interest in research, publication, peer review, and governance activities."
+    breadcrumbs={[{ label: "Governance", href: "/charter" }, { label: "Conflict of Interest Policy" }]}
+    tag="Governance Document"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        {[
+          { title: "Definition", body: "A conflict of interest arises when a researcher's personal, financial, or professional interests may compromise, or reasonably appear to compromise, the integrity of their research, review, or governance activities." },
+          { title: "Types of Conflict", body: "Conflicts of interest may be financial (e.g., funding relationships, equity stakes, consulting arrangements), personal (e.g., family or close personal relationships), or professional (e.g., competitive relationships, prior commitments)." },
+          { title: "Disclosure Requirements", body: "All researchers affiliated with the Institute must disclose any actual or potential conflicts of interest to the Institute's leadership before commencing research, submitting publications, or participating in governance activities. Disclosures must be updated if circumstances change." },
+          { title: "Peer Review", body: "Peer reviewers must disclose any conflict of interest with the authors or subject matter of a submission and must decline to review where a conflict exists. Confidentiality of submissions must be maintained." },
+          { title: "Collaboration and Partnerships", body: "Collaboration proposals must include disclosure of any financial or personal relationships between the Institute's researchers and the proposed collaborating institution or individuals." },
+          { title: "Management of Conflicts", body: "Where a conflict of interest is identified, the Institute's leadership will determine the appropriate management approach, which may include recusal, additional oversight, or other measures." },
+          { title: "Non-Compliance", body: "Failure to disclose a conflict of interest or non-compliance with this policy may result in withdrawal of publications, termination of research roles, or other appropriate actions as determined by the Institute's leadership." },
+        ].map((s) => (
+          <div style="margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{s.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+          </div>
+        ))}
+        <a href="/charter" class="btn btn-primary">Return to Charter</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

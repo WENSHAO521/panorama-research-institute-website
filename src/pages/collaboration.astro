@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const collaborationTypes = [
+  { type: "Institutional Cooperation",    href: "/collaboration/institutional-cooperation",   desc: "Formal partnerships between Panorama Research Institute and other academic or research institutions." },
+  { type: "Research Project Proposal",    href: "/collaboration/research-project-proposal",   desc: "Proposals for new research projects to be developed or co-developed with the Institute." },
+  { type: "Edited Volume Proposal",       href: "/collaboration/edited-volume-proposal",       desc: "Proposals for collaborative edited volumes and book projects." },
+  { type: "Special Issue Proposal",       href: "/collaboration/special-issue-proposal",       desc: "Proposals for special issues in journals on topics relevant to the Institute's research areas." },
+  { type: "Visiting Scholar Application", href: "/collaboration/visiting-scholar-application", desc: "Applications for visiting scholar appointments at the Institute's research centers." },
+  { type: "Research Fellow Application",  href: "/collaboration/research-fellow-application",  desc: "Applications for research fellow and associate research fellow positions." },
+  { type: "Event Cooperation",            href: "/collaboration/event-cooperation",            desc: "Proposals for co-organizing conferences, seminars, workshops, and training programs." },
+];
+---
+
+<BaseLayout
+  title="Collaboration"
+  description="Collaboration opportunities with Panorama Research Institute, including institutional partnerships, research proposals, visiting scholar applications, and event cooperation."
+>
+  <PageHero
+    title="Collaboration"
+    description="The Institute welcomes academic collaboration, institutional partnerships, research proposals, visiting scholar applications, and event cooperation from researchers and institutions worldwide."
+    breadcrumbs={[{ label: "Collaboration" }]}
+  />
+
+  <!-- Overview -->
+  <section class="section-compact" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Working with the Institute</h2>
+          <p style="font-size:16px;line-height:1.8;color:var(--text-secondary);">
+            Panorama Research Institute engages with scholars, research teams, and institutions through a range of formal and informal collaboration arrangements. All collaboration is subject to the Institute's governance framework and research ethics principles.
+          </p>
+        </div>
+        <div>
+          <div style="background:var(--bg-soft);border:1px solid var(--border-light);padding:24px 28px;">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;">Contact for Collaboration</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin-bottom:12px;">For all collaboration inquiries, please use the submission form or contact us directly.</p>
+            <a href="mailto:research@panorama-sg.com" style="font-size:14px;color:var(--accent-steel);">research@panorama-sg.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collaboration Types -->
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Collaboration Types</div>
+      <h2 class="section-title">How to Collaborate</h2>
+      <div style="margin-top:8px;">
+        {collaborationTypes.map((c) => (
+          <a href={c.href} style="display:grid;grid-template-columns:280px 1fr auto;gap:28px;padding:24px 0;border-bottom:1px solid var(--border-light);align-items:center;color:inherit;transition:background 0.15s;">
+            <div style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);">{c.type}</div>
+            <div style="font-size:14px;color:var(--text-secondary);line-height:1.6;">{c.desc}</div>
+            <span style="color:var(--accent-steel);font-size:14px;white-space:nowrap;">Apply &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Proposal Guidelines -->
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Proposal Guidelines</div>
+      <h2 class="section-title">Before You Submit</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px;">
+        {[
+          { step: "1", title: "Review Research Areas",  desc: "Ensure your proposal aligns with one or more of the Institute's six research areas." },
+          { step: "2", title: "Check Governance Policies", desc: "Review the Institute's research ethics, conflict of interest, and publication policies." },
+          { step: "3", title: "Prepare Your Proposal",  desc: "Use the Institute's research proposal template available in the Resources section." },
+        ].map((g) => (
+          <div style="padding:28px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:20px;color:var(--text-muted);margin-bottom:14px;">{g.step}</div>
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{g.title}</h3>
+            <p style="font-size:14px;line-height:1.65;color:var(--text-secondary);">{g.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Submit Form -->
+  <section id="submit" class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:72px;align-items:start;">
+        <div>
+          <div class="section-label">Submit a Proposal</div>
+          <h2 style="font-family:var(--font-serif);font-size:30px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Get in Touch</h2>
+          <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);margin-bottom:24px;">
+            Submit a collaboration inquiry or proposal using the form. The Institute reviews all submissions and responds within 10 working days.
+          </p>
+          <div style="font-size:13.5px;color:var(--text-muted);">
+            <div style="margin-bottom:8px;">Email: <a href="mailto:research@panorama-sg.com" style="color:var(--accent-steel);">research@panorama-sg.com</a></div>
+            <div>Website: research.panorama-sg.com</div>
+          </div>
+        </div>
+        <form action="/contact" method="POST" style="display:flex;flex-direction:column;gap:20px;background:var(--bg-white);border:1px solid var(--border-light);padding:40px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label class="form-label" for="collab-name">Full Name <span style="color:var(--accent-red);">*</span></label>
+              <input type="text" id="collab-name" name="name" class="form-input" required placeholder="Your full name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="collab-email">Email <span style="color:var(--accent-red);">*</span></label>
+              <input type="email" id="collab-email" name="email" class="form-input" required placeholder="your@email.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="collab-institution">Institution <span style="color:var(--accent-red);">*</span></label>
+            <input type="text" id="collab-institution" name="institution" class="form-input" required placeholder="Your institution or organization" />
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label class="form-label" for="collab-country">Country / Region <span style="color:var(--accent-red);">*</span></label>
+              <input type="text" id="collab-country" name="country" class="form-input" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="collab-type">Type of Collaboration <span style="color:var(--accent-red);">*</span></label>
+              <select id="collab-type" name="type" class="form-select" required>
+                <option value="">Select type...</option>
+                {collaborationTypes.map((c) => <option value={c.type}>{c.type}</option>)}
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="collab-topic">Proposed Topic <span style="color:var(--accent-red);">*</span></label>
+            <input type="text" id="collab-topic" name="topic" class="form-input" required placeholder="Working title or topic area" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="collab-desc">Brief Description <span style="color:var(--accent-red);">*</span></label>
+            <textarea id="collab-desc" name="description" class="form-textarea" required placeholder="Please describe your collaboration proposal in 200-400 words." style="min-height:160px;"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="collab-orcid">ORCID or Website</label>
+            <input type="url" id="collab-orcid" name="orcid" class="form-input" placeholder="https://orcid.org/..." />
+          </div>
+          <div style="padding:16px;background:var(--bg-soft);border:1px solid var(--border-light);font-size:13px;color:var(--text-muted);">
+            <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;">
+              <input type="checkbox" required style="margin-top:3px;flex-shrink:0;" />
+              <span>I confirm that the information submitted is accurate and may be used by Panorama Research Institute to evaluate this collaboration inquiry.</span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary" style="justify-content:center;">Submit Proposal</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 1.5fr"],
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+  a[style*="grid-template-columns:280px"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
+}
+</style>

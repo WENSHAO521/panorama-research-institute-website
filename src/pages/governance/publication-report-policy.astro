@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Publication & Report Policy" description="The publication and report policy of Panorama Research Institute.">
+  <PageHero
+    title="Publication &amp; Report Policy"
+    description="Standards and procedures for research reports, working papers, policy briefs, edited volumes, and other publications issued under the Institute's name."
+    breadcrumbs={[{ label: "Governance", href: "/charter" }, { label: "Publication & Report Policy" }]}
+    tag="Governance Document"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        {[
+          { title: "Scope", body: "This policy applies to all publications issued under the name of Panorama Research Institute, including research reports, working papers, policy briefs, edited volumes, conference proceedings, and annual reports." },
+          { title: "Publication Standards", body: "All publications must meet the Institute's quality standards for research rigor, accuracy, clarity, and compliance with research ethics principles. Publications must be original and must not infringe third-party intellectual property rights." },
+          { title: "Approval Process", body: "All publications must be reviewed and approved by designated reviewers before release. Working papers may follow an expedited review process. Research reports and edited volumes require more comprehensive review." },
+          { title: "Authorship Policy", body: "Authorship must reflect genuine intellectual contribution. All authors must approve the final version before publication. Acknowledgements must accurately credit all other contributors." },
+          { title: "Disclosure Requirements", body: "Publications must disclose the Institute's affiliation with Panorama Scholarly Group and any relevant funding sources, conflicts of interest, or institutional relationships." },
+          { title: "Open Access", body: "The Institute supports open access to its research outputs. Publications are made publicly available on the Institute's website where possible. Embargo periods may apply in specific circumstances." },
+          { title: "Copyright and Licensing", body: "Copyright in Institute publications is held by Panorama Scholarly Group. Publications are typically released under Creative Commons licensing where appropriate. Specific licensing terms are stated in each publication." },
+          { title: "Retraction and Correction", body: "If errors or misconduct are identified in a publication, the Institute will issue corrections or retractions as appropriate. Retraction notices will be clearly identified and permanently associated with the original publication." },
+        ].map((s) => (
+          <div style="margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{s.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+          </div>
+        ))}
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/publications"              class="btn btn-primary">View Publications</a>
+          <a href="/governance/research-ethics"class="btn btn-secondary">Research Ethics</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

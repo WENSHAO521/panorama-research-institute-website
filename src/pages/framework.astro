@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<BaseLayout
+  title="Institute Framework"
+  description="The organizational and functional framework of Panorama Research Institute, including research centers, projects, publications, events, scholars, and collaboration."
+>
+  <PageHero
+    title="Institute Framework"
+    description="A structured research and academic development platform supporting projects, publications, centers, events, scholars, and institutional collaboration."
+    breadcrumbs={[{ label: "Institute", href: "/about" }, { label: "Framework" }]}
+  />
+
+  <!-- Institutional Positioning -->
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div class="section-label">Institutional Positioning</div>
+      <h2 class="section-title">Position within Panorama Scholarly Group</h2>
+      <div style="max-width:760px;margin-bottom:48px;">
+        <p style="font-size:16.5px;line-height:1.8;color:var(--text-secondary);">
+          Panorama Research Institute is the internal research and academic development division of Panorama Scholarly Group. It operates as an independent academic platform, providing research support, publication services, and scholarly infrastructure to the broader PSG ecosystem.
+        </p>
+      </div>
+
+      <!-- Org Chart -->
+      <div style="border:1px solid var(--border-light);padding:48px;background:var(--bg-white);max-width:840px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+          <div style="border:1px solid var(--border-medium);padding:14px 40px;font-size:14px;font-weight:600;color:var(--text-muted);font-family:var(--font-sans);letter-spacing:0.03em;background:var(--bg-soft);">
+            Panorama Scholarly Group
+          </div>
+          <div style="width:1px;height:28px;background:var(--border-medium);"></div>
+          <div style="border:2px solid var(--text-main);padding:14px 40px;font-size:15px;font-weight:700;color:var(--text-main);font-family:var(--font-sans);letter-spacing:0.03em;">
+            Panorama Research Institute
+          </div>
+          <div style="width:1px;height:28px;background:var(--border-medium);"></div>
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:0;border:1px solid var(--border-light);width:100%;max-width:720px;">
+            {[
+              "Institute Office",
+              "Research Centers",
+              "Project Teams",
+              "Publications Unit",
+              "Events Unit",
+              "Scholar Program",
+              "Collaboration Office",
+            ].map((unit) => (
+              <div style="padding:12px 8px;border-right:1px solid var(--border-light);text-align:center;font-size:11.5px;font-family:var(--font-sans);color:var(--text-secondary);line-height:1.4;">
+                {unit}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Functional Framework -->
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Functional Framework</div>
+      <h2 class="section-title">Core Functions</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title: "Research Projects",           desc: "Development, coordination, and management of original research initiatives across the Institute's research areas." },
+          { title: "Scholarly Publishing Studies", desc: "Dedicated research into publication ethics, peer review, open access, editorial policy, and research integrity." },
+          { title: "Indexing and Evaluation",      desc: "Building frameworks for scholarly journal indexing, metadata transparency, and quality evaluation." },
+          { title: "Policy and Social Research",   desc: "Original policy analysis and social research on governance, youth issues, digital society, and international affairs." },
+          { title: "Research Publications",        desc: "Production of research reports, working papers, policy briefs, edited volumes, and annual reports." },
+          { title: "Academic Collaboration",       desc: "Managing institutional partnerships, research proposals, visiting scholar programs, and fellowship applications." },
+        ].map((fn) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{fn.title}</h3>
+            <p style="font-size:14.5px;line-height:1.7;color:var(--text-secondary);">{fn.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Areas -->
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Research Areas</div>
+      <h2 class="section-title" style="margin-bottom:8px;">Six Research Domains</h2>
+      <p class="section-desc" style="margin-bottom:48px;">
+        The Institute's research activities are organized across six primary research areas.
+      </p>
+      <div>
+        {[
+          { num: "01", title: "Scholarly Publishing Studies" },
+          { num: "02", title: "Journal Indexing and Evaluation" },
+          { num: "03", title: "Policy and Social Research" },
+          { num: "04", title: "AI and Future Society" },
+          { num: "05", title: "Education and Learning Research" },
+          { num: "06", title: "Arts, Culture and Embodiment" },
+        ].map((area) => (
+          <div style="display:flex;align-items:center;gap:28px;padding:18px 0;border-bottom:1px solid var(--border-light);">
+            <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);flex-shrink:0;width:28px;">{area.num}</span>
+            <span style="font-family:var(--font-serif);font-size:19px;color:var(--text-main);">{area.title}</span>
+            <a href="/research-areas" style="margin-left:auto;font-size:13px;color:var(--accent-steel);white-space:nowrap;">View Area &rarr;</a>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:32px;">
+        <a href="/research-areas" class="btn btn-secondary">All Research Areas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Academic Outputs -->
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Academic Outputs</div>
+      <h2 class="section-title">Types of Outputs</h2>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--border-light);border-left:1px solid var(--border-light);">
+        {[
+          { type: "Research Reports",  desc: "Full-length reports on completed research projects" },
+          { type: "Working Papers",    desc: "Pre-publication research drafts for scholarly discussion" },
+          { type: "Policy Briefs",     desc: "Short evidence-based policy recommendations" },
+          { type: "Edited Volumes",    desc: "Multi-author scholarly volumes on research themes" },
+          { type: "Annual Reports",    desc: "Yearly reports on Institute activities and outputs" },
+        ].map((o) => (
+          <div style="padding:24px 20px;border-right:1px solid var(--border-light);border-bottom:1px solid var(--border-light);background:var(--bg-white);">
+            <div style="font-size:14px;font-weight:600;color:var(--text-main);font-family:var(--font-sans);margin-bottom:8px;">{o.type}</div>
+            <div style="font-size:13px;color:var(--text-muted);line-height:1.5;">{o.desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Development Roadmap -->
+  <section id="development-roadmap" class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Development Roadmap</div>
+      <h2 class="section-title">Phased Development</h2>
+      <div style="max-width:720px;">
+        {[
+          { phase: "Phase 1", label: "Foundation", year: "2024", items: ["Establish Institute governance and charter", "Launch three core research centers", "Initiate first research projects", "Publish inaugural working papers"] },
+          { phase: "Phase 2", label: "Development", year: "2025", items: ["Expand to six research centers", "Establish scholar and fellowship programs", "Launch POSI scholarly indexing platform", "Begin annual reports"] },
+          { phase: "Phase 3", label: "Expansion", year: "2026+", items: ["International collaboration networks", "Broader policy advisory activities", "Expanded publication program", "Academic conference series"] },
+        ].map((phase) => (
+          <div style="display:grid;grid-template-columns:120px 1fr;gap:28px;padding:28px 0;border-bottom:1px solid var(--border-light);">
+            <div>
+              <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{phase.phase}</div>
+              <div style="font-size:18px;font-weight:600;color:var(--text-main);font-family:var(--font-sans);">{phase.label}</div>
+              <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);margin-top:4px;">{phase.year}</div>
+            </div>
+            <div style="padding-top:4px;">
+              {phase.items.map((item) => (
+                <div style="display:flex;gap:10px;padding:6px 0;font-size:14.5px;color:var(--text-secondary);">
+                  <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:repeat(7"] { grid-template-columns: repeat(4, 1fr) !important; }
+  div[style*="grid-template-columns:repeat(5"] { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

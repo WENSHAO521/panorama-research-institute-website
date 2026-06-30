@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { featuredProjects } from '../data/site';
+
+const allProjects = [
+  ...featuredProjects,
+  {
+    status: "Active",
+    title: "Scholarly Publishing Standards Project",
+    desc: "A project developing editorial standards, publication ethics guidance, research integrity policies, and scholarly communication frameworks.",
+    href: "/projects/scholarly-publishing-standards",
+  },
+];
+
+const filters = ["All", "Active", "In Development", "Call for Participation", "Completed"];
+---
+
+<BaseLayout
+  title="Research Projects"
+  description="Current and past research projects developed and supported by Panorama Research Institute."
+>
+  <PageHero
+    title="Research Projects"
+    description="Current research initiatives developed or supported by Panorama Research Institute across its research centers and areas."
+    breadcrumbs={[{ label: "Research" }, { label: "Projects" }]}
+  />
+
+  <!-- Filter Bar -->
+  <section style="background:var(--bg-white);border-bottom:1px solid var(--border-light);padding:20px 0;">
+    <div class="container">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        {filters.map((f, i) => (
+          <button class={`tag ${i === 0 ? 'tag-active' : ''}`} style="cursor:pointer;" type="button">
+            {f}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Project List -->
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+        {allProjects.map((p) => (
+          <div class="project-card" style="border:none;border-radius:0;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+              <span class={`tag ${p.status === 'Active' ? 'tag-active' : p.status === 'Call for Participation' ? 'tag-steel' : ''}`}>
+                {p.status}
+              </span>
+            </div>
+            <h2 class="project-title">{p.title}</h2>
+            <p class="project-desc">{p.desc}</p>
+            <a href={p.href} style="display:inline-flex;align-items:center;gap:6px;margin-top:24px;font-size:13.5px;font-weight:500;color:var(--accent-steel);font-family:var(--font-sans);">
+              View Project Details &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Fields Guide -->
+  <section class="section-compact" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Project Information</div>
+      <h2 class="section-title">What Each Project Includes</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;">
+        {[
+          "Project Title and Status",
+          "Research Center",
+          "Project Period",
+          "Research Team",
+          "Background and Objectives",
+          "Research Questions",
+          "Methodology",
+          "Expected Outputs",
+          "Related Publications",
+        ].map((field) => (
+          <div style="display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--border-light);">
+            <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:12px;flex-shrink:0;width:20px;">&#8212;</span>
+            <span style="font-size:14px;color:var(--text-secondary);">{field}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Submit Proposal CTA -->
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:8px;">Have a research project proposal?</h2>
+          <p style="font-size:15px;color:var(--text-secondary);">The Institute welcomes proposals for new research projects aligned with its research areas.</p>
+        </div>
+        <a href="/collaboration/research-project-proposal" class="btn btn-primary">Submit a Proposal</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { grid-template-columns: 1fr !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
+}
+</style>

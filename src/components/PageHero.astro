@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  breadcrumbs?: { label: string; href?: string }[];
+  tag?: string;
+}
+const { title, description, breadcrumbs, tag } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="container">
+    {breadcrumbs && breadcrumbs.length > 0 && (
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        {breadcrumbs.map((crumb) => (
+          <>
+            <span class="sep" aria-hidden="true"></span>
+            {crumb.href ? (
+              <a href={crumb.href}>{crumb.label}</a>
+            ) : (
+              <span aria-current="page">{crumb.label}</span>
+            )}
+          </>
+        ))}
+      </nav>
+    )}
+    {tag && <div class="tag" style="margin-bottom:20px;">{tag}</div>}
+    <h1 class="page-hero-title">{title}</h1>
+    {description && <p class="page-hero-desc">{description}</p>}
+    <slot />
+  </div>
+</section>

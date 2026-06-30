@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<BaseLayout
+  title="About"
+  description="Panorama Research Institute is an independent academic platform and internal research and academic development division of Panorama Scholarly Group."
+>
+  <PageHero
+    title="About Panorama Research Institute"
+    description="An independent academic platform and internal research and academic development division of Panorama Scholarly Group."
+    breadcrumbs={[{ label: "Institute" }, { label: "Overview" }]}
+  />
+
+  <!-- Overview -->
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:72px;align-items:start;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Overview</h2>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">
+            <a href="#mission"    style="font-size:14px;color:var(--accent-steel);">Mission &amp; Vision</a>
+            <a href="#status"     style="font-size:14px;color:var(--accent-steel);">Institutional Status</a>
+            <a href="#affiliation"style="font-size:14px;color:var(--accent-steel);">Affiliation</a>
+            <a href="#scope"      style="font-size:14px;color:var(--accent-steel);">Scope of Work</a>
+            <a href="#functions"  style="font-size:14px;color:var(--accent-steel);">Academic Functions</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:17px;line-height:1.8;color:var(--text-secondary);margin-bottom:28px;">
+            Panorama Research Institute is an independent academic platform and internal research and academic development division of Panorama Scholarly Group. The Institute supports interdisciplinary research, academic publishing studies, journal indexing and evaluation, policy analysis, research publications, academic events, and institutional collaboration.
+          </p>
+          <p style="font-size:17px;line-height:1.8;color:var(--text-secondary);">
+            全景研究院是 Panorama Scholarly Group 旗下的独立学术平台与内部研究和学术发展部门，致力于推动跨学科研究、学术出版研究、期刊索引与评价、政策分析、学术合作以及全球学术传播基础设施建设。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section id="mission" class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;">
+        <div>
+          <div class="section-label">Mission</div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">
+            Advancing scholarly knowledge through rigorous research and open communication
+          </h2>
+          <p style="font-size:16px;line-height:1.8;color:var(--text-secondary);">
+            Panorama Research Institute is committed to producing rigorous, independent, and publicly relevant research. The Institute advances knowledge across its research areas, supports scholars and research teams, and builds infrastructure that strengthens scholarly communication globally.
+          </p>
+        </div>
+        <div>
+          <div class="section-label">Vision</div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">
+            A trusted platform for interdisciplinary academic inquiry
+          </h2>
+          <p style="font-size:16px;line-height:1.8;color:var(--text-secondary);">
+            The Institute envisions a future where research infrastructure, scholarly publishing, and academic collaboration are transparent, equitable, and globally accessible. It seeks to be a trusted and credible platform for researchers, institutions, and policymakers worldwide.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Institutional Status -->
+  <section id="status" class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Institutional Status</div>
+      <h2 class="section-title">Legal and Institutional Position</h2>
+      <div style="max-width:760px;">
+        <div class="statement-box" style="margin-bottom:32px;">
+          <p style="font-size:16px;line-height:1.75;color:var(--text-secondary);margin-bottom:12px;">
+            Panorama Research Institute is not a separate legal entity. It operates under the governance and administration of Panorama Scholarly Group.
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);">
+            全景研究院并非单独法人实体，其相关事务由 Panorama Scholarly Group 统一治理和管理。
+          </p>
+        </div>
+        <p style="font-size:16px;line-height:1.8;color:var(--text-secondary);">
+          The Institute functions as an internal academic division with operational independence in research, publications, and academic activities, while remaining subject to the governance framework and administration of Panorama Scholarly Group. All formal agreements, contracts, and legal instruments are executed by Panorama Scholarly Group on behalf of the Institute.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Affiliation -->
+  <section id="affiliation" class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Affiliation</div>
+      <h2 class="section-title">Panorama Scholarly Group</h2>
+      <div style="max-width:760px;">
+        <p style="font-size:16px;line-height:1.8;color:var(--text-secondary);margin-bottom:24px;">
+          Panorama Scholarly Group (PSG) is the parent organization of Panorama Research Institute. PSG is an academic publishing and scholarly services organization operating a family of platforms including Panorama Journals, Panorama Books, the POSI Database, and Panorama Scholar Profiles.
+        </p>
+        <p style="font-size:16px;line-height:1.8;color:var(--text-secondary);">
+          The Research Institute serves as the internal academic research and development division of PSG, providing scholarly analysis, research publications, and institutional knowledge to support the broader mission of advancing global scholarly communication.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scope of Work -->
+  <section id="scope" class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Scope of Work</div>
+      <h2 class="section-title">What We Do</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title: "Interdisciplinary Research",       desc: "Supporting research projects across scholarly publishing, policy, AI and society, education, arts and culture." },
+          { title: "Scholarly Publishing Studies",     desc: "Studying publication ethics, peer review models, editorial standards, open access, and research integrity." },
+          { title: "Journal Indexing & Evaluation",    desc: "Developing frameworks for journal evaluation, metadata transparency, and open scholarly indexing." },
+          { title: "Policy Analysis",                  desc: "Analyzing public policy, governance, social development, and youth issues with rigorous methodology." },
+          { title: "Academic Publications",            desc: "Producing research reports, working papers, policy briefs, edited volumes, and annual reports." },
+          { title: "Academic Events",                  desc: "Organizing conferences, seminars, workshops, calls for papers, and training programs for researchers." },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Academic Functions -->
+  <section id="functions" class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Academic Functions</div>
+      <h2 class="section-title">Core Academic Activities</h2>
+      <div style="max-width:760px;">
+        {[
+          "Conducting and supporting original interdisciplinary research",
+          "Publishing research reports, working papers, and policy briefs",
+          "Organizing academic conferences, seminars, and workshops",
+          "Supporting visiting scholars, research fellows, and project contributors",
+          "Developing evaluation frameworks for scholarly journals and publications",
+          "Providing institutional collaboration and research partnership services",
+          "Building open scholarly infrastructure including the POSI indexing platform",
+          "Producing annual reports on scholarly publishing and academic communication",
+        ].map((fn) => (
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--border-light);">
+            <span style="width:4px;height:4px;background:var(--text-muted);border-radius:50%;flex-shrink:0;margin-top:8px;"></span>
+            <span style="font-size:15.5px;color:var(--text-secondary);line-height:1.6;">{fn}</span>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:40px;display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="/framework" class="btn btn-primary">View Institute Framework</a>
+        <a href="/contact"   class="btn btn-secondary">Contact the Institute</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+@media (max-width: 768px) {
+  .container > div[style*="grid-template-columns:1fr 2fr"],
+  .container > div[style*="grid-template-columns:1fr 1fr"],
+  .container > div[style*="grid-template-columns:repeat(3,1fr)"] {
+    display: block !important;
+  }
+}
+</style>

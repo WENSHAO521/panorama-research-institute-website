@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Academic Independence Statement" description="Panorama Research Institute's statement on academic independence and intellectual freedom.">
+  <PageHero
+    title="Academic Independence Statement"
+    description="Panorama Research Institute's commitment to intellectual freedom, research independence, and freedom from undue influence in its academic activities."
+    breadcrumbs={[{ label: "Governance", href: "/charter" }, { label: "Academic Independence" }]}
+    tag="Governance Document"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        <div class="statement-box" style="margin-bottom:40px;">
+          <p style="font-size:17px;line-height:1.8;color:var(--text-secondary);font-family:var(--font-serif);font-style:italic;">
+            "Panorama Research Institute is committed to the principle of academic independence. The Institute's research activities, publications, and academic decisions are conducted on the basis of scholarly merit and evidence, free from commercial, political, or institutional pressure."
+          </p>
+        </div>
+        {[
+          { title: "Research Independence", body: "The Institute conducts and supports research based on scholarly merit, rigorous methodology, and ethical principles. No external party, including Panorama Scholarly Group, may direct or alter the substantive findings of Institute research." },
+          { title: "Publication Independence", body: "Publication decisions are made based on research quality, accuracy, and compliance with the Institute's publication ethics standards. Publications are not subject to external editorial interference." },
+          { title: "Governance Separation", body: "While the Institute operates under the administrative governance of Panorama Scholarly Group, its academic activities are conducted with intellectual independence. Administrative governance does not extend to research direction or academic judgment." },
+          { title: "Disclosure of Affiliations", body: "The Institute discloses its affiliation with Panorama Scholarly Group in all official communications and publications. This transparency is part of the Institute's commitment to academic credibility." },
+          { title: "Protection from Influence", body: "Researchers affiliated with the Institute are protected from pressure to alter, suppress, or misrepresent research findings. Any attempted interference with academic independence should be reported to the Institute's leadership." },
+        ].map((s) => (
+          <div style="margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{s.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+          </div>
+        ))}
+        <a href="/charter" class="btn btn-primary">Return to Charter</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

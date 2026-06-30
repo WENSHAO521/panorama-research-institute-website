@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Governance Rules" description="The internal governance rules of Panorama Research Institute.">
+  <PageHero
+    title="Governance Rules"
+    description="Internal governance rules establishing the procedures, decision-making processes, and operational standards of Panorama Research Institute."
+    breadcrumbs={[{ label: "Governance", href: "/charter" }, { label: "Governance Rules" }]}
+    tag="Governance Document"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        {[
+          { title: "1. Scope and Application", body: "These governance rules apply to all activities conducted under the name of Panorama Research Institute, including research projects, publications, academic events, scholar programs, and collaboration activities." },
+          { title: "2. Decision-Making Authority", body: "Institutional decisions are made by the Institute's leadership in accordance with the governance framework of Panorama Scholarly Group. Research decisions within defined parameters may be made by individual research centers and project teams." },
+          { title: "3. Research Governance", body: "All research conducted or supported by the Institute must adhere to the Institute's Research Ethics policy. Research projects require approval by the Institute's governance body before commencement." },
+          { title: "4. Publication Approval", body: "Publications issued under the Institute's name must be reviewed and approved in accordance with the Publication and Report Policy. Publications must meet defined standards for research quality, accuracy, and ethical compliance." },
+          { title: "5. Collaboration Governance", body: "Institutional collaboration agreements are subject to review and approval by the Institute's leadership and, where required, by Panorama Scholarly Group. All collaboration must comply with the Institute's Conflict of Interest Policy." },
+          { title: "6. Financial Governance", body: "All financial matters are administered by Panorama Scholarly Group. The Institute does not hold independent financial accounts or enter into financial commitments independently." },
+          { title: "7. Amendment of Rules", body: "These governance rules may be amended by the Institute's leadership with the approval of Panorama Scholarly Group. Amendments are subject to the procedures in the Amendment Procedure policy." },
+        ].map((section) => (
+          <div style="margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{section.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{section.body}</p>
+          </div>
+        ))}
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+          <a href="/charter"                        class="btn btn-primary">Institute Charter</a>
+          <a href="/governance/research-ethics"     class="btn btn-secondary">Research Ethics</a>
+          <a href="/governance/amendment-procedure" class="btn btn-secondary">Amendment Procedure</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

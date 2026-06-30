@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { researchCenters } from '../data/site';
+---
+
+<BaseLayout
+  title="Research Centers"
+  description="The specialized research centers of Panorama Research Institute, supporting projects, publications, events, and scholarly partnerships."
+>
+  <PageHero
+    title="Research Centers"
+    description="The Institute organizes its academic activities through specialized research centers that support projects, publications, events, and scholarly partnerships."
+    breadcrumbs={[{ label: "Research" }, { label: "Research Centers" }]}
+  />
+
+  <!-- Overview -->
+  <section class="section-compact" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:760px;">
+        <p style="font-size:17px;line-height:1.8;color:var(--text-secondary);">
+          Each research center has a focused thematic mandate, a dedicated team of researchers, and operates with academic independence within the Institute's governance framework. Centers support research projects, produce publications, organize events, and build partnerships relevant to their domain.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Centers -->
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Core Research Centers</div>
+      <h2 class="section-title">Active Centers</h2>
+      <div style="margin-top:8px;">
+        {researchCenters.filter(c => !c.upcoming).map((center) => (
+          <div class="center-card">
+            <div class="center-num">{center.num}</div>
+            <div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:6px;">{center.name}</h2>
+              <div style="font-size:14px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-sans);">{center.nameZh}</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                {center.areas.map((a) => <span class="tag">{a}</span>)}
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
+              <a href={center.href} class="btn btn-secondary" style="white-space:nowrap;">View Center</a>
+              <span class="tag tag-active" style="align-self:flex-end;">Active</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Centers -->
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Future Research Centers</div>
+      <h2 class="section-title">Planned Expansion</h2>
+      <p class="section-desc" style="margin-bottom:40px;">
+        The following centers are planned as part of the Institute's development roadmap.
+      </p>
+      <div style="margin-top:8px;">
+        {researchCenters.filter(c => c.upcoming).map((center) => (
+          <div class="center-card" style="opacity:0.7;">
+            <div class="center-num">{center.num}</div>
+            <div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:6px;">{center.name}</h2>
+              <div style="font-size:14px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-sans);">{center.nameZh}</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                {center.areas.map((a) => <span class="tag">{a}</span>)}
+              </div>
+            </div>
+            <div>
+              <span class="tag">Upcoming</span>
+            </div>
+          </div>
+        ))}
+
+        {[
+          { num: "05", name: "Center for Education and Learning Research", nameZh: "教育与学习研究中心", areas: ["Education Policy", "Higher Education", "Learning Science"] },
+          { num: "06", name: "Center for Arts, Culture and Embodiment",    nameZh: "艺术、文化与具身研究中心", areas: ["Music", "Dance", "Cultural Studies", "Creative Practice"] },
+        ].map((center) => (
+          <div class="center-card" style="opacity:0.65;">
+            <div class="center-num">{center.num}</div>
+            <div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:6px;">{center.name}</h2>
+              <div style="font-size:14px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-sans);">{center.nameZh}</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                {center.areas.map((a) => <span class="tag">{a}</span>)}
+              </div>
+            </div>
+            <span class="tag">Planned</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Center Governance -->
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Center Governance</div>
+      <h2 class="section-title">How Centers Operate</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px;">
+        {[
+          { title: "Research Mandate",     desc: "Each center has a defined thematic mandate aligned with one or more of the Institute's research areas." },
+          { title: "Project Management",   desc: "Centers develop, coordinate, and manage research projects within their domain, with clear deliverables and timelines." },
+          { title: "Publication Output",   desc: "Centers are expected to produce research publications in line with the Institute's publication policy." },
+          { title: "Event Organization",   desc: "Centers may organize seminars, workshops, and conferences relevant to their research theme." },
+          { title: "Scholar Engagement",   desc: "Centers engage visiting scholars, research fellows, and project contributors on an ongoing basis." },
+          { title: "Partnership Development", desc: "Centers identify and develop relevant institutional collaborations and research partnerships." },
+        ].map((g) => (
+          <div style="padding:24px;background:var(--bg-white);border:1px solid var(--border-light);">
+            <h3 style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--text-main);margin-bottom:8px;">{g.title}</h3>
+            <p style="font-size:13.5px;line-height:1.65;color:var(--text-secondary);">{g.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-compact" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:8px;">Interested in joining a research center?</h2>
+          <p style="font-size:15px;color:var(--text-secondary);">Apply as a visiting scholar, research fellow, or submit a research project proposal.</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/collaboration/visiting-scholar-application" class="btn btn-primary">Visiting Scholar</a>
+          <a href="/collaboration/research-fellow-application"  class="btn btn-secondary">Research Fellow</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -137,6 +137,11 @@ const phraseTranslations = {
         ].filter(Boolean);
       }
 
+      function shouldSkipTranslationNode(node) {
+        const element = node instanceof Element ? node : node.parentElement;
+        return Boolean(element?.closest('[data-no-translate], .site-logo'));
+      }
+
       function captureOriginalContent() {
         const roots = [
           document.getElementById('site-header'),
@@ -152,6 +157,7 @@ const phraseTranslations = {
               if (!parent || ['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEMPLATE'].includes(parent.tagName)) {
                 return NodeFilter.FILTER_REJECT;
               }
+              if (shouldSkipTranslationNode(node)) return NodeFilter.FILTER_REJECT;
               return node.textContent && node.textContent.trim()
                 ? NodeFilter.FILTER_ACCEPT
                 : NodeFilter.FILTER_REJECT;
@@ -168,6 +174,7 @@ const phraseTranslations = {
           });
 
           root.querySelectorAll('[aria-label], [alt], [title], [placeholder]').forEach((element) => {
+            if (shouldSkipTranslationNode(element)) return;
             if (!ORIGINAL_ATTRIBUTES.has(element)) ORIGINAL_ATTRIBUTES.set(element, {});
             const originals = ORIGINAL_ATTRIBUTES.get(element);
             ['aria-label', 'alt', 'title', 'placeholder'].forEach((attribute) => {
@@ -198,6 +205,7 @@ const phraseTranslations = {
               if (!parent || ['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEMPLATE'].includes(parent.tagName)) {
                 return NodeFilter.FILTER_REJECT;
               }
+              if (shouldSkipTranslationNode(node)) return NodeFilter.FILTER_REJECT;
               return ORIGINAL_TEXT.has(node) || (node.textContent && node.textContent.trim())
                 ? NodeFilter.FILTER_ACCEPT
                 : NodeFilter.FILTER_REJECT;
@@ -215,6 +223,7 @@ const phraseTranslations = {
           });
 
           root.querySelectorAll('[aria-label], [alt], [title], [placeholder]').forEach((element) => {
+            if (shouldSkipTranslationNode(element)) return;
             const originals = ORIGINAL_ATTRIBUTES.get(element);
             if (!originals) return;
             ['aria-label', 'alt', 'title', 'placeholder'].forEach((attribute) => {

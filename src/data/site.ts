@@ -16,7 +16,7 @@ export const platforms = [
     name: "Panorama Scholarly Group",
     href: "https://www.panorama-sg.com",
     logo: "https://panorama-sg.com/logo-dark.svg",
-    logoTheme: "light",
+    logoTheme: "dark",
     desc: "Official institutional website",
     external: true,
   },

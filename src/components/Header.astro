@@ -17,7 +17,7 @@ const currentPath = Astro.url.pathname;
 <header class="site-header" id="site-header">
   <div class="container site-header-inner">
     <!-- Logo -->
-    <a href={lang === 'en' ? '/' : `/${lang}`} class="site-logo" aria-label="Panorama Research Institute - Home">
+    <a href={lang === 'en' ? '/' : `/${lang}`} class="site-logo" aria-label="Panorama Research Institute - Home" data-no-translate>
       <Logo />
     </a>
 
@@ -86,7 +86,7 @@ const currentPath = Astro.url.pathname;
     </nav>
 
     <!-- Right -->
-    <div class="header-right" style="display:flex;align-items:center;gap:8px;">
+    <div class="header-right">
       <a href={lang === 'en' ? '/contact' : `/${lang}/contact`} class="btn btn-primary">{t('btn.contact')}</a>
       <LanguagePicker />
       <button class="menu-toggle" aria-label="Open menu" id="menu-toggle" type="button">
@@ -99,7 +99,7 @@ const currentPath = Astro.url.pathname;
 <!-- Mobile Nav Overlay -->
 <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <div class="mobile-nav-header">
-    <a href={lang === 'en' ? '/' : `/${lang}`} class="site-logo">
+    <a href={lang === 'en' ? '/' : `/${lang}`} class="site-logo" data-no-translate>
       <Logo />
     </a>
     <button class="mobile-close" id="mobile-close" aria-label="Close menu" type="button">&#x2715;</button>

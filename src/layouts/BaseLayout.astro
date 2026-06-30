@@ -223,7 +223,7 @@ const phraseTranslations = {
         });
       }
 
-      function rewriteInternalLinks() {
+      function rewriteInternalLinks(activeLang) {
         const origin = window.location.origin;
 
         document.querySelectorAll('a[href]').forEach((anchor) => {
@@ -249,7 +249,7 @@ const phraseTranslations = {
           node.setAttribute('href', getBasePath(window.location.pathname));
         });
 
-        updateLanguagePicker(lang);
+        updateLanguagePicker(activeLang);
       }
 
       async function applyLanguage(lang, options = {}) {
@@ -260,7 +260,7 @@ const phraseTranslations = {
 
         document.documentElement.lang = lang;
         closeMobileNav();
-        rewriteInternalLinks();
+        rewriteInternalLinks(lang);
         applyPhraseTranslations(lang);
         if (shouldScroll) window.scrollTo({ top: 0, behavior: 'instant' });
       }
@@ -349,7 +349,7 @@ const phraseTranslations = {
       if (!redirectedLanguage) {
         const initialLanguage = getStoredLanguage();
         captureOriginalContent();
-        rewriteInternalLinks();
+        rewriteInternalLinks(initialLanguage);
         applyPhraseTranslations(initialLanguage);
         if (initialLanguage !== 'en') {
           applyLanguage(initialLanguage, { persist: false });

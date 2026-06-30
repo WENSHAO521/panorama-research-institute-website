@@ -9,50 +9,148 @@ const langs: { code: Lang; label: string }[] = [
   { code: 'zh-cn', label: '简体中文' },
   { code: 'zh-tw', label: '繁體中文' },
 ];
+
+const currentLang = langs.find((l) => l.code === lang) ?? langs[0];
 ---
 
-<div class="lang-picker" aria-label="Language selection">
-  {langs.map((l, i) => (
-    <>
-      {i > 0 && <span class="lang-sep">·</span>}
+<details class="lang-picker">
+  <summary class="lang-trigger" aria-label="Language selection">
+    <span class="lang-mark" aria-hidden="true">文</span>
+    <span class="lang-current">{currentLang.label}</span>
+    <span class="lang-chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="lang-menu" role="menu" aria-label="Language selection">
+    {langs.map((l) => (
       <a
         href={getLocalizedPath(l.code, path)}
         class={`lang-opt${lang === l.code ? ' lang-active' : ''}`}
         aria-current={lang === l.code ? 'true' : undefined}
         hreflang={l.code}
+        role="menuitem"
       >
         {l.label}
       </a>
-    </>
-  ))}
-</div>
+    ))}
+  </div>
+</details>
 
 <style>
 .lang-picker {
-  display: flex;
+  position: relative;
+  flex-shrink: 0;
+  z-index: 240;
+}
+.lang-picker[open] .lang-trigger {
+  border-color: var(--text-main);
+  background: var(--bg-white);
+}
+.lang-picker[open] .lang-chevron {
+  transform: rotate(225deg);
+  margin-top: 4px;
+}
+.lang-trigger {
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 11px;
+  border: 1px solid var(--border-medium);
+  border-radius: 2px;
+  background: var(--bg-white);
+  color: var(--text-main);
+  cursor: pointer;
+  list-style: none;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.12s ease;
+  white-space: nowrap;
+}
+.lang-trigger::-webkit-details-marker {
+  display: none;
+}
+.lang-trigger:hover {
+  border-color: var(--text-main);
+}
+.lang-trigger:active {
+  transform: translateY(1px);
+}
+.lang-trigger:focus-visible {
+  outline: 2px solid rgba(31, 35, 38, 0.22);
+  outline-offset: 2px;
+}
+.lang-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--border-light);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+}
+.lang-current {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+}
+.lang-chevron {
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  margin-top: -3px;
+  transition: transform 0.15s ease, margin-top 0.15s ease;
+}
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 172px;
+  padding: 6px;
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 18px 40px rgba(31, 35, 38, 0.08), 0 4px 12px rgba(31, 35, 38, 0.04);
 }
 .lang-opt {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-  padding: 2px 5px;
-  border: 1px solid transparent;
-  transition: color 0.15s, border-color 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 36px;
+  padding: 8px 10px;
+  border-left: 2px solid transparent;
+  color: var(--text-main);
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.35;
+  transition: background 0.1s ease, border-color 0.1s ease;
   white-space: nowrap;
-  line-height: 1.4;
 }
 .lang-opt:hover,
 .lang-active {
-  color: var(--text-main);
-  border-color: var(--border-light);
+  background: var(--bg-soft);
+  border-left-color: var(--text-main);
 }
-.lang-sep {
-  font-size: 10px;
-  color: var(--border-light);
-  line-height: 1;
-  pointer-events: none;
+.lang-active::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--text-main);
+  margin-left: 14px;
+}
+
+@media (max-width: 768px) {
+  .lang-picker {
+    width: 100%;
+  }
+  .lang-trigger {
+    width: 100%;
+    justify-content: center;
+  }
+  .lang-menu {
+    position: static;
+    width: 100%;
+    margin-top: 8px;
+    box-shadow: none;
+  }
 }
 </style>

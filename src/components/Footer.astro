@@ -1,15 +1,11 @@
 ---
 import Logo from './Logo.astro';
-import { useTranslations } from '../i18n/ui';
 import type { Lang } from '../i18n/utils';
 
 interface Props {
   lang?: Lang;
 }
-const { lang = 'en' } = Astro.props;
-const t = useTranslations(lang);
-const L = (path: string) => lang === 'en' ? path : `/${lang}${path}`;
-const LS = (path: string) => lang === 'en' ? path : `/${lang}${path}`;
+const { lang: _lang = 'en' } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
@@ -18,13 +14,13 @@ const year = new Date().getFullYear();
     <div class="footer-grid">
       <!-- Brand -->
       <div class="footer-logo-area">
-        <a href={L('/')} aria-label="Panorama Research Institute">
+        <a href="/" aria-label="Panorama Research Institute">
           <Logo variant="light" size="sm" />
         </a>
         <div style="margin-top:20px;">
           <div class="footer-site-name">PANORAMA RESEARCH INSTITUTE</div>
-          <div class="footer-sub-name">{t('footer.division')}</div>
-          <p class="footer-statement">{t('footer.statement')}</p>
+          <div class="footer-sub-name">A Division of Panorama Scholarly Group</div>
+          <p class="footer-statement">Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group and is not a separate legal entity.</p>
           <div style="margin-top:16px;">
             <a href="mailto:research@panorama-sg.com" class="footer-link" style="font-size:13px;">research@panorama-sg.com</a>
             <a href="https://research.panorama-sg.com" class="footer-link" style="font-size:13px;">research.panorama-sg.com</a>
@@ -34,53 +30,53 @@ const year = new Date().getFullYear();
 
       <!-- Institute -->
       <div>
-        <div class="footer-col-title">{t('footer.col.institute')}</div>
-        <a href={L('/about')}                             class="footer-link">{lang === 'en' ? 'Overview' : lang === 'zh-cn' ? '简介' : '簡介'}</a>
-        <a href={LS('/about/mission-vision')}             class="footer-link">{lang === 'en' ? 'Mission & Vision' : lang === 'zh-cn' ? '使命与愿景' : '使命與願景'}</a>
-        <a href={L('/framework')}                         class="footer-link">{lang === 'en' ? 'Institute Framework' : lang === 'zh-cn' ? '研究院框架' : '研究院框架'}</a>
-        <a href={LS('/framework/organizational-structure')} class="footer-link">{lang === 'en' ? 'Organizational Structure' : lang === 'zh-cn' ? '组织架构' : '組織架構'}</a>
-        <a href={L('/contact')}                           class="footer-link">{lang === 'en' ? 'Contact' : lang === 'zh-cn' ? '联系我们' : '聯絡我們'}</a>
+        <div class="footer-col-title">Institute</div>
+        <a href="/about" class="footer-link">Overview</a>
+        <a href="/about/mission-vision" class="footer-link">Mission & Vision</a>
+        <a href="/framework" class="footer-link">Institute Framework</a>
+        <a href="/framework/organizational-structure" class="footer-link">Organizational Structure</a>
+        <a href="/contact" class="footer-link">Contact</a>
       </div>
 
       <!-- Governance -->
       <div>
-        <div class="footer-col-title">{t('footer.col.governance')}</div>
-        <a href={L('/charter')}                           class="footer-link">{t('footer.charter')}</a>
-        <a href={LS('/governance/research-ethics')}       class="footer-link">{t('footer.ethics')}</a>
-        <a href={LS('/governance/conflict-of-interest')}  class="footer-link">{lang === 'en' ? 'Conflict of Interest' : lang === 'zh-cn' ? '利益冲突政策' : '利益衝突政策'}</a>
-        <a href={LS('/governance/publication-report-policy')} class="footer-link">{lang === 'en' ? 'Publication Policy' : lang === 'zh-cn' ? '出版政策' : '出版政策'}</a>
-        <a href={LS('/governance/academic-independence')} class="footer-link">{lang === 'en' ? 'Academic Independence' : lang === 'zh-cn' ? '学术独立' : '學術獨立'}</a>
+        <div class="footer-col-title">Governance</div>
+        <a href="/charter" class="footer-link">Charter</a>
+        <a href="/governance/research-ethics" class="footer-link">Research Ethics</a>
+        <a href="/governance/conflict-of-interest" class="footer-link">Conflict of Interest</a>
+        <a href="/governance/publication-report-policy" class="footer-link">Publication Policy</a>
+        <a href="/governance/academic-independence" class="footer-link">Academic Independence</a>
       </div>
 
       <!-- Research -->
       <div>
-        <div class="footer-col-title">{t('footer.col.research')}</div>
-        <a href={L('/research-centers')} class="footer-link">{lang === 'en' ? 'Research Centers' : lang === 'zh-cn' ? '研究中心' : '研究中心'}</a>
-        <a href={L('/projects')}         class="footer-link">{lang === 'en' ? 'Research Projects' : lang === 'zh-cn' ? '研究项目' : '研究項目'}</a>
-        <a href={L('/publications')}     class="footer-link">{lang === 'en' ? 'Publications' : lang === 'zh-cn' ? '出版物' : '出版物'}</a>
-        <a href={L('/events')}           class="footer-link">{lang === 'en' ? 'Events & Calls' : lang === 'zh-cn' ? '活动与征稿' : '活動與徵稿'}</a>
-        <a href={L('/people')}           class="footer-link">{lang === 'en' ? 'People' : lang === 'zh-cn' ? '人员' : '人員'}</a>
+        <div class="footer-col-title">Research</div>
+        <a href="/research-centers" class="footer-link">Research Centers</a>
+        <a href="/projects" class="footer-link">Research Projects</a>
+        <a href="/publications" class="footer-link">Publications</a>
+        <a href="/events" class="footer-link">Events & Calls</a>
+        <a href="/people" class="footer-link">People</a>
       </div>
 
       <!-- Platforms -->
       <div>
-        <div class="footer-col-title">{t('footer.col.platforms')}</div>
-        <a href="https://www.panorama-sg.com"      class="footer-link" target="_blank" rel="noopener">{lang === 'en' ? 'Panorama Scholarly Group' : '全景学术集团' }</a>
-        <a href="https://journals.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">{lang === 'en' ? 'Panorama Journals' : lang === 'zh-cn' ? '全景期刊' : '全景期刊'}</a>
-        <a href="https://books.panorama-sg.com"    class="footer-link" target="_blank" rel="noopener">{lang === 'en' ? 'Panorama Books' : lang === 'zh-cn' ? '全景图书' : '全景圖書'}</a>
-        <a href="https://posi.panorama-sg.com"     class="footer-link" target="_blank" rel="noopener">POSI {lang === 'en' ? 'Database' : lang === 'zh-cn' ? '数据库' : '資料庫'}</a>
-        <a href="https://scholars.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">{lang === 'en' ? 'Scholar Profiles' : lang === 'zh-cn' ? '学者档案' : '學者檔案'}</a>
+        <div class="footer-col-title">Panorama Platforms</div>
+        <a href="https://www.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">Panorama Scholarly Group</a>
+        <a href="https://journals.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">Panorama Journals</a>
+        <a href="https://books.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">Panorama Books</a>
+        <a href="https://posi.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">POSI Database</a>
+        <a href="https://scholars.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">Scholar Profiles</a>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <span>{t('footer.copyright').replace('{year}', String(year))}</span>
+      <span>© {year} Panorama Scholarly Group. All rights reserved.</span>
       <span>
-        <a href={L('/charter')}              class="footer-link" style="display:inline;">{t('footer.charter')}</a>
+        <a href="/charter" class="footer-link" style="display:inline;">Charter</a>
         &nbsp;&middot;&nbsp;
-        <a href={LS('/governance/research-ethics')} class="footer-link" style="display:inline;">{t('footer.ethics')}</a>
+        <a href="/governance/research-ethics" class="footer-link" style="display:inline;">Research Ethics</a>
         &nbsp;&middot;&nbsp;
-        <a href={L('/contact')}              class="footer-link" style="display:inline;">{t('footer.contact')}</a>
+        <a href="/contact" class="footer-link" style="display:inline;">Contact</a>
       </span>
     </div>
   </div>

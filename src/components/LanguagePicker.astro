@@ -1,5 +1,5 @@
 ---
-import { getBasePath, getLangFromUrl, getLocalizedPath, type Lang } from '../i18n/utils';
+import { getBasePath, getLangFromUrl, type Lang } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const path = Astro.url.pathname;
@@ -16,7 +16,14 @@ const currentLang = langs.find((l) => l.code === lang) ?? langs[0];
 
 <details class="lang-picker">
   <summary class="lang-trigger" aria-label="Language selection">
-    <span class="lang-mark" aria-hidden="true">文</span>
+    <span class="lang-icon" aria-hidden="true">
+      <svg viewBox="0 0 20 20" focusable="false">
+        <circle cx="10" cy="10" r="7.25"></circle>
+        <path d="M3 10h14"></path>
+        <path d="M10 2.75c2 2.05 3 4.47 3 7.25s-1 5.2-3 7.25"></path>
+        <path d="M10 2.75C8 4.8 7 7.22 7 10s1 5.2 3 7.25"></path>
+      </svg>
+    </span>
     <span class="lang-current">{currentLang.label}</span>
     <span class="lang-chevron" aria-hidden="true"></span>
   </summary>
@@ -25,13 +32,13 @@ const currentLang = langs.find((l) => l.code === lang) ?? langs[0];
       <a
         href={basePath}
         data-language-option={l.code}
-        data-localized-path={getLocalizedPath(l.code, path)}
         class={`lang-opt${lang === l.code ? ' lang-active' : ''}`}
         aria-current={lang === l.code ? 'true' : undefined}
         hreflang={l.code}
         role="menuitem"
       >
-        {l.label}
+        <span class="lang-name">{l.label}</span>
+        <span class="lang-code">{l.code === 'en' ? 'EN' : l.code === 'zh-cn' ? 'CN' : 'TW'}</span>
       </a>
     ))}
   </div>
@@ -44,8 +51,9 @@ const currentLang = langs.find((l) => l.code === lang) ?? langs[0];
   z-index: 240;
 }
 .lang-picker[open] .lang-trigger {
-  border-color: var(--text-main);
+  border-color: rgba(55, 90, 107, 0.42);
   background: var(--bg-white);
+  box-shadow: 0 8px 22px rgba(31, 35, 38, 0.06);
 }
 .lang-picker[open] .lang-chevron {
   transform: rotate(225deg);
@@ -54,23 +62,24 @@ const currentLang = langs.find((l) => l.code === lang) ?? langs[0];
 .lang-trigger {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  min-height: 38px;
-  padding: 0 11px;
-  border: 1px solid var(--border-medium);
-  border-radius: 2px;
-  background: var(--bg-white);
+  gap: 9px;
+  min-height: 42px;
+  padding: 0 13px;
+  border: 1px solid rgba(31, 35, 38, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
   color: var(--text-main);
   cursor: pointer;
   list-style: none;
-  transition: border-color 0.15s ease, background 0.15s ease, transform 0.12s ease;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
   white-space: nowrap;
 }
 .lang-trigger::-webkit-details-marker {
   display: none;
 }
 .lang-trigger:hover {
-  border-color: var(--text-main);
+  border-color: rgba(31, 35, 38, 0.34);
+  background: var(--bg-white);
 }
 .lang-trigger:active {
   transform: translateY(1px);
@@ -79,19 +88,25 @@ const currentLang = langs.find((l) => l.code === lang) ?? langs[0];
   outline: 2px solid rgba(31, 35, 38, 0.22);
   outline-offset: 2px;
 }
-.lang-mark {
+.lang-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
-  border: 1px solid var(--border-light);
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1;
+  width: 20px;
+  height: 20px;
+  color: var(--accent-steel);
+}
+.lang-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .lang-current {
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 600;
   line-height: 1;
 }
@@ -106,39 +121,52 @@ const currentLang = langs.find((l) => l.code === lang) ?? langs[0];
 }
 .lang-menu {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 10px);
   right: 0;
-  min-width: 172px;
-  padding: 6px;
+  min-width: 190px;
+  padding: 8px;
   background: var(--bg-white);
   border: 1px solid var(--border-light);
-  box-shadow: 0 18px 40px rgba(31, 35, 38, 0.08), 0 4px 12px rgba(31, 35, 38, 0.04);
+  border-radius: 10px;
+  box-shadow: 0 18px 42px rgba(31, 35, 38, 0.12), 0 4px 12px rgba(31, 35, 38, 0.05);
 }
 .lang-opt {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 36px;
-  padding: 8px 10px;
-  border-left: 2px solid transparent;
+  gap: 16px;
+  min-height: 38px;
+  padding: 9px 11px;
+  border-radius: 7px;
   color: var(--text-main);
   font-size: 13.5px;
   font-weight: 500;
   line-height: 1.35;
-  transition: background 0.1s ease, border-color 0.1s ease;
+  transition: background 0.1s ease, color 0.1s ease;
   white-space: nowrap;
 }
 .lang-opt:hover,
 .lang-active {
   background: var(--bg-soft);
-  border-left-color: var(--text-main);
+}
+.lang-code {
+  min-width: 24px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  text-align: right;
+}
+.lang-active .lang-code {
+  color: var(--accent-steel);
 }
 .lang-active::after {
   content: "";
-  width: 6px;
-  height: 6px;
-  background: var(--text-main);
-  margin-left: 14px;
+  width: 5px;
+  height: 5px;
+  background: var(--accent-steel);
+  border-radius: 999px;
+  margin-left: -8px;
 }
 
 @media (max-width: 768px) {
@@ -148,12 +176,14 @@ const currentLang = langs.find((l) => l.code === lang) ?? langs[0];
   .lang-trigger {
     width: 100%;
     justify-content: center;
+    border-radius: 2px;
   }
   .lang-menu {
     position: static;
     width: 100%;
     margin-top: 8px;
     box-shadow: none;
+    border-radius: 2px;
   }
 }
 </style>

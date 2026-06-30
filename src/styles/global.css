@@ -219,6 +219,209 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   background: var(--border-light);
 }
 
+/* ── Organization Structure ── */
+.org-structure-card {
+  position: relative;
+  max-width: 980px;
+  margin-top: 8px;
+  padding: 42px;
+  border: 1px solid var(--border-light);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(247,247,245,0.96) 100%),
+    var(--bg-white);
+  overflow: hidden;
+}
+.org-structure-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--text-main) 0 84px, var(--border-light) 84px 100%);
+}
+.org-hierarchy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.org-node {
+  min-width: min(100%, 300px);
+  padding: 15px 24px;
+  text-align: center;
+  font-family: var(--font-sans);
+  letter-spacing: 0.03em;
+}
+.org-node-parent {
+  border: 1px solid var(--border-light);
+  background: var(--bg-white);
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+.org-node-institute {
+  border: 1px solid var(--text-main);
+  box-shadow: inset 0 0 0 1px var(--text-main);
+  background: var(--bg-white);
+  color: var(--text-main);
+  font-size: 15px;
+  font-weight: 700;
+}
+.org-connector {
+  width: 1px;
+  height: 28px;
+  background: var(--border-medium);
+}
+.org-branch {
+  position: relative;
+  width: min(100%, 760px);
+  height: 30px;
+}
+.org-branch::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 100%;
+  background: var(--border-medium);
+}
+.org-unit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  width: 100%;
+  background: var(--border-light);
+  border: 1px solid var(--border-light);
+}
+.org-unit-grid-compact {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.org-unit-card {
+  min-height: 126px;
+  padding: 20px;
+  background: var(--bg-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background 0.16s ease;
+}
+.org-unit-card:hover { background: var(--bg-soft); }
+.org-unit-index {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1;
+}
+.org-unit-title {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-main);
+}
+.org-unit-role {
+  margin-top: 8px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* ── Institute Framework Map ── */
+.framework-map-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 1px;
+  max-width: 920px;
+  margin-top: 8px;
+  border: 1px solid var(--border-light);
+  background: var(--border-light);
+  overflow: hidden;
+}
+.framework-map-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--text-main);
+}
+.framework-map-core {
+  position: relative;
+  min-height: 300px;
+  padding: 30px 28px;
+  background: var(--bg-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+.framework-map-core::after {
+  content: "";
+  position: absolute;
+  right: -21px;
+  top: 50%;
+  width: 42px;
+  height: 1px;
+  background: var(--border-medium);
+  z-index: 2;
+}
+.framework-map-parent,
+.framework-map-institute {
+  font-family: var(--font-sans);
+  letter-spacing: 0.03em;
+  line-height: 1.35;
+}
+.framework-map-parent {
+  padding: 16px 18px;
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  font-size: 13.5px;
+  font-weight: 600;
+  background: var(--bg-soft);
+}
+.framework-map-institute {
+  padding: 18px;
+  border: 1px solid var(--text-main);
+  box-shadow: inset 0 0 0 1px var(--text-main);
+  color: var(--text-main);
+  font-size: 15px;
+  font-weight: 700;
+  background: var(--bg-white);
+}
+.framework-map-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--border-light);
+}
+.framework-map-unit {
+  min-height: 128px;
+  padding: 22px;
+  background: var(--bg-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background 0.16s ease;
+}
+.framework-map-unit:hover { background: var(--bg-soft); }
+.framework-map-unit-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1;
+}
+.framework-map-unit-title {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-main);
+}
+
 /* ── Publication Item ── */
 .publication-item {
   display: grid;
@@ -724,6 +927,29 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   .center-card      { grid-template-columns: 1fr; gap: 12px; }
   .event-item       { grid-template-columns: 1fr; gap: 8px; }
   .platform-grid    { grid-template-columns: 1fr 1fr; }
+  .org-structure-card { padding: 28px; }
+  .org-node {
+    width: 100%;
+    min-width: 0;
+  }
+  .org-unit-grid,
+  .org-unit-grid-compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .framework-map-card {
+    grid-template-columns: 1fr;
+  }
+  .framework-map-core {
+    min-height: auto;
+  }
+  .framework-map-core::after {
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -21px;
+    width: 1px;
+    height: 42px;
+  }
 
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .footer-logo-area { grid-column: span 2; }
@@ -736,6 +962,17 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
     max-width: 148px;
   }
   .platform-grid { grid-template-columns: 1fr; }
+  .org-structure-card { padding: 24px; }
+  .org-unit-grid,
+  .org-unit-grid-compact {
+    grid-template-columns: 1fr;
+  }
+  .org-unit-card { min-height: 108px; }
+  .framework-map-grid { grid-template-columns: 1fr; }
+  .framework-map-core,
+  .framework-map-unit {
+    padding: 22px;
+  }
   .footer-grid   { grid-template-columns: 1fr; }
   .footer-logo-area { grid-column: span 1; }
 }

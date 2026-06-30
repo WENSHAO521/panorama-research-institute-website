@@ -1,6 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+
+const orgUnits = [
+  { unit: "Institute Office",             role: "Administration, governance, communications" },
+  { unit: "Research Centers",             role: "Academic research and project management" },
+  { unit: "Publications Unit",            role: "Research reports, working papers, briefs" },
+  { unit: "Academic Events Unit",         role: "Conferences, seminars, workshops" },
+  { unit: "Scholar & Fellowship Program", role: "Fellows, visiting scholars, research assistants" },
+  { unit: "Collaboration Office",         role: "Partnerships, proposals, institutional MoUs" },
+];
 ---
 <BaseLayout title="Organizational Structure" description="The organizational structure of Panorama Research Institute.">
   <PageHero
@@ -13,28 +22,24 @@ import PageHero from '../../components/PageHero.astro';
     <div class="container">
       <div class="section-label">Governance Hierarchy</div>
       <h2 class="section-title">Position within Panorama Scholarly Group</h2>
-      <div style="background:var(--bg-white);border:1px solid var(--border-light);padding:48px;max-width:900px;margin-top:8px;">
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <div style="border:1px solid var(--border-medium);padding:14px 48px;font-size:14px;font-weight:500;color:var(--text-muted);background:var(--bg-soft);font-family:var(--font-sans);letter-spacing:0.03em;">
+      <div class="org-structure-card">
+        <div class="org-hierarchy">
+          <div class="org-node org-node-parent">
             Panorama Scholarly Group
           </div>
-          <div style="width:1px;height:32px;background:var(--border-medium);"></div>
-          <div style="border:2px solid var(--text-main);padding:16px 48px;font-size:15px;font-weight:700;color:var(--text-main);font-family:var(--font-sans);letter-spacing:0.03em;">
+          <div class="org-connector"></div>
+          <div class="org-node org-node-institute">
             Panorama Research Institute
           </div>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border-light);width:100%;max-width:780px;margin-top:0;">
-            <div style="width:1px;height:32px;background:var(--border-medium);margin:0 auto;grid-column:span 3;"></div>
-            {[
-              { unit: "Institute Office",             role: "Administration, governance, communications" },
-              { unit: "Research Centers",             role: "Academic research and project management" },
-              { unit: "Publications Unit",            role: "Research reports, working papers, briefs" },
-              { unit: "Academic Events Unit",         role: "Conferences, seminars, workshops" },
-              { unit: "Scholar & Fellowship Program", role: "Fellows, visiting scholars, research assistants" },
-              { unit: "Collaboration Office",         role: "Partnerships, proposals, institutional MoUs" },
-            ].map((u) => (
-              <div style="padding:18px 16px;border-right:1px solid var(--border-light);border-bottom:1px solid var(--border-light);background:var(--bg-soft);">
-                <div style="font-size:13.5px;font-weight:600;color:var(--text-main);font-family:var(--font-sans);margin-bottom:6px;">{u.unit}</div>
-                <div style="font-size:12px;color:var(--text-muted);line-height:1.5;">{u.role}</div>
+          <div class="org-branch"></div>
+          <div class="org-unit-grid">
+            {orgUnits.map((u, index) => (
+              <div class="org-unit-card">
+                <div class="org-unit-index">{String(index + 1).padStart(2, '0')}</div>
+                <div>
+                  <div class="org-unit-title">{u.unit}</div>
+                  <div class="org-unit-role">{u.role}</div>
+                </div>
               </div>
             ))}
           </div>
@@ -138,6 +143,5 @@ import PageHero from '../../components/PageHero.astro';
 @media (max-width: 900px) {
   div[style*="grid-template-columns:220px 1fr"] { display: block !important; }
   div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
-  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
 }
 </style>

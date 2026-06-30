@@ -5,10 +5,12 @@ import PageHero from '../../components/PageHero.astro';
 const orgUnits = [
   { unit: "Institute Office",             role: "Administration, governance, communications" },
   { unit: "Research Centers",             role: "Academic research and project management" },
+  { unit: "Project Teams",                role: "Project execution and research delivery" },
   { unit: "Publications Unit",            role: "Research reports, working papers, briefs" },
   { unit: "Academic Events Unit",         role: "Conferences, seminars, workshops" },
   { unit: "Scholar & Fellowship Program", role: "Fellows, visiting scholars, research assistants" },
   { unit: "Collaboration Office",         role: "Partnerships, proposals, institutional MoUs" },
+  { unit: "Research Ethics and Standards Office", role: "Research ethics, standards, compliance" },
 ];
 ---
 <BaseLayout title="Organizational Structure" description="The organizational structure of Panorama Research Institute.">
@@ -67,6 +69,12 @@ const orgUnits = [
             functions: ["Development and management of research projects", "Center-specific publication programs", "Center-organized academic events and seminars", "Engagement of visiting scholars and project contributors", "Partnership development within the center's domain"],
           },
           {
+            unit: "Project Teams",
+            head: "Project Leads / Principal Investigators",
+            desc: "Project Teams are formed around approved research initiatives. Each team is responsible for implementing the research plan, coordinating contributors, maintaining project documentation, and delivering outputs in line with the Institute's standards.",
+            functions: ["Research plan implementation", "Contributor coordination and task management", "Project documentation and progress tracking", "Preparation of project outputs", "Coordination with relevant research centers"],
+          },
+          {
             unit: "Publications Unit",
             head: "Publications Coordinator",
             desc: "The Publications Unit manages the editorial, production, and dissemination processes for all Institute publications, including research reports, working papers, policy briefs, edited volumes, and the annual report.",
@@ -89,6 +97,12 @@ const orgUnits = [
             head: "Collaboration Coordinator",
             desc: "The Collaboration Office manages the Institute's external partnership activities, including institutional cooperation agreements, research project proposals from external parties, edited volume and special issue proposals, and event co-organization requests.",
             functions: ["Institutional cooperation agreements", "External research proposal review", "Partnership and MoU administration", "Event co-organization management", "Collaboration inquiry responses"],
+          },
+          {
+            unit: "Research Ethics and Standards Office",
+            head: "Research Ethics and Standards Coordinator",
+            desc: "The Research Ethics and Standards Office supports ethical review, research integrity, data documentation, and academic standards across Institute research activities and outputs.",
+            functions: ["Research ethics review support", "Research integrity guidance", "Data and documentation standards", "Standards alignment for project outputs", "Compliance coordination with Institute governance policies"],
           },
         ].map((unit) => (
           <div style="padding:36px 0;border-bottom:1px solid var(--border-light);">

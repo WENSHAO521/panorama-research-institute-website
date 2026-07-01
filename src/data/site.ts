@@ -3,7 +3,7 @@ export const site = {
   nameFull: "Panorama Research Institute",
   nameShort: "PRI",
   tagline: "Research, scholarly infrastructure, and academic collaboration.",
-  description: "Panorama Research Institute is an independent academic platform and internal research and academic development division of Panorama Scholarly Group.",
+  description: "Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group.",
   email: "research@panorama-sg.com",
   website: "research.panorama-sg.com",
   parent: "Panorama Scholarly Group",

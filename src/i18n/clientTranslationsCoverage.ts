@@ -1,7 +1,7 @@
 export const clientTranslationsCoverage = {
   'zh-cn': {
     'Research, scholarly infrastructure, and academic collaboration. The Institute supports interdisciplinary research, scholarly publishing studies, journal indexing and evaluation, policy analysis, and the development of global scholarly communication infrastructure.': '研究、学术基础设施与学术合作。研究院支持跨学科研究、学术出版研究、期刊索引与评价、政策分析，以及全球学术传播基础设施的发展。',
-    'Panorama Research Institute operates as an independent academic platform under the governance of Panorama Scholarly Group. It is an internal research and academic development division and is not a separate legal entity.': '全景研究院在全景学术集团治理下作为独立学术平台运行，是集团内部研究与学术发展部门，不具备独立法人资格。',
+    'Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group. It maintains academic independence in its research activities and is not a separate legal entity.': '全景研究院是全景学术集团的内部研究与学术发展部门，在研究活动中保持学术独立，且不具备独立法人资格。',
     'Research on open access, peer review, editorial standards, publication ethics, authorship, and research integrity.': '研究开放获取、同行评审、编辑标准、出版伦理、作者身份和研究诚信。',
     'Research on scholarly indexing, metadata transparency, journal discovery, quality indicators, and evaluation frameworks.': '研究学术索引、元数据透明度、期刊发现、质量指标和评价框架。',
     'Research on public policy, governance, social development, youth issues, digital society, and international affairs.': '研究公共政策、治理、社会发展、青年议题、数字社会和国际事务。',
@@ -752,7 +752,7 @@ export const clientTranslationsCoverage = {
   },
   'zh-tw': {
     'Research, scholarly infrastructure, and academic collaboration. The Institute supports interdisciplinary research, scholarly publishing studies, journal indexing and evaluation, policy analysis, and the development of global scholarly communication infrastructure.': '研究、學術基礎設施與學術合作。研究院支持跨學科研究、學術出版研究、期刊索引與評價、政策分析，以及全球學術傳播基礎設施的發展。',
-    'Panorama Research Institute operates as an independent academic platform under the governance of Panorama Scholarly Group. It is an internal research and academic development division and is not a separate legal entity.': '全景研究院在全景學術集團治理下作為獨立學術平台運行，是集團內部研究與學術發展部門，不具備獨立法人資格。',
+    'Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group. It maintains academic independence in its research activities and is not a separate legal entity.': '全景研究院是全景學術集團的內部研究與學術發展部門，在研究活動中保持學術獨立，且不具備獨立法人資格。',
     'Research on open access, peer review, editorial standards, publication ethics, authorship, and research integrity.': '研究開放取用、同儕評審、編輯標準、出版倫理、作者身分和研究誠信。',
     'Research on scholarly indexing, metadata transparency, journal discovery, quality indicators, and evaluation frameworks.': '研究學術索引、後設資料透明度、期刊發現、品質指標和評價框架。',
     'Research on public policy, governance, social development, youth issues, digital society, and international affairs.': '研究公共政策、治理、社會發展、青年議題、數位社會和國際事務。',

@@ -651,6 +651,18 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 .footer-logo-area { padding-right: 16px; }
+.footer-logo-link {
+  display: block;
+  width: fit-content;
+  padding: 8px 10px;
+  margin-left: -10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+.footer-brand-copy {
+  margin-top: 22px;
+}
 .footer-site-name {
   font-family: var(--font-sans);
   font-size: 14px;

@@ -7,7 +7,7 @@ export const site = {
   email: "research@panorama-sg.com",
   website: "research.panorama-sg.com",
   parent: "Panorama Scholarly Group",
-  legalNote: "Panorama Research Institute is not a separate legal entity. It operates under the governance and administration of Panorama Scholarly Group.",
+  legalNote: "Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group and is not a separate legal entity.",
   year: "2026",
 };
 

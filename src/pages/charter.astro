@@ -85,7 +85,7 @@ const articles = [
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Institutional Status</h2>
               <div class="statement-box" style="margin-bottom:20px;">
                 <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">
-                  Panorama Research Institute is not a separate legal entity. It operates under the governance and administration of Panorama Scholarly Group.
+                  Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group and is not a separate legal entity.
                 </p>
               </div>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
@@ -182,10 +182,12 @@ const articles = [
               {[
                 { unit:"Institute Office",              desc:"Responsible for overall administration, governance compliance, internal coordination, external communications, and the maintenance of official records. Headed by the Institute Director." },
                 { unit:"Research Centers",              desc:"The primary academic units of the Institute. Each center has a defined thematic mandate, a Director, and a program of research projects, publications, and events. Currently active centers are listed in Article 9." },
+                { unit:"Project Teams",                 desc:"Responsible for carrying out approved research projects, coordinating project contributors, maintaining project documentation, and reporting project progress to the relevant Research Center Director." },
                 { unit:"Publications Unit",             desc:"Responsible for the editorial management, production, and open access dissemination of all Institute publications, including research reports, working papers, policy briefs, edited volumes, and the annual report." },
                 { unit:"Academic Events Unit",          desc:"Responsible for planning, coordinating, and delivering the Institute's program of conferences, seminars, workshops, training programs, and calls for papers and chapters." },
-                { unit:"Scholar and Fellowship Program","": "", desc:"Responsible for recruiting, onboarding, and supporting Research Fellows, Associate Research Fellows, Visiting Scholars, and Research Assistants, and for maintaining the Institute's scholar community." },
+                { unit:"Scholar and Fellowship Program", desc:"Responsible for recruiting, onboarding, and supporting Research Fellows, Associate Research Fellows, Visiting Scholars, and Research Assistants, and for maintaining the Institute's scholar community." },
                 { unit:"Collaboration Office",          desc:"Responsible for managing the Institute's external partnerships, institutional cooperation agreements, research project proposals, edited volume proposals, and event co-organization inquiries." },
+                { unit:"Research Ethics and Standards Office", desc:"Responsible for research ethics review coordination, integrity guidance, conflict-of-interest disclosure management, and the maintenance of research standards across Institute activities." },
               ].map((item) => (
                 <div style="padding:14px 0;border-bottom:1px solid var(--bg-soft);">
                   <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:5px;">{item.unit}</div>

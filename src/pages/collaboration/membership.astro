@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import FormSubmitFields from '../../components/FormSubmitFields.astro';
+import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro';
 
 const tiers = [
   {
@@ -519,8 +520,12 @@ const formFields = [
           <textarea class="form-textarea" id="member-statement" name="statement" required placeholder="Please explain why you are applying for membership."></textarea>
         </div>
         <div class="form-group">
-          <label class="form-label" for="member-attachment">Attachment Upload</label>
-          <input class="form-input" id="member-attachment" name="attachment" type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" />
+          <MultiAttachmentUpload
+            id="member-attachments"
+            label="Attachment Upload"
+            description="Upload student identification, enrollment proof, institutional profile, CV, or other supporting documents as PDF, Word, image, or ZIP files."
+            accept=".pdf,.doc,.docx,.zip,.png,.jpg,.jpeg"
+          />
         </div>
         <label class="membership-consent">
           <input type="checkbox" name="membership_policy_agreement" value="confirmed" required />

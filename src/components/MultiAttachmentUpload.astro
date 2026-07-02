@@ -1,0 +1,205 @@
+---
+interface Props {
+  id: string;
+  label?: string;
+  description?: string;
+  name?: string;
+  accept?: string;
+}
+
+const {
+  id,
+  label = 'Application Attachments',
+  description = 'Upload completed forms, CVs, publication lists, or supporting documents as PDF, Word, image, or ZIP files.',
+  name = 'attachment',
+  accept = '.pdf,.doc,.docx,.zip,.png,.jpg,.jpeg',
+} = Astro.props;
+---
+
+<div class="multi-attachment" data-multi-attachment>
+  <label class="multi-attachment__label" for={id}>{label}</label>
+  <div class="multi-attachment__control">
+    <input id={id} name={name} type="file" accept={accept} multiple data-attachment-input />
+    <label class="multi-attachment__button" for={id}>Choose files</label>
+    <span class="multi-attachment__status" data-attachment-status>No files selected</span>
+  </div>
+  <ul class="multi-attachment__list" data-attachment-list aria-live="polite"></ul>
+  <p class="multi-attachment__description">{description}</p>
+</div>
+
+<script>
+  const formatFileSize = (size) => {
+    if (!size) return '0 KB';
+    if (size < 1024 * 1024) return `${Math.ceil(size / 1024)} KB`;
+    return `${(size / (1024 * 1024)).toFixed(1)} MB`;
+  };
+
+  const getAttachmentText = () => {
+    const lang = document.documentElement.lang;
+    if (lang === 'zh-cn') {
+      return {
+        none: '未选择文件',
+        selected: (count) => `已选择 ${count} 个文件`,
+        remove: '删除',
+      };
+    }
+    if (lang === 'zh-tw') {
+      return {
+        none: '未選擇檔案',
+        selected: (count) => `已選擇 ${count} 個檔案`,
+        remove: '刪除',
+      };
+    }
+    return {
+      none: 'No files selected',
+      selected: (count) => `${count} file${count > 1 ? 's' : ''} selected`,
+      remove: 'Remove',
+    };
+  };
+
+  const syncInputFiles = (input, files) => {
+    const transfer = new DataTransfer();
+    files.forEach((file) => transfer.items.add(file));
+    input.files = transfer.files;
+  };
+
+  const renderAttachmentList = (root, input, files) => {
+    const list = root.querySelector('[data-attachment-list]');
+    const status = root.querySelector('[data-attachment-status]');
+    if (!list || !status) return;
+    const text = getAttachmentText();
+
+    list.innerHTML = '';
+    status.textContent = files.length ? text.selected(files.length) : text.none;
+
+    files.forEach((file, index) => {
+      const item = document.createElement('li');
+      item.className = 'multi-attachment__item';
+
+      const meta = document.createElement('span');
+      meta.className = 'multi-attachment__meta';
+      meta.textContent = `${file.name} · ${formatFileSize(file.size)}`;
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'multi-attachment__remove';
+      button.textContent = text.remove;
+      button.addEventListener('click', () => {
+        files.splice(index, 1);
+        syncInputFiles(input, files);
+        renderAttachmentList(root, input, files);
+      });
+
+      item.append(meta, button);
+      list.append(item);
+    });
+  };
+
+  document.querySelectorAll('[data-multi-attachment]').forEach((root) => {
+    const input = root.querySelector('[data-attachment-input]');
+    if (!(input instanceof HTMLInputElement)) return;
+
+    const selectedFiles = [];
+    input.addEventListener('change', () => {
+      Array.from(input.files || []).forEach((file) => {
+        const duplicate = selectedFiles.some((existing) => (
+          existing.name === file.name &&
+          existing.size === file.size &&
+          existing.lastModified === file.lastModified
+        ));
+        if (!duplicate) selectedFiles.push(file);
+      });
+      syncInputFiles(input, selectedFiles);
+      renderAttachmentList(root, input, selectedFiles);
+    });
+  });
+</script>
+
+<style>
+.multi-attachment {
+  display: grid;
+  gap: 10px;
+}
+.multi-attachment__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.multi-attachment__control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.multi-attachment__control input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+.multi-attachment__button,
+.multi-attachment__remove {
+  border: 1px solid var(--text-main);
+  background: var(--bg-white);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+.multi-attachment__button:hover,
+.multi-attachment__remove:hover {
+  background: var(--text-main);
+  color: var(--bg-white);
+}
+.multi-attachment__status,
+.multi-attachment__description {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.multi-attachment__list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.multi-attachment__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-soft);
+}
+.multi-attachment__meta {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.multi-attachment__remove {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  font-size: 12px;
+}
+@media (max-width: 560px) {
+  .multi-attachment__control,
+  .multi-attachment__item {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .multi-attachment__button,
+  .multi-attachment__remove {
+    text-align: center;
+  }
+}
+</style>

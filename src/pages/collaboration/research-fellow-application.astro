@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import FormSubmitFields from '../../components/FormSubmitFields.astro';
+import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro';
 ---
 <BaseLayout title="Research Fellow Application" description="Apply to become a Research Fellow or Associate Research Fellow at Panorama Research Institute.">
   <PageHero
@@ -84,11 +85,12 @@ import FormSubmitFields from '../../components/FormSubmitFields.astro';
               <textarea id="rf-cv" name="rf-cv" rows="6" placeholder="Academic bio and list of relevant publications, presentations, or other scholarly outputs." class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="rf-attachment" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Application Attachment</label>
-              <input id="rf-attachment" name="attachment" type="file" accept=".pdf,.doc,.docx,.zip" class="form-input" style="width:100%;" />
-              <p style="font-size:12.5px;line-height:1.6;color:var(--text-muted);margin-top:8px;">
-                Upload the completed application form, CV, publication list, or supporting documents as a PDF, Word document, or ZIP file.
-              </p>
+              <MultiAttachmentUpload
+                id="rf-attachments"
+                label="Application Attachments"
+                description="Upload the completed application form, CV, publication list, or supporting documents as PDF, Word, image, or ZIP files."
+                accept=".pdf,.doc,.docx,.zip,.png,.jpg,.jpeg"
+              />
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
               <input type="checkbox" id="rf-consent" name="rf-consent" value="confirmed" style="margin-top:3px;flex-shrink:0;" />

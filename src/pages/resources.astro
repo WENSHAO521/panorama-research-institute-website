@@ -11,8 +11,8 @@ const resources = [
   { cat: "Templates",    name: "Edited Volume Proposal Template",   type: "DOCX", desc: "Template for proposing an edited volume.", href: "#" },
   { cat: "Forms",        name: "Visiting Scholar Application Form", type: "PDF",  desc: "Application form for visiting scholar positions.", href: "/collaboration/visiting-scholar-application" },
   { cat: "Forms",        name: "Research Fellow Application Form",  type: "PDF",  desc: "Application form for research fellow positions.", href: "/collaboration/research-fellow-application" },
-  { cat: "Forms",        name: "Research Fellow Application Form (EN PDF)", type: "PDF", desc: "Downloadable English PDF application form for research fellow positions.", href: "/forms/PRI_Research_Fellow_Application_Form_EN.pdf", external: true },
-  { cat: "Forms",        name: "Research Fellow Application Form (CN PDF)", type: "PDF", desc: "Downloadable Chinese PDF application form for research fellow positions.", href: "/forms/PRI_研究员申请表_CN.pdf", external: true },
+  { cat: "Forms",        name: "Research Fellow Application Form (EN PDF)", type: "PDF", desc: "Downloadable English PDF application form for research fellow positions.", href: "/forms/PRI_Research_Fellow_Application_Form_EN.pdf", download: true },
+  { cat: "Forms",        name: "Research Fellow Application Form (CN PDF)", type: "PDF", desc: "Downloadable Chinese PDF application form for research fellow positions.", href: "/forms/PRI_研究员申请表_CN.pdf", download: true },
   { cat: "Guidelines",   name: "Publication Ethics Statement",      type: "PDF",  desc: "The Institute's publication ethics and research integrity policy.", href: "/governance/publication-report-policy" },
   { cat: "Guidelines",   name: "Collaboration Guidelines",          type: "PDF",  desc: "Procedures and expectations for institutional collaboration.", href: "/governance/rules" },
   { cat: "Brand",        name: "Logo Usage Guidelines",             type: "PDF",  desc: "Guidance on authorized use of the Institute's name and logo.", href: "/governance/name-logo-usage" },
@@ -61,8 +61,8 @@ const categories = ["All", "Governance", "Templates", "Forms", "Guidelines", "Br
                   </div>
                   <p style="font-size:13.5px;color:var(--text-secondary);">{r.desc}</p>
                 </div>
-                <a href={r.href} target={r.external ? '_blank' : undefined} rel={r.external ? 'noopener' : undefined} class="btn btn-secondary" style="white-space:nowrap;font-size:12.5px;padding:8px 16px;">
-                  {r.type === 'DOCX' ? 'Download' : 'View'}
+                <a href={r.href} target={r.external ? '_blank' : undefined} rel={r.external ? 'noopener' : undefined} download={r.download ? true : undefined} class="btn btn-secondary" style="white-space:nowrap;font-size:12.5px;padding:8px 16px;">
+                  {r.type === 'DOCX' || r.download ? 'Download' : 'View'}
                 </a>
               </div>
             ))}

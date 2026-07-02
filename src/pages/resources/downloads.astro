@@ -28,6 +28,7 @@ import PageHero from '../../components/PageHero.astro';
             { name:"Research Project Proposal Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
             { name:"Visiting Scholar Application Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
             { name:"Research Fellow Application Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
+            { name:"Research Fellow Application Form (CN PDF)", type:"PDF", size:"—", href:"/forms/PRI_研究员申请表_CN.pdf", external:true },
             { name:"Event Cooperation Proposal Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
           ]
         },
@@ -54,7 +55,7 @@ import PageHero from '../../components/PageHero.astro';
               <div style="display:grid;grid-template-columns:1fr auto auto;gap:20px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border-light);">
                 <div style="font-size:15px;color:var(--text-main);">{item.name}</div>
                 <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);">{item.type}</div>
-                <a href={item.href} class="btn btn-secondary" style="font-size:13px;white-space:nowrap;">Download &rarr;</a>
+                <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener' : undefined} class="btn btn-secondary" style="font-size:13px;white-space:nowrap;">Download &rarr;</a>
               </div>
             ))}
           </div>

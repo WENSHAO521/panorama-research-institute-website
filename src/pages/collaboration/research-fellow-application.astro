@@ -33,6 +33,7 @@ import FormSubmitFields from '../../components/FormSubmitFields.astro';
           <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px;">
             <a href="/people/research-fellows" class="btn btn-secondary" style="width:100%;justify-content:center;">About Research Fellows</a>
             <a href="/people/associate-research-fellows" class="btn btn-secondary" style="width:100%;justify-content:center;">About Associate Fellows</a>
+            <a href="/forms/PRI_研究员申请表_CN.pdf" class="btn btn-secondary" style="width:100%;justify-content:center;" target="_blank" rel="noopener">Download CN PDF Form</a>
           </div>
         </div>
         <div>
@@ -40,7 +41,7 @@ import FormSubmitFields from '../../components/FormSubmitFields.astro';
             Use this form to apply for a Research Fellow or Associate Research Fellow position at Panorama Research Institute. All applications are reviewed by the Institute's research leadership. Successful applicants will be contacted to discuss their appointment, research plan, and contribution to the Institute's programs.
           </p>
 
-          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/fellows@panorama-sg.com" method="POST">
+          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/fellows@panorama-sg.com" method="POST" enctype="multipart/form-data">
             <FormSubmitFields subject="Panorama Research Institute Research Fellow Application" source="Research Fellow Application Form" />
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
               {[
@@ -81,6 +82,13 @@ import FormSubmitFields from '../../components/FormSubmitFields.astro';
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
               <label for="rf-cv" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Academic Profile / Publication List (up to 500 words)</label>
               <textarea id="rf-cv" name="rf-cv" rows="6" placeholder="Academic bio and list of relevant publications, presentations, or other scholarly outputs." class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="rf-attachment" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Application Attachment</label>
+              <input id="rf-attachment" name="attachment" type="file" accept=".pdf,.doc,.docx,.zip" class="form-input" style="width:100%;" />
+              <p style="font-size:12.5px;line-height:1.6;color:var(--text-muted);margin-top:8px;">
+                Upload the completed application form, CV, publication list, or supporting documents as a PDF, Word document, or ZIP file.
+              </p>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
               <input type="checkbox" id="rf-consent" name="rf-consent" value="confirmed" style="margin-top:3px;flex-shrink:0;" />

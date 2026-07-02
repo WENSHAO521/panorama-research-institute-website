@@ -19,6 +19,7 @@ import PageHero from '../../components/PageHero.astro';
         {[
           { category:"Fellowship Applications", forms:[
             { name:"Research Fellow Application",          href:"/collaboration/research-fellow-application" },
+            { name:"Research Fellow Application Form (CN PDF)", href:"/forms/PRI_研究员申请表_CN.pdf", external:true },
             { name:"Associate Research Fellow Application", href:"/collaboration/research-fellow-application" },
             { name:"Visiting Scholar Application",          href:"/collaboration/visiting-scholar-application" },
           ]},
@@ -40,7 +41,7 @@ import PageHero from '../../components/PageHero.astro';
             <h3 style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--text-main);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.05em;">{group.category}</h3>
             <div style="display:flex;flex-direction:column;gap:0;">
               {group.forms.map((f) => (
-                <a href={f.href} style="display:block;font-size:14px;color:var(--accent-steel);padding:8px 0;border-bottom:1px solid var(--border-light);">{f.name} &rarr;</a>
+                <a href={f.href} target={f.external ? '_blank' : undefined} rel={f.external ? 'noopener' : undefined} style="display:block;font-size:14px;color:var(--accent-steel);padding:8px 0;border-bottom:1px solid var(--border-light);">{f.name} &rarr;</a>
               ))}
             </div>
           </div>

@@ -28,8 +28,8 @@ import PageHero from '../../components/PageHero.astro';
             { name:"Research Project Proposal Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
             { name:"Visiting Scholar Application Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
             { name:"Research Fellow Application Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
-            { name:"Research Fellow Application Form (EN PDF)", type:"PDF", size:"—", href:"/forms/PRI_Research_Fellow_Application_Form_EN.pdf", download:true },
-            { name:"Research Fellow Application Form (CN PDF)", type:"PDF", size:"—", href:"/forms/PRI_研究员申请表_CN.pdf", download:true },
+            { name:"Research Fellow Application Form (EN PDF)", type:"PDF", size:"—", href:"/forms/PRI_Research_Fellow_Application_Form_EN.pdf", download:true, langVariant:"en" },
+            { name:"Research Fellow Application Form (CN PDF)", type:"PDF", size:"—", href:"/forms/PRI_研究员申请表_CN.pdf", download:true, langVariant:"zh" },
             { name:"Event Cooperation Proposal Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
           ]
         },
@@ -53,7 +53,7 @@ import PageHero from '../../components/PageHero.astro';
           <div class="section-label" style="margin-bottom:12px;">{section.cat}</div>
           <div style="border:1px solid var(--border-light);">
             {section.items.map((item) => (
-              <div style="display:grid;grid-template-columns:1fr auto auto;gap:20px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border-light);">
+              <div data-language-variant={item.langVariant} style="display:grid;grid-template-columns:1fr auto auto;gap:20px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border-light);">
                 <div style="font-size:15px;color:var(--text-main);">{item.name}</div>
                 <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);">{item.type}</div>
                 <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener' : undefined} download={item.download ? true : undefined} class="btn btn-secondary" style="font-size:13px;white-space:nowrap;">Download &rarr;</a>

@@ -140,6 +140,14 @@ const phraseTranslations = {
         });
       }
 
+      function updateLanguageVariants(lang) {
+        const activeVariant = lang === 'en' ? 'en' : 'zh';
+        document.querySelectorAll('[data-language-variant]').forEach((node) => {
+          const variant = node.getAttribute('data-language-variant');
+          node.hidden = variant !== activeVariant;
+        });
+      }
+
       function getTranslationRoots() {
         return [
           document.getElementById('site-header'),
@@ -287,6 +295,7 @@ const phraseTranslations = {
         document.documentElement.lang = lang;
         closeMobileNav();
         rewriteInternalLinks(lang);
+        updateLanguageVariants(lang);
         applyPhraseTranslations(lang);
         if (shouldScroll) window.scrollTo({ top: 0, behavior: 'instant' });
       }
@@ -376,6 +385,7 @@ const phraseTranslations = {
         const initialLanguage = getStoredLanguage();
         captureOriginalContent();
         rewriteInternalLinks(initialLanguage);
+        updateLanguageVariants(initialLanguage);
         applyPhraseTranslations(initialLanguage);
         if (initialLanguage !== 'en') {
           applyLanguage(initialLanguage, { persist: false });

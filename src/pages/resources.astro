@@ -11,8 +11,8 @@ const resources = [
   { cat: "Templates",    name: "Edited Volume Proposal Template",   type: "DOCX", desc: "Template for proposing an edited volume.", href: "#" },
   { cat: "Forms",        name: "Visiting Scholar Application Form", type: "PDF",  desc: "Application form for visiting scholar positions.", href: "/collaboration/visiting-scholar-application" },
   { cat: "Forms",        name: "Research Fellow Application Form",  type: "PDF",  desc: "Application form for research fellow positions.", href: "/collaboration/research-fellow-application" },
-  { cat: "Forms",        name: "Research Fellow Application Form (EN PDF)", type: "PDF", desc: "Downloadable English PDF application form for research fellow positions.", href: "/forms/PRI_Research_Fellow_Application_Form_EN.pdf", download: true },
-  { cat: "Forms",        name: "Research Fellow Application Form (CN PDF)", type: "PDF", desc: "Downloadable Chinese PDF application form for research fellow positions.", href: "/forms/PRI_研究员申请表_CN.pdf", download: true },
+  { cat: "Forms",        name: "Research Fellow Application Form (EN PDF)", type: "PDF", desc: "Downloadable English PDF application form for research fellow positions.", href: "/forms/PRI_Research_Fellow_Application_Form_EN.pdf", download: true, langVariant: "en" },
+  { cat: "Forms",        name: "Research Fellow Application Form (CN PDF)", type: "PDF", desc: "Downloadable Chinese PDF application form for research fellow positions.", href: "/forms/PRI_研究员申请表_CN.pdf", download: true, langVariant: "zh" },
   { cat: "Guidelines",   name: "Publication Ethics Statement",      type: "PDF",  desc: "The Institute's publication ethics and research integrity policy.", href: "/governance/publication-report-policy" },
   { cat: "Guidelines",   name: "Collaboration Guidelines",          type: "PDF",  desc: "Procedures and expectations for institutional collaboration.", href: "/governance/rules" },
   { cat: "Brand",        name: "Logo Usage Guidelines",             type: "PDF",  desc: "Guidance on authorized use of the Institute's name and logo.", href: "/governance/name-logo-usage" },
@@ -53,7 +53,7 @@ const categories = ["All", "Governance", "Templates", "Forms", "Guidelines", "Br
               <div class="section-label" style="margin-bottom:0;">{cat}</div>
             </div>
             {items.map((r) => (
-              <div style="display:grid;grid-template-columns:1fr auto;gap:24px;padding:20px 0;border-bottom:1px solid var(--border-light);align-items:center;">
+              <div data-language-variant={r.langVariant} style="display:grid;grid-template-columns:1fr auto;gap:24px;padding:20px 0;border-bottom:1px solid var(--border-light);align-items:center;">
                 <div>
                   <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
                     <h3 style="font-family:var(--font-sans);font-size:15.5px;font-weight:600;color:var(--text-main);">{r.name}</h3>

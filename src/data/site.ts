@@ -15,7 +15,7 @@ export const platforms = [
   {
     name: "Panorama Scholarly Group",
     href: "https://www.panorama-sg.com",
-    logo: "https://panorama-sg.com/logo-dark.svg",
+    logo: "/images/platform-logos/logo-dark.svg",
     logoTheme: "dark",
     desc: "Official institutional website",
     external: true,
@@ -23,7 +23,7 @@ export const platforms = [
   {
     name: "Panorama Journals",
     href: "https://journals.panorama-sg.com",
-    logo: "https://panorama-sg.com/journals-logo.svg",
+    logo: "/images/platform-logos/journals-logo.svg",
     logoTheme: "dark",
     desc: "Academic journal publishing platform",
     external: true,
@@ -31,7 +31,7 @@ export const platforms = [
   {
     name: "Panorama Books",
     href: "https://books.panorama-sg.com",
-    logo: "https://panorama-sg.com/books-logo-light.svg",
+    logo: "/images/platform-logos/books-logo-light.svg",
     logoTheme: "dark",
     desc: "Book publishing and edited volume platform",
     external: true,
@@ -39,7 +39,7 @@ export const platforms = [
   {
     name: "POSI Database",
     href: "https://posi.panorama-sg.com",
-    logo: "https://panorama-sg.com/posi-logo-light.svg",
+    logo: "/images/platform-logos/posi-logo-light.svg",
     logoTheme: "dark",
     desc: "Open scholarly indexing platform developed and awaiting official launch",
     external: true,
@@ -47,7 +47,7 @@ export const platforms = [
   {
     name: "Panorama Scholar Profiles",
     href: "https://profiles.panorama-sg.com",
-    logo: "https://panorama-sg.com/editorial-directory-logo-transparent.png",
+    logo: "/images/platform-logos/editorial-directory-logo-transparent.png",
     logoTheme: "light",
     desc: "Scholar profile and academic record platform",
     external: true,

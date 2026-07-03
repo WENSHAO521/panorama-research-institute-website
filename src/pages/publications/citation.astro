@@ -1,6 +1,48 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+
+const psgInTextRules = [
+  { type: "1 author", format: "(Smith 2024)" },
+  { type: "2 authors", format: "(Smith and Lee 2024)" },
+  { type: "3 authors", format: "(Smith, Lee, and Wang 2024)" },
+  { type: "4 or more authors", format: "(Smith et al. 2024)" },
+  { type: "With page number", format: "(Smith 2024, 25)" },
+  { type: "Multiple sources", format: "(Chen 2021; Kim 2022; Smith 2024)" },
+  { type: "No date", format: "(Smith n.d.)" },
+];
+
+const psgReferenceExamples = [
+  {
+    type: "Journal Article",
+    example: "Smith, John A., Helen K. Lee, and Ming Wang. 2024. “Artificial Intelligence and Administrative Reform in Local Government.” <em>Journal of Public Governance and Society</em> 12, no. 2: 45–63. https://doi.org/10.xxxx/xxxxx",
+  },
+  {
+    type: "Book",
+    example: "Giddens, Anthony. 1991. <em>Modernity and Self-Identity: Self and Society in the Late Modern Age.</em> Stanford: Stanford University Press.",
+  },
+  {
+    type: "Webpage",
+    example: "Panorama Scholarly Group. 2026. “Publication Ethics.” Accessed June 24, 2026. https://example.com/publication-ethics",
+  },
+  {
+    type: "Dataset",
+    example: "Lee, Sungho. 2024. <em>Survey Data on Digital Public Service Satisfaction in South Korea.</em> Data set. Zenodo. https://doi.org/10.xxxx/xxxxx",
+  },
+  {
+    type: "AI Tool",
+    example: "OpenAI. 2026. <em>ChatGPT.</em> Large language model. https://chat.openai.com/",
+  },
+];
+
+const psgFixedRules = [
+  { element: "In-text style", rule: "Author-year parenthetical; no comma between author and year" },
+  { element: "Year position", rule: "After author in reference list; no brackets" },
+  { element: "Article title", rule: "Use typographic quotation marks; period inside the closing quote" },
+  { element: "DOI format", rule: "Use https://doi.org/... and no trailing period after DOI or URL" },
+  { element: "Multilingual title", rule: "Original title plus English translation in square brackets" },
+  { element: "Author connector", rule: "Use and, not ampersand" },
+];
 ---
 <BaseLayout title="Citation Guide" description="How to cite Panorama Research Institute publications in academic work.">
   <PageHero
@@ -15,6 +57,48 @@ import PageHero from '../../components/PageHero.astro';
         <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:48px;">
           All Panorama Research Institute publications have registered DOIs and should be cited using the citation details provided on each publication's record. The examples below provide recommended formats for each publication type using common citation styles.
         </p>
+
+        <div style="margin-bottom:56px;padding:28px;border:1px solid var(--border-light);background:var(--bg-soft);">
+          <div class="section-label">Panorama Scholarly Group Format</div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:14px;font-weight:400;">PSG Author-Date Citation Format</h2>
+          <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);margin-bottom:20px;">
+            PSG Format is the official author-date citation format of Panorama Scholarly Group. It uses a Chicago-style author-date structure, APA-informed digital metadata practices, and PSG-specific rules for DOI normalization, multilingual references, datasets, software, AI tools, and reference integrity.
+          </p>
+          <div style="background:var(--bg-white);border:1px solid var(--border-light);padding:16px 20px;font-family:var(--font-mono);font-size:13px;line-height:1.7;color:var(--text-secondary);margin-bottom:24px;">
+            Author. Year. “Article Title.” <em>Journal Name</em> Volume, no. Issue: Pages. https://doi.org/...
+          </div>
+
+          <h3 style="font-family:var(--font-sans);font-size:15px;color:var(--text-main);margin-bottom:12px;font-weight:600;">In-text citations</h3>
+          <div class="psg-guide-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-bottom:24px;">
+            {psgInTextRules.map((item) => (
+              <div style="background:var(--bg-white);padding:12px 14px;">
+                <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:5px;">{item.type}</div>
+                <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-main);">{item.format}</div>
+              </div>
+            ))}
+          </div>
+
+          <h3 style="font-family:var(--font-sans);font-size:15px;color:var(--text-main);margin-bottom:12px;font-weight:600;">Reference list examples</h3>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:24px;">
+            {psgReferenceExamples.map((item) => (
+              <div style="background:var(--bg-white);border:1px solid var(--border-light);padding:14px 16px;">
+                <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:6px;">{item.type}</div>
+                <div style="font-family:var(--font-sans);font-size:14px;color:var(--text-secondary);line-height:1.7;" set:html={item.example}></div>
+              </div>
+            ))}
+          </div>
+
+          <h3 style="font-family:var(--font-sans);font-size:15px;color:var(--text-main);margin-bottom:12px;font-weight:600;">Fixed rules</h3>
+          <div class="psg-guide-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-bottom:22px;">
+            {psgFixedRules.map((item) => (
+              <div style="background:var(--bg-white);padding:12px 14px;">
+                <div style="font-size:13.5px;font-weight:600;color:var(--text-main);margin-bottom:4px;">{item.element}</div>
+                <div style="font-size:13px;line-height:1.55;color:var(--text-secondary);">{item.rule}</div>
+              </div>
+            ))}
+          </div>
+          <a href="https://posi.panorama-sg.com/psg-format/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">View Official PSG Format</a>
+        </div>
 
         <div style="display:flex;flex-direction:column;gap:48px;">
           {[
@@ -76,3 +160,11 @@ import PageHero from '../../components/PageHero.astro';
     </div>
   </section>
 </BaseLayout>
+
+<style>
+@media (max-width: 700px) {
+  .psg-guide-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+</style>

@@ -141,10 +141,9 @@ const phraseTranslations = {
       }
 
       function updateLanguageVariants(lang) {
-        const activeVariant = lang === 'en' ? 'en' : 'zh';
         document.querySelectorAll('[data-language-variant]').forEach((node) => {
           const variant = node.getAttribute('data-language-variant');
-          node.hidden = variant !== activeVariant;
+          node.hidden = variant !== lang;
         });
       }
 

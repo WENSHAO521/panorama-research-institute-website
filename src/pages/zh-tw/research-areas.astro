@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { researchAreas } from '../../data/site';
+---
+
+<BaseLayout
+  title="研究領域"
+  description="全景研究院設有六個研究領域，涵蓋學術出版、期刊評價、政策、人工智慧、教育和文化研究。"
+>
+  <PageHero
+    title="研究領域"
+    description="研究院聚焦連接學術傳播、期刊評價、公共政策、教育、技術和文化研究的研究領域。"
+    breadcrumbs={[{ label: "研究" }, { label: "研究領域" }]}
+  />
+
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+        {researchAreas.map((area) => (
+          <div class="area-card" style="border:none;border-radius:0;">
+            <div class="area-num">{area.num}</div>
+            <h2 class="area-title">{area.title}</h2>
+            <p class="area-text">{area.desc}</p>
+            <div style="margin-top:24px;">
+              <a href="/zh-tw/research-centers" class="btn-ghost btn" style="padding-left:0;font-size:13.5px;">
+                Related Centers &rarr;
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cross-cutting themes -->
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">跨領域主題</div>
+      <h2 class="section-title">貫通各研究領域</h2>
+      <p class="section-desc" style="margin-bottom:48px;">
+        研究院各研究領域共享若干跨領域主題，將不同研究中心和項目的工作連接起來。
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;">
+        {[
+          { theme: "開放取用與透明度",     desc: "研究、資料和出版基礎設施的開放性如何改進學術傳播。" },
+          { theme: "治理與問責",    desc: "機構、平台和系統如何接受治理，並向學術共同體負責。" },
+          { theme: "數位轉型",         desc: "數位技術如何重塑學術出版、教育、政策和文化實踐。" },
+          { theme: "倫理與誠信",             desc: "倫理原則如何指導研究行為、出版實踐和機構行為。" },
+        ].map((t) => (
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <h3 style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{t.theme}</h3>
+            <p style="font-size:13.5px;line-height:1.65;color:var(--text-secondary);">{t.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:8px;">有意開展研究合作？</h2>
+          <p style="font-size:15px;color:var(--text-secondary);">提交研究項目提案或聯絡研究院。</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-tw/collaboration/research-project-proposal" class="btn btn-primary">提交提案</a>
+          <a href="/zh-tw/research-centers" class="btn btn-secondary">查看研究中心</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
+  div[style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(4,1fr)"] { display: block !important; }
+}
+</style>

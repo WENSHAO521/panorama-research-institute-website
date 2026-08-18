@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+
+<BaseLayout
+  title="关于"
+  description="全景研究院是全景学术集团的内部研究与学术发展部门。"
+>
+  <PageHero
+    title="关于全景研究院"
+    description="全景学术集团的内部研究与学术发展部门。"
+    breadcrumbs={[{ label: "研究院" }, { label: "概览" }]}
+  />
+
+  <!-- Overview -->
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:72px;align-items:start;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">概览</h2>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">
+            <a href="#mission"    style="font-size:14px;color:var(--accent-steel);">使命与愿景</a>
+            <a href="#status"     style="font-size:14px;color:var(--accent-steel);">机构性质</a>
+            <a href="#affiliation"style="font-size:14px;color:var(--accent-steel);">隶属关系</a>
+            <a href="#scope"      style="font-size:14px;color:var(--accent-steel);">工作范围</a>
+            <a href="#functions"  style="font-size:14px;color:var(--accent-steel);">学术职能</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:17px;line-height:1.8;color:var(--text-secondary);margin-bottom:28px;">
+            全景研究院是全景学术集团的内部研究与学术发展部门。研究院支持跨学科研究、学术出版研究、期刊索引与评价、政策分析、研究出版、学术活动和机构合作。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section id="mission" class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;">
+        <div>
+          <div class="section-label">使命</div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">
+            通过严谨研究与开放交流推进学术知识发展
+          </h2>
+          <p style="font-size:16px;line-height:1.8;color:var(--text-secondary);">
+            全景研究院致力于产出严谨、独立且具有公共相关性的研究。研究院在各研究领域推进知识发展，支持学者和研究团队，并建设强化全球学术传播的基础设施。
+          </p>
+        </div>
+        <div>
+          <div class="section-label">愿景</div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">
+            一个值得信赖的跨学科学术探究平台
+          </h2>
+          <p style="font-size:16px;line-height:1.8;color:var(--text-secondary);">
+            研究院展望一个研究基础设施、学术出版和学术合作透明、公平并可全球访问的未来，并致力于成为全球研究者、机构和政策制定者信赖的可信平台。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Institutional Status -->
+  <section id="status" class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">机构性质</div>
+      <h2 class="section-title">法律与机构定位</h2>
+      <div style="max-width:760px;">
+        <div class="statement-box" style="margin-bottom:32px;">
+          <p style="font-size:16px;line-height:1.75;color:var(--text-secondary);margin-bottom:12px;">
+            全景研究院是全景学术集团的内部研究与学术发展部门，不具备独立法人资格。
+          </p>
+        </div>
+        <p style="font-size:16px;line-height:1.8;color:var(--text-secondary);">
+          研究院作为内部学术部门运行，在研究、出版和学术活动方面具有运营独立性，同时仍受全景学术集团治理框架和行政管理约束。所有正式协议、合同和法律文件均由全景学术集团代表研究院签署。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Affiliation -->
+  <section id="affiliation" class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">隶属关系</div>
+      <h2 class="section-title">全景学术集团</h2>
+      <div style="max-width:760px;">
+        <p style="font-size:16px;line-height:1.8;color:var(--text-secondary);margin-bottom:24px;">
+          全景学术集团（PSG）是全景研究院的上级机构。PSG 是一家学术出版与学术服务组织，运营包括全景期刊、全景图书、POSI 数据库和全景学者档案在内的一系列平台。
+        </p>
+        <p style="font-size:16px;line-height:1.8;color:var(--text-secondary);">
+          研究院作为 PSG 内部学术研究与发展部门，提供学术分析、研究出版成果和机构知识，以支持推进全球学术传播这一更广泛使命。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scope of Work -->
+  <section id="scope" class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">工作范围</div>
+      <h2 class="section-title">工作内容</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title: "跨学科研究",       desc: "支持学术出版、政策、人工智能与社会、教育、艺术和文化等领域的研究项目。" },
+          { title: "学术出版研究",     desc: "研究出版伦理、同行评审模式、编辑标准、开放获取和研究诚信。" },
+          { title: "期刊索引与评价",    desc: "建立期刊评价、元数据透明度和开放学术索引的框架。" },
+          { title: "政策分析",                  desc: "以严谨方法分析公共政策、治理、社会发展和青年议题。" },
+          { title: "学术出版成果",            desc: "撰写研究报告、工作论文、政策简报、主编文集和年度报告。" },
+          { title: "学术活动",                  desc: "为研究人员组织学术会议、研讨会、工作坊、论文征稿和培训项目。" },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Academic Functions -->
+  <section id="functions" class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">学术职能</div>
+      <h2 class="section-title">核心学术活动</h2>
+      <div style="max-width:760px;">
+        {[
+          "开展并支持原创跨学科研究",
+          "出版研究报告、工作论文和政策简报",
+          "组织学术会议、研讨会和工作坊",
+          "支持访问学者、研究员和项目贡献者",
+          "开发学术期刊和出版成果评价框架",
+          "提供机构合作与研究伙伴关系服务",
+          "建设开放学术基础设施，包括 POSI 索引平台",
+          "发布关于学术出版和学术传播的年度报告",
+        ].map((fn) => (
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--border-light);">
+            <span style="width:4px;height:4px;background:var(--text-muted);border-radius:50%;flex-shrink:0;margin-top:8px;"></span>
+            <span style="font-size:15.5px;color:var(--text-secondary);line-height:1.6;">{fn}</span>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:40px;display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="/zh-cn/framework" class="btn btn-primary">查看组织与职能框架</a>
+        <a href="/zh-cn/contact"   class="btn btn-secondary">联系研究院</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+@media (max-width: 768px) {
+  .container > div[style*="grid-template-columns:1fr 2fr"],
+  .container > div[style*="grid-template-columns:1fr 1fr"],
+  .container > div[style*="grid-template-columns:repeat(3,1fr)"] {
+    display: block !important;
+  }
+}
+</style>

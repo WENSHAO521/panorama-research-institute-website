@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="研究員" description="隸屬於全景研究院的研究員。">
+  <PageHero
+    title="研究員"
+    description="研究員是全景研究院核心學術共同體，為研究院項目貢獻原創研究、出版成果和智識領導力。"
+    breadcrumbs={[{ label: "學術成員", href: "/zh-tw/people" }, { label: "研究員" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">研究員項目資訊</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"頭銜",       value:"全景研究院研究員" },
+              { label:"時長",    value:"通常 1–3 年，可續期" },
+              { label:"形式",      value:"遠端 / 分散式（無需搬遷）" },
+              { label:"成果要求",      value:"每年至少在研究院項目中產出一項出版成果" },
+              { label:"申請", value:"開放申請（滾動評審）" },
+              { label:"聯絡",     value:"fellows@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;">
+            <a href="/zh-tw/collaboration/research-fellow-application" class="btn btn-primary" style="width:100%;justify-content:center;">立即申請</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">關於研究員</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            研究員是全景研究院主要學術成員。他們通過原創研究、出版成果以及參與研究院活動，正式承諾為研究院研究項目作出貢獻。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            研究員隸屬於研究院一個或多個研究中心，並為該中心職責範圍內的進行中項目作出貢獻。他們也可提出並牽頭新的研究項目，但須經研究院研究委員會評審。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            研究員身份為志願性學術任命。研究員保留既有機構隸屬，無需搬遷。研究院旨在建設覆蓋多個國家和學科背景、具有地理多樣性的研究員群體。
+          </p>
+
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);margin-bottom:32px;">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">目前成員</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+              研究院目前處於基礎建設階段，正在建設首批研究員隊伍。申請現已開放。獲聘研究員將在任命後列於本頁。
+            </p>
+          </div>
+
+          <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:12px;">研究員職責</h3>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            {[
+              "每個研究員年度至少為研究院工作論文或其他系列貢獻一項出版成果",
+              "每年至少參加一次研究院研討會、工作坊或會議活動",
+              "持續積極參與研究院研究項目和學術共同體",
+              "遵守研究院研究倫理與治理政策",
+              "揭露與研究院研究領域相關的任何利益衝突",
+            ].map((item) => (
+              <div style="display:flex;gap:10px;font-size:14px;color:var(--text-secondary);padding:6px 0;border-bottom:1px solid var(--bg-main);">
+                <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

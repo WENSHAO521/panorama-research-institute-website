@@ -2,7 +2,7 @@
 import OriginalResearchLogo from './OriginalResearchLogo.astro';
 import LanguagePicker from './LanguagePicker.astro';
 import { getNavigation } from '../i18n/navigation';
-import { useTranslations } from '../i18n/ui';
+import { translate } from '../i18n/dictionary';
 import type { Lang } from '../i18n/utils';
 
 interface Props {
@@ -10,19 +10,19 @@ interface Props {
 }
 const { lang = 'en' } = Astro.props;
 const navigation = getNavigation(lang);
-const t = useTranslations(lang);
+const t = (key: string) => translate(lang, key);
 const currentPath = Astro.url.pathname;
 ---
 
 <header class="site-header" id="site-header">
   <div class="container site-header-inner">
     <!-- Logo -->
-    <a href={lang === 'en' ? '/' : `/${lang}`} class="site-logo" aria-label="Panorama Research Institute - Home" data-no-translate>
+    <a href={lang === 'en' ? '/' : `/${lang}`} class="site-logo" aria-label={t('Panorama Research Institute - Home')} data-no-translate>
       <OriginalResearchLogo />
     </a>
 
     <!-- Desktop Nav -->
-    <nav class="primary-nav" aria-label="Primary navigation">
+    <nav class="primary-nav" aria-label={t('Primary navigation')}>
       {navigation.map((item) => (
         <div class="nav-item" data-mega={item.mega ? 'true' : undefined}>
           {item.mega ? (
@@ -87,9 +87,9 @@ const currentPath = Astro.url.pathname;
 
     <!-- Right -->
     <div class="header-right">
-      <a href={lang === 'en' ? '/contact' : `/${lang}/contact`} class="btn btn-primary">{t('btn.contact')}</a>
+      <a href={lang === 'en' ? '/contact' : `/${lang}/contact`} class="btn btn-primary">{t('Contact')}</a>
       <LanguagePicker />
-      <button class="menu-toggle" aria-label="Open menu" id="menu-toggle" type="button">
+      <button class="menu-toggle" aria-label={t('Open menu')} id="menu-toggle" type="button">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -97,12 +97,12 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <!-- Mobile Nav Overlay -->
-<div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label={t('Navigation menu')}>
   <div class="mobile-nav-header">
     <a href={lang === 'en' ? '/' : `/${lang}`} class="site-logo" data-no-translate>
       <OriginalResearchLogo />
     </a>
-    <button class="mobile-close" id="mobile-close" aria-label="Close menu" type="button">&#x2715;</button>
+    <button class="mobile-close" id="mobile-close" aria-label={t('Close menu')} type="button">&#x2715;</button>
   </div>
 
   {navigation.map((item, idx) => (
@@ -133,7 +133,7 @@ const currentPath = Astro.url.pathname;
   ))}
 
   <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px;">
-    <a href={lang === 'en' ? '/contact' : `/${lang}/contact`} class="btn btn-primary" style="width:100%;justify-content:center;">{t('btn.contact')}</a>
+    <a href={lang === 'en' ? '/contact' : `/${lang}/contact`} class="btn btn-primary" style="width:100%;justify-content:center;">{t('Contact')}</a>
     <LanguagePicker variant="inline" />
   </div>
 </div>

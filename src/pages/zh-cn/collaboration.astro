@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FormSubmitFields from '../../components/FormSubmitFields.astro';
+
+const collaborationTypes = [
+  { type: "学术会员计划",           href: "/zh-cn/collaboration/membership",              desc: "学术会员、资源访问、活动信息、工作论文资格、项目参与渠道和学术网络连接。" },
+  { type: "机构合作",    href: "/zh-cn/collaboration/institutional-cooperation",   desc: "全景研究院与其他学术或研究机构之间的正式合作关系。" },
+  { type: "研究项目提案",    href: "/zh-cn/collaboration/research-project-proposal",   desc: "与研究院共同开发或协作开发新研究项目的提案。" },
+  { type: "主编文集提案",       href: "/zh-cn/collaboration/edited-volume-proposal",       desc: "合作主编文集和图书项目提案。" },
+  { type: "特刊提案",       href: "/zh-cn/collaboration/special-issue-proposal",       desc: "围绕研究院相关研究领域主题的期刊特刊提案。" },
+  { type: "访问学者申请", href: "/zh-cn/collaboration/visiting-scholar-application", desc: "申请在研究院研究中心担任访问学者。" },
+  { type: "研究员申请",  href: "/zh-cn/collaboration/research-fellow-application",  desc: "研究员和副研究员职位申请。" },
+  { type: "活动合作",            href: "/zh-cn/collaboration/event-cooperation",            desc: "联合举办学术会议、研讨会、工作坊和培训项目的提案。" },
+];
+---
+
+<BaseLayout
+  title="学术合作"
+  description="与全景研究院开展合作的机会，包括机构合作、研究提案、访问学者申请和活动合作。"
+>
+  <PageHero
+    title="学术合作"
+    description="研究院欢迎全球研究人员和机构提交学术合作、机构伙伴关系、研究提案、访问学者申请和活动合作意向。"
+    breadcrumbs={[{ label: "学术合作" }]}
+  />
+
+  <!-- Overview -->
+  <section class="section-compact" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:16px;font-weight:400;">与研究院合作</h2>
+          <p style="font-size:16px;line-height:1.8;color:var(--text-secondary);">
+            全景研究院通过多种正式和非正式合作安排与学者、研究团队和机构开展合作。所有合作均须遵守研究院治理框架和研究伦理原则。
+          </p>
+        </div>
+        <div>
+          <div style="background:var(--bg-soft);border:1px solid var(--border-light);padding:24px 28px;">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;">合作联系</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin-bottom:12px;">所有合作咨询请使用提交表格，或直接与我们联系。</p>
+            <a href="mailto:research@panorama-sg.com" style="font-size:14px;color:var(--accent-steel);">research@panorama-sg.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collaboration Types -->
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">合作类型</div>
+      <h2 class="section-title">合作方式</h2>
+      <div style="margin-top:8px;">
+        {collaborationTypes.map((c) => (
+          <a href={c.href} style="display:grid;grid-template-columns:280px 1fr auto;gap:28px;padding:24px 0;border-bottom:1px solid var(--border-light);align-items:center;color:inherit;transition:background 0.15s;">
+            <div style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);">{c.type}</div>
+            <div style="font-size:14px;color:var(--text-secondary);line-height:1.6;">{c.desc}</div>
+            <span style="color:var(--accent-steel);font-size:14px;white-space:nowrap;">Apply &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Proposal Guidelines -->
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">提案指南</div>
+      <h2 class="section-title">提交前准备</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px;">
+        {[
+          { step: "1", title: "核对研究领域",  desc: "请确认您的提案与研究院六个研究领域中的一个或多个领域相契合。" },
+          { step: "2", title: "查阅治理政策", desc: "请查阅研究院的研究伦理、利益冲突和出版政策。" },
+          { step: "3", title: "准备提案",  desc: "请使用资源栏目提供的研究院研究提案模板。" },
+        ].map((g) => (
+          <div style="padding:28px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:20px;color:var(--text-muted);margin-bottom:14px;">{g.step}</div>
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{g.title}</h3>
+            <p style="font-size:14px;line-height:1.65;color:var(--text-secondary);">{g.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Submit Form -->
+  <section id="submit" class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:72px;align-items:start;">
+        <div>
+          <div class="section-label">提交提案</div>
+          <h2 style="font-family:var(--font-serif);font-size:30px;color:var(--text-main);margin-bottom:16px;font-weight:400;">联系</h2>
+          <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);margin-bottom:24px;">
+            请使用表格提交合作咨询或提案。研究院会评审所有提交内容，并在 10 个工作日内回复。
+          </p>
+          <div style="font-size:13.5px;color:var(--text-muted);">
+            <div style="margin-bottom:8px;">电子邮箱： <a href="mailto:research@panorama-sg.com" style="color:var(--accent-steel);">research@panorama-sg.com</a></div>
+            <div>网站：research.panorama-sg.com</div>
+          </div>
+        </div>
+        <form action="https://formsubmit.co/collaboration@panorama-sg.com" method="POST" style="display:flex;flex-direction:column;gap:20px;background:var(--bg-white);border:1px solid var(--border-light);padding:40px;">
+          <FormSubmitFields subject="全景研究院合作咨询" source="Collaboration Overview Form" />
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label class="form-label" for="collab-name">姓名 <span style="color:var(--accent-red);">*</span></label>
+              <input type="text" id="collab-name" name="name" class="form-input" required placeholder="您的姓名" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="collab-email">电子邮箱 <span style="color:var(--accent-red);">*</span></label>
+              <input type="email" id="collab-email" name="email" class="form-input" required placeholder="your@email.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="collab-institution">所属机构 <span style="color:var(--accent-red);">*</span></label>
+            <input type="text" id="collab-institution" name="institution" class="form-input" required placeholder="您的机构或组织" />
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label class="form-label" for="collab-country">国家 / 地区 <span style="color:var(--accent-red);">*</span></label>
+              <input type="text" id="collab-country" name="country" class="form-input" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="collab-type">合作类型 <span style="color:var(--accent-red);">*</span></label>
+              <select id="collab-type" name="type" class="form-select" required>
+                <option value="">请选择类型...</option>
+                {collaborationTypes.map((c) => <option value={c.type}>{c.type}</option>)}
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="collab-topic">拟议主题 <span style="color:var(--accent-red);">*</span></label>
+            <input type="text" id="collab-topic" name="topic" class="form-input" required placeholder="暂定标题或主题领域" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="collab-desc">简要说明 <span style="color:var(--accent-red);">*</span></label>
+            <textarea id="collab-desc" name="description" class="form-textarea" required placeholder="请用 200-400 词描述您的合作提案。" style="min-height:160px;"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="collab-orcid">ORCID 或个人网站</label>
+            <input type="url" id="collab-orcid" name="orcid" class="form-input" placeholder="https://orcid.org/..." />
+          </div>
+          <div style="padding:16px;background:var(--bg-soft);border:1px solid var(--border-light);font-size:13px;color:var(--text-muted);">
+            <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;">
+              <input type="checkbox" name="consent" value="confirmed" required style="margin-top:3px;flex-shrink:0;" />
+              <span>本人确认所提交信息准确，并同意全景研究院将其用于评估本次合作咨询。</span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary" style="justify-content:center;">提交提案</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 1.5fr"],
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+  a[style*="grid-template-columns:280px"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
+}
+</style>

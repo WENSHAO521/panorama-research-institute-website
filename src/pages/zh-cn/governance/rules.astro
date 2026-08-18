@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="治理规则" description="全景研究院内部治理规则。">
+  <PageHero
+    title="治理规则"
+    description="确立全景研究院程序、决策流程和运营标准的内部治理规则。"
+    breadcrumbs={[{ label: "治理", href: "/zh-cn/charter" }, { label: "治理规则" }]}
+    tag="治理文件"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        {[
+          { title: "1. 范围与适用", body: "本治理规则适用于以全景研究院名义开展的所有活动，包括研究项目、出版成果、学术活动、学者计划和合作活动。" },
+          { title: "2. 决策权限", body: "机构决策由研究院领导层依据全景学术集团治理框架作出。在明确授权范围内，具体研究决策可由各研究中心和研究项目组作出。" },
+          { title: "3. 研究治理", body: "研究院开展或支持的所有研究均须遵守研究院研究伦理政策。研究项目启动前须经研究院治理机构批准。" },
+          { title: "4. 出版批准", body: "以研究院名义发布的出版成果必须按照《出版与报告政策》接受审查和批准。出版成果必须达到明确的研究质量、准确性和伦理合规标准。" },
+          { title: "5. 合作治理", body: "机构合作协议须经研究院领导层审查和批准；必要时还须经全景学术集团批准。所有合作均须遵守研究院《利益冲突政策》。" },
+          { title: "6. 财务治理", body: "所有财务事项均由全景学术集团管理。研究院不持有独立财务账户，也不独立作出财务承诺。" },
+          { title: "7. 规则修订", body: "本治理规则可由研究院领导层在获得全景学术集团批准后修订。修订须遵循《修订程序政策》规定的程序。" },
+        ].map((section) => (
+          <div style="margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{section.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{section.body}</p>
+          </div>
+        ))}
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+          <a href="/zh-cn/charter"                        class="btn btn-primary">研究院章程</a>
+          <a href="/zh-cn/governance/research-ethics"     class="btn btn-secondary">研究伦理</a>
+          <a href="/zh-cn/governance/amendment-procedure" class="btn btn-secondary">修订程序</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

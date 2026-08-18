@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+---
+<BaseLayout title="研究项目提案" description="向全景研究院提交研究项目提案。">
+  <PageHero
+    title="研究项目提案"
+    description="提交在全景研究院支持下开展、并隶属于研究院某一研究中心的新研究项目提案。"
+    breadcrumbs={[{ label: "学术合作", href: "/zh-cn/collaboration" }, { label: "研究项目提案" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">提案要求</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"提案长度",  value:"1,000–3,000 词" },
+              { label:"回复时间",    value:"20 个工作日内" },
+              { label:"决定",         value:"接受 / 修改 / 拒绝" },
+              { label:"如获接受",      value:"分配至相关研究中心" },
+              { label:"是否要求隶属", value:"不要求（欢迎非隶属学者提交提案）" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">提案指南</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            全景研究院邀请希望在研究院支持下开展研究的学者提交研究项目提案。获接受提案将隶属于相关研究中心，并获得出版渠道、网络参与和咨询意见等机构支持。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            提案必须属于研究院指定研究领域。评审将依据学术质量、可行性、与研究院研究项目的契合度，以及提案人的资历和过往记录进行。
+          </p>
+
+          <div class="section-label" style="margin-bottom:14px;">提案内容要求</div>
+          <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border-light);margin-bottom:40px;">
+            {[
+              { sec:"1. 项目标题与概述",      desc:"拟议项目的简明标题和 200 词摘要。" },
+              { sec:"2. 研究问题",              desc:"清晰说明项目将回应的具体问题。" },
+              { sec:"3. 背景与理由",        desc:"研究背景、既有文献和研究理由。" },
+              { sec:"4. 研究方法",                     desc:"拟采用的研究方法及其理由。" },
+              { sec:"5. 预期成果",                desc:"计划形成的出版成果、数据集或其他成果，并附初步时间表。" },
+              { sec:"6. 拟归属研究中心",        desc:"项目拟隶属的研究院研究中心。" },
+              { sec:"7. 负责人学术简介",         desc:"项目负责人简要学术简介及相关出版成果。" },
+              { sec:"8. 共同研究者（如适用）", desc:"共同研究者姓名、机构隶属和角色。" },
+            ].map((item) => (
+              <div style="padding:16px 20px;border-bottom:1px solid var(--border-light);">
+                <div style="font-size:13.5px;font-weight:600;color:var(--text-main);margin-bottom:4px;">{item.sec}</div>
+                <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid var(--border-light);padding-top:48px;">
+        <div class="section-label" style="margin-bottom:8px;">提案表格</div>
+        <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:24px;font-weight:400;">提交提案</h2>
+        <form style="max-width:740px;display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/research@panorama-sg.com" method="POST">
+          <FormSubmitFields subject="全景研究院研究项目提案" source="研究项目提案表格" />
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+            {[
+              { label:"您的姓名",       id:"name",   type:"text",  placeholder:"姓名" },
+              { label:"电子邮箱地址",   id:"email",  type:"email", placeholder:"your@email.com" },
+              { label:"所属机构",     id:"inst",   type:"text",  placeholder:"当前机构隶属" },
+              { label:"职位 / 头衔",  id:"title",  type:"text",  placeholder:"例如：副教授" },
+            ].map((f) => (
+              <div style="padding:12px;border:1px solid var(--border-light);border-collapse:collapse;margin:-0.5px;">
+                <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+              </div>
+            ))}
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <label for="center" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">拟议研究中心</label>
+            <select id="center" name="center" class="form-input" style="width:100%;">
+              <option value="">请选择研究中心...</option>
+              <option>学术出版研究中心</option>
+              <option>学术索引与评价研究中心</option>
+              <option>政策与社会研究中心</option>
+              <option>人工智能与未来社会研究中心</option>
+              <option>尚不确定——请予以建议</option>
+            </select>
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <label for="proposal" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">研究提案（1,000–3,000 词）</label>
+            <textarea id="proposal" name="proposal" rows="12" placeholder="请包含上述提案指南中说明的全部必需部分。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
+            <input type="checkbox" id="consent" name="consent" style="margin-top:3px;flex-shrink:0;" />
+            <label for="consent" style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">本人确认本提案所述研究为原创，不涉及实质性抄袭，且未同时提交至其他机构进行同等审议。</label>
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">提交提案</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+}
+</style>

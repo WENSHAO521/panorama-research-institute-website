@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+const lang = Astro.currentLocale ?? 'en';
+---
+<BaseLayout title="研究院章程（PDF）" description="下載 PDF 格式的全景研究院章程。">
+  <PageHero
+    title="研究院章程（PDF）"
+    description="全景研究院章程可下載 PDF 版本。章程是研究院的創始治理文件。"
+    breadcrumbs={[{ label: "資源", href: "/zh-tw/resources" }, { label: "章程 PDF" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:760px;">
+        <div style="border:1px solid var(--border-light);padding:40px;margin-bottom:40px;display:flex;gap:40px;align-items:flex-start;">
+          <div class="charter-cover-thumb" aria-label="研究院章程封面">
+            <img
+              src="/images/documents/panorama-research-institute-charter-cover-cn.png"
+              alt="研究院章程封面"
+              loading="lazy"
+            />
+          </div>
+          <div style="flex:1;">
+            <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:8px;">治理文件</div>
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;font-weight:400;">全景研究院章程</h2>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;">
+              {[
+                { label:"文件類型",  value:"研究院章程" },
+                { label:"版本",        value:"1.0 (2026)" },
+                { label:"語言",       value:"英文 / 簡體中文 / 繁體中文" },
+                { label:"形式",         value:"PDF" },
+                { label:"條款",       value:"20" },
+                { label:"取得方式",         value:"開放" },
+              ].map((item) => (
+                <div>
+                  <div style="font-size:10px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:3px;">{item.label}</div>
+                  <div style="font-size:13.5px;color:var(--text-main);">{item.value}</div>
+                </div>
+              ))}
+            </div>
+            <div style="display:flex;gap:10px;margin-top:24px;flex-wrap:wrap;">
+              <a href="/zh-tw/charter" class="btn btn-primary">線上閱讀</a>
+              {lang === 'en' && <a href="/documents/panorama-research-institute-charter-en.pdf" class="btn btn-secondary" download>下載英文 PDF</a>}
+              {lang === 'zh-cn' && <a href="/documents/panorama-research-institute-charter-cn.pdf" class="btn btn-secondary" download>下載簡體中文 PDF</a>}
+              {lang === 'zh-tw' && <a href="/documents/panorama-research-institute-charter-cn-tw.pdf" class="btn btn-secondary" download>下載繁體中文 PDF</a>}
+            </div>
+          </div>
+        </div>
+
+        <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">關於章程</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+          《全景研究院章程》是研究院的創始治理文件，確立研究院名稱、使命、結構、研究領域、運行原則和治理框架。章程在全景學術集團授權下通過，是研究院的基本制度文件。
+        </p>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+          章程共 20 條，涵蓋研究院法律地位、使命與願景、研究領域、組織架構、治理機構、研究倫理、出版政策、合作框架、學者計劃和修訂程序。章程應與研究院附屬治理政策一併閱讀。
+        </p>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-tw/charter" class="btn btn-primary">線上閱讀章程</a>
+          <a href="/zh-tw/governance/rules" class="btn btn-secondary">治理規則</a>
+          <a href="/zh-tw/resources" class="btn btn-secondary">全部資源</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+  div[style*="display:flex;gap:40px"] { display: block !important; }
+  .charter-cover-thumb { margin-bottom: 24px; }
+}
+.charter-cover-thumb {
+  flex-shrink: 0;
+  width: 132px;
+  aspect-ratio: 1 / 1.414;
+  border: 1px solid var(--border-light);
+  background: var(--bg-main);
+  box-shadow: 0 16px 34px rgba(31, 35, 38, 0.08);
+  overflow: hidden;
+}
+.charter-cover-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>

@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="学术研讨会" description="全景研究院组织的系列研讨会。">
+  <PageHero
+    title="学术研讨会"
+    description="全景研究院组织的学术研讨会，为展示和讨论研究院重点领域研究提供常设论坛。"
+    breadcrumbs={[{ label: "学术活动", href: "/zh-cn/events" }, { label: "学术研讨会" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">研讨会项目</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label: "频率",   value: "每季度（计划中）" },
+              { label: "形式",      value: "线上与线下" },
+              { label: "时长",    value: "每场 90 分钟" },
+              { label: "开放对象",     value: "所有感兴趣的学者和实践者" },
+              { label: "语言",    value: "英文为主" },
+              { label: "联系",     value: "events@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;">
+            <a href="/zh-cn/collaboration/event-cooperation" class="btn btn-primary" style="width:100%;justify-content:center;">推荐演讲者</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">全景研究研讨会系列</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            全景研究研讨会系列是计划中的常设学术研讨项目，为研究人员展示研究院重点领域成果提供论坛。该系列旨在支持学术交流，向共同体介绍新研究，并促进相关议题研究者之间的联系。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            研讨会将邀请研究院相关学者和外部研究人员报告。每场包括报告和结构化讨论环节。研讨会将采用混合形式，全球远程参与者均可参加。
+          </p>
+
+          <div style="background:var(--bg-soft);border:1px solid var(--border-light);padding:24px;margin-bottom:32px;">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">项目状态</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+              全景研究研讨会系列计划于 2026 年启动。首场活动公告将通过研究院网站和邮件列表发布。登记意向后可在项目公布时接收通知。
+            </p>
+          </div>
+
+          <h3 style="font-family:var(--font-serif);font-size:20px;color:var(--text-main);margin-bottom:12px;font-weight:400;">计划研讨主题</h3>
+          <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border-light);">
+            {[
+              "开放获取与学术出版的未来",
+              "期刊评价：超越影响因子",
+              "同行评审改革：证据与替代方案",
+              "人工智能与学术出版：治理挑战",
+              "青年数字环境：研究与政策",
+              "五年规划与高等教育：政策影响",
+            ].map((theme) => (
+              <div style="padding:14px 20px;border-bottom:1px solid var(--border-light);font-size:15px;color:var(--text-secondary);">{theme}</div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

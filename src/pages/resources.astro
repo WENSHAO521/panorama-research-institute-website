@@ -20,6 +20,7 @@ const resources = [
 ];
 
 const categories = ["All", "Governance", "Templates", "Forms", "Guidelines", "Brand"];
+const lang = Astro.currentLocale ?? 'en';
 ---
 
 <BaseLayout
@@ -47,14 +48,14 @@ const categories = ["All", "Governance", "Templates", "Forms", "Guidelines", "Br
   <section class="section" style="background:var(--bg-main);">
     <div class="container">
       {categories.slice(1).map((cat) => {
-        const items = resources.filter(r => r.cat === cat);
+        const items = resources.filter(r => r.cat === cat && (!r.langVariant || r.langVariant === lang));
         return (
           <div style="margin-bottom:56px;">
             <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--text-main);">
               <div class="section-label" style="margin-bottom:0;">{cat}</div>
             </div>
             {items.map((r) => (
-              <div data-language-variant={r.langVariant} style="display:grid;grid-template-columns:1fr auto;gap:24px;padding:20px 0;border-bottom:1px solid var(--border-light);align-items:center;">
+              <div style="display:grid;grid-template-columns:1fr auto;gap:24px;padding:20px 0;border-bottom:1px solid var(--border-light);align-items:center;">
                 <div>
                   <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
                     <h3 style="font-family:var(--font-sans);font-size:15.5px;font-weight:600;color:var(--text-main);">{r.name}</h3>

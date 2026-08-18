@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="工作坊" description="全景研究院組織的學術工作坊。">
+  <PageHero
+    title="工作坊"
+    description="全景研究院組織的專題學術工作坊，為研究人員推進進行中的研究並討論方法和概念問題提供密集、參與式環境。"
+    breadcrumbs={[{ label: "學術活動", href: "/zh-tw/events" }, { label: "工作坊" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:48px;">
+          全景研究院計劃將學術工作坊作為活動日程的一部分。工作坊規模小於會議或研討會，強度更高，通常聚焦具體研究問題或方法挑戰。其設計強調參與性和產出導向，為研究人員在同儕結構化回饋下推進進行中的工作提供空間。
+        </p>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-bottom:48px;">
+          {[
+            { type:"研究工作坊",   desc:"圍繞特定研究主題的小型研究人員聚會，用於推進進行中的工作、測試框架和交流方法。" },
+            { type:"編輯工作坊",  desc:"面向期刊編輯和出版社的工作坊，聚焦編輯實踐、出版倫理、同儕評審管理和標準。" },
+            { type:"寫作工作坊",    desc:"面向早期職業研究者的密集寫作工作坊，聚焦學術寫作、發表策略和學術傳播。" },
+          ].map((item) => (
+            <div class="card" style="border:none;border-radius:0;">
+              <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.type}</h3>
+              <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div style="padding:32px;background:var(--bg-soft);border:1px solid var(--border-light);margin-bottom:40px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">項目狀態</div>
+          <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;margin:0;">
+            研究院工作坊項目正在規劃中。首個研究院組織的工作坊計劃於 2026 年舉行。請參閱 <a href="/zh-tw/events/training-programs" style="color:var(--accent-steel);">培訓項目</a> 頁面了解研究院當前能力建設活動。
+          </p>
+        </div>
+
+        <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">提出工作坊提案</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:24px;">
+          有意與全景研究院聯合組織工作坊的研究人員和機構可提交提案。成功提案將獲得機構支持、活動協調協助，並可能獲得研究院品牌使用支持和工作坊成果出版機會。
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-tw/collaboration/event-cooperation" class="btn btn-primary">提交工作坊提案</a>
+          <a href="/zh-tw/events/training-programs" class="btn btn-secondary">培訓項目</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"] { display: block !important; }
+}
+</style>

@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { researchCenters } from '../../data/site';
+---
+
+<BaseLayout
+  title="研究中心"
+  description="全景研究院的专业研究中心负责支持研究项目、出版成果、学术活动和学术合作。"
+>
+  <PageHero
+    title="研究中心"
+    description="研究院通过专业研究中心组织学术活动，并支持研究项目、出版成果、学术活动和学术合作。"
+    breadcrumbs={[{ label: "研究" }, { label: "研究中心" }]}
+  />
+
+  <!-- Overview -->
+  <section class="section-compact" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:760px;">
+        <p style="font-size:17px;line-height:1.8;color:var(--text-secondary);">
+          每个研究中心都有聚焦的主题任务和专门研究团队，并在研究院治理框架内保持学术独立。各中心支持研究项目、产出出版成果、组织活动，并建设与其领域相关的伙伴关系。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Centers -->
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">核心研究中心</div>
+      <h2 class="section-title">运行中的研究中心</h2>
+      <div style="margin-top:8px;">
+        {researchCenters.filter(c => !c.upcoming).map((center) => (
+          <div class="center-card">
+            <div class="center-num">{center.num}</div>
+            <div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:6px;">{center.name}</h2>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                {center.areas.map((a) => <span class="tag">{a}</span>)}
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
+              <a href={center.href} class="btn btn-secondary" style="white-space:nowrap;">查看中心</a>
+              <span class="tag tag-active" style="align-self:flex-end;">进行中</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Centers -->
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">未来研究中心</div>
+      <h2 class="section-title">规划拓展</h2>
+      <p class="section-desc" style="margin-bottom:40px;">
+        以下中心是研究院发展路线图中的规划组成部分。
+      </p>
+      <div style="margin-top:8px;">
+        {researchCenters.filter(c => c.upcoming).map((center) => (
+          <div class="center-card" style="opacity:0.7;">
+            <div class="center-num">{center.num}</div>
+            <div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:6px;">{center.name}</h2>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                {center.areas.map((a) => <span class="tag">{a}</span>)}
+              </div>
+            </div>
+            <div>
+              <span class="tag">即将开展</span>
+            </div>
+          </div>
+        ))}
+
+        {[
+          { num: "05", name: "教育与学习研究中心", areas: ["教育政策", "高等教育", "学习科学"] },
+          { num: "06", name: "艺术、文化与具身研究中心",    areas: ["音乐", "舞蹈", "文化研究", "创意实践"] },
+        ].map((center) => (
+          <div class="center-card" style="opacity:0.65;">
+            <div class="center-num">{center.num}</div>
+            <div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:6px;">{center.name}</h2>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                {center.areas.map((a) => <span class="tag">{a}</span>)}
+              </div>
+            </div>
+            <span class="tag">规划中</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Center Governance -->
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">研究中心治理</div>
+      <h2 class="section-title">研究中心运行方式</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px;">
+        {[
+          { title: "研究任务",     desc: "每个中心都有明确的主题任务，并对应研究院一个或多个研究领域。" },
+          { title: "项目管理",   desc: "各中心在自身领域内开发、协调和管理研究项目，并设定明确成果和时间表。" },
+          { title: "出版成果",   desc: "各中心应依照研究院出版政策产出研究出版成果。" },
+          { title: "活动组织",   desc: "各中心可组织与其研究主题相关的研讨会、工作坊和学术会议。" },
+          { title: "学者参与",   desc: "各中心持续吸纳访问学者、研究员和项目贡献者参与。" },
+          { title: "合作拓展", desc: "各中心识别并发展相关机构合作和研究伙伴关系。" },
+        ].map((g) => (
+          <div style="padding:24px;background:var(--bg-white);border:1px solid var(--border-light);">
+            <h3 style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--text-main);margin-bottom:8px;">{g.title}</h3>
+            <p style="font-size:13.5px;line-height:1.65;color:var(--text-secondary);">{g.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-compact" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:8px;">有意加入研究中心？</h2>
+          <p style="font-size:15px;color:var(--text-secondary);">申请访问学者、研究员，或提交研究项目提案。</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-cn/collaboration/visiting-scholar-application" class="btn btn-primary">访问学者</a>
+          <a href="/zh-cn/collaboration/research-fellow-application"  class="btn btn-secondary">研究员</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

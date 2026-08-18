@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.astro';
+const lang = Astro.currentLocale ?? 'en';
+---
+<BaseLayout title="研究員申請" description="申請成為全景研究院研究員或副研究員。">
+  <PageHero
+    title="研究員申請"
+    description="申請成為全景研究院研究員或副研究員。研究院面向各職業階段學者滾動接受申請。"
+    breadcrumbs={[{ label: "學術合作", href: "/zh-tw/collaboration" }, { label: "研究員申請" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">申請詳情</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"申請類型",  value:"研究員或副研究員" },
+              { label:"截止日期",          value:"滾動申請（無固定截止日期）" },
+              { label:"回覆時間",     value:"20 個工作日內" },
+              { label:"期限（如獲接受）", value:"1–3 年（研究員）/ 1 年（副研究員）" },
+              { label:"形式",            value:"遠端——無需搬遷" },
+              { label:"聯絡",           value:"fellows@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-tw/people/research-fellows" class="btn btn-secondary" style="width:100%;justify-content:center;">關於研究員</a>
+            <a href="/zh-tw/people/associate-research-fellows" class="btn btn-secondary" style="width:100%;justify-content:center;">關於副研究員</a>
+            {lang === 'en' && <a href="/forms/PRI_Research Fellow Application Form_EN.pdf" class="btn btn-secondary" style="width:100%;justify-content:center;" download>下載英文 PDF 表格</a>}
+            {lang === 'zh-cn' && <a href="/forms/PRI_Research Fellow Application Form_CN.pdf" class="btn btn-secondary" style="width:100%;justify-content:center;" download>下載簡體中文 PDF 表格</a>}
+            {lang === 'zh-tw' && <a href="/forms/PRI_Research Fellow Application Form_CN-TW.pdf" class="btn btn-secondary" style="width:100%;justify-content:center;" download>下載繁體中文 PDF 表格</a>}
+          </div>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            請使用本表格申請全景研究院研究員或副研究員職位。所有申請均由研究院研究領導團隊評審。成功申請者將被聯絡，以討論任命、研究計劃及其對研究院項目的貢獻。
+          </p>
+
+          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/fellows@panorama-sg.com" method="POST" enctype="multipart/form-data">
+            <FormSubmitFields subject="全景研究院研究員申請" source="研究員申請表" />
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              {[
+                { label:"姓名",          id:"rf-name",    type:"text",  placeholder:"姓名" },
+                { label:"電子郵箱地址",      id:"rf-email",   name:"email", type:"email", placeholder:"your@email.com" },
+                { label:"目前所屬機構","": "", id:"rf-inst", type:"text", placeholder:"大學或研究機構" },
+                { label:"職位 / 頭銜",     id:"rf-title",   type:"text",  placeholder:"例如：博士候選人、博士後研究員" },
+              ].map((f) => (
+                <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
+                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+                </div>
+              ))}
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="rf-type" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">研究員類型</label>
+              <select id="rf-type" name="rf-type" class="form-input" style="width:100%;">
+                <option value="">請選擇研究員類型...</option>
+                <option>研究員（中高級職業階段，須具博士學位）</option>
+                <option>副研究員（早期職涯研究者或博士生）</option>
+              </select>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="rf-center" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">首選研究中心</label>
+              <select id="rf-center" name="rf-center" class="form-input" style="width:100%;">
+                <option value="">請選擇研究中心...</option>
+                <option>學術出版研究中心</option>
+                <option>學術索引與評價研究中心</option>
+                <option>政策與社會研究中心</option>
+                <option>人工智慧與未來社會研究中心</option>
+                <option>接受建議</option>
+              </select>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="rf-research" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">研究興趣與貢獻說明（400–1,000 詞）</label>
+              <textarea id="rf-research" name="rf-research" rows="10" placeholder="請說明您的研究興趣、其與研究院項目的關聯，以及您作為研究員擬作出的貢獻（出版成果、活動、指導等）。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="rf-cv" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">學術簡介 / 出版清單（不超過 500 詞）</label>
+              <textarea id="rf-cv" name="rf-cv" rows="6" placeholder="學術簡介以及相關出版物、報告或其他學術成果清單。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <MultiAttachmentUpload
+                id="rf-attachments"
+                label="申請附件"
+                description="請上傳填寫完成的申請表、履歷、出版物清單或其他支持材料，可使用 PDF、Word、圖片或 ZIP 文件。"
+                accept=".pdf,.doc,.docx,.zip,.png,.jpg,.jpeg"
+              />
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
+              <input type="checkbox" id="rf-consent" name="rf-consent" value="confirmed" style="margin-top:3px;flex-shrink:0;" />
+              <label for="rf-consent" style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">本人已閱讀並理解研究院研究員期望，並確認所提供資訊準確。</label>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">提交申請</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+}
+</style>

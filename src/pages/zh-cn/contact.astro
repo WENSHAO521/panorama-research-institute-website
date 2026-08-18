@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FormSubmitFields from '../../components/FormSubmitFields.astro';
+---
+
+<BaseLayout
+  title="联系"
+  description="就研究咨询、合作提案和一般信息联系全景研究院。"
+>
+  <PageHero
+    title="联系"
+    description="如有研究咨询、合作提案、媒体请求或一般信息需求，请联系研究院。"
+    breadcrumbs={[{ label: "联系" }]}
+  />
+
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:72px;align-items:start;">
+
+        <!-- Left: Contact Info -->
+        <div>
+          <div style="margin-bottom:40px;">
+            <div class="section-label">全景研究院</div>
+            <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:20px;font-weight:400;">联系</h2>
+            <div style="display:flex;flex-direction:column;gap:20px;">
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:6px;">电子邮箱</div>
+                <a href="mailto:research@panorama-sg.com" style="font-size:16px;color:var(--accent-steel);">research@panorama-sg.com</a>
+              </div>
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:6px;">网站</div>
+                <a href="https://research.panorama-sg.com" style="font-size:15px;color:var(--text-secondary);">research.panorama-sg.com</a>
+              </div>
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:6px;">所属机构</div>
+                <a href="https://www.panorama-sg.com" target="_blank" rel="noopener" style="font-size:15px;color:var(--text-secondary);">全景学术集团</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="statement-box">
+            <div style="font-size:12px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:10px;">机构性质</div>
+            <p style="font-size:13.5px;line-height:1.65;color:var(--text-secondary);">
+              全景学术集团内部研究与学术发展部门，不具备独立法人资格。
+            </p>
+          </div>
+
+          <div style="margin-top:32px;">
+            <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:16px;">常见咨询</div>
+            {[
+              { label: "研究合作",   href: "/zh-cn/collaboration" },
+              { label: "访问学者申请", href: "/zh-cn/collaboration/visiting-scholar-application" },
+              { label: "研究院章程",         href: "/zh-cn/charter" },
+              { label: "出版成果",              href: "/zh-cn/publications" },
+            ].map((link) => (
+              <a href={link.href} style="display:flex;justify-content:space-between;padding:10px 0;font-size:14px;color:var(--text-secondary);border-bottom:1px solid var(--border-light);">
+                {link.label}
+                <span style="color:var(--text-muted);">&rarr;</span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <form action="https://formsubmit.co/research@panorama-sg.com" method="POST" style="background:var(--bg-white);border:1px solid var(--border-light);padding:40px;display:flex;flex-direction:column;gap:20px;">
+          <FormSubmitFields subject="全景研究院网站联系表单" source="Contact Page" />
+          <div style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:4px;font-weight:400;">发送信息</div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label class="form-label" for="c-name">姓名 <span style="color:var(--accent-red);">*</span></label>
+              <input type="text" id="c-name" name="name" class="form-input" required placeholder="您的姓名" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="c-email">电子邮箱 <span style="color:var(--accent-red);">*</span></label>
+              <input type="email" id="c-email" name="email" class="form-input" required placeholder="your@email.com" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="c-subject">主题 <span style="color:var(--accent-red);">*</span></label>
+            <input type="text" id="c-subject" name="subject" class="form-input" required placeholder="您的咨询主题是什么？" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="c-message">信息 <span style="color:var(--accent-red);">*</span></label>
+            <textarea id="c-message" name="message" class="form-textarea" required placeholder="请详细说明您的咨询内容。" style="min-height:180px;"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="justify-content:center;">发送信息</button>
+
+          <p style="font-size:12.5px;color:var(--text-muted);text-align:center;line-height:1.5;">
+            研究院力求在 10 个工作日内回复所有咨询。
+          </p>
+        </form>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 1.5fr"] { display: block !important; }
+  form > div[style*="grid-template-columns:1fr 1fr"] { display: block !important; gap: 16px !important; }
+}
+</style>

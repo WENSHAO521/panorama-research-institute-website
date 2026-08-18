@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+---
+<BaseLayout title="主編文集提案" description="提交與全景研究院合作編輯學術編著的提案。">
+  <PageHero
+    title="主編文集提案"
+    description="提交主編學術文集提案，與全景研究院合作出版。研究院為文集主編提供機構隸屬、編輯指導和出版社對接支持。"
+    breadcrumbs={[{ label: "學術合作", href: "/zh-tw/collaboration" }, { label: "主編文集提案" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">提案要求</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"文集類型",  value:"主編學術文集" },
+              { label:"提案",     value:"不超過 2,000 詞 + 章節清單" },
+              { label:"評審時間",  value:"20 個工作日內" },
+              { label:"支持",      value:"機構隸屬、編輯指導、出版社對接" },
+              { label:"開放取用",  value:"優先開放取用；APC 支持視資源情況而定" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            有意與全景研究院合作主編學術文集的研究人員可提交提案。研究院將考慮符合指定研究領域、並具有連貫且重要學術貢獻的提案。
+          </p>
+
+          <div class="section-label" style="margin-bottom:14px;">提案內容</div>
+          <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border-light);margin-bottom:40px;">
+            {[
+              { sec:"1. 文集標題與概要",    desc:"文集暫定標題，以及 300 詞範圍與意義概要。" },
+              { sec:"2. 主編簡介",            desc:"擬任文集主編的學術簡介與相關出版物。" },
+              { sec:"3. 目標讀者",              desc:"文集的主要和次要讀者群。" },
+              { sec:"4. 擬定章節結構",   desc:"含暫定標題和 50 詞摘要的臨時章節清單。" },
+              { sec:"5. 擬合作出版社",           desc:"目標出版社，並說明已有溝通情況。" },
+              { sec:"6. 時間表",                     desc:"擬定章節徵集、投稿和出版時間表。" },
+              { sec:"7. 開放取用計畫",             desc:"擬定開放取用模式及已有 APC 經費。" },
+            ].map((item) => (
+              <div style="padding:14px 20px;border-bottom:1px solid var(--border-light);">
+                <div style="font-size:13.5px;font-weight:600;color:var(--text-main);margin-bottom:4px;">{item.sec}</div>
+                <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid var(--border-light);padding-top:48px;">
+        <div class="section-label" style="margin-bottom:8px;">提案表格</div>
+        <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:24px;font-weight:400;">提交提案</h2>
+        <form style="max-width:740px;" action="https://formsubmit.co/publications@panorama-sg.com" method="POST">
+          <FormSubmitFields subject="全景研究院編著提案" source="Edited Volume Proposal Form" />
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:-0.5px;">
+            {[
+              { label:"主編姓名",  id:"editor-name",  type:"text",  placeholder:"姓名" },
+              { label:"電子郵箱地址",     id:"editor-email", name:"email", type:"email", placeholder:"your@email.com" },
+              { label:"所屬機構",       id:"editor-inst",  type:"text",  placeholder:"目前機構隸屬" },
+              { label:"暫定標題",     id:"vol-title",    type:"text",  placeholder:"擬議文集標題" },
+            ].map((f) => (
+              <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
+                <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+              </div>
+            ))}
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <label for="synopsis" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">文集提案（見上方指南）</label>
+            <textarea id="synopsis" name="synopsis" rows="10" placeholder="請包含提案指南中列出的全部必要部分。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">提交文集提案</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+}
+</style>

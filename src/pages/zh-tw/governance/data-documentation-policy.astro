@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="資料與文件政策" description="全景研究院資料管理與文件政策。">
+  <PageHero
+    title="資料與文件政策"
+    description="全景研究院關於研究資料收集、管理、儲存、文件化和歸檔的標準。"
+    breadcrumbs={[{ label: "治理", href: "/zh-tw/charter" }, { label: "資料與文件政策" }]}
+    tag="治理文件"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        {[
+          { title: "資料管理原則", body: "研究院致力於負責任的資料管理，以支持研究誠信、可重現性和透明度。研究資料的收集、管理和儲存必須保護參與者隱私，並符合適用的資料保護法規。" },
+          { title: "資料收集", body: "研究資料必須採用適當且合乎倫理的方法收集。資料收集程序必須形成文件；在適用情況下，應作為研究倫理審查流程的一部分提前獲得批准。" },
+          { title: "資料儲存與安全", body: "相關研究項目或出版成果完成後，研究資料必須安全保存至少五年。敏感資料訪問必須受到適當限制。" },
+          { title: "資料文件", body: "所有研究資料均須進行充分文件記錄，包括收集方法、變數、編碼以及任何已知局限。相關文件必須與資料一併保存。" },
+          { title: "資料共享與開放資料", body: "研究院鼓勵在適當且符合研究倫理和參與者隱私保護的情況下實踐開放資料。資料共享安排必須在出版成果中清楚說明。" },
+          { title: "機構記錄", body: "研究院保存研究項目、出版成果、活動和治理決策的機構記錄。這些記錄由研究院行政部門維護，並受文件保存期限安排約束。" },
+          { title: "隱私與保密", body: "研究過程中收集的個人資料必須按照適用隱私法律處理。合作過程中與研究院共享的保密資訊必須受到保護。" },
+        ].map((s) => (
+          <div style="margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{s.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+          </div>
+        ))}
+        <a href="/zh-tw/charter" class="btn btn-primary">返回章程</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

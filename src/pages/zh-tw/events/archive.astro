@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="活動檔案" description="全景研究院舉辦的歷史活動。">
+  <PageHero
+    title="活動檔案"
+    description="全景研究院主辦或聯合主辦的往期活動檔案，包括會議、研討會、工作坊和培訓項目。"
+    breadcrumbs={[{ label: "學術活動", href: "/zh-tw/events" }, { label: "檔案" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:720px;">
+        <div class="statement-box" style="margin-bottom:40px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">檔案說明</div>
+          <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);margin:0;">
+            全景研究院成立於 2026 年，目前處於基礎建設階段。尚無已完成並歸檔的活動。研究院首批活動結束後，本頁面將更新。
+          </p>
+        </div>
+
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:24px;">
+          已完成活動將在此歸檔，並記錄活動日期、議程、參與者以及形成的成果，包括可提供的會議論文集、摘要或錄音錄影。
+        </p>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-tw/events" class="btn btn-primary">即將開展的活動</a>
+          <a href="/zh-tw/events/conferences" class="btn btn-secondary">學術會議</a>
+          <a href="/zh-tw/events/seminars" class="btn btn-secondary">學術研討會</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

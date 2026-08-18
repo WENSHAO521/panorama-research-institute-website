@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="學術會議" description="由全景研究院主辦或聯合主辦的學術會議。">
+  <PageHero
+    title="學術會議"
+    description="全景研究院主辦和聯合主辦的學術會議，匯集研究院相關領域的學者、政策制定者和實踐者。"
+    breadcrumbs={[{ label: "學術活動", href: "/zh-tw/events" }, { label: "學術會議" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:40px;">
+          全景研究院計劃發展國際會議項目，圍繞學術出版、期刊評價、學術政策和新興數位未來等核心研究主題展開。研究院首個主辦會議計劃於 2026 年舉行。
+        </p>
+
+        <div style="margin-bottom:48px;padding:32px;background:var(--bg-soft);border:1px solid var(--border-light);">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">即將開展——規劃階段</div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:12px;font-weight:400;">首屆全景學術傳播國際會議</h2>
+          <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;margin-bottom:20px;">
+            研究院首屆關於學術傳播、學術出版和開放科學的國際會議處於早期規劃階段。會議將匯集亞太地區及其他地區的研究人員、編輯、出版商、圖書館員和政策制定者。
+          </p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:20px;">
+            {[
+              { label:"計劃日期", value:"2026 年（待定）" },
+              { label:"形式", value:"線下 + 線上（混合形式）" },
+              { label:"地點", value:"待公布" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <a href="/zh-tw/events/calls-for-papers" class="btn btn-primary">登記意向</a>
+        </div>
+
+        <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">會議聯合主辦</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+          研究院歡迎與夥伴機構聯合主辦學術會議。聯合主辦會議使研究院能夠為符合其使命的活動貢獻研究專長和機構支持，同時服務更廣泛的學術共同體。會議聯合主辦諮詢請聯絡合作事務辦公室。
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;">
+          <a href="/zh-tw/collaboration/event-cooperation" class="btn btn-primary">聯合主辦會議</a>
+          <a href="/zh-tw/events/calls-for-papers" class="btn btn-secondary">論文徵稿</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"] { display: block !important; }
+}
+</style>

@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const categories = ["全部", "研究院领导", "研究员", "副研究员", "访问学者", "顾问委员会"];
+---
+
+<BaseLayout
+  title="学术成员"
+  description="与全景研究院相关的学者、研究人员、研究员和合作成员。"
+>
+  <PageHero
+    title="学术成员"
+    description="构成全景研究院学术共同体的研究人员、研究员、访问学者和学术贡献者。"
+    breadcrumbs={[{ label: "学术成员" }]}
+  />
+
+  <!-- Filter -->
+  <section style="background:var(--bg-white);border-bottom:1px solid var(--border-light);padding:20px 0;">
+    <div class="container">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        {categories.map((c, i) => (
+          <button class={`tag ${i === 0 ? 'tag-active' : ''}`} style="cursor:pointer;" type="button">{c}</button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership Placeholder -->
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div class="section-label">研究院领导</div>
+      <h2 class="section-title" style="margin-bottom:8px;">领导团队</h2>
+      <p class="section-desc" style="margin-bottom:40px;">
+        研究院领导信息将在任命完成后公布。如需更多信息，请联系研究院。
+      </p>
+      <div style="border:1px solid var(--border-light);background:var(--bg-white);padding:40px;max-width:560px;">
+        <div style="font-size:14px;color:var(--text-muted);margin-bottom:16px;">全景研究院院长</div>
+        <p style="font-size:15px;color:var(--text-secondary);">
+          领导岗位任命正在进行中。请联系 <a href="mailto:research@panorama-sg.com" style="color:var(--accent-steel);">research@panorama-sg.com</a> 进行咨询。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scholar Categories -->
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">学者类别</div>
+      <h2 class="section-title">角色与职位</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { role: "研究员",             desc: "与研究院建立学术关联，并参与研究项目、出版成果和学术活动的资深研究人员。" },
+          { role: "副研究员",   desc: "在资深研究员指导下参与研究院项目的早期职业阶段研究人员。" },
+          { role: "访问学者",            desc: "来自其他机构、在特定时期内访问研究院并开展合作研究的学者。" },
+          { role: "研究助理",          desc: "支持研究院研究项目和出版工作的研究生及早期职业阶段研究人员。" },
+          { role: "顾问委员会成员",       desc: "为研究院提供战略建议和学术监督的外部资深学者。" },
+          { role: "项目贡献者",         desc: "不持正式研究员或聘任身份、但参与研究院具体项目的学者。" },
+        ].map((r) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{r.role}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{r.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Scholar Profile Fields -->
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">学者档案</div>
+      <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:16px;font-weight:400;">档案信息</h2>
+      <p style="font-size:16px;line-height:1.75;color:var(--text-secondary);max-width:640px;margin-bottom:28px;">
+        每份学者档案包括姓名、职位、隶属机构、研究领域、个人简介、代表性出版成果、研究项目、编辑角色、ORCID 和联系信息。
+      </p>
+      <a href="https://profiles.panorama-sg.com" target="_blank" rel="noopener" class="btn btn-secondary">Panorama Scholar Profiles &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Join CTA -->
+  <section class="section-compact" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:8px;">申请加入研究院</h2>
+          <p style="font-size:15px;color:var(--text-secondary);">申请成为访问学者、研究员或副研究员。</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-cn/collaboration/research-fellow-application"  class="btn btn-primary">研究员</a>
+          <a href="/zh-cn/collaboration/visiting-scholar-application" class="btn btn-secondary">访问学者</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

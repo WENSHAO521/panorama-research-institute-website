@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="学术独立声明" description="全景研究院关于学术独立与思想自由的声明。">
+  <PageHero
+    title="学术独立声明"
+    description="全景研究院承诺在学术活动中维护思想自由、研究独立，并避免不当影响。"
+    breadcrumbs={[{ label: "治理", href: "/zh-cn/charter" }, { label: "学术独立" }]}
+    tag="治理文件"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        <div class="statement-box" style="margin-bottom:40px;">
+          <p style="font-size:17px;line-height:1.8;color:var(--text-secondary);font-family:var(--font-serif);font-style:italic;">
+            “全景研究院坚持学术独立原则。本院研究活动、出版成果和学术决策均以学术价值和证据为基础，不受商业、政治或机构压力影响。”
+          </p>
+        </div>
+        {[
+          { title: "研究独立", body: "研究院基于学术价值、严谨方法和伦理原则开展并支持研究。包括全景学术集团在内的任何外部主体，均不得指令或改变研究院研究的实质性发现。" },
+          { title: "出版独立", body: "出版决策基于研究质量、准确性以及对研究院出版伦理标准的遵守情况作出。出版成果不受外部编辑干预。" },
+          { title: "治理分离", body: "研究院虽在全景学术集团的行政治理下运行，但其学术活动保持智识独立。行政治理不延伸至研究方向或学术判断。" },
+          { title: "隶属关系披露", body: "研究院在所有正式沟通和出版成果中披露其与全景学术集团的隶属关系。这种透明性是研究院维护学术可信度承诺的一部分。" },
+          { title: "免受不当影响", body: "与研究院建立学术关联的研究者，应免受要求其改变、压制或歪曲研究发现的压力。任何试图干预学术独立的行为均应报告研究院领导层。" },
+        ].map((s) => (
+          <div style="margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{s.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+          </div>
+        ))}
+        <a href="/zh-cn/charter" class="btn btn-primary">返回章程</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

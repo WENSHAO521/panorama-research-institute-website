@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+const lang = Astro.currentLocale ?? 'en';
 ---
 <BaseLayout title="Forms" description="Application and submission forms for Panorama Research Institute.">
   <PageHero
@@ -42,8 +43,8 @@ import PageHero from '../../components/PageHero.astro';
           <div class="card" style="border:none;border-radius:0;">
             <h3 style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--text-main);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.05em;">{group.category}</h3>
             <div style="display:flex;flex-direction:column;gap:0;">
-              {group.forms.map((f) => (
-                <a href={f.href} target={f.external ? '_blank' : undefined} rel={f.external ? 'noopener' : undefined} download={f.download ? true : undefined} data-language-variant={f.langVariant} style="display:block;font-size:14px;color:var(--accent-steel);padding:8px 0;border-bottom:1px solid var(--border-light);">{f.name} &rarr;</a>
+              {group.forms.filter((f) => !f.langVariant || f.langVariant === lang).map((f) => (
+                <a href={f.href} target={f.external ? '_blank' : undefined} rel={f.external ? 'noopener' : undefined} download={f.download ? true : undefined} style="display:block;font-size:14px;color:var(--accent-steel);padding:8px 0;border-bottom:1px solid var(--border-light);">{f.name} &rarr;</a>
               ))}
             </div>
           </div>

@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="访问学者" description="隶属于全景研究院的访问学者。">
+  <PageHero
+    title="访问学者"
+    description="访问学者计划使成熟研究者能够在特定期间与全景研究院建立隶属关系，并与研究院学者和研究中心合作开展研究。"
+    breadcrumbs={[{ label: "学术成员", href: "/zh-cn/people" }, { label: "访问学者" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">项目信息</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"头衔",        value:"全景研究院访问学者" },
+              { label:"时长",     value:"3–12 个月" },
+              { label:"形式",       value:"远程或线下" },
+              { label:"申请资格",  value:"成熟学者（博士或同等资历）" },
+              { label:"申请",  value:"滚动申请（视接收能力而定）" },
+              { label:"联系",      value:"scholars@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;">
+            <a href="/zh-cn/collaboration/visiting-scholar-application" class="btn btn-primary" style="width:100%;justify-content:center;">申请访问学者</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">关于访问学者计划</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            访问学者计划使其他机构的成熟研究者能够在特定期间与全景研究院建立隶属关系，通常为三至十二个月。在此期间，访问学者由研究院某一研究中心接待，参与研究院学术生活，并开展双方共同感兴趣的研究。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            访问学者可根据研究项目需要及其原机构安排，选择线下、远程或混合方式参与。研究院提供机构隶属、图书馆访问和研究活动支持。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            研究院特别欢迎研究方向与当前项目高度契合、并能为现有学术共同体补充专业知识的访问学者。
+          </p>
+
+          <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:12px;">访问学者可获得</h3>
+          <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:32px;">
+            {[
+              "全景研究院访问学者机构隶属",
+              "获得研究院资源、网络和学术共同体支持",
+              "参与研究院活动、研讨会和研究活动",
+              "获得在研究院工作论文和报告系列发表成果的支持",
+              "获得相关研究人员的指导和反馈",
+            ].map((item) => (
+              <div style="display:flex;gap:10px;font-size:14px;color:var(--text-secondary);padding:6px 0;border-bottom:1px solid var(--bg-main);">
+                <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{item}
+              </div>
+            ))}
+          </div>
+
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">当前学者</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+              研究院目前接受访问学者申请。获聘访问学者将在隶属期间列于本页。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

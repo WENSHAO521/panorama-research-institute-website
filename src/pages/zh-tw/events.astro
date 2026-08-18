@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { upcomingEvents } from '../../data/site';
+
+const calls = [
+  { type: "論文徵稿", deadline: "2026 年 2 月", title: "人工智慧時代的學術傳播", journal: "學術出版研究年度會議" },
+  { type: "章節徵集", deadline: "2026 年 3 月", title: "開放取用與機構政策", book: "主編文集：學術出版的未來" },
+  { type: "論文徵稿", deadline: "2026 年 4 月", title: "青少年隱私與平台治理", journal: "政策與社會研究研討會系列" },
+];
+---
+
+<BaseLayout
+  title="學術活動"
+  description="全景研究院組織或支持的學術會議、研討會、工作坊、論文徵稿和培訓項目。"
+>
+  <PageHero
+    title="活動與徵集"
+    description="研究院組織或支持的即將開展的學術會議、研討會、工作坊、論文和章節徵集以及培訓項目。"
+    breadcrumbs={[{ label: "學術活動" }]}
+  />
+
+  <!-- Event types nav -->
+  <section style="background:var(--bg-white);border-bottom:1px solid var(--border-light);padding:20px 0;">
+    <div class="container">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        {["全部活動", "學術會議", "學術研討會", "工作坊", "論文徵稿", "章節徵集", "培訓項目", "往期活動"].map((t, i) => (
+          <button class={`tag ${i === 0 ? 'tag-active' : ''}`} style="cursor:pointer;" type="button">{t}</button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Events -->
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div class="section-label">即將開展的活動</div>
+      <h2 class="section-title">已安排活動</h2>
+      <div style="margin-top:8px;">
+        {upcomingEvents.map((ev) => (
+          <div class="event-item">
+            <div class="event-date">
+              {ev.date.split(' ')[0]}<br />
+              {ev.date.split(' ')[1]}
+            </div>
+            <div>
+              <span class="tag" style="margin-bottom:12px;display:inline-flex;">{ev.type}</span>
+              <h3 class="event-title">{ev.title}</h3>
+              <p class="event-meta">{ev.location}</p>
+            </div>
+            <div style="text-align:right;padding-top:4px;">
+              <span class="tag tag-steel">{ev.status}</span>
+              <div style="margin-top:12px;">
+                <a href="/zh-tw/contact" class="btn btn-secondary" style="font-size:12.5px;padding:8px 14px;">註冊</a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Calls -->
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">當前徵集</div>
+      <h2 class="section-title">Calls for Papers &amp; Chapters</h2>
+      <div style="margin-top:8px;">
+        {calls.map((c) => (
+          <div style="display:grid;grid-template-columns:120px 1fr 180px;gap:28px;padding:28px 0;border-bottom:1px solid var(--border-light);align-items:start;">
+            <div>
+              <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:6px;">截止日期</div>
+              <div style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--accent-red);">{c.deadline}</div>
+            </div>
+            <div>
+              <span class="tag tag-steel" style="margin-bottom:10px;display:inline-flex;">{c.type}</span>
+              <h3 style="font-family:var(--font-serif);font-size:19px;color:var(--text-main);margin-bottom:6px;">{c.title}</h3>
+              <p style="font-size:13.5px;color:var(--text-muted);">{c.journal || c.book}</p>
+            </div>
+            <div style="text-align:right;">
+              <a href="/zh-tw/events/calls-for-papers" class="btn btn-secondary" style="font-size:12.5px;padding:8px 14px;">查看詳情</a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="/zh-tw/events/calls-for-papers"   class="btn btn-primary">全部論文徵稿</a>
+        <a href="/zh-tw/events/calls-for-chapters" class="btn btn-secondary">章節徵集</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Training Programs -->
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">培訓項目</div>
+      <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:16px;font-weight:400;">能力建設與培訓</h2>
+      <p style="font-size:16px;line-height:1.75;color:var(--text-secondary);max-width:640px;margin-bottom:28px;">
+        研究院為研究人員、期刊編輯和學術專業人員提供培訓工作坊和項目，領域包括學術出版、研究方法、同儕評審和出版倫理。
+      </p>
+      <a href="/zh-tw/events/training-programs" class="btn btn-secondary">查看培訓項目</a>
+    </div>
+  </section>
+
+  <!-- Propose an Event -->
+  <section class="section-compact" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">有意聯合舉辦活動？</h2>
+          <p style="font-size:14.5px;color:var(--text-secondary);">研究院歡迎提交學術活動合作提案。</p>
+        </div>
+        <a href="/zh-tw/collaboration/event-cooperation" class="btn btn-primary">活動合作提案</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:120px 1fr 180px"] { grid-template-columns: 1fr !important; }
+}
+</style>

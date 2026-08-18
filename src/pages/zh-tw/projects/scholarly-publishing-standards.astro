@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="學術出版標準項目" description="為學術期刊與出版機構制定編輯標準、出版倫理指南及學術傳播框架的研究項目。">
+  <PageHero
+    title="學術出版標準項目"
+    description="一項研究與標準建設項目，為學術期刊和出版社制定編輯標準、出版倫理指南、同儕評審框架和學術傳播基準。"
+    breadcrumbs={[{ label: "研究", href: "/zh-tw/research-areas" }, { label: "項目", href: "/zh-tw/projects" }, { label: "學術出版標準" }]}
+    tag="進行中的項目"
+  >
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">項目詳情</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "狀態",       value: "進行中" },
+              { label: "開始日期",   value: "2026" },
+              { label: "牽頭中心",  value: "學術出版研究中心" },
+              { label: "項目類型", value: "研究與標準建設" },
+              { label: "成果類型", value: "標準、指南、工作論文" },
+              { label: "聯絡",      value: "research@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-tw/research-centers/scholarly-publishing-studies" class="btn btn-primary" style="justify-content:center;">牽頭中心</a>
+            <a href="/zh-tw/resources/guidelines" class="btn btn-secondary" style="justify-content:center;">項目指南</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">關於項目</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            學術出版標準項目是由學術出版研究中心牽頭的研究與標準建設綜合項目。其核心目標是形成實用、循證的標準和指南文件，供期刊編輯、出版社和學術機構用於提升出版實踐的品質、透明度和倫理完整性。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            本項目以研究為基礎開展標準建設：標準和指南文件建立在對現有實踐的系統綜述、對 COPE、ICMJE 和 WAME 等機構現行指南的分析，以及對期刊編輯和出版社需求與挑戰的實證研究基礎之上。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            所有項目成果均以開放取用方式提供。本項目歡迎全球期刊編輯、出版社和研究人員反饋與參與，並可根據具體學科或區域情境進行調整。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">標準領域</div>
+      <h2 class="section-title">規劃中的標準文件</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { num:"01", title:"編輯標準", status:"開發中", desc:"關於編輯範圍、編委會構成、編輯決策流程、稿件追蹤和編輯透明度的標準。" },
+          { num:"02", title:"同儕評審標準", status:"開發中", desc:"關於同儕評審模式選擇、評審人選擇、評審指南、評審時間表和評審中利益衝突處理的標準。" },
+          { num:"03", title:"出版倫理標準", status:"規劃中", desc:"關於作者身分、剽竊處理、資料捏造與篡改、撤稿政策和編輯不端處理程序的標準。" },
+          { num:"04", title:"開放取用標準", status:"規劃中", desc:"關於開放取用政策揭露、APC 透明度、授權、權利保留、自存檔權利和預印本政策的標準。" },
+          { num:"05", title:"研究資料標準", status:"規劃中", desc:"關於期刊出版中資料可得性聲明、資料共享、補充材料和研究資料管理的標準。" },
+          { num:"06", title:"後設資料與可發現性", status:"規劃中", desc:"關於文章級後設資料、DOI 註冊、ORCID 整合、資助方致謝以及摘要和關鍵詞品質的標準。" },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);">{item.num}</span>
+              <span class={`tag ${item.status === '開發中' ? 'tag-active' : ''}`} style="font-size:10px;">{item.status}</span>
+            </div>
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">研究出版成果</div>
+      <h2 class="section-title">項目出版成果</h2>
+      <div style="margin-top:8px;">
+        {[
+          { type:"工作論文", title:"數位時代的同儕評審模式與出版倫理", year:"2026", status:"可用" },
+          { type:"標準文件", title:"學術期刊編輯標準：草案 v0.1", year:"2026", status:"籌備中" },
+        ].map((pub) => (
+          <div class="publication-item">
+            <div class="pub-type">{pub.type}</div>
+            <div class="pub-title">{pub.title}</div>
+            <div style="text-align:right;">
+              <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);margin-bottom:4px;">{pub.year}</div>
+              <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent-steel);">{pub.status}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:32px;">
+        <a href="/zh-tw/publications" class="btn btn-secondary">全部出版成果</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

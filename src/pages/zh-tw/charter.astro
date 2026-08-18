@@ -1,0 +1,496 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const articles = [
+  { num: "1",  title: "姓名" },
+  { num: "2",  title: "機構性質" },
+  { num: "3",  title: "隸屬關係" },
+  { num: "4",  title: "使命" },
+  { num: "5",  title: "活動範圍" },
+  { num: "6",  title: "研究領域" },
+  { num: "7",  title: "組織架構" },
+  { num: "8",  title: "治理" },
+  { num: "9",  title: "研究中心" },
+  { num: "10", title: "研究項目" },
+  { num: "11", title: "出版成果" },
+  { num: "12", title: "學術活動" },
+  { num: "13", title: "學者與研究員" },
+  { num: "14", title: "學術合作" },
+  { num: "15", title: "研究倫理" },
+  { num: "16", title: "利益衝突" },
+  { num: "17", title: "智慧財產權" },
+  { num: "18", title: "名稱與標誌使用" },
+  { num: "19", title: "財務與行政" },
+  { num: "20", title: "修訂與解釋" },
+];
+---
+
+<BaseLayout
+  title="研究院章程"
+  description="全景研究院的創院章程，確立其治理結構、使命與運作框架。"
+>
+  <PageHero
+    title="研究院章程"
+    description="全景研究院創始章程，確立其機構性質、治理框架、研究使命和運行程序。"
+    breadcrumbs={[{ label: "治理" }, { label: "研究院章程" }]}
+    tag="治理文件"
+  >
+    <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="/zh-tw/resources/charter-pdf" class="btn btn-primary">下載 PDF</a>
+      <a href="/zh-tw/governance/rules"      class="btn btn-secondary">治理規則</a>
+    </div>
+  </PageHero>
+
+  <div style="background:var(--bg-main);padding:72px 0 96px;">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:280px 1fr;gap:64px;align-items:start;">
+
+        <!-- Sidebar TOC -->
+        <div style="position:sticky;top:calc(var(--nav-height) + 24px);">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:20px;">目錄</div>
+          {articles.map((a) => (
+            <a href={`#article-${a.num}`} style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border-light);transition:color 0.15s;">
+              <span>Art. {a.num}. {a.title}</span>
+            </a>
+          ))}
+        </div>
+
+        <!-- Charter Content -->
+        <div>
+          <div style="background:var(--bg-white);border:1px solid var(--border-light);padding:56px;margin-bottom:32px;">
+
+            <!-- Header -->
+            <div style="text-align:center;margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">治理文件</div>
+              <h1 style="font-family:var(--font-serif);font-size:32px;color:var(--text-main);margin-bottom:16px;letter-spacing:-0.02em;">研究院章程</h1>
+              <p style="font-size:13px;color:var(--text-muted);font-family:var(--font-mono);">Panorama Research Institute &mdash; Effective 2026</p>
+            </div>
+
+            <!-- Article 1 -->
+            <div id="article-1" style="margin-bottom:48px;">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 1 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">姓名</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                本院正式運行名稱為 <strong style="color:var(--text-main);">全景研究院</strong>。簡稱為 <strong style="color:var(--text-main);">PRI</strong>.
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                在官方文件、出版物和通信中，本院可稱為「Panorama Research Institute」「PRI」或「the Institute」。正式語境中不得使用其他簡稱。
+              </p>
+            </div>
+
+            <!-- Article 2 -->
+            <div id="article-2" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 2 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">機構性質</h2>
+              <div class="statement-box" style="margin-bottom:20px;">
+                <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">
+                  全景研究院是全景學術集團的內部研究與學術發展部門，不具備獨立法人資格。
+                </p>
+              </div>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                本院作為全景學術集團的內部學術部門運行，在研究活動、出版決定、編輯判斷和學術職能方面保持獨立，同時接受全景學術集團整體治理框架和行政權限管理。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                所有正式法律文件、合約和具約束力的協議均由全景學術集團代表本院簽署。本院在任何司法轄區均不擁有獨立財務帳戶、法律登記或獨立法人資格。
+              </p>
+            </div>
+
+            <!-- Article 3 -->
+            <div id="article-3" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 3 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">隸屬關係</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                全景研究院是全景學術集團的內部研究與學術發展部門。凡說明本院機構性質、法律地位、治理關係或正式協議能力時，相關表述必須說明 Panorama Research Institute 是全景學術集團的內部研究與學術發展部門，且不具備獨立法人資格。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                出於學術隸屬和個人檔案展示目的，經授權的隸屬學者可將「Panorama Research Institute」列為其研究院隸屬單位。凡涉及法律、合約或正式機構地位的場景，該隸屬表述必須同時附帶說明：Panorama Research Institute 是全景學術集團的內部研究與學術發展部門，不具備獨立法人資格。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                本院可使用 Panorama Research Institute 名義訂立學術合作安排、諒解備忘錄和合作協議。此類安排的正式簽署由全景學術集團負責。
+              </p>
+            </div>
+
+            <!-- Article 4 -->
+            <div id="article-4" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 4 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">使命</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                全景研究院的使命是通過嚴謹、獨立和跨學科研究推進學術知識發展；支持全球學術傳播基礎設施建設；並促進學術出版和研究實踐中的開放、透明與誠信。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                在履行這一使命過程中，本院承諾遵循最高標準的學術品質、研究倫理和機構治理。研究院支持各職業階段學者，促進跨學科和跨機構合作，並確保其成果可公開取得且建立在可靠學術實踐基礎上。
+              </p>
+            </div>
+
+            <!-- Article 5 -->
+            <div id="article-5" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 5 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">活動範圍</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:16px;">本院開展並支持以下類別的活動：</p>
+              {[
+                "通過研究中心和項目，在指定研究領域開展跨學科研究",
+                "在本院研究領域內設立、發展和管理研究中心",
+                "發起、管理並支持隸屬於研究院研究中心的研究項目",
+                "出版研究報告、工作論文、政策簡報、主編文集、指南和年度報告",
+                "組織和聯合組織學術會議、研討會、工作坊和培訓項目",
+                "管理學者計劃，包括研究員、副研究員、訪問學者和研究助理",
+                "與大學、研究機構、出版社和學術組織開展機構合作和研究夥伴關係活動",
+                "發展開放學術基礎設施，包括資料庫、評價框架和後設資料系統",
+                "開展與本院研究領域相關的政策分析和諮詢活動",
+                "面向研究人員、期刊編輯和學術實踐者開展能力建設活動",
+              ].map((item) => (
+                <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--bg-soft);">
+                  <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>
+                  <span style="font-size:15px;color:var(--text-secondary);line-height:1.7;">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <!-- Article 6 -->
+            <div id="article-6" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 6 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">研究領域</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+                本院指定以下研究領域，研究中心、項目、出版成果和活動均在這些領域內組織。研究領域可依照第 20 條通過正式修訂本章程進行擴展或調整。
+              </p>
+              {[
+                { num:"I",   area:"學術出版研究",       desc:"研究開放取用模式、同儕評審系統、出版倫理、編輯標準、研究誠信，以及學術出版的結構與實踐。" },
+                { num:"II",  area:"學術索引與評價",  desc:"研究期刊索引系統、引文指標、期刊品質框架、資料庫治理與透明度，以及用於評價的開放學術基礎設施。" },
+                { num:"III", area:"政策與社會研究",         desc:"研究高等教育政策、科學與創新治理、社會治理、數位治理，以及學術傳播的政策維度。" },
+                { num:"IV",  area:"人工智慧與未來社會",              desc:"研究人工智慧治理、AI 倫理、人機互動、AI 對學術傳播和知識生產的影響，以及數位未來。" },
+                { num:"V",   area:"教育與學習研究",    desc:"研究教育系統、教學實踐、學習科學、教育政策，以及技術在學習環境中的作用。" },
+                { num:"VI",  area:"藝術、文化與具身研究",       desc:"研究藝術實踐、文化研究、具身認知、創造性探究，以及藝術與人文學科同學術和社會探究的交叉。" },
+              ].map((item) => (
+                <div style="display:grid;grid-template-columns:32px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--bg-soft);align-items:start;">
+                  <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);padding-top:2px;">{item.num}</span>
+                  <div>
+                    <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:4px;">{item.area}</div>
+                    <div style="font-size:14px;line-height:1.65;color:var(--text-secondary);">{item.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <!-- Article 7 -->
+            <div id="article-7" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 7 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">組織架構</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+                本院由以下組織單位構成。各單位負責明確的機構活動領域，並向研究院院長報告。
+              </p>
+              {[
+                { unit:"研究院辦公室",              desc:"負責整體行政、治理合規、內部協調、外部溝通和官方記錄維護。由研究院院長領導。" },
+                { unit:"研究中心",              desc:"本院主要學術單位。每個中心均有明確主題職責、主任以及研究項目、出版成果和活動計劃。目前運行中的中心列於第 9 條。" },
+                { unit:"研究項目組",                 desc:"負責執行經批准的研究項目、協調項目參與者、維護項目文件，並向相關研究中心主任報告項目進展。" },
+                { unit:"學術出版事務部",             desc:"負責本院所有出版成果的編輯管理、製作和開放取用傳播，包括研究報告、工作論文、政策簡報、主編文集和年度報告。" },
+                { unit:"學術活動事務部",          desc:"負責規劃、協調和執行本院會議、研討會、工作坊、培訓項目以及論文和章節徵集。" },
+                { unit:"學者計劃", desc:"負責研究員、副研究員、訪問學者和研究助理的招募、入職和支持，並維護本院學者共同體。" },
+                { unit:"合作事務辦公室",          desc:"負責管理本院外部夥伴關係、機構合作協議、研究項目提案、主編文集提案和活動聯合組織諮詢。" },
+                { unit:"研究倫理與學術規範辦公室", desc:"負責研究倫理審查協調、學術誠信指導、利益衝突揭露管理，並維護本院各項活動中的研究規範。" },
+              ].map((item) => (
+                <div style="padding:14px 0;border-bottom:1px solid var(--bg-soft);">
+                  <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:5px;">{item.unit}</div>
+                  <div style="font-size:14.5px;line-height:1.7;color:var(--text-secondary);">{item.desc}</div>
+                </div>
+              ))}
+            </div>
+
+            <!-- Article 8 -->
+            <div id="article-8" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 8 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">治理</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:16px;">
+                本院通過以下結構進行治理。所有治理活動均依照本章程和全景學術集團總體治理框架開展。
+              </p>
+              {[
+                { role:"研究院院長",     desc:"院長是本院負責人，負責整體學術方向、治理合規、外部代表和機構發展。院長由全景學術集團任命。" },
+                { role:"研究中心主任","": "", desc:"每個研究中心由研究中心主任領導，主任負責中心研究項目、研究員管理和學術活動。研究中心主任由研究院院長任命。" },
+                { role:"顧問委員會",          desc:"顧問委員會是由傑出學者和實踐者組成的獨立諮詢機構，就研究優先事項、學術標準和機構發展提供建議，不具有執行權。" },
+                { role:"全景學術集團","": "", desc:"作為母體機構，全景學術集團對本院擁有最終治理權限，批准章程及重大修訂，管理本院財務，並代表本院簽署正式法律文件。" },
+              ].map((item) => (
+                <div style="padding:14px 0;border-bottom:1px solid var(--bg-soft);">
+                  <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:5px;">{item.role}</div>
+                  <div style="font-size:14.5px;line-height:1.7;color:var(--text-secondary);">{item.desc}</div>
+                </div>
+              ))}
+            </div>
+
+            <!-- Article 9 -->
+            <div id="article-9" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 9 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">研究中心</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:16px;">
+                研究中心是本院內部主要學術單位。每個中心設立於本院一個或多個指定研究領域內，負責開發和管理研究項目、產出出版成果、組織活動，並在其領域內建設學術網絡。每個中心由主任領導，並由隸屬研究員及其他學者參與。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+                在擬設中心屬於指定研究領域的前提下，研究院院長可經全景學術集團批准設立新的研究中心。研究中心的設立、調整或關閉不需要修訂本章程，除非相關變化涉及第 6 條的修改。
+              </p>
+              <p style="font-size:14.5px;color:var(--text-muted);margin-bottom:10px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;font-size:11px;">已設立研究中心</p>
+              {[
+                { num:"01", name:"學術出版研究中心",       status:"進行中" },
+                { num:"02", name:"學術索引與評價研究中心",  status:"進行中" },
+                { num:"03", name:"政策與社會研究中心",         status:"進行中" },
+                { num:"04", name:"人工智慧與未來社會研究中心",              status:"即將開展" },
+              ].map((c) => (
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--bg-soft);">
+                  <div style="display:flex;gap:16px;align-items:center;">
+                    <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);">{c.num}</span>
+                    <span style="font-size:15px;color:var(--text-secondary);">{c.name}</span>
+                  </div>
+                  <span class={`tag ${c.status === '進行中' ? 'tag-active' : 'tag-steel'}`}>{c.status}</span>
+                </div>
+              ))}
+            </div>
+
+            <!-- Article 10 -->
+            <div id="article-10" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 10 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">研究項目</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                研究項目是經本院正式批准、隸屬於一個或多個研究中心的研究計劃。每個項目均有明確範圍、研究問題、方法、時間表和預期成果。項目通過正式提案流程發起，由相關研究中心主任評審，並由研究院院長批准。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                項目可由隸屬研究員、訪問學者或外部研究人員牽頭，前提是其工作符合本院研究品質和倫理標準。所有以本院名義開展的研究均必須符合本章程確立的價值、政策和倫理標準。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                本院在網站上維護所有進行中和已完成研究項目的公開記錄。項目狀態變化，包括啟動、暫停和完成，由相關研究中心主任管理，並通知研究院辦公室。
+              </p>
+            </div>
+
+            <!-- Article 11 -->
+            <div id="article-11" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 11 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">出版成果</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+                本院發布以下類別的出版成果。所有出版成果發布前均須經過編輯評審、品質控制，並符合本院出版倫理政策。
+              </p>
+              {[
+                { type:"研究報告",   desc:"呈現研究院研究項目重要原創發現的完整報告，須接受內部評審和外部同儕評審。" },
+                { type:"工作論文",     desc:"呈現初步發現、理論框架或學術論證的較短文件，須接受內部編輯評審。" },
+                { type:"政策簡報",      desc:"呈現政策相關發現和建議的簡明循證文件，須接受內部編輯評審。" },
+                { type:"主編文集",     desc:"圍繞明確研究主題匯集多位學者原創貢獻的合作學術文集，與合作學術出版社聯合出版。" },
+                { type:"年度報告",     desc:"年度機構報告，涵蓋本院研究活動、出版成果、學術活動、學者計劃和治理揭露。" },
+                { type:"指南與標準","": "", desc:"由研究院研究發展而來的實踐標準和指南文件，供期刊、出版社和學術機構使用。" },
+              ].map((item) => (
+                <div style="display:grid;grid-template-columns:160px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--bg-soft);align-items:start;">
+                  <div style="font-size:14px;font-weight:600;color:var(--text-main);">{item.type}</div>
+                  <div style="font-size:14px;line-height:1.65;color:var(--text-secondary);">{item.desc}</div>
+                </div>
+              ))}
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-top:20px;">
+                本院所有出版成果均以開放取用方式發布，並可在本院網站免費取得。每項出版成果均獲得由 Crossref 註冊的 DOI。作者保留作品版權，但授予本院非獨占、永久的出版、傳播和存檔許可。
+              </p>
+            </div>
+
+            <!-- Article 12 -->
+            <div id="article-12" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 12 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">學術活動</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                本院組織和聯合組織學術活動，以推動其研究領域內的學術交流並支持研究共同體。活動包括國際會議、學術研討會、研究工作坊、培訓項目及相關學術集會。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                活動可由本院獨立組織，也可與夥伴機構聯合組織。聯合組織活動須經研究院院長批准，並須符合本院學術標準、倫理要求和品牌指南。所有聯合組織活動不得損害本院研究的學術獨立性或學術共同體的完整性。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                學術活動事務部負責管理論文徵集、活動後勤、演講者和參與者協調，並在適用情況下製作活動記錄和會議論文集。
+              </p>
+            </div>
+
+            <!-- Article 13 -->
+            <div id="article-13" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 13 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">學者與研究員</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+                本院通過以下正式隸屬類別維護相關學者共同體。每一類別均具有明確職責和權益。除非另有說明，隸屬關係不構成與全景研究院或全景學術集團的僱傭關係。
+              </p>
+              {[
+                { title:"研究員",            desc:"成熟研究者（通常具有博士學位或同等資歷），正式承諾通過原創出版、參與活動和融入本院學術共同體為研究院研究項目作出貢獻。任期一至三年，可續期。" },
+                { title:"副研究員",  desc:"為本院研究項目和活動作出貢獻的早期職業研究者或博士生。通常任期一年，如貢獻令人滿意可續期。副研究員可被考慮晉升為研究員。" },
+                { title:"訪問學者",           desc:"成熟研究者在特定期間（通常三至十二個月）與本院建立隸屬關係，並與本院學者合作開展研究。訪問學者可駐地或遠端參與。" },
+                { title:"研究助理",         desc:"研究生或早期職業研究者，以項目為基礎參與，在研究員或研究中心主任指導下支持研究任務。" },
+              ].map((item) => (
+                <div style="padding:14px 0;border-bottom:1px solid var(--bg-soft);">
+                  <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:5px;">{item.title}</div>
+                  <div style="font-size:14.5px;line-height:1.7;color:var(--text-secondary);">{item.desc}</div>
+                </div>
+              ))}
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-top:20px;">
+                所有隸屬學者均須遵守本院研究倫理政策、利益衝突政策和其他治理文件。學者計劃由學者計劃協調員在研究院院長監督下管理。
+              </p>
+            </div>
+
+            <!-- Article 14 -->
+            <div id="article-14" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 14 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">學術合作</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                本院與大學、研究機構、出版社、學術協會和其他組織開展學術合作。合作活動必須符合本院使命、研究領域和價值，並不得損害本院研究的學術獨立性或學者誠信。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:16px;">
+                本章程承認以下合作形式：
+              </p>
+              {[
+                "機構合作協議和諒解備忘錄",
+                "聯合研究項目和合作出版成果",
+                "聯合主編學術文集和聯合組織期刊特刊",
+                "聯合組織學術會議、研討會、工作坊和培訓項目",
+                "學者和訪問研究人員交流項目",
+                "聯合能力建設和培訓計劃",
+              ].map((item) => (
+                <div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid var(--bg-soft);">
+                  <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>
+                  <span style="font-size:15px;color:var(--text-secondary);line-height:1.65;">{item}</span>
+                </div>
+              ))}
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-top:20px;">
+                由於本院不具備獨立法人資格，正式合作協議由全景學術集團代表本院簽署。合作事務辦公室管理所有合作諮詢、提案和持續夥伴關係安排。
+              </p>
+            </div>
+
+            <!-- Article 15 -->
+            <div id="article-15" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 15 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">研究倫理</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                本院承諾遵循最高標準的研究倫理。所有在本院支持下開展的研究均須遵守適用倫理原則，包括尊重個體、增益、不傷害、公正和透明。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:16px;">
+                以下原則構成本院最低倫理標準。這些原則在作為本章程附屬治理文件採納的研究倫理政策中進一步闡明。
+              </p>
+              {[
+                "涉及人類參與者的研究必須遵守適用倫理審查要求，並在需要時取得知情同意。",
+                "研究資料必須依照本院資料與文件政策進行收集、管理、保存和共享。",
+                "研究發現必須誠實、準確報告，不得選擇性遺漏重要證據。",
+                "所有出版成果均須透明揭露研究方法和局限性。",
+                "禁止捏造、篡改和抄襲；此類行為構成立即撤銷隸屬關係並撤回受影響出版成果的理由。",
+                "作者必須準確說明其對任何出版作品的貢獻，不得將未作出實質貢獻者列為作者。",
+              ].map((item) => (
+                <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--bg-soft);">
+                  <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>
+                  <span style="font-size:15px;color:var(--text-secondary);line-height:1.7;">{item}</span>
+                </div>
+              ))}
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-top:20px;">
+                涉嫌違反研究倫理標準的情況應向研究院院長報告。研究院院長將調查相關報告，並可採取補救措施，包括撤回出版成果、撤銷隸屬關係，或移交研究者所屬機構處理。
+              </p>
+            </div>
+
+            <!-- Article 16 -->
+            <div id="article-16" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 16 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">利益衝突</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                所有與本院相關人員，包括研究員、副研究員、訪問學者、研究助理、研究中心主任和研究院院長，均須揭露任何實際、潛在或可被感知的利益衝突，該衝突可能影響或被認為影響其以本院名義開展的研究、出版、編輯判斷或其他專業活動的完整性。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                當個人的財務利益、機構關係、個人關係或其他利益可能影響或被認為可能影響其專業判斷時，即存在利益衝突。揭露門檻較低：如有疑問，即應揭露。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                所有相關本院出版成果均須進行利益衝突揭露；在隸屬開始時及出現新衝突時，也須向研究院院長揭露。未揭露重大利益衝突可構成第 15 條下的研究倫理違規。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                關於利益衝突識別、揭露和管理的完整規定，見作為本章程附屬治理文件採納的本院利益衝突政策。
+              </p>
+            </div>
+
+            <!-- Article 17 -->
+            <div id="article-17" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 17 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">智慧財產權</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                在本院支持下形成的研究出版成果版權由署名作者保留。作者授予全景研究院非獨占、永久、不可撤銷、全球、免版稅許可，以任何格式（包括數位格式）出版、複製、傳播、存檔並提供該作品。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                除非在出版前與作者書面約定其他開放許可，本院所有出版成果均依據知識共享署名 4.0 國際許可協議（CC BY 4.0）發布。CC BY 4.0 允許任何人為任何目的分享、改編和使用作品，前提是適當註明作者和本院。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                在本院相關研究過程中產生的研究資料，應在符合適用隱私、保密和法律要求的最大範圍內公開。所有研究出版成果均須包含資料可用性聲明。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                本院名稱、標誌和視覺識別歸全景學術集團所有。其使用受第 18 條所載名稱與標誌使用政策及據此採納的附屬治理文件管轄。
+              </p>
+            </div>
+
+            <!-- Article 18 -->
+            <div id="article-18" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 18 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">名稱與標誌使用</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                「Panorama Research Institute」名稱和本院標誌僅可由獲授權人員和組織使用。授權由研究院院長授予；正式機構用途由全景學術集團授權。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                授權使用包括：隸屬學者在與本院批准研究和出版相關情況下使用；夥伴機構在經本院正式批准的文件中使用；媒體在準確報導本院時使用；以及在與本院正式聯合組織的活動中使用。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                禁止使用包括：暗示本院認可未經授權的任何立場、產品或組織；在未經本院批准的出版物標題或封面中使用本院名稱；修改或扭曲本院標誌；以及在隸屬關係終止後使用本院名稱或標誌。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                詳細使用要求，包括標誌規範，見作為本章程附屬治理文件採納的本院名稱與標誌使用政策。
+              </p>
+            </div>
+
+            <!-- Article 19 -->
+            <div id="article-19" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 19 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">財務與行政</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                由於本院不具備獨立法人資格或獨立財務帳戶，所有與本院相關的財務事項均由全景學術集團管理。本院不以自身名義訂立財務合約、持有資金或承擔負債。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                本院研究、出版、學術活動和學者計劃運行預算由全景學術集團與研究院院長協商後分配。研究院院長負責在已分配預算內管理支出，並按要求向全景學術集團提供財務報告。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                向隸屬學者支付的任何研究員津貼、酬金或補償均由全景學術集團管理。此類支付是否提供及金額按個案決定，並不因隸屬關係本身而獲得保證。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                本院在所有出版物、網站和正式通信中揭露其機構隸屬和運行狀態。本院不以自身名義接受外部研究資助。涉及第三方資助或捐助的安排由全景學術集團處理，並在相關出版成果中揭露。
+              </p>
+            </div>
+
+            <!-- Article 20 -->
+            <div id="article-20" style="padding-top:40px;border-top:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 20 條</div>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">修訂與解釋</h2>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                本章程可由研究院院長經全景學術集團批准後修訂。擬議修訂須在採納前至少三十日發送給所有研究中心主任和顧問委員會徵求意見。在最終決定採納前，須考慮此期間收到的意見，但該意見不具有約束力。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                除非指定較晚生效日期，修訂自採納之日起生效。章程版本號和生效日期記錄於文件封面。完整版本歷史由研究院辦公室維護，並可按請求提供。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
+                附屬治理文件，包括研究倫理政策、利益衝突政策、出版與報告政策、資料與文件政策、學術獨立政策以及名稱與標誌使用政策，可由研究院院長採納、修訂或替換，無需正式修訂章程，前提是其不與本章程規定衝突。
+              </p>
+              <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
+                研究院院長對本章程條款擁有最終解釋權。任何條款解釋出現歧義時，應優先採用最符合第 4 條所載本院使命的解釋。如本章程與任何附屬治理文件發生衝突，以本章程為準。
+              </p>
+            </div>
+
+          </div>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="/zh-tw/resources/charter-pdf"    class="btn btn-primary">下載章程 PDF</a>
+            <a href="/zh-tw/governance/rules"          class="btn btn-secondary">治理規則</a>
+            <a href="/zh-tw/governance/research-ethics"class="btn btn-secondary">研究倫理</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+@media (max-width: 900px) {
+  .container > div[style*="grid-template-columns:280px"] { display: block !important; }
+  .container > div[style*="grid-template-columns:280px"] > div:first-child { display: none !important; }
+}
+div[style*="grid-template-columns:160px 1fr"],
+div[style*="grid-template-columns:32px 1fr"] {
+  display: grid;
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:160px 1fr"],
+  div[style*="grid-template-columns:32px 1fr"] { display: block !important; }
+}
+</style>

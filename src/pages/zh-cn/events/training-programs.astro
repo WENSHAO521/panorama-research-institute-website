@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="培训项目" description="全景研究院为研究者、期刊编辑和学者组织的培训项目。">
+  <PageHero
+    title="培训项目"
+    description="全景研究院为研究人员、期刊编辑和学术实践者组织的能力建设培训项目，聚焦研究院重点领域。"
+    breadcrumbs={[{ label: "学术活动", href: "/zh-cn/events" }, { label: "培训项目" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:48px;">
+          全景研究院计划发展培训工作坊和能力建设项目，面向研究人员、期刊编辑和其他学术实践者。培训项目旨在将研究院项目中的研究洞见转化为参与者可直接应用于工作的实践技能和知识。
+        </p>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-bottom:48px;">
+          {[
+            { audience:"期刊编辑", programs:["编辑标准与流程","同行评审管理","出版伦理与 COPE 指南","作者关系管理","撤稿与更正处理"] },
+            { audience:"研究人员",     programs:["研究诚信与开放科学","预印本与开放获取实践","数据管理与共享","引用与参考文献最佳实践","国际期刊学术写作"] },
+            { audience:"研究团队",  programs:["研究项目管理","合作写作与共同作者身份","研究数据管理","伦理审查与机构合规","传播与影响力规划"] },
+          ].map((item) => (
+            <div class="card" style="border:none;border-radius:0;">
+              <h3 style="font-family:var(--font-sans);font-size:14.5px;font-weight:600;color:var(--text-main);margin-bottom:12px;">{item.audience}</h3>
+              <div style="display:flex;flex-direction:column;gap:4px;">
+                {item.programs.map((p) => (
+                  <div style="display:flex;gap:8px;font-size:13px;color:var(--text-secondary);">
+                    <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{p}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style="padding:32px;background:var(--bg-soft);border:1px solid var(--border-light);margin-bottom:40px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">项目状态</div>
+          <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;">
+            研究院培训项目目前正在开发中。首批培训项目计划于 2026 年启动，将从面向期刊编辑的编辑标准与出版伦理工作坊开始。
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);margin:0;line-height:1.6;">
+            有意与研究院联合组织培训项目的机构，欢迎通过合作事务办公室联系我们。
+          </p>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-cn/collaboration/event-cooperation" class="btn btn-primary">联合组织培训项目</a>
+          <a href="/zh-cn/events/workshops" class="btn btn-secondary">工作坊</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

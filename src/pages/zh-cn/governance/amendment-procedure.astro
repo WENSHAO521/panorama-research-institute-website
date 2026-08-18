@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="修订程序" description="全景研究院章程及治理文件的修订程序。">
+  <PageHero
+    title="修订程序"
+    description="提出、审查、批准和实施研究院章程及治理政策修订的程序。"
+    breadcrumbs={[{ label: "治理", href: "/zh-cn/charter" }, { label: "修订程序" }]}
+    tag="治理文件"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        {[
+          { step: "1", title: "提交修订提案", body: "研究院领导层、关联研究者或全景学术集团均可提出研究院章程或治理政策修订。提案须以书面形式提交，并说明拟议修订内容及其理由。" },
+          { step: "2", title: "审查期", body: "拟议修订须经过不少于 30 日的审查期，相关利益方可在此期间提交意见或异议。审查可由研究院领导层或指定审查委员会进行。" },
+          { step: "3", title: "批准", body: "研究院章程修订须经全景学术集团批准。治理政策修订须经研究院领导层批准。批准过程须形成书面记录。" },
+          { step: "4", title: "实施", body: "已批准修订自批准文件载明日期起生效；未载明生效日期的，自批准日期后 30 日起生效。" },
+          { step: "5", title: "发布", body: "修订获批后，应尽快在研究院网站发布。章程和治理文件的版本历史应予保存，以确保透明度。" },
+          { step: "6", title: "解释", body: "涉及章程或治理文件解释的问题，由研究院领导层在咨询全景学术集团后解决。相关解释应形成记录，并在适当情况下发布。" },
+        ].map((s) => (
+          <div style="display:grid;grid-template-columns:48px 1fr;gap:20px;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:28px;color:var(--border-medium);font-weight:700;line-height:1;">{s.step}</div>
+            <div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:12px;font-weight:400;">{s.title}</h2>
+              <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+            </div>
+          </div>
+        ))}
+        <a href="/zh-cn/charter" class="btn btn-primary">返回章程</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

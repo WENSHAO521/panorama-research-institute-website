@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="指南" description="全景研究院的編輯與機構指南。">
+  <PageHero
+    title="指南"
+    description="全景研究院發布的編輯指南、投稿要求、機構政策和學術標準文件，供貢獻者、研究員和合作夥伴使用。"
+    breadcrumbs={[{ label: "資源", href: "/zh-tw/resources" }, { label: "指南" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:flex;flex-direction:column;gap:48px;">
+        {[
+          {
+            category: "出版指南",
+            items: [
+              { name:"工作論文系列作者指南",          desc:"研究院工作論文系列的投稿要求、格式標準、摘要要求、引用格式和評審流程。",   href:"/zh-tw/publications/working-papers" },
+              { name:"研究報告作者指南",                  desc:"關於完整研究報告提交準備的詳細指南，包括結構、格式、資料呈現和倫理揭露要求。", href:"/zh-tw/publications/research-reports" },
+              { name:"政策簡報作者指南",                     desc:"政策簡報投稿的結構、篇幅、讀者和風格指南，包括證據呈現和建議寫作標準。",       href:"/zh-tw/publications/policy-briefs" },
+              { name:"引用與參考文獻標準",                      desc:"研究院所有投稿類型的首選引用格式和格式要求。",                                                               href:"/zh-tw/publications/citation" },
+            ]
+          },
+          {
+            category: "編輯與倫理指南",
+            items: [
+              { name:"出版倫理政策",                               desc:"研究院關於作者身分、抄襲、資料完整性、利益衝突和編輯不端的政策。",                                          href:"/zh-tw/governance/publication-report-policy" },
+              { name:"研究倫理政策",                                  desc:"研究院對倫理研究行為的要求，包括人類受試者考量、資料收集同意和倫理審查。",             href:"/zh-tw/governance/research-ethics" },
+              { name:"學術期刊編輯標準（草案 v0.1）", desc:"學術出版標準項目形成的標準草案，現開放學術共同體評議。",                                             href:"/zh-tw/publications/guidelines" },
+            ]
+          },
+          {
+            category: "機構指南",
+            items: [
+              { name:"名稱與標誌使用指南",                          desc:"如何在出版物、簡報和傳播材料中正確使用全景研究院名稱和標誌。",                                       href:"/zh-tw/resources/logo-usage-guidelines" },
+              { name:"資料與文件政策",                           desc:"所有研究院相關研究的資料管理、文件記錄、保存和共享要求。",                                     href:"/zh-tw/governance/data-documentation-policy" },
+              { name:"學術獨立政策",                            desc:"研究院保護其研究和研究人員學術獨立性的承諾。",                                                        href:"/zh-tw/governance/academic-independence" },
+            ]
+          },
+        ].map((section) => (
+          <div>
+            <div class="section-label" style="margin-bottom:12px;">{section.category}</div>
+            <div style="border:1px solid var(--border-light);">
+              {section.items.map((item) => (
+                <a href={item.href} style="display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;padding:20px 24px;border-bottom:1px solid var(--border-light);text-decoration:none;">
+                  <div>
+                    <div style="font-size:15px;font-weight:500;color:var(--text-main);margin-bottom:4px;">{item.name}</div>
+                    <div style="font-size:13px;color:var(--text-muted);line-height:1.55;">{item.desc}</div>
+                  </div>
+                  <span style="font-size:13px;color:var(--accent-steel);white-space:nowrap;flex-shrink:0;">View &rarr;</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 600px) {
+  a[style*="grid-template-columns:1fr auto"] { display: block !important; }
+}
+</style>

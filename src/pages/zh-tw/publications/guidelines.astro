@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="指南與標準" description="全景研究院的出版指南與學術標準文件。">
+  <PageHero
+    title="指南與標準"
+    description="全景研究院制定並發布的編輯指南、學術傳播標準和出版倫理框架，供期刊、出版社和學術機構使用。"
+    breadcrumbs={[{ label: "出版成果", href: "/zh-tw/publications" }, { label: "指南" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);max-width:720px;margin-bottom:48px;">
+        全景研究院在發布研究報告和工作論文的同時，也制定並發布實踐性指南和標準文件。這些文件由學術出版標準項目及相關計劃形成，面向期刊編輯、出版社、機構和研究人員使用。
+      </p>
+
+      <div style="margin-bottom:48px;">
+        <div class="section-label" style="margin-bottom:16px;">已發布指南</div>
+        {[
+          { type:"Standards Draft", num:"SPS-2026-D01", title:"學術期刊編輯標準：徵求意見稿", center:"學術出版研究中心", date:"2026", status:"開放徵求意見" },
+        ].map((g) => (
+          <div class="publication-item">
+            <div>
+              <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:6px;">{g.type} &bull; {g.num}</div>
+              <div class="pub-title">{g.title}</div>
+              <div style="font-size:13px;color:var(--text-muted);margin-top:6px;">{g.center}</div>
+            </div>
+            <div style="text-align:right;flex-shrink:0;">
+              <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);margin-bottom:4px;">{g.date}</div>
+              <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent-steel);">{g.status}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div>
+        <div class="section-label" style="margin-bottom:16px;">開發中</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+          {[
+            { title:"學術期刊同儕評審標準", center:"學術出版研究", est:"2026" },
+            { title:"出版倫理標準", center:"學術出版研究", est:"2026" },
+            { title:"開放取用政策揭露標準", center:"學術出版研究", est:"2026" },
+            { title:"期刊索引評價框架", center:"學術索引與評價", est:"2026" },
+            { title:"期刊研究資料管理標準", center:"學術出版研究", est:"2027" },
+            { title:"學術出版中的人工智慧：編輯指南", center:"人工智慧與未來社會", est:"2027" },
+          ].map((item) => (
+            <div class="card" style="border:none;border-radius:0;">
+              <div style="font-size:11px;font-family:var(--font-mono);color:var(--accent-steel);margin-bottom:6px;">Est. {item.est}</div>
+              <h3 style="font-family:var(--font-sans);font-size:14.5px;font-weight:600;color:var(--text-main);margin-bottom:8px;">{item.title}</h3>
+              <div style="font-size:12.5px;color:var(--text-muted);">{item.center}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:20px;color:var(--text-main);margin-bottom:8px;">評議標準草案</h2>
+          <p style="font-size:14.5px;color:var(--text-secondary);">研究院歡迎學術共同體對標準草案提出回饋。</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-tw/collaboration/research-project-proposal" class="btn btn-primary">提交回饋</a>
+          <a href="/zh-tw/resources/guidelines" class="btn btn-secondary">全部下載</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

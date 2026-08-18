@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="机构合作" description="与全景研究院开展机构合作与伙伴关系的机会。">
+  <PageHero
+    title="机构合作"
+    description="全景研究院欢迎与同样致力于独立研究和开放学术传播的大学、研究机构、出版社和学术组织建立正式机构合作协议。"
+    breadcrumbs={[{ label: "学术合作", href: "/zh-cn/collaboration" }, { label: "机构合作" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">合作详情</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"协议工具",     value:"谅解备忘录（MoU）或合作协议" },
+              { label:"时长",       value:"通常 2–5 年，可续期" },
+              { label:"签署执行",      value:"由全景学术集团代表研究院签署" },
+              { label:"目标伙伴","": "", value:"大学、研究机构、出版社、学术组织" },
+              { label:"联系",        value:"collaboration@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;">
+            <a href="/zh-cn/collaboration/submit" class="btn btn-primary" style="width:100%;justify-content:center;">提交咨询</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">关于机构合作</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            全景研究院欢迎与工作方向符合研究院使命和研究领域的大学、研究机构、学术出版社和学术组织建立正式机构合作关系。机构合作协议为研究、出版、活动和学者交流方面的持续合作提供框架。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            正式合作通常通过谅解备忘录（MoU）或合作协议记录。由于研究院不具备独立法人资格，此类文件由全景学术集团代表研究院签署。合作条款、范围和期限将与每个伙伴机构分别协商。
+          </p>
+
+          <div class="section-label" style="margin-bottom:14px;">典型合作活动</div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-bottom:32px;">
+            {[
+              { act:"联合研究",          desc:"共同设计并开展双方具有学术兴趣的研究项目。" },
+              { act:"学者交流",         desc:"促进机构之间的访问学者安排和研究员机会。" },
+              { act:"联合出版",       desc:"联合出版研究报告、工作论文或主编文集。" },
+              { act:"联合组织活动",      desc:"联合组织会议、研讨会、工作坊和培训项目。" },
+              { act:"数据与资源共享", desc:"共享研究数据、方法工具和学术资源。" },
+              { act:"能力建设",        desc:"支持研究院专业领域内的研究人员培训与发展。" },
+            ].map((item) => (
+              <div class="card" style="border:none;border-radius:0;">
+                <h3 style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--text-main);margin-bottom:6px;">{item.act}</h3>
+                <p style="font-size:13.5px;line-height:1.6;color:var(--text-secondary);">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:12px;">如何启动</h3>
+          <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;margin-bottom:20px;">
+            有意合作的机构可提交初步咨询，说明机构情况、拟合作领域以及预期合作范围和期限。合作事务办公室将在 15 个工作日内回复。
+          </p>
+          <a href="/zh-cn/collaboration/submit" class="btn btn-primary">提交合作咨询</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

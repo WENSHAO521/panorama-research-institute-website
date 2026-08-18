@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="利益冲突政策" description="全景研究院利益冲突政策。">
+  <PageHero
+    title="利益冲突政策"
+    description="关于在研究、出版、同行评审和治理活动中识别、披露和管理利益冲突的指南。"
+    breadcrumbs={[{ label: "治理", href: "/zh-cn/charter" }, { label: "利益冲突政策" }]}
+    tag="治理文件"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        {[
+          { title: "定义", body: "当研究者的个人、财务或专业利益可能损害，或被合理认为可能损害其研究、评审或治理活动的完整性时，即构成利益冲突。" },
+          { title: "利益冲突类型", body: "利益冲突可能是财务性的（如资助关系、股权、咨询安排）、个人性的（如家庭或密切私人关系），也可能是专业性的（如竞争关系、既有承诺）。" },
+          { title: "披露要求", body: "所有与研究院建立学术关联的研究者，在开展研究、提交出版成果或参与治理活动前，均须向研究院领导层披露任何实际或潜在利益冲突。情况发生变化时须更新披露。" },
+          { title: "同行评审", body: "同行评审人必须披露其与投稿作者或稿件主题之间的任何利益冲突；如存在利益冲突，应拒绝评审。投稿内容的保密性必须得到维护。" },
+          { title: "合作与伙伴关系", body: "合作提案必须披露研究院研究者与拟合作机构或个人之间的任何财务或个人关系。" },
+          { title: "利益冲突管理", body: "一旦识别出利益冲突，研究院领导层将确定适当的管理方式，包括回避、加强监督或采取其他措施。" },
+          { title: "不合规处理", body: "未披露利益冲突或不遵守本政策，可能导致出版成果撤回、研究角色终止，或由研究院领导层决定采取其他适当措施。" },
+        ].map((s) => (
+          <div style="margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{s.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+          </div>
+        ))}
+        <a href="/zh-cn/charter" class="btn btn-primary">返回章程</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

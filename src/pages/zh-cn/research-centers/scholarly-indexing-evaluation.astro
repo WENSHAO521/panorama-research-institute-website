@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="学术索引与评价研究中心" description="专注于期刊索引、评价框架、引文分析与数据库透明度的研究中心。">
+  <PageHero
+    title="学术索引与评价研究中心"
+    description="研究期刊索引标准、学术数据库设计、期刊质量评价框架、引文分析和学术基础设施透明度。"
+    breadcrumbs={[{ label: "研究", href: "/zh-cn/research-areas" }, { label: "研究中心", href: "/zh-cn/research-centers" }, { label: "学术索引与评价" }]}
+    tag="运行中的研究中心"
+  >
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">概览</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "中心状态",   value: "进行中" },
+              { label: "已设立",     value: "2026" },
+              { label: "研究领域",   value: "学术索引与评价" },
+              { label: "旗舰项目",value: "POSI 学术索引" },
+              { label: "进行中的项目", value: "1" },
+              { label: "联系",         value: "research@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-cn/projects/posi-scholarly-indexing" class="btn btn-primary" style="justify-content:center;">POSI 项目</a>
+            <a href="/zh-cn/collaboration/research-project-proposal" class="btn btn-secondary" style="justify-content:center;">提交提案</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">关于中心</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            学术索引与评价研究中心是全景研究院研究学术期刊和出版成果索引、评价与排名系统及框架的核心机构。中心围绕索引标准、数据库设计、引文指标和学术评价系统治理开展原创研究。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            该中心是 POSI（全景开放学术索引）项目的机构归属。该项目旨在建设并维护一个透明、全面且方法严谨的学术期刊索引。POSI 旨在为需要可靠期刊标准与质量信息的研究人员、机构、出版社和政策制定者提供资源。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            除 POSI 项目外，该中心还对现有索引和排名系统开展比较研究，评估期刊评价框架的社会与认识论影响，并提出提升学术评价透明度和公平性的政策建议。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">研究重点</div>
+      <h2 class="section-title">核心研究领域</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title: "期刊索引系统",     desc: "研究 Web of Science、Scopus、DOAJ、ESCI 及新兴替代系统等期刊索引系统的设计、标准和治理。" },
+          { title: "引用指标",             desc: "研究基于引文的期刊评价指标，包括影响因子、CiteScore、h 指数及其局限与应用。" },
+          { title: "期刊质量框架",   desc: "研究非引文型期刊质量评估，包括编辑标准、同行评审质量和出版伦理合规。" },
+          { title: "数据库透明度",        desc: "研究主要学术数据库和索引平台的治理、所有权、透明度和方法披露。" },
+          { title: "掠夺性出版识别", desc: "研究识别掠夺性期刊和可疑出版商的框架、特征与应对政策。" },
+          { title: "开放学术基础设施", desc: "研究商业索引与评价的开放、共同体治理替代方案，包括 DOI 注册、元数据标准和关联数据。" },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">旗舰项目</div>
+      <h2 class="section-title">POSI：全景开放学术索引</h2>
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:64px;align-items:start;margin-top:8px;">
+        <div>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            POSI 是由学术索引与评价研究中心牵头的长期学术基础设施项目，目标是开发一个全面、透明、公众可访问的学术期刊索引，并提供关于编辑实践、索引状态、出版伦理、开放获取政策和同行评审标准的详细元数据。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            不同于商业索引系统，POSI 按开放数据原则运行：其方法公开形成文档，数据可免费访问，治理接受学术监督。POSI 数据库旨在补充而非取代现有索引，提供仅靠引文指标无法捕捉的期刊质量信息维度。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            POSI 数据库已经开发完毕，目前正在等待正式上线。当前上线前工作重点包括最终数据质量检查、方法文档、公众访问流程和上线准备。
+          </p>
+          <div style="margin-top:28px;">
+            <a href="/zh-cn/projects/posi-scholarly-indexing" class="btn btn-primary">查看 POSI 项目</a>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border-light);">
+          {[
+            { label: "类型",           value: "开放学术基础设施" },
+            { label: "状态",         value: "已开发完成，等待上线" },
+            { label: "数据访问",    value: "上线后开放 / 免费" },
+            { label: "覆盖范围目标", value: "多学科、全球范围" },
+            { label: "首次发布",  value: "等待正式上线" },
+            { label: "治理方",    value: "全景研究院" },
+          ].map((item) => (
+            <div style="padding:16px 20px;border-bottom:1px solid var(--border-light);">
+              <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+              <div style="font-size:14px;color:var(--text-main);">{item.value}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">出版成果</div>
+      <h2 class="section-title">中心出版成果</h2>
+      <div style="margin-top:8px;">
+        {[
+          { type: "工作论文", title: "迈向透明期刊评价框架：学术索引的原则与标准", year: "2026" },
+          { type: "政策简报",  title: "学术数据库运营者的治理与透明度要求", year: "2026" },
+        ].map((pub) => (
+          <div class="publication-item">
+            <div class="pub-type">{pub.type}</div>
+            <div class="pub-title">{pub.title}</div>
+            <div style="text-align:right;">
+              <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.year}</div>
+              <a href="/zh-cn/publications" class="btn-ghost btn" style="font-size:13px;padding:0;">Details &rarr;</a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:32px;">
+        <a href="/zh-cn/publications" class="btn btn-secondary">全部出版成果</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"],
+  div[style*="grid-template-columns:2fr 1fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

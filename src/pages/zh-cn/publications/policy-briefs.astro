@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="政策简报" description="全景研究院政策简报，为政策制定者与机构领导者提供基于证据的建议。">
+  <PageHero
+    title="政策简报"
+    description="基于研究院研究成果形成的简明循证政策简报，为政策制定者、机构领导者和学术共同体相关方提出可操作建议。"
+    breadcrumbs={[{ label: "出版成果", href: "/zh-cn/publications" }, { label: "政策简报" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">关于本系列</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label: "形式",          value: "政策简报" },
+              { label: "通常篇幅",  value: "1,500–4,000 词" },
+              { label: "评审",          value: "内部编辑评审" },
+              { label: "获取方式",          value: "开放获取" },
+              { label: "目标读者", value: "政策制定者、机构领导者、学术共同体" },
+              { label: "DOI",             value: "已注册（Crossref）" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">关于政策简报</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            政策简报是全景研究院面向政策研究的重要成果形式。它们将研究发现转化为简明易读的文件，面向政策制定者、机构决策者和学术传播生态中的相关方。每份政策简报提出具体政策挑战或问题，总结相关证据，并提供清晰、可操作的建议。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            政策简报以开放获取形式发布，供政策讨论、机构审议和倡议工作使用。它们是研究院参与相关研究领域现实政策讨论的重要机制。
+          </p>
+
+          <div class="section-label" style="margin-bottom:12px;">已发布政策简报</div>
+          {[
+            { num:"PB-2026-001", title:"亚太地区机构开放获取要求及其实施", center:"学术出版研究中心", date:"2026" },
+            { num:"PB-2026-002", title:"学术数据库运营者的治理与透明度要求", center:"学术索引与评价研究中心", date:"2026" },
+            { num:"PB-2026-003", title:"青年网络安全与平台问责：比较政策分析", center:"政策与社会研究中心", date:"2026" },
+          ].map((pub) => (
+            <div class="publication-item">
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:6px;">{pub.num} &bull; {pub.center}</div>
+                <div class="pub-title">{pub.title}</div>
+              </div>
+              <div style="text-align:right;flex-shrink:0;">
+                <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.date}</div>
+                <a href="/zh-cn/publications" class="btn btn-ghost" style="font-size:13px;padding:0;">Download &rarr;</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

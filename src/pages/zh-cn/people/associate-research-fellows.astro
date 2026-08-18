@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="副研究员" description="隶属于全景研究院的副研究员。">
+  <PageHero
+    title="副研究员"
+    description="副研究员是与全景研究院建立学术关联的早期职业和新兴研究者，参与研究项目，并在研究院项目中发展其学术档案。"
+    breadcrumbs={[{ label: "学术成员", href: "/zh-cn/people" }, { label: "副研究员" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">研究员项目信息</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"头衔",       value:"全景研究院副研究员" },
+              { label:"面向对象",      value:"博士生与早期职业研究者" },
+              { label:"时长",    value:"通常 1 年，可续期" },
+              { label:"形式",      value:"远程 / 分布式" },
+              { label:"成果要求",      value:"积极参与研究院项目" },
+              { label:"申请", value:"开放申请（滚动评审）" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-cn/collaboration/research-fellow-application" class="btn btn-primary" style="width:100%;justify-content:center;">立即申请</a>
+            <a href="/zh-cn/people/research-fellows" class="btn btn-secondary" style="width:100%;justify-content:center;">研究员</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">关于副研究员</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            副研究员身份面向正在研究院相关领域积极开展工作的博士生和早期职业研究者，并希望为研究院项目作出贡献。副研究员参与进行中的项目、参加研究院活动，并可在研究院工作论文系列发表成果。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            副研究员是入门级学术隶属身份，使新兴学者能够在研究院共同体中建立研究档案。持续为研究院项目作出贡献的副研究员，可被考虑晋升为研究员。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            研究院特别鼓励研究主题与本院研究领域相关的博士生，以及希望建立活跃研究出版记录的早期职业研究者申请。
+          </p>
+
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">当前成员</div>
+            <div style="padding:16px 0;border-bottom:1px solid var(--border-light);">
+              <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:4px;">Hengjie Wang</h3>
+              <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">全景研究院副研究员</div>
+              <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">研究方向：道家研究、儒家研究。</p>
+            </div>
+            <div style="padding:16px 0;border-bottom:1px solid var(--border-light);">
+              <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:4px;">Dr. Xinhuan Zeng</h3>
+              <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">全景研究院副研究员</div>
+              <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">研究方向：舞蹈研究、表演艺术、非物质文化遗产。</p>
+            </div>
+            <div style="padding:16px 0;border-bottom:1px solid var(--border-light);">
+              <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:4px;">Qilong Wang</h3>
+              <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">全景研究院副研究员</div>
+              <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">研究方向：精神病学、抑郁症研究。</p>
+            </div>
+            <div style="padding:16px 0;border-bottom:1px solid var(--border-light);">
+              <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:4px;">Dr. Cheng Chen</h3>
+              <div style="font-size:13px;color:var(--text-muted);">全景研究院副研究员</div>
+            </div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin:16px 0 0;line-height:1.7;">
+              研究院将持续滚动接受副研究员项目的申请。获聘副研究员将在任命后列于本页。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

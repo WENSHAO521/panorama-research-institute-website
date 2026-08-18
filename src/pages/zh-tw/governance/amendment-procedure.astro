@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="修訂程序" description="全景研究院章程及治理文件的修訂程序。">
+  <PageHero
+    title="修訂程序"
+    description="提出、審查、批准和實施研究院章程及治理政策修訂的程序。"
+    breadcrumbs={[{ label: "治理", href: "/zh-tw/charter" }, { label: "修訂程序" }]}
+    tag="治理文件"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        {[
+          { step: "1", title: "提交修訂提案", body: "研究院領導層、關聯研究者或全景學術集團均可提出研究院章程或治理政策修訂。提案須以書面形式提交，並說明擬議修訂內容及其理由。" },
+          { step: "2", title: "審查期", body: "擬議修訂須經過不少於 30 日的審查期，相關利益方可在此期間提交意見或異議。審查可由研究院領導層或指定審查委員會進行。" },
+          { step: "3", title: "批准", body: "研究院章程修訂須經全景學術集團批准。治理政策修訂須經研究院領導層批准。批准過程須形成書面記錄。" },
+          { step: "4", title: "實施", body: "已批准修訂自批准文件載明日期起生效；未載明生效日期的，自批准日期後 30 日起生效。" },
+          { step: "5", title: "發布", body: "修訂獲批後，應盡快在研究院網站發布。章程和治理文件的版本歷史應予保存，以確保透明度。" },
+          { step: "6", title: "解釋", body: "涉及章程或治理文件解釋的問題，由研究院領導層在諮詢全景學術集團後解決。相關解釋應形成記錄，並在適當情況下發布。" },
+        ].map((s) => (
+          <div style="display:grid;grid-template-columns:48px 1fr;gap:20px;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:28px;color:var(--border-medium);font-weight:700;line-height:1;">{s.step}</div>
+            <div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:12px;font-weight:400;">{s.title}</h2>
+              <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+            </div>
+          </div>
+        ))}
+        <a href="/zh-tw/charter" class="btn btn-primary">返回章程</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="主編文集" description="與全景研究院合作出版的學術編著。">
+  <PageHero
+    title="主編文集"
+    description="主編學術文集圍繞全景研究院研究項目的核心主題，匯集多位學者的原創貢獻。"
+    breadcrumbs={[{ label: "出版成果", href: "/zh-tw/publications" }, { label: "主編文集" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+          <div>
+            <div class="section-label">關於本系列</div>
+            <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+              {[
+                { label: "形式",          value: "主編學術文集" },
+                { label: "出版社",       value: "合作學術出版社（待定）" },
+                { label: "同儕評審",     value: "外部同儕評審（章節層面）" },
+                { label: "取得方式",          value: "開放取用（計劃中）" },
+                { label: "章節提案", value: "通過章節徵集" },
+                { label: "首部文集",    value: "計劃於 2026 年" },
+              ].map((item) => (
+                <div>
+                  <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                  <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+                </div>
+              ))}
+            </div>
+            <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+              <a href="/zh-tw/collaboration/edited-volume-proposal" class="btn btn-primary" style="justify-content:center;">提出文集提案</a>
+              <a href="/zh-tw/events/calls-for-chapters" class="btn btn-secondary" style="justify-content:center;">開放章節徵集</a>
+            </div>
+          </div>
+          <div>
+            <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">關於主編文集</h2>
+            <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+              全景研究院計劃發展主編學術文集項目，並與合作學術出版社聯合出版。主編文集圍繞研究院研究項目的核心主題，匯集多位學者的原創貢獻。
+            </p>
+            <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+              具備明確主題構想並有能力主持編輯流程的研究人員可提交文集提案。研究院提供機構隸屬、編輯支持，並協助尋找作者和合適出版社。文集主編將在整個出版流程中獲得學術出版事務部支持。
+            </p>
+            <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+              正在進行的主編文集項目會在研究院活動與徵集頁面發布章節徵集。章節作者不必隸屬於研究院，但其稿件必須符合文集範圍並達到研究院出版標準。
+            </p>
+
+            <div style="margin-top:40px;padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">目前狀態</div>
+              <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+                研究院主編文集項目目前處於規劃階段。首部主編文集預計於 2026 年公布。有意提出文集提案的研究人員可隨時通過提案表格提交。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

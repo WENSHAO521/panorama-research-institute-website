@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="数据与文档政策" description="全景研究院数据管理与文档政策。">
+  <PageHero
+    title="数据与文档政策"
+    description="全景研究院关于研究数据收集、管理、存储、文档化和归档的标准。"
+    breadcrumbs={[{ label: "治理", href: "/zh-cn/charter" }, { label: "数据与文档政策" }]}
+    tag="治理文件"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        {[
+          { title: "数据管理原则", body: "研究院致力于负责任的数据管理，以支持研究诚信、可复现性和透明度。研究数据的收集、管理和存储必须保护参与者隐私，并符合适用的数据保护法规。" },
+          { title: "数据收集", body: "研究数据必须采用适当且合乎伦理的方法收集。数据收集程序必须形成文档；在适用情况下，应作为研究伦理审查流程的一部分提前获得批准。" },
+          { title: "数据存储与安全", body: "相关研究项目或出版成果完成后，研究数据必须安全保存至少五年。敏感数据访问必须受到适当限制。" },
+          { title: "数据文档", body: "所有研究数据均须进行充分文档记录，包括收集方法、变量、编码以及任何已知局限。相关文档必须与数据一并保存。" },
+          { title: "数据共享与开放数据", body: "研究院鼓励在适当且符合研究伦理和参与者隐私保护的情况下实践开放数据。数据共享安排必须在出版成果中清楚说明。" },
+          { title: "机构记录", body: "研究院保存研究项目、出版成果、活动和治理决策的机构记录。这些记录由研究院行政部门维护，并受文件保存期限安排约束。" },
+          { title: "隐私与保密", body: "研究过程中收集的个人数据必须按照适用隐私法律处理。合作过程中与研究院共享的保密信息必须受到保护。" },
+        ].map((s) => (
+          <div style="margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{s.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+          </div>
+        ))}
+        <a href="/zh-cn/charter" class="btn btn-primary">返回章程</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

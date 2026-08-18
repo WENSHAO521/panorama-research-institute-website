@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="論文徵稿" description="全景研究院活動的公開徵稿啟事。">
+  <PageHero
+    title="論文徵稿"
+    description="全景研究院主辦或聯合主辦會議、研討會及其他活動的論文和摘要徵集。"
+    breadcrumbs={[{ label: "學術活動", href: "/zh-tw/events" }, { label: "論文徵稿" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <div style="padding:32px;background:var(--bg-soft);border:1px solid var(--border-light);margin-bottom:48px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">目前狀態</div>
+          <p style="font-size:15.5px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;">
+            全景研究院目前處於基礎建設階段。目前暫無開放論文徵稿。徵稿發布後將在此公布，並通過研究院郵件列表發送。
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);margin:0;line-height:1.6;">
+            研究院首個大型會議計劃於 2026 年舉行。論文徵稿預計將在活動前約六個月發布。
+          </p>
+        </div>
+
+        <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">徵集流程</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+          開放論文徵稿時，本頁將列出活動名稱、投稿截止日期、格式要求、主題和提交連結。根據活動類型，投稿可包括全文論文、擴展摘要或專題小組提案。
+        </p>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+          所有投稿均由活動學術委員會評審。被接受論文的作者將收到通知並受邀報告。研究院主辦會議和研討會中的部分報告可進一步發展為研究院工作論文或其他系列出版成果。
+        </p>
+
+        <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">未來計劃徵集</h2>
+        <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border-light);">
+          {[
+            { event:"首屆全景學術傳播國際會議", type:"論文徵稿", year:"2026 年（計劃中）", status:"即將開展" },
+            { event:"全景研究研討會系列——首場活動", type:"演講者提案", year:"2026 年（計劃中）", status:"即將開展" },
+            { event:"首屆期刊評價與索引工作坊", type:"工作坊提案", year:"2026 年（計劃中）", status:"即將開展" },
+          ].map((item) => (
+            <div style="display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;padding:20px 24px;border-bottom:1px solid var(--border-light);">
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.08em;">{item.type}</div>
+                <div style="font-size:15px;color:var(--text-main);font-weight:500;">{item.event}</div>
+                <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">{item.year}</div>
+              </div>
+              <span class="tag tag-steel">{item.status}</span>
+            </div>
+          ))}
+        </div>
+
+        <div style="margin-top:40px;display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-tw/events/conferences" class="btn btn-primary">學術會議</a>
+          <a href="/zh-tw/events/calls-for-chapters" class="btn btn-secondary">章節徵集</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:1fr auto"] { display: block !important; }
+}
+</style>

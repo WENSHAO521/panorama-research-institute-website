@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="機構性質" description="全景研究院的法律與機構地位。">
+  <PageHero
+    title="機構性質"
+    description="全景研究院在全景學術集團內的法律定位、治理結構和機構關係。"
+    breadcrumbs={[{ label: "研究院", href: "/zh-tw/about" }, { label: "機構性質" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:800px;">
+        <div class="statement-box" style="margin-bottom:48px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">正式機構聲明</div>
+          <p style="font-size:17px;line-height:1.8;color:var(--text-secondary);margin-bottom:12px;font-family:var(--font-serif);font-style:italic;">
+            「全景研究院是全景學術集團的內部研究與學術發展部門，不具備獨立法人資格。」
+          </p>
+        </div>
+
+        {[
+          {
+            title: "法律地位",
+            body: "全景研究院是全景學術集團的內部研究與學術發展部門。本院不具備獨立法人資格、獨立登記或獨立財務帳戶。所有法律義務、合約和正式文件均由全景學術集團代表本院簽署。"
+          },
+          {
+            title: "營運獨立",
+            body: "研究院雖在全景學術集團的行政治理下運行，但在研究活動、出版決策、活動組織和學術職能方面保持學術獨立。行政治理不延伸至研究方向、學術判斷或編輯決策。"
+          },
+          {
+            title: "治理框架",
+            body: "研究院依據自身章程和內部治理政策進行治理，這些文件在全景學術集團授權下採納，確立研究院使命、研究領域、組織架構、倫理原則和營運程序。"
+          },
+          {
+            title: "正式名稱使用",
+            body: '研究院以「Panorama Research Institute」名義運行，並可被描述為「全景學術集團內部研究與學術發展部門」。該表述必須出現在所有正式出版物、溝通材料和正式協議中。'
+          },
+          {
+            title: "財務管理",
+            body: "與研究院相關的所有財務事項均由全景學術集團管理。研究經費、出版成本、活動預算和研究員支付均在全景學術集團財務治理框架內管理。"
+          },
+          {
+            title: "對外代表",
+            body: "研究院可使用全景研究院名義開展學術夥伴關係、合作協議和諒解備忘錄安排，但正式簽署由全景學術集團執行。研究院不獨立簽署具有法律約束力的協議。"
+          },
+        ].map((s) => (
+          <div style="margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{s.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+          </div>
+        ))}
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+          <a href="/zh-tw/charter"     class="btn btn-primary">研究院章程</a>
+          <a href="/zh-tw/about"       class="btn btn-secondary">研究院概覽</a>
+          <a href="/zh-tw/governance/rules" class="btn btn-secondary">治理規則</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

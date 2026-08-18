@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="副研究員" description="隸屬於全景研究院的副研究員。">
+  <PageHero
+    title="副研究員"
+    description="副研究員是與全景研究院建立學術關聯的早期職涯和新興研究者，參與研究項目，並在研究院項目中發展其學術檔案。"
+    breadcrumbs={[{ label: "學術成員", href: "/zh-tw/people" }, { label: "副研究員" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">研究員項目資訊</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"頭銜",       value:"全景研究院副研究員" },
+              { label:"面向對象",      value:"博士生與早期職涯研究者" },
+              { label:"時長",    value:"通常 1 年，可續期" },
+              { label:"形式",      value:"遠端 / 分散式" },
+              { label:"成果要求",      value:"積極參與研究院項目" },
+              { label:"申請", value:"開放申請（滾動評審）" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-tw/collaboration/research-fellow-application" class="btn btn-primary" style="width:100%;justify-content:center;">立即申請</a>
+            <a href="/zh-tw/people/research-fellows" class="btn btn-secondary" style="width:100%;justify-content:center;">研究員</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">關於副研究員</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            副研究員身份面向正在研究院相關領域積極開展工作的博士生和早期職業研究者，並希望為研究院項目作出貢獻。副研究員參與進行中的項目、參加研究院活動，並可在研究院工作論文系列發表成果。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            副研究員是入門級學術隸屬身份，使新興學者能夠在研究院共同體中建立研究檔案。持續為研究院項目作出貢獻的副研究員，可被考慮晉升為研究員。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            研究院特別鼓勵研究主題與本院研究領域相關的博士生，以及希望建立活躍研究出版記錄的早期職業研究者申請。
+          </p>
+
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">目前成員</div>
+            <div style="padding:16px 0;border-bottom:1px solid var(--border-light);">
+              <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:4px;">Hengjie Wang</h3>
+              <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">全景研究院副研究員</div>
+              <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">研究方向：道家研究、儒家研究。</p>
+            </div>
+            <div style="padding:16px 0;border-bottom:1px solid var(--border-light);">
+              <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:4px;">Dr. Xinhuan Zeng</h3>
+              <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">全景研究院副研究員</div>
+              <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">研究方向：舞蹈研究、表演藝術、非物質文化遺產。</p>
+            </div>
+            <div style="padding:16px 0;border-bottom:1px solid var(--border-light);">
+              <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:4px;">Qilong Wang</h3>
+              <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">全景研究院副研究員</div>
+              <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">研究方向：精神病學、憂鬱症研究。</p>
+            </div>
+            <div style="padding:16px 0;border-bottom:1px solid var(--border-light);">
+              <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:4px;">Dr. Cheng Chen</h3>
+              <div style="font-size:13px;color:var(--text-muted);">全景研究院副研究員</div>
+            </div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin:16px 0 0;line-height:1.7;">
+              研究院將持續滾動接受副研究員項目的申請。獲聘副研究員將在任命後列於本頁。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

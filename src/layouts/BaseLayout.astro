@@ -1,14 +1,8 @@
-﻿---
+---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-import { clientTranslations } from '../i18n/clientTranslations';
-import { clientTranslationsExtra } from '../i18n/clientTranslationsExtra';
-import { clientTranslationsCoverage } from '../i18n/clientTranslationsCoverage';
-import { clientTranslationsCharter } from '../i18n/clientTranslationsCharter';
-import { clientTranslationsMembership } from '../i18n/clientTranslationsMembership';
-import { clientTranslationsForms } from '../i18n/clientTranslationsForms';
-import { getBasePath, type Lang } from '../i18n/utils';
+import { getBasePath, getLocalizedPath, type Lang } from '../i18n/utils';
 
 interface Props {
   title?: string;
@@ -21,32 +15,15 @@ const {
   title = 'Panorama Research Institute',
   description = 'Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group.',
   ogImage,
-  lang = 'en',
+  lang = (Astro.currentLocale as Lang) ?? 'en',
 } = Astro.props;
 
-const canonicalURL = new URL(getBasePath(Astro.url.pathname), Astro.site ?? 'https://research.panorama-sg.com');
+const siteOrigin = Astro.site ?? new URL('https://research.panorama-sg.com');
+const basePath = getBasePath(Astro.url.pathname);
+const canonicalURL = new URL(getLocalizedPath(lang, Astro.url.pathname), siteOrigin);
 const fullTitle = title === 'Panorama Research Institute'
   ? title
   : `${title} | Panorama Research Institute`;
-
-const phraseTranslations = {
-  'zh-cn': {
-    ...clientTranslations['zh-cn'],
-    ...clientTranslationsExtra['zh-cn'],
-    ...clientTranslationsCoverage['zh-cn'],
-    ...clientTranslationsCharter['zh-cn'],
-    ...clientTranslationsMembership['zh-cn'],
-    ...clientTranslationsForms['zh-cn'],
-  },
-  'zh-tw': {
-    ...clientTranslations['zh-tw'],
-    ...clientTranslationsExtra['zh-tw'],
-    ...clientTranslationsCoverage['zh-tw'],
-    ...clientTranslationsCharter['zh-tw'],
-    ...clientTranslationsMembership['zh-tw'],
-    ...clientTranslationsForms['zh-tw'],
-  },
-};
 ---
 
 <!doctype html>
@@ -58,7 +35,6 @@ const phraseTranslations = {
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    {lang !== 'en' && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph -->
@@ -68,7 +44,10 @@ const phraseTranslations = {
     <meta property="og:url"         content={canonicalURL} />
     {ogImage && <meta property="og:image" content={ogImage} />}
 
-    <link rel="alternate" hreflang={lang} href={canonicalURL} />
+    <link rel="alternate" hreflang="en" href={new URL(getLocalizedPath('en', basePath), siteOrigin)} />
+    <link rel="alternate" hreflang="zh-CN" href={new URL(getLocalizedPath('zh-cn', basePath), siteOrigin)} />
+    <link rel="alternate" hreflang="zh-TW" href={new URL(getLocalizedPath('zh-tw', basePath), siteOrigin)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(getLocalizedPath('en', basePath), siteOrigin)} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -80,247 +59,16 @@ const phraseTranslations = {
       <slot />
     </main>
     <Footer lang={lang} />
-    <script define:vars={{ phraseTranslations }}>
-      const LANGUAGE_STORAGE_KEY = 'panorama-language';
-      const SUPPORTED_LANGUAGES = ['en', 'zh-cn', 'zh-tw'];
-      const ORIGINAL_TEXT = new WeakMap();
-      const ORIGINAL_ATTRIBUTES = new WeakMap();
-      const PHRASE_TRANSLATIONS = phraseTranslations;
-
-      function getPathLanguage(pathname) {
-        const firstSegment = pathname.split('/')[1];
-        return SUPPORTED_LANGUAGES.includes(firstSegment) && firstSegment !== 'en' ? firstSegment : null;
-      }
-
-      function getBasePath(pathname) {
-        const pathLanguage = getPathLanguage(pathname);
-        if (!pathLanguage) return pathname || '/';
-        const basePath = pathname.slice(pathLanguage.length + 1);
-        return basePath || '/';
-      }
-
-      function getStoredLanguage() {
-        const stored = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
-        return SUPPORTED_LANGUAGES.includes(stored) ? stored : 'en';
-      }
-
-      function setStoredLanguage(lang) {
-        window.localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
-      }
-
+    <script>
       function closeMobileNav() {
         const mobileNav = document.getElementById('mobile-nav');
         mobileNav?.classList.remove('open');
         document.body.style.overflow = '';
       }
 
-      function updateLanguagePicker(lang) {
-        document.querySelectorAll('[data-language-option]').forEach((node) => {
-          const link = node;
-          const optionLang = link.getAttribute('data-language-option');
-          const isActive = optionLang === lang;
-          link.classList.toggle('lang-active', isActive);
-          if (isActive) {
-            link.setAttribute('aria-current', 'true');
-          } else {
-            link.removeAttribute('aria-current');
-          }
-        });
-
-        const activeOption = document.querySelector(`[data-language-option="${lang}"]`);
-        const activeLabel = activeOption?.querySelector('.lang-name')?.textContent?.trim()
-          || activeOption?.textContent?.trim();
-        const activeCode = activeOption?.querySelector('.lang-code, .lang-inline-code')?.textContent?.trim()
-          || (lang === 'en' ? 'EN' : lang === 'zh-cn' ? 'CN' : 'TW');
-        document.querySelectorAll('.lang-current').forEach((node) => {
-          if (activeLabel) node.textContent = activeLabel;
-        });
-        document.querySelectorAll('.lang-current-short').forEach((node) => {
-          node.textContent = activeCode;
-        });
-      }
-
-      function updateLanguageVariants(lang) {
-        document.querySelectorAll('[data-language-variant]').forEach((node) => {
-          const variant = node.getAttribute('data-language-variant');
-          node.hidden = variant !== lang;
-        });
-      }
-
-      function getTranslationRoots() {
-        return [
-          document.getElementById('site-header'),
-          document.getElementById('mobile-nav'),
-          document.getElementById('main-content'),
-          document.querySelector('.site-footer'),
-        ].filter(Boolean);
-      }
-
-      function shouldSkipTranslationNode(node) {
-        const element = node instanceof Element ? node : node.parentElement;
-        return Boolean(element?.closest('[data-no-translate], .site-logo'));
-      }
-
-      function captureOriginalContent() {
-        const roots = [
-          document.getElementById('site-header'),
-          document.getElementById('mobile-nav'),
-          document.getElementById('main-content'),
-          document.querySelector('.site-footer'),
-        ].filter(Boolean);
-
-        roots.forEach((root) => {
-          const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-            acceptNode(node) {
-              const parent = node.parentElement;
-              if (!parent || ['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEMPLATE'].includes(parent.tagName)) {
-                return NodeFilter.FILTER_REJECT;
-              }
-              if (shouldSkipTranslationNode(node)) return NodeFilter.FILTER_REJECT;
-              return node.textContent && node.textContent.trim()
-                ? NodeFilter.FILTER_ACCEPT
-                : NodeFilter.FILTER_REJECT;
-            },
-          });
-
-          const nodes = [];
-          while (walker.nextNode()) nodes.push(walker.currentNode);
-
-          nodes.forEach((node) => {
-            if (!ORIGINAL_TEXT.has(node)) {
-              ORIGINAL_TEXT.set(node, node.textContent || '');
-            }
-          });
-
-          root.querySelectorAll('[aria-label], [alt], [title], [placeholder]').forEach((element) => {
-            if (shouldSkipTranslationNode(element)) return;
-            if (!ORIGINAL_ATTRIBUTES.has(element)) ORIGINAL_ATTRIBUTES.set(element, {});
-            const originals = ORIGINAL_ATTRIBUTES.get(element);
-            ['aria-label', 'alt', 'title', 'placeholder'].forEach((attribute) => {
-              if (!(attribute in originals)) {
-                const value = element.getAttribute(attribute);
-                if (value !== null) originals[attribute] = value;
-              }
-            });
-          });
-        });
-      }
-
-      function translateTextValue(originalValue, dictionary) {
-        const trimmed = originalValue.trim();
-        if (!trimmed) return originalValue;
-        const translated = dictionary?.[trimmed];
-        return translated ? originalValue.replace(trimmed, translated) : originalValue;
-      }
-
-      function applyPhraseTranslations(lang) {
-        captureOriginalContent();
-        const dictionary = PHRASE_TRANSLATIONS[lang];
-
-        getTranslationRoots().forEach((root) => {
-          const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-            acceptNode(node) {
-              const parent = node.parentElement;
-              if (!parent || ['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEMPLATE'].includes(parent.tagName)) {
-                return NodeFilter.FILTER_REJECT;
-              }
-              if (shouldSkipTranslationNode(node)) return NodeFilter.FILTER_REJECT;
-              return ORIGINAL_TEXT.has(node) || (node.textContent && node.textContent.trim())
-                ? NodeFilter.FILTER_ACCEPT
-                : NodeFilter.FILTER_REJECT;
-            },
-          });
-
-          const nodes = [];
-          while (walker.nextNode()) nodes.push(walker.currentNode);
-
-          nodes.forEach((node) => {
-            const originalValue = ORIGINAL_TEXT.get(node) ?? node.textContent ?? '';
-            node.textContent = lang === 'en'
-              ? originalValue
-              : translateTextValue(originalValue, dictionary);
-          });
-
-          root.querySelectorAll('[aria-label], [alt], [title], [placeholder]').forEach((element) => {
-            if (shouldSkipTranslationNode(element)) return;
-            const originals = ORIGINAL_ATTRIBUTES.get(element);
-            if (!originals) return;
-            ['aria-label', 'alt', 'title', 'placeholder'].forEach((attribute) => {
-              if (!(attribute in originals)) return;
-              const originalValue = originals[attribute];
-              element.setAttribute(attribute, lang === 'en'
-                ? originalValue
-                : translateTextValue(originalValue, dictionary));
-            });
-          });
-        });
-      }
-
-      function rewriteInternalLinks(activeLang) {
-        const origin = window.location.origin;
-
-        document.querySelectorAll('a[href]').forEach((anchor) => {
-          const href = anchor.getAttribute('href');
-          if (!href || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('#')) return;
-
-          let url;
-          try {
-            url = new URL(href, origin);
-          } catch {
-            return;
-          }
-
-          if (url.origin !== origin) return;
-
-          const basePath = getBasePath(url.pathname);
-          const cleanHref = `${basePath}${url.search}${url.hash}`;
-          anchor.setAttribute('href', cleanHref);
-
-        });
-
-        document.querySelectorAll('[data-language-option]').forEach((node) => {
-          node.setAttribute('href', getBasePath(window.location.pathname));
-        });
-
-        updateLanguagePicker(activeLang);
-      }
-
-      async function applyLanguage(lang, options = {}) {
-        const shouldPersist = options.persist !== false;
-        const shouldScroll = options.scroll === true;
-
-        if (shouldPersist) setStoredLanguage(lang);
-
-        document.documentElement.lang = lang;
-        closeMobileNav();
-        rewriteInternalLinks(lang);
-        updateLanguageVariants(lang);
-        applyPhraseTranslations(lang);
-        if (shouldScroll) window.scrollTo({ top: 0, behavior: 'instant' });
-      }
-
-      function normalizeInitialUrl() {
-        const pathLanguage = getPathLanguage(window.location.pathname);
-        if (!pathLanguage) return null;
-
-        const basePath = getBasePath(window.location.pathname);
-        setStoredLanguage(pathLanguage);
-        window.location.replace(`${basePath}${window.location.search}${window.location.hash}`);
-        return pathLanguage;
-      }
-
       document.addEventListener('click', (event) => {
         const target = event.target;
         if (!(target instanceof Element)) return;
-
-        const languageLink = target.closest('[data-language-option]');
-        if (languageLink) {
-          event.preventDefault();
-          const lang = languageLink.getAttribute('data-language-option') || 'en';
-          document.querySelectorAll('.lang-picker[open]').forEach((picker) => picker.removeAttribute('open'));
-          applyLanguage(lang);
-          return;
-        }
 
         const menuToggle = target.closest('#menu-toggle');
         if (menuToggle) {
@@ -348,18 +96,6 @@ const phraseTranslations = {
           dropdownTrigger.setAttribute('aria-expanded', String(dropdownTrigger.getAttribute('aria-expanded') !== 'true'));
           return;
         }
-
-        const link = target.closest('a[href]');
-        if (!link || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        if (link.target || link.hasAttribute('download')) return;
-
-        const href = link.getAttribute('href');
-        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
-
-        const url = new URL(href, window.location.origin);
-        if (url.origin !== window.location.origin) return;
-
-        link.setAttribute('href', `${getBasePath(url.pathname)}${url.search}${url.hash}`);
       });
 
       document.addEventListener('focusout', (event) => {
@@ -373,23 +109,6 @@ const phraseTranslations = {
       document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') closeMobileNav();
       });
-
-      window.addEventListener('popstate', () => {
-        const lang = getStoredLanguage();
-        if (lang !== 'en') applyLanguage(lang, { persist: false });
-      });
-
-      const redirectedLanguage = normalizeInitialUrl();
-      if (!redirectedLanguage) {
-        const initialLanguage = getStoredLanguage();
-        captureOriginalContent();
-        rewriteInternalLinks(initialLanguage);
-        updateLanguageVariants(initialLanguage);
-        applyPhraseTranslations(initialLanguage);
-        if (initialLanguage !== 'en') {
-          applyLanguage(initialLanguage, { persist: false });
-        }
-      }
     </script>
   </body>
 </html>

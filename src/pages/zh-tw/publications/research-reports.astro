@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="研究報告" description="全景研究院發表的完整研究報告。">
+  <PageHero
+    title="研究報告"
+    description="完整研究報告呈現全景研究院研究項目的重要原創發現，是研究院主要的長篇出版形式。"
+    breadcrumbs={[{ label: "出版成果", href: "/zh-tw/publications" }, { label: "研究報告" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">關於本系列</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label: "形式",          value: "完整研究報告" },
+              { label: "通常篇幅",  value: "20,000–60,000 詞" },
+              { label: "同儕評審",     value: "內部評審 + 外部同儕評審" },
+              { label: "取得方式",          value: "開放取用" },
+              { label: "DOI",             value: "已註冊（Crossref）" },
+              { label: "語言",        value: "英文為主；部分中文" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;">
+            <a href="/zh-tw/collaboration/research-project-proposal" class="btn btn-primary" style="justify-content:center;width:100%;">提出項目提案</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">關於研究報告</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            研究報告是全景研究院呈現重要研究發現的主要形式。它們是完整的學術文件，呈現原創研究、系統分析和基於證據的結論。研究報告在出版前需經過內部評審和外部同儕評審。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            所有研究報告均以開放取用方式發布，可免費下載。每份報告均獲得 DOI，以便永久引用和發現。報告通常關聯研究院正在進行的研究項目。
+          </p>
+
+          <div style="margin-top:40px;">
+            <div class="section-label">當前報告</div>
+            <div style="margin-top:12px;padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">說明</div>
+              <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+                全景研究院目前處於基礎建設階段。當前項目的研究報告正在籌備中，將在完成後陸續發布。請稍後查看，或參閱 <a href="/zh-tw/publications" style="color:var(--accent-steel);">出版成果概覽</a> 了解最新成果。
+              </p>
+            </div>
+          </div>
+
+          <div style="margin-top:32px;">
+            <div class="section-label">籌備中</div>
+            <div style="margin-top:12px;">
+              {[
+                { project:"第十五個五年規劃研究", title:"中國第十五個五年規劃：對高等教育與科學研究的影響", est:"2026" },
+                { project:"青少年數位治理研究", title:"青少年數位治理：亞太地區政策框架比較分析", est:"2026" },
+              ].map((pub) => (
+                <div class="publication-item">
+                  <div>
+                    <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{pub.project}</div>
+                    <div class="pub-title">{pub.title}</div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0;">
+                    <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent-steel);">Est. {pub.est}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

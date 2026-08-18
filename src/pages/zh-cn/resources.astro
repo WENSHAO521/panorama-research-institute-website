@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const resources = [
+  { cat: "治理",   name: "研究院章程",                 type: "PDF",  desc: "全景研究院完整创始章程。", href: "/zh-cn/resources/charter-pdf" },
+  { cat: "治理",   name: "研究伦理声明",         type: "PDF",  desc: "研究院的研究伦理原则与指南。", href: "/zh-cn/governance/research-ethics" },
+  { cat: "模板",    name: "研究提案模板",        type: "DOCX", desc: "用于提交研究项目提案的模板。", href: "#" },
+  { cat: "模板",    name: "研究报告模板",                   type: "DOCX", desc: "研究院研究报告标准模板。", href: "#" },
+  { cat: "模板",    name: "政策简报模板",             type: "DOCX", desc: "研究院政策简报模板。", href: "#" },
+  { cat: "模板",    name: "主编文集提案模板",   type: "DOCX", desc: "主编文集提案模板。", href: "#" },
+  { cat: "表格",        name: "访问学者申请表", type: "PDF",  desc: "访问学者职位申请表。", href: "/zh-cn/collaboration/visiting-scholar-application" },
+  { cat: "表格",        name: "研究员申请表",  type: "PDF",  desc: "研究员职位申请表。", href: "/zh-cn/collaboration/research-fellow-application" },
+  { cat: "表格",        name: "研究员申请表（英文 PDF）", type: "PDF", desc: "研究员职位申请用英文 PDF 表格。", href: "/forms/PRI_Research Fellow Application Form_EN.pdf", download: true, langVariant: "en" },
+  { cat: "表格",        name: "研究员申请表（简体中文 PDF）", type: "PDF", desc: "研究员职位申请用简体中文 PDF 表格。", href: "/forms/PRI_Research Fellow Application Form_CN.pdf", download: true, langVariant: "zh-cn" },
+  { cat: "表格",        name: "研究员申请表（繁体中文 PDF）", type: "PDF", desc: "研究员职位申请用繁体中文 PDF 表格。", href: "/forms/PRI_Research Fellow Application Form_CN-TW.pdf", download: true, langVariant: "zh-tw" },
+  { cat: "指南",   name: "出版伦理声明",      type: "PDF",  desc: "研究院的出版伦理与研究诚信政策。", href: "/zh-cn/governance/publication-report-policy" },
+  { cat: "指南",   name: "合作指南",          type: "PDF",  desc: "机构合作的程序与要求。", href: "/zh-cn/governance/rules" },
+  { cat: "品牌",        name: "标识使用指南",             type: "PDF",  desc: "研究院名称与标识授权使用指南。", href: "/zh-cn/governance/name-logo-usage" },
+];
+
+const categories = ["全部", "治理", "模板", "表格", "指南", "品牌"];
+const lang = Astro.currentLocale ?? 'en';
+---
+
+<BaseLayout
+  title="资源"
+  description="全景研究院提供的下载文件、模板、表格、指南和参考文件。"
+>
+  <PageHero
+    title="资源"
+    description="面向研究人员、合作者和伙伴机构的下载文件、模板、表格、指南和参考文件。"
+    breadcrumbs={[{ label: "资源" }]}
+  />
+
+  <!-- Category Filter -->
+  <section style="background:var(--bg-white);border-bottom:1px solid var(--border-light);padding:20px 0;">
+    <div class="container">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        {categories.map((c, i) => (
+          <button class={`tag ${i === 0 ? 'tag-active' : ''}`} style="cursor:pointer;" type="button">{c}</button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources List -->
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      {categories.slice(1).map((cat) => {
+        const items = resources.filter(r => r.cat === cat && (!r.langVariant || r.langVariant === lang));
+        return (
+          <div style="margin-bottom:56px;">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--text-main);">
+              <div class="section-label" style="margin-bottom:0;">{cat}</div>
+            </div>
+            {items.map((r) => (
+              <div style="display:grid;grid-template-columns:1fr auto;gap:24px;padding:20px 0;border-bottom:1px solid var(--border-light);align-items:center;">
+                <div>
+                  <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+                    <h3 style="font-family:var(--font-sans);font-size:15.5px;font-weight:600;color:var(--text-main);">{r.name}</h3>
+                    <span class="tag" style="font-family:var(--font-mono);font-size:10px;">{r.type}</span>
+                  </div>
+                  <p style="font-size:13.5px;color:var(--text-secondary);">{r.desc}</p>
+                </div>
+                <a href={r.href} target={r.external ? '_blank' : undefined} rel={r.external ? 'noopener' : undefined} download={r.download ? true : undefined} class="btn btn-secondary" style="white-space:nowrap;font-size:12.5px;padding:8px 16px;">
+                  {r.type === 'DOCX' || r.download ? '下载' : '查看'}
+                </a>
+              </div>
+            ))}
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- Request Resources -->
+  <section class="section-compact" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">需要未列出的资源？</h2>
+          <p style="font-size:14.5px;color:var(--text-secondary);">请联系研究院索取其他模板、表格或指南文件。</p>
+        </div>
+        <a href="/zh-cn/contact" class="btn btn-primary">联系研究院</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

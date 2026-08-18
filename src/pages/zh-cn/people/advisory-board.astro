@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="顾问委员会" description="全景研究院顾问委员会。">
+  <PageHero
+    title="顾问委员会"
+    description="全景研究院顾问委员会提供战略指导、学术专业支持和外部监督，以支持研究院的研究质量、治理和机构发展。"
+    breadcrumbs={[{ label: "学术成员", href: "/zh-cn/people" }, { label: "顾问委员会" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;margin-bottom:48px;">
+          <div>
+            <div class="section-label">委员会信息</div>
+            <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+              {[
+                { label:"状态",             value:"组建中" },
+                { label:"目标规模",        value:"5–9 名成员" },
+                { label:"任期",               value:"2 年，可续任" },
+                { label:"会议频率",  value:"每年至少一次" },
+                { label:"角色",               value:"顾问性质（非执行）" },
+              ].map((item) => (
+                <div>
+                  <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                  <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">关于顾问委员会</h2>
+            <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+              全景研究院顾问委员会是为研究院提供战略指导和学术专业支持的独立机构。顾问委员会成员为在研究院研究领域具有深厚专业知识的杰出学者、机构领导者和实践者。他们仅承担顾问职责，不对研究院运行拥有执行权。
+            </p>
+            <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+              顾问委员会就研究优先事项、出版质量、治理事务和战略发展向研究院提供建议，同时为研究院学术标准和独立性提供外部同行监督机制。
+            </p>
+          </div>
+        </div>
+
+        <div class="section-label" style="margin-bottom:16px;">顾问委员会职能</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-bottom:48px;">
+          {[
+            { fn:"战略指导", desc:"就研究优先事项、机构战略和研究院项目长期发展提供建议。" },
+            { fn:"质量监督",  desc:"对研究院出版标准、研究伦理和学术治理提供外部同行监督。" },
+            { fn:"网络支持",    desc:"帮助研究院连接相关学术网络、伙伴机构和学术共同体。" },
+          ].map((item) => (
+            <div class="card" style="border:none;border-radius:0;">
+              <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.fn}</h3>
+              <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div style="padding:28px;background:var(--bg-soft);border:1px solid var(--border-light);">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">组建状态</div>
+          <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;">
+            研究院顾问委员会目前处于组建阶段。顾问委员会成员预计于 2026 年公布。研究院正在与来自学术出版、学术研究和高等教育政策共同体的潜在成员沟通。
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);margin:0;line-height:1.6;">
+            有意为研究院学术治理和发展作出贡献的学者，欢迎通过研究院联系邮箱表达意向。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

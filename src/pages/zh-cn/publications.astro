@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const categories = ["全部", "研究报告", "工作论文", "政策简报", "主编文集", "年度报告"];
+
+const publications = [
+  { type: "研究报告", title: "开放学术索引与期刊透明度",     team: "全景研究院研究团队", year: "2026", status: "已发布" },
+  { type: "工作论文",   title: "数字时代的同行评审模式与出版伦理", team: "学术出版研究中心", year: "2026", status: "已发布" },
+  { type: "政策简报",    title: "青少年隐私与平台治理：新兴框架",   team: "政策与社会研究中心", year: "2026", status: "已发布" },
+  { type: "工作论文",   title: "人工智能辅助同行评审：机遇与伦理边界", team: "人工智能与未来社会研究中心", year: "2026", status: "即将发布" },
+  { type: "研究报告", title: "中国第十五个五年规划：教育与科研政策分析", team: "政策与社会研究中心", year: "2026", status: "进行中" },
+  { type: "政策简报",    title: "期刊元数据透明度：开放索引框架", team: "学术索引与评价研究中心", year: "2026", status: "已发布" },
+];
+---
+
+<BaseLayout
+  title="出版成果"
+  description="全景研究院撰写或支持的研究报告、工作论文、政策简报、主编文集和年度报告。"
+>
+  <PageHero
+    title="出版成果"
+    description="研究院撰写或支持的研究报告、工作论文、政策简报、主编文集和年度报告。"
+    breadcrumbs={[{ label: "出版成果" }]}
+  />
+
+  <!-- Category Filter -->
+  <section style="background:var(--bg-white);border-bottom:1px solid var(--border-light);padding:20px 0;">
+    <div class="container">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        {categories.map((c, i) => (
+          <button class={`tag ${i === 0 ? 'tag-active' : ''}`} style="cursor:pointer;" type="button">{c}</button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications List -->
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      {publications.map((pub) => (
+        <div class="publication-item">
+          <div>
+            <div class="pub-type">{pub.type}</div>
+            <div style="margin-top:8px;">
+              <span class={`tag ${pub.status === '已发布' ? 'tag-active' : pub.status === '即将发布' ? 'tag-steel' : ''}`} style="font-size:11px;">
+                {pub.status}
+              </span>
+            </div>
+          </div>
+          <div>
+            <div class="pub-title">{pub.title}</div>
+            <div class="pub-meta" style="margin-top:6px;">{pub.team}</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:16px;">{pub.year}</div>
+            {pub.status === '已发布' && (
+              <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+                <a href="#" class="btn btn-secondary" style="font-size:12px;padding:7px 14px;">PDF</a>
+                <a href="#" class="btn-ghost btn" style="font-size:12.5px;padding:0;">Cite &rarr;</a>
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Citation Format -->
+  <section class="section-compact" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="max-width:760px;">
+        <div class="section-label">建议引用格式</div>
+        <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:20px;font-weight:400;">如何引用本院出版成果</h2>
+        <div style="background:var(--bg-soft);border:1px solid var(--border-light);padding:24px 28px;margin-bottom:20px;font-family:var(--font-mono);font-size:13.5px;line-height:1.7;color:var(--text-secondary);">
+          全景研究院（2026）。 <em>报告标题</em>。全景学术集团。
+        </div>
+        <div style="margin-top:24px;">
+          <a href="/zh-cn/publications/citation" class="btn btn-secondary">完整引用指南</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publication Guidelines -->
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">出版指南</h2>
+          <p style="font-size:14.5px;color:var(--text-secondary);">以研究院名义发布出版成果的标准与程序。</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-cn/publications/guidelines" class="btn btn-primary">查看指南</a>
+          <a href="/zh-cn/collaboration/research-project-proposal" class="btn btn-secondary">提交提案</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

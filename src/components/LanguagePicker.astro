@@ -1,13 +1,12 @@
 ---
-import { getBasePath, getLangFromUrl, type Lang } from '../i18n/utils';
+import { getLocalizedPath, type Lang } from '../i18n/utils';
 
 interface Props {
   variant?: 'dropdown' | 'inline';
 }
 
 const { variant = 'dropdown' } = Astro.props;
-const lang = getLangFromUrl(Astro.url);
-const basePath = getBasePath(Astro.url.pathname);
+const lang = (Astro.currentLocale as Lang) ?? 'en';
 
 const langs: { code: Lang; label: string }[] = [
   { code: 'en',    label: 'English' },
@@ -23,8 +22,7 @@ const currentCode = currentLang.code === 'en' ? 'EN' : currentLang.code === 'zh-
   <div class="lang-inline" role="group" aria-label="Language selection">
     {langs.map((l) => (
       <a
-        href={basePath}
-        data-language-option={l.code}
+        href={getLocalizedPath(l.code, Astro.url.pathname)}
         class={`lang-inline-opt${lang === l.code ? ' lang-active' : ''}`}
         aria-current={lang === l.code ? 'true' : undefined}
         hreflang={l.code}
@@ -52,8 +50,7 @@ const currentCode = currentLang.code === 'en' ? 'EN' : currentLang.code === 'zh-
     <div class="lang-menu" role="menu" aria-label="Language selection">
       {langs.map((l) => (
         <a
-          href={basePath}
-          data-language-option={l.code}
+          href={getLocalizedPath(l.code, Astro.url.pathname)}
           class={`lang-opt${lang === l.code ? ' lang-active' : ''}`}
           aria-current={lang === l.code ? 'true' : undefined}
           hreflang={l.code}

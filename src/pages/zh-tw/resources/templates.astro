@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="範本" description="全景研究院官方出版與文件範本。">
+  <PageHero
+    title="範本"
+    description="全景研究院使用的研究提案、研究報告、政策簡報和其他出版格式官方文件範本。"
+    breadcrumbs={[{ label: "資源", href: "/zh-tw/resources" }, { label: "範本" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);max-width:720px;margin-bottom:48px;">
+        以下範本旨在幫助研究人員、研究員和貢獻者準備符合研究院格式和結構標準的文件。使用官方範本可確保提交材料完整、格式一致，並可進入研究院編輯評審流程。
+      </p>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+        {[
+          {
+            name:    "研究提案範本",
+            desc:    "向研究院提交研究項目提案的範本，包含全部必需章節、格式指南和示例內容。",
+            format:  "Word (.docx)",
+            version: "v1.0（2026）",
+            href:    "/zh-tw/resources/research-proposal-template",
+          },
+          {
+            name:    "研究報告範本",
+            desc:    "完整研究報告範本，包含標題頁、摘要、正文結構、引用指南和附錄格式。",
+            format:  "Word (.docx)",
+            version: "v1.0（2026）",
+            href:    "/zh-tw/resources/report-template",
+          },
+          {
+            name:    "政策簡報範本",
+            desc:    "政策簡報範本，遵循研究院標準結構：執行摘要、背景、證據、建議和參考文獻。",
+            format:  "Word (.docx)",
+            version: "v1.0（2026）",
+            href:    "/zh-tw/resources/policy-brief-template",
+          },
+          {
+            name:    "工作論文範本",
+            desc:    "研究院工作論文系列範本，包含封面頁、摘要、關鍵詞、正文部分和參考文獻格式。",
+            format:  "Word (.docx)",
+            version: "v1.0（2026）",
+            href:    "/zh-tw/resources/templates",
+          },
+          {
+            name:    "活動會議記錄摘要範本",
+            desc:    "用於製作活動後會議記錄摘要的範本，包括演講者簡介、環節摘要和主要結論。",
+            format:  "Word (.docx)",
+            version: "v1.0（2026）",
+            href:    "/zh-tw/resources/templates",
+          },
+          {
+            name:    "主編文集章節範本",
+            desc:    "研究院相關主編文集章節投稿範本，包含貢獻者資訊、摘要、章節結構和參考文獻格式。",
+            format:  "Word (.docx)",
+            version: "v1.0（2026）",
+            href:    "/zh-tw/resources/templates",
+          },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;display:flex;flex-direction:column;">
+            <div style="flex:1;">
+              <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.name}</h3>
+              <p style="font-size:13.5px;line-height:1.65;color:var(--text-secondary);margin-bottom:14px;">{item.desc}</p>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--border-light);">
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);">{item.format} &bull; {item.version}</span>
+              <a href={item.href} style="font-size:13px;color:var(--accent-steel);">Download &rarr;</a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div style="margin-top:48px;padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);max-width:720px;">
+        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">使用說明</div>
+        <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+          所有範本均以 Microsoft Word（.docx）格式提供，便於編輯。如需其他格式（如 LaTeX 或 Google Docs），請聯絡學術出版事務部： <span style="color:var(--accent-steel);">publications@panorama-sg.com</span>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

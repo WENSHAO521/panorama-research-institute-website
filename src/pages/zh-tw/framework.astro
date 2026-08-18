@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const frameworkUnits = [
+  "研究院辦公室",
+  "研究中心",
+  "研究項目組",
+  "學術出版事務部",
+  "學術活動事務部",
+  "學者計劃",
+  "合作事務辦公室",
+  "研究倫理與學術規範辦公室",
+];
+---
+
+<BaseLayout
+  title="研究院組織與職能框架"
+  description="全景研究院的組織與職能框架，涵蓋研究中心、研究項目組、學術出版事務、學術活動事務、學者計劃、機構合作以及研究倫理與學術規範。"
+>
+  <PageHero
+    title="研究院組織與職能框架"
+    description="一個結構化的研究與學術發展平台，為研究項目組、學術出版、研究中心、學術活動、學者計劃、機構合作以及研究倫理與學術規範提供支撐。"
+    breadcrumbs={[{ label: "研究院", href: "/zh-tw/about" }, { label: "框架" }]}
+  />
+
+  <!-- Institutional Positioning -->
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div class="section-label">機構定位</div>
+      <h2 class="section-title">在全景學術集團中的定位</h2>
+      <div style="max-width:760px;margin-bottom:48px;">
+        <p style="font-size:16.5px;line-height:1.8;color:var(--text-secondary);">
+          全景研究院是全景學術集團的內部研究與學術發展部門。研究院在研究活動中保持學術獨立，並為 PSG 學術生態提供研究支持、出版服務與學術基礎設施。
+        </p>
+      </div>
+
+      <div class="org-structure-card">
+        <div class="org-hierarchy">
+          <div class="org-node org-node-parent">
+            全景學術集團
+          </div>
+          <div class="org-connector"></div>
+          <div class="org-node org-node-institute">
+            全景研究院
+          </div>
+          <div class="org-branch"></div>
+          <div class="org-unit-grid org-unit-grid-compact">
+            {frameworkUnits.map((unit, index) => (
+              <div class="org-unit-card">
+                <div class="org-unit-index">{String(index + 1).padStart(2, '0')}</div>
+                <div class="org-unit-title">{unit}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Functional Framework -->
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">職能框架</div>
+      <h2 class="section-title">核心職能</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title: "研究項目",           desc: "在研究院各研究領域內發起、協調並管理原創性研究計劃。" },
+          { title: "學術出版研究", desc: "圍繞出版倫理、同儕評審、開放取用、編輯政策和研究誠信開展專門研究。" },
+          { title: "索引與評價",      desc: "建立學術期刊索引、後設資料透明度和品質評價框架。" },
+          { title: "政策與社會研究",   desc: "圍繞治理、青年議題、數位社會和國際事務開展原創政策分析與社會研究。" },
+          { title: "研究出版成果",        desc: "組織研究報告、工作論文、政策簡報、主編文集和年度報告的編輯、製作與發布。" },
+          { title: "學術合作",       desc: "管理機構夥伴關係、研究提案、訪問學者計劃及研究員申請。" },
+        ].map((fn) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{fn.title}</h3>
+            <p style="font-size:14.5px;line-height:1.7;color:var(--text-secondary);">{fn.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Areas -->
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">研究領域</div>
+      <h2 class="section-title" style="margin-bottom:8px;">六個研究領域</h2>
+      <p class="section-desc" style="margin-bottom:48px;">
+        研究院的研究活動按照六個主要研究領域展開。
+      </p>
+      <div>
+        {[
+          { num: "01", title: "學術出版研究" },
+          { num: "02", title: "期刊索引與評價" },
+          { num: "03", title: "政策與社會研究" },
+          { num: "04", title: "人工智慧與未來社會" },
+          { num: "05", title: "教育與學習研究" },
+          { num: "06", title: "藝術、文化與具身研究" },
+        ].map((area) => (
+          <div style="display:flex;align-items:center;gap:28px;padding:18px 0;border-bottom:1px solid var(--border-light);">
+            <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);flex-shrink:0;width:28px;">{area.num}</span>
+            <span style="font-family:var(--font-serif);font-size:19px;color:var(--text-main);">{area.title}</span>
+            <a href="/zh-tw/research-areas" style="margin-left:auto;font-size:13px;color:var(--accent-steel);white-space:nowrap;">View Area &rarr;</a>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:32px;">
+        <a href="/zh-tw/research-areas" class="btn btn-secondary">全部研究領域</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Academic Outputs -->
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">學術成果</div>
+      <h2 class="section-title">成果類型</h2>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--border-light);border-left:1px solid var(--border-light);">
+        {[
+          { type: "研究報告",  desc: "已完成研究項目的完整研究報告" },
+          { type: "工作論文",    desc: "面向學術討論的出版前研究草稿" },
+          { type: "政策簡報",     desc: "簡明的循證政策建議" },
+          { type: "主編文集",    desc: "圍繞研究主題組織的多作者學術文集" },
+          { type: "年度報告",    desc: "彙整研究院年度活動與成果的報告" },
+        ].map((o) => (
+          <div style="padding:24px 20px;border-right:1px solid var(--border-light);border-bottom:1px solid var(--border-light);background:var(--bg-white);">
+            <div style="font-size:14px;font-weight:600;color:var(--text-main);font-family:var(--font-sans);margin-bottom:8px;">{o.type}</div>
+            <div style="font-size:13px;color:var(--text-muted);line-height:1.5;">{o.desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Development Roadmap -->
+  <section id="development-roadmap" class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">發展路線圖</div>
+      <h2 class="section-title">分階段發展</h2>
+      <div style="max-width:720px;">
+        {[
+          { phase: "第一階段", label: "基礎建設", year: "2026", items: ["建立研究院治理體系和章程", "啟動三個核心研究中心", "啟動首批研究項目", "發布創始工作論文"] },
+          { phase: "第二階段", label: "發展建設", year: "2027", items: ["拓展至六個研究中心", "建立學者計劃", "POSI 學術索引平台上線後持續營運並拓展", "啟動年度報告"] },
+          { phase: "第三階段", label: "拓展建設", year: "2028+", items: ["國際合作網路", "更廣泛的政策諮詢活動", "拓展出版項目", "學術會議系列"] },
+        ].map((phase) => (
+          <div style="display:grid;grid-template-columns:120px 1fr;gap:28px;padding:28px 0;border-bottom:1px solid var(--border-light);">
+            <div>
+              <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{phase.phase}</div>
+              <div style="font-size:18px;font-weight:600;color:var(--text-main);font-family:var(--font-sans);">{phase.label}</div>
+              <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);margin-top:4px;">{phase.year}</div>
+            </div>
+            <div style="padding-top:4px;">
+              {phase.items.map((item) => (
+                <div style="display:flex;gap:10px;padding:6px 0;font-size:14.5px;color:var(--text-secondary);">
+                  <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:repeat(5"] { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

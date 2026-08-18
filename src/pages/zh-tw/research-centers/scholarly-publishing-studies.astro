@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="學術出版研究中心" description="專注於開放取用、同行評審、出版倫理與學術傳播的研究中心。">
+  <PageHero
+    title="學術出版研究中心"
+    description="研究開放取用模式、同儕評審流程、編輯標準、出版倫理以及學術傳播格局的演變。"
+    breadcrumbs={[{ label: "研究", href: "/zh-tw/research-areas" }, { label: "研究中心", href: "/zh-tw/research-centers" }, { label: "學術出版研究" }]}
+    tag="運行中的研究中心"
+  >
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">概覽</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "中心狀態",      value: "進行中" },
+              { label: "已設立",        value: "2026" },
+              { label: "研究領域",      value: "學術出版研究" },
+              { label: "進行中的項目",    value: "2" },
+              { label: "出版成果",       value: "2 篇工作論文，1 份報告" },
+              { label: "聯絡",            value: "research@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-tw/collaboration/research-project-proposal"  class="btn btn-primary" style="justify-content:center;">提交提案</a>
+            <a href="/zh-tw/collaboration/visiting-scholar-application" class="btn btn-secondary" style="justify-content:center;">訪問學者</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">關於中心</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            學術出版研究中心是全景研究院聚焦學術出版結構、實踐和挑戰的主要研究單位。中心圍繞學術知識被生產、評價、傳播和保存的機制開展原創研究。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            該中心的研究批判性地處理學術出版中的開放性、品質、問責和倫理問題，考察出版模式如何塑造研究激勵，同儕評審系統如何運作與失效，以及編輯標準如何在多元學科情境中建立和維護。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            該中心與學術索引與評價研究中心就期刊品質和透明度等共同問題密切合作，並與政策與社會研究中心合作研究開放科學和研究誠信的政策維度。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">研究重點</div>
+      <h2 class="section-title">核心研究領域</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title: "開放取用",           desc: "研究開放取用模式、政策、要求、APC、鑽石開放取用、權利保留和開放出版經濟學。" },
+          { title: "同儕評審",           desc: "研究同儕評審流程、評審人品質、雙盲與開放評審、發表後評審和評審人培訓。" },
+          { title: "出版倫理",    desc: "研究作者身分、剽竊、捏造、篡改、撤稿、掠奪性出版和編輯不端。" },
+          { title: "編輯標準",   desc: "研究期刊出版中的編輯實踐、文字編輯、稿件準備、作者指南和品質控制。" },
+          { title: "研究誠信",    desc: "研究研究不端、重複研究、可重現性、資料共享和機構在研究誠信方面的責任。" },
+          { title: "出版經濟學",  desc: "研究學術出版的商業模式、價格結構、所有權集中和市場動態。" },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">研究項目</div>
+      <h2 class="section-title">當前項目</h2>
+      <div style="margin-top:8px;">
+        {[
+          { status: "進行中", title: "學術出版標準項目", desc: "制定編輯標準、出版倫理指南、研究誠信政策和學術傳播框架，供學術期刊和出版社使用。", href: "/zh-tw/projects/scholarly-publishing-standards" },
+          { status: "進行中", title: "同儕評審模式與出版倫理", desc: "一項跨學科同儕評審模式比較研究，考察不同評審系統的有效性、偏見、時效性和倫理維度。", href: "/zh-tw/projects/scholarly-publishing-standards" },
+        ].map((p) => (
+          <div class="project-card" style="margin-bottom:1px;border-radius:0;border-bottom:1px solid var(--border-light);">
+            <span class="tag tag-active" style="margin-bottom:12px;display:inline-flex;">{p.status}</span>
+            <h3 class="project-title">{p.title}</h3>
+            <p class="project-desc">{p.desc}</p>
+            <a href={p.href} style="display:inline-flex;margin-top:16px;font-size:13.5px;color:var(--accent-steel);">View Project &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">出版成果</div>
+      <h2 class="section-title">中心出版成果</h2>
+      <div style="margin-top:8px;">
+        {[
+          { type: "工作論文", title: "數位時代的同儕評審模式與出版倫理", year: "2026" },
+          { type: "政策簡報",  title: "亞太地區機構開放取用要求及其實施", year: "2026" },
+        ].map((pub) => (
+          <div class="publication-item">
+            <div class="pub-type">{pub.type}</div>
+            <div class="pub-title">{pub.title}</div>
+            <div style="text-align:right;">
+              <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.year}</div>
+              <a href="/zh-tw/publications" class="btn-ghost btn" style="font-size:13px;padding:0;">Details &rarr;</a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:32px;">
+        <a href="/zh-tw/publications" class="btn btn-secondary">全部出版成果</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

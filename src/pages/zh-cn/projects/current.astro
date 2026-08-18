@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="当前项目" description="全景研究院当前活跃及在研的全部研究项目。">
+  <PageHero
+    title="当前项目"
+    description="全景研究院四个研究中心正在开展和开发中的全部研究项目。"
+    breadcrumbs={[{ label: "研究", href: "/zh-cn/research-areas" }, { label: "项目", href: "/zh-cn/projects" }, { label: "当前项目" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:flex;gap:16px;align-items:center;margin-bottom:40px;flex-wrap:wrap;">
+        <div class="section-label" style="margin:0;">按中心筛选</div>
+        {["全部中心","学术出版研究","学术索引与评价","政策与社会研究","人工智能与未来社会"].map((f,i) => (
+          <span style={`font-size:13px;font-family:var(--font-sans);padding:4px 12px;border:1px solid var(--border-light);color:${i===0?'var(--text-main)':'var(--text-muted)'};background:${i===0?'var(--bg-main)':'transparent'};cursor:pointer;`}>{f}</span>
+        ))}
+      </div>
+
+      <div style="margin-top:8px;">
+        {[
+          { status:"等待上线", center:"学术索引与评价", title:"POSI 学术索引项目", desc:"POSI 数据库已经开发完毕，正在等待正式上线。它将提供一个透明、全面且方法严谨的开放学术期刊索引。", href:"/zh-cn/projects/posi-scholarly-indexing" },
+          { status:"进行中", center:"政策与社会研究中心", title:"第十五个五年规划研究", desc:"一项系统研究中国第十五个五年规划（2026–2030）的项目，考察其对研究优先事项、高等教育发展、科学治理和社会政策的影响。", href:"/zh-cn/projects/fifteenth-five-year-plan-studies" },
+          { status:"进行中", center:"学术出版研究中心", title:"学术出版标准项目", desc:"为学术期刊和出版社制定编辑标准、出版伦理指南、同行评审框架和学术传播基准。", href:"/zh-cn/projects/scholarly-publishing-standards" },
+          { status:"进行中", center:"政策与社会研究中心", title:"青少年数字治理研究", desc:"考察当代网络环境中青年所面临的数字治理挑战，包括平台监管、算法影响、数字素养和权利框架。", href:"/zh-cn/projects/youth-digital-governance" },
+          { status:"开发中", center:"人工智能与未来社会研究中心", title:"人工智能与未来社会研究项目", desc:"一项创始项目，考察人工智能的治理、伦理和社会影响，重点关注人工智能对学术传播、知识生产和学术出版的影响。", href:"/zh-cn/projects/ai-future-society" },
+        ].map((p) => (
+          <div class="project-card" style="border-radius:0;border-bottom:1px solid var(--border-light);margin-bottom:0;">
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+              <span class={`tag ${p.status === '进行中' || p.status === '等待上线' ? 'tag-active' : 'tag-steel'}`}>{p.status}</span>
+              <span style="font-size:12px;font-family:var(--font-mono);color:var(--text-muted);padding-top:2px;">{p.center}</span>
+            </div>
+            <h3 class="project-title">{p.title}</h3>
+            <p class="project-desc">{p.desc}</p>
+            <a href={p.href} style="display:inline-flex;margin-top:16px;font-size:13.5px;color:var(--accent-steel);">View Project &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">有意开展项目合作？</h2>
+          <p style="font-size:15px;color:var(--text-secondary);">研究院欢迎全球学者和机构提交研究提案与合作咨询。</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-cn/collaboration/research-project-proposal" class="btn btn-primary">提交提案</a>
+          <a href="/zh-cn/projects/archive" class="btn btn-secondary">已完成项目</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

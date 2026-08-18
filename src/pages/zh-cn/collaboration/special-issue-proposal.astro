@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+---
+<BaseLayout title="特刊提案" description="提交与全景研究院合作的期刊特刊提案。">
+  <PageHero
+    title="特刊提案"
+    description="提交与全景研究院合作组织并客座编辑学术期刊特刊的提案。研究院为客座编辑提供机构参与和学术协调支持。"
+    breadcrumbs={[{ label: "学术合作", href: "/zh-cn/collaboration" }, { label: "特刊提案" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">概览</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"类型",          value:"既有学术期刊特刊" },
+              { label:"提案",      value:"不超过 1,500 词" },
+              { label:"评审时间",   value:"15 个工作日内" },
+              { label:"期刊",       value:"提案人确定目标期刊" },
+              { label:"研究院角色","": "", value:"联合品牌、学术协调、出版支持" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            全景研究院欢迎与客座编辑和承办期刊合作组织期刊特刊。研究院的参与可为特刊增加机构信誉和学术协调支持。提案人负责对接目标期刊并主持客座编辑流程。
+          </p>
+
+          <div class="section-label" style="margin-bottom:14px;">提案要求</div>
+          <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border-light);margin-bottom:40px;">
+            {[
+              "特刊主题标题及 200 词说明",
+              "目标期刊及选择理由",
+              "期刊沟通状态（已咨询、讨论中、已批准）",
+              "客座编辑简介及相关专长",
+              "4–8 个论文主题或预期作者临时清单",
+              "拟议征稿时间表和投稿截止日期",
+              "拟议出版日期",
+            ].map((item, i) => (
+              <div style="padding:14px 20px;border-bottom:1px solid var(--border-light);display:flex;gap:12px;">
+                <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);flex-shrink:0;padding-top:2px;">{String(i+1).padStart(2,'0')}</span>
+                <span style="font-size:14px;color:var(--text-secondary);line-height:1.6;">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid var(--border-light);padding-top:48px;">
+        <div class="section-label" style="margin-bottom:8px;">提案表格</div>
+        <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:24px;font-weight:400;">提交提案</h2>
+        <form style="max-width:740px;" action="https://formsubmit.co/publications@panorama-sg.com" method="POST">
+          <FormSubmitFields subject="全景研究院特刊提案" source="Special Issue Proposal Form" />
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+            {[
+              { label:"客座编辑姓名", id:"ge-name",    type:"text",  placeholder:"姓名" },
+              { label:"电子邮箱地址",     id:"ge-email",   name:"email", type:"email", placeholder:"your@email.com" },
+              { label:"目标期刊",    id:"ge-journal", type:"text",  placeholder:"期刊名称" },
+              { label:"特刊主题",       id:"ge-theme",   type:"text",  placeholder:"暂定标题" },
+            ].map((f) => (
+              <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
+                <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+              </div>
+            ))}
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <label for="si-proposal" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">完整提案</label>
+            <textarea id="si-proposal" name="si-proposal" rows="8" placeholder="请包含提案要求中列出的全部必需信息。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">提交提案</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+}
+</style>

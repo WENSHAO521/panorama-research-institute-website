@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+---
+<BaseLayout title="活动合作" description="与全景研究院联合主办学术活动。">
+  <PageHero
+    title="活动合作"
+    description="提交与全景研究院联合组织会议、研讨会、工作坊或培训项目的提案。研究院欢迎与学术机构和学术组织开展活动合作。"
+    breadcrumbs={[{ label: "学术合作", href: "/zh-cn/collaboration" }, { label: "活动合作" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">活动类型</div>
+          <div style="display:flex;flex-direction:column;gap:0;margin-top:8px;border:1px solid var(--border-light);">
+            {[
+              { type:"学术会议",    note:"国际学术集会" },
+              { type:"研讨会",       note:"单场学术报告" },
+              { type:"工作坊",      note:"参与式研究发展" },
+              { type:"培训",      note:"能力建设项目" },
+              { type:"圆桌会议",    note:"闭门专家讨论" },
+            ].map((item) => (
+              <div style="padding:12px 16px;border-bottom:1px solid var(--border-light);">
+                <div style="font-size:14px;font-weight:600;color:var(--text-main);">{item.type}</div>
+                <div style="font-size:12.5px;color:var(--text-muted);margin-top:2px;">{item.note}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:20px;">
+            <a href="/zh-cn/events" class="btn btn-secondary" style="width:100%;justify-content:center;">活动概览</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            全景研究院欢迎大学、研究机构、学术协会和个体研究人员提交联合组织学术活动的提案。联合活动可获得研究院机构隶属、编辑支持和学术网络资源。研究院特别关注与本院研究领域契合并有助于学术共同体发展的活动。
+          </p>
+
+          <div class="section-label" style="margin-bottom:14px;">研究院为联合组织方提供</div>
+          <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:32px;">
+            {[
+              "作为全景研究院活动的机构联合品牌支持",
+              "协助从研究院学术网络中确定受邀演讲者",
+              "在研究院资源库发布活动论文集或摘要",
+              "通过研究院传播渠道推广",
+              "学术活动事务部提供活动协调支持和指导",
+            ].map((item) => (
+              <div style="display:flex;gap:10px;font-size:14px;color:var(--text-secondary);padding:6px 0;border-bottom:1px solid var(--bg-main);">
+                <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{item}
+              </div>
+            ))}
+          </div>
+
+          <div class="section-label" style="margin-bottom:14px;">提案表格</div>
+          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/events@panorama-sg.com" method="POST">
+            <FormSubmitFields subject="全景研究院活动合作提案" source="Event Cooperation Form" />
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              {[
+                { label:"联系人姓名",       id:"ec-name",  type:"text",  placeholder:"姓名" },
+                { label:"电子邮箱地址",      id:"ec-email", name:"email", type:"email", placeholder:"your@email.com" },
+                { label:"组织机构",       id:"ec-org",   type:"text",  placeholder:"机构或组织" },
+                { label:"拟议活动类型", id:"ec-type", type:"text",  placeholder:"例如：工作坊、研讨会" },
+              ].map((f) => (
+                <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
+                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+                </div>
+              ))}
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:-0.5px;">
+              {[
+                { label:"拟议日期 / 时段", id:"ec-date",   type:"text", placeholder:"例如：2026 年 3 月" },
+                { label:"预计参与者",  id:"ec-size",   type:"text", placeholder:"例如：30–50" },
+              ].map((f) => (
+                <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
+                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+                </div>
+              ))}
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="ec-desc" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">活动说明与合作提案（不超过 600 词）</label>
+              <textarea id="ec-desc" name="ec-desc" rows="7" placeholder="请说明活动构想、拟与研究院开展的合作方式，以及该活动与研究院研究领域的关联。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">提交提案</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+}
+</style>

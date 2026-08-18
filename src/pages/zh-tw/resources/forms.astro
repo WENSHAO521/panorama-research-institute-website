@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+const lang = Astro.currentLocale ?? 'en';
+---
+<BaseLayout title="表格" description="全景研究院的申請與提交表單。">
+  <PageHero
+    title="表格"
+    description="全景研究院研究員、合作、出版和活動項目使用的申請表、提交表和諮詢表。"
+    breadcrumbs={[{ label: "資源", href: "/zh-tw/resources" }, { label: "表格" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);max-width:720px;margin-bottom:48px;">
+        所有表格均提供線上填寫版本，可通過下方連結訪問。標明處也可下載 PDF 版本。優先建議線上提交。
+      </p>
+
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+        {[
+          { category:"研究員申請", forms:[
+            { name:"研究員申請",          href:"/zh-tw/collaboration/research-fellow-application" },
+            { name:"研究員申請表（英文 PDF）", href:"/forms/PRI_Research Fellow Application Form_EN.pdf", download:true, langVariant:"en" },
+            { name:"研究員申請表（簡體中文 PDF）", href:"/forms/PRI_Research Fellow Application Form_CN.pdf", download:true, langVariant:"zh-cn" },
+            { name:"研究員申請表（繁體中文 PDF）", href:"/forms/PRI_Research Fellow Application Form_CN-TW.pdf", download:true, langVariant:"zh-tw" },
+            { name:"Associate Research Fellow Application", href:"/zh-tw/collaboration/research-fellow-application" },
+            { name:"訪問學者申請",          href:"/zh-tw/collaboration/visiting-scholar-application" },
+          ]},
+          { category:"研究提案", forms:[
+            { name:"研究項目提案",   href:"/zh-tw/collaboration/research-project-proposal" },
+            { name:"主編文集提案",       href:"/zh-tw/collaboration/edited-volume-proposal" },
+            { name:"特刊提案",       href:"/zh-tw/collaboration/special-issue-proposal" },
+          ]},
+          { category:"活動與合作", forms:[
+            { name:"活動合作提案",     href:"/zh-tw/collaboration/event-cooperation" },
+            { name:"Institutional Cooperation Inquiry", href:"/zh-tw/collaboration/institutional-cooperation" },
+            { name:"一般合作諮詢",  href:"/zh-tw/collaboration/submit" },
+          ]},
+          { category:"其他表格", forms:[
+            { name:"一般聯絡 / 諮詢",     href:"/zh-tw/collaboration/submit" },
+          ]},
+        ].map((group) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--text-main);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.05em;">{group.category}</h3>
+            <div style="display:flex;flex-direction:column;gap:0;">
+              {group.forms.filter((f) => !f.langVariant || f.langVariant === lang).map((f) => (
+                <a href={f.href} target={f.external ? '_blank' : undefined} rel={f.external ? 'noopener' : undefined} download={f.download ? true : undefined} style="display:block;font-size:14px;color:var(--accent-steel);padding:8px 0;border-bottom:1px solid var(--border-light);">{f.name} &rarr;</a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

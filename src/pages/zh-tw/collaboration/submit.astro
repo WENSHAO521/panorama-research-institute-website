@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+---
+<BaseLayout title="提交諮詢" description="全景研究院一般合作諮詢表單。">
+  <PageHero
+    title="提交諮詢"
+    description="本表格用於一般合作諮詢；如諮詢涉及特定合作類型，請選擇下方專門表格。"
+    breadcrumbs={[{ label: "學術合作", href: "/zh-tw/collaboration" }, { label: "提交諮詢" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">專門表格</div>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.6;margin-top:8px;margin-bottom:16px;">
+            如果您的諮詢涉及特定合作類型，請使用對應專門表格：
+          </p>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            {[
+              { label:"研究項目提案",     href:"/zh-tw/collaboration/research-project-proposal" },
+              { label:"主編文集提案",        href:"/zh-tw/collaboration/edited-volume-proposal" },
+              { label:"特刊提案",        href:"/zh-tw/collaboration/special-issue-proposal" },
+              { label:"訪問學者申請",  href:"/zh-tw/collaboration/visiting-scholar-application" },
+              { label:"研究員申請",   href:"/zh-tw/collaboration/research-fellow-application" },
+              { label:"活動合作",             href:"/zh-tw/collaboration/event-cooperation" },
+              { label:"機構合作",     href:"/zh-tw/collaboration/institutional-cooperation" },
+            ].map((item) => (
+              <a href={item.href} style="display:block;font-size:13.5px;color:var(--accent-steel);padding:8px 0;border-bottom:1px solid var(--border-light);">{item.label} &rarr;</a>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">一般合作諮詢</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            如果您的諮詢不完全適用於上述特定合作類型，或希望在提交特定表格前與研究院討論合作可能性，請使用本表格。合作事務辦公室將在 10 個工作日內回覆。
+          </p>
+
+          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/collaboration@panorama-sg.com" method="POST">
+            <FormSubmitFields subject="全景研究院一般合作諮詢" source="General Collaboration Inquiry Form" />
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              {[
+                { label:"您的姓名",       id:"inq-name",  type:"text",  placeholder:"姓名" },
+                { label:"電子郵箱地址",   id:"inq-email", name:"email", type:"email", placeholder:"your@email.com" },
+                { label:"組織機構",    id:"inq-org",   type:"text",  placeholder:"機構或組織（如適用）" },
+                { label:"國家",         id:"inq-country",type:"text", placeholder:"國家" },
+              ].map((f) => (
+                <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
+                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+                </div>
+              ))}
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="inq-type" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">諮詢類型</label>
+              <select id="inq-type" name="inq-type" class="form-input" style="width:100%;">
+                <option value="">請選擇諮詢類型...</option>
+                <option>機構合作 / 諒解備忘錄</option>
+                <option>研究合作</option>
+                <option>出版合作</option>
+                <option>活動合作</option>
+                <option>研究員及學者計劃諮詢</option>
+                <option>媒體 / 新聞諮詢</option>
+                <option>一般諮詢</option>
+              </select>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="inq-msg" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">您的資訊</label>
+              <textarea id="inq-msg" name="inq-msg" rows="8" placeholder="請說明您的諮詢、擬議合作或問題，並盡可能提供相關細節，以便合作事務辦公室作出有效回覆。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
+              <input type="checkbox" id="inq-consent" name="inq-consent" value="confirmed" style="margin-top:3px;flex-shrink:0;" />
+              <label for="inq-consent" style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">本人同意全景研究院使用所提供資訊回覆本次諮詢，並發送相關機構通信。本人可隨時撤回該同意。</label>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">提交諮詢</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+}
+</style>

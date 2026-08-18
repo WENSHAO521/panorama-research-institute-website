@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="使命與願景" description="全景研究院的使命與願景。">
+  <PageHero
+    title="使命與願景"
+    description="界定全景研究院學術身份和戰略方向的指導使命與長期願景。"
+    breadcrumbs={[{ label: "研究院", href: "/zh-tw/about" }, { label: "使命與願景" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;">
+        <div>
+          <div class="section-label">使命</div>
+          <h2 style="font-family:var(--font-serif);font-size:32px;color:var(--text-main);margin-bottom:24px;font-weight:400;line-height:1.25;letter-spacing:-0.02em;">
+            通過嚴謹、獨立和跨學科研究推進學術知識發展
+          </h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            全景研究院致力於產出智識嚴謹、方法穩健且具有公共相關性的研究。研究院在其指定研究領域推進知識發展，並建設強化全球學術傳播的基礎設施。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            研究院支持各職涯階段的學者，促進跨學科和跨機構合作研究，並確保其成果可訪問、透明且建立在合乎倫理的研究實踐之上。
+          </p>
+        </div>
+        <div>
+          <div class="section-label">願景</div>
+          <h2 style="font-family:var(--font-serif);font-size:32px;color:var(--text-main);margin-bottom:24px;font-weight:400;line-height:1.25;letter-spacing:-0.02em;">
+            一個值得信賴並可持續發展的獨立學術探究平台
+          </h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            研究院展望一個學術傳播基礎設施開放、透明且公平的未來；在這一未來中，關於出版、政策、技術和社會的研究以真正獨立的方式開展，研究院成果能夠對全球學術討論作出有意義的貢獻。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            隨著時間推移，研究院旨在成為學術出版、期刊評價、學術政策和研究誠信議題上可信且具權威性的聲音，獲得全球研究者、機構、編輯和政策制定者信任。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">核心價值</div>
+      <h2 class="section-title">基本原則</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { value: "學術獨立",  desc: "研究院研究不受商業、政治或機構壓力影響。研究發現將誠實報告，不受干預。" },
+          { value: "智識嚴謹",     desc: "所有研究都必須達到方法健全性、證據支持和學術誠信方面的高標準。" },
+          { value: "透明度",           desc: "研究院在所有出版物和溝通中揭露機構隸屬關係、資助來源和潛在利益衝突。" },
+          { value: "開放性",               desc: "研究院支持研究成果開放取用和開放學術基礎設施，包括 POSI 索引項目。" },
+          { value: "跨學科性",    desc: "研究院重視跨越傳統學科邊界、匯聚不同領域學者的研究。" },
+          { value: "長期承諾",   desc: "研究院建設可持續學術基礎設施，並維持長期研究項目，而不是追求短期成果。" },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.value}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="max-width:760px;">
+        <div class="section-label">戰略重點</div>
+        <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:24px;font-weight:400;">五年戰略重點</h2>
+        {[
+          { num: "01", title: "建設可持續研究基礎設施",     desc: "建立長期服務研究院及其學者的研究中心、項目管理系統和出版平台。" },
+          { num: "02", title: "擴大研究員與學者網路",  desc: "招募並支持來自全球機構的多元研究員、訪問學者和項目貢獻者網路。" },
+          { num: "03", title: "發展開放學術基礎設施",      desc: "推進 POSI 學術索引平台及相關項目，提升學術出版的透明度和可發現性。" },
+          { num: "04", title: "產出具有政策相關性的研究",           desc: "確保研究院關於出版、治理和社會政策的研究能夠貢獻於現實政策討論和機構改革。" },
+          { num: "05", title: "建立國際合作夥伴關係",       desc: "與全球學術機構、研究組織和學術基礎設施提供方建立正式合作協議。" },
+        ].map((p) => (
+          <div style="display:grid;grid-template-columns:48px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);padding-top:3px;">{p.num}</div>
+            <div>
+              <h3 style="font-family:var(--font-sans);font-size:15.5px;font-weight:600;color:var(--text-main);margin-bottom:8px;">{p.title}</h3>
+              <p style="font-size:14.5px;color:var(--text-secondary);line-height:1.7;">{p.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">進一步了解研究院</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-tw/about"    class="btn btn-primary">研究院概覽</a>
+          <a href="/zh-tw/charter"  class="btn btn-secondary">研究院章程</a>
+          <a href="/zh-tw/framework"class="btn btn-secondary">研究院組織與職能框架</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { display: block !important; }
+}
+</style>

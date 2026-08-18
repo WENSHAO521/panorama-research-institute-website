@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="研究助理" description="与全景研究院合作的研究助理。">
+  <PageHero
+    title="研究助理"
+    description="在研究员和研究中心主任指导下参与研究院具体项目的研究助理。"
+    breadcrumbs={[{ label: "学术成员", href: "/zh-cn/people" }, { label: "研究助理" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:48px;">
+          全景研究院聘用研究助理支持具体研究项目、编辑任务和研究中心行政职能。研究助理通常在研究员或研究中心主任指导下工作。
+        </p>
+
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:48px;margin-bottom:48px;">
+          <div>
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">研究助理职责</h2>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              {[
+                "文献综述与系统检索",
+                "研究项目数据收集与编码",
+                "参考文献管理与书目准备",
+                "翻译与语言编辑支持",
+                "活动协调与行政支持",
+                "网站内容与文档支持",
+              ].map((item) => (
+                <div style="display:flex;gap:10px;font-size:14.5px;color:var(--text-secondary);padding:8px 0;border-bottom:1px solid var(--bg-main);">
+                  <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{item}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">申请资格</h2>
+            <p style="font-size:15px;line-height:1.8;color:var(--text-secondary);margin-bottom:16px;">
+              研究助理岗位通常适合在读研究生（硕士或博士）或具有相关研究经验的近期毕业生。研究助理按项目聘用，期限和时长由具体项目决定。
+            </p>
+            <p style="font-size:15px;line-height:1.8;color:var(--text-secondary);">
+              候选人应具备较强研究能力、优秀细节意识、熟练掌握相关研究工具，并对研究院研究领域有真实兴趣。岗位可根据经费情况设置为有偿或志愿性质。
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-bottom:48px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">现任研究助理</div>
+          <a
+            href="https://profiles.panorama-sg.com/board/xingkai-zhang"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding:28px;border:1px solid var(--border-light);background:var(--bg-white);text-decoration:none;color:inherit;"
+          >
+            <div>
+              <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:10px;font-weight:400;">Xingkai Zhang</h2>
+              <div style="font-size:14px;color:var(--text-secondary);margin-bottom:6px;">研究助理</div>
+              <div style="font-size:13.5px;color:var(--text-muted);line-height:1.6;">所属单位：全景研究院</div>
+            </div>
+            <span style="font-size:13px;color:var(--accent-steel);white-space:nowrap;">View Profile &rarr;</span>
+          </a>
+        </div>
+
+        <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);margin-bottom:32px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">当前岗位</div>
+          <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+            当前暂无公开招聘的研究助理岗位。岗位开放时将在本页列出，并通过研究院传播渠道发布。
+          </p>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-cn/people/join" class="btn btn-primary">加入研究院</a>
+          <a href="/zh-cn/people/research-fellows" class="btn btn-secondary">研究员</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+
+<BaseLayout
+  title="提交已收到"
+  description="您提交给全景研究院的信息已收到。"
+>
+  <PageHero
+    title="提交已收到"
+    description="您的信息已发送至研究院相关办公室。"
+    breadcrumbs={[{ label: "提交已收到" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div class="thank-you-panel">
+        <div class="section-label">谢谢</div>
+        <h2>您的提交已收到。</h2>
+        <p>
+          研究院将审核您的信息，并由相关办公室在适当时候回复。
+        </p>
+        <div class="thank-you-actions">
+          <a href="/zh-cn/" class="btn btn-primary">返回首页</a>
+          <a href="/zh-cn/contact" class="btn btn-secondary">联系研究院</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.thank-you-panel {
+  max-width: 720px;
+  padding: 40px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-main);
+}
+.thank-you-panel h2 {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  line-height: 1.25;
+  font-weight: 400;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+.thank-you-panel p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+}
+.thank-you-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+</style>

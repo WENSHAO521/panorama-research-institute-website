@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="培訓項目" description="全景研究院為研究者、期刊編輯和學者組織的培訓項目。">
+  <PageHero
+    title="培訓項目"
+    description="全景研究院為研究人員、期刊編輯和學術實踐者組織的能力建設培訓項目，聚焦研究院重點領域。"
+    breadcrumbs={[{ label: "學術活動", href: "/zh-tw/events" }, { label: "培訓項目" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:48px;">
+          全景研究院計劃發展培訓工作坊和能力建設項目，面向研究人員、期刊編輯和其他學術實踐者。培訓項目旨在將研究院項目中的研究洞見轉化為參與者可直接應用於工作的實踐技能和知識。
+        </p>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-bottom:48px;">
+          {[
+            { audience:"期刊編輯", programs:["編輯標準與流程","同儕評審管理","出版倫理與 COPE 指南","作者關係管理","撤稿與更正處理"] },
+            { audience:"研究人員",     programs:["研究誠信與開放科學","預印本與開放取用實踐","資料管理與共享","引用與參考文獻最佳實踐","國際期刊學術寫作"] },
+            { audience:"研究團隊",  programs:["研究項目管理","合作寫作與共同作者身分","研究資料管理","倫理審查與機構合規","傳播與影響力規劃"] },
+          ].map((item) => (
+            <div class="card" style="border:none;border-radius:0;">
+              <h3 style="font-family:var(--font-sans);font-size:14.5px;font-weight:600;color:var(--text-main);margin-bottom:12px;">{item.audience}</h3>
+              <div style="display:flex;flex-direction:column;gap:4px;">
+                {item.programs.map((p) => (
+                  <div style="display:flex;gap:8px;font-size:13px;color:var(--text-secondary);">
+                    <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{p}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style="padding:32px;background:var(--bg-soft);border:1px solid var(--border-light);margin-bottom:40px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">項目狀態</div>
+          <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;">
+            研究院培訓項目目前正在開發中。首批培訓項目計劃於 2026 年啟動，將從面向期刊編輯的編輯標準與出版倫理工作坊開始。
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);margin:0;line-height:1.6;">
+            有意與研究院聯合組織培訓項目的機構，歡迎通過合作事務辦公室聯絡我們。
+          </p>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-tw/collaboration/event-cooperation" class="btn btn-primary">聯合組織培訓項目</a>
+          <a href="/zh-tw/events/workshops" class="btn btn-secondary">工作坊</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

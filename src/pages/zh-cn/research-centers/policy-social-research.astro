@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="政策与社会研究中心" description="专注于高等教育政策、科学政策、青年数字治理以及学术传播社会维度的研究中心。">
+  <PageHero
+    title="政策与社会研究中心"
+    description="研究高等教育政策、科学与创新政策、青少年数字治理，以及学术传播和学术出版的社会维度。"
+    breadcrumbs={[{ label: "研究", href: "/zh-cn/research-areas" }, { label: "研究中心", href: "/zh-cn/research-centers" }, { label: "政策与社会研究" }]}
+    tag="运行中的研究中心"
+  >
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">概览</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "中心状态",   value: "进行中" },
+              { label: "已设立",     value: "2026" },
+              { label: "研究领域",   value: "政策与社会研究" },
+              { label: "进行中的项目", value: "2" },
+              { label: "出版成果",    value: "1 份研究报告，1 份政策简报" },
+              { label: "联系",         value: "research@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-cn/collaboration/research-project-proposal"  class="btn btn-primary" style="justify-content:center;">提交提案</a>
+            <a href="/zh-cn/collaboration/visiting-scholar-application" class="btn btn-secondary" style="justify-content:center;">访问学者</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">关于中心</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            政策与社会研究中心关注学术知识生产与公共政策之间的交界，特别重视高等教育政策、科学与创新治理，以及数字转型在学术和公民生活中的社会影响。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            该中心牵头研究院关于中国第十五个五年规划的研究，考察国家规划框架如何塑造科学研究优先事项、大学治理和高等教育发展。中心同时牵头青少年数字治理项目，研究青年在数字环境中的经验、挑战和需求。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            该中心的工作具有内在跨学科性，借鉴政治学、社会学、教育研究、科学技术研究和传播研究。中心通过研究报告和政策简报参与政策讨论，并与研究院内相关领域研究人员保持密切合作。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">研究重点</div>
+      <h2 class="section-title">核心研究领域</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title: "高等教育政策",    desc: "研究大学治理、高等教育监管、认证体系、学术自由和机构政策框架。" },
+          { title: "科学与创新政策", desc: "研究国家研究议程、科学资助、创新体系、研究优先事项设定和科学治理。" },
+          { title: "五年规划研究",     desc: "研究中国国家五年规划框架，并分析其对研究、高等教育、技术和社会政策的影响。" },
+          { title: "青少年数字治理",   desc: "研究面向青年的数字环境治理，包括平台监管、数字权利、网络安全和公民参与。" },
+          { title: "开放科学政策",        desc: "研究开放科学、开放获取、研究数据管理和 FAIR 数据原则相关的国家与机构政策。" },
+          { title: "学术出版政策", desc: "研究与学术出版相关的政府和机构政策，包括期刊白名单、评价框架和研究人员评价政策。" },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">研究项目</div>
+      <h2 class="section-title">当前项目</h2>
+      <div style="margin-top:8px;">
+        {[
+          { status: "进行中", title: "第十五个五年规划研究", desc: "一项系统研究中国第十五个五年规划（2026–2030）的项目，考察其对研究优先事项、高等教育发展、科学治理和社会政策的影响。", href: "/zh-cn/projects/fifteenth-five-year-plan-studies" },
+          { status: "进行中", title: "青少年数字治理研究", desc: "考察当代网络环境中青年所面临的数字治理挑战，包括平台监管、算法影响、数字素养和权利框架。", href: "/zh-cn/projects/youth-digital-governance" },
+        ].map((p) => (
+          <div class="project-card" style="margin-bottom:1px;border-radius:0;border-bottom:1px solid var(--border-light);">
+            <span class="tag tag-active" style="margin-bottom:12px;display:inline-flex;">{p.status}</span>
+            <h3 class="project-title">{p.title}</h3>
+            <p class="project-desc">{p.desc}</p>
+            <a href={p.href} style="display:inline-flex;margin-top:16px;font-size:13.5px;color:var(--accent-steel);">View Project &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">出版成果</div>
+      <h2 class="section-title">中心出版成果</h2>
+      <div style="margin-top:8px;">
+        {[
+          { type: "研究报告", title: "中国第十四个五年规划背景下的高等教育政策趋势：对第十五个五年规划的启示", year: "2026" },
+          { type: "政策简报",    title: "青年网络安全与平台问责：比较政策分析", year: "2026" },
+        ].map((pub) => (
+          <div class="publication-item">
+            <div class="pub-type">{pub.type}</div>
+            <div class="pub-title">{pub.title}</div>
+            <div style="text-align:right;">
+              <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.year}</div>
+              <a href="/zh-cn/publications" class="btn-ghost btn" style="font-size:13px;padding:0;">Details &rarr;</a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:32px;">
+        <a href="/zh-cn/publications" class="btn btn-secondary">全部出版成果</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+---
+<BaseLayout title="訪問學者申請" description="申請全景研究院訪問學者項目。">
+  <PageHero
+    title="訪問學者申請"
+    description="申請以訪問學者身份與全景研究院建立 3–12 個月的隸屬關係。訪問學者計劃面向具有博士或同等資歷的成熟研究者開放。"
+    breadcrumbs={[{ label: "學術合作", href: "/zh-tw/collaboration" }, { label: "訪問學者申請" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">項目資訊</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"時長",        value:"3–12 個月" },
+              { label:"形式",          value:"遠端或線下" },
+              { label:"申請資格",     value:"博士或同等資歷的成熟研究者" },
+              { label:"申請",     value:"滾動申請（無固定截止日期）" },
+              { label:"回覆時間",   value:"15 個工作日內" },
+              { label:"聯絡",         value:"scholars@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:20px;">
+            <a href="/zh-tw/people/visiting-scholars" class="btn btn-secondary" style="width:100%;justify-content:center;">關於項目</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            請使用本表格申請以訪問學者身份與全景研究院建立隸屬關係。申請由學者計劃協調員和相關研究中心主任評審。成功申請者將被聯絡，以討論訪問隸屬的條款和範圍。
+          </p>
+
+          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/scholars@panorama-sg.com" method="POST">
+            <FormSubmitFields subject="全景研究院訪問學者申請" source="訪問學者申請表" />
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              {[
+                { label:"姓名",      id:"vs-name",    type:"text",  placeholder:"姓名" },
+                { label:"電子郵箱地址",  id:"vs-email",   name:"email", type:"email", placeholder:"your@email.com" },
+                { label:"目前所屬機構", id:"vs-inst", type:"text", placeholder:"大學或研究機構" },
+                { label:"職位 / 頭銜", id:"vs-title",   type:"text",  placeholder:"例如：高級講師" },
+              ].map((f) => (
+                <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
+                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+                </div>
+              ))}
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:-0.5px;">
+              {[
+                { label:"擬議開始日期", id:"vs-start", type:"text", placeholder:"例如：2026 年 1 月" },
+                { label:"擬議時長",   id:"vs-dur",   type:"text", placeholder:"例如：6 個月" },
+              ].map((f) => (
+                <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
+                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+                </div>
+              ))}
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="vs-center" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">首選接待研究中心</label>
+              <select id="vs-center" name="vs-center" class="form-input" style="width:100%;">
+                <option value="">請選擇研究中心...</option>
+                <option>學術出版研究中心</option>
+                <option>學術索引與評價研究中心</option>
+                <option>政策與社會研究中心</option>
+                <option>人工智慧與未來社會研究中心</option>
+                <option>接受建議</option>
+              </select>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="vs-research" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">研究計劃與目標（300–800 詞）</label>
+              <textarea id="vs-research" name="vs-research" rows="8" placeholder="請說明您在訪問期間擬開展的研究、其與研究院研究項目的關係，以及任何具體合作或成果計劃。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="vs-cv" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">學術簡介 / 簡歷摘要（不超過 400 詞）</label>
+              <textarea id="vs-cv" name="vs-cv" rows="5" placeholder="學術簡介、主要出版物和其他相關經歷。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
+              <input type="checkbox" id="vs-consent" name="vs-consent" value="confirmed" style="margin-top:3px;flex-shrink:0;" />
+              <label for="vs-consent" style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">本人確認上述資訊準確，並真誠希望在擬議訪問期間開展所述研究。</label>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">提交申請</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+}
+</style>

@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.astro';
+const lang = Astro.currentLocale ?? 'en';
+---
+<BaseLayout title="研究员申请" description="申请成为全景研究院研究员或副研究员。">
+  <PageHero
+    title="研究员申请"
+    description="申请成为全景研究院研究员或副研究员。研究院面向各职业阶段学者滚动接受申请。"
+    breadcrumbs={[{ label: "学术合作", href: "/zh-cn/collaboration" }, { label: "研究员申请" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">申请详情</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"申请类型",  value:"研究员或副研究员" },
+              { label:"截止日期",          value:"滚动申请（无固定截止日期）" },
+              { label:"回复时间",     value:"20 个工作日内" },
+              { label:"期限（如获接受）", value:"1–3 年（研究员）/ 1 年（副研究员）" },
+              { label:"形式",            value:"远程——无需搬迁" },
+              { label:"联系",           value:"fellows@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-cn/people/research-fellows" class="btn btn-secondary" style="width:100%;justify-content:center;">关于研究员</a>
+            <a href="/zh-cn/people/associate-research-fellows" class="btn btn-secondary" style="width:100%;justify-content:center;">关于副研究员</a>
+            {lang === 'en' && <a href="/forms/PRI_Research Fellow Application Form_EN.pdf" class="btn btn-secondary" style="width:100%;justify-content:center;" download>下载英文 PDF 表格</a>}
+            {lang === 'zh-cn' && <a href="/forms/PRI_Research Fellow Application Form_CN.pdf" class="btn btn-secondary" style="width:100%;justify-content:center;" download>下载简体中文 PDF 表格</a>}
+            {lang === 'zh-tw' && <a href="/forms/PRI_Research Fellow Application Form_CN-TW.pdf" class="btn btn-secondary" style="width:100%;justify-content:center;" download>下载繁体中文 PDF 表格</a>}
+          </div>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            请使用本表格申请全景研究院研究员或副研究员职位。所有申请均由研究院研究领导团队评审。成功申请者将被联系，以讨论任命、研究计划及其对研究院项目的贡献。
+          </p>
+
+          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/fellows@panorama-sg.com" method="POST" enctype="multipart/form-data">
+            <FormSubmitFields subject="全景研究院研究员申请" source="研究员申请表" />
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              {[
+                { label:"姓名",          id:"rf-name",    type:"text",  placeholder:"姓名" },
+                { label:"电子邮箱地址",      id:"rf-email",   name:"email", type:"email", placeholder:"your@email.com" },
+                { label:"当前所属机构","": "", id:"rf-inst", type:"text", placeholder:"大学或研究机构" },
+                { label:"职位 / 头衔",     id:"rf-title",   type:"text",  placeholder:"例如：博士候选人、博士后研究员" },
+              ].map((f) => (
+                <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
+                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+                </div>
+              ))}
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="rf-type" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">研究员类型</label>
+              <select id="rf-type" name="rf-type" class="form-input" style="width:100%;">
+                <option value="">请选择研究员类型...</option>
+                <option>研究员（中高级职业阶段，须具博士学位）</option>
+                <option>副研究员（早期职业研究者或博士生）</option>
+              </select>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="rf-center" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">首选研究中心</label>
+              <select id="rf-center" name="rf-center" class="form-input" style="width:100%;">
+                <option value="">请选择研究中心...</option>
+                <option>学术出版研究中心</option>
+                <option>学术索引与评价研究中心</option>
+                <option>政策与社会研究中心</option>
+                <option>人工智能与未来社会研究中心</option>
+                <option>接受建议</option>
+              </select>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="rf-research" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">研究兴趣与贡献说明（400–1,000 词）</label>
+              <textarea id="rf-research" name="rf-research" rows="10" placeholder="请说明您的研究兴趣、其与研究院项目的关联，以及您作为研究员拟作出的贡献（出版成果、活动、指导等）。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="rf-cv" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">学术简介 / 出版清单（不超过 500 词）</label>
+              <textarea id="rf-cv" name="rf-cv" rows="6" placeholder="学术简介以及相关出版物、报告或其他学术成果清单。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <MultiAttachmentUpload
+                id="rf-attachments"
+                label="申请附件"
+                description="请上传填写完成的申请表、简历、出版物清单或其他支持材料，可使用 PDF、Word、图片或 ZIP 文件。"
+                accept=".pdf,.doc,.docx,.zip,.png,.jpg,.jpeg"
+              />
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
+              <input type="checkbox" id="rf-consent" name="rf-consent" value="confirmed" style="margin-top:3px;flex-shrink:0;" />
+              <label for="rf-consent" style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">本人已阅读并理解研究院研究员期望，并确认所提供信息准确。</label>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">提交申请</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+}
+</style>

@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="指南与标准" description="全景研究院的出版指南与学术标准文件。">
+  <PageHero
+    title="指南与标准"
+    description="全景研究院制定并发布的编辑指南、学术传播标准和出版伦理框架，供期刊、出版社和学术机构使用。"
+    breadcrumbs={[{ label: "出版成果", href: "/zh-cn/publications" }, { label: "指南" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);max-width:720px;margin-bottom:48px;">
+        全景研究院在发布研究报告和工作论文的同时，也制定并发布实践性指南和标准文件。这些文件由学术出版标准项目及相关计划形成，面向期刊编辑、出版社、机构和研究人员使用。
+      </p>
+
+      <div style="margin-bottom:48px;">
+        <div class="section-label" style="margin-bottom:16px;">已发布指南</div>
+        {[
+          { type:"Standards Draft", num:"SPS-2026-D01", title:"学术期刊编辑标准：征求意见稿", center:"学术出版研究中心", date:"2026", status:"开放征求意见" },
+        ].map((g) => (
+          <div class="publication-item">
+            <div>
+              <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:6px;">{g.type} &bull; {g.num}</div>
+              <div class="pub-title">{g.title}</div>
+              <div style="font-size:13px;color:var(--text-muted);margin-top:6px;">{g.center}</div>
+            </div>
+            <div style="text-align:right;flex-shrink:0;">
+              <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);margin-bottom:4px;">{g.date}</div>
+              <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent-steel);">{g.status}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div>
+        <div class="section-label" style="margin-bottom:16px;">开发中</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+          {[
+            { title:"学术期刊同行评审标准", center:"学术出版研究", est:"2026" },
+            { title:"出版伦理标准", center:"学术出版研究", est:"2026" },
+            { title:"开放获取政策披露标准", center:"学术出版研究", est:"2026" },
+            { title:"期刊索引评价框架", center:"学术索引与评价", est:"2026" },
+            { title:"期刊研究数据管理标准", center:"学术出版研究", est:"2027" },
+            { title:"学术出版中的人工智能：编辑指南", center:"人工智能与未来社会", est:"2027" },
+          ].map((item) => (
+            <div class="card" style="border:none;border-radius:0;">
+              <div style="font-size:11px;font-family:var(--font-mono);color:var(--accent-steel);margin-bottom:6px;">Est. {item.est}</div>
+              <h3 style="font-family:var(--font-sans);font-size:14.5px;font-weight:600;color:var(--text-main);margin-bottom:8px;">{item.title}</h3>
+              <div style="font-size:12.5px;color:var(--text-muted);">{item.center}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:20px;color:var(--text-main);margin-bottom:8px;">评议标准草案</h2>
+          <p style="font-size:14.5px;color:var(--text-secondary);">研究院欢迎学术共同体对标准草案提出反馈。</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-cn/collaboration/research-project-proposal" class="btn btn-primary">提交反馈</a>
+          <a href="/zh-cn/resources/guidelines" class="btn btn-secondary">全部下载</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

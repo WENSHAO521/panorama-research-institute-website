@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="機構合作" description="與全景研究院開展機構合作與夥伴關係的機會。">
+  <PageHero
+    title="機構合作"
+    description="全景研究院歡迎與同樣致力於獨立研究和開放學術傳播的大學、研究機構、出版社和學術組織建立正式機構合作協議。"
+    breadcrumbs={[{ label: "學術合作", href: "/zh-tw/collaboration" }, { label: "機構合作" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">合作詳情</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"協議工具",     value:"諒解備忘錄（MoU）或合作協議" },
+              { label:"時長",       value:"通常 2–5 年，可續期" },
+              { label:"簽署執行",      value:"由全景學術集團代表研究院簽署" },
+              { label:"目標夥伴","": "", value:"大學、研究機構、出版社、學術組織" },
+              { label:"聯絡",        value:"collaboration@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;">
+            <a href="/zh-tw/collaboration/submit" class="btn btn-primary" style="width:100%;justify-content:center;">提交諮詢</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">關於機構合作</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            全景研究院歡迎與工作方向符合研究院使命和研究領域的大學、研究機構、學術出版社和學術組織建立正式機構合作關係。機構合作協議為研究、出版、活動和學者交流方面的持續合作提供框架。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            正式合作通常通過諒解備忘錄（MoU）或合作協議記錄。由於研究院不具備獨立法人資格，此類文件由全景學術集團代表研究院簽署。合作條款、範圍和期限將與每個夥伴機構分別協商。
+          </p>
+
+          <div class="section-label" style="margin-bottom:14px;">典型合作活動</div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-bottom:32px;">
+            {[
+              { act:"聯合研究",          desc:"共同設計並開展雙方具有學術興趣的研究項目。" },
+              { act:"學者交流",         desc:"促進機構之間的訪問學者安排和研究員機會。" },
+              { act:"聯合出版",       desc:"聯合出版研究報告、工作論文或主編文集。" },
+              { act:"聯合組織活動",      desc:"聯合組織會議、研討會、工作坊和培訓項目。" },
+              { act:"資料與資源共享", desc:"共享研究資料、方法工具和學術資源。" },
+              { act:"能力建設",        desc:"支持研究院專業領域內的研究人員培訓與發展。" },
+            ].map((item) => (
+              <div class="card" style="border:none;border-radius:0;">
+                <h3 style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--text-main);margin-bottom:6px;">{item.act}</h3>
+                <p style="font-size:13.5px;line-height:1.6;color:var(--text-secondary);">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:12px;">如何啟動</h3>
+          <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;margin-bottom:20px;">
+            有意合作的機構可提交初步諮詢，說明機構情況、擬合作領域以及預期合作範圍和期限。合作事務辦公室將在 15 個工作日內回覆。
+          </p>
+          <a href="/zh-tw/collaboration/submit" class="btn btn-primary">提交合作諮詢</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="论文征稿" description="全景研究院活动的公开征稿启事。">
+  <PageHero
+    title="论文征稿"
+    description="全景研究院主办或联合主办会议、研讨会及其他活动的论文和摘要征集。"
+    breadcrumbs={[{ label: "学术活动", href: "/zh-cn/events" }, { label: "论文征稿" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <div style="padding:32px;background:var(--bg-soft);border:1px solid var(--border-light);margin-bottom:48px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">当前状态</div>
+          <p style="font-size:15.5px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;">
+            全景研究院目前处于基础建设阶段。当前暂无开放论文征稿。征稿发布后将在此公布，并通过研究院邮件列表发送。
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);margin:0;line-height:1.6;">
+            研究院首个大型会议计划于 2026 年举行。论文征稿预计将在活动前约六个月发布。
+          </p>
+        </div>
+
+        <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">征集流程</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+          开放论文征稿时，本页将列出活动名称、投稿截止日期、格式要求、主题和提交链接。根据活动类型，投稿可包括全文论文、扩展摘要或专题小组提案。
+        </p>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+          所有投稿均由活动学术委员会评审。被接受论文的作者将收到通知并受邀报告。研究院主办会议和研讨会中的部分报告可进一步发展为研究院工作论文或其他系列出版成果。
+        </p>
+
+        <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">未来计划征集</h2>
+        <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border-light);">
+          {[
+            { event:"首届全景学术传播国际会议", type:"论文征稿", year:"2026 年（计划中）", status:"即将开展" },
+            { event:"全景研究研讨会系列——首场活动", type:"演讲者提案", year:"2026 年（计划中）", status:"即将开展" },
+            { event:"首届期刊评价与索引工作坊", type:"工作坊提案", year:"2026 年（计划中）", status:"即将开展" },
+          ].map((item) => (
+            <div style="display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;padding:20px 24px;border-bottom:1px solid var(--border-light);">
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.08em;">{item.type}</div>
+                <div style="font-size:15px;color:var(--text-main);font-weight:500;">{item.event}</div>
+                <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">{item.year}</div>
+              </div>
+              <span class="tag tag-steel">{item.status}</span>
+            </div>
+          ))}
+        </div>
+
+        <div style="margin-top:40px;display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-cn/events/conferences" class="btn btn-primary">学术会议</a>
+          <a href="/zh-cn/events/calls-for-chapters" class="btn btn-secondary">章节征集</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:1fr auto"] { display: block !important; }
+}
+</style>

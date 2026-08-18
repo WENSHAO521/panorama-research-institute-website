@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="政策簡報" description="全景研究院政策簡報，為政策制定者與機構領導者提供基於證據的建議。">
+  <PageHero
+    title="政策簡報"
+    description="基於研究院研究成果形成的簡明循證政策簡報，為政策制定者、機構領導者和學術共同體相關方提出可操作建議。"
+    breadcrumbs={[{ label: "出版成果", href: "/zh-tw/publications" }, { label: "政策簡報" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">關於本系列</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label: "形式",          value: "政策簡報" },
+              { label: "通常篇幅",  value: "1,500–4,000 詞" },
+              { label: "評審",          value: "內部編輯評審" },
+              { label: "取得方式",          value: "開放取用" },
+              { label: "目標讀者", value: "政策制定者、機構領導者、學術共同體" },
+              { label: "DOI",             value: "已註冊（Crossref）" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">關於政策簡報</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            政策簡報是全景研究院面向政策研究的重要成果形式。它們將研究發現轉化為簡明易讀的文件，面向政策制定者、機構決策者和學術傳播生態中的相關方。每份政策簡報提出具體政策挑戰或問題，總結相關證據，並提供清晰、可操作的建議。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            政策簡報以開放取用形式發布，供政策討論、機構審議和倡議工作使用。它們是研究院參與相關研究領域現實政策討論的重要機制。
+          </p>
+
+          <div class="section-label" style="margin-bottom:12px;">已發布政策簡報</div>
+          {[
+            { num:"PB-2026-001", title:"亞太地區機構開放取用要求及其實施", center:"學術出版研究中心", date:"2026" },
+            { num:"PB-2026-002", title:"學術資料庫營運者的治理與透明度要求", center:"學術索引與評價研究中心", date:"2026" },
+            { num:"PB-2026-003", title:"青年網路安全與平台問責：比較政策分析", center:"政策與社會研究中心", date:"2026" },
+          ].map((pub) => (
+            <div class="publication-item">
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:6px;">{pub.num} &bull; {pub.center}</div>
+                <div class="pub-title">{pub.title}</div>
+              </div>
+              <div style="text-align:right;flex-shrink:0;">
+                <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.date}</div>
+                <a href="/zh-tw/publications" class="btn btn-ghost" style="font-size:13px;padding:0;">Download &rarr;</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

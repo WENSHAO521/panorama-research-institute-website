@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="POSI 学术索引项目" description="全景开放学术索引项目 — 已开发完成、等待正式上线的学术数据库。">
+  <PageHero
+    title="POSI 学术索引项目"
+    description="一个长期学术基础设施项目，旨在建立透明、全面且方法严谨的开放学术期刊索引。数据库已经开发完毕，正在等待正式上线。"
+    breadcrumbs={[{ label: "研究", href: "/zh-cn/research-areas" }, { label: "项目", href: "/zh-cn/projects" }, { label: "POSI 学术索引" }]}
+    tag="进行中的项目"
+  >
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">项目详情</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "状态",          value: "已开发完成，等待正式上线" },
+              { label: "阶段",           value: "上线前" },
+              { label: "开始日期",      value: "2026" },
+              { label: "预计发布", value: "等待正式上线" },
+              { label: "牵头中心",     value: "学术索引与评价研究中心" },
+              { label: "项目类型",    value: "开放学术基础设施" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-cn/research-centers/scholarly-indexing-evaluation" class="btn btn-primary" style="justify-content:center;">牵头中心</a>
+            <a href="/zh-cn/collaboration/research-project-proposal" class="btn btn-secondary" style="justify-content:center;">合作</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">关于项目</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            全景开放学术索引（POSI）项目是全景研究院的旗舰研究与基础设施项目。其主要目标是开发一个全面、公众可访问且方法透明的学术期刊索引，涵盖期刊编辑实践、索引状态、同行评审标准、开放获取政策、出版伦理承诺以及其他与学术质量相关的维度。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            POSI 以开放和透明为原则运行：其方法将公开形成文档，其评价标准接受学术同行审查，其数据将免费向研究人员、机构、出版社、资助方和政策制定者开放。不同于商业索引系统，POSI 对任何期刊的纳入或排除均不具有财务利益。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            POSI 被设计为一个长期基础设施项目。数据库已经开发完毕，目前处于上线前阶段，最后检查重点包括方法文档、数据质量、访问流程和公开呈现。后续阶段将扩大覆盖范围，深化数据维度，并开发更多数据访问和可视化工具。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">研究方法</div>
+      <h2 class="section-title">评价维度</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { num:"01", dim:"编辑标准",        desc:"评估编辑政策、作者指南、范围声明以及编辑决策流程的透明度。" },
+          { num:"02", dim:"同行评审实践",       desc:"记录同行评审模式（单盲、双盲、开放评审）、评审人指南和质量保障流程。" },
+          { num:"03", dim:"索引与可发现性", desc:"记录主要和次级索引（Scopus、WoS、DOAJ、ESCI、Google Scholar、Dimensions 等）的收录情况、日期和覆盖层级。" },
+          { num:"04", dim:"开放获取状态",         desc:"分类记录开放获取模式（金色、钻石、绿色、混合）、APC 水平、许可条款和权利保留政策。" },
+          { num:"05", dim:"出版伦理合规", desc:"记录期刊对 COPE 指南、撤稿政策、更正政策、作者身份标准和利益冲突披露的承诺。" },
+          { num:"06", dim:"期刊元数据质量",   desc:"评估期刊元数据的完整性和准确性，包括 ISSN、DOI 注册、文章级元数据和 ORCID 集成。" },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);margin-bottom:8px;">{item.num}</div>
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.dim}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">项目路线图</div>
+      <h2 class="section-title">发展阶段</h2>
+      <div style="max-width:780px;margin-top:8px;">
+        {[
+          { phase:"第一阶段", period:"2026", status:"当前", items:["完成 POSI 数据库开发工作","最终确定并记录 POSI 方法和评价框架","审查期刊记录的数据模型和元数据架构","准备面向公众发布的初始期刊覆盖清单","完成上线前数据质量检查","筹备公共数据库正式上线"] },
+          { phase:"第二阶段", period:"上线后", status:"即将开展", items:["将期刊覆盖范围扩展至更多学科和地区","根据用户反馈优化面向公众的数据库界面","发布 API 或结构化数据访问选项","由外部学者对 POSI 方法进行同行评审","启动机构用户计划"] },
+          { phase:"第三阶段", period:"2028+", status:"规划中", items:["拓展为获得认可的全球性资源","将 POSI 数据与开放学术基础设施（OpenAlex、Crossref）整合","建立定期更新与审查周期","根据用户反馈开发扩展数据维度","探索长期可持续治理模式"] },
+        ].map((phase) => (
+          <div style="margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--border-light);">
+            <div style="display:grid;grid-template-columns:160px 1fr;gap:40px;align-items:start;">
+              <div>
+                <div style="font-family:var(--font-serif);font-size:20px;color:var(--text-main);margin-bottom:4px;">{phase.phase}</div>
+                <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);margin-bottom:12px;">{phase.period}</div>
+                <span class={`tag ${phase.status === '当前' ? 'tag-active' : phase.status === '即将开展' ? 'tag-steel' : ''}`}>{phase.status}</span>
+              </div>
+              <div>
+                {phase.items.map((item) => (
+                  <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--bg-soft);">
+                    <span style="color:var(--text-muted);flex-shrink:0;font-size:14px;">&#8212;</span>
+                    <span style="font-size:14.5px;color:var(--text-secondary);line-height:1.7;">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"],
+  div[style*="grid-template-columns:160px 1fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

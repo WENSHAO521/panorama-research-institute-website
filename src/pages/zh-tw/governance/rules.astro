@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="治理規則" description="全景研究院內部治理規則。">
+  <PageHero
+    title="治理規則"
+    description="確立全景研究院程序、決策流程和營運標準的內部治理規則。"
+    breadcrumbs={[{ label: "治理", href: "/zh-tw/charter" }, { label: "治理規則" }]}
+    tag="治理文件"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        {[
+          { title: "1. 範圍與適用", body: "本治理規則適用於以全景研究院名義開展的所有活動，包括研究項目、出版成果、學術活動、學者計劃和合作活動。" },
+          { title: "2. 決策權限", body: "機構決策由研究院領導層依據全景學術集團治理框架作出。在明確授權範圍內，具體研究決策可由各研究中心和研究項目組作出。" },
+          { title: "3. 研究治理", body: "研究院開展或支持的所有研究均須遵守研究院研究倫理政策。研究項目啟動前須經研究院治理機構批准。" },
+          { title: "4. 出版批准", body: "以研究院名義發布的出版成果必須按照《出版與報告政策》接受審查和批准。出版成果必須達到明確的研究品質、準確性和倫理合規標準。" },
+          { title: "5. 合作治理", body: "機構合作協議須經研究院領導層審查和批准；必要時還須經全景學術集團批准。所有合作均須遵守研究院《利益衝突政策》。" },
+          { title: "6. 財務治理", body: "所有財務事項均由全景學術集團管理。研究院不持有獨立財務帳戶，也不獨立作出財務承諾。" },
+          { title: "7. 規則修訂", body: "本治理規則可由研究院領導層在獲得全景學術集團批准後修訂。修訂須遵循《修訂程序政策》規定的程序。" },
+        ].map((section) => (
+          <div style="margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{section.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{section.body}</p>
+          </div>
+        ))}
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+          <a href="/zh-tw/charter"                        class="btn btn-primary">研究院章程</a>
+          <a href="/zh-tw/governance/research-ethics"     class="btn btn-secondary">研究倫理</a>
+          <a href="/zh-tw/governance/amendment-procedure" class="btn btn-secondary">修訂程序</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

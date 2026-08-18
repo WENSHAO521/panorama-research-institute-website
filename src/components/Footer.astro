@@ -1,12 +1,15 @@
 ---
 import Logo from './Logo.astro';
+import { translate } from '../i18n/dictionary';
 import type { Lang } from '../i18n/utils';
 
 interface Props {
   lang?: Lang;
 }
-const { lang: _lang = 'en' } = Astro.props;
+const { lang = 'en' } = Astro.props;
+const t = (key: string) => translate(lang, key);
 const year = new Date().getFullYear();
+const href = (path: string) => (lang === 'en' ? path : `/${lang}${path}`);
 ---
 
 <footer class="site-footer">
@@ -14,13 +17,13 @@ const year = new Date().getFullYear();
     <div class="footer-grid">
       <!-- Brand -->
       <div class="footer-logo-area">
-        <a href="/" class="footer-logo-link" aria-label="Panorama Research Institute" data-no-translate>
+        <a href={href('/')} class="footer-logo-link" aria-label="Panorama Research Institute" data-no-translate>
           <Logo variant="light" size="sm" />
         </a>
         <div class="footer-brand-copy">
           <div class="footer-site-name">PANORAMA RESEARCH INSTITUTE</div>
-          <div class="footer-sub-name">A Division of Panorama Scholarly Group</div>
-          <p class="footer-statement">Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group and is not a separate legal entity.</p>
+          <div class="footer-sub-name">{t('A Division of Panorama Scholarly Group')}</div>
+          <p class="footer-statement">{t('Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group and is not a separate legal entity.')}</p>
           <div style="margin-top:16px;">
             <a href="mailto:research@panorama-sg.com" class="footer-link" style="font-size:13px;">research@panorama-sg.com</a>
           </div>
@@ -29,53 +32,53 @@ const year = new Date().getFullYear();
 
       <!-- Institute -->
       <div>
-        <div class="footer-col-title">Institute</div>
-        <a href="/about" class="footer-link">Overview</a>
-        <a href="/about/mission-vision" class="footer-link">Mission & Vision</a>
-        <a href="/framework" class="footer-link">Institute Framework</a>
-        <a href="/framework/organizational-structure" class="footer-link">Organizational Structure</a>
-        <a href="/contact" class="footer-link">Contact</a>
+        <div class="footer-col-title">{t('Institute')}</div>
+        <a href={href('/about')} class="footer-link">{t('Overview')}</a>
+        <a href={href('/about/mission-vision')} class="footer-link">{t('Mission & Vision')}</a>
+        <a href={href('/framework')} class="footer-link">{t('Institute Framework')}</a>
+        <a href={href('/framework/organizational-structure')} class="footer-link">{t('Organizational Structure')}</a>
+        <a href={href('/contact')} class="footer-link">{t('Contact')}</a>
       </div>
 
       <!-- Governance -->
       <div>
-        <div class="footer-col-title">Governance</div>
-        <a href="/charter" class="footer-link">Charter</a>
-        <a href="/governance/research-ethics" class="footer-link">Research Ethics</a>
-        <a href="/governance/conflict-of-interest" class="footer-link">Conflict of Interest</a>
-        <a href="/governance/publication-report-policy" class="footer-link">Publication Policy</a>
-        <a href="/governance/academic-independence" class="footer-link">Academic Independence</a>
+        <div class="footer-col-title">{t('Governance')}</div>
+        <a href={href('/charter')} class="footer-link">{t('Charter')}</a>
+        <a href={href('/governance/research-ethics')} class="footer-link">{t('Research Ethics')}</a>
+        <a href={href('/governance/conflict-of-interest')} class="footer-link">{t('Conflict of Interest')}</a>
+        <a href={href('/governance/publication-report-policy')} class="footer-link">{t('Publication Policy')}</a>
+        <a href={href('/governance/academic-independence')} class="footer-link">{t('Academic Independence')}</a>
       </div>
 
       <!-- Research -->
       <div>
-        <div class="footer-col-title">Research</div>
-        <a href="/research-centers" class="footer-link">Research Centers</a>
-        <a href="/projects" class="footer-link">Research Projects</a>
-        <a href="/publications" class="footer-link">Publications</a>
-        <a href="/events" class="footer-link">Events & Calls</a>
-        <a href="/people" class="footer-link">People</a>
+        <div class="footer-col-title">{t('Research')}</div>
+        <a href={href('/research-centers')} class="footer-link">{t('Research Centers')}</a>
+        <a href={href('/projects')} class="footer-link">{t('Research Projects')}</a>
+        <a href={href('/publications')} class="footer-link">{t('Publications')}</a>
+        <a href={href('/events')} class="footer-link">{t('Events & Calls')}</a>
+        <a href={href('/people')} class="footer-link">{t('People')}</a>
       </div>
 
       <!-- Platforms -->
       <div>
-        <div class="footer-col-title">Panorama Platforms</div>
-        <a href="https://www.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">Panorama Scholarly Group</a>
-        <a href="https://journals.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">Panorama Journals</a>
-        <a href="https://books.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">Panorama Books</a>
-        <a href="https://posi.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">POSI Database</a>
-        <a href="https://profiles.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">Scholar Profiles</a>
+        <div class="footer-col-title">{t('Panorama Platforms')}</div>
+        <a href="https://www.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">{t('Panorama Scholarly Group')}</a>
+        <a href="https://journals.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">{t('Panorama Journals')}</a>
+        <a href="https://books.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">{t('Panorama Books')}</a>
+        <a href="https://posi.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">{t('POSI Database')}</a>
+        <a href="https://profiles.panorama-sg.com" class="footer-link" target="_blank" rel="noopener">{t('Scholar Profiles')}</a>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <span>© {year} Panorama Scholarly Group. All rights reserved.</span>
+      <span>{t('© {year} Panorama Scholarly Group. All rights reserved.').replace('{year}', String(year))}</span>
       <span>
-        <a href="/charter" class="footer-link" style="display:inline;">Charter</a>
+        <a href={href('/charter')} class="footer-link" style="display:inline;">{t('Charter')}</a>
         &nbsp;&middot;&nbsp;
-        <a href="/governance/research-ethics" class="footer-link" style="display:inline;">Research Ethics</a>
+        <a href={href('/governance/research-ethics')} class="footer-link" style="display:inline;">{t('Research Ethics')}</a>
         &nbsp;&middot;&nbsp;
-        <a href="/contact" class="footer-link" style="display:inline;">Contact</a>
+        <a href={href('/contact')} class="footer-link" style="display:inline;">{t('Contact')}</a>
       </span>
     </div>
   </div>

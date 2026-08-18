@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="年度報告" description="全景研究院年度報告，呈現機構活動、研究成果與治理資訊揭露。">
+  <PageHero
+    title="年度報告"
+    description="年度報告呈現研究院每個報告年度的活動、研究成果、治理揭露和機構發展情況。"
+    breadcrumbs={[{ label: "出版成果", href: "/zh-tw/publications" }, { label: "年度報告" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">關於本系列</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label: "形式",        value: "年度機構報告" },
+              { label: "頻率",     value: "年度" },
+              { label: "涵蓋內容",        value: "日曆年度" },
+              { label: "首份報告",  value: "2026 年度報告（籌備中）" },
+              { label: "取得方式",        value: "開放取用" },
+              { label: "DOI",           value: "已註冊（Crossref）" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">關於年度報告</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            全景研究院發布涵蓋每個日曆年度機構活動的年度報告。年度報告是核心透明度與問責機制，全面記錄研究院的研究活動、出版成果、學術活動、研究員項目、治理決策和機構發展。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            年度報告包括院長致辭、各研究中心研究進展摘要、出版成果與活動完整清單、治理和政策揭露，以及下一年度機構展望。報告以開放取用形式發布，並永久保存在研究院資源庫中。
+          </p>
+
+          <div class="section-label" style="margin-bottom:16px;">年度報告</div>
+          {[
+            { year:"2026", title:"2026 年度報告——創始年度", status:"籌備中", note:"研究院首份年度報告，涵蓋基礎建設年度的運行情況。" },
+          ].map((rep) => (
+            <div style="padding:24px;border:1px solid var(--border-light);background:var(--bg-soft);">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
+                <span style="font-family:var(--font-mono);font-size:13px;color:var(--accent-steel);">{rep.status}</span>
+                <span style="font-family:var(--font-mono);font-size:14px;font-weight:600;color:var(--text-main);">{rep.year}</span>
+              </div>
+              <h3 style="font-family:var(--font-serif);font-size:20px;color:var(--text-main);margin-bottom:8px;font-weight:400;">{rep.title}</h3>
+              <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin:0;">{rep.note}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

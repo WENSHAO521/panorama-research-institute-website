@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="訪問學者" description="隸屬於全景研究院的訪問學者。">
+  <PageHero
+    title="訪問學者"
+    description="訪問學者計劃使成熟研究者能夠在特定期間與全景研究院建立隸屬關係，並與研究院學者和研究中心合作開展研究。"
+    breadcrumbs={[{ label: "學術成員", href: "/zh-tw/people" }, { label: "訪問學者" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">項目資訊</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"頭銜",        value:"全景研究院訪問學者" },
+              { label:"時長",     value:"3–12 個月" },
+              { label:"形式",       value:"遠端或線下" },
+              { label:"申請資格",  value:"成熟學者（博士或同等資歷）" },
+              { label:"申請",  value:"滾動申請（視接收能力而定）" },
+              { label:"聯絡",      value:"scholars@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;">
+            <a href="/zh-tw/collaboration/visiting-scholar-application" class="btn btn-primary" style="width:100%;justify-content:center;">申請訪問學者</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">關於訪問學者計劃</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            訪問學者計劃使其他機構的成熟研究者能夠在特定期間與全景研究院建立隸屬關係，通常為三至十二個月。在此期間，訪問學者由研究院某一研究中心接待，參與研究院學術生活，並開展雙方共同感興趣的研究。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            訪問學者可根據研究項目需要及其原機構安排，選擇線下、遠端或混合方式參與。研究院提供機構隸屬、圖書館存取和研究活動支持。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            研究院特別歡迎研究方向與當前項目高度契合、並能為現有學術共同體補充專業知識的訪問學者。
+          </p>
+
+          <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:12px;">訪問學者可獲得</h3>
+          <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:32px;">
+            {[
+              "全景研究院訪問學者機構隸屬",
+              "獲得研究院資源、網路和學術共同體支持",
+              "參與研究院活動、研討會和研究活動",
+              "獲得在研究院工作論文和報告系列發表成果的支持",
+              "獲得相關研究人員的指導和回饋",
+            ].map((item) => (
+              <div style="display:flex;gap:10px;font-size:14px;color:var(--text-secondary);padding:6px 0;border-bottom:1px solid var(--bg-main);">
+                <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{item}
+              </div>
+            ))}
+          </div>
+
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">目前學者</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+              研究院目前接受訪問學者申請。獲聘訪問學者將在隸屬期間列於本頁。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

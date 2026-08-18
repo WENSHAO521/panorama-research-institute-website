@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+
+const psgInTextRules = [
+  { type: "1 位作者", format: "(Smith 2024)" },
+  { type: "2 位作者", format: "(Smith and Lee 2024)" },
+  { type: "3 位作者", format: "(Smith, Lee, and Wang 2024)" },
+  { type: "4 位及以上作者", format: "(Smith et al. 2024)" },
+  { type: "含頁碼", format: "(Smith 2024, 25)" },
+  { type: "多項來源", format: "(Chen 2021; Kim 2022; Smith 2024)" },
+  { type: "無日期", format: "(Smith n.d.)" },
+];
+
+const psgReferenceExamples = [
+  {
+    type: "期刊論文",
+    example: "Smith, John A., Helen K. Lee, and Ming Wang. 2024. “Artificial Intelligence and Administrative Reform in Local Government.” <em>Journal of Public Governance and Society</em> 12, no. 2: 45–63. https://doi.org/10.xxxx/xxxxx",
+  },
+  {
+    type: "圖書",
+    example: "Giddens, Anthony. 1991. <em>Modernity and Self-Identity: Self and Society in the Late Modern Age.</em> Stanford: Stanford University Press.",
+  },
+  {
+    type: "網頁",
+    example: "Panorama Scholarly Group. 2026. “Publication Ethics.” Accessed June 24, 2026. https://example.com/publication-ethics",
+  },
+  {
+    type: "資料集",
+    example: "Lee, Sungho. 2024. <em>Survey Data on Digital Public Service Satisfaction in South Korea.</em> Data set. Zenodo. https://doi.org/10.xxxx/xxxxx",
+  },
+  {
+    type: "人工智慧工具",
+    example: "OpenAI. 2026. <em>ChatGPT.</em> Large language model. https://chat.openai.com/",
+  },
+];
+
+const psgFixedRules = [
+  { element: "正文引用格式", rule: "使用作者—年份括註；作者與年份之間不加逗號" },
+  { element: "年份位置", rule: "參考文獻列表中置於作者之後；不使用括號" },
+  { element: "文章標題", rule: "使用規範引號；句號置於結束引號內" },
+  { element: "DOI 格式", rule: "使用 https://doi.org/...；DOI 或 URL 後不加句號" },
+  { element: "多語言標題", rule: "原文標題後接方括號內的英文譯名" },
+  { element: "作者連接詞", rule: "使用 and，不使用 &" },
+];
+---
+<BaseLayout title="引用指南" description="在學術著作中引用全景研究院出版成果的方法。">
+  <PageHero
+    title="引用指南"
+    description="關於如何引用全景研究院出版成果的指南，包括研究報告、工作論文、政策簡報和其他成果的推薦引用格式。"
+    breadcrumbs={[{ label: "出版成果", href: "/zh-tw/publications" }, { label: "引用指南" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:48px;">
+          全景研究院所有出版成果均註冊 DOI，引用時應使用各出版記錄提供的引用資訊。以下示例按常見引用格式提供各類出版成果的推薦寫法。
+        </p>
+
+        <div style="margin-bottom:56px;padding:28px;border:1px solid var(--border-light);background:var(--bg-soft);">
+          <div class="section-label">全景學術集團引用格式</div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:14px;font-weight:400;">PSG 作者—日期引用格式</h2>
+          <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);margin-bottom:20px;">
+            PSG Format 是全景學術集團的官方作者—日期引用格式。該格式採用芝加哥作者—日期結構，吸收 APA 關於數位元資料的規範實踐，並設置適用於 DOI 規範化、多語言參考文獻、資料集、軟體、人工智慧工具和參考文獻完整性的 PSG 專門規則。
+          </p>
+          <div style="background:var(--bg-white);border:1px solid var(--border-light);padding:16px 20px;font-family:var(--font-mono);font-size:13px;line-height:1.7;color:var(--text-secondary);margin-bottom:24px;">
+            作者。年份。「文章標題。」 <em>期刊名稱</em> 卷，no. 期：頁碼。https://doi.org/...
+          </div>
+
+          <h3 style="font-family:var(--font-sans);font-size:15px;color:var(--text-main);margin-bottom:12px;font-weight:600;">正文引用</h3>
+          <div class="psg-guide-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-bottom:24px;">
+            {psgInTextRules.map((item) => (
+              <div style="background:var(--bg-white);padding:12px 14px;">
+                <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:5px;">{item.type}</div>
+                <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-main);">{item.format}</div>
+              </div>
+            ))}
+          </div>
+
+          <h3 style="font-family:var(--font-sans);font-size:15px;color:var(--text-main);margin-bottom:12px;font-weight:600;">參考文獻列表示例</h3>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:24px;">
+            {psgReferenceExamples.map((item) => (
+              <div style="background:var(--bg-white);border:1px solid var(--border-light);padding:14px 16px;">
+                <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:6px;">{item.type}</div>
+                <div style="font-family:var(--font-sans);font-size:14px;color:var(--text-secondary);line-height:1.7;" set:html={item.example}></div>
+              </div>
+            ))}
+          </div>
+
+          <h3 style="font-family:var(--font-sans);font-size:15px;color:var(--text-main);margin-bottom:12px;font-weight:600;">固定規則</h3>
+          <div class="psg-guide-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-bottom:22px;">
+            {psgFixedRules.map((item) => (
+              <div style="background:var(--bg-white);padding:12px 14px;">
+                <div style="font-size:13.5px;font-weight:600;color:var(--text-main);margin-bottom:4px;">{item.element}</div>
+                <div style="font-size:13px;line-height:1.55;color:var(--text-secondary);">{item.rule}</div>
+              </div>
+            ))}
+          </div>
+          <a href="https://posi.panorama-sg.com/psg-format/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">查看官方 PSG 格式</a>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:48px;">
+          {[
+            {
+              type: "研究報告",
+              apa: "Author, A., & Author, B. (Year). <em>研究報告標題</em> (Research Report No. RR-YYYY-00X). Panorama Research Institute. https://doi.org/10.XXXXX/YYYYY",
+              chicago: "Author, A., and B. Author. <em>研究報告標題。</em> Research Report No. RR-YYYY-00X. Singapore: Panorama Research Institute, Year. https://doi.org/10.XXXXX/YYYYY",
+              mla: 'Author, A., and B. Author. <em>研究報告標題。</em> Research Report No. RR-YYYY-00X, Panorama Research Institute, Year, doi:10.XXXXX/YYYYY.',
+            },
+            {
+              type: "工作論文",
+              apa: "Author, A. (Year). <em>工作論文標題</em> (Working Paper No. WP-YYYY-00X). Panorama Research Institute. https://doi.org/10.XXXXX/YYYYY",
+              chicago: "Author, A. <em>工作論文標題。</em> Working Paper No. WP-YYYY-00X. Singapore: Panorama Research Institute, Year. https://doi.org/10.XXXXX/YYYYY",
+              mla: 'Author, A. <em>工作論文標題。</em> Working Paper No. WP-YYYY-00X, Panorama Research Institute, Year, doi:10.XXXXX/YYYYY.',
+            },
+            {
+              type: "政策簡報",
+              apa: "Author, A. (Year). <em>政策簡報標題</em> (Policy Brief No. PB-YYYY-00X). Panorama Research Institute. https://doi.org/10.XXXXX/YYYYY",
+              chicago: "Author, A. <em>政策簡報標題。</em> Policy Brief No. PB-YYYY-00X. Singapore: Panorama Research Institute, Year. https://doi.org/10.XXXXX/YYYYY",
+              mla: 'Author, A. <em>政策簡報標題。</em> Policy Brief No. PB-YYYY-00X, Panorama Research Institute, Year, doi:10.XXXXX/YYYYY.',
+            },
+          ].map((item) => (
+            <div style="padding-bottom:48px;border-bottom:1px solid var(--border-light);">
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:24px;font-weight:400;">{item.type}</h2>
+              <div style="display:flex;flex-direction:column;gap:20px;">
+                {[
+                  { style: "APA 第 7 版", content: item.apa },
+                  { style: "芝加哥格式第 18 版", content: item.chicago },
+                  { style: "MLA 第 9 版", content: item.mla },
+                ].map((cs) => (
+                  <div>
+                    <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:8px;">{cs.style}</div>
+                    <div style="background:var(--bg-soft);border:1px solid var(--border-light);padding:16px 20px;font-family:var(--font-sans);font-size:14.5px;color:var(--text-secondary);line-height:1.7;" set:html={cs.content}></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style="margin-top:48px;">
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">機構引用</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            整體引用研究院時（例如引用研究院的一般立場或持續工作），請使用以下格式：
+          </p>
+          <div style="background:var(--bg-soft);border:1px solid var(--border-light);padding:16px 20px;font-family:var(--font-sans);font-size:14.5px;color:var(--text-secondary);line-height:1.7;">
+            全景研究院（年份）。 <em>［被引用內容說明］</em>。全景研究院。取自［URL］
+          </div>
+          <p style="font-size:15px;line-height:1.8;color:var(--text-secondary);margin-top:16px;">
+            說明：使用機構作者時，機構名稱置於作者位置。全景研究院作為全景學術集團內部部門運行；若出版成果列明具體作者，應列出該作者，並在其後註明機構隸屬。
+          </p>
+        </div>
+
+        <div style="margin-top:40px;display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-tw/publications" class="btn btn-primary">全部出版成果</a>
+          <a href="/zh-tw/governance/publication-report-policy" class="btn btn-secondary">出版政策</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+@media (max-width: 700px) {
+  .psg-guide-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+</style>

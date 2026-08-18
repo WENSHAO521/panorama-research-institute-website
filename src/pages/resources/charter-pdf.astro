@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+const lang = Astro.currentLocale ?? 'en';
 ---
 <BaseLayout title="Institute Charter (PDF)" description="Download the Panorama Research Institute Charter in PDF format.">
   <PageHero
@@ -40,9 +41,9 @@ import PageHero from '../../components/PageHero.astro';
             </div>
             <div style="display:flex;gap:10px;margin-top:24px;flex-wrap:wrap;">
               <a href="/charter" class="btn btn-primary">Read Online</a>
-              <a href="/documents/panorama-research-institute-charter-en.pdf" class="btn btn-secondary" download data-language-variant="en">Download English PDF</a>
-              <a href="/documents/panorama-research-institute-charter-cn.pdf" class="btn btn-secondary" download data-language-variant="zh-cn">Download Simplified Chinese PDF</a>
-              <a href="/documents/panorama-research-institute-charter-cn-tw.pdf" class="btn btn-secondary" download data-language-variant="zh-tw">Download Traditional Chinese PDF</a>
+              {lang === 'en' && <a href="/documents/panorama-research-institute-charter-en.pdf" class="btn btn-secondary" download>Download English PDF</a>}
+              {lang === 'zh-cn' && <a href="/documents/panorama-research-institute-charter-cn.pdf" class="btn btn-secondary" download>Download Simplified Chinese PDF</a>}
+              {lang === 'zh-tw' && <a href="/documents/panorama-research-institute-charter-cn-tw.pdf" class="btn btn-secondary" download>Download Traditional Chinese PDF</a>}
             </div>
           </div>
         </div>

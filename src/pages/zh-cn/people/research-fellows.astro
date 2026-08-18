@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="研究员" description="隶属于全景研究院的研究员。">
+  <PageHero
+    title="研究员"
+    description="研究员是全景研究院核心学术共同体，为研究院项目贡献原创研究、出版成果和智识领导力。"
+    breadcrumbs={[{ label: "学术成员", href: "/zh-cn/people" }, { label: "研究员" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">研究员项目信息</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"头衔",       value:"全景研究院研究员" },
+              { label:"时长",    value:"通常 1–3 年，可续期" },
+              { label:"形式",      value:"远程 / 分布式（无需搬迁）" },
+              { label:"成果要求",      value:"每年至少在研究院项目中产出一项出版成果" },
+              { label:"申请", value:"开放申请（滚动评审）" },
+              { label:"联系",     value:"fellows@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;">
+            <a href="/zh-cn/collaboration/research-fellow-application" class="btn btn-primary" style="width:100%;justify-content:center;">立即申请</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">关于研究员</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            研究员是全景研究院主要学术成员。他们通过原创研究、出版成果以及参与研究院活动，正式承诺为研究院研究项目作出贡献。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            研究员隶属于研究院一个或多个研究中心，并为该中心职责范围内的进行中项目作出贡献。他们也可提出并牵头新的研究项目，但须经研究院研究委员会评审。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            研究员身份为志愿性学术任命。研究员保留既有机构隶属，无需搬迁。研究院旨在建设覆盖多个国家和学科背景、具有地理多样性的研究员群体。
+          </p>
+
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);margin-bottom:32px;">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">当前成员</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+              研究院目前处于基础建设阶段，正在建设首批研究员队伍。申请现已开放。获聘研究员将在任命后列于本页。
+            </p>
+          </div>
+
+          <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--text-main);margin-bottom:12px;">研究员职责</h3>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            {[
+              "每个研究员年度至少为研究院工作论文或其他系列贡献一项出版成果",
+              "每年至少参加一次研究院研讨会、工作坊或会议活动",
+              "持续积极参与研究院研究项目和学术共同体",
+              "遵守研究院研究伦理与治理政策",
+              "披露与研究院研究领域相关的任何利益冲突",
+            ].map((item) => (
+              <div style="display:flex;gap:10px;font-size:14px;color:var(--text-secondary);padding:6px 0;border-bottom:1px solid var(--bg-main);">
+                <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

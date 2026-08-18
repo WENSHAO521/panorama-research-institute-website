@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="研究院领导" description="全景研究院领导层，包括院长及各部门负责人。">
+  <PageHero
+    title="研究院领导"
+    description="全景研究院领导团队负责研究院整体方向、治理、研究项目和机构运行。"
+    breadcrumbs={[{ label: "学术成员", href: "/zh-cn/people" }, { label: "领导团队" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:48px;">
+          全景研究院由院长领导，院长负责研究院整体学术方向、治理合规、外部代表和机构发展。院长由各部门协调员支持，后者管理研究、出版、活动、学者和合作等方面的运行活动。
+        </p>
+
+        <div class="section-label" style="margin-bottom:16px;">研究院领导</div>
+        <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border-light);margin-bottom:48px;">
+          {[
+            { role:"全景研究院院长", name:"Dr. Zeyu Wang", note:"研究院院长负责整体学术方向、治理、外部代表和机构发展。" },
+            { role:"研究主任 / 研究中心协调", name:"待公布", note:"负责研究中心之间的协调、项目监督和研究质量保障。" },
+            { role:"出版协调员", name:"待公布", note:"负责研究院出版项目、编辑流程和开放获取合规。" },
+            { role:"活动协调员", name:"待公布", note:"负责研究院会议、研讨会、工作坊和培训活动项目。" },
+            { role:"学者计划协调员", name:"待公布", note:"负责研究员、访问学者和研究助理的招募、入职和支持。" },
+            { role:"合作协调员", name:"待公布", note:"负责外部伙伴关系、机构合作协议和合作咨询。" },
+          ].map((item) => (
+            <div style="padding:24px;border-bottom:1px solid var(--border-light);">
+              <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{item.role}</div>
+              <div style="font-size:16px;color:var(--text-main);font-weight:500;margin-bottom:8px;">{item.name}</div>
+              <div style="font-size:14px;color:var(--text-secondary);line-height:1.6;">{item.note}</div>
+            </div>
+          ))}
+        </div>
+
+        <div class="section-label" style="margin-bottom:16px;">研究中心主任</div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+          {[
+            { center:"学术出版研究中心", director:"待公布" },
+            { center:"学术索引与评价研究中心", director:"待公布" },
+            { center:"政策与社会研究中心", director:"待公布" },
+            { center:"人工智能与未来社会研究中心", director:"待公布（预计 2026 年）" },
+          ].map((item) => (
+            <div class="card" style="border:none;border-radius:0;">
+              <div style="font-size:13px;font-family:var(--font-sans);font-weight:600;color:var(--text-main);margin-bottom:8px;">{item.center}</div>
+              <div style="font-size:13.5px;color:var(--text-muted);">{item.director}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

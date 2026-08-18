@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="研究提案範本" description="下載全景研究院官方研究項目提案範本。">
+  <PageHero
+    title="研究提案範本"
+    description="用於向全景研究院提交研究項目提案的官方範本。請使用此範本準備完整且結構正確的提案。"
+    breadcrumbs={[{ label: "資源", href: "/zh-tw/resources" }, { label: "範本", href: "/zh-tw/resources/templates" }, { label: "研究提案範本" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">範本資訊</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"形式",        value:"Microsoft Word（.docx）" },
+              { label:"版本",       value:"v1.0（2026）" },
+              { label:"取得方式",        value:"開放使用——無需註冊" },
+              { label:"適用範圍",  value:"研究項目提案提交" },
+              { label:"相關表格",  value:"研究項目提案（網頁表格）" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-tw/resources/templates" class="btn btn-primary" style="justify-content:center;">下載範本</a>
+            <a href="/zh-tw/collaboration/research-project-proposal" class="btn btn-secondary" style="justify-content:center;">通過網頁表格提交</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">使用範本</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:28px;">
+            研究提案範本為向研究院提交材料提供結構化格式，包括佔位文本、格式指南和章節說明。提交前請完成所有章節；不完整提案將被退回。
+          </p>
+
+          <div class="section-label" style="margin-bottom:14px;">範本結構</div>
+          <div style="border:1px solid var(--border-light);">
+            {[
+              { sec:"封面頁",                      note:"項目標題、負責人資訊、擬議研究中心、提交日期" },
+              { sec:"1. 項目標題與概述",   note:"簡明標題和 200 詞摘要" },
+              { sec:"2. 研究問題",           note:"具體且清晰表述的研究問題" },
+              { sec:"3. 背景與理由",     note:"背景、文獻綜述摘要、研究理由" },
+              { sec:"4. 研究方法",                  note:"研究設計、方法和理由" },
+              { sec:"5. 預期成果",             note:"出版成果、資料集或其他成果及時間表" },
+              { sec:"6. 擬歸屬研究中心",     note:"首選研究院研究中心隸屬" },
+              { sec:"7. 負責人學術簡介",      note:"學術簡介與相關出版物" },
+              { sec:"8. 共同研究者（如有）",    note:"姓名、機構和角色" },
+              { sec:"倫理聲明",              note:"說明任何倫理考量" },
+            ].map((item) => (
+              <div style="display:grid;grid-template-columns:180px 1fr;gap:16px;padding:14px 20px;border-bottom:1px solid var(--border-light);">
+                <div style="font-size:13.5px;font-weight:600;color:var(--text-main);">{item.sec}</div>
+                <div style="font-size:13px;color:var(--text-secondary);">{item.note}</div>
+              </div>
+            ))}
+          </div>
+
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.6;margin-top:20px;">
+            提案可透過電子郵件附件提交至 <span style="color:var(--accent-steel);">research@panorama-sg.com</span> 或透過網頁表單提交。郵件提交時主旨應為：「研究提案 — ［您的姓名］ — ［工作標題］」。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:180px 1fr"] { display: block !important; }
+}
+</style>

@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { featuredProjects } from '../../data/site';
+
+const allProjects = [
+  ...featuredProjects,
+  {
+    status: "進行中",
+    title: "學術出版標準項目",
+    desc: "該項目致力於制定編輯標準、出版倫理指南、研究誠信政策和學術傳播框架。",
+    href: "/zh-tw/projects/scholarly-publishing-standards",
+  },
+];
+
+const filters = ["全部", "進行中", "等待上線", "開發中", "參與徵集", "已完成"];
+---
+
+<BaseLayout
+  title="研究項目"
+  description="全景研究院開發和支持的當前及過往研究項目。"
+>
+  <PageHero
+    title="研究項目"
+    description="全景研究院通過各研究中心和研究領域開發或支持的當前研究項目。"
+    breadcrumbs={[{ label: "研究" }, { label: "項目" }]}
+  />
+
+  <!-- Filter Bar -->
+  <section style="background:var(--bg-white);border-bottom:1px solid var(--border-light);padding:20px 0;">
+    <div class="container">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        {filters.map((f, i) => (
+          <button class={`tag ${i === 0 ? 'tag-active' : ''}`} style="cursor:pointer;" type="button">
+            {f}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Project List -->
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+        {allProjects.map((p) => (
+          <div class="project-card" style="border:none;border-radius:0;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+              <span class={`tag ${p.status === '進行中' || p.status === '等待上線' ? 'tag-active' : p.status === '參與徵集' ? 'tag-steel' : ''}`}>
+                {p.status}
+              </span>
+            </div>
+            <h2 class="project-title">{p.title}</h2>
+            <p class="project-desc">{p.desc}</p>
+            <a href={p.href} style="display:inline-flex;align-items:center;gap:6px;margin-top:24px;font-size:13.5px;font-weight:500;color:var(--accent-steel);font-family:var(--font-sans);">
+              View Project Details &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Fields Guide -->
+  <section class="section-compact" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">項目資訊</div>
+      <h2 class="section-title">每個項目包含的內容</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;">
+        {[
+          "項目標題與狀態",
+          "研究中心",
+          "項目週期",
+          "研究團隊",
+          "背景與目標",
+          "研究問題",
+          "研究方法",
+          "預期成果",
+          "相關出版成果",
+        ].map((field) => (
+          <div style="display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--border-light);">
+            <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:12px;flex-shrink:0;width:20px;">&#8212;</span>
+            <span style="font-size:14px;color:var(--text-secondary);">{field}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Submit Proposal CTA -->
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:8px;">有研究項目提案？</h2>
+          <p style="font-size:15px;color:var(--text-secondary);">研究院歡迎提交與本院研究領域相契合的新研究項目提案。</p>
+        </div>
+        <a href="/zh-tw/collaboration/research-project-proposal" class="btn btn-primary">提交提案</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { grid-template-columns: 1fr !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
+}
+</style>

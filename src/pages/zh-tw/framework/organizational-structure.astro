@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+
+const orgUnits = [
+  { unit: "研究院辦公室",             role: "行政、治理與傳播" },
+  { unit: "研究中心",             role: "學術研究與項目管理" },
+  { unit: "研究項目組",                role: "項目執行與研究交付" },
+  { unit: "學術出版事務部",            role: "研究報告、工作論文、簡報" },
+  { unit: "學術活動事務部",         role: "會議、研討會、工作坊" },
+  { unit: "學者計劃", role: "研究員、訪問學者、研究助理" },
+  { unit: "合作事務辦公室",         role: "夥伴關係、提案、機構諒解備忘錄" },
+  { unit: "研究倫理與學術規範辦公室", role: "研究倫理、學術規範與合規" },
+];
+---
+<BaseLayout title="組織架構" description="全景研究院組織架構。">
+  <PageHero
+    title="組織架構"
+    description="全景研究院的內部組織架構，包括行政單位、研究中心和學術計劃。"
+    breadcrumbs={[{ label: "研究院", href: "/zh-tw/about" }, { label: "框架", href: "/zh-tw/framework" }, { label: "組織架構" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div class="section-label">治理層級</div>
+      <h2 class="section-title">在全景學術集團中的定位</h2>
+      <div class="org-structure-card">
+        <div class="org-hierarchy">
+          <div class="org-node org-node-parent">
+            全景學術集團
+          </div>
+          <div class="org-connector"></div>
+          <div class="org-node org-node-institute">
+            全景研究院
+          </div>
+          <div class="org-branch"></div>
+          <div class="org-unit-grid">
+            {orgUnits.map((u, index) => (
+              <div class="org-unit-card">
+                <div class="org-unit-index">{String(index + 1).padStart(2, '0')}</div>
+                <div>
+                  <div class="org-unit-title">{u.unit}</div>
+                  <div class="org-unit-role">{u.role}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">行政單位</div>
+      <h2 class="section-title">部門與職能</h2>
+      <div style="margin-top:8px;">
+        {[
+          {
+            unit: "研究院辦公室",
+            head: "全景研究院院長",
+            desc: "研究院辦公室負責整體行政、治理合規、傳播、人力資源以及各部門之間的協調，維護研究院正式記錄，管理機構往來，並作為外部諮詢的主要聯絡點。",
+            functions: ["治理行政與合規", "官方傳播與媒體", "學者與員工協調", "與全景學術集團進行預算協調", "網站與數位呈現管理"],
+          },
+          {
+            unit: "研究中心",
+            head: "研究主任 / 研究中心主任",
+            desc: "研究中心是研究院的主要學術單位。每個中心都有明確的主題任務、專門主任和關聯研究團隊。各中心開發和管理研究項目、產出出版成果、組織活動，並建設與其領域相關的夥伴關係。",
+            functions: ["研究項目開發與管理", "研究中心專項出版項目", "研究中心組織的學術活動與研討會", "訪問學者與項目貢獻者參與", "研究中心領域內的夥伴關係開發"],
+          },
+          {
+            unit: "研究項目組",
+            head: "項目負責人 / 首席研究員",
+            desc: "研究項目組圍繞已批准的研究計劃組建，負責實施研究方案、協調參與人員、維護項目文件，並按照研究院規範交付研究成果。",
+            functions: ["研究計劃實施", "貢獻者協調與任務管理", "項目文件與進度追蹤", "項目成果準備", "與相關研究中心協調"],
+          },
+          {
+            unit: "學術出版事務部",
+            head: "出版協調員",
+            desc: "學術出版事務部負責管理研究院所有出版成果的編輯、製作和傳播流程，包括研究報告、工作論文、政策簡報、主編文集和年度報告。",
+            functions: ["編輯審查與品質控制", "出版物排版與製作", "開放取用傳播", "引用與後設資料管理", "出版倫理合規"],
+          },
+          {
+            unit: "學術活動事務部",
+            head: "活動協調員",
+            desc: "學術活動事務部負責規劃和管理研究院的會議、研討會、工作坊和培訓計劃，協調論文和章節徵集，管理註冊與會務，並在適用情況下製作活動論文集。",
+            functions: ["會議與研討會規劃協調", "工作坊與培訓項目實施", "論文與章節徵集管理", "活動論文集與文件", "演講嘉賓與參會者管理"],
+          },
+          {
+            unit: "學者計劃",
+            head: "學者計劃協調員",
+            desc: "學者計劃負責研究員、副研究員、訪問學者和研究助理的招募、入職和支持，維護學者檔案，並與研究中心協調學者安排。",
+            functions: ["研究員申請審查與入職", "訪問學者協調", "研究助理監督", "學者檔案維護", "顧問委員會聯絡"],
+          },
+          {
+            unit: "合作事務辦公室",
+            head: "合作協調員",
+            desc: "合作事務辦公室負責管理研究院對外夥伴關係事務，包括機構合作協議、外部研究項目提案、主編文集和特刊提案，以及活動聯合組織申請。",
+            functions: ["機構合作協議", "外部研究提案審查", "夥伴關係與諒解備忘錄管理", "活動聯合組織管理", "合作諮詢回覆"],
+          },
+          {
+            unit: "研究倫理與學術規範辦公室",
+            head: "研究倫理與學術規範協調員",
+            desc: "研究倫理與學術規範辦公室負責支持研究倫理審查、研究誠信、資料文件管理和學術規範建設，並覆蓋研究院各類研究活動與成果。",
+            functions: ["研究倫理審查支持", "研究誠信指導", "資料與文件規範", "項目成果規範一致性審查", "與研究院治理政策相關的合規協調"],
+          },
+        ].map((unit) => (
+          <div style="padding:36px 0;border-bottom:1px solid var(--border-light);">
+            <div style="display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:start;">
+              <div>
+                <h2 style="font-family:var(--font-serif);font-size:20px;color:var(--text-main);margin-bottom:8px;font-weight:400;">{unit.unit}</h2>
+                <div style="font-size:12.5px;color:var(--text-muted);font-family:var(--font-sans);line-height:1.5;">{unit.head}</div>
+              </div>
+              <div>
+                <p style="font-size:15px;line-height:1.8;color:var(--text-secondary);margin-bottom:16px;">{unit.desc}</p>
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  {unit.functions.map((fn) => (
+                    <div style="display:flex;gap:10px;font-size:13.5px;color:var(--text-secondary);">
+                      <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{fn}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">研究中心</div>
+      <h2 class="section-title">運行中與規劃中的研究中心</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { num: "01", name: "學術出版研究中心",        status: "進行中",   href: "/zh-tw/research-centers/scholarly-publishing-studies" },
+          { num: "02", name: "學術索引與評價研究中心",   status: "進行中",   href: "/zh-tw/research-centers/scholarly-indexing-evaluation" },
+          { num: "03", name: "政策與社會研究中心",          status: "進行中",   href: "/zh-tw/research-centers/policy-social-research" },
+          { num: "04", name: "人工智慧與未來社會研究中心",               status: "即將開展", href: "/zh-tw/research-centers/ai-future-society" },
+          { num: "05", name: "教育與學習研究中心",     status: "規劃中",  href: "/zh-tw/research-centers" },
+          { num: "06", name: "藝術、文化與具身研究中心",        status: "規劃中",  href: "/zh-tw/research-centers" },
+        ].map((c) => (
+          <a href={c.href} class="card" style="border:none;border-radius:0;display:block;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+              <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);">{c.num}</span>
+              <span class={`tag ${c.status === '進行中' ? 'tag-active' : c.status === '即將開展' ? 'tag-steel' : ''}`}>{c.status}</span>
+            </div>
+            <div style="font-family:var(--font-serif);font-size:17px;color:var(--text-main);line-height:1.3;">{c.name}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:220px 1fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

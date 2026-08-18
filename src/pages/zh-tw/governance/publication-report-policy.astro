@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="出版與報告政策" description="全景研究院出版與報告政策。">
+  <PageHero
+    title="出版與報告政策"
+    description="以研究院名義發布研究報告、工作論文、政策簡報、主編文集及其他出版成果的標準與程序。"
+    breadcrumbs={[{ label: "治理", href: "/zh-tw/charter" }, { label: "出版與報告政策" }]}
+    tag="治理文件"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        {[
+          { title: "範圍", body: "本政策適用於以全景研究院名義發布的所有出版成果，包括研究報告、工作論文、政策簡報、主編文集、會議論文集和年度報告。" },
+          { title: "出版標準", body: "所有出版成果必須符合研究院關於研究嚴謹性、準確性、清晰度和研究倫理合規性的品質標準。出版成果必須為原創，且不得侵犯第三方智慧財產權。" },
+          { title: "批准流程", body: "所有出版成果發布前均須由指定評審人審查並批准。工作論文可採用快速評審流程；研究報告和主編文集須接受更全面的評審。" },
+          { title: "作者身分政策", body: "作者身分必須反映真實智識貢獻。所有作者必須在出版前批准最終版本。致謝必須準確標明其他貢獻者。" },
+          { title: "揭露要求", body: "出版成果必須揭露研究院與全景學術集團的隸屬關係，以及任何相關資助來源、利益衝突或機構關係。" },
+          { title: "開放取用", body: "研究院支持研究成果開放取用。在可能情況下，出版成果將在研究院網站公開發布。特定情況下可設定禁發期。" },
+          { title: "版權與授權", body: "研究院出版成果的版權由全景學術集團持有。在適當情況下，出版成果通常依據知識共享授權發布。具體授權條款將在各出版物中說明。" },
+          { title: "撤稿與更正", body: "如發現出版成果存在錯誤或不端行為，研究院將酌情發布更正或撤稿。撤稿通知將被清楚標識，並與原出版物永久關聯。" },
+        ].map((s) => (
+          <div style="margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{s.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+          </div>
+        ))}
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-tw/publications"              class="btn btn-primary">查看出版成果</a>
+          <a href="/zh-tw/governance/research-ethics"class="btn btn-secondary">研究倫理</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

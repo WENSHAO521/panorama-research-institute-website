@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="研究伦理" description="全景研究院研究伦理原则与指南。">
+  <PageHero
+    title="研究伦理"
+    description="指导全景研究院开展或支持的所有研究活动的伦理原则与标准。"
+    breadcrumbs={[{ label: "治理", href: "/zh-cn/charter" }, { label: "研究伦理" }]}
+    tag="治理文件"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        {[
+          { title: "诚信与诚实", body: "所有研究均须以诚信和诚实原则开展与报告。严禁捏造、篡改和剽窃。研究者必须准确呈现其方法、数据和发现。" },
+          { title: "研究设计与方法", body: "研究必须采用适当且严谨的方法进行设计和实施。研究者负责确保其方法和数据的有效性与可靠性。" },
+          { title: "知情同意与参与者保护", body: "涉及人类参与者的研究必须取得适当的知情同意。参与者的隐私、保密性和福祉必须在研究全过程中受到保护。" },
+          { title: "数据管理与透明度", body: "研究数据必须按照研究院《数据与文档政策》进行收集、管理和存储。在可能且适当的情况下，鼓励数据透明和开放。" },
+          { title: "作者身份与署名", body: "作者身份必须反映对研究的真实智识贡献。禁止荣誉署名或赠予署名。所有贡献者均应得到适当致谢。" },
+          { title: "同行评审诚信", body: "参与同行评审的研究者必须保守机密、避免利益冲突，并提供诚实且建设性的评价。" },
+          { title: "报告与披露", body: "研究者必须在出版成果和报告中披露所有相关隶属关系、资助来源和潜在利益冲突。" },
+          { title: "不端行为处理", body: "研究不端指控应报告研究院领导层，并将按照研究院治理程序进行调查。禁止对善意举报不端行为者进行报复。" },
+        ].map((s) => (
+          <div style="margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{s.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+          </div>
+        ))}
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-cn/charter"                             class="btn btn-primary">研究院章程</a>
+          <a href="/zh-cn/governance/conflict-of-interest"     class="btn btn-secondary">利益冲突</a>
+          <a href="/zh-cn/governance/publication-report-policy"class="btn btn-secondary">出版政策</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

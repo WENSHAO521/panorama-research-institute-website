@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="名稱與標誌使用" description="全景研究院名稱與標識的授權使用指南。">
+  <PageHero
+    title="名稱與標誌使用"
+    description="關於在出版物、活動和傳播中授權使用全景研究院名稱、標誌和機構身份的指南。"
+    breadcrumbs={[{ label: "治理", href: "/zh-tw/charter" }, { label: "名稱與標誌使用" }]}
+    tag="治理文件"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        <div class="statement-box" style="margin-bottom:40px;">
+          <p style="font-size:15.5px;line-height:1.75;color:var(--text-secondary);">
+            全景研究院名稱、標誌和機構身份僅限授權用途使用。未經授權的使用被禁止，並可能構成虛假陳述。
+          </p>
+        </div>
+        {[
+          { title: "授權使用", body: "關聯研究者和正式合作夥伴可在出版物、報告和傳播中使用研究院名稱和標誌，但該使用必須準確反映其與研究院工作的真實關聯或貢獻。" },
+          { title: "禁止使用", body: "不得使用研究院名稱和標誌暗示研究院認可未經批准的產品、服務或立場；不得歪曲隸屬關係；也不得以任何虛假、誤導或可能損害研究院聲譽的方式使用。" },
+          { title: "標誌規範", body: "研究院標誌必須以原始形式使用，不得修改。顏色變體、尺寸調整和替代格式必須符合資源欄目提供的標誌使用指南。" },
+          { title: "出版物使用", body: "研究院出版物必須在封面或題名頁標明研究院名稱，並在適當情況下使用標誌。必須包含關於研究院與全景學術集團關係的機構聲明。" },
+          { title: "活動使用", body: "由研究院組織或聯合組織的活動，可按照本指南使用研究院名稱和標誌。聯合組織活動必須清楚區分研究院名稱與其他共同組織方名稱。" },
+          { title: "第三方使用", body: "第三方如需引用研究院工作，必須準確表述，且不得在未獲研究院書面授權的情況下暗示存在隸屬關係或背書。" },
+          { title: "申請授權", body: "如需將研究院名稱或標誌用於上述範圍之外的用途，應向 research@panorama-sg.com 提交授權申請。" },
+        ].map((s) => (
+          <div style="margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{s.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+          </div>
+        ))}
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-tw/resources/logo-usage-guidelines" class="btn btn-primary">標誌使用指南 PDF</a>
+          <a href="/zh-tw/contact"                          class="btn btn-secondary">申請授權</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

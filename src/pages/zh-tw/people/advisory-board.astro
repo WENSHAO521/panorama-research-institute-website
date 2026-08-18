@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="顧問委員會" description="全景研究院顧問委員會。">
+  <PageHero
+    title="顧問委員會"
+    description="全景研究院顧問委員會提供戰略指導、學術專業支持和外部監督，以支持研究院的研究品質、治理和機構發展。"
+    breadcrumbs={[{ label: "學術成員", href: "/zh-tw/people" }, { label: "顧問委員會" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;margin-bottom:48px;">
+          <div>
+            <div class="section-label">委員會資訊</div>
+            <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+              {[
+                { label:"狀態",             value:"組建中" },
+                { label:"目標規模",        value:"5–9 名成員" },
+                { label:"任期",               value:"2 年，可續任" },
+                { label:"會議頻率",  value:"每年至少一次" },
+                { label:"角色",               value:"顧問性質（非執行）" },
+              ].map((item) => (
+                <div>
+                  <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                  <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">關於顧問委員會</h2>
+            <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+              全景研究院顧問委員會是為研究院提供戰略指導和學術專業支持的獨立機構。顧問委員會成員為在研究院研究領域具有深厚專業知識的傑出學者、機構領導者和實踐者。他們僅承擔顧問職責，不對研究院運行擁有執行權。
+            </p>
+            <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+              顧問委員會就研究優先事項、出版品質、治理事務和戰略發展向研究院提供建議，同時為研究院學術標準和獨立性提供外部同儕監督機制。
+            </p>
+          </div>
+        </div>
+
+        <div class="section-label" style="margin-bottom:16px;">顧問委員會職能</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-bottom:48px;">
+          {[
+            { fn:"戰略指導", desc:"就研究優先事項、機構戰略和研究院項目長期發展提供建議。" },
+            { fn:"品質監督",  desc:"對研究院出版標準、研究倫理和學術治理提供外部同儕監督。" },
+            { fn:"網絡支持",    desc:"協助研究院連接相關學術網絡、夥伴機構和學術共同體。" },
+          ].map((item) => (
+            <div class="card" style="border:none;border-radius:0;">
+              <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.fn}</h3>
+              <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div style="padding:28px;background:var(--bg-soft);border:1px solid var(--border-light);">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">組建狀態</div>
+          <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;">
+            研究院顧問委員會目前處於組建階段。顧問委員會成員預計於 2026 年公布。研究院正在與來自學術出版、學術研究和高等教育政策共同體的潛在成員溝通。
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);margin:0;line-height:1.6;">
+            有意為研究院學術治理和發展作出貢獻的學者，歡迎通過研究院聯絡信箱表達意向。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

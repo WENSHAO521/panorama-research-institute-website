@@ -1,4 +1,7 @@
 ---
+import { translate } from '../i18n/dictionary';
+import type { Lang } from '../i18n/utils';
+
 interface Props {
   title: string;
   description?: string;
@@ -7,7 +10,15 @@ interface Props {
   homeLabel?: string;
   homeHref?: string;
 }
-const { title, description, breadcrumbs, tag, homeLabel = 'Home', homeHref = '/' } = Astro.props;
+const lang = (Astro.currentLocale as Lang) ?? 'en';
+const {
+  title,
+  description,
+  breadcrumbs,
+  tag,
+  homeLabel = translate(lang, 'Home'),
+  homeHref = lang === 'en' ? '/' : `/${lang}`,
+} = Astro.props;
 ---
 
 <section class="page-hero">

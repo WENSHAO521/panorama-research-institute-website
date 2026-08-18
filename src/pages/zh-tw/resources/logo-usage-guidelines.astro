@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="標誌與名稱使用指南" description="正確使用全景研究院名稱與標識的指南。">
+  <PageHero
+    title="標誌與名稱使用指南"
+    description="關於在出版物、簡報、活動和數位傳播中正確使用全景研究院名稱、標誌和視覺識別的官方指南。"
+    breadcrumbs={[{ label: "資源", href: "/zh-tw/resources" }, { label: "標誌使用指南" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <div class="statement-box" style="margin-bottom:48px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">使用說明</div>
+          <p style="font-size:16px;line-height:1.8;color:var(--text-secondary);margin:0;">
+            全景研究院名稱和標誌僅可用於研究院正式授權的工作。未經明確書面許可，不得在出版物、活動、網站或通信中擅自使用研究院名稱或標誌。
+          </p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:48px;">
+          {[
+            {
+              title: "允許使用",
+              content: "研究院名稱和標誌可由以下主體使用：",
+              items: [
+                "研究員、副研究員和訪問學者，在與研究院支持下開展的工作相關時使用",
+                "研究院出版成果共同作者，在引用其研究院隸屬時使用",
+                "夥伴機構，在正式文件中提及與研究院合作時使用",
+                "活動聯合組織方，在經研究院學術活動事務部批准的活動材料中使用",
+                "媒體和新聞機構，在準確事實報導研究院及其活動時使用",
+              ],
+            },
+            {
+              title: "禁止使用",
+              content: "明確禁止以下研究院名稱和標誌使用方式：",
+              items: [
+                "暗示研究院認可未經正式授權的立場、產品、出版物或活動",
+                "未經明確書面許可，將研究院名稱或標誌用於商業活動",
+                "修改、扭曲或將研究院標誌與其他視覺元素組合",
+                "使用研究院名稱或標誌表示不存在或已經終止的隸屬關係",
+                "在未經研究院正式批准的出版物標題或封面中包含研究院名稱",
+              ],
+            },
+            {
+              title: "名稱使用",
+              content: "在文本中提及研究院時，請使用以下形式：",
+              items: [
+                "全稱：Panorama Research Institute",
+                '簡稱（首次提及後）：the Institute',
+                '含母體機構："Panorama Research Institute, an internal research division of Panorama Scholarly Group"',
+                '正式文件中："Panorama Research Institute (an internal research division of Panorama Scholarly Group)"',
+              ],
+            },
+            {
+              title: "標誌使用",
+              content: "使用研究院標誌時，請遵守以下要求：",
+              items: [
+                "僅使用研究院學術出版事務部提供的官方標誌文件",
+                "保持標誌周圍最小留白（四周均等於 PANORAMA 中字母 P 的高度）",
+                "數位使用中標誌高度不得低於 24px，印刷使用中不得低於 15mm",
+                "使用深色版本（PANORAMA 用於深色或白色背景）；淺色版本（白色 PANORAMA）僅用於深色背景",
+                "不得降低標誌不透明度、僅使用輪廓，或使用非品牌顏色",
+              ],
+            },
+          ].map((section) => (
+            <div style="padding-bottom:48px;border-bottom:1px solid var(--border-light);">
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:12px;font-weight:400;">{section.title}</h2>
+              <p style="font-size:15px;color:var(--text-secondary);margin-bottom:16px;">{section.content}</p>
+              <div style="display:flex;flex-direction:column;gap:4px;">
+                {section.items.map((item) => (
+                  <div style="display:flex;gap:10px;font-size:14.5px;color:var(--text-secondary);padding:8px 0;border-bottom:1px solid var(--bg-main);">
+                    <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style="margin-top:8px;">
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">申請標誌文件或使用許可</h2>
+          <p style="font-size:15.5px;color:var(--text-secondary);line-height:1.7;margin-bottom:24px;">
+            如需申請研究院標誌文件，或申請本指南未涵蓋的特定使用許可，請聯絡研究院辦公室： <span style="color:var(--accent-steel);">office@panorama-sg.com</span>。請說明擬使用方式、使用情境以及預計覆蓋或傳播範圍。
+          </p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="/zh-tw/collaboration/submit" class="btn btn-primary">申請許可</a>
+            <a href="/zh-tw/governance/name-logo-usage" class="btn btn-secondary">治理政策</a>
+            <a href="/zh-tw/resources" class="btn btn-secondary">全部資源</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

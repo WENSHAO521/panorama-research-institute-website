@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="章节征集" description="全景研究院编著项目的公开征章启事。">
+  <PageHero
+    title="章节征集"
+    description="全景研究院合作出版主编文集的章节征集。欢迎围绕研究院研究主题为合作学术文集提交原创研究。"
+    breadcrumbs={[{ label: "学术活动", href: "/zh-cn/events" }, { label: "章节征集" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
+        <div style="padding:32px;background:var(--bg-soft);border:1px solid var(--border-light);margin-bottom:48px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">当前状态</div>
+          <p style="font-size:15.5px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;">
+            当前暂无开放的章节征集。全景研究院主编文集项目处于规划阶段，首部文集预计于 2026 年公布。
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);margin:0;line-height:1.6;">
+            如有意提出主编文集提案，请参阅 <a href="/zh-cn/collaboration/edited-volume-proposal" style="color:var(--accent-steel);">主编文集提案</a> 页面。
+          </p>
+        </div>
+
+        <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">关于主编文集项目</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+          全景研究院正在围绕其研究项目核心主题发展主编学术文集项目。主编文集汇集多位学者的原创章节，对单一作者难以独立完成的研究主题进行综合讨论。
+        </p>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+          开放章节征集时，章节作者不必正式隶属于研究院。投稿必须符合文集范围，达到研究院出版标准，并在规定截止日期前提交。每项征集都会说明章节预期长度、格式、评审流程和出版时间表。
+        </p>
+
+        <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">规划中的文集</h2>
+        <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border-light);margin-bottom:40px;">
+          {[
+            { title:"亚太地区开放获取与学术传播", theme:"Scholarly Publishing", year:"2026 年（计划中）" },
+            { title:"超越影响因子的期刊评价：替代框架与方法", theme:"学术索引与评价", year:"2026 年（计划中）" },
+          ].map((item) => (
+            <div style="padding:24px;border-bottom:1px solid var(--border-light);">
+              <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:8px;">{item.theme} &bull; {item.year}</div>
+              <h3 style="font-family:var(--font-serif);font-size:18px;color:var(--text-main);font-weight:400;">{item.title}</h3>
+            </div>
+          ))}
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-cn/collaboration/edited-volume-proposal" class="btn btn-primary">提出文集提案</a>
+          <a href="/zh-cn/publications/edited-volumes" class="btn btn-secondary">主编文集</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

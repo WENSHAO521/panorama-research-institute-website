@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="青少年数字治理研究" description="关于青少年数字环境治理的研究项目，涵盖平台监管、数字权利与网络安全。">
+  <PageHero
+    title="青少年数字治理研究"
+    description="考察当代网络环境中青年所面临的数字治理挑战，重点研究平台监管、算法影响、数字素养和权利框架。"
+    breadcrumbs={[{ label: "研究", href: "/zh-cn/research-areas" }, { label: "项目", href: "/zh-cn/projects" }, { label: "青少年数字治理" }]}
+    tag="进行中的项目"
+  >
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">项目详情</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "状态",       value: "进行中" },
+              { label: "开始日期",   value: "2026" },
+              { label: "牵头中心",  value: "政策与社会研究中心" },
+              { label: "项目类型", value: "政策与社会研究" },
+              { label: "重点对象",  value: "青年群体（25 岁以下）" },
+              { label: "联系",      value: "research@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-cn/research-centers/policy-social-research" class="btn btn-primary" style="justify-content:center;">牵头中心</a>
+            <a href="/zh-cn/publications" class="btn btn-secondary" style="justify-content:center;">出版成果</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">关于项目</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            青少年数字治理研究项目考察塑造青年数字环境体验的治理挑战和政策框架。项目采用多学科方法，借鉴政治学、教育学、社会学和传播学，研究平台、政府和机构如何治理青年投入越来越多时间的数字空间。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            本项目涉及广泛的治理维度，从平台内容审核和算法推荐系统，到网络安全法律框架、数字素养教育以及青年在数字环境中的权利。项目特别关注保护与参与之间的张力，即如何在保护青年免受伤害的同时，赋能其作为数字公民的主体性。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            研究成果旨在服务关注青年数字福祉和权利议题的政策制定者、教育工作者、平台运营者和民间社会组织。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">研究范围</div>
+      <h2 class="section-title">核心研究主题</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title:"平台监管",         desc:"分析面向青年常用平台的监管框架，包括年龄验证、内容审核和数据隐私。" },
+          { title:"算法影响",        desc:"研究推荐算法如何塑造青年的信息环境，包括有害内容暴露和信息茧房。" },
+          { title:"数字素养与教育", desc:"研究数字素养框架、课程和教育干预，以支持青年批判性地参与数字环境。" },
+          { title:"网络安全政策",         desc:"比较分析影响青年的国家和区域网络安全政策与立法，包括其执行情况和效果。" },
+          { title:"青年数字权利",         desc:"研究青年在数字环境中的权利，包括数据权、表达自由和被遗忘权。" },
+          { title:"线上公民参与",   desc:"研究青年数字公民参与的潜力与局限，包括线上政治参与和数字行动主义。" },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">项目成果</div>
+      <h2 class="section-title">预期出版成果</h2>
+      <div style="margin-top:8px;">
+        {[
+          { type:"研究报告", title:"青少年数字治理：亚太地区政策框架比较分析", status:"筹备中" },
+          { type:"政策简报",    title:"青年安全的平台问责：面向政策制定者的建议", status:"筹备中" },
+          { type:"工作论文",   title:"数字公民身份与青年权利：政策与实践框架", status:"筹备中" },
+        ].map((pub) => (
+          <div class="publication-item">
+            <div class="pub-type">{pub.type}</div>
+            <div class="pub-title">{pub.title}</div>
+            <div style="text-align:right;">
+              <div style="font-family:var(--font-mono);font-size:13px;color:var(--accent-steel);">{pub.status}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

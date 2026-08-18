@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="研究提案模板" description="下载全景研究院官方研究项目提案模板。">
+  <PageHero
+    title="研究提案模板"
+    description="用于向全景研究院提交研究项目提案的官方模板。请使用此模板准备完整且结构正确的提案。"
+    breadcrumbs={[{ label: "资源", href: "/zh-cn/resources" }, { label: "模板", href: "/zh-cn/resources/templates" }, { label: "研究提案模板" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">模板信息</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"形式",        value:"Microsoft Word（.docx）" },
+              { label:"版本",       value:"v1.0（2026）" },
+              { label:"获取方式",        value:"开放使用——无需注册" },
+              { label:"适用范围",  value:"研究项目提案提交" },
+              { label:"相关表格",  value:"研究项目提案（网页表格）" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-cn/resources/templates" class="btn btn-primary" style="justify-content:center;">下载模板</a>
+            <a href="/zh-cn/collaboration/research-project-proposal" class="btn btn-secondary" style="justify-content:center;">通过网页表格提交</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">使用模板</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:28px;">
+            研究提案模板为向研究院提交材料提供结构化格式，包括占位文本、格式指南和章节说明。提交前请完成所有章节；不完整提案将被退回。
+          </p>
+
+          <div class="section-label" style="margin-bottom:14px;">模板结构</div>
+          <div style="border:1px solid var(--border-light);">
+            {[
+              { sec:"封面页",                      note:"项目标题、负责人信息、拟议研究中心、提交日期" },
+              { sec:"1. 项目标题与概述",   note:"简明标题和 200 词摘要" },
+              { sec:"2. 研究问题",           note:"具体且清晰表述的研究问题" },
+              { sec:"3. 背景与理由",     note:"背景、文献综述摘要、研究理由" },
+              { sec:"4. 研究方法",                  note:"研究设计、方法和理由" },
+              { sec:"5. 预期成果",             note:"出版成果、数据集或其他成果及时间表" },
+              { sec:"6. 拟归属研究中心",     note:"首选研究院研究中心隶属" },
+              { sec:"7. 负责人学术简介",      note:"学术简介与相关出版物" },
+              { sec:"8. 共同研究者（如有）",    note:"姓名、机构和角色" },
+              { sec:"伦理声明",              note:"说明任何伦理考量" },
+            ].map((item) => (
+              <div style="display:grid;grid-template-columns:180px 1fr;gap:16px;padding:14px 20px;border-bottom:1px solid var(--border-light);">
+                <div style="font-size:13.5px;font-weight:600;color:var(--text-main);">{item.sec}</div>
+                <div style="font-size:13px;color:var(--text-secondary);">{item.note}</div>
+              </div>
+            ))}
+          </div>
+
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.6;margin-top:20px;">
+            提案可通过电子邮件附件提交至 <span style="color:var(--accent-steel);">research@panorama-sg.com</span> 或通过网页表单提交。邮件提交时主题应为：“研究提案 — ［您的姓名］ — ［工作标题］”。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:180px 1fr"] { display: block !important; }
+}
+</style>

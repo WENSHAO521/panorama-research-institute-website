@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="項目貢獻者" description="為全景研究院具體項目作出貢獻的學者。">
+  <PageHero
+    title="項目貢獻者"
+    description="未持有研究院正式隸屬身份，但為全景研究院具體研究項目、出版成果或活動作出貢獻的學者和實踐者。"
+    breadcrumbs={[{ label: "學術成員", href: "/zh-tw/people" }, { label: "項目貢獻者" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:820px;">
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:40px;">
+          項目貢獻者是為全景研究院具體研究項目、出版成果或活動作出貢獻的學者、實踐者和專家。他們在項目層面貢獻專業知識，但不持有研究院正式研究員或訪問隸屬身份。其貢獻將在相關項目和出版記錄中予以確認。
+        </p>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-bottom:40px;">
+          {[
+            { type:"研究貢獻者",    desc:"為具體研究項目貢獻資料、分析或智識投入的學者，通常作為共同作者或致謝貢獻者。" },
+            { type:"章節作者",          desc:"為研究院組織或聯合出版的主編文集撰寫章節、但不與研究院建立更廣泛隸屬關係的作者。" },
+            { type:"活動參與者",       desc:"為研究院活動作出貢獻的演講者、圓桌嘉賓和工作坊參與者。其個人簡介可列入活動記錄。" },
+          ].map((item) => (
+            <div class="card" style="border:none;border-radius:0;">
+              <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.type}</h3>
+              <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);margin-bottom:32px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">目前貢獻者</div>
+          <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+            研究院目前處於基礎建設階段。隨著研究院研究成果完成，具體項目貢獻者將在本頁及相關項目和出版記錄中列出。
+          </p>
+        </div>
+
+        <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">參與項目</h2>
+        <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:24px;">
+          有意為研究院具體項目作出貢獻的研究人員和實踐者，應聯絡該項目牽頭研究中心。根據項目需要，貢獻形式可包括共同作者、資料貢獻、同儕評審、活動參與或其他形式。
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-tw/projects/current" class="btn btn-primary">查看當前項目</a>
+          <a href="/zh-tw/collaboration" class="btn btn-secondary">學術合作</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 500px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

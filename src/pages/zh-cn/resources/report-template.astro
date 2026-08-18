@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="研究报告模板" description="下载全景研究院官方研究报告模板。">
+  <PageHero
+    title="研究报告模板"
+    description="用于撰写全景研究院报告系列研究报告的官方模板，包含完整结构、格式规范和章节指南。"
+    breadcrumbs={[{ label: "资源", href: "/zh-cn/resources" }, { label: "模板", href: "/zh-cn/resources/templates" }, { label: "研究报告模板" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">模板信息</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"形式",         value:"Microsoft Word（.docx）" },
+              { label:"版本",        value:"v1.0（2026）" },
+              { label:"通常篇幅", value:"20,000–60,000 词" },
+              { label:"引用格式", value:"APA 第 7 版（优先）或芝加哥第 18 版" },
+              { label:"语言",       value:"English" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-cn/resources/templates" class="btn btn-primary" style="justify-content:center;">下载模板</a>
+            <a href="/zh-cn/publications/research-reports" class="btn btn-secondary" style="justify-content:center;">研究报告</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">报告结构</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:28px;">
+            研究报告必须遵循研究院标准结构。模板为所有必需元素提供预设章节、样式定义和占位内容。作者不应调整章节顺序或删除必需元素。
+          </p>
+
+          <div style="border:1px solid var(--border-light);">
+            {[
+              { sec:"封面页",          note:"标题、报告编号、作者、日期、研究中心、DOI" },
+              { sec:"免责声明",          note:"研究院标准免责声明（已预填，请勿修改）" },
+              { sec:"摘要",            note:"200–300 词；摘要中不引用文献" },
+              { sec:"关键词",            note:"5–8 个关键词，以逗号分隔" },
+              { sec:"目录",   note:"根据标题自动生成" },
+              { sec:"表格 / 图示清单", note:"如超过 3 个表格或图示则必需" },
+              { sec:"执行摘要",   note:"800–1,200 词；面向非专业读者的独立摘要" },
+              { sec:"1. 引言",     note:"背景、理由、研究问题、报告结构" },
+              { sec:"2–N. 正文章节",  note:"方法、文献、发现、分析（结构因项目而异）" },
+              { sec:"结论",         note:"主要发现、政策影响、局限性、未来研究" },
+              { sec:"参考文献",          note:"全文统一使用 APA 第 7 版或芝加哥第 18 版" },
+              { sec:"附录（如有）", note:"数据、工具、附加表格" },
+              { sec:"关于作者",   note:"简短作者简介（每位作者 50–100 词）" },
+              { sec:"关于研究院", note:"研究院标准说明（已预填，请勿修改）" },
+            ].map((item) => (
+              <div style="display:grid;grid-template-columns:200px 1fr;gap:16px;padding:12px 20px;border-bottom:1px solid var(--border-light);">
+                <div style="font-size:13.5px;font-weight:600;color:var(--text-main);">{item.sec}</div>
+                <div style="font-size:13px;color:var(--text-secondary);">{item.note}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:200px 1fr"] { display: block !important; }
+}
+</style>

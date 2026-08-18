@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="工作論文" description="全景研究院工作論文，呈現初步研究發現與學術論點。">
+  <PageHero
+    title="工作論文"
+    description="工作論文呈現全景研究院相關研究人員的初步研究發現、理論論證和進行中的學術工作。"
+    breadcrumbs={[{ label: "出版成果", href: "/zh-tw/publications" }, { label: "工作論文" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">關於本系列</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label: "形式",         value: "工作論文" },
+              { label: "通常篇幅", value: "5,000–15,000 詞" },
+              { label: "評審",         value: "內部編輯評審" },
+              { label: "取得方式",         value: "開放取用" },
+              { label: "DOI",            value: "已註冊（Crossref）" },
+              { label: "ISSN",           value: "已申請" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;">
+            <a href="/zh-tw/people/research-fellows" class="btn btn-primary" style="width:100%;justify-content:center;">成為研究員</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">關於工作論文</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            工作論文是全景研究院的重要出版形式，使研究發現、理論貢獻和學術論證能夠在正式同儕評審之前或同時快速傳播。工作論文可呈現初步發現、理論框架、系統文獻綜述，或對研究院相關領域新發展作出評論。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            所有工作論文均以開放取用方式發布並獲得 DOI。研究院工作論文系列接受隸屬研究員、訪問學者以及在研究院研究領域內工作的受邀貢獻者投稿。
+          </p>
+
+          <div class="section-label" style="margin-bottom:12px;">已發布工作論文</div>
+          {[
+            { num:"WP-2026-001", title:"數位時代的同儕評審模式與出版倫理", authors:"全景研究院", center:"學術出版研究中心", date:"2026" },
+            { num:"WP-2026-002", title:"邁向透明期刊評價框架：學術索引的原則與標準", authors:"全景研究院", center:"學術索引與評價研究中心", date:"2026" },
+          ].map((pub) => (
+            <div class="publication-item">
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:6px;">{pub.num} &bull; {pub.center}</div>
+                <div class="pub-title">{pub.title}</div>
+                <div style="font-size:13px;color:var(--text-muted);margin-top:6px;">{pub.authors}</div>
+              </div>
+              <div style="text-align:right;flex-shrink:0;">
+                <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.date}</div>
+                <a href="/zh-tw/publications" class="btn btn-ghost" style="font-size:13px;padding:0;">Download &rarr;</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

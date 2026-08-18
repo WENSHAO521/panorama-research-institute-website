@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="发展路线图" description="全景研究院分阶段发展路线图。">
+  <PageHero
+    title="发展路线图"
+    description="全景研究院的阶段性发展计划，概述多年周期内的优先事项、里程碑和目标。"
+    breadcrumbs={[{ label: "研究院", href: "/zh-cn/about" }, { label: "框架", href: "/zh-cn/framework" }, { label: "发展路线图" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:840px;">
+        <p style="font-size:17px;line-height:1.85;color:var(--text-secondary);margin-bottom:48px;">
+          全景研究院采取阶段性发展方式，在保持高标准学术质量和治理要求的同时逐步建设机构能力。下方路线图概述各阶段的关键里程碑、优先事项和预期成果。
+        </p>
+
+        {[
+          {
+            phase: "第一阶段",
+            label: "基础建设",
+            period: "2026",
+            status: "当前",
+            color: "var(--text-main)",
+            goals: [
+              "建立研究院治理框架、章程和核心政策",
+              "上线研究院官方网站和数字平台",
+              "设立三个初始研究中心：学术出版研究、学术索引与评价、政策与社会研究",
+              "完成 POSI 数据库开发，并为正式上线做准备",
+              "启动第十五个五年规划研究项目",
+              "招募首批研究员和访问学者",
+              "发布首批工作论文",
+              "启动研究院合作与研究员申请流程",
+            ],
+          },
+          {
+            phase: "第二阶段",
+            label: "发展建设",
+            period: "2027",
+            status: "即将开展",
+            color: "var(--accent-steel)",
+            goals: [
+              "设立人工智能与未来社会研究中心作为第四个研究中心",
+              "将研究员网络扩展至至少五个国家的学者",
+              "启动研究院正式访问学者计划",
+              "发布全景研究院首份年度报告",
+              "正式上线 POSI 数据库并启动公众访问运营",
+              "产出并发布进行中项目的首批完整研究报告",
+              "组织首个研究院品牌学术研讨会系列",
+              "设立研究院顾问委员会",
+              "开始与伙伴机构进行正式机构合作讨论",
+            ],
+          },
+          {
+            phase: "第三阶段",
+            label: "拓展建设",
+            period: "2028",
+            status: "规划中",
+            color: "var(--text-muted)",
+            goals: [
+              "设立教育与学习研究中心（第五个中心）",
+              "举办首个由研究院组织的国际会议",
+              "与至少三个伙伴机构建立正式机构合作协议",
+              "将 POSI 数据库扩展至更广泛的学术期刊",
+              "与学术出版社合作推出首部研究院主编文集",
+              "启动青少年数字治理研究项目",
+              "推出面向期刊编辑和研究团队的培训项目",
+              "开始规划艺术、文化与具身研究中心",
+            ],
+          },
+          {
+            phase: "第四阶段",
+            label: "巩固发展",
+            period: "2029+",
+            status: "长期",
+            color: "var(--text-muted)",
+            goals: [
+              "设立全部六个研究中心，并使各中心达到完整运营能力",
+              "在所有出版类型中实现持续年度成果产出",
+              "开发获得认可并被持续引用的期刊与政策评价框架",
+              "与伙伴机构合作建立多年期研究资助项目",
+              "围绕研究院研究主题建设实践共同体",
+              "发展关于学术传播和学术出版的重要会议系列",
+              "将 POSI 数据库拓展为获得认可的全球性资源",
+            ],
+          },
+        ].map((phase) => (
+          <div style="margin-bottom:56px;padding-bottom:56px;border-bottom:1px solid var(--border-light);">
+            <div style="display:grid;grid-template-columns:160px 1fr;gap:40px;align-items:start;">
+              <div>
+                <div style={`font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:${phase.color};margin-bottom:8px;`}>{phase.phase}</div>
+                <div style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:6px;">{phase.label}</div>
+                <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);">{phase.period}</div>
+                <div style="margin-top:12px;">
+                  <span class={`tag ${phase.status === '当前' ? 'tag-active' : phase.status === '即将开展' ? 'tag-steel' : ''}`}>{phase.status}</span>
+                </div>
+              </div>
+              <div>
+                {phase.goals.map((goal) => (
+                  <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--bg-soft);">
+                    <span style="color:var(--text-muted);flex-shrink:0;font-size:14px;">&#8212;</span>
+                    <span style="font-size:15px;color:var(--text-secondary);line-height:1.7;">{goal}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">进一步了解研究院</h2>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-cn/framework"                          class="btn btn-primary">研究院组织与职能框架</a>
+          <a href="/zh-cn/framework/organizational-structure" class="btn btn-secondary">组织架构</a>
+          <a href="/zh-cn/research-centers"                   class="btn btn-secondary">研究中心</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:160px 1fr"] { display: block !important; }
+}
+</style>

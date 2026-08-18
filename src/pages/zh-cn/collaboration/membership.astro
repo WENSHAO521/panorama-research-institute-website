@@ -1,0 +1,822 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.astro';
+
+const tiers = [
+  {
+    name: '学生与青年学者会员',
+    audience: '本科生、硕士生、博士生、早期研究者、研究助理和青年作者',
+    fee: 'USD 80 / 年',
+    term: '12 个月',
+  },
+  {
+    name: '标准会员',
+    audience: '学者、研究人员、作者、编辑、独立研究者和学术从业者',
+    fee: 'USD 200 / 年',
+    term: '12 个月',
+  },
+  {
+    name: '机构会员',
+    audience: '高校、研究机构、学术团体、期刊、出版社和研究团队',
+    fee: 'USD 800 / 年',
+    term: '12 个月',
+  },
+  {
+    name: '荣誉会员',
+    audience: '由研究院邀请的杰出学者、顾问、合作方和贡献者',
+    fee: '邀请制',
+    term: '由研究院确定',
+  },
+];
+
+const tierDetails = [
+  {
+    title: '学生与青年学者会员',
+    price: 'USD 80 / 年',
+    intro: '该类别面向学生、博士候选人、早期研究者、青年作者、研究助理及学术编辑助理开放，提供基础学术资源、研究训练机会、线上活动参与渠道和研究院学术网络入口。',
+    benefits: [
+      '学生与青年学者会员证书',
+      '经审核后可在研究院官网展示基础会员档案',
+      '可访问基础学术资源和模板',
+      '可接收会员通讯、项目通知、活动更新和论文征稿信息',
+      '可免费或优惠参加部分线上讲座、公开研讨会和青年学者活动',
+      '可向研究院工作论文系列提交稿件',
+      '可提交政策简报想法、研究选题或项目参与申请',
+      '可优先接收青年学者论坛、研究助理机会、工作坊和学术活动通知',
+      '可享受部分学术培训、模板服务和研究院活动费用优惠',
+    ],
+    exclusions: [
+      '研究员身份',
+      '访问学者身份',
+      '编委身份',
+      '顾问身份',
+      '项目录取保证',
+      '论文发表保证',
+      '图书出版保证',
+      '期刊收录保证',
+      '数据库收录保证',
+      '推荐信保证',
+      '学术认证或官方背书',
+    ],
+  },
+  {
+    title: '标准会员',
+    price: 'USD 200 / 年',
+    intro: '该类别面向学者、研究人员、作者、编辑、独立研究者、学术从业者及对研究院项目感兴趣的专业人士开放，适合希望更深入参与研究院学术网络、项目、工作论文、政策简报、活动和合作渠道的人士。',
+    benefits: [
+      '标准会员证书',
+      '经审核后可在研究院官网展示完整会员档案',
+      '可访问基础及进阶学术资源',
+      '可接收会员通讯、项目通知、征稿信息、活动信息和出版物更新',
+      '可免费或优惠参加部分线上活动、讲座、研讨会和工作坊',
+      '可向研究院工作论文系列提交稿件',
+      '可提交研究项目提案、政策简报提案、论文集章节提案或活动合作建议',
+      '可申请参与开放研究项目或项目组',
+      '合作申请可获得优先初审',
+      '可享受部分学术培训、研究报告排版、模板服务、图书出版咨询或活动费用优惠',
+      '可优先接收访问学者、研究员、项目贡献者及学术合作机会通知',
+    ],
+    exclusions: [
+      '标准会员身份不自动授予研究员、访问学者、编委、顾问、项目负责人或治理职务。',
+      '标准会员身份不保证论文发表、图书出版、收录、项目录取、推荐信或机构背书。',
+    ],
+  },
+  {
+    title: '机构会员',
+    price: 'USD 800 / 年',
+    intro: '该类别面向高校、研究机构、学术团体、研究团队、期刊、出版社、数据库项目、非营利学术组织及相关学术平台开放，适合希望与研究院建立稳定关系，并参与研究项目、学术活动、出版合作、索引研究、政策研究或青年学者支持项目的组织。',
+    benefits: [
+      '机构会员证书',
+      '经审核后可在研究院官网展示机构会员信息',
+      '可提交机构合作咨询',
+      '可提交联合研究项目、论文集、工作坊、论坛或研究报告合作提案',
+      '可接收项目、活动、报告、出版物和合作机会更新',
+      '机构合作可获得优先初审',
+      '可参与开放学术活动和部分合作项目',
+      '可申请共同组织线上研讨会、讲座、工作坊或专题活动',
+      '可根据合作内容申请在研究院相关项目页面展示',
+      '可享受部分机构合作项目、活动服务或出版相关服务优惠',
+    ],
+    exclusions: [
+      '机构会员身份不代表研究院对该机构的质量认证、排名评价、学术背书或官方认可。',
+      '机构会员身份不自动保证期刊收录、数据库收录、出版合作、项目合作或联合署名。',
+    ],
+  },
+  {
+    title: '荣誉会员',
+    price: '邀请制',
+    intro: '荣誉会员由研究院邀请授予，面向对研究院发展、学术研究、出版研究、政策研究、学术合作或国际学术传播作出重要贡献的学者、顾问、合作方或贡献者。',
+    benefits: [
+      '荣誉会员通常不收取会费。',
+      '荣誉会员资格由研究院根据贡献、合作关系和学术声誉进行邀请和确认。',
+      '除非另有正式任命文件，荣誉会员身份不自动代表治理职务、研究员身份、顾问身份或编委身份。',
+    ],
+    exclusions: [],
+  },
+];
+
+const comparisonRows = [
+  ['会员证书', '有', '有', '有'],
+  ['官网会员档案', '基础展示', '完整展示', '机构展示'],
+  ['基础资源下载', '有', '有', '有'],
+  ['进阶资源下载', '部分开放', '有', '有'],
+  ['会员通讯', '有', '有', '有'],
+  ['线上公开活动', '免费或优惠', '免费或优惠', '可参与'],
+  ['高级工作坊', '折扣', '优惠折扣', '机构优惠'],
+  ['工作论文提交资格', '有', '有', '可推荐'],
+  ['项目参与申请', '有', '优先初审', '可申请合作'],
+  ['合作提案提交', '有', '优先初审', '机构优先初审'],
+  ['研究报告或政策简报提案', '有', '有', '可联合提案'],
+  ['活动合作申请', '可建议', '可申请', '可联合举办'],
+  ['出版相关咨询优惠', '部分开放', '有', '可协商'],
+  ['研究员身份', '不包含', '不包含', '不包含'],
+  ['发表或出版保证', '不包含', '不包含', '不包含'],
+  ['收录或背书保证', '不包含', '不包含', '不包含'],
+];
+
+const applicationSteps = [
+  '申请人提交会员申请表',
+  '研究院进行资格与资料审核',
+  '审核通过后，研究院发送缴费说明',
+  '申请人向 Panorama Scholarly Group 支付年度会费',
+  '研究院确认付款后开通会员资格',
+  '研究院签发会员确认邮件及会员证书',
+  '会员可根据会员类别使用相应资源和申请权益',
+];
+
+const applicationMaterials = [
+  '姓名',
+  '电子邮箱',
+  '所在机构或学校',
+  '国家或地区',
+  '当前身份或职位',
+  '申请会员类别',
+  '研究兴趣',
+  '简短个人简介',
+  'ORCID 或个人主页，如有',
+  '学生会员申请人可提交学生身份证明或在读证明，如适用',
+  '机构会员申请人可提交机构简介、官网链接或合作说明，如适用',
+];
+
+const conductRules = [
+  '遵守学术诚信原则',
+  '尊重研究院、其他会员、作者、编辑、研究人员和合作方',
+  '不得滥用研究院名称、标识、会员身份或平台资源',
+  '不得将会员身份虚假宣传为研究员、访问学者、编委、顾问或官方认证身份',
+  '不得利用会员身份进行误导性商业宣传',
+  '不得声称会员身份代表研究院背书其论文、图书、项目、期刊、机构或个人资质',
+  '不得从事剽窃、伪造、篡改、虚假署名、恶意投稿或其他学术不端行为',
+  '不得损害研究院、Panorama Scholarly Group 或其他会员的声誉和合法权益',
+];
+
+const profileFields = [
+  '姓名',
+  '会员类别',
+  '学校或机构',
+  '国家或地区',
+  '研究兴趣',
+  'ORCID',
+  '个人主页',
+  '简短简介',
+  '会员年度',
+];
+
+const formFields = [
+  '姓名 *',
+  '邮箱 *',
+  '国家 / 地区 *',
+  '学校 / 机构 *',
+  '当前身份 *',
+  '申请会员类别 *',
+  '研究方向 *',
+  'ORCID / 个人主页',
+  '个人简介 *',
+  '申请理由 *',
+  '是否同意会员政策 *',
+  '附件上传',
+];
+---
+
+<BaseLayout
+  title="学术会员计划"
+  description="全景研究院会员计划为学生、研究者、实务工作者和机构提供学术资源、活动参与资格、工作论文投稿资格、项目参与渠道及学术网络连接。"
+>
+  <PageHero
+    title="全景研究院学术会员计划"
+    description="面向学生、青年学者、研究人员、作者、编辑、学术从业者、独立研究者和学术机构的学术网络与资源服务计划。"
+    breadcrumbs={[{ label: "学术合作", href: "/zh-cn/collaboration" }, { label: "学术会员计划" }]}
+  />
+
+  <section class="section-compact" style="background:var(--bg-white);">
+    <div class="container membership-lead">
+      <div>
+        <div class="section-label">项目简介</div>
+        <h2 class="membership-heading">学术会员、研究资源与学术参与</h2>
+        <p class="membership-text">
+          学术会员计划为会员提供基础学术资源、研究项目参与渠道、学术活动信息、工作论文提交资格、研究院资源下载、学术网络连接以及合作申请入口。
+        </p>
+        <p class="membership-text">
+          本计划支持跨学科研究、学术出版研究、政策研究、期刊索引与评价、青年学者培养以及全球学术传播基础设施建设。
+        </p>
+      </div>
+      <aside class="membership-note">
+        <div class="section-label">机构说明</div>
+        <p>
+          全景研究院是 Panorama Scholarly Group 的内部研究与学术发展部门，在研究活动中保持学术独立，但不具备独立法人资格。
+        </p>
+        <p>
+          会员费用由 Panorama Scholarly Group 统一收取和管理。
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-compact" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">会员计划性质</div>
+      <h2 class="membership-heading">学术网络与资源服务计划</h2>
+      <div class="membership-two-col">
+        <p class="membership-text">
+          学术会员计划不属于学位项目、学历项目、职业认证项目或官方资格认证项目。会员身份代表申请人加入研究院学术网络，并可依据会员类别使用相应资源、信息、活动和申请渠道。
+        </p>
+        <p class="membership-text">
+          会员身份不自动授予研究员、访问学者、编委、顾问、项目负责人、研究中心成员或治理职务，也不构成论文发表、图书出版、期刊收录、数据库收录、项目录取、推荐信或机构背书保证。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">会员类别与年度会费</div>
+      <h2 class="section-title">会员类别</h2>
+      <div class="membership-tier-grid">
+        {tiers.map((tier) => (
+          <article class="membership-tier">
+            <h3>{tier.name}</h3>
+            <div class="membership-price">{tier.fee}</div>
+            <p>{tier.audience}</p>
+            <div class="membership-term">{tier.term}</div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">会员类别详情</div>
+      <h2 class="section-title">各会员类别的权益、权限与限制</h2>
+      <div class="membership-detail-list">
+        {tierDetails.map((tier) => (
+          <article class="membership-detail">
+            <div class="membership-detail-header">
+              <h3>{tier.title}</h3>
+              <span>{tier.price}</span>
+            </div>
+            <p class="membership-text">{tier.intro}</p>
+            <div class="membership-list-grid">
+              <div>
+                <h4>主要权益</h4>
+                <ul>
+                  {tier.benefits.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+              {tier.exclusions.length > 0 && (
+                <div>
+                  <h4>不包含内容</h4>
+                  <ul>
+                    {tier.exclusions.map((item) => <li>{item}</li>)}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">会员权益对照表</div>
+      <h2 class="section-title">会员权益一览</h2>
+      <div class="membership-table-wrap">
+        <table class="membership-table">
+          <thead>
+            <tr>
+              <th>权益项目</th>
+              <th>学生与青年学者会员 USD 80</th>
+              <th>标准会员 USD 200</th>
+              <th>机构会员 USD 800</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonRows.map((row) => (
+              <tr>
+                {row.map((cell) => <td>{cell}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container membership-policy-grid">
+      <div>
+        <div class="section-label">申请流程</div>
+        <h2 class="membership-heading">如何申请</h2>
+        <ol class="membership-ordered">
+          {applicationSteps.map((step) => <li>{step}</li>)}
+        </ol>
+        <p class="membership-small">
+          研究院原则上不建议申请人在审核通过前付款。未经确认的付款不代表会员资格已经自动生效。
+        </p>
+      </div>
+      <div>
+        <div class="section-label">申请材料</div>
+        <h2 class="membership-heading">通常需要提交的信息</h2>
+        <ul class="membership-checklist">
+          {applicationMaterials.map((item) => <li>{item}</li>)}
+        </ul>
+        <p class="membership-small">
+          研究院可根据实际情况要求申请人补充材料。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container membership-policy-grid">
+      <article>
+        <div class="section-label">会员期限与续费</div>
+        <h2 class="membership-heading">年度会员期限</h2>
+        <p class="membership-text">
+          会员资格按年度计算，有效期为 12 个月。会员期满前，研究院可发送续费提醒，会员可选择是否续费。
+        </p>
+        <p class="membership-text">
+          未在有效期结束后完成续费的会员，其会员权益、资源访问权限和官网会员展示可暂停或终止。续费不代表研究院必须继续提供完全相同的权益。研究院可根据运营需要调整权益、费用和服务，并在官网或会员通知中说明。
+        </p>
+      </article>
+      <article>
+        <div class="section-label">付款与收据</div>
+        <h2 class="membership-heading">付款管理</h2>
+        <p class="membership-text">
+          会员费用由 Panorama Scholarly Group 统一收取。建议付款项目写为 Annual Membership Fee - Panorama Research Institute Membership Program。
+        </p>
+        <p class="membership-text">
+          会员付款后，可根据实际情况申请收据或发票。开具主体、币种、付款方式和具体内容以 Panorama Scholarly Group 的财务安排为准。银行手续费、汇款手续费、平台手续费或货币兑换费用原则上由付款方承担，除非双方另有书面约定。
+        </p>
+      </article>
+      <article>
+        <div class="section-label">退款政策</div>
+        <h2 class="membership-heading">退款原则</h2>
+        <p class="membership-text">
+          会员申请获批前，研究院原则上不会要求申请人支付会费。如申请人未经审核或在审核通过前误付款项，经核实后可申请退款，但银行手续费、交易手续费、汇款手续费或第三方支付平台费用可能无法退还。
+        </p>
+        <p class="membership-text">
+          会员资格确认后，如会员证书已经签发、档案已经建立、资源访问权限已经开通或会员权益已经开始使用，年度会费原则上不予退还。特殊情况可由研究院根据实际情况个案处理。
+        </p>
+      </article>
+      <article>
+        <div class="section-label">工作论文与研究项目</div>
+        <h2 class="membership-heading">提交与申请资格</h2>
+        <p class="membership-text">
+          会员可根据会员类别提交工作论文、研究选题、政策简报、项目参与申请或合作提案。所有提交内容均需经过研究院审核。
+        </p>
+        <p class="membership-text">
+          会员身份仅代表具备提交资格或申请资格，不代表稿件必然发布、项目必然录取、合作必然通过或成果必然署名。
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container membership-policy-grid">
+      <div>
+        <div class="section-label">会员行为规范</div>
+        <h2 class="membership-heading">基本行为规范</h2>
+        <ul class="membership-checklist">
+          {conductRules.map((rule) => <li>{rule}</li>)}
+        </ul>
+        <p class="membership-small">
+          如会员违反上述规范，研究院可暂停或终止其会员资格，并撤销相关会员权益。严重情形下，研究院可拒绝其后续申请。
+        </p>
+      </div>
+      <div>
+        <div class="section-label">会员身份使用规范</div>
+        <h2 class="membership-heading">允许与禁止使用的表述</h2>
+        <p class="membership-text">会员可在个人简介、简历或个人网页中如实使用会员身份。</p>
+        <div class="membership-example">
+          <strong>推荐写法</strong>
+          <span>全景研究院学生与青年学者会员</span>
+          <span>全景研究院标准会员</span>
+        </div>
+        <div class="membership-example membership-warning">
+          <strong>除非另有正式任命，不得使用</strong>
+          <span>研究员</span>
+          <span>访问学者</span>
+          <span>编委</span>
+          <span>认证学者</span>
+          <span>官方研究人员</span>
+          <span>学术顾问</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container membership-policy-grid">
+      <div>
+        <div class="section-label">会员档案展示</div>
+        <h2 class="membership-heading">可选官网档案</h2>
+        <p class="membership-text">
+          会员可申请在研究院官网展示基础会员档案。研究院将根据会员类别、资料完整性和网站展示规则决定是否展示。
+        </p>
+        <ul class="membership-checklist compact">
+          {profileFields.map((item) => <li>{item}</li>)}
+        </ul>
+        <p class="membership-small">
+          会员档案展示不代表研究院对会员学术能力、机构资质、研究成果或个人观点作出背书。会员可申请修改或撤下个人档案。
+        </p>
+      </div>
+      <div>
+        <div class="section-label">重要声明</div>
+        <h2 class="membership-heading">不构成学位、认证、保证或背书</h2>
+        <p class="membership-text">
+          学术会员计划不构成任何学位教育、学历认证、职业资格认证、官方认证或政府认可项目。
+        </p>
+        <p class="membership-text">
+          会员身份不自动授予研究员、访问学者、编委、顾问、项目负责人、研究中心成员或治理职务，也不构成论文发表、图书出版、期刊录用、数据库收录、项目录取、推荐信、排名提升、学术评价或机构背书保证。
+        </p>
+        <p class="membership-text">
+          研究员、访问学者、项目贡献者、顾问及其他学术身份须通过独立审核、邀请或正式任命程序产生。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container membership-application">
+      <div>
+        <div class="section-label">会员申请表</div>
+        <h2 class="membership-heading">提交会员申请</h2>
+        <p class="membership-text">
+          官网表单可包含以下字段。提交前必须勾选同意会员政策。
+        </p>
+        <ul class="membership-checklist compact">
+          {formFields.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <form action="https://formsubmit.co/collaboration@panorama-sg.com" method="POST" enctype="multipart/form-data" class="membership-form">
+        <FormSubmitFields subject="全景研究院会员申请" source="会员申请表" />
+        <div class="membership-form-grid">
+          <div class="form-group">
+            <label class="form-label" for="member-name">姓名 *</label>
+            <input class="form-input" id="member-name" name="name" type="text" required placeholder="您的姓名" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="member-email">邮箱 *</label>
+            <input class="form-input" id="member-email" name="email" type="email" required placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="member-country">国家 / 地区 *</label>
+            <input class="form-input" id="member-country" name="country" type="text" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="member-institution">学校 / 机构 *</label>
+            <input class="form-input" id="member-institution" name="institution" type="text" required placeholder="所在机构或学校" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="member-status">当前身份 *</label>
+            <input class="form-input" id="member-status" name="status" type="text" required placeholder="例如：博士生、编辑、研究人员" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="member-category">申请会员类别 *</label>
+            <select class="form-select" id="member-category" name="category" required>
+              <option value="">请选择会员类别...</option>
+              {tiers.slice(0, 3).map((tier) => <option>{tier.name}</option>)}
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="member-research">研究方向 *</label>
+          <input class="form-input" id="member-research" name="research" type="text" required placeholder="研究兴趣或学术领域" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="member-web">ORCID / 个人主页</label>
+          <input class="form-input" id="member-web" name="website" type="url" placeholder="https://orcid.org/..." />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="member-bio">个人简介 *</label>
+          <textarea class="form-textarea" id="member-bio" name="bio" required placeholder="请提供简短学术简介。"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="member-statement">申请理由 *</label>
+          <textarea class="form-textarea" id="member-statement" name="statement" required placeholder="请说明您申请会员的理由。"></textarea>
+        </div>
+        <div class="form-group">
+          <MultiAttachmentUpload
+            id="member-attachments"
+            label="附件上传"
+            description="请上传学生证件、在读证明、机构简介、简历或其他支持材料，可使用 PDF、Word、图片或 ZIP 文件。"
+            accept=".pdf,.doc,.docx,.zip,.png,.jpg,.jpeg"
+          />
+        </div>
+        <label class="membership-consent">
+          <input type="checkbox" name="membership_policy_agreement" value="confirmed" required />
+          <span>我已阅读并同意全景研究院学术会员计划的会员政策、费用说明、退款政策、行为规范及重要声明。</span>
+        </label>
+        <button type="submit" class="btn btn-primary">提交申请</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section-compact membership-disclaimer" style="background:var(--bg-dark);">
+    <div class="container">
+      <p>
+        全景研究院是 Panorama Scholarly Group 的内部研究与学术发展部门，在研究活动中保持学术独立，但不具备独立法人资格。
+      </p>
+      <p>
+        全景研究院会员身份不自动授予任何研究任命、研究员身份、编辑职务、发表保证、收录保证或机构背书。
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.membership-lead,
+.membership-policy-grid,
+.membership-application {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+.membership-heading {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  line-height: 1.25;
+  font-weight: 400;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+.membership-text {
+  font-size: 15.5px;
+  line-height: 1.82;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+}
+.membership-small {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-top: 18px;
+}
+.membership-note {
+  padding: 28px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-soft);
+}
+.membership-note p {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+.membership-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.membership-tier-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin-top: 8px;
+  border: 1px solid var(--border-light);
+  background: var(--border-light);
+}
+.membership-tier {
+  min-height: 260px;
+  padding: 26px;
+  background: var(--bg-white);
+}
+.membership-tier h3 {
+  font-family: var(--font-serif);
+  font-size: 21px;
+  line-height: 1.28;
+  font-weight: 400;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+.membership-price {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent-red);
+  margin-bottom: 18px;
+}
+.membership-tier p {
+  font-size: 14px;
+  line-height: 1.62;
+  color: var(--text-secondary);
+}
+.membership-term {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+.membership-detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.membership-detail {
+  padding: 32px;
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+}
+.membership-detail-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+.membership-detail-header h3 {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 400;
+  color: var(--text-main);
+}
+.membership-detail-header span {
+  flex-shrink: 0;
+  color: var(--accent-red);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.membership-list-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 20px;
+}
+.membership-list-grid h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  font-family: var(--font-sans);
+}
+.membership-list-grid ul,
+.membership-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.membership-list-grid li,
+.membership-checklist li,
+.membership-ordered li {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.membership-checklist.compact {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 18px;
+}
+.membership-ordered {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 20px;
+}
+.membership-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border-light);
+}
+.membership-table {
+  width: 100%;
+  min-width: 860px;
+  border-collapse: collapse;
+  background: var(--bg-white);
+}
+.membership-table th,
+.membership-table td {
+  padding: 15px 16px;
+  border-bottom: 1px solid var(--border-light);
+  border-right: 1px solid var(--border-light);
+  text-align: left;
+  vertical-align: top;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.membership-table th {
+  background: var(--bg-soft);
+  color: var(--text-main);
+  font-weight: 700;
+  font-family: var(--font-sans);
+}
+.membership-table td {
+  color: var(--text-secondary);
+}
+.membership-example {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-white);
+}
+.membership-example strong {
+  font-size: 12px;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.membership-example span {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.membership-warning {
+  background: rgba(138, 34, 34, 0.04);
+}
+.membership-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 32px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-white);
+}
+.membership-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.membership-consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 16px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-soft);
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.membership-consent input {
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+.membership-form .btn {
+  justify-content: center;
+}
+.membership-disclaimer p {
+  max-width: 920px;
+  color: rgba(255,255,255,0.72);
+  font-size: 15px;
+  line-height: 1.78;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 980px) {
+  .membership-lead,
+  .membership-policy-grid,
+  .membership-application,
+  .membership-two-col,
+  .membership-list-grid {
+    grid-template-columns: 1fr;
+  }
+  .membership-tier-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .membership-tier-grid,
+  .membership-form-grid,
+  .membership-checklist.compact {
+    grid-template-columns: 1fr;
+  }
+  .membership-detail {
+    padding: 24px;
+  }
+  .membership-detail-header {
+    display: block;
+  }
+  .membership-detail-header span {
+    display: inline-block;
+    margin-top: 8px;
+  }
+}
+</style>

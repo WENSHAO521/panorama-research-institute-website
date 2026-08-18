@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="項目檔案" description="全景研究院已完成並結項的研究項目。">
+  <PageHero
+    title="項目檔案"
+    description="全景研究院已完成和關閉的研究項目。所有成果仍可通過研究院出版成果庫取得。"
+    breadcrumbs={[{ label: "研究", href: "/zh-tw/research-areas" }, { label: "項目", href: "/zh-tw/projects" }, { label: "檔案" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:780px;">
+        <div class="statement-box" style="margin-bottom:40px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">檔案說明</div>
+          <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);margin:0;">
+            全景研究院成立於 2026 年，目前處於基礎建設階段。當前尚無研究項目正式關閉或歸檔。所有現有項目均在進行中。本頁將隨著項目完成而更新。
+          </p>
+        </div>
+
+        <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:16px;font-weight:400;">關於檔案</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+          全景研究院所有項目完成後均在此歸檔。歸檔項目記錄包括項目原始範圍與目標、已產出成果、關聯研究者和活動時間線。
+        </p>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+          歸檔項目產出的所有出版成果將通過研究院出版成果庫永久提供。歸檔項目頁面包含所有相關成果的直接連結。
+        </p>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-tw/projects/current" class="btn btn-primary">當前項目</a>
+          <a href="/zh-tw/publications"     class="btn btn-secondary">出版成果</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

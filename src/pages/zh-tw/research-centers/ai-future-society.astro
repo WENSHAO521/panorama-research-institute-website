@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="人工智慧與未來社會研究中心" description="專注於人工智慧治理、人工智慧倫理、數位未來以及智慧系統社會影響的研究中心。">
+  <PageHero
+    title="人工智慧與未來社會研究中心"
+    description="研究人工智慧治理、人工智慧倫理、智能系統的社會與認識論影響，以及學術和公民情境中人機互動的未來。"
+    breadcrumbs={[{ label: "研究", href: "/zh-tw/research-areas" }, { label: "研究中心", href: "/zh-tw/research-centers" }, { label: "人工智慧與未來社會" }]}
+    tag="即將設立的研究中心"
+  >
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">概覽</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "中心狀態",    value: "即將設立，預計 2026 年" },
+              { label: "已發布",        value: "2026" },
+              { label: "研究領域",    value: "人工智慧與未來社會" },
+              { label: "創始項目","": "" , value: "人工智慧與未來社會研究" },
+              { label: "進行中的項目",  value: "1 項（創始項目）" },
+              { label: "聯絡",          value: "research@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-tw/collaboration/research-fellow-application" class="btn btn-primary" style="justify-content:center;">研究員</a>
+            <a href="/zh-tw/collaboration/visiting-scholar-application" class="btn btn-secondary" style="justify-content:center;">訪問學者</a>
+          </div>
+        </div>
+        <div>
+          <div style="background:var(--bg-soft);border:1px solid var(--border-light);padding:20px 24px;margin-bottom:28px;display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-steel);flex-shrink:0;">狀態說明</span>
+            <p style="font-size:14px;color:var(--text-secondary);margin:0;line-height:1.6;">人工智慧與未來社會研究中心目前處於設立階段，預計於 2026 年全面運行。有意與該中心建立學術關聯的研究者可通過研究員申請流程表達意向。</p>
+          </div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">關於中心</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            人工智慧與未來社會研究中心將成為全景研究院第四個研究中心，回應本十年最緊迫且多維的研究議程之一：人工智慧的治理、倫理和社會後果。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            該中心不僅將人工智慧視為技術，也將其視為社會、認識論和政治現象：它重塑知識生產，改變勞動力市場，挑戰治理框架，並提出關於主體性、問責和人類未來的根本問題。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            該中心將特別關注人工智慧對學術傳播和研究實踐的影響，包括學術出版中的 AI 生成內容、AI 輔助同儕評審、研究中大型語言模型的使用，以及這些發展帶來的治理挑戰。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">規劃研究重點</div>
+      <h2 class="section-title">核心研究主題</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title: "人工智慧治理",             desc: "研究機構、國家和國際層面的人工智慧系統治理，包括監管、標準和問責框架。" },
+          { title: "人工智慧倫理",                 desc: "研究人工智慧開發和部署的倫理維度，包括公平性、偏見、透明度、隱私和人權影響。" },
+          { title: "學術出版中的人工智慧", desc: "研究人工智慧在學術出版中的使用與治理，包括 AI 生成內容、AI 輔助同儕評審和剽竊檢測。" },
+          { title: "人機互動",       desc: "研究人類如何在學術、公民和專業情境中與人工智慧系統互動，包括信任、委託、增強和依賴。" },
+          { title: "數位未來",            desc: "研究人工智慧和數位轉型引發的長期社會情景，包括自動化、勞動、教育和民主治理。" },
+          { title: "人工智慧與知識生產", desc: "研究人工智慧系統如何在學術和公共情境中塑造知識的生產、驗證和傳播。" },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">研究項目</div>
+      <h2 class="section-title">創始項目</h2>
+      <div style="margin-top:8px;">
+        <div class="project-card" style="margin-bottom:1px;border-radius:0;border-bottom:1px solid var(--border-light);">
+          <span class="tag tag-steel" style="margin-bottom:12px;display:inline-flex;">開發中</span>
+          <h3 class="project-title">人工智慧與未來社會研究項目</h3>
+          <p class="project-desc">人工智慧與未來社會研究中心的創始研究項目，考察人工智慧的社會、倫理和治理維度，尤其關注人工智慧對學術傳播、研究實踐和學術出版的影響。</p>
+          <a href="/zh-tw/projects/ai-future-society" style="display:inline-flex;margin-top:16px;font-size:13.5px;color:var(--accent-steel);">View Project &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="max-width:700px;">
+        <div class="section-label">參與</div>
+        <h2 class="section-title">在創始階段加入中心</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+          人工智慧與未來社會研究中心正在積極招募研究人員加入首批關聯學者隊伍。鼓勵具有人工智慧、數位治理、科學技術研究、媒體研究、技術哲學或相關領域專長的研究者申請。
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-tw/collaboration/research-fellow-application"  class="btn btn-primary">申請研究員</a>
+          <a href="/zh-tw/collaboration/visiting-scholar-application" class="btn btn-secondary">訪問學者計劃</a>
+          <a href="/zh-tw/collaboration/research-project-proposal"   class="btn btn-secondary">提交研究提案</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

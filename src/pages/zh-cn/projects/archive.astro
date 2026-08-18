@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="项目档案" description="全景研究院已完成并结项的研究项目。">
+  <PageHero
+    title="项目档案"
+    description="全景研究院已完成和关闭的研究项目。所有成果仍可通过研究院出版成果库获取。"
+    breadcrumbs={[{ label: "研究", href: "/zh-cn/research-areas" }, { label: "项目", href: "/zh-cn/projects" }, { label: "档案" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:780px;">
+        <div class="statement-box" style="margin-bottom:40px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">档案说明</div>
+          <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);margin:0;">
+            全景研究院成立于 2026 年，目前处于基础建设阶段。当前尚无研究项目正式关闭或归档。所有现有项目均在进行中。本页将随着项目完成而更新。
+          </p>
+        </div>
+
+        <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:16px;font-weight:400;">关于档案</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+          全景研究院所有项目完成后均在此归档。归档项目记录包括项目原始范围与目标、已产出成果、关联研究者和活动时间线。
+        </p>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+          归档项目产出的所有出版成果将通过研究院出版成果库永久提供。归档项目页面包含所有相关成果的直接链接。
+        </p>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-cn/projects/current" class="btn btn-primary">当前项目</a>
+          <a href="/zh-cn/publications"     class="btn btn-secondary">出版成果</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

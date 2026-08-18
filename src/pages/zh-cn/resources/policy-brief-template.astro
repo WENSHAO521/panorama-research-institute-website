@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="政策简报模板" description="下载全景研究院官方政策简报模板。">
+  <PageHero
+    title="政策简报模板"
+    description="用于撰写全景研究院政策简报系列的官方模板，面向简明、循证且以读者为中心的政策传播。"
+    breadcrumbs={[{ label: "资源", href: "/zh-cn/resources" }, { label: "模板", href: "/zh-cn/resources/templates" }, { label: "政策简报模板" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">模板信息</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"形式",         value:"Microsoft Word（.docx）" },
+              { label:"版本",        value:"v1.0（2026）" },
+              { label:"通常篇幅", value:"1,500–4,000 词" },
+              { label:"目标读者","": "", value:"政策制定者、机构领导者、实践者" },
+              { label:"语言",       value:"English" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-cn/resources/templates" class="btn btn-primary" style="justify-content:center;">下载模板</a>
+            <a href="/zh-cn/publications/policy-briefs" class="btn btn-secondary" style="justify-content:center;">政策简报</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">政策简报结构</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:28px;">
+            政策简报采用结构化格式，旨在面向政策读者进行有效传播。不同于学术论文，政策简报以结论开篇，并强调实践性建议。模板强化这一结构，并为各部分提供风格指南。
+          </p>
+
+          <div style="border:1px solid var(--border-light);margin-bottom:28px;">
+            {[
+              { sec:"封面",                    note:"标题、简报编号、作者、研究中心、日期、DOI" },
+              { sec:"关键信息",             note:"3–5 条要点；简报核心结论；位于正文之前" },
+              { sec:"执行摘要",        note:"150–250 词；面向只阅读摘要的读者" },
+              { sec:"1. 政策背景",        note:"简报回应的政策问题或议题；说明其当下重要性" },
+              { sec:"2. 证据与分析", note:"证据基础；结构化分析；明确区别于观点" },
+              { sec:"3. 政策选项",        note:"现实可行的行动选项；各选项优点与限制" },
+              { sec:"4. 建议",       note:"具体、可操作的建议；面向明确对象" },
+              { sec:"参考文献",               note:"仅列必要参考文献；可用文内或尾注格式；不是完整书目" },
+              { sec:"关于研究院",      note:"研究院标准说明（已预填，请勿修改）" },
+            ].map((item) => (
+              <div style="display:grid;grid-template-columns:180px 1fr;gap:16px;padding:12px 20px;border-bottom:1px solid var(--border-light);">
+                <div style="font-size:13.5px;font-weight:600;color:var(--text-main);">{item.sec}</div>
+                <div style="font-size:13px;color:var(--text-secondary);">{item.note}</div>
+              </div>
+            ))}
+          </div>
+
+          <div style="padding:20px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">写作指南</div>
+            <p style="font-size:14px;color:var(--text-secondary);margin:0;line-height:1.7;">
+              政策简报应面向具备一定知识背景但非学术专业人士的读者撰写。避免使用术语，对专业词汇加以说明，并使用主动句式。建议应具体到读者可据以行动的程度：应写“教育部应……”，而非“政策制定者应考虑……”。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:180px 1fr"] { display: block !important; }
+}
+</style>

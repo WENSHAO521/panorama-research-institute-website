@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="加入研究院" description="如何以研究員、副研究員、訪問學者或研究助理身份加入全景研究院。">
+  <PageHero
+    title="加入研究院"
+    description="全景研究院歡迎希望通過研究員、訪問學者或研究助理角色參與研究院研究項目的學者和研究人員申請。"
+    breadcrumbs={[{ label: "學術成員", href: "/zh-tw/people" }, { label: "加入研究院" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);max-width:720px;margin-bottom:48px;">
+        研究院在基礎建設階段正在積極建設學術共同體。我們歡迎各職業階段、從事研究院相關領域工作的研究人員申請，共同建設嚴謹、協作且獨立的研究環境。
+      </p>
+
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
+        {[
+          {
+            role:   "研究員",
+            target: "具有博士學位或同等資歷的中高級職業階段研究者",
+            commit: "每年至少 1 項出版成果；參加研究院活動",
+            format: "遠端（分散式）——無需搬遷",
+            duration:"1–3 年，可續期",
+            href:   "/zh-tw/collaboration/research-fellow-application",
+            cta:    "申請研究員",
+          },
+          {
+            role:   "副研究員",
+            target: "博士生與早期職涯研究者",
+            commit: "積極參與研究院項目",
+            format: "遠端（分散式）",
+            duration:"1 年，可續期",
+            href:   "/zh-tw/collaboration/research-fellow-application",
+            cta:    "申請副研究員",
+          },
+          {
+            role:   "訪問學者",
+            target: "來自其他機構的成熟研究者（博士或同等資歷）",
+            commit: "在隸屬期間積極開展研究貢獻",
+            format: "遠端或線下（3–12 個月）",
+            duration:"3–12 個月",
+            href:   "/zh-tw/collaboration/visiting-scholar-application",
+            cta:    "申請訪問學者",
+          },
+          {
+            role:   "研究助理",
+            target: "具有研究經驗的碩士/博士生或近期畢業生",
+            commit: "在研究員指導下承擔項目特定任務",
+            format: "遠端（分散式）",
+            duration:"按項目安排",
+            href:   "/zh-tw/people/research-assistants",
+            cta:    "查看開放職位",
+          },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;display:flex;flex-direction:column;justify-content:space-between;">
+            <div>
+              <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:20px;font-weight:400;">{item.role}</h2>
+              <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:24px;">
+                {[
+                  { label:"適合對象", value:item.target },
+                  { label:"承諾",   value:item.commit },
+                  { label:"形式",       value:item.format },
+                  { label:"時長",     value:item.duration },
+                ].map((d) => (
+                  <div>
+                    <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:3px;">{d.label}</div>
+                    <div style="font-size:14px;color:var(--text-secondary);">{d.value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <a href={item.href} class="btn btn-primary" style="margin-top:auto;">{item.cta}</a>
+          </div>
+        ))}
+      </div>
+
+      <div style="margin-top:48px;max-width:720px;">
+        <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">研究院提供</h2>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          {[
+            "全景研究院正式機構隸屬",
+            "研究院工作論文、報告和政策簡報系列的出版支持",
+            "進入研究院學術共同體、網路和資源體系",
+            "參與研究院組織的研討會、工作坊和會議",
+            "共同署名與合作研究機會",
+            "致力於學術獨立和誠信的研究環境",
+          ].map((item) => (
+            <div style="display:flex;gap:10px;font-size:15px;color:var(--text-secondary);padding:8px 0;border-bottom:1px solid var(--bg-main);">
+              <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>{item}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

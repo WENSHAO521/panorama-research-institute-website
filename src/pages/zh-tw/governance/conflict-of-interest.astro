@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="利益衝突政策" description="全景研究院利益衝突政策。">
+  <PageHero
+    title="利益衝突政策"
+    description="關於在研究、出版、同儕評審和治理活動中識別、揭露和管理利益衝突的指南。"
+    breadcrumbs={[{ label: "治理", href: "/zh-tw/charter" }, { label: "利益衝突政策" }]}
+    tag="治理文件"
+  />
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <div style="max-width:760px;">
+        {[
+          { title: "定義", body: "當研究者的個人、財務或專業利益可能損害，或被合理認為可能損害其研究、評審或治理活動的完整性時，即構成利益衝突。" },
+          { title: "利益衝突類型", body: "利益衝突可能是財務性的（如資助關係、股權、諮詢安排）、個人性的（如家庭或密切私人關係），也可能是專業性的（如競爭關係、既有承諾）。" },
+          { title: "揭露要求", body: "所有與研究院建立學術關聯的研究者，在開展研究、提交出版成果或參與治理活動前，均須向研究院領導層揭露任何實際或潛在利益衝突。情況發生變化時須更新揭露。" },
+          { title: "同儕評審", body: "同儕評審人必須揭露其與投稿作者或稿件主題之間的任何利益衝突；如存在利益衝突，應拒絕評審。投稿內容的保密性必須得到維護。" },
+          { title: "合作與夥伴關係", body: "合作提案必須揭露研究院研究者與擬合作機構或個人之間的任何財務或個人關係。" },
+          { title: "利益衝突管理", body: "一旦識別出利益衝突，研究院領導層將確定適當的管理方式，包括迴避、加強監督或採取其他措施。" },
+          { title: "不合規處理", body: "未揭露利益衝突或不遵守本政策，可能導致出版成果撤回、研究角色終止，或由研究院領導層決定採取其他適當措施。" },
+        ].map((s) => (
+          <div style="margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
+            <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">{s.title}</h2>
+            <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>
+          </div>
+        ))}
+        <a href="/zh-tw/charter" class="btn btn-primary">返回章程</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

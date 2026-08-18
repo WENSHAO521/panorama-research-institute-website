@@ -38,7 +38,7 @@ const currentPath = Astro.url.pathname;
                   <path d="M2 3.5L5 6.5L8 3.5" />
                 </svg>
               </button>
-              <div class="mega-menu" role="region" aria-label={`${item.label} menu`}>
+              <div class="mega-menu" role="region" aria-label={`${item.label} ${lang === 'zh-cn' ? '菜单' : lang === 'zh-tw' ? '選單' : 'menu'}`}>
                 <div class="mega-menu-inner">
                   {item.groups?.map((group) => (
                     <div class="mega-col">

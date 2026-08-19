@@ -1,3 +1,6 @@
+import { translate } from '../i18n/dictionary';
+import type { Lang } from '../i18n/utils';
+
 export const site = {
   name: "Panorama Research Institute",
   nameFull: "Panorama Research Institute",
@@ -11,7 +14,11 @@ export const site = {
   year: "2026",
 };
 
-export const platforms = [
+export function getSiteDescription(lang: Lang): string {
+  return translate(lang, site.description);
+}
+
+const platformsEn = [
   {
     name: "Panorama Scholarly Group",
     href: "https://www.panorama-sg.com",
@@ -54,7 +61,11 @@ export const platforms = [
   },
 ];
 
-export const researchAreas = [
+export function getPlatforms(lang: Lang) {
+  return platformsEn.map((p) => ({ ...p, name: translate(lang, p.name), desc: translate(lang, p.desc) }));
+}
+
+const researchAreasEn = [
   {
     num: "01",
     title: "Scholarly Publishing Studies",
@@ -87,7 +98,11 @@ export const researchAreas = [
   },
 ];
 
-export const researchCenters = [
+export function getResearchAreas(lang: Lang) {
+  return researchAreasEn.map((a) => ({ ...a, title: translate(lang, a.title), desc: translate(lang, a.desc) }));
+}
+
+const researchCentersEn = [
   {
     num: "01",
     name: "Center for Scholarly Publishing Studies",
@@ -115,7 +130,16 @@ export const researchCenters = [
   },
 ];
 
-export const featuredProjects = [
+export function getResearchCenters(lang: Lang) {
+  return researchCentersEn.map((c) => ({
+    ...c,
+    name: translate(lang, c.name),
+    areas: c.areas.map((a) => translate(lang, a)),
+    href: lang === 'en' ? c.href : `/${lang}${c.href}`,
+  }));
+}
+
+const featuredProjectsEn = [
   {
     status: "Awaiting Launch",
     title: "POSI Scholarly Indexing Project",
@@ -142,7 +166,17 @@ export const featuredProjects = [
   },
 ];
 
-export const featuredPublications = [
+export function getFeaturedProjects(lang: Lang) {
+  return featuredProjectsEn.map((p) => ({
+    ...p,
+    status: translate(lang, p.status),
+    title: translate(lang, p.title),
+    desc: translate(lang, p.desc),
+    href: lang === 'en' ? p.href : `/${lang}${p.href}`,
+  }));
+}
+
+const featuredPublicationsEn = [
   {
     type: "Research Report",
     title: "Open Scholarly Indexing and Journal Transparency",
@@ -163,7 +197,16 @@ export const featuredPublications = [
   },
 ];
 
-export const upcomingEvents = [
+export function getFeaturedPublications(lang: Lang) {
+  return featuredPublicationsEn.map((p) => ({
+    ...p,
+    type: translate(lang, p.type),
+    title: translate(lang, p.title),
+    team: translate(lang, p.team),
+  }));
+}
+
+const upcomingEventsEn = [
   {
     date: "MAR 2026",
     type: "Workshop",
@@ -186,3 +229,22 @@ export const upcomingEvents = [
     status: "Save the Date",
   },
 ];
+
+export function getUpcomingEvents(lang: Lang) {
+  return upcomingEventsEn.map((e) => ({
+    ...e,
+    type: translate(lang, e.type),
+    title: translate(lang, e.title),
+    location: translate(lang, e.location),
+    status: translate(lang, e.status),
+  }));
+}
+
+// Backwards-compatible English-only exports (unused now that pages call the
+// lang-aware getters above, kept only in case something still imports these directly).
+export const platforms = platformsEn;
+export const researchAreas = researchAreasEn;
+export const researchCenters = researchCentersEn;
+export const featuredProjects = featuredProjectsEn;
+export const featuredPublications = featuredPublicationsEn;
+export const upcomingEvents = upcomingEventsEn;

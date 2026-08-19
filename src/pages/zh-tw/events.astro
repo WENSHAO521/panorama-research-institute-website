@@ -1,7 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
-import { upcomingEvents } from '../../data/site';
+import { getUpcomingEvents } from '../../data/site';
+import type { Lang } from '../../i18n/utils';
+
+const lang = (Astro.currentLocale as Lang) ?? 'en';
+const upcomingEvents = getUpcomingEvents(lang);
 
 const calls = [
   { type: "論文徵稿", deadline: "2026 年 2 月", title: "人工智慧時代的學術傳播", journal: "學術出版研究年度會議" },

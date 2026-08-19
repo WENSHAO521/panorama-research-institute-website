@@ -1,7 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
-import { researchCenters } from '../data/site';
+import { getResearchCenters } from '../data/site';
+import type { Lang } from '../i18n/utils';
+
+const lang = (Astro.currentLocale as Lang) ?? 'en';
+const researchCenters = getResearchCenters(lang);
 ---
 
 <BaseLayout

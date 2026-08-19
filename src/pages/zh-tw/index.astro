@@ -1,6 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { site, platforms, researchAreas, researchCenters, featuredProjects, featuredPublications, upcomingEvents } from '../../data/site';
+import { getSiteDescription, getPlatforms, getResearchAreas, getResearchCenters, getFeaturedProjects, getFeaturedPublications, getUpcomingEvents } from '../../data/site';
+import type { Lang } from '../../i18n/utils';
+
+const lang = (Astro.currentLocale as Lang) ?? 'en';
+const platforms = getPlatforms(lang);
+const researchAreas = getResearchAreas(lang);
+const researchCenters = getResearchCenters(lang);
+const featuredProjects = getFeaturedProjects(lang);
+const featuredPublications = getFeaturedPublications(lang);
+const upcomingEvents = getUpcomingEvents(lang);
 
 const homeFrameworkUnits = [
   { unit: "研究中心",              role: "專業學術單位" },
@@ -14,7 +23,7 @@ const homeFrameworkUnits = [
 
 <BaseLayout
   title="全景研究院"
-  description={site.description}
+  description={getSiteDescription(lang)}
 >
 
 <!-- ── 02 Hero ── -->

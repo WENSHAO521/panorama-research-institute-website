@@ -27,9 +27,9 @@ const publications = [
   <!-- Category Filter -->
   <section style="background:var(--bg-white);border-bottom:1px solid var(--border-light);padding:20px 0;">
     <div class="container">
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <div class="pub-filter" style="display:flex;gap:8px;flex-wrap:wrap;">
         {categories.map((c, i) => (
-          <button class={`tag ${i === 0 ? 'tag-active' : ''}`} style="cursor:pointer;" type="button">{c}</button>
+          <button class={`tag ${i === 0 ? 'tag-active' : ''}`} style="cursor:pointer;" type="button" data-cat={c}>{c}</button>
         ))}
       </div>
     </div>
@@ -39,7 +39,7 @@ const publications = [
   <section class="section" style="background:var(--bg-main);">
     <div class="container">
       {publications.map((pub) => (
-        <div class="publication-item">
+        <div class="publication-item" data-type={pub.type}>
           <div>
             <div class="pub-type">{pub.type}</div>
             <div style="margin-top:8px;">
@@ -65,6 +65,23 @@ const publications = [
       ))}
     </div>
   </section>
+
+  <script>
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.pub-filter [data-cat]');
+    const items = document.querySelectorAll<HTMLElement>('.publication-item[data-type]');
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.cat;
+        filterButtons.forEach((b) => b.classList.remove('tag-active'));
+        btn.classList.add('tag-active');
+        items.forEach((item) => {
+          const show = cat === '全部' || item.dataset.type === cat;
+          item.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  </script>
 
   <!-- Citation Format -->
   <section class="section-compact" style="background:var(--bg-white);border-top:1px solid var(--border-light);">

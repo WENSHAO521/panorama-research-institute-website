@@ -1,6 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+
+const variants = [
+  { name: "Primary", file: "/research-institute-logo.svg", bg: "light", ratio: "wide", use: "Default lockup. Use on white or light backgrounds across digital and print." },
+  { name: "Reversed", file: "/brand/logo-reversed.svg", bg: "dark", ratio: "wide", use: "Dark backgrounds — dark photography, video overlays, dark UI panels." },
+  { name: "Monochrome Black", file: "/brand/logo-mono-black.svg", bg: "light", ratio: "wide", use: "Single-colour print, letterhead, engraving, fax and scanned documents." },
+  { name: "Monochrome White", file: "/brand/logo-mono-white.svg", bg: "dark", ratio: "wide", use: "Knockout on photography, watermarks, single-colour dark-substrate print." },
+  { name: "Mark Only", file: "/brand/logo-mark.svg", bg: "light", ratio: "square", use: "Favicon, app icon, social avatar, and other small or square placements." },
+  { name: "Stacked Lockup", file: "/brand/logo-stacked.svg", bg: "light", ratio: "square", use: "Square or vertical placements — certificates, cover pages, signage." },
+];
 ---
 <BaseLayout title="Logo and Name Usage Guidelines" description="Guidelines for the correct use of the Panorama Research Institute name and logo.">
   <PageHero
@@ -18,7 +27,83 @@ import PageHero from '../../components/PageHero.astro';
             Panorama Research Institute's name and logo may only be used in connection with work that has been formally authorized by the Institute. Unauthorized use of the Institute's name or logo — including in publications, events, websites, or communications — is prohibited without explicit written permission.
           </p>
         </div>
+      </div>
+    </div>
+  </section>
 
+  <section class="section-compact logo-system" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Visual Identity</div>
+      <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:10px;font-weight:400;">The Logo System</h2>
+      <p style="font-size:15.5px;color:var(--text-secondary);max-width:640px;margin-bottom:36px;">
+        Six official variants cover the Institute's standard use cases. Always use the version matched to its intended background — never recreate, recolour, or approximate the mark.
+      </p>
+
+      <div class="variant-grid">
+        {variants.map((v) => (
+          <div class="variant-card">
+            <div class={`variant-swatch variant-swatch-${v.bg}`}>
+              <img src={v.file} alt={`Panorama Research Institute — ${v.name}`} class={`variant-img variant-img-${v.ratio}`} decoding="async" />
+            </div>
+            <div class="variant-meta">
+              <div class="variant-name">{v.name}</div>
+              <p class="variant-use">{v.use}</p>
+              <a href={v.file} download class="variant-download">Download SVG &#8595;</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact logo-specs" style="background:var(--bg-soft);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="specs-grid">
+        <div>
+          <div class="section-label">Construction</div>
+          <h3 style="font-family:var(--font-serif);font-size:20px;color:var(--text-main);margin-bottom:14px;font-weight:400;">Clear Space & Minimum Size</h3>
+          <div class="clearspace-demo">
+            <img src="/research-institute-logo.svg" alt="Panorama Research Institute logo with clear space guide" />
+          </div>
+          <p style="font-size:14px;color:var(--text-secondary);line-height:1.75;margin-top:16px;">
+            Maintain clear space equal to the cap-height of the letter "P" in PANORAMA (marked <span style="color:var(--text-main);">x</span> above) on all four sides. No text, imagery, or other marks may enter this zone.
+          </p>
+          <div class="size-row">
+            <div class="size-item"><img src="/research-institute-logo.svg" style="height:24px;" alt="Minimum digital size" /><span>24px min. — digital</span></div>
+            <div class="size-item"><img src="/research-institute-logo.svg" style="height:44px;" alt="Standard digital size" /><span>44px — standard</span></div>
+            <div class="size-item"><img src="/research-institute-logo.svg" style="height:15mm;" alt="Minimum print size" /><span>15mm min. — print</span></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-label">Correct vs. Incorrect</div>
+          <h3 style="font-family:var(--font-serif);font-size:20px;color:var(--text-main);margin-bottom:14px;font-weight:400;">Do &amp; Don't</h3>
+          <div class="dodont-grid">
+            <div class="dodont-cell dodont-ok">
+              <div class="dodont-frame"><img src="/research-institute-logo.svg" alt="Correct usage" /></div>
+              <span class="dodont-tag dodont-tag-ok">&#10003; Proportional, clear space respected</span>
+            </div>
+            <div class="dodont-cell dodont-bad">
+              <div class="dodont-frame"><img src="/research-institute-logo.svg" style="transform:scaleX(1.6);" alt="Incorrect: stretched" /></div>
+              <span class="dodont-tag dodont-tag-bad">&#10005; Never stretch or distort</span>
+            </div>
+            <div class="dodont-cell dodont-bad">
+              <div class="dodont-frame"><img src="/research-institute-logo.svg" style="filter:sepia(1) saturate(6) hue-rotate(-30deg);" alt="Incorrect: recoloured" /></div>
+              <span class="dodont-tag dodont-tag-bad">&#10005; Never use off-brand colours</span>
+            </div>
+            <div class="dodont-cell dodont-bad" style="background:var(--bg-soft);">
+              <div class="dodont-frame"><img src="/brand/logo-mono-white.svg" alt="Incorrect: low contrast" /></div>
+              <span class="dodont-tag dodont-tag-bad">&#10005; Never place white version on a light background</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
         <div style="display:flex;flex-direction:column;gap:48px;">
           {[
             {
@@ -57,11 +142,11 @@ import PageHero from '../../components/PageHero.astro';
               title: "Logo Usage",
               content: "When using the Institute's logo, follow these requirements:",
               items: [
-                "Use only the official logo files available from the Institute's Publications Unit",
+                "Use only the six official variants shown above — never recreate, trace, or approximate the mark",
                 "Maintain the minimum clear space around the logo (equal to the height of the 'P' in PANORAMA on all sides)",
                 "Do not scale the logo below 24px height in digital use or 15mm in print",
-                "Use the dark version (PANORAMA on dark or white backgrounds); use the light version (PANORAMA in white) on dark backgrounds only",
-                "Do not use the logo at reduced opacity, in outline only, or in non-brand colours",
+                "Use the Reversed or Monochrome White variant only on dark backgrounds; never on light or white backgrounds",
+                "Do not use the logo at reduced opacity, in outline only, stretched, rotated, or in non-brand colours",
               ],
             },
           ].map((section) => (
@@ -94,3 +179,106 @@ import PageHero from '../../components/PageHero.astro';
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .variant-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .variant-card {
+    border: 1px solid var(--border-light);
+    background: var(--bg-white);
+  }
+  .variant-swatch {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .variant-swatch-light { background: var(--bg-white); }
+  .variant-swatch-dark  { background: var(--bg-dark); }
+  .variant-img-wide   { width: 100%; max-width: 220px; height: auto; }
+  .variant-img-square { height: 72px; width: auto; }
+  .variant-meta {
+    padding: 16px 18px 20px;
+    border-top: 1px solid var(--border-light);
+  }
+  .variant-name {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    color: var(--text-main);
+    margin-bottom: 6px;
+  }
+  .variant-use {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .variant-download {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-steel);
+  }
+  .variant-download:hover { text-decoration: underline; }
+
+  .specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+
+  .clearspace-demo {
+    border: 1px dashed var(--border-dark);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-white);
+  }
+  .clearspace-demo img { width: 100%; max-width: 260px; height: auto; }
+
+  .size-row {
+    display: flex;
+    gap: 28px;
+    align-items: flex-end;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .size-item { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .size-item span { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+
+  .dodont-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .dodont-cell { border: 1px solid var(--border-light); background: var(--bg-white); padding: 14px; }
+  .dodont-ok   { border-color: var(--success); }
+  .dodont-frame {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .dodont-frame img { max-width: 85%; height: auto; }
+  .dodont-tag { display: block; margin-top: 10px; font-size: 12px; line-height: 1.5; }
+  .dodont-tag-ok  { color: var(--success); }
+  .dodont-tag-bad { color: var(--danger); }
+
+  @media (max-width: 900px) {
+    .variant-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 860px) {
+    .specs-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 560px) {
+    .variant-grid { grid-template-columns: 1fr; }
+    .dodont-grid { grid-template-columns: 1fr; }
+  }
+</style>

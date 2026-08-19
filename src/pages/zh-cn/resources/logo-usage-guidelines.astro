@@ -1,6 +1,15 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
+
+const variants = [
+  { name: "主版本", file: "/research-institute-logo.svg", bg: "light", ratio: "wide", use: "默认版式。用于数字和印刷场景中的白色或浅色背景。" },
+  { name: "反白版本", file: "/brand/logo-reversed.svg", bg: "dark", ratio: "wide", use: "深色背景——深色图片、视频叠加层、深色界面面板。" },
+  { name: "单色黑版", file: "/brand/logo-mono-black.svg", bg: "light", ratio: "wide", use: "单色印刷、信头、雕刻、传真与扫描文件。" },
+  { name: "单色白版", file: "/brand/logo-mono-white.svg", bg: "dark", ratio: "wide", use: "用于摄影图片上的反白效果、水印、深色载体单色印刷。" },
+  { name: "图标标记版", file: "/brand/logo-mark.svg", bg: "light", ratio: "square", use: "网站图标（favicon）、应用图标、社交媒体头像及其他小尺寸或方形场景。" },
+  { name: "堆叠版", file: "/brand/logo-stacked.svg", bg: "light", ratio: "square", use: "方形或竖版场景——证书、封面、标识牌。" },
+];
 ---
 <BaseLayout title="标志与名称使用指南" description="正确使用全景研究院名称与标识的指南。">
   <PageHero
@@ -18,7 +27,83 @@ import PageHero from '../../../components/PageHero.astro';
             全景研究院名称和标志仅可用于研究院正式授权的工作。未经明确书面许可，不得在出版物、活动、网站或通信中擅自使用研究院名称或标志。
           </p>
         </div>
+      </div>
+    </div>
+  </section>
 
+  <section class="section-compact logo-system" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">视觉识别</div>
+      <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:10px;font-weight:400;">标志系统</h2>
+      <p style="font-size:15.5px;color:var(--text-secondary);max-width:640px;margin-bottom:36px;">
+        六种官方版本涵盖研究院的标准使用场景。请始终使用与背景匹配的版本——切勿重新绘制、更改颜色或仿制标志。
+      </p>
+
+      <div class="variant-grid">
+        {variants.map((v) => (
+          <div class="variant-card">
+            <div class={`variant-swatch variant-swatch-${v.bg}`}>
+              <img src={v.file} alt={`全景研究院 — ${v.name}`} class={`variant-img variant-img-${v.ratio}`} decoding="async" />
+            </div>
+            <div class="variant-meta">
+              <div class="variant-name">{v.name}</div>
+              <p class="variant-use">{v.use}</p>
+              <a href={v.file} download class="variant-download">下载 SVG &#8595;</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact logo-specs" style="background:var(--bg-soft);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="specs-grid">
+        <div>
+          <div class="section-label">构成规范</div>
+          <h3 style="font-family:var(--font-serif);font-size:20px;color:var(--text-main);margin-bottom:14px;font-weight:400;">安全间距与最小尺寸</h3>
+          <div class="clearspace-demo">
+            <img src="/research-institute-logo.svg" alt="带安全间距标示的全景研究院标志" />
+          </div>
+          <p style="font-size:14px;color:var(--text-secondary);line-height:1.75;margin-top:16px;">
+            保持标志四周的安全间距，等于 PANORAMA 中字母"P"的大写字高（如上图中 <span style="color:var(--text-main);">x</span> 所示）。任何文字、图像或其他标志均不得进入该区域。
+          </p>
+          <div class="size-row">
+            <div class="size-item"><img src="/research-institute-logo.svg" style="height:24px;" alt="数字端最小尺寸" /><span>24px 起 —— 数字端最小值</span></div>
+            <div class="size-item"><img src="/research-institute-logo.svg" style="height:44px;" alt="标准数字尺寸" /><span>44px —— 标准尺寸</span></div>
+            <div class="size-item"><img src="/research-institute-logo.svg" style="height:15mm;" alt="印刷最小尺寸" /><span>15mm 起 —— 印刷最小值</span></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-label">正确与错误示例</div>
+          <h3 style="font-family:var(--font-serif);font-size:20px;color:var(--text-main);margin-bottom:14px;font-weight:400;">使用规范对照</h3>
+          <div class="dodont-grid">
+            <div class="dodont-cell dodont-ok">
+              <div class="dodont-frame"><img src="/research-institute-logo.svg" alt="正确用法" /></div>
+              <span class="dodont-tag dodont-tag-ok">&#10003; 比例正确，留白得当</span>
+            </div>
+            <div class="dodont-cell dodont-bad">
+              <div class="dodont-frame"><img src="/research-institute-logo.svg" style="transform:scaleX(1.6);" alt="错误：拉伸变形" /></div>
+              <span class="dodont-tag dodont-tag-bad">&#10005; 切勿拉伸或扭曲标志</span>
+            </div>
+            <div class="dodont-cell dodont-bad">
+              <div class="dodont-frame"><img src="/research-institute-logo.svg" style="filter:sepia(1) saturate(6) hue-rotate(-30deg);" alt="错误：更改颜色" /></div>
+              <span class="dodont-tag dodont-tag-bad">&#10005; 切勿使用非品牌色彩</span>
+            </div>
+            <div class="dodont-cell dodont-bad" style="background:var(--bg-soft);">
+              <div class="dodont-frame"><img src="/brand/logo-mono-white.svg" alt="错误：对比度不足" /></div>
+              <span class="dodont-tag dodont-tag-bad">&#10005; 切勿将白色版本用于浅色背景</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:860px;">
         <div style="display:flex;flex-direction:column;gap:48px;">
           {[
             {
@@ -57,11 +142,11 @@ import PageHero from '../../../components/PageHero.astro';
               title: "标志使用",
               content: "使用研究院标志时，请遵守以下要求：",
               items: [
-                "仅使用研究院学术出版事务部提供的官方标志文件",
+                "仅使用上方展示的六种官方版本——切勿重新绘制、描摹或仿制标志",
                 "保持标志周围最小留白（四周均等于 PANORAMA 中字母 P 的高度）",
                 "数字使用中标志高度不得低于 24px，印刷使用中不得低于 15mm",
-                "使用深色版本（PANORAMA 用于深色或白色背景）；浅色版本（白色 PANORAMA）仅用于深色背景",
-                "不得降低标志不透明度、仅使用轮廓，或使用非品牌颜色",
+                "反白版本或单色白版仅用于深色背景；切勿用于浅色或白色背景",
+                "不得降低标志不透明度、仅使用轮廓、拉伸、旋转，或使用非品牌颜色",
               ],
             },
           ].map((section) => (
@@ -94,3 +179,106 @@ import PageHero from '../../../components/PageHero.astro';
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .variant-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .variant-card {
+    border: 1px solid var(--border-light);
+    background: var(--bg-white);
+  }
+  .variant-swatch {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .variant-swatch-light { background: var(--bg-white); }
+  .variant-swatch-dark  { background: var(--bg-dark); }
+  .variant-img-wide   { width: 100%; max-width: 220px; height: auto; }
+  .variant-img-square { height: 72px; width: auto; }
+  .variant-meta {
+    padding: 16px 18px 20px;
+    border-top: 1px solid var(--border-light);
+  }
+  .variant-name {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    color: var(--text-main);
+    margin-bottom: 6px;
+  }
+  .variant-use {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .variant-download {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-steel);
+  }
+  .variant-download:hover { text-decoration: underline; }
+
+  .specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+
+  .clearspace-demo {
+    border: 1px dashed var(--border-dark);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-white);
+  }
+  .clearspace-demo img { width: 100%; max-width: 260px; height: auto; }
+
+  .size-row {
+    display: flex;
+    gap: 28px;
+    align-items: flex-end;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .size-item { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .size-item span { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+
+  .dodont-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .dodont-cell { border: 1px solid var(--border-light); background: var(--bg-white); padding: 14px; }
+  .dodont-ok   { border-color: var(--success); }
+  .dodont-frame {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .dodont-frame img { max-width: 85%; height: auto; }
+  .dodont-tag { display: block; margin-top: 10px; font-size: 12px; line-height: 1.5; }
+  .dodont-tag-ok  { color: var(--success); }
+  .dodont-tag-bad { color: var(--danger); }
+
+  @media (max-width: 900px) {
+    .variant-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 860px) {
+    .specs-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 560px) {
+    .variant-grid { grid-template-columns: 1fr; }
+    .dodont-grid { grid-template-columns: 1fr; }
+  }
+</style>

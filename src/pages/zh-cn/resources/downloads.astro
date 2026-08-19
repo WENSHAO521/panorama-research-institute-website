@@ -58,7 +58,7 @@ const lang = Astro.currentLocale ?? 'en';
               <div style="display:grid;grid-template-columns:1fr auto auto;gap:20px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border-light);">
                 <div style="font-size:15px;color:var(--text-main);">{item.name}</div>
                 <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);">{item.type}</div>
-                <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener' : undefined} download={item.download ? true : undefined} class="btn btn-secondary" style="font-size:13px;white-space:nowrap;">Download &rarr;</a>
+                <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener' : undefined} download={item.download ? true : undefined} class="btn btn-secondary" style="font-size:13px;white-space:nowrap;">下载 →</a>
               </div>
             ))}
           </div>

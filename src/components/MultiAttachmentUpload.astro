@@ -1,4 +1,7 @@
 ---
+import { translate } from '../i18n/dictionary';
+import type { Lang } from '../i18n/utils';
+
 interface Props {
   id: string;
   label?: string;
@@ -14,17 +17,20 @@ const {
   name = 'attachment',
   accept = '.pdf,.doc,.docx,.zip,.png,.jpg,.jpeg',
 } = Astro.props;
+
+const lang = (Astro.currentLocale as Lang) ?? 'en';
+const t = (key: string) => translate(lang, key);
 ---
 
 <div class="multi-attachment" data-multi-attachment>
-  <label class="multi-attachment__label" for={id}>{label}</label>
+  <label class="multi-attachment__label" for={id}>{t(label)}</label>
   <div class="multi-attachment__control">
     <input id={id} name={name} type="file" accept={accept} multiple data-attachment-input />
-    <label class="multi-attachment__button" for={id}>Choose files</label>
-    <span class="multi-attachment__status" data-attachment-status>No files selected</span>
+    <label class="multi-attachment__button" for={id}>{t('Choose files')}</label>
+    <span class="multi-attachment__status" data-attachment-status>{t('No files selected')}</span>
   </div>
   <ul class="multi-attachment__list" data-attachment-list aria-live="polite"></ul>
-  <p class="multi-attachment__description">{description}</p>
+  <p class="multi-attachment__description">{t(description)}</p>
 </div>
 
 <script>

@@ -109,6 +109,11 @@ export const clientTranslationsManual = {
     'Scholarly Publishing': '学术出版',
     'Associate Research Fellow Application': '副研究员申请',
     'Institutional Cooperation Inquiry': '机构合作咨询',
+    'Apply &rarr;': '申请 →',
+    'Details &rarr;': '查看详情 →',
+    'Download &rarr;': '下载 →',
+    'Cite &rarr;': '引用 →',
+    'View &rarr;': '查看 →',
   },
   'zh-tw': {
     'Panorama Research Institute — Effective 2026': '全景研究院 — 自 2026 年生效',
@@ -215,5 +220,10 @@ export const clientTranslationsManual = {
     'Scholarly Publishing': '學術出版',
     'Associate Research Fellow Application': '副研究員申請',
     'Institutional Cooperation Inquiry': '機構合作諮詢',
+    'Apply &rarr;': '申請 →',
+    'Details &rarr;': '查看詳情 →',
+    'Download &rarr;': '下載 →',
+    'Cite &rarr;': '引用 →',
+    'View &rarr;': '查看 →',
   },
 };

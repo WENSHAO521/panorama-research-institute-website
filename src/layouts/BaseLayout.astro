@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import { getBasePath, getLocalizedPath, type Lang } from '../i18n/utils';
+import { translate } from '../i18n/dictionary';
 
 interface Props {
   title?: string;
@@ -12,7 +13,7 @@ interface Props {
 }
 
 const {
-  title = 'Panorama Research Institute',
+  title,
   description = 'Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group.',
   ogImage,
   lang = (Astro.currentLocale as Lang) ?? 'en',
@@ -21,9 +22,11 @@ const {
 const siteOrigin = Astro.site ?? new URL('https://research.panorama-sg.com');
 const basePath = getBasePath(Astro.url.pathname);
 const canonicalURL = new URL(getLocalizedPath(lang, Astro.url.pathname), siteOrigin);
-const fullTitle = title === 'Panorama Research Institute'
-  ? title
-  : `${title} | Panorama Research Institute`;
+const brandName = translate(lang, 'Panorama Research Institute');
+const resolvedTitle = title ?? 'Panorama Research Institute';
+const fullTitle = resolvedTitle === 'Panorama Research Institute' || resolvedTitle === brandName
+  ? brandName
+  : `${resolvedTitle} | ${brandName}`;
 ---
 
 <!doctype html>

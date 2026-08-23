@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import FormSubmitFields from '../../components/FormSubmitFields.astro';
+import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro';
 ---
 <BaseLayout title="Visiting Scholar Application" description="Apply for the Panorama Research Institute Visiting Scholar Program.">
   <PageHero
@@ -39,7 +40,7 @@ import FormSubmitFields from '../../components/FormSubmitFields.astro';
             Use this form to apply to affiliate with Panorama Research Institute as a Visiting Scholar. Applications are reviewed by the Scholar Program Coordinator and the relevant Research Center Director. Successful applicants will be contacted to discuss the terms and scope of the visiting affiliation.
           </p>
 
-          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/scholars@panorama-sg.com" method="POST">
+          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/scholars@panorama-sg.com" method="POST" enctype="multipart/form-data">
             <FormSubmitFields subject="Panorama Research Institute Visiting Scholar Application" source="Visiting Scholar Application Form" />
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
               {([
@@ -83,6 +84,14 @@ import FormSubmitFields from '../../components/FormSubmitFields.astro';
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
               <label for="vs-cv" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Academic Profile / CV Summary (up to 400 words)</label>
               <textarea id="vs-cv" name="vs-cv" rows="5" placeholder="Academic bio, key publications, and any other relevant experience." class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <MultiAttachmentUpload
+                id="vs-attachments"
+                label="Application Attachments"
+                description="Upload your CV, publication list, or other supporting documents as PDF, Word, image, or ZIP files. Up to 5 files, total size not exceeding 10MB. If you need to send more than 5 files, please email them directly to scholars@panorama-sg.com."
+                accept=".pdf,.doc,.docx,.zip,.png,.jpg,.jpeg"
+              />
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
               <input type="checkbox" id="vs-consent" name="vs-consent" value="confirmed" style="margin-top:3px;flex-shrink:0;" />

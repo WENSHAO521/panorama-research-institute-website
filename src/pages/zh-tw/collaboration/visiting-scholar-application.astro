@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
 import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.astro';
 ---
 <BaseLayout title="訪問學者申請" description="申請全景研究院訪問學者項目。">
   <PageHero
@@ -39,7 +40,7 @@ import FormSubmitFields from '../../../components/FormSubmitFields.astro';
             請使用本表格申請以訪問學者身份與全景研究院建立隸屬關係。申請由學者計劃協調員和相關研究中心主任評審。成功申請者將被聯絡，以討論訪問隸屬的條款和範圍。
           </p>
 
-          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/scholars@panorama-sg.com" method="POST">
+          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/scholars@panorama-sg.com" method="POST" enctype="multipart/form-data">
             <FormSubmitFields subject="全景研究院訪問學者申請" source="訪問學者申請表" />
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
               {([
@@ -83,6 +84,14 @@ import FormSubmitFields from '../../../components/FormSubmitFields.astro';
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
               <label for="vs-cv" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">學術簡介 / 簡歷摘要（不超過 400 詞）</label>
               <textarea id="vs-cv" name="vs-cv" rows="5" placeholder="學術簡介、主要出版物和其他相關經歷。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <MultiAttachmentUpload
+                id="vs-attachments"
+                label="申請附件"
+                description="請上傳您的履歷、出版物清單或其他支持材料，可使用 PDF、Word、圖片或 ZIP 文件。最多可上傳 5 個文件，總大小請勿超過 10MB。如需傳送超過 5 個文件，請直接傳送電子郵件至 scholars@panorama-sg.com。"
+                accept=".pdf,.doc,.docx,.zip,.png,.jpg,.jpeg"
+              />
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
               <input type="checkbox" id="vs-consent" name="vs-consent" value="confirmed" style="margin-top:3px;flex-shrink:0;" />

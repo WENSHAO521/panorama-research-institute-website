@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import FormSubmitFields from '../../components/FormSubmitFields.astro';
+import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro';
 ---
 <BaseLayout title="Research Project Proposal" description="Submit a research project proposal to Panorama Research Institute.">
   <PageHero
@@ -28,6 +29,9 @@ import FormSubmitFields from '../../components/FormSubmitFields.astro';
                 <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
               </div>
             ))}
+          </div>
+          <div style="margin-top:20px;">
+            <a href="/resources/research-proposal-template" class="btn btn-secondary" style="width:100%;justify-content:center;">Download Proposal Template</a>
           </div>
         </div>
         <div>
@@ -63,7 +67,7 @@ import FormSubmitFields from '../../components/FormSubmitFields.astro';
       <div style="border-top:1px solid var(--border-light);padding-top:48px;">
         <div class="section-label" style="margin-bottom:8px;">Proposal Form</div>
         <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:24px;font-weight:400;">Submit Your Proposal</h2>
-        <form style="max-width:740px;display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/research@panorama-sg.com" method="POST">
+        <form style="max-width:740px;display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/research@panorama-sg.com" method="POST" enctype="multipart/form-data">
           <FormSubmitFields subject="Panorama Research Institute Research Project Proposal" source="Research Project Proposal Form" />
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
             {([
@@ -90,8 +94,16 @@ import FormSubmitFields from '../../components/FormSubmitFields.astro';
             </select>
           </div>
           <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-            <label for="proposal" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Research Proposal (1,000–3,000 words)</label>
-            <textarea id="proposal" name="proposal" rows="12" placeholder="Please include all required sections as described in the proposal guidelines above." class="form-input" style="width:100%;resize:vertical;"></textarea>
+            <label for="proposal" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Research Proposal Summary (1,000–3,000 words)</label>
+            <textarea id="proposal" name="proposal" rows="12" placeholder="Please include all required sections as described in the proposal guidelines above, or provide a summary here and attach the completed proposal template below." class="form-input" style="width:100%;resize:vertical;"></textarea>
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <MultiAttachmentUpload
+              id="attachments"
+              label="Proposal Attachments"
+              description="Upload the completed Research Proposal Template, CV, or other supporting documents as PDF, Word, image, or ZIP files. Up to 5 files, total size not exceeding 10MB. If you need to send more than 5 files, please email them directly to research@panorama-sg.com."
+              accept=".pdf,.doc,.docx,.zip,.png,.jpg,.jpeg"
+            />
           </div>
           <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
             <input type="checkbox" id="consent" name="consent" style="margin-top:3px;flex-shrink:0;" />

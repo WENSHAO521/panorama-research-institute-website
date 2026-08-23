@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
 import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.astro';
 ---
 <BaseLayout title="研究项目提案" description="向全景研究院提交研究项目提案。">
   <PageHero
@@ -28,6 +29,9 @@ import FormSubmitFields from '../../../components/FormSubmitFields.astro';
                 <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
               </div>
             ))}
+          </div>
+          <div style="margin-top:20px;">
+            <a href="/zh-cn/resources/research-proposal-template" class="btn btn-secondary" style="width:100%;justify-content:center;">下载提案模板</a>
           </div>
         </div>
         <div>
@@ -63,7 +67,7 @@ import FormSubmitFields from '../../../components/FormSubmitFields.astro';
       <div style="border-top:1px solid var(--border-light);padding-top:48px;">
         <div class="section-label" style="margin-bottom:8px;">提案表格</div>
         <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:24px;font-weight:400;">提交提案</h2>
-        <form style="max-width:740px;display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/research@panorama-sg.com" method="POST">
+        <form style="max-width:740px;display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/research@panorama-sg.com" method="POST" enctype="multipart/form-data">
           <FormSubmitFields subject="全景研究院研究项目提案" source="研究项目提案表格" />
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
             {([
@@ -90,8 +94,16 @@ import FormSubmitFields from '../../../components/FormSubmitFields.astro';
             </select>
           </div>
           <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-            <label for="proposal" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">研究提案（1,000–3,000 词）</label>
-            <textarea id="proposal" name="proposal" rows="12" placeholder="请包含上述提案指南中说明的全部必需部分。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+            <label for="proposal" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">研究提案摘要（1,000–3,000 词）</label>
+            <textarea id="proposal" name="proposal" rows="12" placeholder="请包含上述提案指南中说明的全部必需部分，或在此填写摘要，并在下方附上填写完成的提案模板。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <MultiAttachmentUpload
+              id="attachments"
+              label="提案附件"
+              description="请上传填写完成的研究提案模板、简历或其他支持材料，可使用 PDF、Word、图片或 ZIP 文件。最多可上传 5 个文件，总大小请勿超过 10MB。如需发送超过 5 个文件，请直接发送邮件至 research@panorama-sg.com。"
+              accept=".pdf,.doc,.docx,.zip,.png,.jpg,.jpeg"
+            />
           </div>
           <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
             <input type="checkbox" id="consent" name="consent" style="margin-top:3px;flex-shrink:0;" />

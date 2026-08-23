@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import FormSubmitFields from '../../components/FormSubmitFields.astro';
+import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro';
 ---
 <BaseLayout title="Special Issue Proposal" description="Submit a proposal for a special journal issue in collaboration with Panorama Research Institute.">
   <PageHero
@@ -58,7 +59,7 @@ import FormSubmitFields from '../../components/FormSubmitFields.astro';
       <div style="border-top:1px solid var(--border-light);padding-top:48px;">
         <div class="section-label" style="margin-bottom:8px;">Proposal Form</div>
         <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:24px;font-weight:400;">Submit Your Proposal</h2>
-        <form style="max-width:740px;" action="https://formsubmit.co/publications@panorama-sg.com" method="POST">
+        <form style="max-width:740px;" action="https://formsubmit.co/publications@panorama-sg.com" method="POST" enctype="multipart/form-data">
           <FormSubmitFields subject="Panorama Research Institute Special Issue Proposal" source="Special Issue Proposal Form" />
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
             {([
@@ -76,6 +77,14 @@ import FormSubmitFields from '../../components/FormSubmitFields.astro';
           <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
             <label for="si-proposal" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Full Proposal</label>
             <textarea id="si-proposal" name="si-proposal" rows="8" placeholder="Include all required information as listed in the proposal requirements." class="form-input" style="width:100%;resize:vertical;"></textarea>
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <MultiAttachmentUpload
+              id="attachments"
+              label="Proposal Attachments"
+              description="Upload the completed proposal document, guest editor CV(s), or other supporting documents as PDF, Word, image, or ZIP files. Up to 5 files, total size not exceeding 10MB. If you need to send more than 5 files, please email them directly to publications@panorama-sg.com."
+              accept=".pdf,.doc,.docx,.zip,.png,.jpg,.jpeg"
+            />
           </div>
           <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
             <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Submit Proposal</button>

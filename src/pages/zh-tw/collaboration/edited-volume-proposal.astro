@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
 import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.astro';
 ---
 <BaseLayout title="主編文集提案" description="提交與全景研究院合作編輯學術編著的提案。">
   <PageHero
@@ -58,7 +59,7 @@ import FormSubmitFields from '../../../components/FormSubmitFields.astro';
       <div style="border-top:1px solid var(--border-light);padding-top:48px;">
         <div class="section-label" style="margin-bottom:8px;">提案表格</div>
         <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:24px;font-weight:400;">提交提案</h2>
-        <form style="max-width:740px;" action="https://formsubmit.co/publications@panorama-sg.com" method="POST">
+        <form style="max-width:740px;" action="https://formsubmit.co/publications@panorama-sg.com" method="POST" enctype="multipart/form-data">
           <FormSubmitFields subject="全景研究院編著提案" source="Edited Volume Proposal Form" />
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:-0.5px;">
             {([
@@ -76,6 +77,14 @@ import FormSubmitFields from '../../../components/FormSubmitFields.astro';
           <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
             <label for="synopsis" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">文集提案（見上方指南）</label>
             <textarea id="synopsis" name="synopsis" rows="10" placeholder="請包含提案指南中列出的全部必要部分。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+          </div>
+          <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+            <MultiAttachmentUpload
+              id="attachments"
+              label="提案附件"
+              description="請上傳填寫完成的文集提案文件、主編履歷或其他支持材料，可使用 PDF、Word、圖片或 ZIP 文件。最多可上傳 5 個文件，總大小請勿超過 10MB。如需傳送超過 5 個文件，請直接傳送電子郵件至 publications@panorama-sg.com。"
+              accept=".pdf,.doc,.docx,.zip,.png,.jpg,.jpeg"
+            />
           </div>
           <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
             <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">提交文集提案</button>

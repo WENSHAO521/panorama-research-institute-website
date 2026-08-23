@@ -72,6 +72,7 @@ export const navigation: NavItem[] = [
           { label: "Scholarly Indexing & Evaluation", href: "/research-centers/scholarly-indexing-evaluation" },
           { label: "Policy and Social Research",    href: "/research-centers/policy-social-research" },
           { label: "AI and Future Society",         href: "/research-centers/ai-future-society" },
+          { label: "Arts, Culture and Embodiment",  href: "/research-centers/arts-culture-embodiment" },
         ],
       },
       {

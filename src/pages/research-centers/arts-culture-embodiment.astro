@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Center for Arts, Culture and Embodiment" description="Research center focused on music, dance, cultural studies, embodied knowledge, performance, and creative practice.">
+  <PageHero
+    title="Center for Arts, Culture and Embodiment"
+    description="Research on music, dance, cultural studies, embodied knowledge, performance, and creative practice, examining the arts as sites of knowledge production and cultural meaning."
+    breadcrumbs={[{ label: "Research", href: "/research-areas" }, { label: "Research Centers", href: "/research-centers" }, { label: "Arts, Culture and Embodiment" }]}
+    tag="Active Research Center"
+  >
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">At a Glance</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "Center Status",   value: "Active" },
+              { label: "Established",     value: "2026" },
+              { label: "Research Area",   value: "Arts, Culture and Embodiment" },
+              { label: "Active Projects", value: "In development" },
+              { label: "Publications",    value: "Forthcoming" },
+              { label: "Contact",         value: "research@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/collaboration/research-fellow-application"  class="btn btn-primary" style="justify-content:center;">Research Fellow</a>
+            <a href="/collaboration/visiting-scholar-application" class="btn btn-secondary" style="justify-content:center;">Visiting Scholar</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">About the Center</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Center for Arts, Culture and Embodiment is Panorama Research Institute's fifth research center, addressing the arts, culture, and the body as sites of knowledge, meaning, and social practice. The Center examines music, dance, performance, and creative practice alongside broader questions in cultural studies and embodied cognition.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Center's work engages with the arts not only as objects of study but as modes of inquiry in their own right, exploring how embodied and creative practices generate knowledge that complements and challenges conventional academic modes of understanding.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            The Center's research is interdisciplinary, drawing on performance studies, cultural studies, cognitive science, ethnomusicology, dance studies, and the philosophy of art. It collaborates closely with researchers across the Institute's other centers on projects that intersect with culture, communication, and the social dimensions of knowledge production.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Research Focus</div>
+      <h2 class="section-title">Core Research Areas</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title: "Music and Dance Studies",   desc: "Research on musical and choreographic practice, tradition, and innovation across cultural and historical contexts." },
+          { title: "Cultural Studies",           desc: "Research on culture as a site of meaning-making, identity, and power, drawing on interdisciplinary theories of cultural production and reception." },
+          { title: "Embodied Knowledge",         desc: "Research on the body as a site of knowing, examining how embodied and sensory experience shapes understanding, memory, and skill." },
+          { title: "Performance Studies",        desc: "Research on performance as a cultural and artistic practice, including theatre, ritual, live art, and performative modes of communication." },
+          { title: "Creative Practice",          desc: "Research conducted through and about creative and artistic practice, including practice-based and practice-led research methodologies." },
+          { title: "Arts and Public Life",       desc: "Research on the role of the arts in public and civic life, including cultural policy, access, and the social value of artistic production." },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="max-width:700px;">
+        <div class="section-label">Get Involved</div>
+        <h2 class="section-title">Join the Center at Its Foundation</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+          The Center for Arts, Culture and Embodiment is actively seeking researchers to join its founding cohort of affiliated scholars. Researchers with expertise in music, dance, performance studies, cultural studies, embodied cognition, or related creative and interpretive fields are encouraged to apply.
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/collaboration/research-fellow-application"  class="btn btn-primary">Apply as Research Fellow</a>
+          <a href="/collaboration/visiting-scholar-application" class="btn btn-secondary">Visiting Scholar Program</a>
+          <a href="/collaboration/research-project-proposal"   class="btn btn-secondary">Submit Research Proposal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

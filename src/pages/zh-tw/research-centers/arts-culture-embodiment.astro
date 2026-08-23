@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="藝術、文化與具身研究中心" description="專注於音樂、舞蹈、文化研究、具身知識、表演與創意實踐的研究中心。">
+  <PageHero
+    title="藝術、文化與具身研究中心"
+    description="研究音樂、舞蹈、文化研究、具身知識、表演與創意實踐，考察藝術作為知識生產與文化意義生成場域的作用。"
+    breadcrumbs={[{ label: "研究", href: "/zh-tw/research-areas" }, { label: "研究中心", href: "/zh-tw/research-centers" }, { label: "藝術、文化與具身研究" }]}
+    tag="運行中的研究中心"
+  >
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">概覽</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "中心狀態",   value: "進行中" },
+              { label: "已設立",     value: "2026" },
+              { label: "研究領域",   value: "藝術、文化與具身研究" },
+              { label: "進行中的項目", value: "規劃中" },
+              { label: "出版成果",    value: "即將發布" },
+              { label: "聯絡",         value: "research@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-tw/collaboration/research-fellow-application"  class="btn btn-primary" style="justify-content:center;">研究員</a>
+            <a href="/zh-tw/collaboration/visiting-scholar-application" class="btn btn-secondary" style="justify-content:center;">訪問學者</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">關於中心</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            藝術、文化與具身研究中心是全景研究院第五個研究中心，聚焦藝術、文化與身體作為知識、意義與社會實踐場域的作用。中心研究音樂、舞蹈、表演與創意實踐，並關注文化研究與具身認知等更廣泛的議題。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            中心的工作不僅將藝術視為研究對象，也將其本身視為一種探究方式，探索具身與創意實踐如何生成補充乃至挑戰傳統學術理解方式的知識。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            中心的研究具有跨學科性，借鑒表演研究、文化研究、認知科學、民族音樂學、舞蹈研究和藝術哲學。中心與研究院其他中心的研究人員密切合作，共同開展涉及文化、傳播和知識生產社會維度的項目。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">研究重點</div>
+      <h2 class="section-title">核心研究領域</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title: "音樂與舞蹈研究",   desc: "研究不同文化和歷史情境中的音樂與編舞實踐、傳統與創新。" },
+          { title: "文化研究",           desc: "研究文化作為意義生成、身分認同和權力運作的場域，借鑒跨學科的文化生產與接受理論。" },
+          { title: "具身知識",         desc: "研究身體作為認知場域的作用，考察具身與感官經驗如何塑造理解、記憶和技能。" },
+          { title: "表演研究",        desc: "研究表演作為一種文化與藝術實踐，包括戲劇、儀式、現場藝術和表演性溝通方式。" },
+          { title: "創意實踐",          desc: "透過創意與藝術實踐開展並研究，包括基於實踐和以實踐為導向的研究方法。" },
+          { title: "藝術與公共生活",       desc: "研究藝術在公共與公民生活中的作用，包括文化政策、可及性和藝術生產的社會價值。" },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="max-width:700px;">
+        <div class="section-label">參與</div>
+        <h2 class="section-title">在創始階段加入中心</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+          藝術、文化與具身研究中心正在積極招募研究人員加入首批關聯學者隊伍。鼓勵具有音樂、舞蹈、表演研究、文化研究、具身認知或相關創意與闡釋領域專長的研究者申請。
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-tw/collaboration/research-fellow-application"  class="btn btn-primary">申請研究員</a>
+          <a href="/zh-tw/collaboration/visiting-scholar-application" class="btn btn-secondary">訪問學者計劃</a>
+          <a href="/zh-tw/collaboration/research-project-proposal"   class="btn btn-secondary">提交研究提案</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

@@ -128,6 +128,12 @@ const researchCentersEn = [
     href: "/research-centers/ai-future-society",
     upcoming: true,
   },
+  {
+    num: "05",
+    name: "Center for Arts, Culture and Embodiment",
+    areas: ["Cultural Studies", "Embodied Knowledge", "Performance Studies", "Creative Practice"],
+    href: "/research-centers/arts-culture-embodiment",
+  },
 ];
 
 export function getResearchCenters(lang: Lang) {

@@ -4,7 +4,7 @@
 //
 // Usage: node scripts/generate-locale-pages.mjs
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { globSync } from 'node:fs';
@@ -120,8 +120,6 @@ for (const relPath of files) {
   const srcPath = join(pagesDir, relPath);
   const source = readFileSync(srcPath, 'utf8');
 
-  // depth of this page relative to src/pages, to fix up relative imports (../../layouts/...)
-  const depth = relPath.split('/').length; // e.g. "people/leadership.astro" -> 2
   const extraUp = '../'.repeat(1); // zh-cn/ or zh-tw/ adds exactly one extra directory level
 
   for (const lang of ['zh-cn', 'zh-tw']) {
@@ -130,7 +128,7 @@ for (const relPath of files) {
 
     let out = source;
     // fix relative import paths for the extra locale directory level
-    out = out.replace(/from\s+(['"])(\.\.\/[^'"]+)\1/g, (full, quote, path) => `from ${quote}${extraUp}${path}${quote}`);
+    out = out.replace(/from\s+(['"])(\.\.\/[^'"]+)\1/g, (_full, quote, path) => `from ${quote}${extraUp}${path}${quote}`);
 
     out = translateTagText(out, dict, allGaps, ctx);
     out = translateQuotedStrings(out, dict, allGaps, ctx);

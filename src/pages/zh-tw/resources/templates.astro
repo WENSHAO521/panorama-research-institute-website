@@ -43,21 +43,24 @@ import PageHero from '../../../components/PageHero.astro';
             desc:    "研究院工作論文系列範本，包含封面頁、摘要、關鍵詞、正文部分和參考文獻格式。",
             format:  "Word (.docx)",
             version: "v1.0（2026）",
-            href:    "/zh-tw/resources/templates",
+            href:    "/templates/PRI_Working Paper Template_CN-TW.docx",
+            file:    true,
           },
           {
             name:    "活動會議記錄摘要範本",
             desc:    "用於製作活動後會議記錄摘要的範本，包括演講者簡介、環節摘要和主要結論。",
             format:  "Word (.docx)",
             version: "v1.0（2026）",
-            href:    "/zh-tw/resources/templates",
+            href:    "/templates/PRI_Event Proceedings Summary Template_CN-TW.docx",
+            file:    true,
           },
           {
             name:    "主編文集章節範本",
             desc:    "研究院相關主編文集章節投稿範本，包含貢獻者資訊、摘要、章節結構和參考文獻格式。",
             format:  "Word (.docx)",
             version: "v1.0（2026）",
-            href:    "/zh-tw/resources/templates",
+            href:    "/templates/PRI_Edited Volume Chapter Template_CN-TW.docx",
+            file:    true,
           },
         ].map((item) => (
           <div class="card" style="border:none;border-radius:0;display:flex;flex-direction:column;">
@@ -67,7 +70,7 @@ import PageHero from '../../../components/PageHero.astro';
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--border-light);">
               <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);">{item.format} &bull; {item.version}</span>
-              <a href={item.href} style="font-size:13px;color:var(--accent-steel);">下載 →</a>
+              <a href={item.href} download={item.file ? true : undefined} style="font-size:13px;color:var(--accent-steel);">下載 →</a>
             </div>
           </div>
         ))}

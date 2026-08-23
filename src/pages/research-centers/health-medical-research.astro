@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Center for Health and Medical Research" description="Research center focused on mental health, psychiatry, public health, and clinical research.">
+  <PageHero
+    title="Center for Health and Medical Research"
+    description="Research on mental health, psychiatry, public health, and clinical research, examining medicine and well-being as fields of scholarly inquiry and public relevance."
+    breadcrumbs={[{ label: "Research", href: "/research-areas" }, { label: "Research Centers", href: "/research-centers" }, { label: "Health and Medical Research" }]}
+    tag="Active Research Center"
+  >
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">At a Glance</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "Center Status",   value: "Active" },
+              { label: "Established",     value: "2026" },
+              { label: "Research Area",   value: "Health and Medical Research" },
+              { label: "Active Projects", value: "In development" },
+              { label: "Publications",    value: "Forthcoming" },
+              { label: "Contact",         value: "research@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/collaboration/research-fellow-application"  class="btn btn-primary" style="justify-content:center;">Research Fellow</a>
+            <a href="/collaboration/visiting-scholar-application" class="btn btn-secondary" style="justify-content:center;">Visiting Scholar</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">About the Center</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Center for Health and Medical Research is Panorama Research Institute's sixth research center, addressing mental health, psychiatry, public health, and clinical research as fields of scholarly inquiry and public relevance. The Center examines medicine and well-being from both clinical and population-level perspectives.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Center's work spans individual clinical phenomena, such as depression and other psychiatric conditions, and broader public health questions concerning population well-being, health systems, and access to care.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            The Center's research is interdisciplinary, drawing on psychiatry, clinical psychology, epidemiology, public health, and health policy. It collaborates closely with researchers across the Institute's other centers on projects that intersect with social, policy, and cultural dimensions of health.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">Research Focus</div>
+      <h2 class="section-title">Core Research Areas</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title: "Mental Health",     desc: "Research on mental health and well-being, including depression, anxiety, and other conditions affecting individuals and populations." },
+          { title: "Psychiatry",         desc: "Research on psychiatric diagnosis, treatment, and care models, including clinical and translational perspectives on mental illness." },
+          { title: "Public Health",      desc: "Research on population health, health systems, disease prevention, and the social determinants of health." },
+          { title: "Clinical Research",  desc: "Research on clinical practice, treatment outcomes, and evidence-based approaches to patient care." },
+          { title: "Health Policy",      desc: "Research on the governance and policy dimensions of health systems, access to care, and health equity." },
+          { title: "Health and Society", desc: "Research on the social, cultural, and behavioral dimensions of health, illness, and medical practice." },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="max-width:700px;">
+        <div class="section-label">Get Involved</div>
+        <h2 class="section-title">Join the Center at Its Foundation</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+          The Center for Health and Medical Research is actively seeking researchers to join its founding cohort of affiliated scholars. Researchers with expertise in psychiatry, clinical psychology, public health, epidemiology, or related medical and health fields are encouraged to apply.
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/collaboration/research-fellow-application"  class="btn btn-primary">Apply as Research Fellow</a>
+          <a href="/collaboration/visiting-scholar-application" class="btn btn-secondary">Visiting Scholar Program</a>
+          <a href="/collaboration/research-project-proposal"   class="btn btn-secondary">Submit Research Proposal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

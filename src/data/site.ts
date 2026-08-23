@@ -134,6 +134,12 @@ const researchCentersEn = [
     areas: ["Cultural Studies", "Embodied Knowledge", "Performance Studies", "Creative Practice"],
     href: "/research-centers/arts-culture-embodiment",
   },
+  {
+    num: "06",
+    name: "Center for Health and Medical Research",
+    areas: ["Mental Health", "Psychiatry", "Public Health", "Clinical Research"],
+    href: "/research-centers/health-medical-research",
+  },
 ];
 
 export function getResearchCenters(lang: Lang) {

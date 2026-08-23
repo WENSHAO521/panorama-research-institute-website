@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="健康与医学研究中心" description="专注于心理健康、精神病学、公共卫生与临床研究的研究中心。">
+  <PageHero
+    title="健康与医学研究中心"
+    description="研究心理健康、精神病学、公共卫生与临床研究，将医学与健康福祉作为学术探究与公共关切的领域。"
+    breadcrumbs={[{ label: "研究", href: "/zh-cn/research-areas" }, { label: "研究中心", href: "/zh-cn/research-centers" }, { label: "健康与医学研究" }]}
+    tag="运行中的研究中心"
+  >
+  </PageHero>
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">概览</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
+            {[
+              { label: "中心状态",   value: "进行中" },
+              { label: "已设立",     value: "2026" },
+              { label: "研究领域",   value: "健康与医学研究" },
+              { label: "进行中的项目", value: "规划中" },
+              { label: "出版成果",    value: "即将发布" },
+              { label: "联系",         value: "research@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-cn/collaboration/research-fellow-application"  class="btn btn-primary" style="justify-content:center;">研究员</a>
+            <a href="/zh-cn/collaboration/visiting-scholar-application" class="btn btn-secondary" style="justify-content:center;">访问学者</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:28px;color:var(--text-main);margin-bottom:20px;font-weight:400;">关于中心</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            健康与医学研究中心是全景研究院第六个研究中心，聚焦心理健康、精神病学、公共卫生与临床研究，将医学与健康福祉作为具有学术意义与公共关切的研究领域。中心从临床与人群层面两个角度考察医学与健康福祉。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            中心的工作既涵盖抑郁症等具体临床精神病学问题，也关注人群福祉、卫生系统和医疗可及性等更广泛的公共卫生议题。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+            中心的研究具有跨学科性，借鉴精神病学、临床心理学、流行病学、公共卫生和卫生政策等领域。中心与研究院其他中心的研究人员密切合作，共同开展涉及健康的社会、政策和文化维度的项目。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-label">研究重点</div>
+      <h2 class="section-title">核心研究领域</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
+        {[
+          { title: "心理健康",   desc: "研究个人与群体的心理健康与福祉，包括抑郁症、焦虑症及其他相关疾病。" },
+          { title: "精神病学",         desc: "研究精神疾病的诊断、治疗与照护模式，包括其临床与转化医学视角。" },
+          { title: "公共卫生",      desc: "研究人群健康、卫生系统、疾病预防以及健康的社会决定因素。" },
+          { title: "临床研究",  desc: "研究临床实践、治疗结果以及循证医学的患者照护方法。" },
+          { title: "卫生政策",      desc: "研究卫生系统治理与政策维度，包括医疗可及性与健康公平问题。" },
+          { title: "健康与社会", desc: "研究健康、疾病与医疗实践的社会、文化与行为维度。" },
+        ].map((item) => (
+          <div class="card" style="border:none;border-radius:0;">
+            <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{item.title}</h3>
+            <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
+    <div class="container">
+      <div style="max-width:700px;">
+        <div class="section-label">参与</div>
+        <h2 class="section-title">在创始阶段加入中心</h2>
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+          健康与医学研究中心正在积极招募研究人员加入首批关联学者队伍。鼓励具有精神病学、临床心理学、公共卫生、流行病学或相关医学与健康领域专长的研究者申请。
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/zh-cn/collaboration/research-fellow-application"  class="btn btn-primary">申请研究员</a>
+          <a href="/zh-cn/collaboration/visiting-scholar-application" class="btn btn-secondary">访问学者计划</a>
+          <a href="/zh-cn/collaboration/research-project-proposal"   class="btn btn-secondary">提交研究提案</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:repeat(2,1fr)"] { display: block !important; }
+}
+</style>

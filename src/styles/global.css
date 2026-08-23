@@ -779,10 +779,10 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   padding: 20px 0;
   border-bottom: 1px solid var(--border-light);
   align-items: start;
-  transition: background 0.15s;
 }
 .announcement-item:first-child { padding-top: 0; }
-.announcement-item:hover { background: var(--bg-soft); }
+.announcement-item:hover .announcement-title { color: var(--accent-steel); }
+.announcement-item:hover .announcement-link { gap: 9px; }
 .announcement-meta {
   display: flex;
   flex-direction: column;
@@ -800,6 +800,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   font-weight: 400;
   color: var(--text-main);
   margin-bottom: 6px;
+  transition: color 0.15s;
 }
 .announcement-desc {
   font-size: 13.5px;
@@ -814,6 +815,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   font-size: 13px;
   font-weight: 500;
   color: var(--accent-steel);
+  transition: gap 0.15s;
 }
 @media (max-width: 640px) {
   .announcement-item { grid-template-columns: 1fr; gap: 8px; }

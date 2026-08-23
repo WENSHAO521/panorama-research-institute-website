@@ -5,6 +5,7 @@
 // so <head> meta content was always English).
 export const clientTranslationsManual = {
   'zh-cn': {
+    'or drag and drop files here': '或将文件拖放到此处',
     'Panorama Research Institute — Effective 2026': '全景研究院 — 自 2026 年生效',
     'Panorama Research Institute &mdash; Effective 2026': '全景研究院 — 自 2026 年生效',
     'The Institute may be referred to as "全景研究院", "PRI", or "the Institute" in official documents, publications, and communications. No other abbreviated form is authorized for use in formal contexts.': '在正式文件、出版物和对外沟通中，研究院可称为“全景研究院”“PRI”或“the Institute”。不得在正式场合使用其他简称形式。',
@@ -116,6 +117,7 @@ export const clientTranslationsManual = {
     'View &rarr;': '查看 →',
   },
   'zh-tw': {
+    'or drag and drop files here': '或將檔案拖放到此處',
     'Panorama Research Institute — Effective 2026': '全景研究院 — 自 2026 年生效',
     'Panorama Research Institute &mdash; Effective 2026': '全景研究院 — 自 2026 年生效',
     'The Institute may be referred to as "全景研究院", "PRI", or "the Institute" in official documents, publications, and communications. No other abbreviated form is authorized for use in formal contexts.': '在正式文件、出版物和對外溝通中，研究院可稱為「全景研究院」「PRI」或「the Institute」。不得在正式場合使用其他簡稱形式。',

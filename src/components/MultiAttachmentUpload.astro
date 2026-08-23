@@ -24,10 +24,13 @@ const t = (key: string) => translate(lang, key);
 
 <div class="multi-attachment" data-multi-attachment>
   <label class="multi-attachment__label" for={id}>{t(label)}</label>
-  <div class="multi-attachment__control">
+  <div class="multi-attachment__dropzone" data-attachment-dropzone>
     <input id={id} name={name} type="file" accept={accept} multiple data-attachment-input />
-    <label class="multi-attachment__button" for={id}>{t('Choose files')}</label>
-    <span class="multi-attachment__status" data-attachment-status>{t('No files selected')}</span>
+    <div class="multi-attachment__control">
+      <label class="multi-attachment__button" for={id}>{t('Choose files')}</label>
+      <span class="multi-attachment__status" data-attachment-status>{t('No files selected')}</span>
+    </div>
+    <p class="multi-attachment__hint">{t('or drag and drop files here')}</p>
   </div>
   <ul class="multi-attachment__list" data-attachment-list aria-live="polite"></ul>
   <p class="multi-attachment__error" data-attachment-error aria-live="assertive" hidden></p>
@@ -110,15 +113,17 @@ const t = (key: string) => translate(lang, key);
   document.querySelectorAll('[data-multi-attachment]').forEach((root) => {
     const input = root.querySelector('[data-attachment-input]');
     const errorEl = root.querySelector('[data-attachment-error]');
+    const dropzone = root.querySelector('[data-attachment-dropzone]');
     if (!(input instanceof HTMLInputElement)) return;
 
     const selectedFiles = [];
-    input.addEventListener('change', () => {
+
+    const addFiles = (fileList) => {
       const text = getAttachmentText();
       const rejected = [];
       let total = selectedFiles.reduce((sum, file) => sum + file.size, 0);
 
-      Array.from(input.files || []).forEach((file) => {
+      Array.from(fileList || []).forEach((file) => {
         const duplicate = selectedFiles.some((existing) => (
           existing.name === file.name &&
           existing.size === file.size &&
@@ -145,7 +150,39 @@ const t = (key: string) => translate(lang, key);
           errorEl.hidden = true;
         }
       }
+    };
+
+    input.addEventListener('change', () => {
+      addFiles(input.files);
     });
+
+    if (dropzone) {
+      let dragDepth = 0;
+
+      dropzone.addEventListener('dragenter', (e) => {
+        e.preventDefault();
+        dragDepth += 1;
+        dropzone.classList.add('multi-attachment__dropzone--active');
+      });
+
+      dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+      });
+
+      dropzone.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        dragDepth = Math.max(0, dragDepth - 1);
+        if (dragDepth === 0) dropzone.classList.remove('multi-attachment__dropzone--active');
+      });
+
+      dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dragDepth = 0;
+        dropzone.classList.remove('multi-attachment__dropzone--active');
+        const files = e.dataTransfer && e.dataTransfer.files;
+        if (files && files.length) addFiles(files);
+      });
+    }
   });
 </script>
 
@@ -162,18 +199,34 @@ const t = (key: string) => translate(lang, key);
   text-transform: uppercase;
   color: var(--text-muted);
 }
+.multi-attachment__dropzone {
+  border: 1.5px dashed var(--border-light);
+  border-radius: 4px;
+  padding: 16px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.multi-attachment__dropzone--active {
+  border-color: var(--accent-steel);
+  border-style: solid;
+  background: var(--bg-soft);
+}
+.multi-attachment__dropzone input[type="file"] {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
 .multi-attachment__control {
   display: flex;
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
 }
-.multi-attachment__control input {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  opacity: 0;
-  pointer-events: none;
+.multi-attachment__hint {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: var(--text-muted);
 }
 .multi-attachment__button,
 .multi-attachment__remove {

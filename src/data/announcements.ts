@@ -27,6 +27,20 @@ export interface CategoryMeta {
 
 const en: Announcement[] = [
   {
+    slug: 'institute-officially-open-2026',
+    category: 'notice',
+    date: '2026-08-23',
+    tag: 'Notice',
+    title: 'Panorama Research Institute Is Now Officially Open',
+    summary: 'Panorama Research Institute has completed its foundational phase and is now officially open, accepting membership, fellowship, and research assistant applications, as well as research proposals and academic collaboration inquiries.',
+    body: [
+      'Panorama Research Institute has completed its foundational development phase and is now officially open. The Institute is accepting applications and submissions across all of its programs, including membership applications, Research Fellow, Associate Research Fellow, and Research Assistant recruitment, Visiting Scholar applications, research project and publication proposals, and academic collaboration inquiries.',
+      'Prospective members, fellows, and collaborators can find the relevant application forms and official templates under the Collaboration and People sections of this website. The Institute welcomes researchers, practitioners, and institutions who share its commitment to open, evidence-based, and independent scholarship.',
+      'For general inquiries, please contact research@panorama-sg.com.',
+    ],
+    cta: { label: 'Explore Ways to Collaborate', href: '/collaboration' },
+  },
+  {
     slug: 'research-recruitment-2027',
     category: 'recruitment',
     date: '2026-08-23',
@@ -58,6 +72,20 @@ const en: Announcement[] = [
 
 const zhCn: Announcement[] = [
   {
+    slug: 'institute-officially-open-2026',
+    category: 'notice',
+    date: '2026-08-23',
+    tag: '通知',
+    title: '全景研究院正式开业',
+    summary: '全景研究院已完成筹建阶段，正式开始运作，现正接受会员申请、研究员及研究助理招募申请，以及研究提案和学术合作咨询。',
+    body: [
+      '全景研究院已完成筹建阶段，正式开始运作。研究院现正在其各项目中接受申请与提交，包括会员申请、研究员／副研究员／研究助理招募、访问学者申请、研究项目与出版提案，以及学术合作咨询。',
+      '有意申请会员、研究员或开展合作的人士，可在本网站"学术合作"与"学术成员"栏目中查找相应申请表单及官方模板。研究院欢迎认同其开放、循证、独立学术理念的研究者、实务工作者及机构。',
+      '一般咨询请联系 research@panorama-sg.com。',
+    ],
+    cta: { label: '查看合作方式', href: '/zh-cn/collaboration' },
+  },
+  {
     slug: 'research-recruitment-2027',
     category: 'recruitment',
     date: '2026-08-23',
@@ -88,6 +116,20 @@ const zhCn: Announcement[] = [
 ];
 
 const zhTw: Announcement[] = [
+  {
+    slug: 'institute-officially-open-2026',
+    category: 'notice',
+    date: '2026-08-23',
+    tag: '通知',
+    title: '全景研究院正式開業',
+    summary: '全景研究院已完成籌建階段，正式開始運作，現正接受會員申請、研究員及研究助理招募申請，以及研究提案和學術合作諮詢。',
+    body: [
+      '全景研究院已完成籌建階段，正式開始運作。研究院現正在其各項目中接受申請與提交，包括會員申請、研究員／副研究員／研究助理招募、訪問學者申請、研究項目與出版提案，以及學術合作諮詢。',
+      '有意申請會員、研究員或開展合作的人士，可在本網站「學術合作」與「學術成員」欄目中查找相應申請表單及官方範本。研究院歡迎認同其開放、循證、獨立學術理念的研究者、實務工作者及機構。',
+      '一般諮詢請聯絡 research@panorama-sg.com。',
+    ],
+    cta: { label: '查看合作方式', href: '/zh-tw/collaboration' },
+  },
   {
     slug: 'research-recruitment-2027',
     category: 'recruitment',

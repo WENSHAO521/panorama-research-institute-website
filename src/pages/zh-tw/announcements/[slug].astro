@@ -1,11 +1,16 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
-import { getAnnouncement, getAnnouncementCategories } from '../../../data/announcements';
+import { getAnnouncements, getAnnouncement, getAnnouncementCategories } from '../../../data/announcements';
 import type { Lang } from '../../../i18n/utils';
 
+export function getStaticPaths() {
+  return getAnnouncements('zh-tw').map((item) => ({ params: { slug: item.slug } }));
+}
+
 const lang = (Astro.currentLocale as Lang) ?? 'en';
-const announcement = getAnnouncement(lang, 'research-recruitment-2027')!;
+const { slug } = Astro.params;
+const announcement = getAnnouncement(lang, slug as string)!;
 const categoryLabel = getAnnouncementCategories(lang).find((c) => c.key === announcement.category)?.label ?? announcement.tag;
 ---
 

@@ -1,18 +1,23 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import PageHero from '../../../components/PageHero.astro';
-import { getAnnouncement, getAnnouncementCategories } from '../../../data/announcements';
-import type { Lang } from '../../../i18n/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { getAnnouncements, getAnnouncement, getAnnouncementCategories } from '../../data/announcements';
+import type { Lang } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return getAnnouncements('en').map((item) => ({ params: { slug: item.slug } }));
+}
 
 const lang = (Astro.currentLocale as Lang) ?? 'en';
-const announcement = getAnnouncement(lang, 'research-recruitment-2027')!;
+const { slug } = Astro.params;
+const announcement = getAnnouncement(lang, slug as string)!;
 const categoryLabel = getAnnouncementCategories(lang).find((c) => c.key === announcement.category)?.label ?? announcement.tag;
 ---
 
 <BaseLayout title={announcement.title} description={announcement.summary}>
   <PageHero
     title={announcement.title}
-    breadcrumbs={[{ label: "公告", href: "/zh-cn/announcements" }, { label: categoryLabel }]}
+    breadcrumbs={[{ label: "Announcements", href: "/announcements" }, { label: categoryLabel }]}
     tag={announcement.tag}
   />
 
@@ -27,7 +32,7 @@ const categoryLabel = getAnnouncementCategories(lang).find((c) => c.key === anno
           <a href={announcement.cta.href} class="btn btn-primary" style="margin-top:12px;">{announcement.cta.label}</a>
         )}
         <div style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border-light);">
-          <a href="/zh-cn/announcements" class="btn btn-ghost">&larr; 全部公告</a>
+          <a href="/announcements" class="btn btn-ghost">&larr; All Announcements</a>
         </div>
       </div>
     </div>

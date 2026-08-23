@@ -13,8 +13,8 @@ interface Props {
 const {
   id,
   label = 'Application Attachments',
-  description = 'Upload completed forms, CVs, publication lists, or supporting documents as PDF, Word, image, or ZIP files.',
-  name = 'attachment',
+  description = 'Upload completed forms, CVs, publication lists, or supporting documents as PDF, Word, image, or ZIP files. Total size of all attachments must not exceed 10MB.',
+  name = 'attachment[]',
   accept = '.pdf,.doc,.docx,.zip,.png,.jpg,.jpeg',
 } = Astro.props;
 
@@ -30,10 +30,13 @@ const t = (key: string) => translate(lang, key);
     <span class="multi-attachment__status" data-attachment-status>{t('No files selected')}</span>
   </div>
   <ul class="multi-attachment__list" data-attachment-list aria-live="polite"></ul>
+  <p class="multi-attachment__error" data-attachment-error aria-live="assertive" hidden></p>
   <p class="multi-attachment__description">{t(description)}</p>
 </div>
 
 <script>
+  const MAX_TOTAL_SIZE = 10 * 1024 * 1024;
+
   const formatFileSize = (size) => {
     if (!size) return '0 KB';
     if (size < 1024 * 1024) return `${Math.ceil(size / 1024)} KB`;
@@ -47,6 +50,7 @@ const t = (key: string) => translate(lang, key);
         none: '未选择文件',
         selected: (count) => `已选择 ${count} 个文件`,
         remove: '删除',
+        tooLarge: (names) => `以下文件未添加，因为全部附件总大小不能超过 10MB：${names.join('、')}`,
       };
     }
     if (lang === 'zh-tw') {
@@ -54,12 +58,14 @@ const t = (key: string) => translate(lang, key);
         none: '未選擇檔案',
         selected: (count) => `已選擇 ${count} 個檔案`,
         remove: '刪除',
+        tooLarge: (names) => `以下檔案未加入，因為所有附件總大小不能超過 10MB：${names.join('、')}`,
       };
     }
     return {
       none: 'No files selected',
       selected: (count) => `${count} file${count > 1 ? 's' : ''} selected`,
       remove: 'Remove',
+      tooLarge: (names) => `Not added — total attachment size cannot exceed 10MB: ${names.join(', ')}`,
     };
   };
 
@@ -103,20 +109,42 @@ const t = (key: string) => translate(lang, key);
 
   document.querySelectorAll('[data-multi-attachment]').forEach((root) => {
     const input = root.querySelector('[data-attachment-input]');
+    const errorEl = root.querySelector('[data-attachment-error]');
     if (!(input instanceof HTMLInputElement)) return;
 
     const selectedFiles = [];
     input.addEventListener('change', () => {
+      const text = getAttachmentText();
+      const rejected = [];
+      let total = selectedFiles.reduce((sum, file) => sum + file.size, 0);
+
       Array.from(input.files || []).forEach((file) => {
         const duplicate = selectedFiles.some((existing) => (
           existing.name === file.name &&
           existing.size === file.size &&
           existing.lastModified === file.lastModified
         ));
-        if (!duplicate) selectedFiles.push(file);
+        if (duplicate) return;
+        if (total + file.size > MAX_TOTAL_SIZE) {
+          rejected.push(file.name);
+          return;
+        }
+        total += file.size;
+        selectedFiles.push(file);
       });
+
       syncInputFiles(input, selectedFiles);
       renderAttachmentList(root, input, selectedFiles);
+
+      if (errorEl) {
+        if (rejected.length) {
+          errorEl.textContent = text.tooLarge(rejected);
+          errorEl.hidden = false;
+        } else {
+          errorEl.textContent = '';
+          errorEl.hidden = true;
+        }
+      }
     });
   });
 </script>
@@ -169,6 +197,12 @@ const t = (key: string) => translate(lang, key);
   font-size: 12.5px;
   line-height: 1.6;
   color: var(--text-muted);
+}
+.multi-attachment__error {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--accent-red);
+  margin: 0;
 }
 .multi-attachment__list {
   display: grid;

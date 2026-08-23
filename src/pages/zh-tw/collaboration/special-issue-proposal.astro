@@ -22,13 +22,16 @@ import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.ast
               { label:"提案",      value:"不超過 1,500 詞" },
               { label:"評審時間",   value:"15 個工作日內" },
               { label:"期刊",       value:"提案人確定目標期刊" },
-              { label:"研究院角色","": "", value:"聯合品牌、學術協調、出版支持" },
+              { label:"研究院角色", value:"聯合品牌、學術協調、出版支持" },
             ].map((item) => (
               <div>
                 <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
                 <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
               </div>
             ))}
+          </div>
+          <div style="margin-top:20px;">
+            <a href="/templates/PRI_Special Issue Proposal Template_CN-TW.docx" class="btn btn-secondary" style="width:100%;justify-content:center;" download>下載提案範本</a>
           </div>
         </div>
         <div>

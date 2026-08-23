@@ -22,13 +22,16 @@ import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro'
               { label:"Proposal",      value:"Up to 1,500 words" },
               { label:"Review Time",   value:"Within 15 working days" },
               { label:"Journal",       value:"Proposer identifies target journal" },
-              { label:"Institute Role","": "", value:"Co-branding, scholarly coordination, publication support" },
+              { label:"Institute Role", value:"Co-branding, scholarly coordination, publication support" },
             ].map((item) => (
               <div>
                 <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
                 <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
               </div>
             ))}
+          </div>
+          <div style="margin-top:20px;">
+            <a href="/templates/PRI_Special Issue Proposal Template_EN.docx" class="btn btn-secondary" style="width:100%;justify-content:center;" download>Download Proposal Template</a>
           </div>
         </div>
         <div>

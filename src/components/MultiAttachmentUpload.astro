@@ -8,24 +8,30 @@ interface Props {
   description?: string;
   name?: string;
   accept?: string;
+  maxFiles?: number;
 }
 
 const {
   id,
   label = 'Application Attachments',
   description = 'Upload completed forms, CVs, publication lists, or supporting documents as PDF, Word, image, or ZIP files. Total size of all attachments must not exceed 10MB.',
-  name = 'attachment[]',
+  name = 'attachment',
   accept = '.pdf,.doc,.docx,.zip,.png,.jpg,.jpeg',
+  maxFiles = 5,
 } = Astro.props;
 
 const lang = (Astro.currentLocale as Lang) ?? 'en';
 const t = (key: string) => translate(lang, key);
+const slotNames = Array.from({ length: maxFiles }, (_, i) => (i === 0 ? name : `${name}${i + 1}`));
 ---
 
-<div class="multi-attachment" data-multi-attachment>
+<div class="multi-attachment" data-multi-attachment data-max-files={maxFiles}>
   <label class="multi-attachment__label" for={id}>{t(label)}</label>
   <div class="multi-attachment__dropzone" data-attachment-dropzone>
-    <input id={id} name={name} type="file" accept={accept} multiple data-attachment-input />
+    <input id={id} type="file" accept={accept} multiple data-attachment-input />
+    {slotNames.map((slotName) => (
+      <input type="file" name={slotName} data-attachment-slot hidden />
+    ))}
     <div class="multi-attachment__control">
       <label class="multi-attachment__button" for={id}>{t('Choose files')}</label>
       <span class="multi-attachment__status" data-attachment-status>{t('No files selected')}</span>
@@ -54,6 +60,7 @@ const t = (key: string) => translate(lang, key);
         selected: (count) => `已选择 ${count} 个文件`,
         remove: '删除',
         tooLarge: (names) => `以下文件未添加，因为全部附件总大小不能超过 10MB：${names.join('、')}`,
+        tooMany: (max) => `最多只能上传 ${max} 个附件，超出的文件未添加。`,
       };
     }
     if (lang === 'zh-tw') {
@@ -62,6 +69,7 @@ const t = (key: string) => translate(lang, key);
         selected: (count) => `已選擇 ${count} 個檔案`,
         remove: '刪除',
         tooLarge: (names) => `以下檔案未加入，因為所有附件總大小不能超過 10MB：${names.join('、')}`,
+        tooMany: (max) => `最多只能上傳 ${max} 個附件，超出的檔案未加入。`,
       };
     }
     return {
@@ -69,16 +77,19 @@ const t = (key: string) => translate(lang, key);
       selected: (count) => `${count} file${count > 1 ? 's' : ''} selected`,
       remove: 'Remove',
       tooLarge: (names) => `Not added — total attachment size cannot exceed 10MB: ${names.join(', ')}`,
+      tooMany: (max) => `You can attach up to ${max} files. Additional files were not added.`,
     };
   };
 
-  const syncInputFiles = (input, files) => {
-    const transfer = new DataTransfer();
-    files.forEach((file) => transfer.items.add(file));
-    input.files = transfer.files;
+  const syncSlots = (slots, files) => {
+    slots.forEach((slot, i) => {
+      const transfer = new DataTransfer();
+      if (files[i]) transfer.items.add(files[i]);
+      slot.files = transfer.files;
+    });
   };
 
-  const renderAttachmentList = (root, input, files) => {
+  const renderAttachmentList = (root, slots, files) => {
     const list = root.querySelector('[data-attachment-list]');
     const status = root.querySelector('[data-attachment-status]');
     if (!list || !status) return;
@@ -101,8 +112,8 @@ const t = (key: string) => translate(lang, key);
       button.textContent = text.remove;
       button.addEventListener('click', () => {
         files.splice(index, 1);
-        syncInputFiles(input, files);
-        renderAttachmentList(root, input, files);
+        syncSlots(slots, files);
+        renderAttachmentList(root, slots, files);
       });
 
       item.append(meta, button);
@@ -114,13 +125,16 @@ const t = (key: string) => translate(lang, key);
     const input = root.querySelector('[data-attachment-input]');
     const errorEl = root.querySelector('[data-attachment-error]');
     const dropzone = root.querySelector('[data-attachment-dropzone]');
-    if (!(input instanceof HTMLInputElement)) return;
+    const slots = Array.from(root.querySelectorAll('[data-attachment-slot]'));
+    const maxFiles = parseInt(root.getAttribute('data-max-files') || String(slots.length), 10) || slots.length;
+    if (!(input instanceof HTMLInputElement) || slots.length === 0) return;
 
     const selectedFiles = [];
 
     const addFiles = (fileList) => {
       const text = getAttachmentText();
       const rejected = [];
+      let tooManyCount = 0;
       let total = selectedFiles.reduce((sum, file) => sum + file.size, 0);
 
       Array.from(fileList || []).forEach((file) => {
@@ -130,6 +144,10 @@ const t = (key: string) => translate(lang, key);
           existing.lastModified === file.lastModified
         ));
         if (duplicate) return;
+        if (selectedFiles.length >= maxFiles) {
+          tooManyCount += 1;
+          return;
+        }
         if (total + file.size > MAX_TOTAL_SIZE) {
           rejected.push(file.name);
           return;
@@ -138,12 +156,17 @@ const t = (key: string) => translate(lang, key);
         selectedFiles.push(file);
       });
 
-      syncInputFiles(input, selectedFiles);
-      renderAttachmentList(root, input, selectedFiles);
+      syncSlots(slots, selectedFiles);
+      renderAttachmentList(root, slots, selectedFiles);
+      // The picker input only stages files in memory; it is never submitted.
+      input.value = '';
 
       if (errorEl) {
         if (rejected.length) {
           errorEl.textContent = text.tooLarge(rejected);
+          errorEl.hidden = false;
+        } else if (tooManyCount > 0) {
+          errorEl.textContent = text.tooMany(maxFiles);
           errorEl.hidden = false;
         } else {
           errorEl.textContent = '';
@@ -210,7 +233,7 @@ const t = (key: string) => translate(lang, key);
   border-style: solid;
   background: var(--bg-soft);
 }
-.multi-attachment__dropzone input[type="file"] {
+.multi-attachment__dropzone input[type="file"]:not([hidden]) {
   position: absolute;
   inline-size: 1px;
   block-size: 1px;

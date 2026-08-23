@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import { getAnnouncement, getAnnouncementCategories } from '../../../data/announcements';
+import type { Lang } from '../../../i18n/utils';
+
+const lang = (Astro.currentLocale as Lang) ?? 'en';
+const announcement = getAnnouncement(lang, 'research-recruitment-2027')!;
+const categoryLabel = getAnnouncementCategories(lang).find((c) => c.key === announcement.category)?.label ?? announcement.tag;
+---
+
+<BaseLayout title={announcement.title} description={announcement.summary}>
+  <PageHero
+    title={announcement.title}
+    breadcrumbs={[{ label: "公告", href: "/zh-cn/announcements" }, { label: categoryLabel }]}
+    tag={announcement.tag}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:720px;">
+        <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);margin-bottom:32px;">{announcement.date}</div>
+        {announcement.body.map((p) => (
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">{p}</p>
+        ))}
+        {announcement.cta && (
+          <a href={announcement.cta.href} class="btn btn-primary" style="margin-top:12px;">{announcement.cta.label}</a>
+        )}
+        <div style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border-light);">
+          <a href="/zh-cn/announcements" class="btn btn-ghost">&larr; 全部公告</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

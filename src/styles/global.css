@@ -771,6 +771,54 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 .event-meta { font-size: 13.5px; color: var(--text-secondary); }
 
+/* ── Announcement Item ── */
+.announcement-item {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-light);
+  align-items: start;
+  transition: background 0.15s;
+}
+.announcement-item:first-child { padding-top: 0; }
+.announcement-item:hover { background: var(--bg-soft); }
+.announcement-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.announcement-date {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+.announcement-title {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+.announcement-desc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.announcement-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent-steel);
+}
+@media (max-width: 640px) {
+  .announcement-item { grid-template-columns: 1fr; gap: 8px; }
+}
+
 /* ── People Card ── */
 .person-card {
   padding: 28px 0;

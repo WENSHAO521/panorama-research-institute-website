@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSiteDescription, getPlatforms, getResearchAreas, getResearchCenters, getFeaturedProjects, getFeaturedPublications, getUpcomingEvents } from '../../data/site';
+import { getAnnouncements, localizeAnnouncementHref } from '../../data/announcements';
 import type { Lang } from '../../i18n/utils';
 
 const lang = (Astro.currentLocale as Lang) ?? 'en';
@@ -10,6 +11,7 @@ const researchCenters = getResearchCenters(lang);
 const featuredProjects = getFeaturedProjects(lang);
 const featuredPublications = getFeaturedPublications(lang);
 const upcomingEvents = getUpcomingEvents(lang);
+const announcements = getAnnouncements(lang).slice(0, 3);
 
 const homeFrameworkUnits = [
   { unit: "研究中心",              role: "專業學術單位" },
@@ -18,16 +20,6 @@ const homeFrameworkUnits = [
   { unit: "學術活動",               role: "會議、研討會、工作坊" },
   { unit: "學者計劃",  role: "研究員、訪問學者與研究助理" },
   { unit: "合作事務辦公室",          role: "夥伴關係、提案與諒解備忘錄" },
-];
-
-// 請在此陣列頂部新增公告，每筆需包含日期、簡短分類標籤與標題，desc 為可選說明。
-const announcements = [
-  {
-    date: "2026-08-23",
-    tag: "更新",
-    title: "合作申請表單的多附件上傳功能已優化",
-    desc: "會員申請與研究員申請表單現在可以完整接收上傳的所有附件，附件總大小上限為 10MB。",
-  },
 ];
 ---
 
@@ -130,22 +122,26 @@ const announcements = [
 <!-- ── 02A Announcements ── -->
 <section class="section-compact" style="background:var(--bg-white);border-bottom:1px solid var(--border-light);">
   <div class="container">
-    <div style="margin-bottom:32px;">
-      <h2 class="section-title" style="margin-bottom:12px;">公告</h2>
-      <p class="section-desc">全景研究院的公告與最新動態。</p>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;gap:24px;">
+      <div>
+        <h2 class="section-title" style="margin-bottom:12px;">公告</h2>
+        <p class="section-desc">全景研究院的公告、更新與招募資訊。</p>
+      </div>
+      <a href="/zh-tw/announcements" class="btn btn-secondary" style="flex-shrink:0;">全部公告</a>
     </div>
     <div>
       {announcements.map((item) => (
-        <div class="announcement-item">
+        <a href={localizeAnnouncementHref(lang, item.slug)} class="announcement-item">
           <div class="announcement-meta">
             <span class="announcement-date">{item.date}</span>
             <span class="tag tag-steel">{item.tag}</span>
           </div>
           <div>
             <h3 class="announcement-title">{item.title}</h3>
-            {item.desc && <p class="announcement-desc">{item.desc}</p>}
+            {item.summary && <p class="announcement-desc">{item.summary}</p>}
+            <span class="announcement-link">閱讀更多 &rarr;</span>
           </div>
-        </div>
+        </a>
       ))}
     </div>
   </div>
@@ -469,40 +465,6 @@ const announcements = [
   justify-content: center;
   align-items: center;
 }
-.announcement-item {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 24px;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border-light);
-  align-items: start;
-}
-.announcement-item:first-child {
-  padding-top: 0;
-}
-.announcement-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.announcement-date {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
-}
-.announcement-title {
-  font-family: var(--font-serif);
-  font-size: 17px;
-  font-weight: 400;
-  color: var(--text-main);
-  margin-bottom: 6px;
-}
-.announcement-desc {
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: var(--text-secondary);
-}
 .areas-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -609,7 +571,6 @@ const announcements = [
 
 @media (max-width: 768px) {
   .areas-grid { grid-template-columns: 1fr; }
-  .announcement-item { grid-template-columns: 1fr; gap: 8px; }
   section[style*="grid-template-columns:1fr 1fr"] > div > div {
     grid-template-columns: 1fr !important;
   }

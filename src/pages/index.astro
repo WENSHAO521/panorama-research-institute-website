@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getSiteDescription, getPlatforms, getResearchAreas, getResearchCenters, getFeaturedProjects, getFeaturedPublications, getUpcomingEvents } from '../data/site';
+import { getAnnouncements, localizeAnnouncementHref } from '../data/announcements';
 import type { Lang } from '../i18n/utils';
 
 const lang = (Astro.currentLocale as Lang) ?? 'en';
@@ -10,6 +11,7 @@ const researchCenters = getResearchCenters(lang);
 const featuredProjects = getFeaturedProjects(lang);
 const featuredPublications = getFeaturedPublications(lang);
 const upcomingEvents = getUpcomingEvents(lang);
+const announcements = getAnnouncements(lang).slice(0, 3);
 
 const homeFrameworkUnits = [
   { unit: "Research Centers",              role: "Specialized academic units" },
@@ -18,17 +20,6 @@ const homeFrameworkUnits = [
   { unit: "Academic Events",               role: "Conferences, seminars, workshops" },
   { unit: "Scholar & Fellowship Program",  role: "Fellows, visitors, research assistants" },
   { unit: "Collaboration Office",          role: "Partnerships, proposals, MoUs" },
-];
-
-// Add new announcements at the top of this array. Each entry needs a date,
-// a short category tag, and a title; "desc" is optional.
-const announcements = [
-  {
-    date: "2026-08-23",
-    tag: "Update",
-    title: "Improved multi-file attachment uploads on collaboration forms",
-    desc: "The Membership and Research Fellow application forms now reliably receive every uploaded attachment, with a 10MB total size limit.",
-  },
 ];
 ---
 
@@ -131,22 +122,26 @@ const announcements = [
 <!-- ── 02A Announcements ── -->
 <section class="section-compact" style="background:var(--bg-white);border-bottom:1px solid var(--border-light);">
   <div class="container">
-    <div style="margin-bottom:32px;">
-      <h2 class="section-title" style="margin-bottom:12px;">Announcements</h2>
-      <p class="section-desc">Notices and updates from Panorama Research Institute.</p>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;gap:24px;">
+      <div>
+        <h2 class="section-title" style="margin-bottom:12px;">Announcements</h2>
+        <p class="section-desc">Notices, updates, and recruitment announcements from Panorama Research Institute.</p>
+      </div>
+      <a href="/announcements" class="btn btn-secondary" style="flex-shrink:0;">All Announcements</a>
     </div>
     <div>
       {announcements.map((item) => (
-        <div class="announcement-item">
+        <a href={localizeAnnouncementHref(lang, item.slug)} class="announcement-item">
           <div class="announcement-meta">
             <span class="announcement-date">{item.date}</span>
             <span class="tag tag-steel">{item.tag}</span>
           </div>
           <div>
             <h3 class="announcement-title">{item.title}</h3>
-            {item.desc && <p class="announcement-desc">{item.desc}</p>}
+            {item.summary && <p class="announcement-desc">{item.summary}</p>}
+            <span class="announcement-link">Read more &rarr;</span>
           </div>
-        </div>
+        </a>
       ))}
     </div>
   </div>
@@ -470,40 +465,6 @@ const announcements = [
   justify-content: center;
   align-items: center;
 }
-.announcement-item {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 24px;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border-light);
-  align-items: start;
-}
-.announcement-item:first-child {
-  padding-top: 0;
-}
-.announcement-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.announcement-date {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
-}
-.announcement-title {
-  font-family: var(--font-serif);
-  font-size: 17px;
-  font-weight: 400;
-  color: var(--text-main);
-  margin-bottom: 6px;
-}
-.announcement-desc {
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: var(--text-secondary);
-}
 .areas-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -610,7 +571,6 @@ const announcements = [
 
 @media (max-width: 768px) {
   .areas-grid { grid-template-columns: 1fr; }
-  .announcement-item { grid-template-columns: 1fr; gap: 8px; }
   section[style*="grid-template-columns:1fr 1fr"] > div > div {
     grid-template-columns: 1fr !important;
   }

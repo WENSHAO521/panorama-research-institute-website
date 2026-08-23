@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { getAnnouncementCategories, getAnnouncementsByCategory, localizeAnnouncementHref } from '../../data/announcements';
+import type { Lang } from '../../i18n/utils';
+
+const lang = (Astro.currentLocale as Lang) ?? 'en';
+const categories = getAnnouncementCategories(lang);
+---
+
+<BaseLayout
+  title="Announcements"
+  description="Notices, updates, and recruitment announcements from Panorama Research Institute."
+>
+  <PageHero
+    title="Announcements"
+    description="Notices, updates, and recruitment announcements from Panorama Research Institute, organized by category."
+    breadcrumbs={[{ label: "Announcements" }]}
+  />
+
+  {categories.map((cat, i) => {
+    const items = getAnnouncementsByCategory(lang, cat.key);
+    return (
+      <section class="section" style={`background:${i % 2 === 0 ? 'var(--bg-white)' : 'var(--bg-main)'};${i > 0 ? 'border-top:1px solid var(--border-light);' : ''}`}>
+        <div class="container">
+          <div style="margin-bottom:32px;">
+            <h2 class="section-title" style="margin-bottom:12px;">{cat.label}</h2>
+            <p class="section-desc">{cat.desc}</p>
+          </div>
+          {items.length > 0 ? (
+            <div>
+              {items.map((item) => (
+                <a href={localizeAnnouncementHref(lang, item.slug)} class="announcement-item">
+                  <div class="announcement-meta">
+                    <span class="announcement-date">{item.date}</span>
+                    <span class="tag tag-steel">{item.tag}</span>
+                  </div>
+                  <div>
+                    <h3 class="announcement-title">{item.title}</h3>
+                    {item.summary && <p class="announcement-desc">{item.summary}</p>}
+                    <span class="announcement-link">Read more &rarr;</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          ) : (
+            <p style="font-size:14.5px;color:var(--text-muted);">No announcements in this category yet.</p>
+          )}
+        </div>
+      </section>
+    );
+  })}
+</BaseLayout>

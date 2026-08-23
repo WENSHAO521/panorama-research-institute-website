@@ -105,7 +105,8 @@ const fullTitle = resolvedTitle === 'Panorama Research Institute' || resolvedTit
         const target = event.target;
         if (!(target instanceof Element)) return;
         const navItem = target.closest('.nav-item');
-        if (!navItem || navItem.contains(event.relatedTarget)) return;
+        const relatedTarget = event.relatedTarget instanceof Node ? event.relatedTarget : null;
+        if (!navItem || (relatedTarget && navItem.contains(relatedTarget))) return;
         navItem.querySelector('.nav-trigger')?.setAttribute('aria-expanded', 'false');
       });
 

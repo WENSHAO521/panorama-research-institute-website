@@ -2,6 +2,61 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 const lang = Astro.currentLocale ?? 'en';
+
+interface DownloadItem {
+  name: string;
+  type: string;
+  size: string;
+  href: string;
+  download?: boolean;
+  langVariant?: string;
+  external?: boolean;
+}
+
+interface DownloadSection {
+  cat: string;
+  items: DownloadItem[];
+}
+
+const sections: DownloadSection[] = [
+  {
+    cat: "Publications",
+    items: [
+      { name:"Working Paper: Peer Review Models and Publication Ethics", type:"PDF", size:"~0.8 MB", href:"/publications/working-papers" },
+      { name:"Working Paper: Toward a Transparent Journal Evaluation Framework", type:"PDF", size:"~0.7 MB", href:"/publications/working-papers" },
+      { name:"Policy Brief: Open Access Mandates in Asia-Pacific", type:"PDF", size:"~0.3 MB", href:"/publications/policy-briefs" },
+      { name:"Policy Brief: Governance of Scholarly Database Operators", type:"PDF", size:"~0.3 MB", href:"/publications/policy-briefs" },
+      { name:"Policy Brief: Youth Online Safety and Platform Accountability", type:"PDF", size:"~0.4 MB", href:"/publications/policy-briefs" },
+    ]
+  },
+  {
+    cat: "Forms",
+    items: [
+      { name:"Research Project Proposal Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
+      { name:"Visiting Scholar Application Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
+      { name:"Research Fellow Application Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
+      { name:"Research Fellow Application Form (EN PDF)", type:"PDF", size:"—", href:"/forms/PRI_Research Fellow Application Form_EN.pdf", download:true, langVariant:"en" },
+      { name:"Research Fellow Application Form (CN PDF)", type:"PDF", size:"—", href:"/forms/PRI_Research Fellow Application Form_CN.pdf", download:true, langVariant:"zh-cn" },
+      { name:"Research Fellow Application Form (TW PDF)", type:"PDF", size:"—", href:"/forms/PRI_Research Fellow Application Form_CN-TW.pdf", download:true, langVariant:"zh-tw" },
+      { name:"Event Cooperation Proposal Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
+    ]
+  },
+  {
+    cat: "Templates",
+    items: [
+      { name:"Research Proposal Template (Word)", type:"DOCX", size:"~0.1 MB", href:"/resources/research-proposal-template" },
+      { name:"Research Report Template (Word)", type:"DOCX", size:"~0.1 MB", href:"/resources/report-template" },
+      { name:"Policy Brief Template (Word)", type:"DOCX", size:"~0.1 MB", href:"/resources/policy-brief-template" },
+    ]
+  },
+  {
+    cat: "Institutional Documents",
+    items: [
+      { name:"Institute Charter (PDF)", type:"PDF", size:"~0.6 MB", href:"/resources/charter-pdf" },
+      { name:"Logo and Name Usage Guidelines", type:"PDF", size:"~0.4 MB", href:"/resources/logo-usage-guidelines" },
+    ]
+  },
+];
 ---
 <BaseLayout title="Downloads" description="All downloadable resources from Panorama Research Institute.">
   <PageHero
@@ -12,45 +67,7 @@ const lang = Astro.currentLocale ?? 'en';
 
   <section class="section" style="background:var(--bg-white);">
     <div class="container">
-      {[
-        {
-          cat: "Publications",
-          items: [
-            { name:"Working Paper: Peer Review Models and Publication Ethics", type:"PDF", size:"~0.8 MB", href:"/publications/working-papers" },
-            { name:"Working Paper: Toward a Transparent Journal Evaluation Framework", type:"PDF", size:"~0.7 MB", href:"/publications/working-papers" },
-            { name:"Policy Brief: Open Access Mandates in Asia-Pacific", type:"PDF", size:"~0.3 MB", href:"/publications/policy-briefs" },
-            { name:"Policy Brief: Governance of Scholarly Database Operators", type:"PDF", size:"~0.3 MB", href:"/publications/policy-briefs" },
-            { name:"Policy Brief: Youth Online Safety and Platform Accountability", type:"PDF", size:"~0.4 MB", href:"/publications/policy-briefs" },
-          ]
-        },
-        {
-          cat: "Forms",
-          items: [
-            { name:"Research Project Proposal Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
-            { name:"Visiting Scholar Application Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
-            { name:"Research Fellow Application Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
-            { name:"Research Fellow Application Form (EN PDF)", type:"PDF", size:"—", href:"/forms/PRI_Research Fellow Application Form_EN.pdf", download:true, langVariant:"en" },
-            { name:"Research Fellow Application Form (CN PDF)", type:"PDF", size:"—", href:"/forms/PRI_Research Fellow Application Form_CN.pdf", download:true, langVariant:"zh-cn" },
-            { name:"Research Fellow Application Form (TW PDF)", type:"PDF", size:"—", href:"/forms/PRI_Research Fellow Application Form_CN-TW.pdf", download:true, langVariant:"zh-tw" },
-            { name:"Event Cooperation Proposal Form", type:"PDF / Web Form", size:"—", href:"/resources/forms" },
-          ]
-        },
-        {
-          cat: "Templates",
-          items: [
-            { name:"Research Proposal Template (Word)", type:"DOCX", size:"~0.1 MB", href:"/resources/research-proposal-template" },
-            { name:"Research Report Template (Word)", type:"DOCX", size:"~0.1 MB", href:"/resources/report-template" },
-            { name:"Policy Brief Template (Word)", type:"DOCX", size:"~0.1 MB", href:"/resources/policy-brief-template" },
-          ]
-        },
-        {
-          cat: "Institutional Documents",
-          items: [
-            { name:"Institute Charter (PDF)", type:"PDF", size:"~0.6 MB", href:"/resources/charter-pdf" },
-            { name:"Logo and Name Usage Guidelines", type:"PDF", size:"~0.4 MB", href:"/resources/logo-usage-guidelines" },
-          ]
-        },
-      ].map((section) => (
+      {sections.map((section) => (
         <div style="margin-bottom:48px;">
           <div class="section-label" style="margin-bottom:12px;">{section.cat}</div>
           <div style="border:1px solid var(--border-light);">

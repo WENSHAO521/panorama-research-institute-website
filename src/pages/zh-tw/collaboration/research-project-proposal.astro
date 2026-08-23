@@ -66,12 +66,12 @@ import FormSubmitFields from '../../../components/FormSubmitFields.astro';
         <form style="max-width:740px;display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/research@panorama-sg.com" method="POST">
           <FormSubmitFields subject="全景研究院研究項目提案" source="研究項目提案表格" />
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
-            {[
+            {([
               { label:"您的姓名",       id:"name",   type:"text",  placeholder:"姓名" },
               { label:"電子郵箱地址",   id:"email",  type:"email", placeholder:"your@email.com" },
               { label:"所屬機構",     id:"inst",   type:"text",  placeholder:"目前機構隸屬" },
               { label:"職位 / 頭銜",  id:"title",  type:"text",  placeholder:"例如：副教授" },
-            ].map((f) => (
+            ] as const).map((f) => (
               <div style="padding:12px;border:1px solid var(--border-light);border-collapse:collapse;margin:-0.5px;">
                 <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
                 <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />

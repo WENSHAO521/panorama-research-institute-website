@@ -2,6 +2,61 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
 const lang = Astro.currentLocale ?? 'en';
+
+interface DownloadItem {
+  name: string;
+  type: string;
+  size: string;
+  href: string;
+  download?: boolean;
+  langVariant?: string;
+  external?: boolean;
+}
+
+interface DownloadSection {
+  cat: string;
+  items: DownloadItem[];
+}
+
+const sections: DownloadSection[] = [
+  {
+    cat: "出版成果",
+    items: [
+      { name:"工作论文：同行评审模式与出版伦理", type:"PDF", size:"~0.8 MB", href:"/zh-cn/publications/working-papers" },
+      { name:"工作论文：迈向透明期刊评价框架", type:"PDF", size:"~0.7 MB", href:"/zh-cn/publications/working-papers" },
+      { name:"政策简报：亚太地区开放获取要求", type:"PDF", size:"~0.3 MB", href:"/zh-cn/publications/policy-briefs" },
+      { name:"政策简报：学术数据库运营者治理", type:"PDF", size:"~0.3 MB", href:"/zh-cn/publications/policy-briefs" },
+      { name:"政策简报：青年网络安全与平台问责", type:"PDF", size:"~0.4 MB", href:"/zh-cn/publications/policy-briefs" },
+    ]
+  },
+  {
+    cat: "表格",
+    items: [
+      { name:"研究项目提案表格", type:"PDF / 网页表格", size:"—", href:"/zh-cn/resources/forms" },
+      { name:"访问学者申请表", type:"PDF / 网页表格", size:"—", href:"/zh-cn/resources/forms" },
+      { name:"研究员申请表", type:"PDF / 网页表格", size:"—", href:"/zh-cn/resources/forms" },
+      { name:"研究员申请表（英文 PDF）", type:"PDF", size:"—", href:"/forms/PRI_Research Fellow Application Form_EN.pdf", download:true, langVariant:"en" },
+      { name:"研究员申请表（简体中文 PDF）", type:"PDF", size:"—", href:"/forms/PRI_Research Fellow Application Form_CN.pdf", download:true, langVariant:"zh-cn" },
+      { name:"研究员申请表（繁体中文 PDF）", type:"PDF", size:"—", href:"/forms/PRI_Research Fellow Application Form_CN-TW.pdf", download:true, langVariant:"zh-tw" },
+      { name:"活动合作提案表格", type:"PDF / 网页表格", size:"—", href:"/zh-cn/resources/forms" },
+    ]
+  },
+  {
+    cat: "模板",
+    items: [
+      { name:"研究提案模板（Word）", type:"DOCX", size:"~0.1 MB", href:"/zh-cn/resources/research-proposal-template" },
+      { name:"研究报告模板（Word）", type:"DOCX", size:"~0.1 MB", href:"/zh-cn/resources/report-template" },
+      { name:"政策简报模板（Word）", type:"DOCX", size:"~0.1 MB", href:"/zh-cn/resources/policy-brief-template" },
+    ]
+  },
+  {
+    cat: "机构文件",
+    items: [
+      { name:"研究院章程（PDF）", type:"PDF", size:"~0.6 MB", href:"/zh-cn/resources/charter-pdf" },
+      { name:"标志与名称使用指南", type:"PDF", size:"~0.4 MB", href:"/zh-cn/resources/logo-usage-guidelines" },
+    ]
+  },
+];
 ---
 <BaseLayout title="下载" description="全景研究院提供的全部可下载资源。">
   <PageHero
@@ -12,45 +67,7 @@ const lang = Astro.currentLocale ?? 'en';
 
   <section class="section" style="background:var(--bg-white);">
     <div class="container">
-      {[
-        {
-          cat: "出版成果",
-          items: [
-            { name:"工作论文：同行评审模式与出版伦理", type:"PDF", size:"~0.8 MB", href:"/zh-cn/publications/working-papers" },
-            { name:"工作论文：迈向透明期刊评价框架", type:"PDF", size:"~0.7 MB", href:"/zh-cn/publications/working-papers" },
-            { name:"政策简报：亚太地区开放获取要求", type:"PDF", size:"~0.3 MB", href:"/zh-cn/publications/policy-briefs" },
-            { name:"政策简报：学术数据库运营者治理", type:"PDF", size:"~0.3 MB", href:"/zh-cn/publications/policy-briefs" },
-            { name:"政策简报：青年网络安全与平台问责", type:"PDF", size:"~0.4 MB", href:"/zh-cn/publications/policy-briefs" },
-          ]
-        },
-        {
-          cat: "表格",
-          items: [
-            { name:"研究项目提案表格", type:"PDF / 网页表格", size:"—", href:"/zh-cn/resources/forms" },
-            { name:"访问学者申请表", type:"PDF / 网页表格", size:"—", href:"/zh-cn/resources/forms" },
-            { name:"研究员申请表", type:"PDF / 网页表格", size:"—", href:"/zh-cn/resources/forms" },
-            { name:"研究员申请表（英文 PDF）", type:"PDF", size:"—", href:"/forms/PRI_Research Fellow Application Form_EN.pdf", download:true, langVariant:"en" },
-            { name:"研究员申请表（简体中文 PDF）", type:"PDF", size:"—", href:"/forms/PRI_Research Fellow Application Form_CN.pdf", download:true, langVariant:"zh-cn" },
-            { name:"研究员申请表（繁体中文 PDF）", type:"PDF", size:"—", href:"/forms/PRI_Research Fellow Application Form_CN-TW.pdf", download:true, langVariant:"zh-tw" },
-            { name:"活动合作提案表格", type:"PDF / 网页表格", size:"—", href:"/zh-cn/resources/forms" },
-          ]
-        },
-        {
-          cat: "模板",
-          items: [
-            { name:"研究提案模板（Word）", type:"DOCX", size:"~0.1 MB", href:"/zh-cn/resources/research-proposal-template" },
-            { name:"研究报告模板（Word）", type:"DOCX", size:"~0.1 MB", href:"/zh-cn/resources/report-template" },
-            { name:"政策简报模板（Word）", type:"DOCX", size:"~0.1 MB", href:"/zh-cn/resources/policy-brief-template" },
-          ]
-        },
-        {
-          cat: "机构文件",
-          items: [
-            { name:"研究院章程（PDF）", type:"PDF", size:"~0.6 MB", href:"/zh-cn/resources/charter-pdf" },
-            { name:"标志与名称使用指南", type:"PDF", size:"~0.4 MB", href:"/zh-cn/resources/logo-usage-guidelines" },
-          ]
-        },
-      ].map((section) => (
+      {sections.map((section) => (
         <div style="margin-bottom:48px;">
           <div class="section-label" style="margin-bottom:12px;">{section.cat}</div>
           <div style="border:1px solid var(--border-light);">

@@ -42,12 +42,12 @@ import FormSubmitFields from '../../../components/FormSubmitFields.astro';
           <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/scholars@panorama-sg.com" method="POST">
             <FormSubmitFields subject="全景研究院访问学者申请" source="访问学者申请表" />
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
-              {[
+              {([
                 { label:"姓名",      id:"vs-name",    type:"text",  placeholder:"姓名" },
                 { label:"电子邮箱地址",  id:"vs-email",   name:"email", type:"email", placeholder:"your@email.com" },
                 { label:"当前所属机构", id:"vs-inst", type:"text", placeholder:"大学或研究机构" },
                 { label:"职位 / 头衔", id:"vs-title",   type:"text",  placeholder:"例如：高级讲师" },
-              ].map((f) => (
+              ] as { label: string; id: string; name?: string; type: 'text' | 'email'; placeholder: string }[]).map((f) => (
                 <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
                   <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
                   <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
@@ -55,10 +55,10 @@ import FormSubmitFields from '../../../components/FormSubmitFields.astro';
               ))}
             </div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:-0.5px;">
-              {[
+              {([
                 { label:"拟议开始日期", id:"vs-start", type:"text", placeholder:"例如：2026 年 1 月" },
                 { label:"拟议时长",   id:"vs-dur",   type:"text", placeholder:"例如：6 个月" },
-              ].map((f) => (
+              ] as const).map((f) => (
                 <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
                   <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
                   <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />

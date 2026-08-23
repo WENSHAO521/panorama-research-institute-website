@@ -2,6 +2,43 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 const lang = Astro.currentLocale ?? 'en';
+
+interface FormLink {
+  name: string;
+  href: string;
+  download?: boolean;
+  langVariant?: string;
+  external?: boolean;
+}
+
+interface FormGroup {
+  category: string;
+  forms: FormLink[];
+}
+
+const groups: FormGroup[] = [
+  { category:"Fellowship Applications", forms:[
+    { name:"Research Fellow Application",          href:"/collaboration/research-fellow-application" },
+    { name:"Research Fellow Application Form (EN PDF)", href:"/forms/PRI_Research Fellow Application Form_EN.pdf", download:true, langVariant:"en" },
+    { name:"Research Fellow Application Form (CN PDF)", href:"/forms/PRI_Research Fellow Application Form_CN.pdf", download:true, langVariant:"zh-cn" },
+    { name:"Research Fellow Application Form (TW PDF)", href:"/forms/PRI_Research Fellow Application Form_CN-TW.pdf", download:true, langVariant:"zh-tw" },
+    { name:"Associate Research Fellow Application", href:"/collaboration/research-fellow-application" },
+    { name:"Visiting Scholar Application",          href:"/collaboration/visiting-scholar-application" },
+  ]},
+  { category:"Research Proposals", forms:[
+    { name:"Research Project Proposal",   href:"/collaboration/research-project-proposal" },
+    { name:"Edited Volume Proposal",       href:"/collaboration/edited-volume-proposal" },
+    { name:"Special Issue Proposal",       href:"/collaboration/special-issue-proposal" },
+  ]},
+  { category:"Event and Cooperation", forms:[
+    { name:"Event Cooperation Proposal",     href:"/collaboration/event-cooperation" },
+    { name:"Institutional Cooperation Inquiry", href:"/collaboration/institutional-cooperation" },
+    { name:"General Collaboration Inquiry",  href:"/collaboration/submit" },
+  ]},
+  { category:"Other Forms", forms:[
+    { name:"General Contact / Inquiry",     href:"/collaboration/submit" },
+  ]},
+];
 ---
 <BaseLayout title="Forms" description="Application and submission forms for Panorama Research Institute.">
   <PageHero
@@ -17,29 +54,7 @@ const lang = Astro.currentLocale ?? 'en';
       </p>
 
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);">
-        {[
-          { category:"Fellowship Applications", forms:[
-            { name:"Research Fellow Application",          href:"/collaboration/research-fellow-application" },
-            { name:"Research Fellow Application Form (EN PDF)", href:"/forms/PRI_Research Fellow Application Form_EN.pdf", download:true, langVariant:"en" },
-            { name:"Research Fellow Application Form (CN PDF)", href:"/forms/PRI_Research Fellow Application Form_CN.pdf", download:true, langVariant:"zh-cn" },
-            { name:"Research Fellow Application Form (TW PDF)", href:"/forms/PRI_Research Fellow Application Form_CN-TW.pdf", download:true, langVariant:"zh-tw" },
-            { name:"Associate Research Fellow Application", href:"/collaboration/research-fellow-application" },
-            { name:"Visiting Scholar Application",          href:"/collaboration/visiting-scholar-application" },
-          ]},
-          { category:"Research Proposals", forms:[
-            { name:"Research Project Proposal",   href:"/collaboration/research-project-proposal" },
-            { name:"Edited Volume Proposal",       href:"/collaboration/edited-volume-proposal" },
-            { name:"Special Issue Proposal",       href:"/collaboration/special-issue-proposal" },
-          ]},
-          { category:"Event and Cooperation", forms:[
-            { name:"Event Cooperation Proposal",     href:"/collaboration/event-cooperation" },
-            { name:"Institutional Cooperation Inquiry", href:"/collaboration/institutional-cooperation" },
-            { name:"General Collaboration Inquiry",  href:"/collaboration/submit" },
-          ]},
-          { category:"Other Forms", forms:[
-            { name:"General Contact / Inquiry",     href:"/collaboration/submit" },
-          ]},
-        ].map((group) => (
+        {groups.map((group) => (
           <div class="card" style="border:none;border-radius:0;">
             <h3 style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--text-main);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.05em;">{group.category}</h3>
             <div style="display:flex;flex-direction:column;gap:0;">

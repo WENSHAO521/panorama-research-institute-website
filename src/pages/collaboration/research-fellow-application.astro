@@ -48,12 +48,12 @@ const lang = Astro.currentLocale ?? 'en';
           <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/fellows@panorama-sg.com" method="POST" enctype="multipart/form-data">
             <FormSubmitFields subject="Panorama Research Institute Research Fellow Application" source="Research Fellow Application Form" />
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
-              {[
+              {([
                 { label:"Full Name",          id:"rf-name",    type:"text",  placeholder:"Full name" },
                 { label:"Email Address",      id:"rf-email",   name:"email", type:"email", placeholder:"your@email.com" },
-                { label:"Current Institution","": "", id:"rf-inst", type:"text", placeholder:"University or research institution" },
+                { label:"Current Institution", id:"rf-inst",   type:"text",  placeholder:"University or research institution" },
                 { label:"Position/Title",     id:"rf-title",   type:"text",  placeholder:"e.g. PhD Candidate, Postdoctoral Researcher" },
-              ].map((f) => (
+              ] as { label: string; id: string; name?: string; type: 'text' | 'email'; placeholder: string }[]).map((f) => (
                 <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
                   <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
                   <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />

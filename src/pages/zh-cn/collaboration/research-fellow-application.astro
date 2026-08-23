@@ -48,12 +48,12 @@ const lang = Astro.currentLocale ?? 'en';
           <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/fellows@panorama-sg.com" method="POST" enctype="multipart/form-data">
             <FormSubmitFields subject="全景研究院研究员申请" source="研究员申请表" />
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
-              {[
+              {([
                 { label:"姓名",          id:"rf-name",    type:"text",  placeholder:"姓名" },
                 { label:"电子邮箱地址",      id:"rf-email",   name:"email", type:"email", placeholder:"your@email.com" },
-                { label:"当前所属机构","": "", id:"rf-inst", type:"text", placeholder:"大学或研究机构" },
+                { label:"当前所属机构",   id:"rf-inst",    type:"text",  placeholder:"大学或研究机构" },
                 { label:"职位 / 头衔",     id:"rf-title",   type:"text",  placeholder:"例如：博士候选人、博士后研究员" },
-              ].map((f) => (
+              ] as { label: string; id: string; name?: string; type: 'text' | 'email'; placeholder: string }[]).map((f) => (
                 <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
                   <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
                   <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />

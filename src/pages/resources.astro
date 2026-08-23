@@ -2,7 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 
-const resources = [
+interface ResourceItem {
+  cat: string;
+  name: string;
+  type: string;
+  desc: string;
+  href: string;
+  download?: boolean;
+  langVariant?: string;
+  external?: boolean;
+}
+
+const resources: ResourceItem[] = [
   { cat: "Governance",   name: "Institute Charter",                 type: "PDF",  desc: "The full founding charter of Panorama Research Institute.", href: "/resources/charter-pdf" },
   { cat: "Governance",   name: "Research Ethics Statement",         type: "PDF",  desc: "The Institute's research ethics principles and guidelines.", href: "/governance/research-ethics" },
   { cat: "Templates",    name: "Research Proposal Template",        type: "DOCX", desc: "Template for submitting a research project proposal.", href: "#" },

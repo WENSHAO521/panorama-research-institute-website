@@ -2,7 +2,18 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 
-const resources = [
+interface ResourceItem {
+  cat: string;
+  name: string;
+  type: string;
+  desc: string;
+  href: string;
+  download?: boolean;
+  langVariant?: string;
+  external?: boolean;
+}
+
+const resources: ResourceItem[] = [
   { cat: "治理",   name: "研究院章程",                 type: "PDF",  desc: "全景研究院完整创始章程。", href: "/zh-cn/resources/charter-pdf" },
   { cat: "治理",   name: "研究伦理声明",         type: "PDF",  desc: "研究院的研究伦理原则与指南。", href: "/zh-cn/governance/research-ethics" },
   { cat: "模板",    name: "研究提案模板",        type: "DOCX", desc: "用于提交研究项目提案的模板。", href: "#" },

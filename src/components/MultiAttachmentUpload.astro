@@ -46,13 +46,21 @@ const slotNames = Array.from({ length: maxFiles }, (_, i) => (i === 0 ? name : `
 <script>
   const MAX_TOTAL_SIZE = 10 * 1024 * 1024;
 
-  const formatFileSize = (size) => {
+  const formatFileSize = (size: number): string => {
     if (!size) return '0 KB';
     if (size < 1024 * 1024) return `${Math.ceil(size / 1024)} KB`;
     return `${(size / (1024 * 1024)).toFixed(1)} MB`;
   };
 
-  const getAttachmentText = () => {
+  interface AttachmentText {
+    none: string;
+    selected: (count: number) => string;
+    remove: string;
+    tooLarge: (names: string[]) => string;
+    tooMany: (max: number) => string;
+  }
+
+  const getAttachmentText = (): AttachmentText => {
     const lang = document.documentElement.lang;
     if (lang === 'zh-cn') {
       return {
@@ -81,7 +89,7 @@ const slotNames = Array.from({ length: maxFiles }, (_, i) => (i === 0 ? name : `
     };
   };
 
-  const syncSlots = (slots, files) => {
+  const syncSlots = (slots: HTMLInputElement[], files: File[]) => {
     slots.forEach((slot, i) => {
       const transfer = new DataTransfer();
       if (files[i]) transfer.items.add(files[i]);
@@ -89,7 +97,7 @@ const slotNames = Array.from({ length: maxFiles }, (_, i) => (i === 0 ? name : `
     });
   };
 
-  const renderAttachmentList = (root, slots, files) => {
+  const renderAttachmentList = (root: Element, slots: HTMLInputElement[], files: File[]) => {
     const list = root.querySelector('[data-attachment-list]');
     const status = root.querySelector('[data-attachment-status]');
     if (!list || !status) return;
@@ -123,17 +131,17 @@ const slotNames = Array.from({ length: maxFiles }, (_, i) => (i === 0 ? name : `
 
   document.querySelectorAll('[data-multi-attachment]').forEach((root) => {
     const input = root.querySelector('[data-attachment-input]');
-    const errorEl = root.querySelector('[data-attachment-error]');
-    const dropzone = root.querySelector('[data-attachment-dropzone]');
-    const slots = Array.from(root.querySelectorAll('[data-attachment-slot]'));
+    const errorEl = root.querySelector<HTMLElement>('[data-attachment-error]');
+    const dropzone = root.querySelector<HTMLElement>('[data-attachment-dropzone]');
+    const slots = Array.from(root.querySelectorAll<HTMLInputElement>('[data-attachment-slot]'));
     const maxFiles = parseInt(root.getAttribute('data-max-files') || String(slots.length), 10) || slots.length;
     if (!(input instanceof HTMLInputElement) || slots.length === 0) return;
 
-    const selectedFiles = [];
+    const selectedFiles: File[] = [];
 
-    const addFiles = (fileList) => {
+    const addFiles = (fileList: FileList | File[] | null) => {
       const text = getAttachmentText();
-      const rejected = [];
+      const rejected: string[] = [];
       let tooManyCount = 0;
       let total = selectedFiles.reduce((sum, file) => sum + file.size, 0);
 

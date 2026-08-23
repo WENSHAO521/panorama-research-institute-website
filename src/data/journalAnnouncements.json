@@ -1,0 +1,30 @@
+{
+  "fetchedAt": "2026-08-23T14:42:46.700Z",
+  "source": "https://journals.panorama-sg.com/",
+  "items": [
+    {
+      "journal": "AI & Future Society",
+      "journalSlug": "afs",
+      "title": "Call for Papers: Vol. 2, No. 2 — AGI and Its Societal Impact",
+      "url": "https://journals.panorama-sg.com/index.php/afs/announcement/view/96",
+      "date": "2026-04-06",
+      "summary": "AI & Future Society is now accepting submissions for Vol. 2, No. 2, a regular issue focused on the societal impact of AGI. As with previous issues, no article processing charges will be collected. Publication is planned for early to mid-November."
+    },
+    {
+      "journal": "AI & Future Society",
+      "journalSlug": "afs",
+      "title": "Call for Papers: Vol. 2, No. 1 (May 2026) | No APC This Issue",
+      "url": "https://journals.panorama-sg.com/index.php/afs/announcement/view/61",
+      "date": "2025-12-02",
+      "summary": "Now accepting submissions for AI & Future Society Vol. 2, No. 1 (May 2026). Submission deadline: April 15, 2026. No APC. Regular issue with an editorial theme on AI, algorithmic thresholds, and social fairness."
+    },
+    {
+      "journal": "AI & Future Society",
+      "journalSlug": "afs",
+      "title": "Call for Papers – November 2025 Issue of AI & Future Society",
+      "url": "https://journals.panorama-sg.com/index.php/afs/announcement/view/36",
+      "date": "2025-08-23",
+      "summary": "Submissions are now open for the November 2025 issue. We especially welcome original research exploring the societal, ethical, and governance dimensions of artificial intelligence."
+    }
+  ]
+}

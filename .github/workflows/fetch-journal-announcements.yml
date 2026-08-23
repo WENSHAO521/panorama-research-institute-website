@@ -1,0 +1,37 @@
+name: Fetch Journal Announcements
+
+on:
+  schedule:
+    # 03:00 UTC on the 1st of every month
+    - cron: '0 3 1 * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Fetch latest calls for papers
+        run: node scripts/fetch-journal-announcements.mjs
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/journalAnnouncements.json
+          if git diff --cached --quiet; then
+            echo "No changes to journal announcements."
+          else
+            git commit -m "chore: update journal announcements from journals.panorama-sg.com"
+            git push
+          fi

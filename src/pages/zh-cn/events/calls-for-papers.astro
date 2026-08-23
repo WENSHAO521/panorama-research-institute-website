@@ -1,6 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
+import journalAnnouncements from '../../../data/journalAnnouncements.json';
+
+function formatDate(iso: string) {
+  const d = new Date(iso + 'T00:00:00Z');
+  if (isNaN(d.getTime())) return iso;
+  return d.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+}
 ---
 <BaseLayout title="论文征稿" description="全景研究院活动的公开征稿启事。">
   <PageHero
@@ -22,15 +29,33 @@ import PageHero from '../../../components/PageHero.astro';
           </p>
         </div>
 
-        <div style="padding:32px;border:1px solid var(--border-light);margin-bottom:48px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;">
-          <div style="flex:1;min-width:240px;">
-            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-steel);margin-bottom:12px;">全景期刊</div>
-            <h3 style="font-family:var(--font-serif);font-size:19px;color:var(--text-main);margin-bottom:10px;font-weight:400;">全景期刊平台的开放征稿</h3>
-            <p style="font-size:14.5px;line-height:1.75;color:var(--text-secondary);margin:0;">
-              研究院自身的会议与研讨会项目目前仍处于基础建设阶段，而附属的全景期刊平台持续维护其期刊组合中活跃且定期更新的论文征稿——其中包括一份与研究院人工智能与未来社会研究中心直接相关的期刊。请访问该平台了解当前的投稿截止日期和主题征稿信息。
-            </p>
+        <div style="border:1px solid var(--border-light);margin-bottom:48px;">
+          <div style="padding:24px 28px;border-bottom:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;">
+            <div>
+              <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-steel);margin-bottom:8px;">全景期刊</div>
+              <h3 style="font-family:var(--font-serif);font-size:19px;color:var(--text-main);margin:0;font-weight:400;">全景期刊平台的开放征稿</h3>
+            </div>
+            <a href="https://journals.panorama-sg.com/" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--accent-steel);white-space:nowrap;">访问全景期刊 →</a>
           </div>
-          <a href="https://journals.panorama-sg.com/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="white-space:nowrap;">访问全景期刊 →</a>
+          {journalAnnouncements.items.length > 0 ? (
+            <div>
+              {journalAnnouncements.items.map((item) => (
+                <div style="padding:20px 28px;border-bottom:1px solid var(--border-light);">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:6px;">
+                    <span style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);">{item.journal}</span>
+                    <span style="font-size:12px;color:var(--text-muted);white-space:nowrap;">{formatDate(item.date)}</span>
+                  </div>
+                  <a href={item.url} target="_blank" rel="noopener noreferrer" style="font-size:15.5px;font-weight:500;color:var(--text-main);text-decoration:none;display:block;margin-bottom:6px;">{item.title}</a>
+                  {item.summary && <p style="font-size:14px;line-height:1.65;color:var(--text-secondary);margin:0;">{item.summary}</p>}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p style="padding:24px 28px;font-size:14.5px;color:var(--text-secondary);margin:0;">全景期刊平台目前暂无开放的论文征稿。请直接访问该平台了解最新投稿机会。</p>
+          )}
+          <p style="padding:14px 28px;font-size:12px;color:var(--text-muted);margin:0;background:var(--bg-soft);">
+            内容每月自动从 journals.panorama-sg.com 更新，标题及摘要保留原文（英文）。最近检查时间：{formatDate(journalAnnouncements.fetchedAt.slice(0, 10))}。
+          </p>
         </div>
 
         <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">征集流程</h2>

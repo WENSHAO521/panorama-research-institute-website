@@ -36,6 +36,24 @@ import PageHero from '../../../components/PageHero.astro';
             cta:    "申請副研究員",
           },
           {
+            role:   "青年研究員",
+            target: "博士後或早期職涯研究者，通常為博士畢業五年以內",
+            commit: "每兩年至少 1 項出版成果；積極參加研究院活動",
+            format: "遠端（分散式）——無需搬遷",
+            duration:"1–2 年，可續期",
+            href:   "/zh-tw/collaboration/research-fellow-application",
+            cta:    "申請青年研究員",
+          },
+          {
+            role:   "兼職研究員",
+            target: "在其他機構或單位擔任主要學術或專業職務的研究人員",
+            commit: "成果要求相應減少或按項目計算；參與部分研究院活動",
+            format: "遠端（分散式），時間安排靈活",
+            duration:"1 年，可續期",
+            href:   "/zh-tw/collaboration/research-fellow-application",
+            cta:    "申請兼職研究員",
+          },
+          {
             role:   "訪問學者",
             target: "來自其他機構的成熟研究者（博士或同等資歷）",
             commit: "在隸屬期間積極開展研究貢獻",
@@ -52,6 +70,15 @@ import PageHero from '../../../components/PageHero.astro';
             duration:"按項目安排",
             href:   "/zh-tw/people/research-assistants",
             cta:    "立即申請",
+          },
+          {
+            role:   "本科生研究實習生",
+            target: "對研究院研究領域有真實興趣的在讀本科生",
+            commit: "在指導下承擔文獻綜述、資料收集、編輯協助等支援性工作",
+            format: "遠端（分散式）",
+            duration:"一學期或按項目安排，可續期",
+            href:   "/zh-tw/collaboration/research-fellow-application",
+            cta:    "申請本科生實習",
           },
         ].map((item) => (
           <div class="card" style="border:none;border-radius:0;display:flex;flex-direction:column;justify-content:space-between;">
@@ -76,7 +103,16 @@ import PageHero from '../../../components/PageHero.astro';
         ))}
       </div>
 
-      <div style="margin-top:48px;max-width:720px;">
+      <div style="margin-top:48px;padding:32px;background:var(--bg-soft);border:1px solid var(--border-light);max-width:720px;">
+        <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:10px;">受邀任命</div>
+        <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:12px;font-weight:400;">特聘研究員</h2>
+        <p style="font-size:15px;line-height:1.8;color:var(--text-secondary);margin-bottom:20px;">
+          特聘研究員是一項榮譽任命，用於表彰在學術上有傑出成就、並對研究院研究領域有持續貢獻的資深學者。特聘研究員由學術委員會及研究院負責人受邀任命，不透過上述公開申請流程產生。希望獲得考慮的資深學者可直接聯繫研究院。
+        </p>
+        <a href="/zh-tw/contact" class="btn btn-secondary">聯繫研究院</a>
+      </div>
+
+      <div style="margin-top:32px;max-width:720px;">
         <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">研究院提供</h2>
         <div style="display:flex;flex-direction:column;gap:4px;">
           {[

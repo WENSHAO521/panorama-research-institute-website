@@ -36,6 +36,24 @@ import PageHero from '../../components/PageHero.astro';
             cta:    "Apply as Associate Fellow",
           },
           {
+            role:   "Young Research Fellow",
+            target: "Postdoctoral or early-career researchers, typically within five years of completing a PhD",
+            commit: "Minimum 1 publication every two years; active participation in Institute events",
+            format: "Remote (distributed) — no relocation required",
+            duration:"1–2 years, renewable",
+            href:   "/collaboration/research-fellow-application",
+            cta:    "Apply as Young Research Fellow",
+          },
+          {
+            role:   "Part-time Research Fellow",
+            target: "Researchers or practitioners holding a primary academic or professional position elsewhere",
+            commit: "Reduced or project-based output; participation in select Institute activities",
+            format: "Remote (distributed), flexible schedule",
+            duration:"1 year, renewable",
+            href:   "/collaboration/research-fellow-application",
+            cta:    "Apply as Part-time Fellow",
+          },
+          {
             role:   "Visiting Scholar",
             target: "Established researchers (PhD or equivalent) from other institutions",
             commit: "Active research contribution during affiliation period",
@@ -52,6 +70,15 @@ import PageHero from '../../components/PageHero.astro';
             duration:"Project-based",
             href:   "/people/research-assistants",
             cta:    "Apply Now",
+          },
+          {
+            role:   "Undergraduate Research Intern",
+            target: "Currently enrolled undergraduate students with a genuine interest in the Institute's research areas",
+            commit: "Support tasks such as literature review, data collection, and editorial assistance under supervision",
+            format: "Remote (distributed)",
+            duration:"One semester or project-based, renewable",
+            href:   "/collaboration/research-fellow-application",
+            cta:    "Apply as Undergraduate Intern",
           },
         ].map((item) => (
           <div class="card" style="border:none;border-radius:0;display:flex;flex-direction:column;justify-content:space-between;">
@@ -76,7 +103,16 @@ import PageHero from '../../components/PageHero.astro';
         ))}
       </div>
 
-      <div style="margin-top:48px;max-width:720px;">
+      <div style="margin-top:48px;padding:32px;background:var(--bg-soft);border:1px solid var(--border-light);max-width:720px;">
+        <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:10px;">By Invitation</div>
+        <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:12px;font-weight:400;">Distinguished Research Fellow</h2>
+        <p style="font-size:15px;line-height:1.8;color:var(--text-secondary);margin-bottom:20px;">
+          An honorary appointment recognizing senior scholars of exceptional academic standing and sustained contribution to the Institute's research areas. Distinguished Research Fellows are appointed by invitation of the Academic Committee and Institute leadership rather than through the open application process above. Senior scholars who wish to be considered may contact the Institute directly.
+        </p>
+        <a href="/contact" class="btn btn-secondary">Contact the Institute</a>
+      </div>
+
+      <div style="margin-top:32px;max-width:720px;">
         <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">What the Institute Offers</h2>
         <div style="display:flex;flex-direction:column;gap:4px;">
           {[

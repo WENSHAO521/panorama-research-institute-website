@@ -36,6 +36,24 @@ import PageHero from '../../../components/PageHero.astro';
             cta:    "申请副研究员",
           },
           {
+            role:   "青年研究员",
+            target: "博士后或早期职业研究者，通常为博士毕业五年以内",
+            commit: "每两年至少 1 项出版成果；积极参加研究院活动",
+            format: "远程（分布式）——无需搬迁",
+            duration:"1–2 年，可续期",
+            href:   "/zh-cn/collaboration/research-fellow-application",
+            cta:    "申请青年研究员",
+          },
+          {
+            role:   "兼职研究员",
+            target: "在其他机构或单位担任主要学术或专业职务的研究人员",
+            commit: "成果要求相应减少或按项目计算；参与部分研究院活动",
+            format: "远程（分布式），时间安排灵活",
+            duration:"1 年，可续期",
+            href:   "/zh-cn/collaboration/research-fellow-application",
+            cta:    "申请兼职研究员",
+          },
+          {
             role:   "访问学者",
             target: "来自其他机构的成熟研究者（博士或同等资历）",
             commit: "在隶属期间积极开展研究贡献",
@@ -52,6 +70,15 @@ import PageHero from '../../../components/PageHero.astro';
             duration:"按项目安排",
             href:   "/zh-cn/people/research-assistants",
             cta:    "立即申请",
+          },
+          {
+            role:   "本科生研究实习生",
+            target: "对研究院研究领域有真实兴趣的在读本科生",
+            commit: "在指导下承担文献综述、数据收集、编辑协助等支持性工作",
+            format: "远程（分布式）",
+            duration:"一学期或按项目安排，可续期",
+            href:   "/zh-cn/collaboration/research-fellow-application",
+            cta:    "申请本科生实习",
           },
         ].map((item) => (
           <div class="card" style="border:none;border-radius:0;display:flex;flex-direction:column;justify-content:space-between;">
@@ -76,7 +103,16 @@ import PageHero from '../../../components/PageHero.astro';
         ))}
       </div>
 
-      <div style="margin-top:48px;max-width:720px;">
+      <div style="margin-top:48px;padding:32px;background:var(--bg-soft);border:1px solid var(--border-light);max-width:720px;">
+        <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:10px;">受邀任命</div>
+        <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:12px;font-weight:400;">特聘研究员</h2>
+        <p style="font-size:15px;line-height:1.8;color:var(--text-secondary);margin-bottom:20px;">
+          特聘研究员是一项荣誉任命，用于表彰在学术上有杰出成就、并对研究院研究领域有持续贡献的资深学者。特聘研究员由学术委员会及研究院负责人受邀任命，不通过上述公开申请流程产生。希望获得考虑的资深学者可直接联系研究院。
+        </p>
+        <a href="/zh-cn/contact" class="btn btn-secondary">联系研究院</a>
+      </div>
+
+      <div style="margin-top:32px;max-width:720px;">
         <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">研究院提供</h2>
         <div style="display:flex;flex-direction:column;gap:4px;">
           {[

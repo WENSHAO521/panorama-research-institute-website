@@ -85,9 +85,9 @@ const frameworkUnits = [
   <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
     <div class="container">
       <div class="section-label">研究領域</div>
-      <h2 class="section-title" style="margin-bottom:8px;">六個研究領域</h2>
+      <h2 class="section-title" style="margin-bottom:8px;">七個研究領域</h2>
       <p class="section-desc" style="margin-bottom:48px;">
-        研究院的研究活動按照六個主要研究領域展開。
+        研究院的研究活動按照七個主要研究領域展開。
       </p>
       <div>
         {[
@@ -97,6 +97,7 @@ const frameworkUnits = [
           { num: "04", title: "人工智慧與未來社會" },
           { num: "05", title: "教育與學習研究" },
           { num: "06", title: "藝術、文化與具身研究" },
+          { num: "07", title: "健康與醫學研究" },
         ].map((area) => (
           <div style="display:flex;align-items:center;gap:28px;padding:18px 0;border-bottom:1px solid var(--border-light);">
             <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);flex-shrink:0;width:28px;">{area.num}</span>
@@ -140,7 +141,7 @@ const frameworkUnits = [
       <h2 class="section-title">分階段發展</h2>
       <div style="max-width:720px;">
         {[
-          { phase: "第一階段", label: "基礎建設", year: "2026", items: ["建立研究院治理體系和章程", "啟動三個核心研究中心", "啟動首批研究項目", "發布創始工作論文"] },
+          { phase: "第一階段", label: "基礎建設", year: "2026", items: ["建立研究院治理體系和章程", "啟動五個核心研究中心", "啟動首批研究項目", "發布創始工作論文"] },
           { phase: "第二階段", label: "發展建設", year: "2027", items: ["拓展至六個研究中心", "建立學者計劃", "POSI 學術索引平台上線後持續營運並拓展", "啟動年度報告"] },
           { phase: "第三階段", label: "拓展建設", year: "2028+", items: ["國際合作網路", "更廣泛的政策諮詢活動", "拓展出版項目", "學術會議系列"] },
         ].map((phase) => (

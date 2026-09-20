@@ -1,5 +1,9 @@
 # build output
 dist/
+.next/
+out/
+next-env.d.ts
+tsconfig.tsbuildinfo
 # generated types
 .astro/
 

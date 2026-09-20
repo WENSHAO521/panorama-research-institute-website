@@ -96,6 +96,11 @@ const researchAreasEn = [
     title: "Arts, Culture and Embodiment",
     desc: "Research on music, dance, cultural studies, embodied knowledge, performance, and creative practice.",
   },
+  {
+    num: "07",
+    title: "Health and Medical Research",
+    desc: "Research on mental health, psychiatry, public health, and clinical research.",
+  },
 ];
 
 export function getResearchAreas(lang: Lang) {

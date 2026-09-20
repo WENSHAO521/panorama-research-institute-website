@@ -85,9 +85,9 @@ const frameworkUnits = [
   <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
     <div class="container">
       <div class="section-label">Research Areas</div>
-      <h2 class="section-title" style="margin-bottom:8px;">Six Research Domains</h2>
+      <h2 class="section-title" style="margin-bottom:8px;">Seven Research Domains</h2>
       <p class="section-desc" style="margin-bottom:48px;">
-        The Institute's research activities are organized across six primary research areas.
+        The Institute's research activities are organized across seven primary research areas.
       </p>
       <div>
         {[
@@ -97,6 +97,7 @@ const frameworkUnits = [
           { num: "04", title: "AI and Future Society" },
           { num: "05", title: "Education and Learning Research" },
           { num: "06", title: "Arts, Culture and Embodiment" },
+          { num: "07", title: "Health and Medical Research" },
         ].map((area) => (
           <div style="display:flex;align-items:center;gap:28px;padding:18px 0;border-bottom:1px solid var(--border-light);">
             <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);flex-shrink:0;width:28px;">{area.num}</span>
@@ -140,7 +141,7 @@ const frameworkUnits = [
       <h2 class="section-title">Phased Development</h2>
       <div style="max-width:720px;">
         {[
-          { phase: "Phase 1", label: "Foundation", year: "2026", items: ["Establish Institute governance and charter", "Launch three core research centers", "Initiate first research projects", "Publish inaugural working papers"] },
+          { phase: "Phase 1", label: "Foundation", year: "2026", items: ["Establish Institute governance and charter", "Launch five core research centers", "Initiate first research projects", "Publish inaugural working papers"] },
           { phase: "Phase 2", label: "Development", year: "2027", items: ["Expand to six research centers", "Establish scholar and fellowship programs", "Operate and expand the POSI scholarly indexing platform after launch", "Begin annual reports"] },
           { phase: "Phase 3", label: "Expansion", year: "2028+", items: ["International collaboration networks", "Broader policy advisory activities", "Expanded publication program", "Academic conference series"] },
         ].map((phase) => (

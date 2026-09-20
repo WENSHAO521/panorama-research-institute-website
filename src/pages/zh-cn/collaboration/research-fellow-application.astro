@@ -5,10 +5,10 @@ import FormSubmitFields from '../../../components/FormSubmitFields.astro';
 import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.astro';
 const lang = Astro.currentLocale ?? 'en';
 ---
-<BaseLayout title="研究员申请" description="申请成为全景研究院研究员或副研究员。">
+<BaseLayout title="研究员申请" description="申请成为全景研究院研究员或其他研究员系列岗位。">
   <PageHero
     title="研究员申请"
-    description="申请成为全景研究院研究员或副研究员。研究院面向各职业阶段学者滚动接受申请。"
+    description="申请成为全景研究院研究员或其他研究员系列岗位。研究院面向各职业阶段学者滚动接受申请。"
     breadcrumbs={[{ label: "学术合作", href: "/zh-cn/collaboration" }, { label: "研究员申请" }]}
   />
 
@@ -19,10 +19,10 @@ const lang = Astro.currentLocale ?? 'en';
           <div class="section-label">申请详情</div>
           <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
             {[
-              { label:"申请类型",  value:"研究员、副研究员或研究助理" },
+              { label:"申请类型",  value:"研究员、副研究员、青年研究员、兼职研究员、特聘研究员或研究助理" },
               { label:"截止日期",          value:"滚动申请（无固定截止日期）" },
               { label:"回复时间",     value:"20 个工作日内" },
-              { label:"期限（如获接受）", value:"1–3 年（研究员）/ 1 年（副研究员）" },
+              { label:"期限（如获接受）", value:"1–3 年（研究员）；1–2 年（副研究员/青年研究员/兼职研究员）；按项目安排（研究助理）" },
               { label:"形式",            value:"远程——无需搬迁" },
               { label:"联系",           value:"fellows@panorama-sg.com" },
             ].map((item) => (
@@ -42,7 +42,7 @@ const lang = Astro.currentLocale ?? 'en';
         </div>
         <div>
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
-            请使用本表格申请全景研究院研究员、副研究员或研究助理职位。所有申请均由研究院研究领导团队评审。成功申请者将被联系，以讨论任命、研究计划及其对研究院项目的贡献。
+            请使用本表格申请全景研究院研究员、副研究员、青年研究员、兼职研究员或研究助理职位。特聘研究员由学术委员会受邀任命，受邀学者也可使用本表格完成正式登记。所有申请均由研究院研究领导团队评审。成功申请者将被联系，以讨论任命、研究计划及其对研究院项目的贡献。
           </p>
 
           <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/fellows@panorama-sg.com" method="POST" enctype="multipart/form-data">
@@ -66,6 +66,9 @@ const lang = Astro.currentLocale ?? 'en';
                 <option value="">请选择申请类型...</option>
                 <option>研究员（中高级职业阶段，须具博士学位）</option>
                 <option>副研究员（早期职业研究者或博士生）</option>
+                <option>青年研究员（博士后，博士毕业五年以内）</option>
+                <option>兼职研究员（在其他机构担任主要职务）</option>
+                <option>特聘研究员（受邀任命）</option>
                 <option>研究助理（硕士/博士研究生或应届毕业生）</option>
               </select>
             </div>

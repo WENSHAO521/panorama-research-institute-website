@@ -5,10 +5,10 @@ import FormSubmitFields from '../../../components/FormSubmitFields.astro';
 import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.astro';
 const lang = Astro.currentLocale ?? 'en';
 ---
-<BaseLayout title="研究員申請" description="申請成為全景研究院研究員或副研究員。">
+<BaseLayout title="研究員申請" description="申請成為全景研究院研究員或其他研究員系列職位。">
   <PageHero
     title="研究員申請"
-    description="申請成為全景研究院研究員或副研究員。研究院面向各職業階段學者滾動接受申請。"
+    description="申請成為全景研究院研究員或其他研究員系列職位。研究院面向各職業階段學者滾動接受申請。"
     breadcrumbs={[{ label: "學術合作", href: "/zh-tw/collaboration" }, { label: "研究員申請" }]}
   />
 
@@ -19,10 +19,10 @@ const lang = Astro.currentLocale ?? 'en';
           <div class="section-label">申請詳情</div>
           <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
             {[
-              { label:"申請類型",  value:"研究員、副研究員或研究助理" },
+              { label:"申請類型",  value:"研究員、副研究員、青年研究員、兼職研究員、特聘研究員或研究助理" },
               { label:"截止日期",          value:"滾動申請（無固定截止日期）" },
               { label:"回覆時間",     value:"20 個工作日內" },
-              { label:"期限（如獲接受）", value:"1–3 年（研究員）/ 1 年（副研究員）" },
+              { label:"期限（如獲接受）", value:"1–3 年（研究員）；1–2 年（副研究員/青年研究員/兼職研究員）；按項目安排（研究助理）" },
               { label:"形式",            value:"遠端——無需搬遷" },
               { label:"聯絡",           value:"fellows@panorama-sg.com" },
             ].map((item) => (
@@ -42,7 +42,7 @@ const lang = Astro.currentLocale ?? 'en';
         </div>
         <div>
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
-            請使用本表格申請全景研究院研究員、副研究員或研究助理職位。所有申請均由研究院研究領導團隊評審。成功申請者將被聯絡，以討論任命、研究計劃及其對研究院項目的貢獻。
+            請使用本表格申請全景研究院研究員、副研究員、青年研究員、兼職研究員或研究助理職位。特聘研究員由學術委員會受邀任命，受邀學者也可使用本表格完成正式登記。所有申請均由研究院研究領導團隊評審。成功申請者將被聯絡，以討論任命、研究計劃及其對研究院項目的貢獻。
           </p>
 
           <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/fellows@panorama-sg.com" method="POST" enctype="multipart/form-data">
@@ -66,6 +66,9 @@ const lang = Astro.currentLocale ?? 'en';
                 <option value="">請選擇申請類型...</option>
                 <option>研究員（中高級職業階段，須具博士學位）</option>
                 <option>副研究員（早期職涯研究者或博士生）</option>
+                <option>青年研究員（博士後，博士畢業五年以內）</option>
+                <option>兼職研究員（在其他機構擔任主要職務）</option>
+                <option>特聘研究員（受邀任命）</option>
                 <option>研究助理（碩士/博士研究生或應屆畢業生）</option>
               </select>
             </div>

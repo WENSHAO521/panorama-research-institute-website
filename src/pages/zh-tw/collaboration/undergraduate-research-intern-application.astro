@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.astro';
+---
+<BaseLayout title="本科生研究實習生申請" description="申請全景研究院本科生研究實習生項目。">
+  <PageHero
+    title="本科生研究實習生申請"
+    description="申請加入全景研究院，成為本科生研究實習生。面向對研究院研究領域有真實興趣的在讀本科生開放。"
+    breadcrumbs={[{ label: "學術合作", href: "/zh-tw/collaboration" }, { label: "本科生研究實習生申請" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">項目詳情</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"時長",        value:"一學期或按項目安排，可續期" },
+              { label:"形式",          value:"遠端（分散式）" },
+              { label:"資格要求",     value:"在讀本科生" },
+              { label:"申請方式",     value:"滾動申請（無固定截止日期）" },
+              { label:"回覆時間",   value:"20 個工作日內" },
+              { label:"聯絡",         value:"fellows@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:20px;">
+            <a href="/zh-tw/people/join" class="btn btn-secondary" style="width:100%;justify-content:center;">關於加入研究院</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            請使用本表格申請全景研究院本科生研究實習生項目。實習生在研究員和研究中心負責人指導下，協助完成文獻綜述、資料收集、編輯協助等工作。所有申請均由學者項目協調人及相關研究中心負責人評審。
+          </p>
+
+          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/fellows@panorama-sg.com" method="POST" enctype="multipart/form-data">
+            <FormSubmitFields subject="全景研究院本科生研究實習生申請" source="本科生研究實習生申請表" />
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              {([
+                { label:"姓名",           id:"ug-name",  type:"text",  placeholder:"姓名" },
+                { label:"電子郵箱地址",   id:"ug-email", name:"email", type:"email", placeholder:"your@email.com" },
+                { label:"就讀院校",       id:"ug-inst",  type:"text",  placeholder:"現就讀大學" },
+                { label:"年級與科系",     id:"ug-year",  type:"text",  placeholder:"例如：大三，經濟學" },
+              ] as { label: string; id: string; name?: string; type: 'text' | 'email'; placeholder: string }[]).map((f) => (
+                <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
+                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+                </div>
+              ))}
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="ug-center" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">首選研究中心</label>
+              <select id="ug-center" name="ug-center" class="form-input" style="width:100%;">
+                <option value="">請選擇研究中心...</option>
+                <option>學術出版研究中心</option>
+                <option>學術索引與評價研究中心</option>
+                <option>政策與社會研究中心</option>
+                <option>人工智慧與未來社會研究中心</option>
+                <option>藝術、文化與具身研究中心</option>
+                <option>健康與醫學研究中心</option>
+                <option>接受建議</option>
+              </select>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="ug-motivation" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">申請動機與研究興趣（200–500 詞）</label>
+              <textarea id="ug-motivation" name="ug-motivation" rows="8" placeholder="請說明您對研究院研究領域的興趣、申請實習的原因，以及希望從中學習或作出的貢獻。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="ug-experience" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">相關課程或經歷（不超過 300 詞）</label>
+              <textarea id="ug-experience" name="ug-experience" rows="5" placeholder="與研究方法相關的課程、以往參與的專案、語言能力或其他與本實習相關的經歷。" class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <MultiAttachmentUpload
+                id="ug-attachments"
+                label="申請附件"
+                description="請上傳履歷，以及可選的成績單或推薦信，可使用 PDF、Word、圖片或 ZIP 檔案。最多可上傳 5 個檔案，總大小請勿超過 10MB。如需傳送超過 5 個檔案，請直接寄送電子郵件至 fellows@panorama-sg.com。"
+                accept=".pdf,.doc,.docx,.zip,.png,.jpg,.jpeg"
+              />
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
+              <input type="checkbox" id="ug-consent" name="ug-consent" value="confirmed" style="margin-top:3px;flex-shrink:0;" />
+              <label for="ug-consent" style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">本人確認目前為在讀本科生，且以上所提供資訊真實準確。</label>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">提交申請</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+}
+</style>

@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FormSubmitFields from '../../components/FormSubmitFields.astro';
+import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro';
+---
+<BaseLayout title="Undergraduate Research Intern Application" description="Apply for the Panorama Research Institute Undergraduate Research Intern Program.">
+  <PageHero
+    title="Undergraduate Research Intern Application"
+    description="Apply to join Panorama Research Institute as an Undergraduate Research Intern. Open to currently enrolled undergraduate students with a genuine interest in the Institute's research areas."
+    breadcrumbs={[{ label: "Collaboration", href: "/collaboration" }, { label: "Undergraduate Research Intern Application" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">Program Details</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"Duration",        value:"One semester or project-based, renewable" },
+              { label:"Format",          value:"Remote (distributed)" },
+              { label:"Eligibility",     value:"Currently enrolled undergraduate student" },
+              { label:"Application",     value:"Rolling (no fixed deadline)" },
+              { label:"Response Time",   value:"Within 20 working days" },
+              { label:"Contact",         value:"fellows@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:20px;">
+            <a href="/people/join" class="btn btn-secondary" style="width:100%;justify-content:center;">About Joining the Institute</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            Use this form to apply for the Undergraduate Research Intern Program at Panorama Research Institute. Interns support Research Fellows and Research Center Directors with tasks such as literature review, data collection, and editorial assistance. Applications are reviewed by the Scholar Program Coordinator and the relevant Research Center Director.
+          </p>
+
+          <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/fellows@panorama-sg.com" method="POST" enctype="multipart/form-data">
+            <FormSubmitFields subject="Panorama Research Institute Undergraduate Research Intern Application" source="Undergraduate Research Intern Application Form" />
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              {([
+                { label:"Full Name",           id:"ug-name",  type:"text",  placeholder:"Full name" },
+                { label:"Email Address",       id:"ug-email", name:"email", type:"email", placeholder:"your@email.com" },
+                { label:"University / School", id:"ug-inst",  type:"text",  placeholder:"Current university" },
+                { label:"Year of Study & Major", id:"ug-year", type:"text", placeholder:"e.g. Third-year, Economics" },
+              ] as { label: string; id: string; name?: string; type: 'text' | 'email'; placeholder: string }[]).map((f) => (
+                <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
+                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
+                </div>
+              ))}
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="ug-center" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Preferred Research Center</label>
+              <select id="ug-center" name="ug-center" class="form-input" style="width:100%;">
+                <option value="">Select a research center...</option>
+                <option>Center for Scholarly Publishing Studies</option>
+                <option>Center for Scholarly Indexing and Evaluation</option>
+                <option>Center for Policy and Social Research</option>
+                <option>Center for AI and Future Society</option>
+                <option>Center for Arts, Culture and Embodiment</option>
+                <option>Center for Health and Medical Research</option>
+                <option>Open to suggestion</option>
+              </select>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="ug-motivation" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Motivation and Research Interest (200–500 words)</label>
+              <textarea id="ug-motivation" name="ug-motivation" rows="8" placeholder="Describe your interest in the Institute's research areas, why you want to intern with the Institute, and what you hope to learn or contribute." class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <label for="ug-experience" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Relevant Coursework or Experience (up to 300 words)</label>
+              <textarea id="ug-experience" name="ug-experience" rows="5" placeholder="Relevant coursework, research methods training, prior projects, language skills, or other experience relevant to the internship." class="form-input" style="width:100%;resize:vertical;"></textarea>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <MultiAttachmentUpload
+                id="ug-attachments"
+                label="Application Attachments"
+                description="Upload your CV or resume, and optionally a transcript or letter of recommendation, as PDF, Word, image, or ZIP files. Up to 5 files, total size not exceeding 10MB. If you need to send more than 5 files, please email them directly to fellows@panorama-sg.com."
+                accept=".pdf,.doc,.docx,.zip,.png,.jpg,.jpeg"
+              />
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;display:flex;gap:10px;align-items:flex-start;">
+              <input type="checkbox" id="ug-consent" name="ug-consent" value="confirmed" style="margin-top:3px;flex-shrink:0;" />
+              <label for="ug-consent" style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">I confirm that I am a currently enrolled undergraduate student and that the information provided above is accurate.</label>
+            </div>
+            <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Submit Application</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
+}
+</style>

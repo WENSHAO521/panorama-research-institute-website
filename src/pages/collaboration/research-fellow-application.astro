@@ -5,10 +5,10 @@ import FormSubmitFields from '../../components/FormSubmitFields.astro';
 import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro';
 const lang = Astro.currentLocale ?? 'en';
 ---
-<BaseLayout title="Research Fellow Application" description="Apply to become a Research Fellow or Associate Research Fellow at Panorama Research Institute.">
+<BaseLayout title="Research Fellow Application" description="Apply to become a Research Fellow or other fellowship-track researcher at Panorama Research Institute.">
   <PageHero
     title="Research Fellow Application"
-    description="Apply to become a Research Fellow or Associate Research Fellow at Panorama Research Institute. Applications are accepted on a rolling basis from scholars at all career stages."
+    description="Apply to become a Research Fellow or other fellowship-track researcher at Panorama Research Institute. Applications are accepted on a rolling basis from scholars and students at all career stages."
     breadcrumbs={[{ label: "Collaboration", href: "/collaboration" }, { label: "Research Fellow Application" }]}
   />
 
@@ -19,10 +19,10 @@ const lang = Astro.currentLocale ?? 'en';
           <div class="section-label">Application Details</div>
           <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
             {[
-              { label:"Application Type",  value:"Research Fellow, Associate Research Fellow, or Research Assistant" },
+              { label:"Application Type",  value:"Research Fellow, Associate/Young/Part-time/Distinguished Research Fellow, or Research Assistant" },
               { label:"Deadline",          value:"Rolling (no fixed deadline)" },
               { label:"Response Time",     value:"Within 20 working days" },
-              { label:"Duration (if accepted)", value:"1–3 years (Fellow) / 1 year (Associate Fellow)" },
+              { label:"Duration (if accepted)", value:"1–3 years (Fellow); 1–2 years (Associate/Young/Part-time Fellow); project-based (Assistant)" },
               { label:"Format",            value:"Remote — no relocation required" },
               { label:"Contact",           value:"fellows@panorama-sg.com" },
             ].map((item) => (
@@ -42,7 +42,7 @@ const lang = Astro.currentLocale ?? 'en';
         </div>
         <div>
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
-            Use this form to apply for a Research Fellow, Associate Research Fellow, or Research Assistant position at Panorama Research Institute. All applications are reviewed by the Institute's research leadership. Successful applicants will be contacted to discuss their appointment, research plan, and contribution to the Institute's programs.
+            Use this form to apply for a Research Fellow, Associate Research Fellow, Young Research Fellow, Part-time Research Fellow, or Research Assistant position at Panorama Research Institute. Distinguished Research Fellow appointments are extended by invitation of the Academic Committee, but invited scholars may also use this form to complete formal registration. All applications are reviewed by the Institute's research leadership. Successful applicants will be contacted to discuss their appointment, research plan, and contribution to the Institute's programs.
           </p>
 
           <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/fellows@panorama-sg.com" method="POST" enctype="multipart/form-data">
@@ -66,6 +66,9 @@ const lang = Astro.currentLocale ?? 'en';
                 <option value="">Select application type...</option>
                 <option>Research Fellow (mid- or senior-career, PhD required)</option>
                 <option>Associate Research Fellow (early-career or doctoral student)</option>
+                <option>Young Research Fellow (postdoctoral, within five years of PhD)</option>
+                <option>Part-time Research Fellow (primary position elsewhere)</option>
+                <option>Distinguished Research Fellow (by invitation)</option>
                 <option>Research Assistant (Masters/PhD student or recent graduate)</option>
               </select>
             </div>

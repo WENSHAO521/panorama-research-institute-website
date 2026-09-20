@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="本科生研究实习生" description="全景研究院本科生研究实习生。">
+  <PageHero
+    title="本科生研究实习生"
+    description="本科生研究实习生项目让在读本科生通过在全景研究院研究员和研究中心的指导下开展支持性工作，接触学术研究实践。"
+    breadcrumbs={[{ label: "学术成员", href: "/zh-cn/people" }, { label: "本科生研究实习生" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">项目详情</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"头衔",     value:"全景研究院本科生研究实习生" },
+              { label:"资格要求", value:"在读本科生" },
+              { label:"期限",     value:"一学期或按项目安排，可续期" },
+              { label:"形式",     value:"远程（分布式）" },
+              { label:"工作内容", value:"在研究员或中心负责人指导下承担支持性工作" },
+              { label:"申请方式", value:"开放申请（滚动）" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-cn/collaboration/undergraduate-research-intern-application" class="btn btn-primary" style="width:100%;justify-content:center;">立即申请</a>
+            <a href="/zh-cn/people/research-assistants" class="btn btn-secondary" style="width:100%;justify-content:center;">研究助理</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">关于本科生研究实习生</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            本科生研究实习生项目面向对研究院研究领域有真实兴趣的在读本科生。实习生在研究员和研究中心负责人指导下，协助完成文献综述、数据收集、编辑协助等工作，从而直接接触学术研究的实际操作。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            本项目不要求申请人具备独立研究经验或出版记录。实习以一学期或按项目安排，可续期。未来计划继续攻读研究生的实习生，可考虑申请研究院的研究助理或副研究员通道。
+          </p>
+
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">当前实习生</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+              研究院正在为本科生研究实习生项目接受申请。获录取实习生将在任命后列于本页面。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Undergraduate Research Interns" description="Undergraduate Research Interns affiliated with Panorama Research Institute.">
+  <PageHero
+    title="Undergraduate Research Interns"
+    description="The Undergraduate Research Intern program introduces currently enrolled undergraduate students to academic research through supervised support work with Panorama Research Institute's fellows and research centers."
+    breadcrumbs={[{ label: "People", href: "/people" }, { label: "Undergraduate Research Interns" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">Program Details</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"Title",       value:"Undergraduate Research Intern, Panorama Research Institute" },
+              { label:"Eligibility", value:"Currently enrolled undergraduate student" },
+              { label:"Duration",    value:"One semester or project-based, renewable" },
+              { label:"Format",      value:"Remote / distributed" },
+              { label:"Output",      value:"Support tasks under Fellow or Center Director supervision" },
+              { label:"Application", value:"Open (rolling)" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/collaboration/undergraduate-research-intern-application" class="btn btn-primary" style="width:100%;justify-content:center;">Apply Now</a>
+            <a href="/people/research-assistants" class="btn btn-secondary" style="width:100%;justify-content:center;">Research Assistants</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">About Undergraduate Research Interns</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Undergraduate Research Intern program is open to currently enrolled undergraduate students with a genuine interest in the Institute's research areas. Interns support Research Fellows and Research Center Directors with tasks such as literature review, data collection, and editorial assistance, gaining direct exposure to academic research practice.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            The program does not require prior independent research experience or a publication record. Internships run for one semester or on a project basis and may be renewed. Interns who go on to pursue graduate study are encouraged to apply for the Institute's Research Assistant or Associate Research Fellow tracks.
+          </p>
+
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Current Interns</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+              The Institute is currently accepting applications for its Undergraduate Research Intern program. Accepted interns will be listed on this page upon appointment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

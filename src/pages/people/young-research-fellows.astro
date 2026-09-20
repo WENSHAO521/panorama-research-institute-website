@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Young Research Fellows" description="Young Research Fellows affiliated with Panorama Research Institute.">
+  <PageHero
+    title="Young Research Fellows"
+    description="The Young Research Fellow track supports postdoctoral and early-career researchers building an independent research profile within Panorama Research Institute's programs."
+    breadcrumbs={[{ label: "People", href: "/people" }, { label: "Young Research Fellows" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">Fellowship Details</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"Title",       value:"Young Research Fellow, Panorama Research Institute" },
+              { label:"Target",      value:"Postdoctoral or early-career researchers, within five years of PhD" },
+              { label:"Duration",    value:"1–2 years, renewable" },
+              { label:"Format",      value:"Remote / distributed (no relocation required)" },
+              { label:"Output",      value:"At least one publication every two years" },
+              { label:"Application", value:"Open (rolling)" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/collaboration/research-fellow-application" class="btn btn-primary" style="width:100%;justify-content:center;">Apply Now</a>
+            <a href="/people/research-fellows" class="btn btn-secondary" style="width:100%;justify-content:center;">Research Fellows</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">About Young Research Fellows</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            The Young Research Fellow designation is intended for postdoctoral and early-career researchers, typically within five years of completing a PhD, who have already established an independent research direction and wish to affiliate with Panorama Research Institute. Young Research Fellows sit between the Associate Research Fellow and Research Fellow tiers, recognizing scholars who have moved past doctoral training but have not yet reached a mid-career fellowship.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            Young Research Fellows contribute to Institute research projects, participate in Institute events, and are expected to publish within the Institute's programs at a pace appropriate to an early-career researcher. Sustained contribution may be considered for promotion to Research Fellow.
+          </p>
+
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Current Cohort</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+              The Institute is currently accepting applications for its Young Research Fellow track. Accepted fellows will be listed on this page upon appointment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

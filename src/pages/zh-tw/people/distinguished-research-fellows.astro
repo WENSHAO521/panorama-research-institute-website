@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="特聘研究員" description="全景研究院特聘研究員。">
+  <PageHero
+    title="特聘研究員"
+    description="特聘研究員是一項榮譽任命，用於表彰在學術上有傑出成就、並對全景研究院研究領域有持續貢獻的資深學者。"
+    breadcrumbs={[{ label: "學術成員", href: "/zh-tw/people" }, { label: "特聘研究員" }]}
+    tag="受邀任命"
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">任命詳情</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"頭銜",   value:"全景研究院特聘研究員" },
+              { label:"適合對象", value:"具有傑出學術成就的資深學者" },
+              { label:"期限",   value:"2–3 年，可續期" },
+              { label:"形式",   value:"遠端或線下，靈活安排" },
+              { label:"遴選方式", value:"由學術委員會受邀任命" },
+              { label:"聯絡",   value:"fellows@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;">
+            <a href="/zh-tw/contact" class="btn btn-primary" style="width:100%;justify-content:center;">聯繫研究院</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">關於特聘研究員任命</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            特聘研究員是授予資深學者的榮譽頭銜，用於表彰其在學術上取得的傑出成就，以及對與研究院研究領域相關學科的持續貢獻。該任命旨在提升研究院研究員團隊的學術聲望，並藉助這些學者的地位與指導為研究院項目帶來助益。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            特聘研究員由學術委員會及研究院負責人受邀任命，不透過研究院公開申請流程產生。認為自己符合該任命條件、或希望推薦同儕的資深學者，可直接聯繫研究院。
+          </p>
+
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">現任研究員</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+              研究院目前尚未任命特聘研究員。獲任命者將列於本頁面。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

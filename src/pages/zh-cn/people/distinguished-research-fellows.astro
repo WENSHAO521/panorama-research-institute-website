@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="特聘研究员" description="全景研究院特聘研究员。">
+  <PageHero
+    title="特聘研究员"
+    description="特聘研究员是一项荣誉任命，用于表彰在学术上有杰出成就、并对全景研究院研究领域有持续贡献的资深学者。"
+    breadcrumbs={[{ label: "学术成员", href: "/zh-cn/people" }, { label: "特聘研究员" }]}
+    tag="受邀任命"
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">任命详情</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"头衔",   value:"全景研究院特聘研究员" },
+              { label:"适合对象", value:"具有杰出学术成就的资深学者" },
+              { label:"期限",   value:"2–3 年，可续期" },
+              { label:"形式",   value:"远程或线下，灵活安排" },
+              { label:"遴选方式", value:"由学术委员会受邀任命" },
+              { label:"联系",   value:"fellows@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;">
+            <a href="/zh-cn/contact" class="btn btn-primary" style="width:100%;justify-content:center;">联系研究院</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">关于特聘研究员任命</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            特聘研究员是授予资深学者的荣誉头衔，用于表彰其在学术上取得的杰出成就，以及对与研究院研究领域相关学科的持续贡献。该任命旨在提升研究院研究员团队的学术声望，并借助这些学者的地位与指导为研究院项目带来助益。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            特聘研究员由学术委员会及研究院负责人受邀任命，不通过研究院公开申请流程产生。认为自己符合该任命条件、或希望推荐同行的资深学者，可直接联系研究院。
+          </p>
+
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">现任研究员</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+              研究院目前尚未任命特聘研究员。获任命者将列于本页面。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

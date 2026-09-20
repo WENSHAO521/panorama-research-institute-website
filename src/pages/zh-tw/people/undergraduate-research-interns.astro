@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+<BaseLayout title="本科生研究實習生" description="全景研究院本科生研究實習生。">
+  <PageHero
+    title="本科生研究實習生"
+    description="本科生研究實習生項目讓在讀本科生透過在全景研究院研究員和研究中心的指導下開展支援性工作，接觸學術研究實踐。"
+    breadcrumbs={[{ label: "學術成員", href: "/zh-tw/people" }, { label: "本科生研究實習生" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">項目詳情</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"頭銜",     value:"全景研究院本科生研究實習生" },
+              { label:"資格要求", value:"在讀本科生" },
+              { label:"期限",     value:"一學期或按項目安排，可續期" },
+              { label:"形式",     value:"遠端（分散式）" },
+              { label:"工作內容", value:"在研究員或中心負責人指導下承擔支援性工作" },
+              { label:"申請方式", value:"開放申請（滾動）" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-tw/collaboration/undergraduate-research-intern-application" class="btn btn-primary" style="width:100%;justify-content:center;">立即申請</a>
+            <a href="/zh-tw/people/research-assistants" class="btn btn-secondary" style="width:100%;justify-content:center;">研究助理</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">關於本科生研究實習生</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            本科生研究實習生項目面向對研究院研究領域有真實興趣的在讀本科生。實習生在研究員和研究中心負責人指導下，協助完成文獻綜述、資料收集、編輯協助等工作，從而直接接觸學術研究的實際操作。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            本項目不要求申請人具備獨立研究經驗或出版紀錄。實習以一學期或按項目安排，可續期。未來計劃繼續攻讀研究所的實習生，可考慮申請研究院的研究助理或副研究員通道。
+          </p>
+
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">現任實習生</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+              研究院正在為本科生研究實習生項目接受申請。獲錄取實習生將在任命後列於本頁面。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

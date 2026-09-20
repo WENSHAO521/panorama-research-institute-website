@@ -50,17 +50,21 @@ const categories = ["All", "Institute Leadership", "Research Fellows", "Associat
       <h2 class="section-title">Roles and Positions</h2>
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
         {[
-          { role: "Research Fellow",             desc: "Senior researchers affiliated with the Institute, contributing to research projects, publications, and academic events." },
-          { role: "Associate Research Fellow",   desc: "Researchers in earlier career stages contributing to Institute projects under the mentorship of senior fellows." },
-          { role: "Visiting Scholar",            desc: "Scholars from other institutions visiting the Institute for a defined period to undertake collaborative research." },
-          { role: "Research Assistant",          desc: "Graduate students and early-career researchers supporting Institute research projects and publications." },
-          { role: "Advisory Board Member",       desc: "External senior academics providing strategic advice and academic oversight to the Institute." },
-          { role: "Project Contributor",         desc: "Scholars contributing to specific Institute projects without holding a formal fellowship or appointment." },
+          { role: "Research Fellow",             href: "/people/research-fellows",             desc: "Senior researchers affiliated with the Institute, contributing to research projects, publications, and academic events." },
+          { role: "Associate Research Fellow",   href: "/people/associate-research-fellows",   desc: "Researchers in earlier career stages contributing to Institute projects under the mentorship of senior fellows." },
+          { role: "Young Research Fellow",       href: "/people/young-research-fellows",       desc: "Postdoctoral or early-career researchers, typically within five years of PhD, building an independent research profile." },
+          { role: "Part-time Research Fellow",   href: "/people/part-time-research-fellows",   desc: "Researchers with a primary position elsewhere contributing to the Institute on a reduced-commitment basis." },
+          { role: "Distinguished Research Fellow", href: "/people/distinguished-research-fellows", desc: "An honorary appointment for senior scholars of exceptional standing, extended by invitation." },
+          { role: "Visiting Scholar",            href: "/people/visiting-scholars",            desc: "Scholars from other institutions visiting the Institute for a defined period to undertake collaborative research." },
+          { role: "Research Assistant",          href: "/people/research-assistants",          desc: "Graduate students and early-career researchers supporting Institute research projects and publications." },
+          { role: "Undergraduate Research Intern", href: "/people/undergraduate-research-interns", desc: "Currently enrolled undergraduate students supporting Fellows and Research Centers with literature review and data collection." },
+          { role: "Advisory Board Member",       href: "/people/advisory-board",               desc: "External senior academics providing strategic advice and academic oversight to the Institute." },
+          { role: "Project Contributor",         href: "/people/project-contributors",         desc: "Scholars contributing to specific Institute projects without holding a formal fellowship or appointment." },
         ].map((r) => (
-          <div class="card" style="border:none;border-radius:0;">
+          <a href={r.href} class="card" style="border:none;border-radius:0;display:block;">
             <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{r.role}</h3>
             <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{r.desc}</p>
-          </div>
+          </a>
         ))}
       </div>
     </div>

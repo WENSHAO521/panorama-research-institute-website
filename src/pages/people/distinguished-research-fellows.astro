@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="Distinguished Research Fellows" description="Distinguished Research Fellows honored by Panorama Research Institute.">
+  <PageHero
+    title="Distinguished Research Fellows"
+    description="Distinguished Research Fellow is an honorary appointment recognizing senior scholars of exceptional academic standing and sustained contribution to Panorama Research Institute's research areas."
+    breadcrumbs={[{ label: "People", href: "/people" }, { label: "Distinguished Research Fellows" }]}
+    tag="By Invitation"
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+        <div>
+          <div class="section-label">Appointment Details</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label:"Title",       value:"Distinguished Research Fellow, Panorama Research Institute" },
+              { label:"Target",      value:"Senior scholars of exceptional academic standing" },
+              { label:"Duration",    value:"2–3 years, renewable" },
+              { label:"Format",      value:"Remote or in-person, flexible" },
+              { label:"Selection",   value:"By invitation of the Academic Committee" },
+              { label:"Contact",     value:"fellows@panorama-sg.com" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:28px;">
+            <a href="/contact" class="btn btn-primary" style="width:100%;justify-content:center;">Contact the Institute</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">About the Distinguished Research Fellow Appointment</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            Distinguished Research Fellow is an honorary title conferred on senior scholars who have demonstrated exceptional academic achievement and are recognized for sustained contribution to fields aligned with the Institute's research areas. The appointment is intended to strengthen the intellectual standing of the Institute's fellowship community and to recognize scholars whose stature and guidance benefit the Institute's programs.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            Distinguished Research Fellows are appointed by invitation of the Academic Committee and Institute leadership, rather than through the Institute's open application process. Senior scholars who believe they may be suited to this appointment, or who wish to nominate a colleague, may contact the Institute directly.
+          </p>
+
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Current Fellows</div>
+            <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
+              The Institute has not yet extended a Distinguished Research Fellow appointment. Appointed fellows will be listed on this page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:1fr 2fr"] { display: block !important; }
+}
+</style>

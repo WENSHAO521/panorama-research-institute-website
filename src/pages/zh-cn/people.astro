@@ -50,17 +50,21 @@ const categories = ["全部", "研究院领导", "研究员", "副研究员", "�
       <h2 class="section-title">角色与职位</h2>
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);border:1px solid var(--border-light);margin-top:8px;">
         {[
-          { role: "研究员",             desc: "与研究院建立学术关联，并参与研究项目、出版成果和学术活动的资深研究人员。" },
-          { role: "副研究员",   desc: "在资深研究员指导下参与研究院项目的早期职业阶段研究人员。" },
-          { role: "访问学者",            desc: "来自其他机构、在特定时期内访问研究院并开展合作研究的学者。" },
-          { role: "研究助理",          desc: "支持研究院研究项目和出版工作的研究生及早期职业阶段研究人员。" },
-          { role: "顾问委员会成员",       desc: "为研究院提供战略建议和学术监督的外部资深学者。" },
-          { role: "项目贡献者",         desc: "不持正式研究员或聘任身份、但参与研究院具体项目的学者。" },
+          { role: "研究员",             href: "/zh-cn/people/research-fellows",             desc: "与研究院建立学术关联，并参与研究项目、出版成果和学术活动的资深研究人员。" },
+          { role: "副研究员",   href: "/zh-cn/people/associate-research-fellows",   desc: "在资深研究员指导下参与研究院项目的早期职业阶段研究人员。" },
+          { role: "青年研究员", href: "/zh-cn/people/young-research-fellows", desc: "通常为博士毕业五年以内、正在建立独立研究方向的博士后或早期职业研究者。" },
+          { role: "兼职研究员", href: "/zh-cn/people/part-time-research-fellows", desc: "在其他机构担任主要职务、以较低强度参与研究院工作的研究人员。" },
+          { role: "特聘研究员", href: "/zh-cn/people/distinguished-research-fellows", desc: "授予具有杰出学术成就的资深学者的荣誉任命，由研究院受邀任命。" },
+          { role: "访问学者",            href: "/zh-cn/people/visiting-scholars",            desc: "来自其他机构、在特定时期内访问研究院并开展合作研究的学者。" },
+          { role: "研究助理",          href: "/zh-cn/people/research-assistants",          desc: "支持研究院研究项目和出版工作的研究生及早期职业阶段研究人员。" },
+          { role: "本科生研究实习生", href: "/zh-cn/people/undergraduate-research-interns", desc: "协助研究员和研究中心开展文献综述、数据收集等工作的在读本科生。" },
+          { role: "顾问委员会成员",       href: "/zh-cn/people/advisory-board",               desc: "为研究院提供战略建议和学术监督的外部资深学者。" },
+          { role: "项目贡献者",         href: "/zh-cn/people/project-contributors",         desc: "不持正式研究员或聘任身份、但参与研究院具体项目的学者。" },
         ].map((r) => (
-          <div class="card" style="border:none;border-radius:0;">
+          <a href={r.href} class="card" style="border:none;border-radius:0;display:block;">
             <h3 style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:10px;">{r.role}</h3>
             <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);">{r.desc}</p>
-          </div>
+          </a>
         ))}
       </div>
     </div>

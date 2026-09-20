@@ -25,29 +25,39 @@ export const navigation: NavItem[] = [
   {
     label: "Institute",
     href: "/about",
-    children: [
-      { label: "Overview",                href: "/about" },
-      { label: "Mission & Vision",        href: "/about/mission-vision" },
-      { label: "Institutional Status",    href: "/about/institutional-status" },
-      { label: "Institute Framework",     href: "/framework" },
-      { label: "Organizational Structure",href: "/framework/organizational-structure" },
-      { label: "Development Roadmap",     href: "/framework/development-roadmap" },
-      { label: "Contact the Institute",   href: "/contact" },
-    ],
-  },
-  {
-    label: "Governance",
-    href: "/charter",
-    children: [
-      { label: "Institute Charter",               href: "/charter" },
-      { label: "Governance Rules",                href: "/governance/rules" },
-      { label: "Academic Independence Statement", href: "/governance/academic-independence" },
-      { label: "Research Ethics",                 href: "/governance/research-ethics" },
-      { label: "Conflict of Interest Policy",     href: "/governance/conflict-of-interest" },
-      { label: "Publication & Report Policy",     href: "/governance/publication-report-policy" },
-      { label: "Data & Documentation Policy",     href: "/governance/data-documentation-policy" },
-      { label: "Name and Logo Usage",             href: "/governance/name-logo-usage" },
-      { label: "Amendment Procedure",             href: "/governance/amendment-procedure" },
+    mega: true,
+    groups: [
+      {
+        title: "About",
+        links: [
+          { label: "Overview",                href: "/about" },
+          { label: "Mission & Vision",        href: "/about/mission-vision" },
+          { label: "Institutional Status",    href: "/about/institutional-status" },
+          { label: "Contact the Institute",   href: "/contact" },
+        ],
+      },
+      {
+        title: "Framework",
+        links: [
+          { label: "Institute Framework",     href: "/framework" },
+          { label: "Organizational Structure",href: "/framework/organizational-structure" },
+          { label: "Development Roadmap",     href: "/framework/development-roadmap" },
+        ],
+      },
+      {
+        title: "Governance",
+        links: [
+          { label: "Institute Charter",               href: "/charter" },
+          { label: "Governance Rules",                href: "/governance/rules" },
+          { label: "Academic Independence Statement", href: "/governance/academic-independence" },
+          { label: "Research Ethics",                 href: "/governance/research-ethics" },
+          { label: "Conflict of Interest Policy",     href: "/governance/conflict-of-interest" },
+          { label: "Publication & Report Policy",     href: "/governance/publication-report-policy" },
+          { label: "Data & Documentation Policy",     href: "/governance/data-documentation-policy" },
+          { label: "Name and Logo Usage",             href: "/governance/name-logo-usage" },
+          { label: "Amendment Procedure",             href: "/governance/amendment-procedure" },
+        ],
+      },
     ],
   },
   {
@@ -90,15 +100,40 @@ export const navigation: NavItem[] = [
   {
     label: "Publications",
     href: "/publications",
-    children: [
-      { label: "Overview",              href: "/publications" },
-      { label: "Research Reports",      href: "/publications/research-reports" },
-      { label: "Working Papers",        href: "/publications/working-papers" },
-      { label: "Policy Briefs",         href: "/publications/policy-briefs" },
-      { label: "Edited Volumes",        href: "/publications/edited-volumes" },
-      { label: "Annual Reports",        href: "/publications/annual-reports" },
-      { label: "Publication Guidelines",href: "/publications/guidelines" },
-      { label: "Suggested Citation",    href: "/publications/citation" },
+    mega: true,
+    groups: [
+      {
+        title: "Publications",
+        links: [
+          { label: "Overview",              href: "/publications" },
+          { label: "Research Reports",      href: "/publications/research-reports" },
+          { label: "Working Papers",        href: "/publications/working-papers" },
+          { label: "Policy Briefs",         href: "/publications/policy-briefs" },
+          { label: "Edited Volumes",        href: "/publications/edited-volumes" },
+          { label: "Annual Reports",        href: "/publications/annual-reports" },
+        ],
+      },
+      {
+        title: "Guidelines & Citation",
+        links: [
+          { label: "Publication Guidelines",  href: "/publications/guidelines" },
+          { label: "Suggested Citation",      href: "/publications/citation" },
+          { label: "Institutional Guidelines",href: "/resources/guidelines" },
+          { label: "Logo Usage Guidelines",   href: "/resources/logo-usage-guidelines" },
+        ],
+      },
+      {
+        title: "Resources & Templates",
+        links: [
+          { label: "Downloads",                     href: "/resources" },
+          { label: "Forms",                         href: "/resources/forms" },
+          { label: "Templates",                     href: "/resources/templates" },
+          { label: "Institute Charter PDF",         href: "/resources/charter-pdf" },
+          { label: "Research Proposal Template",    href: "/resources/research-proposal-template" },
+          { label: "Report Template",               href: "/resources/report-template" },
+          { label: "Policy Brief Template",         href: "/resources/policy-brief-template" },
+        ],
+      },
     ],
   },
   {
@@ -141,34 +176,9 @@ export const navigation: NavItem[] = [
       { label: "Special Issue Proposal",        href: "/collaboration/special-issue-proposal" },
       { label: "Visiting Scholar Application",  href: "/collaboration/visiting-scholar-application" },
       { label: "Research Fellow Application",   href: "/collaboration/research-fellow-application" },
+      { label: "Undergraduate Intern Application", href: "/collaboration/undergraduate-research-intern-application" },
       { label: "Event Cooperation",             href: "/collaboration/event-cooperation" },
       { label: "Submit a Proposal",             href: "/collaboration/submit" },
-    ],
-  },
-  {
-    label: "Resources",
-    href: "/resources",
-    children: [
-      { label: "Downloads",                     href: "/resources" },
-      { label: "Forms",                         href: "/resources/forms" },
-      { label: "Templates",                     href: "/resources/templates" },
-      { label: "Guidelines",                    href: "/resources/guidelines" },
-      { label: "Institute Charter PDF",         href: "/resources/charter-pdf" },
-      { label: "Research Proposal Template",    href: "/resources/research-proposal-template" },
-      { label: "Report Template",               href: "/resources/report-template" },
-      { label: "Policy Brief Template",         href: "/resources/policy-brief-template" },
-      { label: "Logo Usage Guidelines",         href: "/resources/logo-usage-guidelines" },
-    ],
-  },
-  {
-    label: "Our Platforms",
-    href: "#",
-    children: [
-      { label: "Panorama Scholarly Group",    href: "https://www.panorama-sg.com",         external: true },
-      { label: "Panorama Journals",           href: "https://journals.panorama-sg.com",    external: true },
-      { label: "Panorama Books",              href: "https://books.panorama-sg.com",       external: true },
-      { label: "POSI Database",               href: "https://posi.panorama-sg.com",        external: true },
-      { label: "Panorama Scholar Profiles",   href: "https://profiles.panorama-sg.com",   external: true },
     ],
   },
 ];

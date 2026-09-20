@@ -60,6 +60,16 @@ const href = (path: string) => (lang === 'en' ? path : `/${lang}${path}`);
         <a href={href('/people')} class="footer-link">{t('People')}</a>
       </div>
 
+      <!-- Get Involved -->
+      <div>
+        <div class="footer-col-title">{t('Get Involved')}</div>
+        <a href={href('/collaboration/research-fellow-application')} class="footer-link">{t('Research Fellow Application')}</a>
+        <a href={href('/collaboration/visiting-scholar-application')} class="footer-link">{t('Visiting Scholar Application')}</a>
+        <a href={href('/collaboration/undergraduate-research-intern-application')} class="footer-link">{t('Undergraduate Intern Application')}</a>
+        <a href={href('/collaboration/membership')} class="footer-link">{t('Membership Program')}</a>
+        <a href={href('/collaboration/institutional-cooperation')} class="footer-link">{t('Institutional Cooperation')}</a>
+      </div>
+
       <!-- Platforms -->
       <div>
         <div class="footer-col-title">{t('Panorama Platforms')}</div>

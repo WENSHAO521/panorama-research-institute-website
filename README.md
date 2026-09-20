@@ -1,41 +1,22 @@
-# Panorama Research Institute — Website
+# Panorama Research Institute
 
-Source for [research.panorama-sg.com](https://research.panorama-sg.com), the website of the **Panorama Research Institute (PRI)**, the internal research and academic development division of **Panorama Scholarly Group**.
+**Panorama Research Institute (PRI)** is the research and academic development division of **Panorama Scholarly Group**. It conducts and coordinates research, organizes research projects, and supports scholarly publishing studies, journal indexing and evaluation, policy and social research, and international academic collaboration.
 
-PRI conducts and coordinates research across scholarly publishing studies, journal indexing and evaluation, policy and social research, AI and future society, education and learning research, and arts, culture and embodiment. The site presents the Institute's research centers, projects, publications, events, and governance information, and links out to the wider Panorama Scholarly Group platforms (Panorama Journals, Panorama Books, POSI Database, Panorama Scholar Profiles).
+PRI's work spans seven research areas:
+
+- Scholarly Publishing Studies
+- Journal Indexing and Evaluation
+- Policy and Social Research
+- AI and Future Society
+- Education and Learning Research
+- Arts, Culture and Embodiment
+- Health and Medical Research
+
+The Institute operates through dedicated research centers, publishes working papers, research reports, and policy briefs, organizes academic conferences and seminars, and engages research fellows, visiting scholars, and research assistants through its fellowship program. It also links to the wider Panorama Scholarly Group platforms: Panorama Journals, Panorama Books, the POSI scholarly indexing database, and Panorama Scholar Profiles.
 
 > Panorama Research Institute is an internal division of Panorama Scholarly Group and is not a separate legal entity.
 
-## Tech Stack
-
-- [Astro](https://docs.astro.build) — static site framework
-- [Tailwind CSS](https://tailwindcss.com) — styling
-- Multi-language support (English, Simplified Chinese, Traditional Chinese) via `src/i18n`
-
-## Project Structure
-
-```text
-/
-├── public/              # Static assets, robots.txt, sitemap
-├── src/
-│   ├── components/      # Reusable Astro components
-│   ├── data/            # Site content: research areas, centers, projects, publications
-│   ├── i18n/            # Translation dictionary and locale utilities
-│   ├── layouts/         # Page layouts
-│   ├── pages/           # Routes (including zh-cn/ and zh-tw/ locales)
-│   └── styles/          # Global styles
-└── scripts/             # Build-time helper scripts
-```
-
-## Development
-
-```sh
-npm install
-npm run dev       # start local dev server
-npm run build     # build production site to ./dist/
-npm run preview   # preview the production build locally
-```
-
 ## Contact
 
-research@panorama-sg.com
+Email: research@panorama-sg.com
+Website: [research.panorama-sg.com](https://research.panorama-sg.com)

@@ -27,6 +27,20 @@ export interface CategoryMeta {
 
 const en: Announcement[] = [
   {
+    slug: 'posi-official-launch-2026',
+    category: 'notice',
+    date: '2026-09-27',
+    tag: 'Notice',
+    title: 'POSI Database Officially Launched',
+    summary: 'The Panorama Open Scholarly Index (POSI) was officially launched on 27 September 2026 and is now publicly accessible at posi.panorama-sg.com.',
+    body: [
+      'Panorama Research Institute is pleased to announce that the Panorama Open Scholarly Index (POSI) was officially launched on 27 September 2026. The database is now publicly accessible at https://posi.panorama-sg.com.',
+      'POSI is a flagship infrastructure project led by the Center for Scholarly Indexing and Evaluation. It provides a transparent, comprehensive, and methodologically rigorous open index of academic journals, covering editorial standards, peer review practice, indexing status, open access policies, publication ethics, and metadata quality.',
+      'Following the launch, work will focus on expanding journal coverage to additional disciplines and regions, refining the public interface based on user feedback, and developing structured data access options. Feedback and collaboration inquiries are welcome at research@panorama-sg.com.',
+    ],
+    cta: { label: 'View POSI Project', href: '/projects/posi-scholarly-indexing' },
+  },
+  {
     slug: 'institute-officially-open-2026',
     category: 'notice',
     date: '2026-08-23',
@@ -72,6 +86,20 @@ const en: Announcement[] = [
 
 const zhCn: Announcement[] = [
   {
+    slug: 'posi-official-launch-2026',
+    category: 'notice',
+    date: '2026-09-27',
+    tag: '通知',
+    title: 'POSI 数据库正式上线',
+    summary: '全景开放学术索引（POSI）已于 2026 年 9 月 27 日正式上线，现可通过 posi.panorama-sg.com 公开访问。',
+    body: [
+      '全景研究院欣然宣布，全景开放学术索引（POSI）已于 2026 年 9 月 27 日正式上线。数据库现已向公众开放，访问地址为 https://posi.panorama-sg.com。',
+      'POSI 是由学术索引与评价研究中心牵头的旗舰基础设施项目，提供一个透明、全面且方法严谨的开放学术期刊索引，涵盖编辑标准、同行评审实践、索引状态、开放获取政策、出版伦理及元数据质量等维度。',
+      '上线后，工作重点将转向扩大期刊的学科与地区覆盖范围、根据用户反馈优化公共界面，以及开发结构化数据访问方式。欢迎通过 research@panorama-sg.com 提出意见或洽谈合作。',
+    ],
+    cta: { label: '查看 POSI 项目', href: '/zh-cn/projects/posi-scholarly-indexing' },
+  },
+  {
     slug: 'institute-officially-open-2026',
     category: 'notice',
     date: '2026-08-23',
@@ -116,6 +144,20 @@ const zhCn: Announcement[] = [
 ];
 
 const zhTw: Announcement[] = [
+  {
+    slug: 'posi-official-launch-2026',
+    category: 'notice',
+    date: '2026-09-27',
+    tag: '通知',
+    title: 'POSI 資料庫正式上線',
+    summary: '全景開放學術索引（POSI）已於 2026 年 9 月 27 日正式上線，現可透過 posi.panorama-sg.com 公開存取。',
+    body: [
+      '全景研究院欣然宣布，全景開放學術索引（POSI）已於 2026 年 9 月 27 日正式上線。資料庫現已向公眾開放，網址為 https://posi.panorama-sg.com。',
+      'POSI 是由學術索引與評價研究中心牽頭的旗艦基礎設施項目，提供一個透明、全面且方法嚴謹的開放學術期刊索引，涵蓋編輯標準、同儕評審實踐、索引狀態、開放取用政策、出版倫理及後設資料品質等維度。',
+      '上線後，工作重點將轉向擴大期刊的學科與地區覆蓋範圍、根據用戶反饋優化公共介面，以及開發結構化資料存取方式。歡迎透過 research@panorama-sg.com 提出意見或洽談合作。',
+    ],
+    cta: { label: '查看 POSI 項目', href: '/zh-tw/projects/posi-scholarly-indexing' },
+  },
   {
     slug: 'institute-officially-open-2026',
     category: 'notice',

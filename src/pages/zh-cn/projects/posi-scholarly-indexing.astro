@@ -2,10 +2,10 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
 ---
-<BaseLayout title="POSI 学术索引项目" description="全景开放学术索引项目 — 已开发完成、等待正式上线的学术数据库。">
+<BaseLayout title="POSI 学术索引项目" description="全景开放学术索引项目 — 已于 2026 年 9 月 27 日正式上线的开放学术数据库。">
   <PageHero
     title="POSI 学术索引项目"
-    description="一个长期学术基础设施项目，旨在建立透明、全面且方法严谨的开放学术期刊索引。数据库已经开发完毕，正在等待正式上线。"
+    description="一个长期学术基础设施项目，旨在建立透明、全面且方法严谨的开放学术期刊索引。数据库已于 2026 年 9 月 27 日正式上线，现已向公众开放访问。"
     breadcrumbs={[{ label: "研究", href: "/zh-cn/research-areas" }, { label: "项目", href: "/zh-cn/projects" }, { label: "POSI 学术索引" }]}
     tag="进行中的项目"
   >
@@ -18,10 +18,10 @@ import PageHero from '../../../components/PageHero.astro';
           <div class="section-label">项目详情</div>
           <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px;">
             {[
-              { label: "状态",          value: "已开发完成，等待正式上线" },
-              { label: "阶段",           value: "上线前" },
+              { label: "状态",          value: "已正式上线，向公众开放" },
+              { label: "阶段",           value: "上线后运营" },
               { label: "开始日期",      value: "2026" },
-              { label: "预计发布", value: "等待正式上线" },
+              { label: "上线日期", value: "2026 年 9 月 27 日" },
               { label: "牵头中心",     value: "学术索引与评价研究中心" },
               { label: "项目类型",    value: "开放学术基础设施" },
             ].map((item) => (
@@ -32,7 +32,8 @@ import PageHero from '../../../components/PageHero.astro';
             ))}
           </div>
           <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
-            <a href="/zh-cn/research-centers/scholarly-indexing-evaluation" class="btn btn-primary" style="justify-content:center;">牵头中心</a>
+            <a href="https://posi.panorama-sg.com" class="btn btn-primary" style="justify-content:center;" target="_blank" rel="noopener">访问 POSI 数据库</a>
+            <a href="/zh-cn/research-centers/scholarly-indexing-evaluation" class="btn btn-secondary" style="justify-content:center;">牵头中心</a>
             <a href="/zh-cn/collaboration/research-project-proposal" class="btn btn-secondary" style="justify-content:center;">合作</a>
           </div>
         </div>
@@ -42,10 +43,10 @@ import PageHero from '../../../components/PageHero.astro';
             全景开放学术索引（POSI）项目是全景研究院的旗舰研究与基础设施项目。其主要目标是开发一个全面、公众可访问且方法透明的学术期刊索引，涵盖期刊编辑实践、索引状态、同行评审标准、开放获取政策、出版伦理承诺以及其他与学术质量相关的维度。
           </p>
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
-            POSI 以开放和透明为原则运行：其方法将公开形成文档，其评价标准接受学术同行审查，其数据将免费向研究人员、机构、出版社、资助方和政策制定者开放。不同于商业索引系统，POSI 对任何期刊的纳入或排除均不具有财务利益。
+            POSI 以开放和透明为原则运行：其方法公开形成文档，其评价标准接受学术同行审查，其数据免费向研究人员、机构、出版社、资助方和政策制定者开放。不同于商业索引系统，POSI 对任何期刊的纳入或排除均不具有财务利益。
           </p>
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
-            POSI 被设计为一个长期基础设施项目。数据库已经开发完毕，目前处于上线前阶段，最后检查重点包括方法文档、数据质量、访问流程和公开呈现。后续阶段将扩大覆盖范围，深化数据维度，并开发更多数据访问和可视化工具。
+            POSI 被设计为一个长期基础设施项目。在完成方法文档、数据质量、访问流程和公开呈现等最终检查后，数据库已于 2026 年 9 月 27 日正式上线。后续阶段将扩大覆盖范围，深化数据维度，并开发更多数据访问和可视化工具。
           </p>
         </div>
       </div>
@@ -81,8 +82,8 @@ import PageHero from '../../../components/PageHero.astro';
       <h2 class="section-title">发展阶段</h2>
       <div style="max-width:780px;margin-top:8px;">
         {[
-          { phase:"第一阶段", period:"2026", status:"当前", items:["完成 POSI 数据库开发工作","最终确定并记录 POSI 方法和评价框架","审查期刊记录的数据模型和元数据架构","准备面向公众发布的初始期刊覆盖清单","完成上线前数据质量检查","筹备公共数据库正式上线"] },
-          { phase:"第二阶段", period:"上线后", status:"即将开展", items:["将期刊覆盖范围扩展至更多学科和地区","根据用户反馈优化面向公众的数据库界面","发布 API 或结构化数据访问选项","由外部学者对 POSI 方法进行同行评审","启动机构用户计划"] },
+          { phase:"第一阶段", period:"2026", status:"已完成", items:["完成 POSI 数据库开发工作","最终确定并记录 POSI 方法和评价框架","审查期刊记录的数据模型和元数据架构","准备面向公众发布的初始期刊覆盖清单","完成上线前数据质量检查","公共数据库正式上线（2026 年 9 月 27 日）"] },
+          { phase:"第二阶段", period:"上线后", status:"当前", items:["将期刊覆盖范围扩展至更多学科和地区","根据用户反馈优化面向公众的数据库界面","发布 API 或结构化数据访问选项","由外部学者对 POSI 方法进行同行评审","启动机构用户计划"] },
           { phase:"第三阶段", period:"2028+", status:"规划中", items:["拓展为获得认可的全球性资源","将 POSI 数据与开放学术基础设施（OpenAlex、Crossref）整合","建立定期更新与审查周期","根据用户反馈开发扩展数据维度","探索长期可持续治理模式"] },
         ].map((phase) => (
           <div style="margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--border-light);">

@@ -46,9 +46,9 @@ const platformsEn = [
   {
     name: "POSI Database",
     href: "https://posi.panorama-sg.com",
-    logo: "/images/platform-logos/posi-logo-light.svg",
-    logoTheme: "dark",
-    desc: "Open scholarly indexing platform developed and awaiting official launch",
+    logo: "/images/platform-logos/posi-logo.svg",
+    logoTheme: "light",
+    desc: "Open scholarly indexing platform, officially launched on 27 September 2026",
     external: true,
   },
   {
@@ -158,9 +158,9 @@ export function getResearchCenters(lang: Lang) {
 
 const featuredProjectsEn = [
   {
-    status: "Awaiting Launch",
+    status: "Active",
     title: "POSI Scholarly Indexing Project",
-    desc: "An open scholarly indexing and journal information initiative. The database has been developed and is awaiting official launch.",
+    desc: "An open scholarly indexing and journal information initiative. The database was officially launched on 27 September 2026 and is now publicly accessible.",
     href: "/projects/posi-scholarly-indexing",
   },
   {

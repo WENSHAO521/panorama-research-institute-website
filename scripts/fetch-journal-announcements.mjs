@@ -6,7 +6,7 @@
 // .github/workflows/fetch-journal-announcements.yml) and safe to re-run —
 // it only overwrites the output file, it never touches the source site.
 
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
@@ -77,20 +77,45 @@ async function fetchJournalAnnouncements(journal) {
   return cfps.slice(0, MAX_ITEMS_PER_JOURNAL);
 }
 
+async function readExistingItems() {
+  try {
+    const existing = JSON.parse(await readFile(OUTPUT_PATH, 'utf-8'));
+    return Array.isArray(existing.items) ? existing.items : null;
+  } catch {
+    return null;
+  }
+}
+
 async function main() {
   const items = [];
+  const failed = [];
   for (const journal of JOURNALS) {
     try {
       const found = await fetchJournalAnnouncements(journal);
       items.push(...found);
       console.log(`[fetch-journal-announcements] ${journal.slug}: ${found.length} call(s) for papers found`);
     } catch (err) {
+      failed.push(journal.slug);
       console.error(`[fetch-journal-announcements] Failed to fetch ${journal.slug}:`, err.message);
     }
   }
 
+  // Don't overwrite good data with a partial or empty result; fail loudly so
+  // the scheduled run shows up red instead of silently publishing nothing.
+  if (failed.length > 0) {
+    throw new Error(`Could not fetch announcements for: ${failed.join(', ')}. Output file left unchanged.`);
+  }
+
   items.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
   const trimmed = items.slice(0, MAX_ITEMS_TOTAL);
+
+  // Only rewrite the file when the announcements themselves changed, so a
+  // new fetchedAt timestamp alone doesn't produce a no-op update PR.
+  const existingItems = await readExistingItems();
+  if (existingItems && JSON.stringify(existingItems) === JSON.stringify(trimmed)) {
+    console.log('[fetch-journal-announcements] No changes to announcements; output file left unchanged.');
+    return;
+  }
 
   const output = {
     fetchedAt: new Date().toISOString(),

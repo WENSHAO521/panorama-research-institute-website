@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   fetch:
@@ -24,14 +25,31 @@ jobs:
       - name: Fetch latest calls for papers
         run: node scripts/fetch-journal-announcements.mjs
 
-      - name: Commit and push if changed
+      # main is protected ("Changes must be made through a pull request"),
+      # so push the update to a bot branch and open/refresh a PR instead.
+      - name: Open pull request if changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: bot/journal-announcements
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add src/data/journalAnnouncements.json
           if git diff --cached --quiet; then
             echo "No changes to journal announcements."
-          else
-            git commit -m "chore: update journal announcements from journals.panorama-sg.com"
-            git push
+            exit 0
           fi
+          git checkout -B "$BRANCH"
+          git commit -m "chore: update journal announcements from journals.panorama-sg.com"
+          git push --force origin "$BRANCH"
+          if [ -z "$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')" ]; then
+            gh pr create \
+              --base "${{ github.event.repository.default_branch }}" \
+              --head "$BRANCH" \
+              --title "chore: update journal announcements" \
+              --body "Automated monthly update of \`src/data/journalAnnouncements.json\` from journals.panorama-sg.com."
+          else
+            echo "Existing PR for $BRANCH updated."
+          fi
+          # Try to enable auto-merge; harmless if the repo doesn't allow it.
+          gh pr merge "$BRANCH" --auto --squash || echo "Auto-merge not enabled; merge the PR manually."

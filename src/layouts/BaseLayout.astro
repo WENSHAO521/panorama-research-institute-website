@@ -14,7 +14,7 @@ interface Props {
 
 const {
   title,
-  description = 'Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group.',
+  description = 'Panorama Research Institute is a research institute established by Panorama Scholarly Group, with its own academic governance and institutional identity.',
   ogImage,
   lang = (Astro.currentLocale as Lang) ?? 'en',
 } = Astro.props;
@@ -23,6 +23,7 @@ const siteOrigin = Astro.site ?? new URL('https://research.panorama-sg.com');
 const basePath = getBasePath(Astro.url.pathname);
 const canonicalURL = new URL(getLocalizedPath(lang, Astro.url.pathname), siteOrigin);
 const brandName = translate(lang, 'Panorama Research Institute');
+const resolvedDescription = translate(lang, description);
 const resolvedTitle = title ?? 'Panorama Research Institute';
 const fullTitle = resolvedTitle === 'Panorama Research Institute' || resolvedTitle === brandName
   ? brandName
@@ -37,12 +38,12 @@ const fullTitle = resolvedTitle === 'Panorama Research Institute' || resolvedTit
     <meta name="generator" content={Astro.generator} />
 
     <title>{fullTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={resolvedDescription} />
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph -->
     <meta property="og:title"       content={fullTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={resolvedDescription} />
     <meta property="og:type"        content="website" />
     <meta property="og:url"         content={canonicalURL} />
     {ogImage && <meta property="og:image" content={ogImage} />}

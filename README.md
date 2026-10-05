@@ -1,6 +1,6 @@
 # Panorama Research Institute
 
-**Panorama Research Institute (PRI)** is the research and academic development division of **Panorama Scholarly Group**. It conducts and coordinates research, organizes research projects, and supports scholarly publishing studies, journal indexing and evaluation, policy and social research, and international academic collaboration.
+**Panorama Research Institute (PRI)** is a research institute established by **Panorama Scholarly Group (PSG)**, with its own academic governance and institutional identity. It exercises independent academic judgment within PSG's overall governance, legal, and administrative framework. It conducts and coordinates research, organizes research projects, and supports scholarly publishing studies, journal indexing and evaluation, policy and social research, and international academic collaboration.
 
 PRI's work spans seven research areas:
 
@@ -14,7 +14,15 @@ PRI's work spans seven research areas:
 
 The Institute operates through dedicated research centers, publishes working papers, research reports, and policy briefs, organizes academic conferences and seminars, and engages research fellows, visiting scholars, and research assistants through its fellowship program. It also links to the wider Panorama Scholarly Group platforms: Panorama Journals, Panorama Books, the POSI scholarly indexing database, and Panorama Scholar Profiles.
 
-> Panorama Research Institute is an internal division of Panorama Scholarly Group and is not a separate legal entity.
+> PSG serves as PRI's parent organization and legal and administrative entity. PRI is not a separate legal entity. Formal contracts and legal instruments relating to PRI activities identify PSG as the legal party and are signed by PSG-authorized representatives.
+
+## Charter versions and downloadable documents
+
+Charter v1.1 is effective on 2026-10-05. The English, Simplified Chinese, and Traditional Chinese web pages and PDFs contain the same 20 articles. The revision clarifies institutional status, academic affiliation, legal execution, and financial administration, while preserving Article 20's amendment procedure.
+
+To regenerate the charter PDFs, build the site and run `node scripts/generate-charter-pdfs.mjs` with an installed Chromium browser and `playwright-core`. Set `PRI_BROWSER_EXECUTABLE` to the browser executable if needed. `PRI_PLAYWRIGHT_MODULE` may point to an existing runtime-provided module; the generator does not install dependencies. The PDFs are generated directly from the built charter pages. Intermediate HTML and article manifests are written to `.charter-preview/`.
+
+Word templates are v1.1 (2026-10-05). Their generators carry the updated institutional statements so regeneration preserves the new positioning.
 
 ## Contact
 

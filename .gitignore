@@ -29,3 +29,7 @@ pnpm-debug.log*
 
 # regenerated via scripts/generate-logo-assets.mjs
 .logo-assets/
+
+# charter PDF generation and Python syntax checks
+.charter-preview/
+__pycache__/

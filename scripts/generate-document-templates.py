@@ -52,7 +52,7 @@ L = {
     'format': {'en': 'Format', 'zh-cn': '格式', 'zh-tw': '格式'},
     'format_v': {'en': 'Microsoft Word (.docx)', 'zh-cn': 'Microsoft Word（.docx）', 'zh-tw': 'Microsoft Word（.docx）'},
     'version': {'en': 'Version', 'zh-cn': '版本', 'zh-tw': '版本'},
-    'version_v': {'en': 'v1.0 (2026)', 'zh-cn': 'v1.0（2026）', 'zh-tw': 'v1.0（2026）'},
+    'version_v': {'en': 'v1.1 (2026-10-05)', 'zh-cn': 'v1.1（2026-10-05）', 'zh-tw': 'v1.1（2026-10-05）'},
     'submission_lang': {'en': 'Language of Submission', 'zh-cn': '提交语言', 'zh-tw': '提交語言'},
     'submission_lang_v': {'en': 'English', 'zh-cn': '英文', 'zh-tw': '英文'},
     'instructions': {'en': 'Instructions', 'zh-cn': '填写说明', 'zh-tw': '填寫說明'},
@@ -67,14 +67,14 @@ L = {
         'zh-tw': '研究院標準文本 — 請勿修改。',
     },
     'legal_note': {
-        'en': 'Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group and is not a separate legal entity.',
-        'zh-cn': '全景研究院是全景学术集团的内部研究与学术发展部门，不具备独立法人资格。',
-        'zh-tw': '全景研究院是全景學術集團的內部研究與學術發展部門，不具備獨立法人資格。',
+        'en': 'Panorama Research Institute is a research institute established by Panorama Scholarly Group, with its own academic governance and institutional identity. PSG serves as its parent organization and legal and administrative entity. PRI is not a separate legal entity.',
+        'zh-cn': '全景研究院是由全景学术集团设立、具有自身学术治理体系与机构身份的研究机构。PSG 是其上级机构，负责其法律与行政事务。PRI 不具有独立法人资格。',
+        'zh-tw': '全景研究院是由全景學術集團設立、具有自身學術治理體系與機構身分的研究機構。PSG 是其上級機構，負責其法律與行政事務。PRI 不具有獨立法人資格。',
     },
     'about_institute_body': {
-        'en': 'Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group. It maintains academic independence in its research activities and is not a separate legal entity. For more information, visit research.panorama-sg.com.',
-        'zh-cn': '全景研究院是全景学术集团的内部研究与学术发展部门。研究院在其研究活动中保持学术独立，不具备独立法人资格。欲了解更多信息，请访问 research.panorama-sg.com。',
-        'zh-tw': '全景研究院是全景學術集團的內部研究與學術發展部門。研究院在其研究活動中保持學術獨立，不具備獨立法人資格。欲了解更多資訊，請造訪 research.panorama-sg.com。',
+        'en': 'Panorama Research Institute (PRI) is a research institute established by Panorama Scholarly Group (PSG). The Institute operates within PSG\'s overall governance, legal, and administrative framework while maintaining its own academic governance, research programmes, research centres, scholarly appointments, publications, and institutional identity. PRI exercises independent academic judgment in research, publication, and scholarly activities. PSG serves as its parent organization and legal and administrative entity. PRI is not a separate legal entity. For more information, visit research.panorama-sg.com.',
+        'zh-cn': '全景研究院是由全景学术集团设立、具有自身学术治理体系与机构身份的研究机构。研究院在其研究活动中保持学术独立，不具备独立法人资格。欲了解更多信息，请访问 research.panorama-sg.com。',
+        'zh-tw': '全景研究院是由全景學術集團設立、具有自身學術治理體系與機構身分的研究機構。研究院在其研究活動中保持學術獨立，不具備獨立法人資格。欲了解更多資訊，請造訪 research.panorama-sg.com。',
     },
 }
 
@@ -250,12 +250,16 @@ def add_section(doc, lang, heading, note, placeholder, sans, serif, mono, ea_san
     hp = doc.add_paragraph()
     hp.paragraph_format.space_before = Pt(16)
     hp.paragraph_format.space_after = Pt(4)
+    if 'PSG' in placeholder:
+        hp.paragraph_format.keep_with_next = True
     r = hp.add_run(heading)
     set_font(r, serif, 14, bold=True, color=TEXT_MAIN, east_asian=ea_serif)
 
     if note:
         np = doc.add_paragraph()
         np.paragraph_format.space_after = Pt(8)
+        if 'PSG' in placeholder:
+            np.paragraph_format.keep_with_next = True
         r = np.add_run(note)
         set_font(r, sans, 9.5, italic=True, color=TEXT_MUTED, east_asian=ea_sans)
 
@@ -267,6 +271,10 @@ def add_section(doc, lang, heading, note, placeholder, sans, serif, mono, ea_san
     p = cell.paragraphs[0]
     p.paragraph_format.space_before = Pt(10)
     p.paragraph_format.space_after = Pt(10)
+    if 'PSG' in placeholder:
+        p.paragraph_format.keep_together = True
+        trpr = table.rows[0]._tr.get_or_add_trPr()
+        trpr.append(OxmlElement('w:cantSplit'))
     r = p.add_run(placeholder)
     set_font(r, sans, 10.5, italic=True, color=TEXT_MUTED, east_asian=ea_sans)
     doc.add_paragraph().paragraph_format.space_after = Pt(2)
@@ -328,9 +336,9 @@ TEMPLATES.append({
     'slug': 'Research Proposal Template',
     'title': {'en': 'Research Proposal Template', 'zh-cn': '研究提案模板', 'zh-tw': '研究提案範本'},
     'subtitle': {
-        'en': 'Official Template · v1.0 (2026)',
-        'zh-cn': '官方模板 · v1.0（2026）',
-        'zh-tw': '官方範本 · v1.0（2026）',
+        'en': 'Official Template · v1.1 (2026-10-05)',
+        'zh-cn': '官方模板 · v1.1（2026-10-05）',
+        'zh-tw': '官方範本 · v1.1（2026-10-05）',
     },
     'meta': lambda lang: [
         (L['format'][lang], L['format_v'][lang]),
@@ -444,9 +452,9 @@ TEMPLATES.append({
     'slug': 'Research Report Template',
     'title': {'en': 'Research Report Template', 'zh-cn': '研究报告模板', 'zh-tw': '研究報告範本'},
     'subtitle': {
-        'en': 'Official Template · v1.0 (2026)',
-        'zh-cn': '官方模板 · v1.0（2026）',
-        'zh-tw': '官方範本 · v1.0（2026）',
+        'en': 'Official Template · v1.1 (2026-10-05)',
+        'zh-cn': '官方模板 · v1.1（2026-10-05）',
+        'zh-tw': '官方範本 · v1.1（2026-10-05）',
     },
     'meta': lambda lang: [
         (L['format'][lang], L['format_v'][lang]),
@@ -591,9 +599,9 @@ TEMPLATES.append({
     'slug': 'Policy Brief Template',
     'title': {'en': 'Policy Brief Template', 'zh-cn': '政策简报模板', 'zh-tw': '政策簡報範本'},
     'subtitle': {
-        'en': 'Official Template · v1.0 (2026)',
-        'zh-cn': '官方模板 · v1.0（2026）',
-        'zh-tw': '官方範本 · v1.0（2026）',
+        'en': 'Official Template · v1.1 (2026-10-05)',
+        'zh-cn': '官方模板 · v1.1（2026-10-05）',
+        'zh-tw': '官方範本 · v1.1（2026-10-05）',
     },
     'meta': lambda lang: [
         (L['format'][lang], L['format_v'][lang]),
@@ -695,9 +703,9 @@ TEMPLATES.append({
     'slug': 'Working Paper Template',
     'title': {'en': 'Working Paper Template', 'zh-cn': '工作论文模板', 'zh-tw': '工作論文範本'},
     'subtitle': {
-        'en': 'Official Template · v1.0 (2026)',
-        'zh-cn': '官方模板 · v1.0（2026）',
-        'zh-tw': '官方範本 · v1.0（2026）',
+        'en': 'Official Template · v1.1 (2026-10-05)',
+        'zh-cn': '官方模板 · v1.1（2026-10-05）',
+        'zh-tw': '官方範本 · v1.1（2026-10-05）',
     },
     'meta': lambda lang: [
         (L['format'][lang], L['format_v'][lang]),
@@ -826,9 +834,9 @@ TEMPLATES.append({
     'slug': 'Event Proceedings Summary Template',
     'title': {'en': 'Event Proceedings Summary Template', 'zh-cn': '活动会议记录摘要模板', 'zh-tw': '活動會議記錄摘要範本'},
     'subtitle': {
-        'en': 'Official Template · v1.0 (2026)',
-        'zh-cn': '官方模板 · v1.0（2026）',
-        'zh-tw': '官方範本 · v1.0（2026）',
+        'en': 'Official Template · v1.1 (2026-10-05)',
+        'zh-cn': '官方模板 · v1.1（2026-10-05）',
+        'zh-tw': '官方範本 · v1.1（2026-10-05）',
     },
     'meta': lambda lang: [
         (L['format'][lang], L['format_v'][lang]),
@@ -916,9 +924,9 @@ TEMPLATES.append({
     'slug': 'Edited Volume Chapter Template',
     'title': {'en': 'Edited Volume Chapter Template', 'zh-cn': '主编文集章节模板', 'zh-tw': '主編文集章節範本'},
     'subtitle': {
-        'en': 'Official Template · v1.0 (2026)',
-        'zh-cn': '官方模板 · v1.0（2026）',
-        'zh-tw': '官方範本 · v1.0（2026）',
+        'en': 'Official Template · v1.1 (2026-10-05)',
+        'zh-cn': '官方模板 · v1.1（2026-10-05）',
+        'zh-tw': '官方範本 · v1.1（2026-10-05）',
     },
     'meta': lambda lang: [
         (L['format'][lang], L['format_v'][lang]),
@@ -1022,9 +1030,9 @@ TEMPLATES.append({
     'slug': 'Edited Volume Proposal Template',
     'title': {'en': 'Edited Volume Proposal Template', 'zh-cn': '主编文集提案模板', 'zh-tw': '主編文集提案範本'},
     'subtitle': {
-        'en': 'Official Template · v1.0 (2026)',
-        'zh-cn': '官方模板 · v1.0（2026）',
-        'zh-tw': '官方範本 · v1.0（2026）',
+        'en': 'Official Template · v1.1 (2026-10-05)',
+        'zh-cn': '官方模板 · v1.1（2026-10-05）',
+        'zh-tw': '官方範本 · v1.1（2026-10-05）',
     },
     'meta': lambda lang: [
         (L['format'][lang], L['format_v'][lang]),
@@ -1119,9 +1127,9 @@ TEMPLATES.append({
     'slug': 'Special Issue Proposal Template',
     'title': {'en': 'Special Issue Proposal Template', 'zh-cn': '特刊提案模板', 'zh-tw': '特刊提案範本'},
     'subtitle': {
-        'en': 'Official Template · v1.0 (2026)',
-        'zh-cn': '官方模板 · v1.0（2026）',
-        'zh-tw': '官方範本 · v1.0（2026）',
+        'en': 'Official Template · v1.1 (2026-10-05)',
+        'zh-cn': '官方模板 · v1.1（2026-10-05）',
+        'zh-tw': '官方範本 · v1.1（2026-10-05）',
     },
     'meta': lambda lang: [
         (L['format'][lang], L['format_v'][lang]),

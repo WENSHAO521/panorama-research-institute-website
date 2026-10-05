@@ -5,6 +5,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { spawnSync } from 'node:child_process';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const modulePath = process.env.PRI_PLAYWRIGHT_MODULE;
@@ -90,6 +91,13 @@ try {
       #article-7 [data-emphasis="heading"] { margin:4pt 0 0; }
       html[lang^="zh"] #article-6, html[lang^="zh"] #article-7 { font-size:11.25pt; line-height:20pt; }
       .article span:first-child { flex-shrink:0; }
+      /* The research-area numerals and headings share fixed columns and a baseline. */
+      #article-6 > div:has(> span:first-child) { display:grid; grid-template-columns:18pt minmax(0,1fr); column-gap:5pt; align-items:start; padding:0; break-inside:avoid; }
+      #article-6 > div:has(> span:first-child) > span { display:block; width:18pt; font-size:9pt; line-height:18pt; font-family:Arial,sans-serif; }
+      #article-6 > div:has(> span:first-child) > div { min-width:0; }
+      #article-6 > div:has(> span:first-child) > div > [data-emphasis="heading"] { display:block; margin:0 0 2pt; line-height:18pt; }
+      html[lang^="zh"] #article-6 > div:has(> span:first-child) > span,
+      html[lang^="zh"] #article-6 > div:has(> span:first-child) > div > [data-emphasis="heading"] { line-height:20pt; }
       h2,h3 { break-after:avoid; }
     </style></head><body>
       <section class="cover"><img src="${logo}" alt="Panorama Research Institute"><div class="tag">${loc.tag}</div><h1>${loc.suffix==='en'?'Institute<br>Charter':loc.title}</h1><div class="rule"></div><p class="notice">${loc.notice}</p><div class="meta"><div><div class="label">${loc.issued}</div>${loc.author}</div><div class="right"><div class="label">${loc.state}</div>${loc.status}</div></div></section>
@@ -100,9 +108,20 @@ try {
     writeFileSync(resolve(preview, `charter-${loc.suffix}-articles.json`), JSON.stringify(content, null, 2));
     await page.setContent(doc);
     await page.evaluate(() => document.fonts.ready);
+    const rowLayout = await page.evaluate(() => [...document.querySelectorAll('#article-6 > div:has(> span:first-child)')].map(row => {
+      const numeral = row.querySelector(':scope > span').getBoundingClientRect();
+      const heading = row.querySelector(':scope > div > [data-emphasis="heading"]').getBoundingClientRect();
+      return { numeralTop:numeral.top, headingTop:heading.top, headingLeft:heading.left };
+    }));
+    if (rowLayout.length !== 7 || rowLayout.some(row => Math.abs(row.numeralTop - row.headingTop) > 1 || Math.abs(row.headingLeft - rowLayout[0].headingLeft) > 1)) {
+      throw new Error(`Research-area layout is misaligned in ${loc.suffix}: ${JSON.stringify(rowLayout)}`);
+    }
     const file = resolve(root, `public/documents/panorama-research-institute-charter-${loc.suffix}.pdf`);
     await page.pdf({ path:file, preferCSSPageSize:true, printBackground:true, displayHeaderFooter:true, headerTemplate:'<span></span>', footerTemplate:`<div style="font-family:Arial,sans-serif;font-size:7px;width:100%;margin:0 64.8pt;padding-top:7pt;border-top:0.5pt solid #ddd;display:flex;justify-content:space-between;color:#999;letter-spacing:1px"><span>PRI</span><span>v1.1 · 2026-10-05 · <span class="pageNumber"></span></span></div>` });
     console.log(`Generated ${file}`);
     await page.close();
   }
 } finally { await browser.close(); }
+const watermark = spawnSync(process.env.PRI_PYTHON || 'python', [resolve(root, 'scripts/add-charter-watermarks.py')], { stdio:'inherit' });
+if (watermark.error) throw watermark.error;
+if (watermark.status !== 0) throw new Error(`Charter watermarking failed with exit code ${watermark.status}`);

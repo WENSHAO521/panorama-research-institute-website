@@ -20,7 +20,7 @@ The Institute operates through dedicated research centers, publishes working pap
 
 Charter v1.1 is effective on 2026-10-05. The English, Simplified Chinese, and Traditional Chinese web pages and PDFs contain the same 20 articles. The revision clarifies institutional status, academic affiliation, legal execution, and financial administration, while preserving Article 20's amendment procedure.
 
-To regenerate the charter PDFs, build the site and run `node scripts/generate-charter-pdfs.mjs` with an installed Chromium browser and `playwright-core`. Set `PRI_BROWSER_EXECUTABLE` to the browser executable if needed. `PRI_PLAYWRIGHT_MODULE` may point to an existing runtime-provided module; the generator does not install dependencies. The PDFs are generated directly from the built charter pages. Intermediate HTML and article manifests are written to `.charter-preview/`.
+To regenerate the charter PDFs, build the site and run `node scripts/generate-charter-pdfs.mjs` with an installed Chromium browser, `playwright-core`, Python, and `pypdf`. Set `PRI_BROWSER_EXECUTABLE` to the browser executable if needed. `PRI_PLAYWRIGHT_MODULE` may point to an existing runtime-provided module, and `PRI_PYTHON` may point to a Python executable with `pypdf`; the generator does not install dependencies. The PDFs are generated directly from the built charter pages. The generator then embeds a non-printing provenance identifier in every PDF page and its document metadata. This identifier assists provenance checks but does not prevent copying or removal. Intermediate HTML and article manifests are written to `.charter-preview/`.
 
 Word templates are v1.1 (2026-10-05). Their generators carry the updated institutional statements so regeneration preserves the new positioning.
 

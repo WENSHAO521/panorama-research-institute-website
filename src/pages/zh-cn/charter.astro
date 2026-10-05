@@ -3,9 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 
 const articles = [
-  { num: "1",  title: "姓名" },
+  { num: "1",  title: "名称" },
   { num: "2",  title: "机构性质" },
-  { num: "3",  title: "隶属关系" },
+  { num: "3",  title: "机构隶属" },
   { num: "4",  title: "使命" },
   { num: "5",  title: "活动范围" },
   { num: "6",  title: "研究领域" },
@@ -64,15 +64,16 @@ const articles = [
             <div style="text-align:center;margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid var(--border-light);">
               <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">治理文件</div>
               <h1 style="font-family:var(--font-serif);font-size:32px;color:var(--text-main);margin-bottom:16px;letter-spacing:-0.02em;">研究院章程</h1>
-              <p style="font-size:13px;color:var(--text-muted);font-family:var(--font-mono);">全景研究院 — 自 2026 年生效</p>
+              <p style="font-size:13px;color:var(--text-muted);font-family:var(--font-mono);">版本 1.1 · 2026-10-05 生效</p>
+              <p style="font-size:13px;line-height:1.7;color:var(--text-muted);margin-top:12px;">1.1 版修订明确机构地位、学术署名、法律文件签署及财务行政安排。第 20 条规定的修订程序继续适用。</p>
             </div>
 
             <!-- Article 1 -->
             <div id="article-1" style="margin-bottom:48px;">
               <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 1 条</div>
-              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">姓名</h2>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">名称</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
-                本院正式运行名称为 <strong style="color:var(--text-main);">全景研究院</strong>。简称为 <strong style="color:var(--text-main);">PRI</strong>.
+                本院正式名称为全景研究院（Panorama Research Institute），英文简称为 PRI。本章程所称“本院”或“研究院”，均指全景研究院。
               </p>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
                 在官方文件、出版物和通信中，本院可称为“Panorama Research Institute”“PRI”或“the Institute”。正式语境中不得使用其他简称。
@@ -85,29 +86,29 @@ const articles = [
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">机构性质</h2>
               <div class="statement-box" style="margin-bottom:20px;">
                 <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">
-                  全景研究院是全景学术集团的内部研究与学术发展部门，不具备独立法人资格。
-                </p>
+                本院为全景学术集团（Panorama Scholarly Group，以下简称“集团”或“PSG”）设立的研究机构。集团为本院的上级治理机构，并承担本院的法律事务与行政管理职责。本院不具有独立法人资格。
+              </p>
               </div>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
-                本院作为全景学术集团的内部学术部门运行，在研究活动、出版决定、编辑判断和学术职能方面保持独立，同时接受全景学术集团整体治理框架和行政权限管理。
+                本院依照本章程建立并维护自身的学术治理体系、研究项目、研究中心、学术人员体系、出版体系及机构名称与学术身份。本院在集团总体治理、法律与行政框架下，对研究活动、出版决定、编辑判断及其他学术事务保持独立的学术判断。上述学术自主权不构成本院独立法人资格或独立财务权限。
               </p>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
-                所有正式法律文件、合同和有约束力的协议均由全景学术集团代表本院签署。本院在任何司法辖区均不拥有独立财务账户、法律登记或独立法人资格。
+                涉及本院活动的合同、具有法律约束力的协议及其他正式法律文件，应当明确集团为法律当事方，并由集团授权代表签署。有关文件可载明本院为研究或学术活动的执行机构。本院不作为独立法律主体登记，亦不设立独立于集团的财务账户。
               </p>
             </div>
 
             <!-- Article 3 -->
             <div id="article-3" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
               <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 3 条</div>
-              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">隶属关系</h2>
+              <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">机构隶属</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
-                全景研究院是全景学术集团的内部研究与学术发展部门。凡说明本院机构性质、法律地位、治理关系或正式协议能力时，相关表述必须说明 Panorama Research Institute 是全景学术集团的内部研究与学术发展部门，且不具备独立法人资格。
+                集团为本院的设立机构及上级治理机构，并负责本院的法律事务与行政管理。关于本院机构性质、治理关系或法律主体资格的正式说明，应当载明本院由集团设立，具有自身学术治理体系、机构名称与学术身份，在集团法律与行政框架下运行，且不具有独立法人资格。
               </p>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
-                出于学术隶属和个人档案展示目的，经授权的隶属学者可将“Panorama Research Institute”列为其研究院隶属单位。凡涉及法律、合同或正式机构地位的场景，该隶属表述必须同时附带说明：Panorama Research Institute 是全景学术集团的内部研究与学术发展部门，不具备独立法人资格。
+                与本院建立学术关联并取得署名授权的学者，可以在学术成果及个人学术档案中使用“Panorama Research Institute”作为机构署名。该学术关联或署名本身不当然构成雇佣关系，不授予学者代表集团作出法律承诺的权限，亦不赋予本院独立法人资格。涉及法律或合同主体资格时，应当注明集团为法律当事方，并明示本院不具有独立法人资格。
               </p>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
-                本院可使用 Panorama Research Institute 名义订立学术合作安排、谅解备忘录和合作协议。此类安排的正式签署由全景学术集团负责。
+                本院可以使用自身机构名称提出、洽谈及协调学术合作安排、谅解备忘录与合作提案。凡须正式签署或涉及法律、财务义务的文件，应当明确集团为法律当事方，并由集团授权代表签署。使用本院名称本身不产生签约权限。
               </p>
             </div>
 
@@ -202,13 +203,13 @@ const articles = [
               <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 8 条</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">治理</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:16px;">
-                本院通过以下结构进行治理。所有治理活动均依照本章程和全景学术集团总体治理框架开展。
+                本院依照本条所列架构实施治理。各治理机构应当依据本章程及集团总体治理框架履行各自职责。
               </p>
               {[
                 { role:"研究院院长",     desc:"院长是本院负责人，负责整体学术方向、治理合规、外部代表和机构发展。院长由全景学术集团任命。" },
                 { role:"研究中心主任","": "", desc:"每个研究中心由研究中心主任领导，主任负责中心研究项目、研究员管理和学术活动。研究中心主任由研究院院长任命。" },
                 { role:"顾问委员会",          desc:"顾问委员会是由杰出学者和实践者组成的独立咨询机构，就研究优先事项、学术标准和机构发展提供建议，不具有执行权。" },
-                { role:"全景学术集团","": "", desc:"作为母体机构，全景学术集团对本院拥有最终治理权限，批准章程及重大修订，管理本院财务，并代表本院签署正式法律文件。" },
+                { role:"全景学术集团","": "", desc:"作为研究院的上级机构，PSG 负责本院的法律与行政事务，并拥有最终机构治理权限，批准章程及重大修订，管理本院财务，并由授权代表签署正式法律文件。本院学术治理机构依据本章程保持独立的学术判断。" },
               ].map((item) => (
                 <div style="padding:14px 0;border-bottom:1px solid var(--bg-soft);">
                   <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:5px;">{item.role}</div>
@@ -330,7 +331,7 @@ const articles = [
                 本院与大学、研究机构、出版社、学术协会和其他组织开展学术合作。合作活动必须符合本院使命、研究领域和价值，并不得损害本院研究的学术独立性或学者诚信。
               </p>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:16px;">
-                本章程承认以下合作形式：
+                涉及本院活动的正式合作协议，应当明确集团为法律当事方，并由集团授权代表签署。本院负责协调有关学术活动，但不因此取得独立法人资格。合作办公室负责受理合作咨询与提案，并管理持续开展的合作事项。
               </p>
               {[
                 "机构合作协议和谅解备忘录",
@@ -346,7 +347,7 @@ const articles = [
                 </div>
               ))}
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-top:20px;">
-                由于本院不具备独立法人资格，正式合作协议由全景学术集团代表本院签署。合作事务办公室管理所有合作咨询、提案和持续伙伴关系安排。
+                涉及 PRI 活动的正式合作协议须明确 PSG 为法律当事方，并由其授权代表签署。PRI 是协调学术活动的研究机构，不具有独立法人资格。合作办公室负责合作咨询、提案及持续的伙伴关系安排。
               </p>
             </div>
 
@@ -437,16 +438,16 @@ const articles = [
               <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 19 条</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">财务与行政</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
-                由于本院不具备独立法人资格或独立财务账户，所有与本院相关的财务事项均由全景学术集团管理。本院不以自身名义订立财务合同、持有资金或承担负债。
+                集团负责本院的法律、财务及行政事务，并在集团财务管理框架内统一管理与本院有关的资金、收支、财务记录及债务事项。本院不得设立独立财务账户，不得以独立法律主体身份持有资金、独立订立财务合同或以自身名义承担债务。
               </p>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
-                本院研究、出版、学术活动和学者计划运行预算由全景学术集团与研究院院长协商后分配。研究院院长负责在已分配预算内管理支出，并按要求向全景学术集团提供财务报告。
+                本院研究、出版、学术活动及学者项目的运行预算，由集团与研究院院长协商后安排。院长应当在集团授权及核定预算范围内执行有关支出，并按照集团要求提交财务报告。
               </p>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
-                向隶属学者支付的任何研究员津贴、酬金或补偿均由全景学术集团管理。此类支付是否提供及金额按个案决定，并不因隶属关系本身而获得保证。
+                向关联学者支付的研究资助津贴、酬金或其他报酬，由集团统一管理。支付资格、资金可用性及具体金额，应当依据适用安排逐项确定。学术关联关系本身不产生取得上述款项的权利。
               </p>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
-                本院在所有出版物、网站和正式通信中披露其机构隶属和运行状态。本院不以自身名义接受外部研究资助。涉及第三方资助或捐助的安排由全景学术集团处理，并在相关出版成果中披露。
+                本院出版物、官方网站及正式机构文件，应当依照第 3 条披露本院与集团的关系。支持本院活动的外部研究资助或捐助，应当由集团接收并管理；适用时，应当明确集团为法律接收主体或合同当事方。相关出版物应当披露资助来源及利益冲突。财务管理、资助安排及预算审批职权不赋予决定研究结论、编辑判断或出版决定的权限；上述事项由本院依照其学术治理、伦理及质量标准处理。
               </p>
             </div>
 
@@ -455,10 +456,10 @@ const articles = [
               <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 20 条</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">修订与解释</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
-                本章程可由研究院院长经全景学术集团批准后修订。拟议修订须在采纳前至少三十日发送给所有研究中心主任和顾问委员会征求意见。在最终决定采纳前，须考虑此期间收到的意见，但该意见不具有约束力。
+                本章程由研究院院长提出修订，并经集团批准。拟议修订内容应当在通过前至少三十日送交全体研究中心主任及顾问委员会征求意见。作出通过决定前，应当审议已收到的意见；该等意见不具有约束力。
               </p>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
-                除非指定较晚生效日期，修订自采纳之日起生效。章程版本号和生效日期记录于文件封面。完整版本历史由研究院办公室维护，并可按请求提供。
+                修订自通过之日起生效，但另行规定较后生效日期的除外。章程封面应当载明版本号及生效日期。研究院办公室应当保存完整版本记录，并依申请提供查阅。
               </p>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
                 附属治理文件，包括研究伦理政策、利益冲突政策、出版与报告政策、数据与文档政策、学术独立政策以及名称与标志使用政策，可由研究院院长采纳、修订或替换，无需正式修订章程，前提是其不与本章程规定冲突。

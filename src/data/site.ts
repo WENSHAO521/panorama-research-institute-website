@@ -6,11 +6,11 @@ export const site = {
   nameFull: "Panorama Research Institute",
   nameShort: "PRI",
   tagline: "Research, scholarly infrastructure, and academic collaboration.",
-  description: "Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group.",
+  description: "Panorama Research Institute is a research institute established by Panorama Scholarly Group, with its own academic governance and institutional identity.",
   email: "research@panorama-sg.com",
   website: "research.panorama-sg.com",
   parent: "Panorama Scholarly Group",
-  legalNote: "Panorama Research Institute is an internal research and academic development division of Panorama Scholarly Group and is not a separate legal entity.",
+  legalNote: "Panorama Research Institute is a research institute established by Panorama Scholarly Group, with its own academic governance and institutional identity. PSG serves as its parent organization and legal and administrative entity. PRI is not a separate legal entity.",
   year: "2026",
 };
 

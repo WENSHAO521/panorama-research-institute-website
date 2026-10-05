@@ -467,7 +467,7 @@ T = {
         decl_items=[
             'This form and all accompanying materials are submitted by me, and their contents are truthful, accurate, and complete.',
             "I understand that the Panorama Research Institute may conduct eligibility review, academic evaluation, research-alignment assessment, and appointment review based on my materials, and may require supplementary documentation.",
-            "I understand that the Panorama Research Institute is a research and academic development platform of Panorama Scholarly Group and is not an independent legal entity.",
+            "I understand that Panorama Research Institute is a research institute established by Panorama Scholarly Group. PSG is its parent organization and legal and administrative entity, and PRI is not a separate legal entity.",
             "I understand that submitting this form or passing review does not in itself constitute a labour relationship, employment relationship, commitment to remuneration, or any other legally binding engagement.",
             "I undertake to abide by the Institute's Charter, academic standards, research ethics, publication ethics, data and documentation standards, conflict of interest policy, and name and logo usage rules.",
             "I undertake to observe the principles of academic integrity when participating in the Institute's projects, publications, conferences, reports, databases, index building, and collaborative activities, and to be free of plagiarism, fabrication, falsification, duplicate publication, improper authorship, or fraudulent peer review.",
@@ -565,7 +565,7 @@ T['zh-cn'] = dict(
     decl_items=[
         '本申请表及所附材料均由本人提交，内容真实、准确、完整。',
         '本人了解全景研究院有权依据申请材料进行资格审查、学术评估、研究方向匹配及任职审核，并可要求本人补充相关证明材料。',
-        '本人了解全景研究院是全景学术集团旗下研究与学术发展平台，并非独立法人实体。',
+        '本人了解全景研究院是由全景学术集团设立的研究机构。PSG 是其上级机构及法律与行政承载主体，PRI 不具有独立法人资格。',
         '本人了解提交本表或通过审核，并不当然构成劳动关系、雇佣关系、薪酬支付承诺或其他法律意义上的聘用关系。',
         '本人承诺遵守研究院章程、学术规范、研究伦理、出版伦理、数据与文档规范、利益冲突政策及名称标识使用规范。',
         '本人承诺在参与研究院相关项目、出版、会议、报告、数据库、指数建设及合作活动时，遵守学术诚信原则，不存在抄袭、伪造、篡改、重复发表、不当署名、虚假同行评审等学术不端行为。',
@@ -662,7 +662,7 @@ T['zh-tw'] = dict(
     decl_items=[
         '本申請表及所附材料均由本人提交，內容真實、準確、完整。',
         '本人瞭解全景研究院有權依據申請材料進行資格審查、學術評估、研究方向匹配及任職審核，並可要求本人補充相關證明材料。',
-        '本人瞭解全景研究院是全景學術集團旗下研究與學術發展平台，並非獨立法人實體。',
+        '本人瞭解全景研究院是由全景學術集團設立的研究機構。PSG 是其上級機構及法律與行政承載主體，PRI 不具有獨立法人資格。',
         '本人瞭解提交本表或通過審核，並不當然構成勞動關係、僱傭關係、薪酬支付承諾或其他法律意義上的聘用關係。',
         '本人承諾遵守研究院章程、學術規範、研究倫理、出版倫理、資料與文件規範、利益衝突政策及名稱標誌使用規範。',
         '本人承諾在參與研究院相關專案、出版、會議、報告、資料庫、指數建設及合作活動時，遵守學術誠信原則，不存在抄襲、偽造、篡改、重複發表、不當署名、虛假同儕審查等學術不端行為。',

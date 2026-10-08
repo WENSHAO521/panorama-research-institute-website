@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
 ---
 <BaseLayout title="Policy Briefs" description="Policy briefs from Panorama Research Institute presenting evidence-based recommendations for policymakers and institutional leaders.">
   <PageHero
@@ -38,24 +39,7 @@ import PageHero from '../../components/PageHero.astro';
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
             Policy briefs are published open access and are designed for use in policy discussions, institutional deliberations, and advocacy. They are an important mechanism through which the Institute contributes to real-world policy debates in its research areas.
           </p>
-
-          <div class="section-label" style="margin-bottom:12px;">Published Policy Briefs</div>
-          {[
-            { num:"PB-2026-001", title:"Open Access Mandates and Their Implementation in Asia-Pacific Institutions", center:"Center for Scholarly Publishing Studies", date:"2026" },
-            { num:"PB-2026-002", title:"Governance and Transparency Requirements for Scholarly Database Operators", center:"Center for Scholarly Indexing and Evaluation", date:"2026" },
-            { num:"PB-2026-003", title:"Youth Online Safety and Platform Accountability: A Comparative Policy Analysis", center:"Center for Policy and Social Research", date:"2026" },
-          ].map((pub) => (
-            <div class="publication-item">
-              <div>
-                <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:6px;">{pub.num} &bull; {pub.center}</div>
-                <div class="pub-title">{pub.title}</div>
-              </div>
-              <div style="text-align:right;flex-shrink:0;">
-                <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.date}</div>
-                <a href="/publications" class="btn btn-ghost" style="font-size:13px;padding:0;">Download &rarr;</a>
-              </div>
-            </div>
-          ))}
+          <PublicationsEmpty lang="en" />
         </div>
       </div>
     </div>

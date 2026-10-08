@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
 ---
 <BaseLayout title="Working Papers" description="Working papers presenting preliminary research findings and scholarly arguments from Panorama Research Institute.">
   <PageHero
@@ -41,24 +42,7 @@ import PageHero from '../../components/PageHero.astro';
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
             All working papers are published under open access terms and receive DOIs. The Institute's working paper series is open to submissions from affiliated research fellows, visiting scholars, and invited contributors working within the Institute's research areas.
           </p>
-
-          <div class="section-label" style="margin-bottom:12px;">Published Working Papers</div>
-          {[
-            { num:"WP-2026-001", title:"Peer Review Models and Publication Ethics in the Digital Age", authors:"Panorama Research Institute", center:"Center for Scholarly Publishing Studies", date:"2026" },
-            { num:"WP-2026-002", title:"Toward a Transparent Journal Evaluation Framework: Principles and Criteria for Scholarly Indexing", authors:"Panorama Research Institute", center:"Center for Scholarly Indexing and Evaluation", date:"2026" },
-          ].map((pub) => (
-            <div class="publication-item">
-              <div>
-                <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:6px;">{pub.num} &bull; {pub.center}</div>
-                <div class="pub-title">{pub.title}</div>
-                <div style="font-size:13px;color:var(--text-muted);margin-top:6px;">{pub.authors}</div>
-              </div>
-              <div style="text-align:right;flex-shrink:0;">
-                <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.date}</div>
-                <a href="/publications" class="btn btn-ghost" style="font-size:13px;padding:0;">Download &rarr;</a>
-              </div>
-            </div>
-          ))}
+          <PublicationsEmpty lang="en" />
         </div>
       </div>
     </div>

@@ -1,0 +1,50 @@
+---
+// Shown wherever a publication list has no released items yet.
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'en' } = Astro.props;
+
+const copy: Record<Lang, { title: string; body: string }> = {
+  en: {
+    title: 'No publications released yet',
+    body: "The Institute's first research reports, working papers, and policy briefs are in preparation. Each publication will be listed here with its DOI once it is released.",
+  },
+  'zh-cn': {
+    title: '暂无已发布出版物',
+    body: '研究院首批研究报告、工作论文和政策简报正在筹备中。出版物正式发布后，将在此列出并附 DOI。',
+  },
+  'zh-tw': {
+    title: '暫無已發布出版物',
+    body: '研究院首批研究報告、工作論文和政策簡報正在籌備中。出版物正式發布後，將在此列出並附 DOI。',
+  },
+};
+const { title, body } = copy[lang];
+---
+
+<div class="publications-empty">
+  <div class="publications-empty-title">{title}</div>
+  <p>{body}</p>
+</div>
+
+<style>
+  .publications-empty {
+    border: 1px dashed var(--border-light);
+    background: var(--bg-white);
+    padding: 28px 32px;
+  }
+  .publications-empty-title {
+    font-family: var(--font-serif);
+    font-size: 19px;
+    color: var(--text-main);
+    margin-bottom: 8px;
+  }
+  .publications-empty p {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+</style>

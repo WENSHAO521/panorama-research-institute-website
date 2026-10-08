@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
+import PublicationsEmpty from '../../../components/PublicationsEmpty.astro';
 ---
 <BaseLayout title="政策與社會研究中心" description="專注於高等教育政策、科學政策、青年數位治理以及學術傳播社會維度的研究中心。">
   <PageHero
@@ -99,19 +100,7 @@ import PageHero from '../../../components/PageHero.astro';
       <div class="section-label">出版成果</div>
       <h2 class="section-title">中心出版成果</h2>
       <div style="margin-top:8px;">
-        {[
-          { type: "研究報告", title: "中國第十四個五年規劃背景下的高等教育政策趨勢：對第十五個五年規劃的啟示", year: "2026" },
-          { type: "政策簡報",    title: "青年網路安全與平台問責：比較政策分析", year: "2026" },
-        ].map((pub) => (
-          <div class="publication-item">
-            <div class="pub-type">{pub.type}</div>
-            <div class="pub-title">{pub.title}</div>
-            <div style="text-align:right;">
-              <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.year}</div>
-              <a href="/zh-tw/publications" class="btn-ghost btn" style="font-size:13px;padding:0;">查看詳情 →</a>
-            </div>
-          </div>
-        ))}
+        <PublicationsEmpty lang="zh-tw" />
       </div>
       <div style="margin-top:32px;">
         <a href="/zh-tw/publications" class="btn btn-secondary">全部出版成果</a>

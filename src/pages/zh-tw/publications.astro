@@ -4,14 +4,8 @@ import PageHero from '../../components/PageHero.astro';
 
 const categories = ["全部", "研究報告", "工作論文", "政策簡報", "主編文集", "年度報告"];
 
-const publications = [
-  { type: "研究報告", title: "開放學術索引與期刊透明度",     team: "全景研究院研究團隊", year: "2026", status: "已發布" },
-  { type: "工作論文",   title: "數位時代的同儕評審模式與出版倫理", team: "學術出版研究中心", year: "2026", status: "已發布" },
-  { type: "政策簡報",    title: "青少年隱私與平台治理：新興框架",   team: "政策與社會研究中心", year: "2026", status: "已發布" },
-  { type: "工作論文",   title: "人工智慧輔助同儕評審：機遇與倫理邊界", team: "人工智慧與未來社會研究中心", year: "2026", status: "即將發布" },
-  { type: "研究報告", title: "中國第十五個五年規劃：教育與科研政策分析", team: "政策與社會研究中心", year: "2026", status: "進行中" },
-  { type: "政策簡報",    title: "期刊後設資料透明度：開放索引框架", team: "學術索引與評價研究中心", year: "2026", status: "已發布" },
-];
+const publications: { type: string; title: string; team: string; year: string; status: string }[] = [];
+import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
 ---
 
 <BaseLayout
@@ -25,6 +19,7 @@ const publications = [
   />
 
   <!-- Category Filter -->
+  {publications.length > 0 && (
   <section style="background:var(--bg-white);border-bottom:1px solid var(--border-light);padding:20px 0;">
     <div class="container">
       <div class="pub-filter" style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -34,10 +29,12 @@ const publications = [
       </div>
     </div>
   </section>
+  )}
 
   <!-- Publications List -->
   <section class="section" style="background:var(--bg-main);">
     <div class="container">
+      {publications.length === 0 && <PublicationsEmpty lang="zh-tw" />}
       {publications.map((pub) => (
         <div class="publication-item" data-type={pub.type}>
           <div>

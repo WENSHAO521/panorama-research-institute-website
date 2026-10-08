@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
 ---
 <BaseLayout title="Center for Policy and Social Research" description="Research center focused on higher education policy, science policy, youth digital governance, and social dimensions of scholarly communication.">
   <PageHero
@@ -99,19 +100,7 @@ import PageHero from '../../components/PageHero.astro';
       <div class="section-label">Publications</div>
       <h2 class="section-title">Center Publications</h2>
       <div style="margin-top:8px;">
-        {[
-          { type: "Research Report", title: "Higher Education Policy Trends in the Context of China's Fourteenth Five-Year Plan: Lessons for the Fifteenth", year: "2026" },
-          { type: "Policy Brief",    title: "Youth Online Safety and Platform Accountability: A Comparative Policy Analysis", year: "2026" },
-        ].map((pub) => (
-          <div class="publication-item">
-            <div class="pub-type">{pub.type}</div>
-            <div class="pub-title">{pub.title}</div>
-            <div style="text-align:right;">
-              <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.year}</div>
-              <a href="/publications" class="btn-ghost btn" style="font-size:13px;padding:0;">Details &rarr;</a>
-            </div>
-          </div>
-        ))}
+        <PublicationsEmpty lang="en" />
       </div>
       <div style="margin-top:32px;">
         <a href="/publications" class="btn btn-secondary">All Publications</a>

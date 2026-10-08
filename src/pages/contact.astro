@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import FormSubmitFields from '../components/FormSubmitFields.astro';
+import RorLogo from '../components/RorLogo.astro';
+import { site } from '../data/site';
 ---
 
 <BaseLayout
@@ -33,8 +35,18 @@ import FormSubmitFields from '../components/FormSubmitFields.astro';
                 <a href="https://research.panorama-sg.com" style="font-size:15px;color:var(--text-secondary);">research.panorama-sg.com</a>
               </div>
               <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:6px;">Address</div>
+                <address style="font-style:normal;font-size:15px;line-height:1.65;color:var(--text-secondary);">
+                  <span style="display:block;color:var(--text-muted);font-size:13px;">Hong Kong Office</span>
+                  <span data-no-translate>{site.address.lines.map((line) => <span style="display:block;">{line}</span>)}<span style="display:block;">{site.address.city}</span></span>
+                </address>
+              </div>
+              <div>
                 <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:6px;">Parent Organization</div>
-                <a href="https://www.panorama-sg.com" target="_blank" rel="noopener" style="font-size:15px;color:var(--text-secondary);">Panorama Scholarly Group</a>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <a href="https://www.panorama-sg.com" target="_blank" rel="noopener" style="font-size:15px;color:var(--text-secondary);">Panorama Scholarly Group</a>
+                  <RorLogo href={site.parentRor} label="Panorama Scholarly Group – ROR ID" size={14} />
+                </div>
               </div>
             </div>
           </div>

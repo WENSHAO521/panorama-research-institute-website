@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
+import RorLogo from '../../../components/RorLogo.astro';
+import { site } from '../../../data/site';
 ---
 <BaseLayout title="机构性质" description="全景研究院的法律与机构地位。">
   <PageHero
@@ -17,6 +19,26 @@ import PageHero from '../../../components/PageHero.astro';
           <p style="font-size:17px;line-height:1.8;color:var(--text-secondary);margin-bottom:12px;font-family:var(--font-serif);font-style:italic;">
             "全景研究院是由全景学术集团设立、具有自身学术治理体系与机构身份的研究机构。PSG 是其上级机构，负责其法律与行政事务。PRI 不具有独立法人资格。"
           </p>
+        </div>
+
+        <div class="institutional-profile">
+          <h2>机构基本信息</h2>
+          <dl>
+            <div class="profile-row"><dt>正式名称</dt><dd>全景研究院</dd></div>
+            <div class="profile-row"><dt>英文名称</dt><dd>Panorama Research Institute</dd></div>
+            <div class="profile-row"><dt>简称</dt><dd>PRI</dd></div>
+            <div class="profile-row"><dt>机构类型</dt><dd>研究机构（不具有独立法人资格）</dd></div>
+            <div class="profile-row"><dt>成立年份</dt><dd>{site.established} 年</dd></div>
+            <div class="profile-row"><dt>所在地</dt><dd>香港</dd></div>
+            <div class="profile-row"><dt>地址</dt><dd><span class="profile-muted">香港办公室</span><br /><span data-no-translate>{site.address.lines.join(', ')}, {site.address.city}</span></dd></div>
+            <div class="profile-row"><dt>上级机构</dt><dd><span class="profile-inline"><a href={site.parentUrl} target="_blank" rel="noopener">全景学术集团</a><RorLogo href={site.parentRor} label="全景学术集团 – ROR ID" size={14} /></span></dd></div>
+            {site.ror && (
+              <div class="profile-row"><dt>ROR ID</dt><dd><RorLogo href={site.ror} label="全景研究院 – ROR ID" size={14} /></dd></div>
+            )}
+            <div class="profile-row"><dt>网站</dt><dd><a href="https://research.panorama-sg.com">research.panorama-sg.com</a></dd></div>
+            <div class="profile-row"><dt>电子邮箱</dt><dd><a href="mailto:research@panorama-sg.com">research@panorama-sg.com</a></dd></div>
+            <div class="profile-row"><dt>现行章程</dt><dd>1.1 版，2026-10-05 生效</dd></div>
+          </dl>
         </div>
 
         {[
@@ -60,3 +82,17 @@ import PageHero from '../../../components/PageHero.astro';
     </div>
   </section>
 </BaseLayout>
+<style>
+  .institutional-profile { margin-bottom:48px; padding-bottom:40px; border-bottom:1px solid var(--border-light); }
+  .institutional-profile h2 { font-family:var(--font-serif); font-size:22px; color:var(--text-main); margin-bottom:18px; font-weight:400; }
+  .institutional-profile dl { margin:0; border-top:1px solid var(--border-light); }
+  .profile-row { display:grid; grid-template-columns:200px 1fr; gap:24px; padding:12px 0; border-bottom:1px solid var(--border-light); }
+  .profile-row dt { font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); padding-top:3px; }
+  .profile-row dd { margin:0; font-size:15px; line-height:1.65; color:var(--text-main); }
+  .profile-row dd a { color:var(--accent-steel); }
+  .profile-muted { font-size:13px; color:var(--text-muted); }
+  .profile-inline { display:inline-flex; align-items:center; gap:8px; }
+  @media (max-width: 640px) {
+    .profile-row { grid-template-columns:1fr; gap:4px; }
+  }
+</style>

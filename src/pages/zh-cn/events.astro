@@ -7,11 +7,8 @@ import type { Lang } from '../../i18n/utils';
 const lang = (Astro.currentLocale as Lang) ?? 'en';
 const upcomingEvents = getUpcomingEvents(lang);
 
-const calls = [
-  { type: "论文征稿", deadline: "2026 年 2 月", title: "人工智能时代的学术传播", journal: "学术出版研究年度会议" },
-  { type: "章节征集", deadline: "2026 年 3 月", title: "开放获取与机构政策", book: "主编文集：学术出版的未来" },
-  { type: "论文征稿", deadline: "2026 年 4 月", title: "青少年隐私与平台治理", journal: "政策与社会研究研讨会系列" },
-];
+const calls: { type: string; deadline: string; title: string; journal?: string; book?: string }[] = [];
+import EventsEmpty from '../../components/EventsEmpty.astro';
 ---
 
 <BaseLayout
@@ -41,6 +38,7 @@ const calls = [
       <div class="section-label">即将开展的活动</div>
       <h2 class="section-title">已安排活动</h2>
       <div style="margin-top:8px;">
+        {upcomingEvents.length === 0 && <EventsEmpty lang="zh-cn" />}
         {upcomingEvents.map((ev) => (
           <div class="event-item">
             <div class="event-date">
@@ -70,6 +68,7 @@ const calls = [
       <div class="section-label">当前征集</div>
       <h2 class="section-title">征稿与征章启事</h2>
       <div style="margin-top:8px;">
+        {calls.length === 0 && <EventsEmpty lang="zh-cn" variant="calls" />}
         {calls.map((c) => (
           <div style="display:grid;grid-template-columns:120px 1fr 180px;gap:28px;padding:28px 0;border-bottom:1px solid var(--border-light);align-items:start;">
             <div>

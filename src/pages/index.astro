@@ -21,6 +21,8 @@ const homeFrameworkUnits = [
   { unit: "Scholar & Fellowship Program",  role: "Fellows, visitors, research assistants" },
   { unit: "Collaboration Office",          role: "Partnerships, proposals, MoUs" },
 ];
+import PublicationsEmpty from '../components/PublicationsEmpty.astro';
+import EventsEmpty from '../components/EventsEmpty.astro';
 ---
 
 <BaseLayout
@@ -303,6 +305,7 @@ const homeFrameworkUnits = [
     </div>
 
     <div>
+      {featuredPublications.length === 0 && <PublicationsEmpty lang="en" />}
       {featuredPublications.map((pub) => (
         <div class="publication-item">
           <div class="pub-type">{pub.type}</div>
@@ -365,6 +368,7 @@ const homeFrameworkUnits = [
       <a href="/events" class="btn btn-secondary" style="flex-shrink:0;">All Events</a>
     </div>
     <div>
+      {upcomingEvents.length === 0 && <EventsEmpty lang="en" />}
       {upcomingEvents.map((ev) => (
         <div class="event-item">
           <div class="event-date">{ev.date.split(' ')[0]}<br />{ev.date.split(' ')[1]}</div>

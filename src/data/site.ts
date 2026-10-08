@@ -10,6 +10,18 @@ export const site = {
   email: "research@panorama-sg.com",
   website: "research.panorama-sg.com",
   parent: "Panorama Scholarly Group",
+  parentUrl: "https://www.panorama-sg.com",
+  parentRor: "https://ror.org/01x7hvy53",
+  // PRI's own ROR ID; set once the registration is approved.
+  ror: null as string | null,
+  established: "2026",
+  address: {
+    office: "Hong Kong Office",
+    lines: ["Room 1508, 15/F, Office Tower II, Grand Plaza", "625 Nathan Road, Mong Kok"],
+    city: "Hong Kong",
+    country: "Hong Kong",
+    countryCode: "HK",
+  },
   legalNote: "Panorama Research Institute is a research institute established by Panorama Scholarly Group, with its own academic governance and institutional identity. PSG serves as its parent organization and legal and administrative entity. PRI is not a separate legal entity.",
   year: "2026",
 };
@@ -193,26 +205,8 @@ export function getFeaturedProjects(lang: Lang) {
   }));
 }
 
-const featuredPublicationsEn = [
-  {
-    type: "Research Report",
-    title: "Open Scholarly Indexing and Journal Transparency",
-    team: "Panorama Research Institute Research Team",
-    year: "2026",
-  },
-  {
-    type: "Working Paper",
-    title: "Peer Review Models and Publication Ethics in the Digital Age",
-    team: "Center for Scholarly Publishing Studies",
-    year: "2026",
-  },
-  {
-    type: "Policy Brief",
-    title: "Youth Privacy and Platform Governance: Emerging Frameworks",
-    team: "Center for Policy and Social Research",
-    year: "2026",
-  },
-];
+// No publications have been released yet; add entries here once they have DOIs.
+const featuredPublicationsEn: { type: string; title: string; team: string; year: string }[] = [];
 
 export function getFeaturedPublications(lang: Lang) {
   return featuredPublicationsEn.map((p) => ({
@@ -223,29 +217,8 @@ export function getFeaturedPublications(lang: Lang) {
   }));
 }
 
-const upcomingEventsEn = [
-  {
-    date: "MAR 2026",
-    type: "Workshop",
-    title: "Scholarly Publishing Standards and Editorial Practice",
-    location: "Online",
-    status: "Registration Open",
-  },
-  {
-    date: "APR 2026",
-    type: "Seminar",
-    title: "Journal Indexing and Evaluation Frameworks",
-    location: "Online",
-    status: "Upcoming",
-  },
-  {
-    date: "MAY 2026",
-    type: "Conference",
-    title: "Academic Communication in Transition: Open Science and New Infrastructures",
-    location: "To be announced",
-    status: "Save the Date",
-  },
-];
+// No events are scheduled yet; add confirmed events here with their dates.
+const upcomingEventsEn: { date: string; type: string; title: string; location: string; status: string }[] = [];
 
 export function getUpcomingEvents(lang: Lang) {
   return upcomingEventsEn.map((e) => ({

@@ -21,7 +21,7 @@ const locales = [
   { path: 'zh-tw/', suffix: 'cn-tw', lang: 'zh-TW', title: '研究院章程', author: '全景學術集團', status: '1.1 版 · 2026-10-05 生效', contents: '目錄', tag: '治 理 文 件', issued: '發布機構', state: '版本狀態', notice: '全景研究院的組織構成、治理規則與指導原則。全景研究院是由全景學術集團設立的研究機構；PSG 是其上級機構及法律與行政承載主體，PRI 不具有獨立法人資格。', footer: '全景研究院 · 研究院章程', profile: [['研究院', '全景研究院（PRI）'], ['成立年份', '2026 年'], ['所在地', '香港']], parent: '上級機構', parentName: '全景學術集團' },
 ];
 const logo = 'data:image/svg+xml;base64,' + readFileSync(resolve(root, 'public/brand/logo-mono-black.svg')).toString('base64');
-const rorIcon = readFileSync(resolve(root, 'public/brand/ror-icon.svg'), 'utf8').replace('<svg ', '<svg width="18" height="16" ');
+const rorIcon = readFileSync(resolve(root, 'public/brand/ror-logo.svg'), 'utf8').replace('<svg ', '<svg width="34" height="11" ');
 const parentRor = 'https://ror.org/01x7hvy53';
 const fontDir = process.env.PRI_FONTSOURCE_DIR ? resolve(process.env.PRI_FONTSOURCE_DIR) : null;
 const fontSheets = ['ibm-plex-serif/400.css', 'ibm-plex-serif/400-italic.css', 'ibm-plex-serif/600.css', 'ibm-plex-sans/400.css', 'ibm-plex-sans/600.css', 'ibm-plex-sans/700.css'];

@@ -36,12 +36,12 @@ const href = (path: string) => (lang === 'en' ? path : `/${lang}${path}`);
           <div class="footer-parent">
             <span>{t('Parent Organization')}</span>
             <a href={site.parentUrl} class="footer-link" target="_blank" rel="noopener" style="display:inline;">{t('Panorama Scholarly Group')}</a>
-            <RorLogo href={site.parentRor} label={`${t('Panorama Scholarly Group')} – ROR ID`} size={18} />
+            <RorLogo href={site.parentRor} label={`${t('Panorama Scholarly Group')} – ROR ID`} size={12} />
           </div>
           {site.ror && (
             <div class="footer-parent">
               <span>{t('Panorama Research Institute')}</span>
-              <RorLogo href={site.ror} label={`${t('Panorama Research Institute')} – ROR ID`} size={18} />
+              <RorLogo href={site.ror} label={`${t('Panorama Research Institute')} – ROR ID`} size={12} />
             </div>
           )}
         </div>

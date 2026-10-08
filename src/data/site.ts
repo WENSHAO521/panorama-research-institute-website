@@ -15,6 +15,7 @@ export const site = {
   // PRI's own ROR ID; set once the registration is approved.
   ror: null as string | null,
   established: "2026",
+  establishedDate: "2026-08-23",
   address: {
     office: "Hong Kong Office",
     lines: ["Room 1508, 15/F, Office Tower II, Grand Plaza", "625 Nathan Road, Mong Kok"],

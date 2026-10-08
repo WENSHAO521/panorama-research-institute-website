@@ -22,6 +22,7 @@ const homeFrameworkUnits = [
   { unit: "合作事务办公室",          role: "伙伴关系、提案与谅解备忘录" },
 ];
 import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
+import EventsEmpty from '../../components/EventsEmpty.astro';
 ---
 
 <BaseLayout
@@ -367,6 +368,7 @@ import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
       <a href="/zh-cn/events" class="btn btn-secondary" style="flex-shrink:0;">全部活动</a>
     </div>
     <div>
+      {upcomingEvents.length === 0 && <EventsEmpty lang="zh-cn" />}
       {upcomingEvents.map((ev) => (
         <div class="event-item">
           <div class="event-date">{ev.date.split(' ')[0]}<br />{ev.date.split(' ')[1]}</div>

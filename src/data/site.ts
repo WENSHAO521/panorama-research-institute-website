@@ -217,29 +217,8 @@ export function getFeaturedPublications(lang: Lang) {
   }));
 }
 
-const upcomingEventsEn = [
-  {
-    date: "MAR 2026",
-    type: "Workshop",
-    title: "Scholarly Publishing Standards and Editorial Practice",
-    location: "Online",
-    status: "Registration Open",
-  },
-  {
-    date: "APR 2026",
-    type: "Seminar",
-    title: "Journal Indexing and Evaluation Frameworks",
-    location: "Online",
-    status: "Upcoming",
-  },
-  {
-    date: "MAY 2026",
-    type: "Conference",
-    title: "Academic Communication in Transition: Open Science and New Infrastructures",
-    location: "To be announced",
-    status: "Save the Date",
-  },
-];
+// No events are scheduled yet; add confirmed events here with their dates.
+const upcomingEventsEn: { date: string; type: string; title: string; location: string; status: string }[] = [];
 
 export function getUpcomingEvents(lang: Lang) {
   return upcomingEventsEn.map((e) => ({

@@ -1,0 +1,67 @@
+---
+// Shown wherever an events or calls list has no confirmed items yet.
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  lang?: Lang;
+  variant?: 'events' | 'calls';
+}
+const { lang = 'en', variant = 'events' } = Astro.props;
+
+const copy: Record<'events' | 'calls', Record<Lang, { title: string; body: string }>> = {
+  events: {
+    en: {
+      title: 'No events are currently scheduled',
+      body: "The Institute's first conferences, seminars, and workshops are in planning. Dates and registration details will be announced here once confirmed.",
+    },
+    'zh-cn': {
+      title: '暂无已排期活动',
+      body: '研究院首批学术会议、研讨会和工作坊正在筹划中。日期和报名信息确定后，将在此公布。',
+    },
+    'zh-tw': {
+      title: '暫無已排期活動',
+      body: '研究院首批學術會議、研討會和工作坊正在籌劃中。日期和報名資訊確定後，將在此公布。',
+    },
+  },
+  calls: {
+    en: {
+      title: 'No calls are currently open',
+      body: 'Calls for papers and chapters will be listed here with deadlines and submission requirements once they are issued.',
+    },
+    'zh-cn': {
+      title: '暂无开放中的征稿',
+      body: '论文征稿和章节征集发布后，将在此列出截止日期和投稿要求。',
+    },
+    'zh-tw': {
+      title: '暫無開放中的徵稿',
+      body: '論文徵稿和章節徵集發布後，將在此列出截止日期和投稿要求。',
+    },
+  },
+};
+const { title, body } = copy[variant][lang];
+---
+
+<div class="events-empty">
+  <div class="events-empty-title">{title}</div>
+  <p>{body}</p>
+</div>
+
+<style>
+  .events-empty {
+    border: 1px dashed var(--border-light);
+    background: var(--bg-white);
+    padding: 28px 32px;
+  }
+  .events-empty-title {
+    font-family: var(--font-serif);
+    font-size: 19px;
+    color: var(--text-main);
+    margin-bottom: 8px;
+  }
+  .events-empty p {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+</style>

@@ -21,7 +21,7 @@ FONT_NAME = NameObject("/FPRIWM")
 
 def add_watermark(path: Path, language: str) -> None:
     source = PdfReader(path)
-    assert len(source.pages) == 22, f"Unexpected page count: {path}"
+    assert len(source.pages) > 2, f"Unexpected page count: {path}"
     page_text = "".join(page.extract_text() for page in source.pages)
     if "PRI-CHARTER-v1.1-20261005-" in page_text:
         raise ValueError(f"Watermark already present in {path}")

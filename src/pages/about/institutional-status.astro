@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import RorLogo from '../../components/RorLogo.astro';
+import { site } from '../../data/site';
 ---
 <BaseLayout title="Institutional Status" description="The legal and institutional status of Panorama Research Institute.">
   <PageHero
@@ -17,6 +19,26 @@ import PageHero from '../../components/PageHero.astro';
           <p style="font-size:17px;line-height:1.8;color:var(--text-secondary);margin-bottom:12px;font-family:var(--font-serif);font-style:italic;">
             "Panorama Research Institute is a research institute established by Panorama Scholarly Group, with its own academic governance and institutional identity. PSG serves as its parent organization and legal and administrative entity. PRI is not a separate legal entity."
           </p>
+        </div>
+
+        <div class="institutional-profile">
+          <h2>Institutional Profile</h2>
+          <dl>
+            <div class="profile-row"><dt>Official Name</dt><dd>Panorama Research Institute</dd></div>
+            <div class="profile-row"><dt>Chinese Name</dt><dd>全景研究院</dd></div>
+            <div class="profile-row"><dt>Acronym</dt><dd>PRI</dd></div>
+            <div class="profile-row"><dt>Organization Type</dt><dd>Research institute (not a separate legal entity)</dd></div>
+            <div class="profile-row"><dt>Established</dt><dd>{site.established}</dd></div>
+            <div class="profile-row"><dt>Location</dt><dd>{site.address.city}</dd></div>
+            <div class="profile-row"><dt>Address</dt><dd><span class="profile-muted">Hong Kong Office</span><br /><span data-no-translate>{site.address.lines.join(', ')}, {site.address.city}</span></dd></div>
+            <div class="profile-row"><dt>Parent Organization</dt><dd><span class="profile-inline"><a href={site.parentUrl} target="_blank" rel="noopener">Panorama Scholarly Group</a><RorLogo href={site.parentRor} label="Panorama Scholarly Group – ROR ID" size={18} /></span></dd></div>
+            {site.ror && (
+              <div class="profile-row"><dt>ROR ID</dt><dd><RorLogo href={site.ror} label="Panorama Research Institute – ROR ID" size={18} /></dd></div>
+            )}
+            <div class="profile-row"><dt>Website</dt><dd><a href="https://research.panorama-sg.com">research.panorama-sg.com</a></dd></div>
+            <div class="profile-row"><dt>Email</dt><dd><a href="mailto:research@panorama-sg.com">research@panorama-sg.com</a></dd></div>
+            <div class="profile-row"><dt>Current Charter</dt><dd>Version 1.1, effective 2026-10-05</dd></div>
+          </dl>
         </div>
 
         {[
@@ -60,3 +82,17 @@ import PageHero from '../../components/PageHero.astro';
     </div>
   </section>
 </BaseLayout>
+<style>
+  .institutional-profile { margin-bottom:48px; padding-bottom:40px; border-bottom:1px solid var(--border-light); }
+  .institutional-profile h2 { font-family:var(--font-serif); font-size:22px; color:var(--text-main); margin-bottom:18px; font-weight:400; }
+  .institutional-profile dl { margin:0; border-top:1px solid var(--border-light); }
+  .profile-row { display:grid; grid-template-columns:200px 1fr; gap:24px; padding:12px 0; border-bottom:1px solid var(--border-light); }
+  .profile-row dt { font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); padding-top:3px; }
+  .profile-row dd { margin:0; font-size:15px; line-height:1.65; color:var(--text-main); }
+  .profile-row dd a { color:var(--accent-steel); }
+  .profile-muted { font-size:13px; color:var(--text-muted); }
+  .profile-inline { display:inline-flex; align-items:center; gap:8px; }
+  @media (max-width: 640px) {
+    .profile-row { grid-template-columns:1fr; gap:4px; }
+  }
+</style>

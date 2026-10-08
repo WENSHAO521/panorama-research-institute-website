@@ -21,6 +21,7 @@ const homeFrameworkUnits = [
   { unit: "Scholar & Fellowship Program",  role: "Fellows, visitors, research assistants" },
   { unit: "Collaboration Office",          role: "Partnerships, proposals, MoUs" },
 ];
+import PublicationsEmpty from '../components/PublicationsEmpty.astro';
 ---
 
 <BaseLayout
@@ -303,6 +304,7 @@ const homeFrameworkUnits = [
     </div>
 
     <div>
+      {featuredPublications.length === 0 && <PublicationsEmpty lang="en" />}
       {featuredPublications.map((pub) => (
         <div class="publication-item">
           <div class="pub-type">{pub.type}</div>

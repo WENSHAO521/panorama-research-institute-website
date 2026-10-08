@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
+import PublicationsEmpty from '../../../components/PublicationsEmpty.astro';
 ---
 <BaseLayout title="政策簡報" description="全景研究院政策簡報，為政策制定者與機構領導者提供基於證據的建議。">
   <PageHero
@@ -38,24 +39,7 @@ import PageHero from '../../../components/PageHero.astro';
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
             政策簡報以開放取用形式發布，供政策討論、機構審議和倡議工作使用。它們是研究院參與相關研究領域現實政策討論的重要機制。
           </p>
-
-          <div class="section-label" style="margin-bottom:12px;">已發布政策簡報</div>
-          {[
-            { num:"PB-2026-001", title:"亞太地區機構開放取用要求及其實施", center:"學術出版研究中心", date:"2026" },
-            { num:"PB-2026-002", title:"學術資料庫營運者的治理與透明度要求", center:"學術索引與評價研究中心", date:"2026" },
-            { num:"PB-2026-003", title:"青年網路安全與平台問責：比較政策分析", center:"政策與社會研究中心", date:"2026" },
-          ].map((pub) => (
-            <div class="publication-item">
-              <div>
-                <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:6px;">{pub.num} &bull; {pub.center}</div>
-                <div class="pub-title">{pub.title}</div>
-              </div>
-              <div style="text-align:right;flex-shrink:0;">
-                <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.date}</div>
-                <a href="/zh-tw/publications" class="btn btn-ghost" style="font-size:13px;padding:0;">下載 →</a>
-              </div>
-            </div>
-          ))}
+          <PublicationsEmpty lang="zh-tw" />
         </div>
       </div>
     </div>

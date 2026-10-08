@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
+import PublicationsEmpty from '../../../components/PublicationsEmpty.astro';
 ---
 <BaseLayout title="学术索引与评价研究中心" description="专注于期刊索引、评价框架、引文分析与数据库透明度的研究中心。">
   <PageHero
@@ -118,19 +119,7 @@ import PageHero from '../../../components/PageHero.astro';
       <div class="section-label">出版成果</div>
       <h2 class="section-title">中心出版成果</h2>
       <div style="margin-top:8px;">
-        {[
-          { type: "工作论文", title: "迈向透明期刊评价框架：学术索引的原则与标准", year: "2026" },
-          { type: "政策简报",  title: "学术数据库运营者的治理与透明度要求", year: "2026" },
-        ].map((pub) => (
-          <div class="publication-item">
-            <div class="pub-type">{pub.type}</div>
-            <div class="pub-title">{pub.title}</div>
-            <div style="text-align:right;">
-              <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.year}</div>
-              <a href="/zh-cn/publications" class="btn-ghost btn" style="font-size:13px;padding:0;">查看详情 →</a>
-            </div>
-          </div>
-        ))}
+        <PublicationsEmpty lang="zh-cn" />
       </div>
       <div style="margin-top:32px;">
         <a href="/zh-cn/publications" class="btn btn-secondary">全部出版成果</a>

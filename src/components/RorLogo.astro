@@ -1,0 +1,30 @@
+---
+// ROR (Research Organization Registry) icon linking to a ROR ID record.
+// The ID URL is carried by the link only and is not printed on the page.
+// Icon glyph adapted from Academicons (SIL OFL 1.1); shared with the charter PDF generator.
+import rorIcon from '../../public/brand/ror-icon.svg?raw';
+
+interface Props {
+  href: string;
+  label: string;
+  size?: number;
+}
+const { href, label, size = 22 } = Astro.props;
+const svg = rorIcon
+  .replace('<title>ROR</title>', '')
+  .replace('<svg ', `<svg width="${Math.round(size * 576 / 512)}" height="${size}" aria-hidden="true" focusable="false" `);
+---
+
+<a href={href} class="ror-logo" target="_blank" rel="noopener" aria-label={label} title={label} data-no-translate set:html={svg} />
+
+<style>
+  .ror-logo {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    line-height: 0;
+    transition: opacity 0.15s ease;
+  }
+  .ror-logo:hover { opacity: 0.75; }
+  :global(.site-footer .ror-logo .ror-icon-letters) { fill: #ffffff; }
+</style>

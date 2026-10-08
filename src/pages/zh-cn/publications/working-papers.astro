@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
+import PublicationsEmpty from '../../../components/PublicationsEmpty.astro';
 ---
 <BaseLayout title="工作论文" description="全景研究院工作论文，呈现初步研究发现与学术论点。">
   <PageHero
@@ -41,24 +42,7 @@ import PageHero from '../../../components/PageHero.astro';
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
             所有工作论文均以开放获取方式发布并获得 DOI。研究院工作论文系列接受隶属研究员、访问学者以及在研究院研究领域内工作的受邀贡献者投稿。
           </p>
-
-          <div class="section-label" style="margin-bottom:12px;">已发布工作论文</div>
-          {[
-            { num:"WP-2026-001", title:"数字时代的同行评审模式与出版伦理", authors:"全景研究院", center:"学术出版研究中心", date:"2026" },
-            { num:"WP-2026-002", title:"迈向透明期刊评价框架：学术索引的原则与标准", authors:"全景研究院", center:"学术索引与评价研究中心", date:"2026" },
-          ].map((pub) => (
-            <div class="publication-item">
-              <div>
-                <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:6px;">{pub.num} &bull; {pub.center}</div>
-                <div class="pub-title">{pub.title}</div>
-                <div style="font-size:13px;color:var(--text-muted);margin-top:6px;">{pub.authors}</div>
-              </div>
-              <div style="text-align:right;flex-shrink:0;">
-                <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.date}</div>
-                <a href="/zh-cn/publications" class="btn btn-ghost" style="font-size:13px;padding:0;">下载 →</a>
-              </div>
-            </div>
-          ))}
+          <PublicationsEmpty lang="zh-cn" />
         </div>
       </div>
     </div>

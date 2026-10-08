@@ -21,6 +21,7 @@ const homeFrameworkUnits = [
   { unit: "学者计划",  role: "研究员、访问学者与研究助理" },
   { unit: "合作事务办公室",          role: "伙伴关系、提案与谅解备忘录" },
 ];
+import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
 ---
 
 <BaseLayout
@@ -303,6 +304,7 @@ const homeFrameworkUnits = [
     </div>
 
     <div>
+      {featuredPublications.length === 0 && <PublicationsEmpty lang="zh-cn" />}
       {featuredPublications.map((pub) => (
         <div class="publication-item">
           <div class="pub-type">{pub.type}</div>

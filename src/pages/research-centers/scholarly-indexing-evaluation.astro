@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
 ---
 <BaseLayout title="Center for Scholarly Indexing and Evaluation" description="Research center focused on journal indexing, evaluation frameworks, citation analysis, and database transparency.">
   <PageHero
@@ -118,19 +119,7 @@ import PageHero from '../../components/PageHero.astro';
       <div class="section-label">Publications</div>
       <h2 class="section-title">Center Publications</h2>
       <div style="margin-top:8px;">
-        {[
-          { type: "Working Paper", title: "Toward a Transparent Journal Evaluation Framework: Principles and Criteria for Scholarly Indexing", year: "2026" },
-          { type: "Policy Brief",  title: "Governance and Transparency Requirements for Scholarly Database Operators", year: "2026" },
-        ].map((pub) => (
-          <div class="publication-item">
-            <div class="pub-type">{pub.type}</div>
-            <div class="pub-title">{pub.title}</div>
-            <div style="text-align:right;">
-              <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:10px;">{pub.year}</div>
-              <a href="/publications" class="btn-ghost btn" style="font-size:13px;padding:0;">Details &rarr;</a>
-            </div>
-          </div>
-        ))}
+        <PublicationsEmpty lang="en" />
       </div>
       <div style="margin-top:32px;">
         <a href="/publications" class="btn btn-secondary">All Publications</a>

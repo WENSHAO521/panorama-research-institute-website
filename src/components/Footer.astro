@@ -1,5 +1,7 @@
 ---
 import Logo from './Logo.astro';
+import RorLogo from './RorLogo.astro';
+import { site } from '../data/site';
 import { translate } from '../i18n/dictionary';
 import type { Lang } from '../i18n/utils';
 
@@ -24,9 +26,24 @@ const href = (path: string) => (lang === 'en' ? path : `/${lang}${path}`);
           <div class="footer-site-name">{t('PANORAMA RESEARCH INSTITUTE')}</div>
           <div class="footer-sub-name">{t('A Research Institute Established by Panorama Scholarly Group')}</div>
           <p class="footer-statement">{t('Panorama Research Institute is a research institute established by Panorama Scholarly Group, with its own academic governance and institutional identity. PSG serves as its parent organization and legal and administrative entity. PRI is not a separate legal entity.')}</p>
-          <div style="margin-top:16px;">
+          <address class="footer-address" data-no-translate>
+            {site.address.lines.map((line) => <span>{line}</span>)}
+            <span>{site.address.city}</span>
+          </address>
+          <div style="margin-top:12px;">
             <a href="mailto:research@panorama-sg.com" class="footer-link" style="font-size:13px;">research@panorama-sg.com</a>
           </div>
+          <div class="footer-parent">
+            <span>{t('Parent Organization')}</span>
+            <a href={site.parentUrl} class="footer-link" target="_blank" rel="noopener" style="display:inline;">{t('Panorama Scholarly Group')}</a>
+            <RorLogo href={site.parentRor} label={`${t('Panorama Scholarly Group')} – ROR ID`} size={18} />
+          </div>
+          {site.ror && (
+            <div class="footer-parent">
+              <span>{t('Panorama Research Institute')}</span>
+              <RorLogo href={site.ror} label={`${t('Panorama Research Institute')} – ROR ID`} size={18} />
+            </div>
+          )}
         </div>
       </div>
 

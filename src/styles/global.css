@@ -985,3 +985,6 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 @media (max-width: 600px) {
   .stack-mobile-3 { grid-template-columns: 1fr !important; }
 }
+
+/* Tags in the narrow left column of publication rows must wrap instead of overflowing into the title */
+.pub-tags .tag { white-space: normal; max-width: 100%; line-height: 1.35; text-align: left; }

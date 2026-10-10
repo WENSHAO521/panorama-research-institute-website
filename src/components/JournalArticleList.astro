@@ -3,8 +3,9 @@
 import type { Lang } from '../i18n/utils';
 import { journalArticles } from '../data/journalArticles';
 
-interface Props { lang?: Lang; }
-const { lang = 'en' } = Astro.props;
+interface Props { lang?: Lang; membersOnly?: boolean; }
+const { lang = 'en', membersOnly = false } = Astro.props;
+const articles = membersOnly ? journalArticles.filter((a) => a.instituteAuthors) : journalArticles;
 
 const copy: Record<Lang, { sponsored: string; members: string; no: string; view: string }> = {
   en: { sponsored: 'Sponsored by the Institute', members: 'Institute members among authors', no: 'Sponsorship No.', view: 'View Article' },
@@ -14,7 +15,7 @@ const copy: Record<Lang, { sponsored: string; members: string; no: string; view:
 const c = copy[lang];
 ---
 
-{journalArticles.map((a) => (
+{articles.map((a) => (
   <div class="publication-item">
     <div>
       <div class="pub-type">{lang === 'en' ? 'Journal Article' : lang === 'zh-cn' ? '期刊论文' : '期刊論文'}</div>

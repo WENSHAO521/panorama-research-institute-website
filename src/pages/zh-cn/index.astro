@@ -22,6 +22,9 @@ const homeFrameworkUnits = [
   { unit: "合作事务办公室",          role: "伙伴关系、提案与谅解备忘录" },
 ];
 import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
+import JournalArticleList from '../../components/JournalArticleList.astro';
+import { journalArticles } from '../../data/journalArticles';
+const hasMemberArticles = journalArticles.some((a) => a.instituteAuthors);
 import EventsEmpty from '../../components/EventsEmpty.astro';
 ---
 
@@ -305,7 +308,8 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
     </div>
 
     <div>
-      {featuredPublications.length === 0 && <PublicationsEmpty lang="zh-cn" />}
+      {featuredPublications.length === 0 && !hasMemberArticles && <PublicationsEmpty lang="zh-cn" />}
+      <JournalArticleList lang="zh-cn" membersOnly />
       {featuredPublications.map((pub) => (
         <div class="publication-item">
           <div class="pub-type">{pub.type}</div>

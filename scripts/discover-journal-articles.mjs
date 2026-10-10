@@ -1,7 +1,10 @@
 #!/usr/bin/env node
-// Looks for newly published articles in the Panorama journals
-// (journals.panorama-sg.com, an OJS/PKP platform) via the standard OAI-PMH
-// interface and records the ones not yet listed in
+// Looks for newly published articles in the Panorama journals from two sources:
+//   1. Crossref (all works registered under the Panorama DOI prefix, so new
+//      journals are picked up automatically), and
+//   2. the journals' own OAI-PMH interface (journals.panorama-sg.com, an
+//      OJS/PKP platform), which lists articles before their DOIs reach Crossref.
+// Articles found in either source are merged by DOI and recorded the ones not yet listed in
 // src/data/journalArticles.ts into src/data/journalArticleCandidates.json.
 //
 // Nothing here is shown on the website. A maintainer reviews each candidate,
@@ -19,9 +22,13 @@ const DATA_DIR = path.join(__dirname, '..', 'src', 'data');
 const CURATED_PATH = path.join(DATA_DIR, 'journalArticles.ts');
 const OUTPUT_PATH = path.join(DATA_DIR, 'journalArticleCandidates.json');
 
-// Journals to poll: the URL path segment of each journal. Add new journals here.
+// Journals polled via OAI-PMH: the URL path segment of each journal. Crossref
+// needs no list. Add a journal here only to see its articles before Crossref does.
 const JOURNALS = ['hndh', 'Resonance', 'pemr'];
 const BASE_URL = 'https://journals.panorama-sg.com';
+const DOI_PREFIX = '10.63802';
+// The Institute was established in 2026; earlier articles cannot be Institute-sponsored.
+const MIN_YEAR = 2026;
 
 const decode = (t) =>
   t.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
@@ -71,15 +78,52 @@ function toCandidate(record) {
   };
 }
 
+const stripTags = (t) => decode(String(t ?? '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' '));
+
+async function fetchCrossref() {
+  const out = [];
+  let cursor = '*';
+  for (;;) {
+    const url = `https://api.crossref.org/works?filter=prefix:${DOI_PREFIX},type:journal-article&rows=500&cursor=${encodeURIComponent(cursor)}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Crossref -> HTTP ${res.status}`);
+    const { message } = await res.json();
+    if (!message.items.length) break;
+    for (const w of message.items) {
+      const [y, m = 1, d = 1] = w.issued?.['date-parts']?.[0] ?? w.created?.['date-parts']?.[0] ?? [];
+      out.push({
+        title: stripTags(w.title?.[0]),
+        authors: (w.author ?? []).map((a) => [a.given, a.family].filter(Boolean).join(' ') || a.name).join(', '),
+        journal: stripTags(w['container-title']?.[0]),
+        volume: w.volume ? `Vol. ${w.volume}${w.issue ? `, No. ${w.issue}` : ''}` : '',
+        pages: (w.page ?? '').replace('-', '–'),
+        year: y ? String(y) : '',
+        doi: w.DOI,
+        url: w.resource?.primary?.URL ?? w.URL,
+        published: y ? `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}` : '',
+      });
+    }
+    cursor = message['next-cursor'];
+    if (!cursor || message.items.length < 500) break;
+  }
+  return out;
+}
+
 const curated = await readFile(CURATED_PATH, 'utf8');
 const known = new Set([...curated.matchAll(/doi:\s*"([^"]+)"/g)].map((m) => m[1].toLowerCase()));
 
-const candidates = [];
+const byDoi = new Map();
+try {
+  for (const c of await fetchCrossref()) if (c.title && c.doi && c.volume) byDoi.set(c.doi.toLowerCase(), c);
+} catch (err) {
+  console.error(`Skipping Crossref: ${err.message}`);
+  process.exitCode = 1;
+}
 for (const slug of JOURNALS) {
   try {
     for (const rec of await fetchRecords(slug)) {
       const c = toCandidate(rec);
-      if (c && !known.has(c.doi.toLowerCase())) candidates.push(c);
+      if (c) byDoi.set(c.doi.toLowerCase(), c); // OAI data is authoritative for DOI casing and URLs
     }
   } catch (err) {
     // Keep going; one unreachable journal should not wipe the others.
@@ -87,6 +131,7 @@ for (const slug of JOURNALS) {
     process.exitCode = 1;
   }
 }
+const candidates = [...byDoi.entries()].filter(([doi, c]) => !known.has(doi) && Number(c.year) >= MIN_YEAR).map(([, c]) => c);
 candidates.sort((a, b) => b.published.localeCompare(a.published));
 
 let previous = '';

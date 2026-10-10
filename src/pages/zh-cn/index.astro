@@ -15,9 +15,9 @@ const announcements = getAnnouncements(lang).slice(0, 3);
 
 const homeFrameworkUnits = [
   { unit: "研究中心",              role: "专业学术单位" },
-  { unit: "研究项目",             role: "研究院支持的项目" },
+  { unit: "研究项目组",             role: "研究院支持的项目" },
   { unit: "学术出版事务部",             role: "报告、论文与简报" },
-  { unit: "学术活动",               role: "会议、研讨会、工作坊" },
+  { unit: "学术活动事务部",               role: "会议、研讨会、工作坊" },
   { unit: "学者计划",  role: "研究员、访问学者与研究助理" },
   { unit: "合作事务办公室",          role: "伙伴关系、提案与谅解备忘录" },
 ];
@@ -215,7 +215,7 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
     <div style="margin-bottom:56px;">
       <h2 class="section-title">研究领域</h2>
       <p class="section-desc">
-        研究院聚焦连接学术传播、期刊评价、公共政策、教育、技术和文化研究的研究领域。
+        研究院聚焦连接学术传播、期刊评价、公共政策、教育、技术、文化研究和健康研究的研究领域。
       </p>
     </div>
     <div class="areas-grid">
@@ -345,8 +345,8 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
         {[
           { label: "研究院章程",              href: "/zh-cn/charter" },
           { label: "治理规则",               href: "/zh-cn/governance/rules" },
-          { label: "研究伦理",                href: "/zh-cn/governance/research-ethics" },
-          { label: "学术独立声明",href: "/zh-cn/governance/academic-independence" },
+          { label: "研究伦理政策",                href: "/zh-cn/governance/research-ethics" },
+          { label: "学术独立政策",href: "/zh-cn/governance/academic-independence" },
           { label: "利益冲突政策",    href: "/zh-cn/governance/conflict-of-interest" },
           { label: "出版与报告政策",    href: "/zh-cn/governance/publication-report-policy" },
           { label: "数据与文档政策",    href: "/zh-cn/governance/data-documentation-policy" },

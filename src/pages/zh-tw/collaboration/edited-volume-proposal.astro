@@ -4,10 +4,10 @@ import PageHero from '../../../components/PageHero.astro';
 import FormSubmitFields from '../../../components/FormSubmitFields.astro';
 import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.astro';
 ---
-<BaseLayout title="主編文集提案" description="提交與全景研究院合作編輯學術編著的提案。">
+<BaseLayout title="主編文集提案" description="提交與全景研究院合作編輯學術主編文集的提案。">
   <PageHero
     title="主編文集提案"
-    description="提交主編學術文集提案，與全景研究院合作出版。研究院為文集主編提供機構隸屬、編輯指導和出版社對接支持。"
+    description="提交主編文集提案，與全景研究院合作出版。研究院為文集主編提供機構隸屬、編輯指導和出版社對接支持。"
     breadcrumbs={[{ label: "學術合作", href: "/zh-tw/collaboration" }, { label: "主編文集提案" }]}
   />
 
@@ -18,7 +18,7 @@ import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.ast
           <div class="section-label">提案要求</div>
           <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
             {[
-              { label:"文集類型",  value:"主編學術文集" },
+              { label:"文集類型",  value:"主編文集" },
               { label:"提案",     value:"不超過 2,000 詞 + 章節清單" },
               { label:"評審時間",  value:"20 個工作日內" },
               { label:"支持",      value:"機構隸屬、編輯指導、出版社對接" },
@@ -36,7 +36,7 @@ import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.ast
         </div>
         <div>
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
-            有意與全景研究院合作主編學術文集的研究人員可提交提案。研究院將考慮符合指定研究領域、並具有連貫且重要學術貢獻的提案。
+            有意與全景研究院合作主編文集的研究人員可提交提案。研究院將考慮符合指定研究領域、並具有連貫且重要學術貢獻的提案。
           </p>
 
           <div class="section-label" style="margin-bottom:14px;">提案內容</div>
@@ -63,7 +63,7 @@ import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.ast
         <div class="section-label" style="margin-bottom:8px;">提案表格</div>
         <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:24px;font-weight:400;">提交提案</h2>
         <form style="max-width:740px;" action="https://formsubmit.co/publications@panorama-sg.com" method="POST" enctype="multipart/form-data">
-          <FormSubmitFields subject="全景研究院編著提案" source="Edited Volume Proposal Form" />
+          <FormSubmitFields subject="全景研究院主編文集提案" source="Edited Volume Proposal Form" />
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:-0.5px;">
             {([
               { label:"主編姓名",  id:"editor-name",  type:"text",  placeholder:"姓名" },

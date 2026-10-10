@@ -72,8 +72,8 @@ export const navigation: NavItem[] = [
           { label: "Research Areas",       href: "/research-areas" },
           { label: "Research Centers",     href: "/research-centers" },
           { label: "Research Projects",    href: "/projects" },
-          { label: "Current Initiatives",  href: "/projects/current" },
-          { label: "Research Archive",     href: "/projects/archive" },
+          { label: "Current Projects",     href: "/projects/current" },
+          { label: "Project Archive",      href: "/projects/archive" },
         ],
       },
       {
@@ -118,10 +118,10 @@ export const navigation: NavItem[] = [
       {
         title: "Guidelines & Citation",
         links: [
-          { label: "Publication Guidelines",  href: "/publications/guidelines" },
-          { label: "Suggested Citation",      href: "/publications/citation" },
+          { label: "Guidelines and Standards", href: "/publications/guidelines" },
+          { label: "Citation Guide",           href: "/publications/citation" },
           { label: "Institutional Guidelines",href: "/resources/guidelines" },
-          { label: "Logo Usage Guidelines",   href: "/resources/logo-usage-guidelines" },
+          { label: "Logo and Name Usage Guidelines", href: "/resources/logo-usage-guidelines" },
         ],
       },
       {
@@ -158,7 +158,7 @@ export const navigation: NavItem[] = [
       { label: "Calls for Papers",  href: "/events/calls-for-papers" },
       { label: "Calls for Chapters",href: "/events/calls-for-chapters" },
       { label: "Training Programs", href: "/events/training-programs" },
-      { label: "Past Events",       href: "/events/archive" },
+      { label: "Events Archive",     href: "/events/archive" },
     ],
   },
   {
@@ -176,7 +176,7 @@ export const navigation: NavItem[] = [
       { label: "Undergraduate Research Interns", href: "/people/undergraduate-research-interns" },
       { label: "Advisory Board",               href: "/people/advisory-board" },
       { label: "Project Contributors",         href: "/people/project-contributors" },
-      { label: "Join as a Researcher",         href: "/people/join" },
+      { label: "Join the Institute",            href: "/people/join" },
     ],
   },
   {
@@ -193,7 +193,7 @@ export const navigation: NavItem[] = [
       { label: "Research Fellow Application",   href: "/collaboration/research-fellow-application" },
       { label: "Undergraduate Intern Application", href: "/collaboration/undergraduate-research-intern-application" },
       { label: "Event Cooperation",             href: "/collaboration/event-cooperation" },
-      { label: "Submit a Proposal",             href: "/collaboration/submit" },
+      { label: "Submit an Inquiry",              href: "/collaboration/submit" },
     ],
   },
 ];

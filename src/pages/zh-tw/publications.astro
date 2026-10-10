@@ -5,7 +5,7 @@ import PageHero from '../../components/PageHero.astro';
 const categories = ["全部", "研究報告", "工作論文", "政策簡報", "主編文集", "年度報告"];
 
 const publications: { type: string; title: string; team: string; year: string; status: string }[] = [];
-import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
+import JournalArticleList from '../../components/JournalArticleList.astro';
 ---
 
 <BaseLayout
@@ -34,7 +34,7 @@ import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
   <!-- Publications List -->
   <section class="section" style="background:var(--bg-main);">
     <div class="container">
-      {publications.length === 0 && <PublicationsEmpty lang="zh-tw" />}
+      <JournalArticleList lang="zh-tw" />
       {publications.map((pub) => (
         <div class="publication-item" data-type={pub.type}>
           <div>

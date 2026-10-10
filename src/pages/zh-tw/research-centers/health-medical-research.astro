@@ -22,12 +22,12 @@ import PageHero from '../../../components/PageHero.astro';
               { label: "已設立",     value: "2026" },
               { label: "研究領域",   value: "健康與醫學研究" },
               { label: "進行中的項目", value: "規劃中" },
-              { label: "出版成果",    value: "即將發布" },
+              { label: "出版成果",    value: "2 篇期刊論文", href: "/zh-tw/publications/journal-articles" },
               { label: "聯絡",         value: "research@panorama-sg.com" },
             ].map((item) => (
               <div>
                 <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
-                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.href ? <a href={item.href}>{item.value}</a> : item.value}</div>
               </div>
             ))}
           </div>

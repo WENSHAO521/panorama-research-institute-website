@@ -2,14 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 
-const categories = ["全部", "研究報告", "工作論文", "政策簡報", "主編文集", "年度報告", "資助期刊論文"];
+const categories = ["全部", "研究報告", "工作論文", "政策簡報", "主編文集", "年度報告"];
 
-const publications: { type: string; title: string; team: string; year: string; status: string; journal?: string; doi?: string; url?: string; sponsor?: string }[] = [
-  { type: "資助期刊論文", title: "Assessing the quality and reliability of short video platforms as sources of information on depression among Chinese adolescents: a comparative study with data from Douyin, Bilibili, WeChat, and Xiaohongshu APPs", team: "Qilong Wang, Xixi Fan, Xin Qi, Yuyu Zhang, Yayan Wang, Chen Wang, Qian Wu, ChengWen Song, Siheng Ma", year: "2026", status: "已發布", journal: "Health Nexus: Digital Health and Medical AI, Vol. 1, No. 1, pp. 14–36", doi: "10.63802/hndh.V1.I1.356", url: "https://journals.panorama-sg.com/hndh/article/view/356", sponsor: "全景研究院資助 · No. PSG-PRI-SPN-2026-000017" },
-  { type: "資助期刊論文", title: "Liturgical Sonic Order in the Catholic Mass: Music, Participation, and the German-Language Gotteslob", team: "Yanlin Feng, Sebastian Lenz", year: "2026", status: "已發布", journal: "Resonance: Journal of Global Music Studies, Vol. 2, No. 2, pp. 31–43", doi: "10.63802/rjgms.V2.I2.360", url: "https://journals.panorama-sg.com/Resonance/article/view/360", sponsor: "全景研究院資助 · No. PSG-PRI-SPN-2026-000015" },
-  { type: "資助期刊論文", title: "From Technological Capability to Disaster Governance in North Korea: An Evidence-Bounded Framework from Scientific Publications", team: "Leyuan Liu", year: "2026", status: "已發布", journal: "PoliEcoM Administration Review, Vol. 2, No. 2, pp. 1–18", doi: "10.63802/pemr.V2.I2.357", url: "https://journals.panorama-sg.com/pemr/article/view/357", sponsor: "全景研究院資助 · No. PSG-PRI-SPN-2026-000014" },
-];
-import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
+const publications: { type: string; title: string; team: string; year: string; status: string }[] = [];
+import JournalArticleList from '../../components/JournalArticleList.astro';
 ---
 
 <BaseLayout
@@ -38,7 +34,7 @@ import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
   <!-- Publications List -->
   <section class="section" style="background:var(--bg-main);">
     <div class="container">
-      {publications.length === 0 && <PublicationsEmpty lang="zh-tw" />}
+      <JournalArticleList lang="zh-tw" />
       {publications.map((pub) => (
         <div class="publication-item" data-type={pub.type}>
           <div>
@@ -52,15 +48,12 @@ import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
           <div>
             <div class="pub-title">{pub.title}</div>
             <div class="pub-meta" style="margin-top:6px;">{pub.team}</div>
-            {pub.journal && <div class="pub-meta" style="margin-top:4px;font-style:italic;">{pub.journal}</div>}
-            {pub.doi && <div class="pub-meta" style="margin-top:4px;">DOI: <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer">{pub.doi}</a></div>}
-            {pub.sponsor && <div class="pub-meta" style="margin-top:4px;">{pub.sponsor}</div>}
           </div>
           <div style="text-align:right;">
             <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:16px;">{pub.year}</div>
             {pub.status === '已發布' && (
               <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
-                {pub.url ? <a href={pub.url} target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:12px;padding:7px 14px;">查看文章 &rarr;</a> : <a href="#" class="btn btn-secondary" style="font-size:12px;padding:7px 14px;">PDF</a>}
+                <a href="#" class="btn btn-secondary" style="font-size:12px;padding:7px 14px;">PDF</a>
                 <a href="#" class="btn-ghost btn" style="font-size:12.5px;padding:0;">引用 →</a>
               </div>
             )}

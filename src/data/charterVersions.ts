@@ -38,7 +38,7 @@ export const charterVersions: CharterVersion[] = [
   },
   {
     version: '1.0',
-    effective: { en: '2026', 'zh-cn': '2026 年', 'zh-tw': '2026 年' },
+    effective: { en: '2026-07-20', 'zh-cn': '2026-07-20', 'zh-tw': '2026-07-20' },
     current: false,
     summary: {
       en: 'The initial Charter of Panorama Research Institute.',

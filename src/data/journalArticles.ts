@@ -1,4 +1,4 @@
-// Articles published in Panorama journals that carry Panorama Research Institute sponsorship.
+// Journal articles supported by Panorama Research Institute sponsorship.
 // `instituteAuthors`: at least one author publishes under the Institute's name / is Institute leadership or staff.
 export interface JournalArticle {
   title: string;

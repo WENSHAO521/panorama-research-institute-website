@@ -8,8 +8,8 @@ const { lang = 'en' } = Astro.props;
 
 const copy: Record<Lang, { type: string; sponsored: string; no: string; view: string; emptyTitle: string; emptyBody: string }> = {
   en: { type: 'Book', sponsored: 'Sponsored by the Institute', no: 'Sponsorship No.', view: 'View Book', emptyTitle: 'No sponsored books yet', emptyBody: 'Books supported by Institute sponsorship will be listed here, with their ISBN and DOI, once they are published.' },
-  'zh-cn': { type: '图书', sponsored: '研究院赞助', no: '赞助编号', view: '查看图书', emptyTitle: '暂无获赞助图书', emptyBody: '获研究院赞助的图书出版后，将在此列出，并附 ISBN 和 DOI。' },
-  'zh-tw': { type: '圖書', sponsored: '研究院贊助', no: '贊助編號', view: '查看圖書', emptyTitle: '暫無獲贊助圖書', emptyBody: '獲研究院贊助的圖書出版後，將在此列出，並附 ISBN 和 DOI。' },
+  'zh-cn': { type: '图书', sponsored: '研究院资助', no: '资助编号', view: '查看图书', emptyTitle: '暂无获资助图书', emptyBody: '获研究院资助的图书出版后，将在此列出，并附 ISBN 和 DOI。' },
+  'zh-tw': { type: '圖書', sponsored: '研究院資助', no: '資助編號', view: '查看圖書', emptyTitle: '暫無獲資助圖書', emptyBody: '獲研究院資助的圖書出版後，將在此列出，並附 ISBN 和 DOI。' },
 };
 const c = copy[lang];
 ---

@@ -23,11 +23,11 @@ def add_watermark(path: Path, language: str) -> None:
     source = PdfReader(path)
     assert len(source.pages) > 2, f"Unexpected page count: {path}"
     page_text = "".join(page.extract_text() for page in source.pages)
-    if "PRI-CHARTER-v1.1-20261005-" in page_text:
+    if "PRI-CHARTER-v1.2-20261010-" in page_text:
         raise ValueError(f"Watermark already present in {path}")
 
     fingerprint = sha256(page_text.encode("utf-8")).hexdigest()[:24].upper()
-    prefix = f"PRI-CHARTER-v1.1-20261005-{language}-{fingerprint}"
+    prefix = f"PRI-CHARTER-v1.2-20261010-{language}-{fingerprint}"
     writer = PdfWriter(clone_from=path)
     font = DictionaryObject(
         {
@@ -61,10 +61,10 @@ def add_watermark(path: Path, language: str) -> None:
 
     writer.add_metadata(
         {
-            "/Title": f"Panorama Research Institute Charter — {language} — v1.1",
+            "/Title": f"Panorama Research Institute Charter — {language} — v1.2",
             "/Author": "Panorama Scholarly Group",
-            "/Subject": "Official Panorama Research Institute Charter; effective 2026-10-05",
-            "/Keywords": "Panorama Research Institute; PRI; Charter; v1.1",
+            "/Subject": "Official Panorama Research Institute Charter; effective 2026-10-10",
+            "/Keywords": "Panorama Research Institute; PRI; Charter; v1.2",
             "/PRIProvenanceID": prefix,
             "/PRIProvenanceURL": "https://research.panorama-sg.com/charter/",
         }

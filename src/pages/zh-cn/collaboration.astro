@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import FormSubmitFields from '../../components/FormSubmitFields.astro';
+import FormPrivacyNotice from '../../components/FormPrivacyNotice.astro';
 
 const collaborationTypes = [
   { type: "学术会员计划",           href: "/zh-cn/collaboration/membership",              desc: "学术会员、资源访问、活动信息、工作论文资格、项目参与渠道和学术网络连接。" },
@@ -146,6 +147,7 @@ const collaborationTypes = [
               <span>本人确认所提交信息准确，并同意全景研究院将其用于评估本次合作咨询。</span>
             </label>
           </div>
+          <FormPrivacyNotice />
           <button type="submit" class="btn btn-primary" style="justify-content:center;">提交提案</button>
         </form>
       </div>

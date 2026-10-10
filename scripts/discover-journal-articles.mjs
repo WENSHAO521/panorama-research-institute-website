@@ -63,18 +63,30 @@ async function fetchRecords(slug) {
   return records;
 }
 
-function toCandidate(record) {
+async function fetchJournalName(slug) {
+  const res = await fetch(`${BASE_URL}/${slug}/oai?verb=Identify`);
+  if (!res.ok) throw new Error(`Identify ${slug} -> HTTP ${res.status}`);
+  const m = (await res.text()).match(/<repositoryName>([^<]+)<\/repositoryName>/);
+  return m ? decode(m[1]) : '';
+}
+
+function toCandidate(record, journalName) {
   const doi = all(record, 'identifier').find((i) => /^10\./.test(i));
   const url = all(record, 'identifier').find((i) => /^https?:\/\//.test(i));
   const title = all(record, 'title')[0];
   if (!doi || !url || !title) return null;
-  // e.g. "Health Nexus: ...; Vol. 1 No. 1 (2026); 14-36"
-  const source = all(record, 'source')[0] ?? '';
-  const sm = source.match(/^(.*?);\s*Vol\.\s*(\d+)\s*No\.\s*(\d+)\s*\((\d{4})\);\s*(.+)$/);
+  // dc:source can repeat (ISSN, DOI prefix, ...). The citation line looks like
+  // "Health Nexus: ...; Vol. 1 No. 1 (2026); 14-36" or, for issues with a title,
+  // "Journal; Vol. 2 No. 1 (2026): Issue title; 7-16".
+  let sm = null;
+  for (const source of all(record, 'source')) {
+    sm = source.match(/^(.*?);\s*Vol\.\s*(\d+)\s*No\.\s*(\d+)\s*\((\d{4})\)(?::[^;]*)?;\s*(.+)$/);
+    if (sm) break;
+  }
   return {
     title,
     authors: all(record, 'creator').map(flipName).join(', '),
-    journal: sm ? sm[1] : (all(record, 'publisher')[0] ?? ''),
+    journal: sm ? sm[1] : (journalName || all(record, 'publisher')[0] || ''),
     volume: sm ? `Vol. ${sm[2]}, No. ${sm[3]}` : '',
     pages: sm ? sm[5].replace('-', '–') : '',
     year: sm ? sm[4] : (all(record, 'date')[0] ?? '').slice(0, 4),
@@ -119,9 +131,10 @@ async function fetchCrossref(filter, extra = {}) {
 const curated = await readFile(CURATED_PATH, 'utf8');
 const known = new Set([...curated.matchAll(/doi:\s*"([^"]+)"/g)].map((m) => m[1].toLowerCase()));
 
+let failed = false;
 const byDoi = new Map();
 try {
-  for (const c of await fetchCrossref(`prefix:${DOI_PREFIX}`)) if (c.title && c.doi && c.volume) byDoi.set(c.doi.toLowerCase(), c);
+  for (const c of await fetchCrossref(`prefix:${DOI_PREFIX}`)) if (c.title && c.doi) byDoi.set(c.doi.toLowerCase(), c);
   const ror = INSTITUTE_ROR_ID.replace(/^https?:\/\/ror\.org\//, '');
   if (ror) {
     // Articles with Institute-affiliated authors, from any publisher.
@@ -131,20 +144,25 @@ try {
     }
   }
 } catch (err) {
-  console.error(`Skipping Crossref: ${err.message}`);
-  process.exitCode = 1;
+  console.error(`Crossref failed: ${err.message}`);
+  failed = true;
 }
 for (const slug of JOURNALS) {
   try {
+    const journalName = await fetchJournalName(slug);
     for (const rec of await fetchRecords(slug)) {
-      const c = toCandidate(rec);
+      const c = toCandidate(rec, journalName);
       if (c) byDoi.set(c.doi.toLowerCase(), c); // OAI data is authoritative for DOI casing and URLs
     }
   } catch (err) {
-    // Keep going; one unreachable journal should not wipe the others.
-    console.error(`Skipping ${slug}: ${err.message}`);
-    process.exitCode = 1;
+    // Keep checking the other journals, but do not rewrite the candidates file afterwards.
+    console.error(`Failed to read ${slug}: ${err.message}`);
+    failed = true;
   }
+}
+if (failed) {
+  console.error('At least one source could not be read; leaving journalArticleCandidates.json unchanged.');
+  process.exit(1);
 }
 const candidates = [...byDoi.entries()].filter(([doi, c]) => !known.has(doi) && Number(c.year) >= MIN_YEAR).map(([, c]) => c);
 candidates.sort((a, b) => b.published.localeCompare(a.published));

@@ -910,7 +910,8 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   .platform-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-@media (max-width: 1024px) {
+/* Eight top-level menu items no longer fit beside the logo and controls below ~1180px */
+@media (max-width: 1180px) {
   .primary-nav,
   .header-right .btn {
     display: none;

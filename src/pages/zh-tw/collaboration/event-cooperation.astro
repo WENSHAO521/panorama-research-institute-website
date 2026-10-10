@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
 import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+import FormPrivacyNotice from '../../../components/FormPrivacyNotice.astro';
 ---
 <BaseLayout title="活動合作" description="與全景研究院聯合主辦學術活動。">
   <PageHero
@@ -85,6 +86,7 @@ import FormSubmitFields from '../../../components/FormSubmitFields.astro';
               <textarea id="ec-desc" name="ec-desc" rows="7" placeholder="請說明活動構想、擬與研究院開展的合作方式，以及該活動與研究院研究領域的關聯。" class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <FormPrivacyNotice />
               <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">提交提案</button>
             </div>
           </form>

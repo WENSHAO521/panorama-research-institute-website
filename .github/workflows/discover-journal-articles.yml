@@ -30,11 +30,12 @@ jobs:
 
       # Candidates are not shown on the site. The PR is a prompt for a maintainer
       # to review them and add sponsored ones to src/data/journalArticles.ts.
-      # main is protected, so push to a bot branch and open/refresh a PR.
+      # main is protected, so push to a bot branch and open a PR. Each run uses
+      # its own branch (never force-pushed), and no new PR is opened while a
+      # previous candidates PR is still open, so reviewers' edits are never lost.
       - name: Open pull request if changed
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: bot/journal-article-candidates
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -43,15 +44,17 @@ jobs:
             echo "No new journal articles."
             exit 0
           fi
-          git checkout -B "$BRANCH"
-          git commit -m "chore: update journal article candidates from journals.panorama-sg.com"
-          git push --force origin "$BRANCH"
-          if [ -z "$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')" ]; then
-            gh pr create \
-              --base "${{ github.event.repository.default_branch }}" \
-              --head "$BRANCH" \
-              --title "chore: new journal articles to review" \
-              --body "New articles found on journals.panorama-sg.com that are not yet in \`src/data/journalArticles.ts\`. Nothing here is published on the site. For each article the Institute sponsored, add an entry to \`journalArticles.ts\` with its sponsorship number, research center(s) and \`instituteAuthors\`, then merge this PR (or close it)."
-          else
-            echo "Existing PR for $BRANCH updated."
+          OPEN=$(gh pr list --state open --json headRefName --jq '[.[] | select(.headRefName | startswith("bot/journal-article-candidates"))] | length')
+          if [ "$OPEN" != "0" ]; then
+            echo "A journal article candidates PR is already open; finish reviewing it first."
+            exit 0
           fi
+          BRANCH="bot/journal-article-candidates-$(date -u +%Y-%m-%d-%H%M)"
+          git checkout -b "$BRANCH"
+          git commit -m "chore: update journal article candidates from Crossref and Panorama journals"
+          git push origin "$BRANCH"
+          gh pr create \
+            --base "${{ github.event.repository.default_branch }}" \
+            --head "$BRANCH" \
+            --title "chore: new journal articles to review" \
+            --body "New articles found through Crossref (all works under the Panorama DOI prefix and, if the \`INSTITUTE_ROR_ID\` variable is set, works by authors affiliated with the Institute in any journal) and the Panorama journals' OAI-PMH feeds that are not yet in \`src/data/journalArticles.ts\`. Nothing here is published on the site. For each article the Institute sponsored, add an entry to \`journalArticles.ts\` with its sponsorship number, research center(s) and \`instituteAuthors\`. Then merge this PR to record the candidates as reviewed. Closing it without merging means the same candidates are proposed again on the next run."

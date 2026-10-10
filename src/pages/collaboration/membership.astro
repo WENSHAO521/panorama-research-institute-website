@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import FormSubmitFields from '../../components/FormSubmitFields.astro';
+import FormPrivacyNotice from '../../components/FormPrivacyNotice.astro';
 import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro';
 
 const tiers = [
@@ -531,6 +532,7 @@ const formFields = [
           <input type="checkbox" name="membership_policy_agreement" value="confirmed" required />
           <span>I have read and agree to the membership policy, fee statement, refund policy, conduct rules, and important statements of the Panorama Research Institute Membership Program.</span>
         </label>
+        <FormPrivacyNotice />
         <button type="submit" class="btn btn-primary">Submit Application</button>
       </form>
     </div>

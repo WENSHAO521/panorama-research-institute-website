@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import { getRoadmap, roadmapDoneLabel } from '../../data/roadmap';
+const roadmap = getRoadmap('en');
+const doneLabel = roadmapDoneLabel['en'];
 ---
 <BaseLayout title="Development Roadmap" description="The phased development roadmap of Panorama Research Institute.">
   <PageHero
@@ -16,73 +19,7 @@ import PageHero from '../../components/PageHero.astro';
           Panorama Research Institute follows a phased development approach, building institutional capacity progressively while maintaining high standards of academic quality and governance. The roadmap below outlines the key milestones, priorities, and expected outputs for each phase.
         </p>
 
-        {[
-          {
-            phase: "Phase 1",
-            label: "Foundation",
-            period: "2026",
-            status: "Current",
-            color: "var(--text-main)",
-            goals: [
-              "Establish the Institute's governance framework, charter, and core policies",
-              "Launch the Institute's public website and digital presence",
-              "Establish five initial research centers: Scholarly Publishing Studies, Scholarly Indexing and Evaluation, Policy and Social Research, Arts, Culture and Embodiment, and Health and Medical Research",
-              "Complete development of the POSI database and officially launch it (launched 27 September 2026)",
-              "Initiate the Fifteenth Five-Year Plan Studies Project",
-              "Recruit initial research fellows and visiting scholars",
-              "Publish the inaugural set of working papers",
-              "Launch the Institute's collaboration and fellowship application processes",
-            ],
-          },
-          {
-            phase: "Phase 2",
-            label: "Development",
-            period: "2027",
-            status: "Upcoming",
-            color: "var(--accent-steel)",
-            goals: [
-              "Establish the Center for AI and Future Society as the sixth research center",
-              "Expand the research fellow network to include scholars from at least five countries",
-              "Launch the Institute's formal visiting scholar program",
-              "Publish the first annual report of Panorama Research Institute",
-              "Expand POSI public access operations and user services",
-              "Produce and publish the first full-length research reports from active projects",
-              "Organize the first Institute-branded academic seminar series",
-              "Establish the Institute's advisory board",
-              "Begin formal institutional cooperation discussions with partner institutions",
-            ],
-          },
-          {
-            phase: "Phase 3",
-            label: "Expansion",
-            period: "2028",
-            status: "Planned",
-            color: "var(--text-muted)",
-            goals: [
-              "Launch the first Institute-organized international conference",
-              "Establish formal institutional cooperation agreements with at least three partner institutions",
-              "Expand the POSI database to a broader range of scholarly journals",
-              "Launch the first Institute-edited volume in partnership with an academic publisher",
-              "Introduce training programs for journal editors and research teams",
-            ],
-          },
-          {
-            phase: "Phase 4",
-            label: "Consolidation",
-            period: "2029+",
-            status: "Long-term",
-            color: "var(--text-muted)",
-            goals: [
-              "Bring all six research centers to full operational capacity",
-              "Achieve a sustained annual publication output across all publication types",
-              "Develop a recognized and regularly cited journal and policy evaluation framework",
-              "Establish a multi-year research grant program in collaboration with partner institutions",
-              "Build a community of practice around the Institute's research themes",
-              "Develop a major conference series on scholarly communication and academic publishing",
-              "Expand the POSI database to become a recognized global resource",
-            ],
-          },
-        ].map((phase) => (
+        {roadmap.map((phase) => (
           <div style="margin-bottom:56px;padding-bottom:56px;border-bottom:1px solid var(--border-light);">
             <div style="display:grid;grid-template-columns:160px 1fr;gap:40px;align-items:start;">
               <div>
@@ -90,14 +27,15 @@ import PageHero from '../../components/PageHero.astro';
                 <div style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:6px;">{phase.label}</div>
                 <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);">{phase.period}</div>
                 <div style="margin-top:12px;">
-                  <span class={`tag ${phase.status === 'Current' ? 'tag-active' : phase.status === 'Upcoming' ? 'tag-steel' : ''}`}>{phase.status}</span>
+                  <span class={`tag ${phase.key === 'current' ? 'tag-active' : phase.key === 'upcoming' ? 'tag-steel' : ''}`}>{phase.status}</span>
                 </div>
               </div>
               <div>
                 {phase.goals.map((goal) => (
                   <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--bg-soft);">
                     <span style="color:var(--text-muted);flex-shrink:0;font-size:14px;">&#8212;</span>
-                    <span style="font-size:15px;color:var(--text-secondary);line-height:1.7;">{goal}</span>
+                    <span style="font-size:15px;color:var(--text-secondary);line-height:1.7;">{goal.text}</span>
+                    {goal.done && <span class="tag tag-active" style="font-size:10px;margin-left:auto;flex-shrink:0;align-self:flex-start;">{doneLabel}</span>}
                   </div>
                 ))}
               </div>

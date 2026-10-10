@@ -30,7 +30,7 @@ const groups = grouped
   <div class="publication-item">
     <div>
       <div class="pub-type">{lang === 'en' ? 'Journal Article' : lang === 'zh-cn' ? '期刊论文' : '期刊論文'}</div>
-      <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;">
+      <div class="pub-tags" style="margin-top:8px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;">
         <span class="tag tag-active" style="font-size:11px;">{c.sponsored}</span>
         {a.instituteAuthors && <span class="tag tag-steel" style="font-size:11px;">{c.members}</span>}
       </div>

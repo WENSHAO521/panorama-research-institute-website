@@ -27,6 +27,7 @@ const prefix = lang === 'en' ? '' : `/${lang}`;
     <div>
       <div class="pub-title">{c.effective}: {v.effective[lang]}</div>
       <div class="pub-meta" style="margin-top:6px;">{v.summary[lang]}</div>
+      {v.note && <div class="pub-meta" style="margin-top:8px;font-style:italic;">{v.note[lang]}</div>}
     </div>
     <div style="text-align:right;">
       <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">

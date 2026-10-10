@@ -7,6 +7,8 @@ export interface CharterVersion {
   effective: Record<CharterLang, string>;
   current: boolean;
   summary: Record<CharterLang, string>;
+  /** Optional editorial note, e.g. a wording standardization that did not change any provision. */
+  note?: Record<CharterLang, string>;
   pdf: Record<CharterLang, string>;
 }
 
@@ -22,6 +24,11 @@ export const charterVersions: CharterVersion[] = [
       en: 'Updates the list of Research Centers; adds the categories of scholarly affiliation, coordinator roles, journal articles, and the Membership Program; clarifies copyright, internal documents, and protection periods; adds provisions on appointments, impartial handling of misconduct, conflicts of interest, personal information, generative AI, language versions, public archiving of superseded versions, and institutional continuity; and aligns the amendment procedure and subsidiary governance documents with the Charter.',
       'zh-cn': '更新研究中心名单；增列学者类别、协调员设置、期刊论文及会员计划；明确版权、内部文件和保护期；增加任命、研究不端公正处理、利益冲突、个人信息、生成式人工智能、语言版本、历史版本公开存档及机构延续等规定；并使修订程序及附属治理文件与章程保持一致。',
       'zh-tw': '更新研究中心名單；增列學者類別、協調員設置、期刊論文及會員計劃；明確版權、內部文件和保護期；增加任命、研究不端公正處理、利益衝突、個人資訊、生成式人工智慧、語言版本、歷史版本公開存檔及機構延續等規定；並使修訂程序及附屬治理文件與章程保持一致。',
+    },
+    note: {
+      en: 'Editorial standardization (10 October 2026): spelling and terminology were standardized across the Charter and its Chinese versions (for example, American spelling and consistent terms for affiliated scholars and programs). No provision was changed in meaning.',
+      'zh-cn': '编辑性统一（2026-10-10）：统一了章程各语言版本的拼写与用词（例如美式拼写，以及“隶属学者”“计划”等术语），未改变任何条款的含义。',
+      'zh-tw': '編輯性統一（2026-10-10）：統一了章程各語言版本的拼寫與用詞（例如美式拼寫，以及“隸屬學者”“計劃”等術語），未改變任何條款的含義。',
     },
     pdf: { en: live('en'), 'zh-cn': live('cn'), 'zh-tw': live('cn-tw') },
   },

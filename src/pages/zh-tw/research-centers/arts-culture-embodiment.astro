@@ -1,6 +1,8 @@
 ---
+import { countForCenter } from '../../../data/journalArticles';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
+const pubCount = countForCenter('arts-culture-embodiment');
 ---
 <BaseLayout title="藝術、文化與具身研究中心" description="專注於音樂、舞蹈、文化研究、具身知識、表演與創意實踐的研究中心。">
   <PageHero
@@ -22,7 +24,7 @@ import PageHero from '../../../components/PageHero.astro';
               { label: "已設立",     value: "2026" },
               { label: "研究領域",   value: "藝術、文化與具身研究" },
               { label: "進行中的項目", value: "規劃中" },
-              { label: "出版成果",    value: "1 篇期刊論文", href: "/zh-tw/publications/journal-articles" },
+              { label: "出版成果",    value: pubCount > 0 ? `${pubCount} 篇期刊論文` : "即將發布", href: pubCount > 0 ? "/zh-tw/publications/journal-articles" : undefined },
               { label: "聯絡",         value: "research@panorama-sg.com" },
             ].map((item) => (
               <div>

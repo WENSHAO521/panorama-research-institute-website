@@ -1,6 +1,8 @@
 ---
+import { countForCenter } from '../../data/journalArticles';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+const pubCount = countForCenter('health-medical-research');
 ---
 <BaseLayout title="Center for Health and Medical Research" description="Research center focused on mental health, psychiatry, public health, and clinical research.">
   <PageHero
@@ -22,7 +24,7 @@ import PageHero from '../../components/PageHero.astro';
               { label: "Established",     value: "2026" },
               { label: "Research Area",   value: "Health and Medical Research" },
               { label: "Active Projects", value: "In development" },
-              { label: "Publications",    value: "2 journal articles", href: "/publications/journal-articles" },
+              { label: "Publications",    value: pubCount > 0 ? `${pubCount} journal article${pubCount === 1 ? '' : 's'}` : "Forthcoming", href: pubCount > 0 ? "/publications/journal-articles" : undefined },
               { label: "Contact",         value: "research@panorama-sg.com" },
             ].map((item) => (
               <div>

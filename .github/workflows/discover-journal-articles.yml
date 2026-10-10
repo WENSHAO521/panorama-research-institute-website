@@ -1,0 +1,54 @@
+name: Discover Journal Articles
+
+on:
+  schedule:
+    # 04:00 UTC on the 1st of every month
+    - cron: '0 4 1 * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Look for newly published articles
+        run: node scripts/discover-journal-articles.mjs
+
+      # Candidates are not shown on the site. The PR is a prompt for a maintainer
+      # to review them and add sponsored ones to src/data/journalArticles.ts.
+      # main is protected, so push to a bot branch and open/refresh a PR.
+      - name: Open pull request if changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: bot/journal-article-candidates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/journalArticleCandidates.json
+          if git diff --cached --quiet; then
+            echo "No new journal articles."
+            exit 0
+          fi
+          git checkout -B "$BRANCH"
+          git commit -m "chore: update journal article candidates from journals.panorama-sg.com"
+          git push --force origin "$BRANCH"
+          if [ -z "$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')" ]; then
+            gh pr create \
+              --base "${{ github.event.repository.default_branch }}" \
+              --head "$BRANCH" \
+              --title "chore: new journal articles to review" \
+              --body "New articles found on journals.panorama-sg.com that are not yet in \`src/data/journalArticles.ts\`. Nothing here is published on the site. For each article the Institute sponsored, add an entry to \`journalArticles.ts\` with its sponsorship number, research center(s) and \`instituteAuthors\`, then merge this PR (or close it)."
+          else
+            echo "Existing PR for $BRANCH updated."
+          fi

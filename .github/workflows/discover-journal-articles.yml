@@ -23,6 +23,9 @@ jobs:
           node-version: 22
 
       - name: Look for newly published articles
+        env:
+          # Set the Institute's ROR ID as a repository variable (Settings > Secrets and variables > Actions > Variables).
+          INSTITUTE_ROR_ID: ${{ vars.INSTITUTE_ROR_ID }}
         run: node scripts/discover-journal-articles.mjs
 
       # Candidates are not shown on the site. The PR is a prompt for a maintainer

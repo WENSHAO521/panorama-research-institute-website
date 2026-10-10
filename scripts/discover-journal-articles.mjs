@@ -29,6 +29,12 @@ const BASE_URL = 'https://journals.panorama-sg.com';
 const DOI_PREFIX = '10.63802';
 // The Institute was established in 2026; earlier articles cannot be Institute-sponsored.
 const MIN_YEAR = 2026;
+// The Institute's ROR ID (e.g. "05gq02987", or the full https://ror.org/... URL).
+// When set, Crossref is also searched for articles by authors affiliated with
+// the Institute in ANY journal, not just Panorama's. Matching by ROR rather
+// than by name matters: unrelated organizations are also called "Panorama
+// Research Institute". Can be overridden with the INSTITUTE_ROR_ID env var.
+const INSTITUTE_ROR_ID = process.env.INSTITUTE_ROR_ID ?? '';
 
 const decode = (t) =>
   t.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
@@ -80,11 +86,11 @@ function toCandidate(record) {
 
 const stripTags = (t) => decode(String(t ?? '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' '));
 
-async function fetchCrossref() {
+async function fetchCrossref(filter, extra = {}) {
   const out = [];
   let cursor = '*';
   for (;;) {
-    const url = `https://api.crossref.org/works?filter=prefix:${DOI_PREFIX},type:journal-article&rows=500&cursor=${encodeURIComponent(cursor)}`;
+    const url = `https://api.crossref.org/works?filter=${filter},type:journal-article&rows=500&cursor=${encodeURIComponent(cursor)}`;
     const res = await fetch(url);
     if (!res.ok) throw new Error(`Crossref -> HTTP ${res.status}`);
     const { message } = await res.json();
@@ -101,6 +107,7 @@ async function fetchCrossref() {
         doi: w.DOI,
         url: w.resource?.primary?.URL ?? w.URL,
         published: y ? `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}` : '',
+        ...extra,
       });
     }
     cursor = message['next-cursor'];
@@ -114,7 +121,15 @@ const known = new Set([...curated.matchAll(/doi:\s*"([^"]+)"/g)].map((m) => m[1]
 
 const byDoi = new Map();
 try {
-  for (const c of await fetchCrossref()) if (c.title && c.doi && c.volume) byDoi.set(c.doi.toLowerCase(), c);
+  for (const c of await fetchCrossref(`prefix:${DOI_PREFIX}`)) if (c.title && c.doi && c.volume) byDoi.set(c.doi.toLowerCase(), c);
+  const ror = INSTITUTE_ROR_ID.replace(/^https?:\/\/ror\.org\//, '');
+  if (ror) {
+    // Articles with Institute-affiliated authors, from any publisher.
+    for (const c of await fetchCrossref(`ror-id:${ror},from-pub-date:${MIN_YEAR}-01-01`, { matchedByRor: true })) {
+      const key = c.doi.toLowerCase();
+      if (c.title && c.doi && !byDoi.has(key)) byDoi.set(key, c);
+    }
+  }
 } catch (err) {
   console.error(`Skipping Crossref: ${err.message}`);
   process.exitCode = 1;

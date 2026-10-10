@@ -16,9 +16,9 @@ const modulePath = process.env.PRI_PLAYWRIGHT_MODULE;
 const { chromium } = await import(modulePath ? pathToFileURL(modulePath).href : 'playwright-core');
 const browser = await chromium.launch({ headless: true, ...(process.env.PRI_BROWSER_EXECUTABLE ? { executablePath: process.env.PRI_BROWSER_EXECUTABLE } : {}) });
 const locales = [
-  { path: '', suffix: 'en', lang: 'en', title: 'Institute Charter', author: 'Panorama Scholarly Group', status: 'Version 1.1 · Effective 2026-10-05', contents: 'Table of Contents', tag: 'GOVERNANCE DOCUMENT', issued: 'ISSUED BY', state: 'STATUS', notice: 'The constitution, structure, and governing principles of Panorama Research Institute, a research institute established by Panorama Scholarly Group. PSG is its parent organization and legal and administrative entity. PRI is not a separate legal entity.', footer: 'Panorama Research Institute · Institute Charter', profile: [['INSTITUTE', 'Panorama Research Institute (PRI)'], ['ESTABLISHED', '23 August 2026'], ['LOCATION', 'Hong Kong']], parent: 'PARENT ORGANIZATION', parentName: 'Panorama Scholarly Group' },
-  { path: 'zh-cn/', suffix: 'cn', lang: 'zh-CN', title: '研究院章程', author: '全景学术集团', status: '1.1 版 · 2026-10-05 生效', contents: '目录', tag: '治 理 文 件', issued: '发布机构', state: '版本状态', notice: '全景研究院的组织构成、治理规则与指导原则。全景研究院是由全景学术集团设立的研究机构；PSG 是其上级机构及法律与行政承载主体，PRI 不具有独立法人资格。', footer: '全景研究院 · 研究院章程', profile: [['研究院', '全景研究院（PRI）'], ['成立日期', '2026 年 8 月 23 日'], ['所在地', '香港']], parent: '上级机构', parentName: '全景学术集团' },
-  { path: 'zh-tw/', suffix: 'cn-tw', lang: 'zh-TW', title: '研究院章程', author: '全景學術集團', status: '1.1 版 · 2026-10-05 生效', contents: '目錄', tag: '治 理 文 件', issued: '發布機構', state: '版本狀態', notice: '全景研究院的組織構成、治理規則與指導原則。全景研究院是由全景學術集團設立的研究機構；PSG 是其上級機構及法律與行政承載主體，PRI 不具有獨立法人資格。', footer: '全景研究院 · 研究院章程', profile: [['研究院', '全景研究院（PRI）'], ['成立日期', '2026 年 8 月 23 日'], ['所在地', '香港']], parent: '上級機構', parentName: '全景學術集團' },
+  { path: '', suffix: 'en', lang: 'en', title: 'Institute Charter', author: 'Panorama Scholarly Group', status: 'Version 1.2 · Effective 2026-10-10', contents: 'Table of Contents', tag: 'GOVERNANCE DOCUMENT', issued: 'ISSUED BY', state: 'STATUS', notice: 'The constitution, structure, and governing principles of Panorama Research Institute, a research institute established by Panorama Scholarly Group. PSG is its parent organization and legal and administrative entity. PRI is not a separate legal entity.', footer: 'Panorama Research Institute · Institute Charter', profile: [['INSTITUTE', 'Panorama Research Institute (PRI)'], ['ESTABLISHED', '23 August 2026'], ['LOCATION', 'Hong Kong']], parent: 'PARENT ORGANIZATION', parentName: 'Panorama Scholarly Group' },
+  { path: 'zh-cn/', suffix: 'cn', lang: 'zh-CN', title: '研究院章程', author: '全景学术集团', status: '1.2 版 · 2026-10-10 生效', contents: '目录', tag: '治 理 文 件', issued: '发布机构', state: '版本状态', notice: '全景研究院的组织构成、治理规则与指导原则。全景研究院是由全景学术集团设立的研究机构；PSG 是其上级机构及法律与行政承载主体，PRI 不具有独立法人资格。', footer: '全景研究院 · 研究院章程', profile: [['研究院', '全景研究院（PRI）'], ['成立日期', '2026 年 8 月 23 日'], ['所在地', '香港']], parent: '上级机构', parentName: '全景学术集团' },
+  { path: 'zh-tw/', suffix: 'cn-tw', lang: 'zh-TW', title: '研究院章程', author: '全景學術集團', status: '1.2 版 · 2026-10-10 生效', contents: '目錄', tag: '治 理 文 件', issued: '發布機構', state: '版本狀態', notice: '全景研究院的組織構成、治理規則與指導原則。全景研究院是由全景學術集團設立的研究機構；PSG 是其上級機構及法律與行政承載主體，PRI 不具有獨立法人資格。', footer: '全景研究院 · 研究院章程', profile: [['研究院', '全景研究院（PRI）'], ['成立日期', '2026 年 8 月 23 日'], ['所在地', '香港']], parent: '上級機構', parentName: '全景學術集團' },
 ];
 const logo = 'data:image/svg+xml;base64,' + readFileSync(resolve(root, 'public/brand/logo-mono-black.svg')).toString('base64');
 const rorIcon = readFileSync(resolve(root, 'public/brand/ror-logo.svg'), 'utf8').replace('<svg ', '<svg width="34" height="11" ');
@@ -55,7 +55,7 @@ try {
     const fontLinks = fontDir
       ? [...fontSheets, ...(cjkSheets[loc.lang] ?? [])].map(sheet => `<link rel="stylesheet" href="${pathToFileURL(resolve(fontDir, '@fontsource', sheet)).href}">`).join('')
       : '';
-    const doc = `<!doctype html><html lang="${loc.lang}"><head><meta charset="utf-8"><title>${loc.title} | Panorama Research Institute | v1.1</title>${fontLinks}<style>
+    const doc = `<!doctype html><html lang="${loc.lang}"><head><meta charset="utf-8"><title>${loc.title} | Panorama Research Institute | v1.2</title>${fontLinks}<style>
       @page { size:A4; margin:24mm 22mm 22mm; }
       :root { --serif:'IBM Plex Serif',Georgia,serif; --sans:'IBM Plex Sans',Arial,sans-serif; --ink:#1f2326; --text:#3a3f44; --muted:#8a9096; --rule:#d9dcdf; --accent:#3d5a73; }
       html[lang="zh-CN"] { --serif:'Noto Serif SC','SimSun','IBM Plex Serif',serif; --sans:'Noto Sans SC','Microsoft YaHei','IBM Plex Sans',sans-serif; }
@@ -135,7 +135,7 @@ try {
       throw new Error(`Research-area layout is misaligned in ${loc.suffix}: ${JSON.stringify(rowLayout)}`);
     }
     const file = resolve(root, `public/documents/panorama-research-institute-charter-${loc.suffix}.pdf`);
-    await page.pdf({ path:file, preferCSSPageSize:true, printBackground:true, displayHeaderFooter:true, headerTemplate:'<span></span>', footerTemplate:`<div style="font-family:'IBM Plex Sans',Arial,'Microsoft YaHei','Microsoft JhengHei',sans-serif;font-size:7px;width:100%;margin:0 22mm;padding-top:6pt;border-top:0.5pt solid #d9dcdf;display:flex;justify-content:space-between;color:#8a9096;letter-spacing:0.6px"><span>${loc.footer}</span><span>v1.1 · 2026-10-05 · <span class="pageNumber"></span> / <span class="totalPages"></span></span></div>` });
+    await page.pdf({ path:file, preferCSSPageSize:true, printBackground:true, displayHeaderFooter:true, headerTemplate:'<span></span>', footerTemplate:`<div style="font-family:'IBM Plex Sans',Arial,'Microsoft YaHei','Microsoft JhengHei',sans-serif;font-size:7px;width:100%;margin:0 22mm;padding-top:6pt;border-top:0.5pt solid #d9dcdf;display:flex;justify-content:space-between;color:#8a9096;letter-spacing:0.6px"><span>${loc.footer}</span><span>v1.2 · 2026-10-10 · <span class="pageNumber"></span> / <span class="totalPages"></span></span></div>` });
     console.log(`Generated ${file}`);
     await page.close();
   }

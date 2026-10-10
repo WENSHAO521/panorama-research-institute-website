@@ -64,8 +64,8 @@ const articles = [
             <div style="text-align:center;margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid var(--border-light);">
               <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Governance Document</div>
               <h1 style="font-family:var(--font-serif);font-size:32px;color:var(--text-main);margin-bottom:16px;letter-spacing:-0.02em;">Institute Charter</h1>
-              <p style="font-size:13px;color:var(--text-muted);font-family:var(--font-mono);">Version 1.1 - Effective 2026-10-05</p>
-              <p style="font-size:13px;line-height:1.7;color:var(--text-muted);margin-top:12px;">Revision 1.1 clarifies institutional status, academic affiliation, legal execution, and financial administration. The amendment procedure in Article 20 continues to apply.</p>
+              <p style="font-size:13px;color:var(--text-muted);font-family:var(--font-mono);">Version 1.2 - Effective 2026-10-10</p>
+              <p style="font-size:13px;line-height:1.7;color:var(--text-muted);margin-top:12px;">Revision 1.2 updates the list of Research Centers, adds the categories of scholarly affiliation and coordinator roles now in use, recognizes journal articles and the Membership Program, and aligns the amendment procedure and subsidiary governance documents with this Charter. The amendment procedure in Article 20 continues to apply.</p>
             </div>
 
             <!-- Article 1 -->
@@ -133,13 +133,14 @@ const articles = [
                 "Interdisciplinary research across its designated research areas, conducted through research centers and projects",
                 "Establishment, development, and management of research centers within the Institute's research areas",
                 "Initiation, management, and support of research projects affiliated with the Institute's research centers",
-                "Publication of research reports, working papers, policy briefs, edited volumes, guidelines, and annual reports",
+                "Publication of research reports, working papers, policy briefs, edited volumes, guidelines, and annual reports, and sponsorship and support of journal articles",
                 "Organization and co-organization of academic conferences, seminars, workshops, and training programs",
-                "Management of scholar and fellowship programs, including Research Fellows, Associate Research Fellows, Visiting Scholars, and Research Assistants",
+                "Management of scholar and fellowship programs, including Research Fellows, Associate Research Fellows, Young Research Fellows, Part-time Research Fellows, Distinguished Research Fellows, Visiting Scholars, Research Assistants, and Undergraduate Research Interns",
                 "Institutional collaboration and research partnership activities with universities, research institutions, publishers, and scholarly organizations",
                 "Development of open scholarly infrastructure, including databases, evaluation frameworks, and metadata systems",
                 "Policy analysis and advisory activities relevant to the Institute's research areas",
                 "Capacity-building activities for researchers, journal editors, and scholarly practitioners",
+                "Operation of a Membership Program providing scholarly network and resource services",
               ].map((item) => (
                 <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--bg-soft);">
                   <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>
@@ -185,9 +186,9 @@ const articles = [
                 { unit:"Institute Office",              desc:"Responsible for overall administration, governance compliance, internal coordination, external communications, and the maintenance of official records. Headed by the Institute Director." },
                 { unit:"Research Centers",              desc:"The primary academic units of the Institute. Each center has a defined thematic mandate, a Director, and a program of research projects, publications, and events. Currently active centers are listed in Article 9." },
                 { unit:"Project Teams",                 desc:"Responsible for carrying out approved research projects, coordinating project contributors, maintaining project documentation, and reporting project progress to the relevant Research Center Director." },
-                { unit:"Publications Unit",             desc:"Responsible for the editorial management, production, and open access dissemination of all Institute publications, including research reports, working papers, policy briefs, edited volumes, and the annual report." },
+                { unit:"Publications Unit",             desc:"Responsible for the editorial management, production, and open access dissemination of all Institute publications, including research reports, working papers, policy briefs, edited volumes, and the annual report, and for administering the Institute's sponsorship of journal articles." },
                 { unit:"Academic Events Unit",          desc:"Responsible for planning, coordinating, and delivering the Institute's program of conferences, seminars, workshops, training programs, and calls for papers and chapters." },
-                { unit:"Scholar and Fellowship Program", desc:"Responsible for recruiting, onboarding, and supporting Research Fellows, Associate Research Fellows, Visiting Scholars, and Research Assistants, and for maintaining the Institute's scholar community." },
+                { unit:"Scholar and Fellowship Program", desc:"Responsible for recruiting, onboarding, and supporting Research Fellows, Associate Research Fellows, Young Research Fellows, Part-time Research Fellows, Visiting Scholars, Research Assistants, and Undergraduate Research Interns, and for maintaining the Institute's scholar community." },
                 { unit:"Collaboration Office",          desc:"Responsible for managing the Institute's external partnerships, institutional cooperation agreements, research project proposals, edited volume proposals, and event co-organization inquiries." },
                 { unit:"Research Ethics and Standards Office", desc:"Responsible for research ethics review coordination, integrity guidance, conflict-of-interest disclosure management, and the maintenance of research standards across Institute activities." },
               ].map((item) => (
@@ -208,6 +209,7 @@ const articles = [
               {[
                 { role:"Institute Director",     desc:"The Director is the head of the Institute and is responsible for its overall academic direction, governance compliance, external representation, and institutional development. The Director is appointed by Panorama Scholarly Group." },
                 { role:"Research Center Directors","": "", desc:"Each Research Center is directed by a Research Center Director responsible for the Center's research program, fellow management, and scholarly activities. Center Directors are appointed by the Institute Director." },
+                { role:"Coordinators",          desc:"The Institute Director may appoint coordinators to manage the Institute's operational activities, including a Director of Research / Research Centers Coordination, a Publications Coordinator, an Events Coordinator, a Scholar Program Coordinator, and a Collaboration Coordinator. Coordinators act under the direction of the Institute Director and hold no independent governance authority." },
                 { role:"Advisory Board",          desc:"The Advisory Board is an independent consultative body comprising distinguished scholars and practitioners. It advises on research priorities, academic standards, and institutional development. It has no executive authority." },
                 { role:"Panorama Scholarly Group","": "", desc:"As the parent organization and legal and administrative entity, PSG holds ultimate institutional governance authority, approves the Charter and material amendments, administers Institute finances, and executes formal legal instruments through authorized representatives. PRI's academic bodies retain independent academic judgment in accordance with this Charter." },
               ].map((item) => (
@@ -234,6 +236,8 @@ const articles = [
                 { num:"02", name:"Center for Scholarly Indexing and Evaluation",  status:"Active" },
                 { num:"03", name:"Center for Policy and Social Research",         status:"Active" },
                 { num:"04", name:"Center for AI and Future Society",              status:"Upcoming" },
+                { num:"05", name:"Center for Arts, Culture and Embodiment",       status:"Active" },
+                { num:"06", name:"Center for Health and Medical Research",        status:"Active" },
               ].map((c) => (
                 <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--bg-soft);">
                   <div style="display:flex;gap:16px;align-items:center;">
@@ -273,6 +277,8 @@ const articles = [
                 { type:"Policy Briefs",      desc:"Concise, evidence-based documents presenting policy-relevant findings and recommendations. Subject to internal editorial review." },
                 { type:"Edited Volumes",     desc:"Collaborative academic volumes bringing together original contributions from multiple scholars on a defined research theme. Published in association with partner academic publishers." },
                 { type:"Annual Reports",     desc:"Yearly institutional reports covering the Institute's research activity, publications, events, scholar program, and governance disclosures." },
+                { type:"Conference Proceedings","": "", desc:"Records and proceedings of academic events organized or co-organized by the Institute, where applicable." },
+                { type:"Journal Articles","": "",   desc:"Articles published in scholarly journals, including journals published by Panorama Scholarly Group, that are supported by Institute sponsorship or authored by Institute members. Each sponsorship is recorded by a sponsorship number and disclosed in the article, and does not influence the article's editorial or peer review outcome. Journal articles are subject to the editorial and peer review procedures of the journal concerned and are listed on the Institute's website." },
                 { type:"Guidelines and Standards","": "", desc:"Practical standards and guidance documents developed from Institute research for use by journals, publishers, and academic institutions." },
               ].map((item) => (
                 <div style="display:grid;grid-template-columns:160px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--bg-soft);align-items:start;">
@@ -281,7 +287,7 @@ const articles = [
                 </div>
               ))}
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-top:20px;">
-                All Institute publications are published under open access terms and are freely available on the Institute's website. Each publication receives a Digital Object Identifier (DOI) registered with Crossref. Authors retain copyright in their work but grant the Institute a non-exclusive, perpetual licence to publish, distribute, and archive the work.
+                All Institute publications are published under open access terms and are freely available on the Institute's website. Each publication receives a Digital Object Identifier (DOI) registered with Crossref. Authors retain copyright in their work but grant the Institute a non-exclusive, perpetual licence to publish, distribute, and archive the work. Open access, licensing, and DOI arrangements for journal articles are governed by the journal concerned.
               </p>
             </div>
 
@@ -310,7 +316,11 @@ const articles = [
               {[
                 { title:"Research Fellow",            desc:"An established researcher (typically holding a doctoral degree or equivalent) who makes a formal commitment to contribute to the Institute's research program through original publications, participation in events, and engagement with the Institute's scholarly community. Appointment is for one to three years, renewable." },
                 { title:"Associate Research Fellow",  desc:"An early-career researcher or doctoral student who contributes to Institute research projects and activities. Typically appointed for one year, renewable upon satisfactory contribution. Associate Fellows may be considered for promotion to Research Fellow." },
+                { title:"Young Research Fellow",    desc:"A postdoctoral or early-career researcher, typically within five years of completing a doctorate, who has established an independent research direction. The category sits between Associate Research Fellow and Research Fellow. Typically appointed for one to two years, renewable. Sustained contribution may be considered for promotion to Research Fellow." },
+                { title:"Part-time Research Fellow", desc:"A researcher or practitioner who holds a primary position elsewhere and maintains a lighter-commitment affiliation with the Institute, contributing to Institute projects and publications on a reduced or project-based schedule. Typically appointed for one year, renewable. Terms of contribution are agreed with the relevant Research Center at the time of appointment." },
+                { title:"Distinguished Research Fellow", desc:"An honorary title conferred on senior scholars of exceptional academic standing. Appointed by invitation of the Institute's leadership rather than through open application, typically for two to three years, renewable." },
                 { title:"Visiting Scholar",           desc:"An established researcher who affiliates with the Institute for a defined period (typically three to twelve months) to pursue research in collaboration with the Institute's scholars. Visiting scholars may be resident or remote." },
+                { title:"Undergraduate Research Intern", desc:"A currently enrolled undergraduate student who supports Research Fellows and Research Center Directors with tasks such as literature review, data collection, and editorial assistance. Engaged for one semester or on a project basis, renewable." },
                 { title:"Research Assistant",         desc:"A postgraduate student or early-career researcher engaged on a project-specific basis to support research tasks under the supervision of a Research Fellow or Research Center Director." },
               ].map((item) => (
                 <div style="padding:14px 0;border-bottom:1px solid var(--bg-soft);">
@@ -319,7 +329,7 @@ const articles = [
                 </div>
               ))}
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-top:20px;">
-                All affiliated scholars are required to adhere to the Institute's research ethics policy, conflict of interest policy, and other governance documents. The Scholar and Fellowship Program is administered by the Scholar Program Coordinator under the oversight of the Institute Director.
+                All affiliated scholars are required to adhere to the Institute's research ethics policy, conflict of interest policy, and other governance documents. The Scholar and Fellowship Program is administered by the Scholar Program Coordinator under the oversight of the Institute Director. The Institute may also invite scholars, practitioners, and experts to contribute to specific projects, publications, or events as project contributors. Project contributors hold no formal affiliation, and their contributions are acknowledged in the relevant project and publication records.
               </p>
             </div>
 
@@ -444,7 +454,7 @@ const articles = [
                 Operational budgets for the Institute's research, publication, event, and scholar programmes shall be allocated by the Group in consultation with the Institute Director. The Director shall administer expenditures within the allocated budgets and the authority granted by the Group, and shall submit financial reports to the Group as required.
               </p>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
-                Fellowship stipends, honoraria, or other compensation paid to affiliated scholars shall be administered by the Group. Eligibility, availability, and amounts shall be determined individually under the applicable arrangements. Academic affiliation alone shall not create an entitlement to such payments.
+                Fellowship stipends, honoraria, or other compensation paid to affiliated scholars shall be administered by the Group. Eligibility, availability, and amounts shall be determined individually under the applicable arrangements. Academic affiliation alone shall not create an entitlement to such payments. Membership fees under the Institute's Membership Program shall be collected and administered by the Group. The Membership Program is a scholarly network and resource service; it is not a degree, academic credential, or professional certification program, and membership does not, of itself, confer the status of Research Fellow, Visiting Scholar, Research Center member, or any governance status. Institute sponsorship of journal articles shall be administered by the Group within allocated budgets, shall be disclosed in the article concerned, and shall not influence its editorial or peer review outcome.
               </p>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
                 Institute publications, the website, and formal institutional communications shall disclose the relationship between the Institute and the Group in accordance with Article 3. External research grants or contributions supporting Institute activities shall be received and administered by the Group, which shall be identified as the legal recipient or contracting party where applicable. Relevant publications shall disclose funding sources and conflicts of interest. Financial administration, funding arrangements, and budget approval shall not confer authority to determine research findings, editorial judgments, or publication decisions. Those matters shall remain subject to the Institute's academic governance, ethics, and quality standards.
@@ -456,13 +466,13 @@ const articles = [
               <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">Article 20</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">Amendment and Interpretation</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
-                This Charter may be amended by the Institute Director with the approval of the Group. Proposed amendments shall be circulated to all Research Center Directors and the Advisory Board at least thirty days before adoption for comment. Comments received shall be considered before the decision on adoption, but shall not be binding.
+                Amendments to this Charter may be proposed in writing by the Institute's leadership, affiliated scholars, or the Group, and shall be made by the Institute Director with the approval of the Group. Proposed amendments shall be circulated to all Research Center Directors and the Advisory Board at least thirty days before adoption for comment. Comments received shall be considered before the decision on adoption, but shall not be binding.
               </p>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
                 Amendments shall take effect on the date of adoption unless a later effective date is specified. The Charter's version number and effective date shall be stated on the cover. The Institute Office shall maintain the complete version history and make it available upon request.
               </p>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
-                Subsidiary governance documents — including the Research Ethics Policy, Conflict of Interest Policy, Publication and Reporting Policy, Data and Documentation Policy, Academic Independence Policy, and Name and Logo Usage Policy — may be adopted, amended, or replaced by the Institute Director without a formal Charter amendment, provided they do not conflict with the provisions of this Charter.
+                Subsidiary governance documents — including the Governance Rules, the Amendment Procedure, the Research Ethics Policy, Conflict of Interest Policy, Publication and Reporting Policy, Data and Documentation Policy, Academic Independence Policy, and Name and Logo Usage Policy — may be adopted, amended, or replaced by the Institute Director without a formal Charter amendment, provided they do not conflict with the provisions of this Charter.
               </p>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);">
                 The Institute Director has final interpretive authority over the provisions of this Charter. Where ambiguity arises in the interpretation of any provision, the interpretation that is most consistent with the Institute's mission as set out in Article 4 shall be preferred. In the event of a conflict between this Charter and any subsidiary governance document, this Charter prevails.

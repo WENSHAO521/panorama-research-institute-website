@@ -3,19 +3,30 @@
 import type { Lang } from '../i18n/utils';
 import { journalArticles } from '../data/journalArticles';
 
-interface Props { lang?: Lang; membersOnly?: boolean; }
-const { lang = 'en', membersOnly = false } = Astro.props;
-const articles = membersOnly ? journalArticles.filter((a) => a.instituteAuthors) : journalArticles;
-
-const copy: Record<Lang, { sponsored: string; members: string; no: string; view: string }> = {
-  en: { sponsored: 'Sponsored by the Institute', members: 'Institute members among authors', no: 'Sponsorship No.', view: 'View Article' },
-  'zh-cn': { sponsored: '研究院资助', members: '作者含研究院成员', no: '资助编号', view: '查看文章' },
-  'zh-tw': { sponsored: '研究院資助', members: '作者含研究院成員', no: '資助編號', view: '查看文章' },
+const copy: Record<Lang, { membersTitle: string; sponsoredTitle: string; sponsored: string; members: string; no: string; view: string }> = {
+  en: { membersTitle: 'Research by Institute Members', sponsoredTitle: 'Articles Sponsored by the Institute', sponsored: 'Sponsored by the Institute', members: 'Institute members among authors', no: 'Sponsorship No.', view: 'View Article' },
+  'zh-cn': { membersTitle: '研究院成员成果', sponsoredTitle: '研究院资助论文', sponsored: '研究院资助', members: '作者含研究院成员', no: '资助编号', view: '查看文章' },
+  'zh-tw': { membersTitle: '研究院成員成果', sponsoredTitle: '研究院資助論文', sponsored: '研究院資助', members: '作者含研究院成員', no: '資助編號', view: '查看文章' },
 };
+
+interface Props { lang?: Lang; membersOnly?: boolean; grouped?: boolean; }
+const { lang = 'en', membersOnly = false, grouped = false } = Astro.props;
 const c = copy[lang];
+const members = journalArticles.filter((a) => a.instituteAuthors);
+const sponsored = journalArticles.filter((a) => !a.instituteAuthors);
+const articles = membersOnly ? members : journalArticles;
+const groups = grouped
+  ? [
+      { title: c.membersTitle, items: members },
+      { title: c.sponsoredTitle, items: sponsored },
+    ].filter((g) => g.items.length > 0)
+  : [{ title: '', items: articles }];
 ---
 
-{articles.map((a) => (
+{groups.map((g) => (
+  <div style="margin-bottom:40px;">
+    {g.title && <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">{g.title}</h2>}
+    {g.items.map((a) => (
   <div class="publication-item">
     <div>
       <div class="pub-type">{lang === 'en' ? 'Journal Article' : lang === 'zh-cn' ? '期刊论文' : '期刊論文'}</div>
@@ -34,5 +45,7 @@ const c = copy[lang];
       <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:16px;">{a.year}</div>
       <a href={a.url} target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:12px;padding:7px 14px;">{c.view} &rarr;</a>
     </div>
+  </div>
+    ))}
   </div>
 ))}

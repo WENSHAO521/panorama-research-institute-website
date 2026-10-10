@@ -17,5 +17,5 @@ export function getBasePath(pathname: string): string {
 export function getLocalizedPath(targetLang: Lang, currentPathname: string): string {
   const base = getBasePath(currentPathname);
   if (targetLang === 'en') return base;
-  return `/${targetLang}${base === '/' ? '' : base}`;
+  return `/${targetLang}${base}`;
 }

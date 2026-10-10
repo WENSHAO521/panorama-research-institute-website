@@ -5,10 +5,13 @@ interface Props {
   nextPath?: string;
 }
 
+const locale = Astro.currentLocale;
+const localePrefix = locale === 'zh-cn' || locale === 'zh-tw' ? `/${locale}` : '';
+
 const {
   subject,
   source,
-  nextPath = 'https://research.panorama-sg.com/thank-you',
+  nextPath = `https://research.panorama-sg.com${localePrefix}/thank-you`,
 } = Astro.props;
 ---
 

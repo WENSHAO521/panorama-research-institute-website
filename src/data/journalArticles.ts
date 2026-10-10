@@ -11,6 +11,8 @@ export interface JournalArticle {
   url: string;
   sponsorNo: string;
   instituteAuthors: boolean;
+  /** Set to false while the DOI is not yet registered at doi.org (it would 404); remove once it resolves. */
+  doiRegistered?: boolean;
   /** Research center slugs this article belongs to; drives the counts on the center pages. */
   centers: string[];
 }
@@ -23,7 +25,7 @@ export const journalArticles: JournalArticle[] = [
     volume: "Vol. 1, No. 1", pages: "14–36", year: "2026",
     doi: "10.63802/hndh.V1.I1.356",
     url: "https://journals.panorama-sg.com/hndh/article/view/356",
-    sponsorNo: "PSG-PRI-SPN-2026-000017", instituteAuthors: true, centers: ["health-medical-research"],
+    sponsorNo: "PSG-PRI-SPN-2026-000017", doiRegistered: false, instituteAuthors: true, centers: ["health-medical-research"],
   },
   {
     title: "Digital Phenotyping for Relapse Prediction in Depression and Schizophrenia: A Narrative Review of Signals, Models, and Clinical Translation",
@@ -32,7 +34,7 @@ export const journalArticles: JournalArticle[] = [
     volume: "Vol. 1, No. 1", pages: "1–13", year: "2026",
     doi: "10.63802/hndh.V1.I1.358",
     url: "https://journals.panorama-sg.com/hndh/article/view/358",
-    sponsorNo: "PSG-PRI-SPN-2026-000016", instituteAuthors: false, centers: ["health-medical-research"],
+    sponsorNo: "PSG-PRI-SPN-2026-000016", doiRegistered: false, instituteAuthors: false, centers: ["health-medical-research"],
   },
   {
     title: "Liturgical Sonic Order in the Catholic Mass: Music, Participation, and the German-Language Gotteslob",

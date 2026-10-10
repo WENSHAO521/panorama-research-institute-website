@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import FormSubmitFields from '../../components/FormSubmitFields.astro';
+import FormPrivacyNotice from '../../components/FormPrivacyNotice.astro';
 import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro';
 ---
 <BaseLayout title="Undergraduate Research Intern Application" description="Apply for the Panorama Research Institute Undergraduate Research Intern Program.">
@@ -90,6 +91,7 @@ import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro'
               <label for="ug-consent" style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">I confirm that I am a currently enrolled undergraduate student and that the information provided above is accurate.</label>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <FormPrivacyNotice />
               <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Submit Application</button>
             </div>
           </form>

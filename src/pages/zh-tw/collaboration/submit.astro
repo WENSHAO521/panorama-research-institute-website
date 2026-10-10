@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
 import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+import FormPrivacyNotice from '../../../components/FormPrivacyNotice.astro';
 ---
 <BaseLayout title="提交諮詢" description="全景研究院一般合作諮詢表單。">
   <PageHero
@@ -75,6 +76,7 @@ import FormSubmitFields from '../../../components/FormSubmitFields.astro';
               <label for="inq-consent" style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">本人同意全景研究院使用所提供資訊回覆本次諮詢，並發送相關機構通信。本人可隨時撤回該同意。</label>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <FormPrivacyNotice />
               <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">提交諮詢</button>
             </div>
           </form>

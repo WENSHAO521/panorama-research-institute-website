@@ -28,9 +28,9 @@ export interface CategoryMeta {
 const en: Announcement[] = [
   {
     slug: 'sponsorship-first-articles-2026',
-    category: 'update',
+    category: 'notice',
     date: '2026-10-10',
-    tag: 'Update',
+    tag: 'Notice',
     title: 'Institute Sponsorship: First Journal Articles Published',
     summary: 'Four journal articles supported by Panorama Research Institute sponsorship have been published, two of them with Institute members among the authors. A new Sponsorship section lists sponsored works.',
     body: [
@@ -42,9 +42,9 @@ const en: Announcement[] = [
   },
   {
     slug: 'new-members-2026-10',
-    category: 'update',
+    category: 'notice',
     date: '2026-10-10',
-    tag: 'Update',
+    tag: 'Notice',
     title: 'New Research Fellow and Associate Research Fellows Join the Institute',
     summary: 'Dr. Sebastian Lenz has joined as a Research Fellow, and Dr. Yanlin Feng, Jiahong Ao, Xiaoyue Yan, and Dr. Jiale Li have joined as Associate Research Fellows.',
     body: [
@@ -129,9 +129,9 @@ const en: Announcement[] = [
 const zhCn: Announcement[] = [
   {
     slug: 'sponsorship-first-articles-2026',
-    category: 'update',
+    category: 'notice',
     date: '2026-10-10',
-    tag: '更新',
+    tag: '通知',
     title: '研究院资助：首批期刊论文发表',
     summary: '获全景研究院资助的四篇期刊论文已发表，其中两篇的作者含研究院成员。新设“资助”栏目列示获资助成果。',
     body: [
@@ -143,9 +143,9 @@ const zhCn: Announcement[] = [
   },
   {
     slug: 'new-members-2026-10',
-    category: 'update',
+    category: 'notice',
     date: '2026-10-10',
-    tag: '更新',
+    tag: '通知',
     title: '新任研究员与副研究员加入研究院',
     summary: 'Dr. Sebastian Lenz 已加入研究院担任研究员，Dr. Yanlin Feng、Jiahong Ao、Xiaoyue Yan 和 Dr. Jiale Li 已加入担任副研究员。',
     body: [
@@ -230,9 +230,9 @@ const zhCn: Announcement[] = [
 const zhTw: Announcement[] = [
   {
     slug: 'sponsorship-first-articles-2026',
-    category: 'update',
+    category: 'notice',
     date: '2026-10-10',
-    tag: '更新',
+    tag: '通知',
     title: '研究院資助：首批期刊論文發表',
     summary: '獲全景研究院資助的四篇期刊論文已發表，其中兩篇的作者含研究院成員。新設“資助”欄目列示獲資助成果。',
     body: [
@@ -244,13 +244,13 @@ const zhTw: Announcement[] = [
   },
   {
     slug: 'new-members-2026-10',
-    category: 'update',
+    category: 'notice',
     date: '2026-10-10',
-    tag: '更新',
+    tag: '通知',
     title: '新任研究員與副研究員加入研究院',
     summary: 'Dr. Sebastian Lenz 已加入研究院擔任研究員，Dr. Yanlin Feng、Jiahong Ao、Xiaoyue Yan 和 Dr. Jiale Li 已加入擔任副研究員。',
     body: [
-      '全景研究院歡迎 Dr. Sebastian Lenz 擔任研究員，其研究方向爲藝術理論與美學、文化哲學、社會理論與文化社會學。',
+      '全景研究院歡迎 Dr. Sebastian Lenz 擔任研究員，其研究方向為藝術理論與美學、文化哲學、社會理論與文化社會學。',
       '研究院同時歡迎四位副研究員：Dr. Yanlin Feng（古典音樂研究；聲樂藝術與演唱實踐）、Jiahong Ao 與 Xiaoyue Yan（廣州應用科技學院音樂學院；分別從事音樂分析與音樂教育方向研究）、Dr. Jiale Li（聲樂表演與教學；歌劇研究）。',
       '各位學者的簡介已列於“研究員”和“副研究員”頁面。研究院繼續滾動接受申請。',
     ],
@@ -264,8 +264,8 @@ const zhTw: Announcement[] = [
     title: '研究院章程 1.2 版生效',
     summary: '研究院章程 1.2 版已於 2026 年 10 月 10 日生效，歷史版本仍可在“章程版本歷史”頁面公開查閱。',
     body: [
-      '全景研究院宣佈，研究院章程 1.2 版已於 2026 年 10 月 10 日生效。',
-      '1.2 版更新了研究中心名單，增列現行學者類別與協調員設置、期刊論文及會員計劃，明確版權、內部文件和保護期，並增加任命、研究不端處理、利益衝突、個人信息、生成式人工智能、語言版本及機構延續等規定，相關治理政策已同步調整。',
+      '全景研究院宣布，研究院章程 1.2 版已於 2026 年 10 月 10 日生效。',
+      '1.2 版更新了研究中心名單，增列現行學者類別與協調員設置、期刊論文及會員計劃，明確版權、內部文件和保護期，並增加任命、研究不端處理、利益衝突、個人信息、生成式人工智慧、語言版本及機構延續等規定，相關治理政策已同步調整。',
       '章程及其歷史版本（1.0 版和 1.1 版）可在“章程版本歷史”頁面查閱。',
     ],
     cta: { label: '查看章程版本歷史', href: '/zh-tw/charter/version-history' },

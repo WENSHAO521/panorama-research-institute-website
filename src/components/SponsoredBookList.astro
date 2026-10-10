@@ -38,7 +38,27 @@ const c = copy[lang];
     </div>
     <div style="text-align:right;">
       <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:16px;">{b.year}</div>
-      {b.url && <a href={b.url} target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:12px;padding:7px 14px;">{c.view} &rarr;</a>}
+      {b.url && <a href={b.url} target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:12px;padding:7px 14px;" aria-label={`${c.view}: ${b.title}`}>{c.view} &rarr;</a>}
     </div>
   </div>
 ))}
+
+<style>
+  .publications-empty {
+    border: 1px dashed var(--border-light);
+    background: var(--bg-white);
+    padding: 28px 32px;
+  }
+  .publications-empty-title {
+    font-family: var(--font-serif);
+    font-size: 19px;
+    color: var(--text-main);
+    margin-bottom: 8px;
+  }
+  .publications-empty p {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+</style>

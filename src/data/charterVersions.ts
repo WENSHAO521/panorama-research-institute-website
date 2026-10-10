@@ -26,9 +26,9 @@ export const charterVersions: CharterVersion[] = [
       'zh-tw': '更新研究中心名單；增列學者類別、協調員設置、期刊論文及會員計劃；明確版權、內部文件和保護期；增加任命、研究不端公正處理、利益衝突、個人資訊、生成式人工智慧、語言版本、歷史版本公開存檔及機構延續等規定；並使修訂程序及附屬治理文件與章程保持一致。',
     },
     note: {
-      en: 'Editorial standardization (10 October 2026): spelling and terminology were standardized across the Charter and its Chinese versions (for example, American spelling and consistent terms for affiliated scholars and programs). No provision was changed in meaning.',
-      'zh-cn': '编辑性统一（2026-10-10）：统一了章程各语言版本的拼写与用词（例如美式拼写，以及“隶属学者”“计划”等术语），未改变任何条款的含义。',
-      'zh-tw': '編輯性統一（2026-10-10）：統一了章程各語言版本的拼寫與用詞（例如美式拼寫，以及“隸屬學者”“計劃”等術語），未改變任何條款的含義。',
+      en: 'Corrections (10 October 2026): termination of affiliation for misconduct now follows Article 13; journal articles are excluded from the blanket CC BY and open access rules in Articles 11 and 17; confidentiality duties limit, rather than authorize, disclosure of internal documents; and protection-period agreements are made by the Group for the Institute\'s use. Spelling and terminology were also standardized across language versions.',
+      'zh-cn': '更正说明（2026-10-10）：研究不端导致的隶属关系终止依第 13 条办理；第 11 条和第 17 条的开放获取与 CC BY 规定不适用于期刊论文；保密义务限制而非授权内部文件的公开；保护期协议由集团（供本院使用）订立。同时统一了各语言版本的拼写与用词。',
+      'zh-tw': '更正說明（2026-10-10）：研究不端導致的隸屬關係終止依第 13 條辦理；第 11 條和第 17 條的開放取用與 CC BY 規定不適用於期刊論文；保密義務限制而非授權內部文件的公開；保護期協議由集團（供本院使用）訂立。同時統一了各語言版本的拼寫與用詞。',
     },
     pdf: { en: live('en'), 'zh-cn': live('cn'), 'zh-tw': live('cn-tw') },
   },

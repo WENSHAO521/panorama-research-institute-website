@@ -12,6 +12,7 @@ const copy: Record<Lang, { membersTitle: string; sponsoredTitle: string; sponsor
 interface Props { lang?: Lang; membersOnly?: boolean; sponsoredOnly?: boolean; grouped?: boolean; }
 const { lang = 'en', membersOnly = false, sponsoredOnly = false, grouped = false } = Astro.props;
 const c = copy[lang];
+const typeLabel = lang === 'en' ? 'Journal Article' : lang === 'zh-cn' ? '期刊论文' : '期刊論文';
 const members = journalArticles.filter((a) => a.instituteAuthors);
 const sponsored = journalArticles.filter((a) => !a.instituteAuthors);
 const articles = membersOnly ? members : sponsoredOnly ? sponsored : journalArticles;
@@ -27,9 +28,9 @@ const groups = grouped
   <div style="margin-bottom:40px;">
     {g.title && <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:16px;font-weight:400;">{g.title}</h2>}
     {g.items.map((a) => (
-  <div class="publication-item">
+  <div class="publication-item" data-type={typeLabel}>
     <div>
-      <div class="pub-type">{lang === 'en' ? 'Journal Article' : lang === 'zh-cn' ? '期刊论文' : '期刊論文'}</div>
+      <div class="pub-type">{typeLabel}</div>
       <div class="pub-tags" style="margin-top:8px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;">
         <span class="tag tag-active" style="font-size:11px;">{c.sponsored}</span>
         {a.instituteAuthors && <span class="tag tag-steel" style="font-size:11px;">{c.members}</span>}
@@ -43,7 +44,7 @@ const groups = grouped
     </div>
     <div style="text-align:right;">
       <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:16px;">{a.year}</div>
-      <a href={a.url} target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:12px;padding:7px 14px;">{c.view} &rarr;</a>
+      <a href={a.url} target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:12px;padding:7px 14px;" aria-label={`${c.view}: ${a.title}`}>{c.view} &rarr;</a>
     </div>
   </div>
     ))}

@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
 import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+import FormPrivacyNotice from '../../../components/FormPrivacyNotice.astro';
 import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.astro';
 
 const tiers = [
@@ -531,6 +532,7 @@ const formFields = [
           <input type="checkbox" name="membership_policy_agreement" value="confirmed" required />
           <span>我已阅读并同意全景研究院学术会员计划的会员政策、费用说明、退款政策、行为规范及重要声明。</span>
         </label>
+        <FormPrivacyNotice />
         <button type="submit" class="btn btn-primary">提交申请</button>
       </form>
     </div>

@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
 import FormSubmitFields from '../../../components/FormSubmitFields.astro';
+import FormPrivacyNotice from '../../../components/FormPrivacyNotice.astro';
 import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.astro';
 const lang = Astro.currentLocale ?? 'en';
 ---
@@ -106,6 +107,7 @@ const lang = Astro.currentLocale ?? 'en';
               <label for="rf-consent" style="font-size:13.5px;color:var(--text-secondary);line-height:1.6;">本人已閱讀並理解研究院研究員期望，並確認所提供資訊準確。</label>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
+              <FormPrivacyNotice />
               <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">提交申請</button>
             </div>
           </form>

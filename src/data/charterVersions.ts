@@ -19,9 +19,9 @@ export const charterVersions: CharterVersion[] = [
     effective: { en: '2026-10-10', 'zh-cn': '2026-10-10', 'zh-tw': '2026-10-10' },
     current: true,
     summary: {
-      en: 'Updates the list of Research Centers; adds the categories of scholarly affiliation, coordinator roles, journal articles, and the Membership Program; clarifies copyright, internal documents, and protection periods; adds provisions on appointments, impartial handling of misconduct, conflicts of interest, personal information, generative AI, language versions, and institutional continuity; and aligns the amendment procedure and subsidiary governance documents with the Charter.',
-      'zh-cn': '更新研究中心名单；增列学者类别、协调员设置、期刊论文及会员计划；明确版权、内部文件和保护期；增加任命、研究不端公正处理、利益冲突、个人信息、生成式人工智能、语言版本及机构延续等规定；并使修订程序及附属治理文件与章程保持一致。',
-      'zh-tw': '更新研究中心名單；增列學者類別、協調員設置、期刊論文及會員計劃；明確版權、內部文件和保護期；增加任命、研究不端公正處理、利益衝突、個人資訊、生成式人工智慧、語言版本及機構延續等規定；並使修訂程序及附屬治理文件與章程保持一致。',
+      en: 'Updates the list of Research Centers; adds the categories of scholarly affiliation, coordinator roles, journal articles, and the Membership Program; clarifies copyright, internal documents, and protection periods; adds provisions on appointments, impartial handling of misconduct, conflicts of interest, personal information, generative AI, language versions, public archiving of superseded versions, and institutional continuity; and aligns the amendment procedure and subsidiary governance documents with the Charter.',
+      'zh-cn': '更新研究中心名单；增列学者类别、协调员设置、期刊论文及会员计划；明确版权、内部文件和保护期；增加任命、研究不端公正处理、利益冲突、个人信息、生成式人工智能、语言版本、历史版本公开存档及机构延续等规定；并使修订程序及附属治理文件与章程保持一致。',
+      'zh-tw': '更新研究中心名單；增列學者類別、協調員設置、期刊論文及會員計劃；明確版權、內部文件和保護期；增加任命、研究不端公正處理、利益衝突、個人資訊、生成式人工智慧、語言版本、歷史版本公開存檔及機構延續等規定；並使修訂程序及附屬治理文件與章程保持一致。',
     },
     pdf: { en: live('en'), 'zh-cn': live('cn'), 'zh-tw': live('cn-tw') },
   },

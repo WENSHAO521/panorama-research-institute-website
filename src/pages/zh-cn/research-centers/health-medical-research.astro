@@ -1,6 +1,8 @@
 ---
+import { countForCenter } from '../../../data/journalArticles';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
+const pubCount = countForCenter('health-medical-research');
 ---
 <BaseLayout title="健康与医学研究中心" description="专注于心理健康、精神病学、公共卫生与临床研究的研究中心。">
   <PageHero
@@ -22,7 +24,7 @@ import PageHero from '../../../components/PageHero.astro';
               { label: "已设立",     value: "2026" },
               { label: "研究领域",   value: "健康与医学研究" },
               { label: "进行中的项目", value: "规划中" },
-              { label: "出版成果",    value: "2 篇期刊论文", href: "/zh-cn/publications/journal-articles" },
+              { label: "出版成果",    value: pubCount > 0 ? `${pubCount} 篇期刊论文` : "即将发布", href: pubCount > 0 ? "/zh-cn/publications/journal-articles" : undefined },
               { label: "联系",         value: "research@panorama-sg.com" },
             ].map((item) => (
               <div>

@@ -1,6 +1,8 @@
 ---
+import { countForCenter } from '../../data/journalArticles';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+const pubCount = countForCenter('arts-culture-embodiment');
 ---
 <BaseLayout title="Center for Arts, Culture and Embodiment" description="Research center focused on music, dance, cultural studies, embodied knowledge, performance, and creative practice.">
   <PageHero
@@ -22,7 +24,7 @@ import PageHero from '../../components/PageHero.astro';
               { label: "Established",     value: "2026" },
               { label: "Research Area",   value: "Arts, Culture and Embodiment" },
               { label: "Active Projects", value: "In development" },
-              { label: "Publications",    value: "1 journal article", href: "/publications/journal-articles" },
+              { label: "Publications",    value: pubCount > 0 ? `${pubCount} journal article${pubCount === 1 ? '' : 's'}` : "Forthcoming", href: pubCount > 0 ? "/publications/journal-articles" : undefined },
               { label: "Contact",         value: "research@panorama-sg.com" },
             ].map((item) => (
               <div>

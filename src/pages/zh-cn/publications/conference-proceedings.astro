@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import PublicationsEmpty from '../../../components/PublicationsEmpty.astro';
+---
+<BaseLayout title="会议论文集" description="全景研究院组织或联合组织的学术活动的记录与论文集。">
+  <PageHero
+    title="会议论文集"
+    description="全景研究院组织或联合组织的会议、研讨会和工作坊的记录与论文集，适用时予以出版。"
+    breadcrumbs={[{ label: "出版成果", href: "/zh-cn/publications" }, { label: "会议论文集" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;" class="stack-mobile">
+        <div>
+          <div class="section-label">系列信息</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label: "形式", value: "论文集或活动记录" },
+              { label: "来源", value: "研究院组织或联合组织的活动" },
+              { label: "评审", value: "依各活动征稿启事所定" },
+              { label: "获取方式", value: "开放获取，但受保护期约束的除外" },
+              { label: "DOI", value: "已注册（Crossref）" },
+              { label: "编制", value: "学术活动事务部" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/zh-cn/events" class="btn btn-primary" style="width:100%;justify-content:center;">学术活动</a>
+            <a href="/zh-cn/publications" class="btn btn-secondary" style="width:100%;justify-content:center;">全部出版成果</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">关于会议论文集</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            会议论文集汇集研究院组织或联合组织的学术活动（包括会议、研讨会和工作坊）的论文、摘要和记录，适用时由学术活动事务部编制，该部门负责活动记录和论文集的编制。
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            论文集依研究院的开放获取规则发布并获得 DOI。依章程第 17 条已书面约定保护期的，论文集在保护期届满后公开。
+          </p>
+          <PublicationsEmpty lang="zh-cn" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

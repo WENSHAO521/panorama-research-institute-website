@@ -15,10 +15,10 @@ const announcements = getAnnouncements(lang).slice(0, 3);
 
 const homeFrameworkUnits = [
   { unit: "Research Centers",              role: "Specialized academic units" },
-  { unit: "Research Projects",             role: "Institute-supported initiatives" },
+  { unit: "Project Teams",                role: "Institute-supported initiatives" },
   { unit: "Publications Unit",             role: "Reports, papers, briefs" },
-  { unit: "Academic Events",               role: "Conferences, seminars, workshops" },
-  { unit: "Scholar & Fellowship Program",  role: "Fellows, visitors, research assistants" },
+  { unit: "Academic Events Unit",          role: "Conferences, seminars, workshops" },
+  { unit: "Scholar and Fellowship Program",  role: "Fellows, visitors, research assistants" },
   { unit: "Collaboration Office",          role: "Partnerships, proposals, MoUs" },
 ];
 import PublicationsEmpty from '../components/PublicationsEmpty.astro';
@@ -164,7 +164,7 @@ import EventsEmpty from '../components/EventsEmpty.astro';
           A Research Institute within Panorama Scholarly Group
         </h2>
         <p style="font-size:15.5px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;">
-          Panorama Research Institute (PRI) is a research institute established by Panorama Scholarly Group (PSG). The Institute operates within PSG's overall governance, legal, and administrative framework while maintaining its own academic governance, research programmes, research centres, scholarly appointments, publications, and institutional identity. PRI exercises independent academic judgment in research, publication, and scholarly activities. PSG serves as its parent organization and legal and administrative entity. PRI is not a separate legal entity.
+          Panorama Research Institute (PRI) is a research institute established by Panorama Scholarly Group (PSG). The Institute operates within PSG's overall governance, legal, and administrative framework while maintaining its own academic governance, research programs, research centers, scholarly appointments, publications, and institutional identity. PRI exercises independent academic judgment in research, publication, and scholarly activities. PSG serves as its parent organization and legal and administrative entity. PRI is not a separate legal entity.
         </p>
       </div>
     </div>
@@ -215,7 +215,7 @@ import EventsEmpty from '../components/EventsEmpty.astro';
     <div style="margin-bottom:56px;">
       <h2 class="section-title">Research Areas</h2>
       <p class="section-desc">
-        The Institute focuses on research fields that connect scholarly communication, journal evaluation, public policy, education, technology, and cultural studies.
+        The Institute focuses on research fields that connect scholarly communication, journal evaluation, public policy, education, technology, cultural studies, and health.
       </p>
     </div>
     <div class="areas-grid">
@@ -345,11 +345,11 @@ import EventsEmpty from '../components/EventsEmpty.astro';
         {[
           { label: "Institute Charter",              href: "/charter" },
           { label: "Governance Rules",               href: "/governance/rules" },
-          { label: "Research Ethics",                href: "/governance/research-ethics" },
-          { label: "Academic Independence Statement",href: "/governance/academic-independence" },
+          { label: "Research Ethics Policy",                href: "/governance/research-ethics" },
+          { label: "Academic Independence Policy",href: "/governance/academic-independence" },
           { label: "Conflict of Interest Policy",    href: "/governance/conflict-of-interest" },
-          { label: "Publication & Report Policy",    href: "/governance/publication-report-policy" },
-          { label: "Data & Documentation Policy",    href: "/governance/data-documentation-policy" },
+          { label: "Publication and Reporting Policy",    href: "/governance/publication-report-policy" },
+          { label: "Data and Documentation Policy",    href: "/governance/data-documentation-policy" },
         ].map((item) => (
           <a href={item.href} style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border-light);font-size:14.5px;color:var(--text-main);transition:color 0.15s;font-family:var(--font-sans);">
             {item.label}

@@ -4,11 +4,11 @@ import PageHero from '../../../components/PageHero.astro';
 import FormSubmitFields from '../../../components/FormSubmitFields.astro';
 import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.astro';
 ---
-<BaseLayout title="本科生研究实习生申请" description="申请全景研究院本科生研究实习生项目。">
+<BaseLayout title="本科研究实习生申请" description="申请全景研究院本科研究实习生计划。">
   <PageHero
-    title="本科生研究实习生申请"
-    description="申请加入全景研究院，成为本科生研究实习生。面向对研究院研究领域有真实兴趣的在读本科生开放。"
-    breadcrumbs={[{ label: "学术合作", href: "/zh-cn/collaboration" }, { label: "本科生研究实习生申请" }]}
+    title="本科研究实习生申请"
+    description="申请加入全景研究院，成为本科研究实习生。面向对研究院研究领域有真实兴趣的在读本科生开放。"
+    breadcrumbs={[{ label: "学术合作", href: "/zh-cn/collaboration" }, { label: "本科研究实习生申请" }]}
   />
 
   <section class="section" style="background:var(--bg-white);">
@@ -32,17 +32,17 @@ import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.ast
             ))}
           </div>
           <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px;">
-            <a href="/zh-cn/people/undergraduate-research-interns" class="btn btn-secondary" style="width:100%;justify-content:center;">关于本科生研究实习生</a>
+            <a href="/zh-cn/people/undergraduate-research-interns" class="btn btn-secondary" style="width:100%;justify-content:center;">关于本科研究实习生</a>
             <a href="/zh-cn/people/join" class="btn btn-secondary" style="width:100%;justify-content:center;">关于加入研究院</a>
           </div>
         </div>
         <div>
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
-            请使用本表格申请全景研究院本科生研究实习生项目。实习生在研究员和研究中心负责人指导下，协助完成文献综述、数据收集、编辑协助等工作。所有申请均由学者项目协调人及相关研究中心负责人评审。
+            请使用本表格申请全景研究院本科研究实习生计划。实习生在研究员和研究中心主任指导下，协助完成文献综述、数据收集、编辑协助等工作。所有申请均由学者计划协调员及相关研究中心主任评审。
           </p>
 
           <form style="display:flex;flex-direction:column;gap:0;" action="https://formsubmit.co/fellows@panorama-sg.com" method="POST" enctype="multipart/form-data">
-            <FormSubmitFields subject="全景研究院本科生研究实习生申请" source="本科生研究实习生申请表" />
+            <FormSubmitFields subject="全景研究院本科研究实习生申请" source="本科研究实习生申请表" />
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
               {([
                 { label:"姓名",           id:"ug-name",  type:"text",  placeholder:"姓名" },
@@ -70,7 +70,7 @@ import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.ast
               </select>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="ug-motivation" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">申请动机与研究兴趣（200–500 词）</label>
+              <label for="ug-motivation" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">申请动机与研究方向（200–500 词）</label>
               <textarea id="ug-motivation" name="ug-motivation" rows="8" placeholder="请说明您对研究院研究领域的兴趣、申请实习的原因，以及希望从中学习或作出的贡献。" class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">

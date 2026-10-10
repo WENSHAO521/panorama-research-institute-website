@@ -7,11 +7,14 @@ const frameworkUnits = [
   "Research Centers",
   "Project Teams",
   "Publications Unit",
-  "Events Unit",
-  "Scholar Program",
+  "Academic Events Unit",
+  "Scholar and Fellowship Program",
   "Collaboration Office",
   "Research Ethics and Standards Office",
 ];
+import { getRoadmap, roadmapDoneLabel } from '../data/roadmap';
+const roadmap = getRoadmap('en');
+const doneLabel = roadmapDoneLabel['en'];
 ---
 
 <BaseLayout
@@ -31,7 +34,7 @@ const frameworkUnits = [
       <h2 class="section-title">Position within Panorama Scholarly Group</h2>
       <div style="max-width:760px;margin-bottom:48px;">
         <p style="font-size:16.5px;line-height:1.8;color:var(--text-secondary);">
-          Panorama Research Institute is a research institute established by Panorama Scholarly Group, with its own academic governance, research programmes, research centres, scholarly appointments, publications, and institutional identity. It supports the PSG scholarly ecosystem and exercises independent academic judgment within PSG's legal and administrative framework. PSG serves as its parent organization and legal and administrative entity; PRI is not a separate legal entity.
+          Panorama Research Institute is a research institute established by Panorama Scholarly Group, with its own academic governance, research programs, research centers, scholarly appointments, publications, and institutional identity. It supports the PSG scholarly ecosystem and exercises independent academic judgment within PSG's legal and administrative framework. PSG serves as its parent organization and legal and administrative entity; PRI is not a separate legal entity.
         </p>
       </div>
 
@@ -140,22 +143,18 @@ const frameworkUnits = [
       <div class="section-label">Development Roadmap</div>
       <h2 class="section-title">Phased Development</h2>
       <div style="max-width:720px;">
-        {[
-          { phase: "Phase 1", label: "Foundation", year: "2026", items: ["Establish Institute governance and charter", "Launch five core research centers", "Initiate first research projects", "Publish inaugural working papers"] },
-          { phase: "Phase 2", label: "Development", year: "2027", items: ["Expand to six research centers", "Establish scholar and fellowship programs", "Operate and expand the POSI scholarly indexing platform after launch", "Begin annual reports"] },
-          { phase: "Phase 3", label: "Expansion", year: "2028+", items: ["International collaboration networks", "Broader policy advisory activities", "Expanded publication program", "Academic conference series"] },
-        ].map((phase) => (
+        {roadmap.map((phase) => (
           <div style="display:grid;grid-template-columns:120px 1fr;gap:28px;padding:28px 0;border-bottom:1px solid var(--border-light);">
             <div>
               <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{phase.phase}</div>
               <div style="font-size:18px;font-weight:600;color:var(--text-main);font-family:var(--font-sans);">{phase.label}</div>
-              <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);margin-top:4px;">{phase.year}</div>
+              <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);margin-top:4px;">{phase.period}</div>
             </div>
             <div style="padding-top:4px;">
-              {phase.items.map((item) => (
+              {phase.goals.slice(0, 4).map((item) => (
                 <div style="display:flex;gap:10px;padding:6px 0;font-size:14.5px;color:var(--text-secondary);">
                   <span style="color:var(--text-muted);flex-shrink:0;">&#8212;</span>
-                  {item}
+                  <span>{item.text}{item.done && <span class="tag tag-active" style="font-size:10px;margin-left:8px;">{doneLabel}</span>}</span>
                 </div>
               ))}
             </div>

@@ -111,6 +111,7 @@ export const navigation: NavItem[] = [
           { label: "Working Papers",        href: "/publications/working-papers" },
           { label: "Policy Briefs",         href: "/publications/policy-briefs" },
           { label: "Edited Volumes",        href: "/publications/edited-volumes" },
+          { label: "Conference Proceedings", href: "/publications/conference-proceedings" },
           { label: "Annual Reports",        href: "/publications/annual-reports" },
           { label: "Journal Articles",      href: "/publications/journal-articles" },
         ],

@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
+---
+<BaseLayout title="Conference Proceedings" description="Records and proceedings of academic events organized or co-organized by Panorama Research Institute.">
+  <PageHero
+    title="Conference Proceedings"
+    description="Records and proceedings of the conferences, seminars, and workshops organized or co-organized by Panorama Research Institute, published where applicable."
+    breadcrumbs={[{ label: "Publications", href: "/publications" }, { label: "Conference Proceedings" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;" class="stack-mobile">
+        <div>
+          <div class="section-label">About This Series</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+            {[
+              { label: "Format", value: "Proceedings volume or event record" },
+              { label: "Source", value: "Institute-organized or co-organized events" },
+              { label: "Review", value: "As set out in each event's call for papers" },
+              { label: "Access", value: "Open access, subject to any Protection Period" },
+              { label: "DOI", value: "Registered (Crossref)" },
+              { label: "Production", value: "Academic Events Unit" },
+            ].map((item) => (
+              <div>
+                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px;">
+            <a href="/events" class="btn btn-primary" style="width:100%;justify-content:center;">Academic Events</a>
+            <a href="/publications" class="btn btn-secondary" style="width:100%;justify-content:center;">All Publications</a>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">About Conference Proceedings</h2>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
+            Conference proceedings bring together the papers, abstracts, and records of academic events organized or co-organized by the Institute, including conferences, seminars, and workshops. They are produced where applicable by the Academic Events Unit, which is responsible for event records and proceedings.
+          </p>
+          <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
+            Proceedings are published under the Institute's open access terms and receive DOIs. Where a Protection Period has been agreed in writing under Article 17 of the Charter, a proceedings volume is made public when that period ends.
+          </p>
+          <PublicationsEmpty lang="en" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

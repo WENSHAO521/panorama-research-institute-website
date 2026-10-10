@@ -27,6 +27,48 @@ export interface CategoryMeta {
 
 const en: Announcement[] = [
   {
+    slug: 'sponsorship-first-articles-2026',
+    category: 'update',
+    date: '2026-10-10',
+    tag: 'Update',
+    title: 'Institute Sponsorship: First Journal Articles Published',
+    summary: 'Four journal articles supported by Panorama Research Institute sponsorship have been published, two of them with Institute members among the authors. A new Sponsorship section lists sponsored works.',
+    body: [
+      'Four journal articles supported by Panorama Research Institute sponsorship have been published in Panorama journals: two in Health Nexus: Digital Health and Medical AI, one in Resonance: Journal of Global Music Studies, and one in PoliEcoM Administration Review.',
+      'Two of the articles include Institute members among their authors and are listed under Publications. The other two, by scholars and institutions outside the Institute, are listed in the new Sponsorship section, which will also list sponsored books.',
+      'Each sponsorship is recorded by a sponsorship number and disclosed in the article. Sponsorship does not confer authority over editorial decisions or peer review outcomes.',
+    ],
+    cta: { label: 'View Sponsorship', href: '/sponsorship' },
+  },
+  {
+    slug: 'new-members-2026-10',
+    category: 'update',
+    date: '2026-10-10',
+    tag: 'Update',
+    title: 'New Research Fellow and Associate Research Fellows Join the Institute',
+    summary: 'Dr. Sebastian Lenz has joined as a Research Fellow, and Dr. Yanlin Feng, Jiahong Ao, Xiaoyue Yan, and Dr. Jiale Li have joined as Associate Research Fellows.',
+    body: [
+      'Panorama Research Institute welcomes Dr. Sebastian Lenz as a Research Fellow, with research interests in art theory and aesthetics, philosophy of culture, and social theory and cultural sociology.',
+      'The Institute also welcomes four Associate Research Fellows: Dr. Yanlin Feng (classical music studies; vocal music and performance), Jiahong Ao and Xiaoyue Yan (School of Music, Guangzhou College of Applied Science and Technology; music analysis and theory, and music education), and Dr. Jiale Li (vocal performance and pedagogy; opera studies).',
+      'Their profiles are listed on the Research Fellows and Associate Research Fellows pages. The Institute continues to accept applications on a rolling basis.',
+    ],
+    cta: { label: 'Meet the Research Fellows', href: '/people/research-fellows' },
+  },
+  {
+    slug: 'charter-v1-2-effective-2026',
+    category: 'notice',
+    date: '2026-10-10',
+    tag: 'Notice',
+    title: 'Institute Charter Version 1.2 Takes Effect',
+    summary: 'Version 1.2 of the Institute Charter took effect on 10 October 2026. Earlier versions remain publicly available on the Charter Version History page.',
+    body: [
+      'Panorama Research Institute announces that Version 1.2 of the Institute Charter took effect on 10 October 2026.',
+      'Revision 1.2 updates the list of Research Centers; adds the categories of scholarly affiliation and coordinator roles now in use, journal articles, and the Membership Program; clarifies copyright, internal documents, and protection periods; and adds provisions on appointments, the handling of misconduct, conflicts of interest, personal information, generative AI, language versions, and institutional continuity. The related governance policies have been aligned accordingly.',
+      'The Charter and its earlier versions (1.0 and 1.1) are available on the Charter Version History page.',
+    ],
+    cta: { label: 'View Charter Version History', href: '/charter/version-history' },
+  },
+  {
     slug: 'posi-official-launch-2026',
     category: 'notice',
     date: '2026-09-27',
@@ -60,12 +102,12 @@ const en: Announcement[] = [
     date: '2026-08-23',
     tag: 'Recruitment',
     title: 'Now Recruiting: Research Fellows, Associate Research Fellows, and Research Assistants',
-    summary: 'Panorama Research Institute is accepting applications for Research Fellow, Associate Research Fellow, and Research Assistant positions. Application deadline: February 15, 2027.',
+    summary: 'Panorama Research Institute is accepting applications for Research Fellow, Associate Research Fellow, and Research Assistant positions. Applications are accepted on a rolling basis, with no fixed deadline.',
     body: [
       'Panorama Research Institute is currently recruiting for three academic roles: Research Fellow, Associate Research Fellow, and Research Assistant.',
       'Research Fellow positions are open to mid- and senior-career researchers holding a PhD or equivalent qualification. Associate Research Fellow positions are open to doctoral students and early-career researchers. Research Assistant positions are open to Masters or PhD students, or recent graduates with relevant research experience, who support Institute projects under the supervision of a Research Fellow.',
       'All three roles are remote (distributed) positions and do not require relocation.',
-      'Applications for this recruitment round should be submitted by February 15, 2027. Please visit the Join the Institute page for eligibility details and to apply.',
+      'Applications are accepted on a rolling basis, with no fixed deadline. Please visit the Join the Institute page for eligibility details and to apply.',
     ],
     cta: { label: 'View Positions & Apply', href: '/people/join' },
   },
@@ -85,6 +127,48 @@ const en: Announcement[] = [
 ];
 
 const zhCn: Announcement[] = [
+  {
+    slug: 'sponsorship-first-articles-2026',
+    category: 'update',
+    date: '2026-10-10',
+    tag: '更新',
+    title: '研究院资助：首批期刊论文发表',
+    summary: '获全景研究院资助的四篇期刊论文已发表，其中两篇的作者含研究院成员。新设“资助”栏目列示获资助成果。',
+    body: [
+      '获全景研究院资助的四篇期刊论文已在全景期刊发表：两篇发表于 Health Nexus: Digital Health and Medical AI，一篇发表于 Resonance: Journal of Global Music Studies，一篇发表于 PoliEcoM Administration Review。',
+      '其中两篇的作者含研究院成员，列于“出版成果”；另外两篇作者来自研究院以外的学者和机构，列于新设的“资助”栏目，该栏目今后也将列示获资助的图书。',
+      '每项资助均以资助编号记录，并在论文中披露。资助不赋予对编辑决定或同行评审结果的任何权限。',
+    ],
+    cta: { label: '查看资助', href: '/zh-cn/sponsorship' },
+  },
+  {
+    slug: 'new-members-2026-10',
+    category: 'update',
+    date: '2026-10-10',
+    tag: '更新',
+    title: '新任研究员与副研究员加入研究院',
+    summary: 'Dr. Sebastian Lenz 已加入研究院担任研究员，Dr. Yanlin Feng、Jiahong Ao、Xiaoyue Yan 和 Dr. Jiale Li 已加入担任副研究员。',
+    body: [
+      '全景研究院欢迎 Dr. Sebastian Lenz 担任研究员，其研究方向为艺术理论与美学、文化哲学、社会理论与文化社会学。',
+      '研究院同时欢迎四位副研究员：Dr. Yanlin Feng（古典音乐研究；声乐艺术与演唱实践）、Jiahong Ao 与 Xiaoyue Yan（广州应用科技学院音乐学院；分别从事音乐分析与音乐教育方向研究）、Dr. Jiale Li（声乐表演与教学；歌剧研究）。',
+      '各位学者的简介已列于“研究员”和“副研究员”页面。研究院继续滚动接受申请。',
+    ],
+    cta: { label: '查看研究员', href: '/zh-cn/people/research-fellows' },
+  },
+  {
+    slug: 'charter-v1-2-effective-2026',
+    category: 'notice',
+    date: '2026-10-10',
+    tag: '通知',
+    title: '研究院章程 1.2 版生效',
+    summary: '研究院章程 1.2 版已于 2026 年 10 月 10 日生效，历史版本仍可在“章程版本历史”页面公开查阅。',
+    body: [
+      '全景研究院宣布，研究院章程 1.2 版已于 2026 年 10 月 10 日生效。',
+      '1.2 版更新了研究中心名单，增列现行学者类别与协调员设置、期刊论文及会员计划，明确版权、内部文件和保护期，并增加任命、研究不端处理、利益冲突、个人信息、生成式人工智能、语言版本及机构延续等规定，相关治理政策已同步调整。',
+      '章程及其历史版本（1.0 版和 1.1 版）可在“章程版本历史”页面查阅。',
+    ],
+    cta: { label: '查看章程版本历史', href: '/zh-cn/charter/version-history' },
+  },
   {
     slug: 'posi-official-launch-2026',
     category: 'notice',
@@ -119,12 +203,12 @@ const zhCn: Announcement[] = [
     date: '2026-08-23',
     tag: '招募',
     title: '招募研究员、副研究员及研究助理',
-    summary: '全景研究院现正招募研究员、副研究员及研究助理，申请截止日期为 2027 年 2 月 15 日。',
+    summary: '全景研究院现正招募研究员、副研究员及研究助理，采取滚动申请，无固定截止日期。',
     body: [
       '全景研究院目前正在招募三类学术岗位：研究员、副研究员及研究助理。',
       '研究员岗位面向具有博士学位或同等资历的中高级研究人员；副研究员岗位面向博士生及早期职业研究者；研究助理岗位面向硕士/博士研究生或具有相关研究经验的应届毕业生，在研究员指导下参与研究院项目工作。',
       '以上三类岗位均为远程（分布式）工作形式，无需搬迁。',
-      '本轮招募申请截止日期为 2027 年 2 月 15 日。具体资格要求及申请方式请前往"加入研究院"页面查看。',
+      '申请采取滚动方式，无固定截止日期。具体资格要求及申请方式请前往"加入研究院"页面查看。',
     ],
     cta: { label: '查看岗位并申请', href: '/zh-cn/people/join' },
   },
@@ -144,6 +228,48 @@ const zhCn: Announcement[] = [
 ];
 
 const zhTw: Announcement[] = [
+  {
+    slug: 'sponsorship-first-articles-2026',
+    category: 'update',
+    date: '2026-10-10',
+    tag: '更新',
+    title: '研究院資助：首批期刊論文發表',
+    summary: '獲全景研究院資助的四篇期刊論文已發表，其中兩篇的作者含研究院成員。新設“資助”欄目列示獲資助成果。',
+    body: [
+      '獲全景研究院資助的四篇期刊論文已在全景期刊發表：兩篇發表於 Health Nexus: Digital Health and Medical AI，一篇發表於 Resonance: Journal of Global Music Studies，一篇發表於 PoliEcoM Administration Review。',
+      '其中兩篇的作者含研究院成員，列於“出版成果”；另外兩篇作者來自研究院以外的學者和機構，列於新設的“資助”欄目，該欄目今後也將列示獲資助的圖書。',
+      '每項資助均以資助編號記錄，並在論文中披露。資助不賦予對編輯決定或同行評審結果的任何權限。',
+    ],
+    cta: { label: '查看資助', href: '/zh-tw/sponsorship' },
+  },
+  {
+    slug: 'new-members-2026-10',
+    category: 'update',
+    date: '2026-10-10',
+    tag: '更新',
+    title: '新任研究員與副研究員加入研究院',
+    summary: 'Dr. Sebastian Lenz 已加入研究院擔任研究員，Dr. Yanlin Feng、Jiahong Ao、Xiaoyue Yan 和 Dr. Jiale Li 已加入擔任副研究員。',
+    body: [
+      '全景研究院歡迎 Dr. Sebastian Lenz 擔任研究員，其研究方向爲藝術理論與美學、文化哲學、社會理論與文化社會學。',
+      '研究院同時歡迎四位副研究員：Dr. Yanlin Feng（古典音樂研究；聲樂藝術與演唱實踐）、Jiahong Ao 與 Xiaoyue Yan（廣州應用科技學院音樂學院；分別從事音樂分析與音樂教育方向研究）、Dr. Jiale Li（聲樂表演與教學；歌劇研究）。',
+      '各位學者的簡介已列於“研究員”和“副研究員”頁面。研究院繼續滾動接受申請。',
+    ],
+    cta: { label: '查看研究員', href: '/zh-tw/people/research-fellows' },
+  },
+  {
+    slug: 'charter-v1-2-effective-2026',
+    category: 'notice',
+    date: '2026-10-10',
+    tag: '通知',
+    title: '研究院章程 1.2 版生效',
+    summary: '研究院章程 1.2 版已於 2026 年 10 月 10 日生效，歷史版本仍可在“章程版本歷史”頁面公開查閱。',
+    body: [
+      '全景研究院宣佈，研究院章程 1.2 版已於 2026 年 10 月 10 日生效。',
+      '1.2 版更新了研究中心名單，增列現行學者類別與協調員設置、期刊論文及會員計劃，明確版權、內部文件和保護期，並增加任命、研究不端處理、利益衝突、個人信息、生成式人工智能、語言版本及機構延續等規定，相關治理政策已同步調整。',
+      '章程及其歷史版本（1.0 版和 1.1 版）可在“章程版本歷史”頁面查閱。',
+    ],
+    cta: { label: '查看章程版本歷史', href: '/zh-tw/charter/version-history' },
+  },
   {
     slug: 'posi-official-launch-2026',
     category: 'notice',
@@ -178,12 +304,12 @@ const zhTw: Announcement[] = [
     date: '2026-08-23',
     tag: '招募',
     title: '招募研究員、副研究員及研究助理',
-    summary: '全景研究院現正招募研究員、副研究員及研究助理，申請截止日期為 2027 年 2 月 15 日。',
+    summary: '全景研究院現正招募研究員、副研究員及研究助理，採取滾動申請，無固定截止日期。',
     body: [
       '全景研究院目前正在招募三類學術職位：研究員、副研究員及研究助理。',
       '研究員職位面向具有博士學位或同等資歷的中高級研究人員；副研究員職位面向博士生及早期職業研究者；研究助理職位面向碩士/博士研究生或具有相關研究經驗的應屆畢業生，在研究員指導下參與研究院項目工作。',
       '以上三類職位均為遠程（分佈式）工作形式，無需搬遷。',
-      '本輪招募申請截止日期為 2027 年 2 月 15 日。具體資格要求及申請方式請前往「加入研究院」頁面查看。',
+      '申請採取滾動方式，無固定截止日期。具體資格要求及申請方式請前往「加入研究院」頁面查看。',
     ],
     cta: { label: '查看職位並申請', href: '/zh-tw/people/join' },
   },

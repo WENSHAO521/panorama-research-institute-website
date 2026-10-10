@@ -20,7 +20,7 @@ export interface JournalArticle {
 export const journalArticles: JournalArticle[] = [
   {
     title: "Assessing the quality and reliability of short video platforms as sources of information on depression among Chinese adolescents: a comparative study with data from Douyin, Bilibili, WeChat, and Xiaohongshu APPs",
-    authors: "Qilong Wang, Xixi Fan, Xin Qi, Yuyu Zhang, Yayan Wang, Chen Wang, Qian Wu, ChengWen Song, Siheng Ma",
+    authors: "Qilong Wang, Xixi Fan, Xin Qi, Yuyu Zhang, Yayan Wang, Chen Wang, Qian Wu, Chengwen Song, Siheng Ma",
     journal: "Health Nexus: Digital Health and Medical AI",
     volume: "Vol. 1, No. 1", pages: "14–36", year: "2026",
     doi: "10.63802/hndh.V1.I1.356",

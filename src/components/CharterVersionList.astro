@@ -1,0 +1,40 @@
+---
+// Lists every version of the Charter with its PDFs, newest first.
+import type { CharterLang } from '../data/charterVersions';
+import { charterVersions } from '../data/charterVersions';
+
+interface Props { lang?: CharterLang; }
+const { lang = 'en' } = Astro.props;
+
+const copy: Record<CharterLang, { version: string; effective: string; current: string; superseded: string; download: string; online: string; langs: string[] }> = {
+  en: { version: 'Version', effective: 'Effective', current: 'Current', superseded: 'Superseded', download: 'Download PDF', online: 'Read online', langs: ['English', 'Simplified Chinese', 'Traditional Chinese'] },
+  'zh-cn': { version: '版本', effective: '生效', current: '现行', superseded: '已被取代', download: '下载 PDF', online: '在线阅读', langs: ['英文', '简体中文', '繁体中文'] },
+  'zh-tw': { version: '版本', effective: '生效', current: '現行', superseded: '已被取代', download: '下載 PDF', online: '線上閱讀', langs: ['英文', '簡體中文', '繁體中文'] },
+};
+const c = copy[lang];
+const keys: CharterLang[] = ['en', 'zh-cn', 'zh-tw'];
+const prefix = lang === 'en' ? '' : `/${lang}`;
+---
+
+{charterVersions.map((v) => (
+  <div class="publication-item">
+    <div>
+      <div class="pub-type">{c.version} {v.version}</div>
+      <div style="margin-top:8px;">
+        <span class={`tag ${v.current ? 'tag-active' : 'tag-steel'}`} style="font-size:11px;">{v.current ? c.current : c.superseded}</span>
+      </div>
+    </div>
+    <div>
+      <div class="pub-title">{c.effective}: {v.effective[lang]}</div>
+      <div class="pub-meta" style="margin-top:6px;">{v.summary[lang]}</div>
+    </div>
+    <div style="text-align:right;">
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        {v.current && <a href={`${prefix}/charter`} class="btn btn-primary" style="font-size:12px;padding:7px 14px;">{c.online} &rarr;</a>}
+        {keys.map((k, i) => (
+          <a href={v.pdf[k]} class="btn btn-secondary" style="font-size:12px;padding:7px 14px;" download>{c.langs[i]} PDF</a>
+        ))}
+      </div>
+    </div>
+  </div>
+))}

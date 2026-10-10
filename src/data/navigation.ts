@@ -48,6 +48,7 @@ export const navigation: NavItem[] = [
         title: "Governance",
         links: [
           { label: "Institute Charter",               href: "/charter" },
+          { label: "Charter Version History",         href: "/charter/version-history" },
           { label: "Governance Rules",                href: "/governance/rules" },
           { label: "Academic Independence Statement", href: "/governance/academic-independence" },
           { label: "Research Ethics",                 href: "/governance/research-ethics" },

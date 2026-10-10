@@ -5,10 +5,32 @@ interface Props {
   nextPath?: string;
 }
 
+const locale = Astro.currentLocale;
+const policyPath = `${locale === 'zh-cn' || locale === 'zh-tw' ? `/${locale}` : ''}/governance/data-documentation-policy`;
+const notices: Record<string, { before: string; link: string; after: string }> = {
+  en: {
+    before: 'The information you submit is used only to handle your enquiry or application and is processed in accordance with the Institute\'s ',
+    link: 'Data and Documentation Policy',
+    after: '. Panorama Scholarly Group is responsible for its protection. Data of unsuccessful applications is kept for no more than twelve months. To request access to, correction of, or deletion of your information, write to research@panorama-sg.com.',
+  },
+  'zh-cn': {
+    before: '您提交的信息仅用于处理您的咨询或申请，并依照研究院',
+    link: '《数据与文档政策》',
+    after: '处理，全景学术集团负责其保护。未获录用的申请资料保留不超过十二个月。如需查阅、更正或删除您的信息，请发送邮件至 research@panorama-sg.com。',
+  },
+  'zh-tw': {
+    before: '您提交的資訊僅用於處理您的諮詢或申請，並依照研究院',
+    link: '《資料與文件政策》',
+    after: '處理，全景學術集團負責其保護。未獲錄用的申請資料保留不超過十二個月。如需查閱、更正或刪除您的資訊，請寄信至 research@panorama-sg.com。',
+  },
+};
+const notice = notices[locale ?? 'en'] ?? notices.en;
+const localePrefix = locale === 'zh-cn' || locale === 'zh-tw' ? `/${locale}` : '';
+
 const {
   subject,
   source,
-  nextPath = 'https://research.panorama-sg.com/thank-you',
+  nextPath = `https://research.panorama-sg.com${localePrefix}/thank-you`,
 } = Astro.props;
 ---
 
@@ -17,3 +39,4 @@ const {
 <input type="hidden" name="_next" value={nextPath} />
 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 <input type="hidden" name="form_source" value={source} />
+<p style="order:99;margin:4px 0 0;font-size:12.5px;line-height:1.6;color:var(--text-muted);">{notice.before}<a href={policyPath}>{notice.link}</a>{notice.after}</p>

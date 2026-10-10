@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 /* ── Design Tokens ── */
 :root {
@@ -974,4 +973,15 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   .org-unit-card { min-height: 108px; }
   .footer-grid   { grid-template-columns: 1fr; }
   .footer-logo-area { grid-column: span 1; }
+}
+
+/* Multi-column inline grids that must stack on narrow screens */
+@media (max-width: 768px) {
+  .stack-mobile { grid-template-columns: 1fr !important; gap: 32px !important; }
+}
+@media (max-width: 900px) {
+  .stack-mobile-3 { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 600px) {
+  .stack-mobile-3 { grid-template-columns: 1fr !important; }
 }

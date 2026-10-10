@@ -39,7 +39,7 @@ const groups = grouped
       <div class="pub-title">{a.title}</div>
       <div class="pub-meta" style="margin-top:6px;">{a.authors}</div>
       <div class="pub-meta" style="margin-top:4px;font-style:italic;">{a.journal}, {a.volume}, pp. {a.pages}</div>
-      <div class="pub-meta" style="margin-top:4px;">DOI: <a href={`https://doi.org/${a.doi}`} target="_blank" rel="noopener noreferrer">{a.doi}</a> · {c.no} {a.sponsorNo}</div>
+      <div class="pub-meta" style="margin-top:4px;">DOI: {a.doiRegistered === false ? a.doi : <a href={`https://doi.org/${a.doi}`} target="_blank" rel="noopener noreferrer">{a.doi}</a>} · {c.no} {a.sponsorNo}</div>
     </div>
     <div style="text-align:right;">
       <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:16px;">{a.year}</div>

@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { journalArticles } from '../data/journalArticles';
+import { sponsoredBooks } from '../data/sponsoredBooks';
+
+const articleCount = journalArticles.filter((a) => !a.instituteAuthors).length;
+const bookCount = sponsoredBooks.length;
+---
+<BaseLayout title="Sponsorship" description="Works supported by Panorama Research Institute sponsorship, published mainly by scholars and institutions outside the Institute.">
+  <PageHero
+    title="Sponsorship"
+    description="Works supported by Panorama Research Institute sponsorship, published mainly by scholars and institutions outside the Institute."
+    breadcrumbs={[{ label: "Sponsorship" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:760px;margin-bottom:40px;">
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+          The Institute sponsors scholarly works, including journal articles and books, by scholars and institutions beyond its own membership. Each sponsorship is recorded by a sponsorship number and disclosed in the work. Sponsorship supports the publication of a work but does not confer authority over its editorial decisions or peer review outcomes. Works by Institute members are listed under Publications.
+        </p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;">
+        <a href="/sponsorship/journal-articles" style="display:block;padding:28px;border:1px solid var(--border-light);background:var(--bg-main);text-decoration:none;">
+          <div style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">Journal Articles</div>
+          <div style="font-size:14.5px;color:var(--text-secondary);">{articleCount > 0 ? `${articleCount} sponsored article${articleCount === 1 ? '' : 's'}` : "None yet"}</div>
+        </a>
+        <a href="/sponsorship/books" style="display:block;padding:28px;border:1px solid var(--border-light);background:var(--bg-main);text-decoration:none;">
+          <div style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">Books</div>
+          <div style="font-size:14.5px;color:var(--text-secondary);">{bookCount > 0 ? `${bookCount} sponsored book${bookCount === 1 ? '' : 's'}` : "None yet"}</div>
+        </a>
+        <a href="/publications" style="display:block;padding:28px;border:1px solid var(--border-light);background:var(--bg-main);text-decoration:none;">
+          <div style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">Institute members' own work</div>
+          <div style="font-size:14.5px;color:var(--text-secondary);">View Publications &rarr;</div>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

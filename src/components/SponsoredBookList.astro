@@ -1,0 +1,44 @@
+---
+// Lists books supported by Institute sponsorship, localized by `lang`.
+import type { Lang } from '../i18n/utils';
+import { sponsoredBooks } from '../data/sponsoredBooks';
+
+interface Props { lang?: Lang; }
+const { lang = 'en' } = Astro.props;
+
+const copy: Record<Lang, { type: string; sponsored: string; no: string; view: string; emptyTitle: string; emptyBody: string }> = {
+  en: { type: 'Book', sponsored: 'Sponsored by the Institute', no: 'Sponsorship No.', view: 'View Book', emptyTitle: 'No sponsored books yet', emptyBody: 'Books supported by Institute sponsorship will be listed here, with their ISBN and DOI, once they are published.' },
+  'zh-cn': { type: '图书', sponsored: '研究院资助', no: '资助编号', view: '查看图书', emptyTitle: '暂无获资助图书', emptyBody: '获研究院资助的图书出版后，将在此列出，并附 ISBN 和 DOI。' },
+  'zh-tw': { type: '圖書', sponsored: '研究院資助', no: '資助編號', view: '查看圖書', emptyTitle: '暫無獲資助圖書', emptyBody: '獲研究院資助的圖書出版後，將在此列出，並附 ISBN 和 DOI。' },
+};
+const c = copy[lang];
+---
+
+{sponsoredBooks.length === 0 && (
+  <div class="publications-empty">
+    <div class="publications-empty-title">{c.emptyTitle}</div>
+    <p>{c.emptyBody}</p>
+  </div>
+)}
+{sponsoredBooks.map((b) => (
+  <div class="publication-item">
+    <div>
+      <div class="pub-type">{c.type}</div>
+      <div style="margin-top:8px;"><span class="tag tag-active" style="font-size:11px;">{c.sponsored}</span></div>
+    </div>
+    <div>
+      <div class="pub-title">{b.title}</div>
+      <div class="pub-meta" style="margin-top:6px;">{b.authors}</div>
+      <div class="pub-meta" style="margin-top:4px;font-style:italic;">{b.publisher}</div>
+      <div class="pub-meta" style="margin-top:4px;">
+        {b.isbn && <span>ISBN {b.isbn} · </span>}
+        {b.doi && <span>DOI: <a href={`https://doi.org/${b.doi}`} target="_blank" rel="noopener noreferrer">{b.doi}</a> · </span>}
+        {c.no} {b.sponsorNo}
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:16px;">{b.year}</div>
+      {b.url && <a href={b.url} target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:12px;padding:7px 14px;">{c.view} &rarr;</a>}
+    </div>
+  </div>
+))}

@@ -34,7 +34,7 @@ import JournalArticleList from '../../components/JournalArticleList.astro';
   <!-- Publications List -->
   <section class="section" style="background:var(--bg-main);">
     <div class="container">
-      <JournalArticleList lang="zh-tw" />
+      <JournalArticleList lang="zh-tw" membersOnly />
       {publications.map((pub) => (
         <div class="publication-item" data-type={pub.type}>
           <div>

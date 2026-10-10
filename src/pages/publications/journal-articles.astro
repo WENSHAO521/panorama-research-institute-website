@@ -3,16 +3,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import JournalArticleList from '../../components/JournalArticleList.astro';
 ---
-<BaseLayout title="Journal Articles" description="Journal articles supported by Panorama Research Institute sponsorship, and scholarly work by Institute members.">
+<BaseLayout title="Journal Articles" description="Journal articles by Institute members, published with Institute sponsorship where indicated.">
   <PageHero
     title="Journal Articles"
-    description="Journal articles supported by Panorama Research Institute sponsorship, together with scholarly work by Institute members."
+    description="Journal articles by Institute members, published with Institute sponsorship where indicated. Works sponsored for authors outside the Institute are listed under Sponsorship."
     breadcrumbs={[{ label: "Publications", href: "/publications" }, { label: "Journal Articles" }]}
   />
 
   <section class="section" style="background:var(--bg-main);">
     <div class="container">
-      <JournalArticleList lang="en" />
+      <JournalArticleList lang="en" membersOnly />
     </div>
   </section>
 </BaseLayout>

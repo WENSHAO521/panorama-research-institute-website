@@ -22,6 +22,9 @@ const homeFrameworkUnits = [
   { unit: "Collaboration Office",          role: "Partnerships, proposals, MoUs" },
 ];
 import PublicationsEmpty from '../components/PublicationsEmpty.astro';
+import JournalArticleList from '../components/JournalArticleList.astro';
+import { journalArticles } from '../data/journalArticles';
+const hasMemberArticles = journalArticles.some((a) => a.instituteAuthors);
 import EventsEmpty from '../components/EventsEmpty.astro';
 ---
 
@@ -305,7 +308,8 @@ import EventsEmpty from '../components/EventsEmpty.astro';
     </div>
 
     <div>
-      {featuredPublications.length === 0 && <PublicationsEmpty lang="en" />}
+      {featuredPublications.length === 0 && !hasMemberArticles && <PublicationsEmpty lang="en" />}
+      <JournalArticleList lang="en" membersOnly />
       {featuredPublications.map((pub) => (
         <div class="publication-item">
           <div class="pub-type">{pub.type}</div>

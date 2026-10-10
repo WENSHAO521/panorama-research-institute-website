@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import SponsoredBookList from '../../../components/SponsoredBookList.astro';
+---
+<BaseLayout title="資助圖書" description="獲全景研究院資助的圖書，作者主要來自研究院以外的學者和機構。">
+  <PageHero
+    title="資助圖書"
+    description="獲全景研究院資助的圖書，作者主要來自研究院以外的學者和機構。"
+    breadcrumbs={[{ label: "資助", href: "/zh-tw/sponsorship" }, { label: "資助圖書" }]}
+  />
+
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <SponsoredBookList lang="zh-tw" />
+    </div>
+  </section>
+</BaseLayout>

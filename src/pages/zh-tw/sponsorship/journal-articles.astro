@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import JournalArticleList from '../../../components/JournalArticleList.astro';
+---
+<BaseLayout title="贊助期刊論文" description="獲全景研究院贊助的期刊論文，作者主要來自研究院以外的學者和機構。">
+  <PageHero
+    title="贊助期刊論文"
+    description="獲全景研究院贊助的期刊論文，作者主要來自研究院以外的學者和機構。"
+    breadcrumbs={[{ label: "贊助", href: "/zh-tw/sponsorship" }, { label: "贊助期刊論文" }]}
+  />
+
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <JournalArticleList lang="zh-tw" sponsoredOnly />
+    </div>
+  </section>
+</BaseLayout>

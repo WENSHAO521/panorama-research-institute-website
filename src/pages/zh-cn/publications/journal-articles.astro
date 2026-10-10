@@ -3,16 +3,16 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
 import JournalArticleList from '../../../components/JournalArticleList.astro';
 ---
-<BaseLayout title="期刊论文" description="获全景研究院资助的期刊论文，以及研究院成员的学术成果。">
+<BaseLayout title="期刊论文" description="研究院成员的期刊论文，部分获研究院赞助。">
   <PageHero
     title="期刊论文"
-    description="汇集获全景研究院资助的期刊论文，以及研究院成员的学术成果。"
+    description="研究院成员的期刊论文，部分获研究院赞助。研究院赞助的、作者主要来自研究院以外的成果，列于“赞助”。"
     breadcrumbs={[{ label: "出版成果", href: "/zh-cn/publications" }, { label: "期刊论文" }]}
   />
 
   <section class="section" style="background:var(--bg-main);">
     <div class="container">
-      <JournalArticleList lang="zh-cn" grouped />
+      <JournalArticleList lang="zh-cn" membersOnly />
     </div>
   </section>
 </BaseLayout>

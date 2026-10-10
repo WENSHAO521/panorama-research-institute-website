@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { journalArticles } from '../../data/journalArticles';
+import { sponsoredBooks } from '../../data/sponsoredBooks';
+
+const articleCount = journalArticles.filter((a) => !a.instituteAuthors).length;
+const bookCount = sponsoredBooks.length;
+---
+<BaseLayout title="贊助" description="獲全景研究院贊助的成果，作者主要來自研究院以外的學者和機構。">
+  <PageHero
+    title="贊助"
+    description="獲全景研究院贊助的成果，作者主要來自研究院以外的學者和機構。"
+    breadcrumbs={[{ label: "贊助" }]}
+  />
+
+  <section class="section" style="background:var(--bg-white);">
+    <div class="container">
+      <div style="max-width:760px;margin-bottom:40px;">
+        <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);">
+          研究院贊助本院成員以外的學者和機構的學術成果，包括期刊論文和圖書。每項贊助均以贊助編號記錄，並在成果中披露。贊助支持成果的出版，但不賦予對其編輯決定或同行評審結果的任何權限。研究院成員的成果列於“出版成果”。
+        </p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;">
+        <a href="/zh-tw/sponsorship/journal-articles" style="display:block;padding:28px;border:1px solid var(--border-light);background:var(--bg-main);text-decoration:none;">
+          <div style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">期刊論文</div>
+          <div style="font-size:14.5px;color:var(--text-secondary);">{articleCount > 0 ? `${articleCount} 篇贊助論文` : "暫無"}</div>
+        </a>
+        <a href="/zh-tw/sponsorship/books" style="display:block;padding:28px;border:1px solid var(--border-light);background:var(--bg-main);text-decoration:none;">
+          <div style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">圖書</div>
+          <div style="font-size:14.5px;color:var(--text-secondary);">{bookCount > 0 ? `${bookCount} 部贊助圖書` : "暫無"}</div>
+        </a>
+        <a href="/zh-tw/publications" style="display:block;padding:28px;border:1px solid var(--border-light);background:var(--bg-main);text-decoration:none;">
+          <div style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:8px;">研究院成員的成果</div>
+          <div style="font-size:14.5px;color:var(--text-secondary);">查看出版成果 &rarr;</div>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

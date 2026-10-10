@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SponsoredBookList from '../../components/SponsoredBookList.astro';
+---
+<BaseLayout title="Sponsored Books" description="Books supported by Panorama Research Institute sponsorship, authored mainly by scholars and institutions outside the Institute.">
+  <PageHero
+    title="Sponsored Books"
+    description="Books supported by Panorama Research Institute sponsorship, authored mainly by scholars and institutions outside the Institute."
+    breadcrumbs={[{ label: "Sponsorship", href: "/sponsorship" }, { label: "Sponsored Books" }]}
+  />
+
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <SponsoredBookList lang="en" />
+    </div>
+  </section>
+</BaseLayout>

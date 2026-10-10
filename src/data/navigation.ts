@@ -139,6 +139,15 @@ export const navigation: NavItem[] = [
     ],
   },
   {
+    label: "Sponsorship",
+    href: "/sponsorship",
+    children: [
+      { label: "Overview",                   href: "/sponsorship" },
+      { label: "Sponsored Journal Articles", href: "/sponsorship/journal-articles" },
+      { label: "Sponsored Books",            href: "/sponsorship/books" },
+    ],
+  },
+  {
     label: "Events",
     href: "/events",
     children: [

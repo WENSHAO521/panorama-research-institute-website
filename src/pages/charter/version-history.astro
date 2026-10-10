@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CharterVersionList from '../../components/CharterVersionList.astro';
+---
+<BaseLayout title="Charter Version History" description="Current and archived versions of the Panorama Research Institute Charter.">
+  <PageHero
+    title="Charter Version History"
+    description="Current and archived versions of the Institute Charter are published here for transparency, in accordance with Article 20. Superseded versions are kept unaltered for reference only; the current version prevails."
+    breadcrumbs={[{ label: "Institute Charter", href: "/charter" }, { label: "Charter Version History" }]}
+  />
+
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <CharterVersionList lang="en" />
+    </div>
+  </section>
+</BaseLayout>

@@ -70,6 +70,7 @@ export const clientTranslations = {
     'Phase 3': '第三阶段',
 
     'Institute Charter': '研究院章程',
+    'Charter Version History': '章程版本历史',
     'Charter': '章程',
     'Governance Rules': '治理规则',
     'Research Ethics': '研究伦理',
@@ -558,6 +559,7 @@ export const clientTranslations = {
     'Phase 3': '第三階段',
 
     'Institute Charter': '研究院章程',
+    'Charter Version History': '章程版本歷史',
     'Charter': '章程',
     'Governance Rules': '治理規則',
     'Research Ethics': '研究倫理',

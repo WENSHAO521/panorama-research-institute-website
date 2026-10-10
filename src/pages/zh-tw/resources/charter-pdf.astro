@@ -41,6 +41,7 @@ const lang = Astro.currentLocale ?? 'en';
             </div>
             <div style="display:flex;gap:10px;margin-top:24px;flex-wrap:wrap;">
               <a href="/zh-tw/charter" class="btn btn-primary">線上閱讀</a>
+              <a href="/zh-tw/charter/version-history" class="btn btn-ghost">版本歷史 &rarr;</a>
               {lang === 'en' && <a href="/documents/panorama-research-institute-charter-en.pdf" class="btn btn-secondary" download>下載英文 PDF</a>}
               {lang === 'zh-cn' && <a href="/documents/panorama-research-institute-charter-cn.pdf" class="btn btn-secondary" download>下載簡體中文 PDF</a>}
               {lang === 'zh-tw' && <a href="/documents/panorama-research-institute-charter-cn-tw.pdf" class="btn btn-secondary" download>下載繁體中文 PDF</a>}

@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import CharterVersionList from '../../../components/CharterVersionList.astro';
+---
+<BaseLayout title="章程版本歷史" description="全景研究院章程的現行版本及歷史版本。">
+  <PageHero
+    title="章程版本歷史"
+    description="依照章程第 20 條，本頁公布研究院章程的現行版本及歷史版本，以保持透明。已被取代的版本原樣存檔，僅供參考，以現行版本為準。"
+    breadcrumbs={[{ label: "研究院章程", href: "/zh-tw/charter" }, { label: "章程版本歷史" }]}
+  />
+
+  <section class="section" style="background:var(--bg-main);">
+    <div class="container">
+      <CharterVersionList lang="zh-tw" />
+    </div>
+  </section>
+</BaseLayout>

@@ -22,12 +22,12 @@ import PageHero from '../../components/PageHero.astro';
               { label: "Established",     value: "2026" },
               { label: "Research Area",   value: "Arts, Culture and Embodiment" },
               { label: "Active Projects", value: "In development" },
-              { label: "Publications",    value: "Forthcoming" },
+              { label: "Publications",    value: "1 journal article", href: "/publications/journal-articles" },
               { label: "Contact",         value: "research@panorama-sg.com" },
             ].map((item) => (
               <div>
                 <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
-                <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
+                <div style="font-size:14.5px;color:var(--text-main);">{item.href ? <a href={item.href}>{item.value}</a> : item.value}</div>
               </div>
             ))}
           </div>

@@ -652,11 +652,6 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   color: var(--pri-footer-muted);
   margin-bottom: 20px;
 }
-.footer-statement {
-  font-size: 12.5px;
-  line-height: 1.65;
-  color: var(--pri-footer-muted);
-}
 .footer-address {
   margin-top: 16px;
   font-style: normal;

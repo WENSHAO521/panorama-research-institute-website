@@ -25,7 +25,6 @@ const href = (path: string) => (lang === 'en' ? path : `/${lang}${path}`);
         <div class="footer-brand-copy">
           <div class="footer-site-name">{t('PANORAMA RESEARCH INSTITUTE')}</div>
           <div class="footer-sub-name">{t('A Research Institute Established by Panorama Scholarly Group')}</div>
-          <p class="footer-statement">{t('Panorama Research Institute is a research institute established by Panorama Scholarly Group, with its own academic governance and institutional identity. PSG serves as its parent organization and legal and administrative entity. PRI is not a separate legal entity.')}</p>
           <address class="footer-address" data-no-translate>
             {site.address.lines.map((line) => <span>{line}</span>)}
             <span>{site.address.city}</span>

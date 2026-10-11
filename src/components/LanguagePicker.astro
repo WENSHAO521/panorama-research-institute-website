@@ -71,9 +71,8 @@ const currentCode = currentLang.code === 'en' ? 'EN' : currentLang.code === 'zh-
   z-index: 240;
 }
 .lang-picker[open] .lang-trigger {
-  border-color: rgba(55, 90, 107, 0.42);
+  border-color: var(--pri-primary);
   background: var(--bg-white);
-  box-shadow: 0 8px 22px rgba(31, 35, 38, 0.06);
 }
 .lang-picker[open] .lang-chevron {
   transform: rotate(225deg);
@@ -85,27 +84,24 @@ const currentCode = currentLang.code === 'en' ? 'EN' : currentLang.code === 'zh-
   gap: 9px;
   min-height: 40px;
   padding: 0 12px;
-  border: 1px solid rgba(31, 35, 38, 0.16);
+  border: 1px solid var(--pri-accent);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.88);
+  background: var(--bg-white);
   color: var(--text-main);
   cursor: pointer;
   list-style: none;
-  transition: border-color 0.15s ease, background 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s ease, background 0.15s ease;
   white-space: nowrap;
 }
 .lang-trigger::-webkit-details-marker {
   display: none;
 }
 .lang-trigger:hover {
-  border-color: rgba(31, 35, 38, 0.34);
+  border-color: var(--pri-primary);
   background: var(--bg-white);
 }
-.lang-trigger:active {
-  transform: translateY(1px);
-}
 .lang-trigger:focus-visible {
-  outline: 2px solid rgba(31, 35, 38, 0.22);
+  outline: 2px solid var(--pri-focus);
   outline-offset: 2px;
 }
 .lang-icon {
@@ -156,7 +152,7 @@ const currentCode = currentLang.code === 'en' ? 'EN' : currentLang.code === 'zh-
   background: var(--bg-white);
   border: 1px solid var(--border-light);
   border-radius: 10px;
-  box-shadow: 0 18px 42px rgba(31, 35, 38, 0.12), 0 4px 12px rgba(31, 35, 38, 0.05);
+  box-shadow: var(--pri-shadow-pop);
 }
 .lang-opt {
   display: flex;
@@ -175,7 +171,7 @@ const currentCode = currentLang.code === 'en' ? 'EN' : currentLang.code === 'zh-
 }
 .lang-opt:hover,
 .lang-active {
-  background: var(--bg-soft);
+  background: var(--pri-hover-wash);
 }
 .lang-code {
   min-width: 24px;
@@ -239,14 +235,13 @@ const currentCode = currentLang.code === 'en' ? 'EN' : currentLang.code === 'zh-
   font-size: 13px;
   font-weight: 600;
   line-height: 1;
-  transition: background 0.12s ease, color 0.12s ease, box-shadow 0.12s ease;
+  transition: background 0.12s ease, color 0.12s ease;
   white-space: nowrap;
 }
 .lang-inline-opt:hover,
 .lang-inline-opt.lang-active {
   background: var(--bg-white);
   color: var(--text-main);
-  box-shadow: 0 1px 3px rgba(31, 35, 38, 0.08);
 }
 .lang-inline-code {
   color: var(--text-muted);

@@ -21,7 +21,7 @@ import PageHero from '../../../components/PageHero.astro';
           { step: "6", title: "解释", body: "研究院院长对章程及治理文件拥有最终解释权。出现歧义时，应优先采用最符合本院使命的解释；如发生冲突，以章程为准，高于任何附属治理文件。解释应予记录，并酌情公布。" },
         ].map((s) => (
           <div style="display:grid;grid-template-columns:48px 1fr;gap:20px;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
-            <div style="font-family:var(--font-mono);font-size:28px;color:var(--border-medium);font-weight:700;line-height:1;">{s.step}</div>
+            <div style="font-family:var(--font-mono);font-size:28px;color:var(--pri-accent);font-weight:700;line-height:1;">{s.step}</div>
             <div>
               <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:12px;font-weight:400;">{s.title}</h2>
               <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>

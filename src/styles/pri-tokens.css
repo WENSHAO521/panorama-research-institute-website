@@ -1,0 +1,174 @@
+/*
+ * PRI Design Tokens — Japanese Academic Minimalism
+ * Single source of truth for Panorama Research Institute colour.
+ * Light is the default; dark follows prefers-color-scheme, and can be
+ * forced with <html data-theme="light|dark">.
+ *
+ * Layer 1: --pri-palette-*  raw 日本の伝統色 (never used directly in components)
+ * Layer 2: --pri-*          semantic roles (use these in new code)
+ * Layer 3: legacy aliases   (--bg-main, --text-main, …) kept so existing
+ *                           pages inherit the system without per-page edits.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ── Layer 1 · Palette ── */
+  --pri-palette-ai-tetsu:     #264A54; /* 藍鉄 */
+  --pri-palette-fukai-ai:     #17353D; /* 深藍 */
+  --pri-palette-unohana:      #F7F7F2; /* 卯の花 */
+  --pri-palette-kinari:       #F3EFE5; /* 生成り */
+  --pri-palette-shironeri:    #FCFBF7; /* 白練 */
+  --pri-palette-rikyu-nezumi: #788676; /* 利休鼠 */
+  --pri-palette-sumi:         #242C2D; /* 墨色 */
+  --pri-palette-muted:        #65706E;
+  --pri-palette-nibi-kin:     #A18656; /* 鈍金 — decorative only */
+  --pri-palette-border:       #DDE2DB;
+
+  /* ── Layer 2 · Semantic roles (light) ── */
+  --pri-primary:        #264A54;
+  --pri-primary-dark:   #17353D;
+  --pri-on-primary:     #FCFBF7;
+
+  --pri-bg:             #F7F7F2;
+  --pri-bg-alt:         #F3EFE5;
+  --pri-bg-sunken:      #E9EBE3;
+  --pri-surface:        #FCFBF7;
+
+  --pri-text:           #242C2D;
+  --pri-text-secondary: #46514F;
+  --pri-text-muted:     #5F6A68;   /* spec #65706E darkened 8% to reach 4.5:1 on 生成り */
+  --pri-text-link:      #264A54;
+
+  --pri-border:         #DDE2DB;
+  --pri-border-strong:  #BCC5BB;
+  --pri-accent:         #788676;   /* borders, rules, markers — not body text */
+  --pri-gold:           #A18656;   /* hairline ornament only — not text */
+
+  --pri-header-bg:      #FCFBF7;
+  --pri-footer-bg:      #17353D;
+  --pri-footer-text:    #F3EFE5;
+  --pri-footer-muted:   #B4C0BC;
+  --pri-footer-border:  rgba(243, 239, 229, 0.18);
+
+  --pri-tag-bg:         #EEF0E8;
+  --pri-tag-primary-bg: #E3EBEA;
+  --pri-tag-primary-fg: #1B3A43;
+
+  --pri-focus:          #264A54;
+  --pri-hover-wash:     #EEF0E8;
+
+  --pri-success:        #36624A;
+  --pri-warning:        #7A5E2C;
+  --pri-danger:         #8A3A32;
+  --pri-danger-wash:    #F6ECE8;
+
+  --pri-overlay:        rgba(36, 44, 45, 0.45);
+  --pri-shadow-pop:     0 6px 18px rgba(23, 53, 61, 0.08);
+
+  /* ── Layer 3 · Legacy aliases ── */
+  --bg-main:    var(--pri-bg);
+  --bg-white:   var(--pri-surface);
+  --bg-soft:    var(--pri-bg-alt);
+  --bg-grey:    var(--pri-bg-sunken);
+  --bg-dark:    var(--pri-footer-bg);
+
+  --text-main:      var(--pri-text);
+  --text-secondary: var(--pri-text-secondary);
+  --text-muted:     var(--pri-text-muted);
+  --text-inverse:   var(--pri-on-primary);
+
+  --border-light:  var(--pri-border);
+  --border-medium: var(--pri-border-strong);
+  --border-dark:   var(--pri-accent);
+
+  --accent-steel: var(--pri-text-link);
+  --accent-red:   var(--pri-danger);
+  --accent-black: var(--pri-primary-dark);
+
+  --success: var(--pri-success);
+  --warning: var(--pri-warning);
+  --danger:  var(--pri-danger);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --pri-primary:        #8FB2B9;
+    --pri-primary-dark:   #A9C6CB;
+    --pri-on-primary:     #0F1B1E;
+
+    --pri-bg:             #0F1A1D;
+    --pri-bg-alt:         #142327;
+    --pri-bg-sunken:      #0B1416;
+    --pri-surface:        #162429;
+
+    --pri-text:           #E9EDE6;
+    --pri-text-secondary: #C3CCC7;
+    --pri-text-muted:     #9AA7A3;
+    --pri-text-link:      #9CBDC3;
+
+    --pri-border:         #2A3B40;
+    --pri-border-strong:  #3F5459;
+    --pri-accent:         #8D9C8B;
+    --pri-gold:           #B79B66;
+
+    --pri-header-bg:      #0F1A1D;
+    --pri-footer-bg:      #0A1315;
+    --pri-footer-text:    #E9EDE6;
+    --pri-footer-muted:   #9AA7A3;
+    --pri-footer-border:  rgba(233, 237, 230, 0.16);
+
+    --pri-tag-bg:         #1B2D32;
+    --pri-tag-primary-bg: #1E3840;
+    --pri-tag-primary-fg: #B8D3D8;
+
+    --pri-focus:          #B8D3D8;
+    --pri-hover-wash:     #1B2D32;
+
+    --pri-success:        #8FC0A0;
+    --pri-warning:        #D2B47A;
+    --pri-danger:         #E3A59C;
+    --pri-danger-wash:    #2C1B1A;
+
+    --pri-overlay:        rgba(0, 0, 0, 0.6);
+    --pri-shadow-pop:     0 6px 18px rgba(0, 0, 0, 0.45);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --pri-primary:        #8FB2B9;
+  --pri-primary-dark:   #A9C6CB;
+  --pri-on-primary:     #0F1B1E;
+  --pri-bg:             #0F1A1D;
+  --pri-bg-alt:         #142327;
+  --pri-bg-sunken:      #0B1416;
+  --pri-surface:        #162429;
+  --pri-text:           #E9EDE6;
+  --pri-text-secondary: #C3CCC7;
+  --pri-text-muted:     #9AA7A3;
+  --pri-text-link:      #9CBDC3;
+  --pri-border:         #2A3B40;
+  --pri-border-strong:  #3F5459;
+  --pri-accent:         #8D9C8B;
+  --pri-gold:           #B79B66;
+  --pri-header-bg:      #0F1A1D;
+  --pri-footer-bg:      #0A1315;
+  --pri-footer-text:    #E9EDE6;
+  --pri-footer-muted:   #9AA7A3;
+  --pri-footer-border:  rgba(233, 237, 230, 0.16);
+  --pri-tag-bg:         #1B2D32;
+  --pri-tag-primary-bg: #1E3840;
+  --pri-tag-primary-fg: #B8D3D8;
+  --pri-focus:          #B8D3D8;
+  --pri-hover-wash:     #1B2D32;
+  --pri-success:        #8FC0A0;
+  --pri-warning:        #D2B47A;
+  --pri-danger:         #E3A59C;
+  --pri-danger-wash:    #2C1B1A;
+  --pri-overlay:        rgba(0, 0, 0, 0.6);
+  --pri-shadow-pop:     0 6px 18px rgba(0, 0, 0, 0.45);
+}

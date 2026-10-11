@@ -5,7 +5,7 @@ interface Props {
 }
 const { variant = 'dark', size = 'md' } = Astro.props;
 const heights   = { sm: '36px', md: '44px', lg: '56px' };
-const src = '/research-institute-logo.svg';
+const src = variant === 'light' ? '/brand/logo-reversed.svg' : '/research-institute-logo.svg';
 ---
 
 <span class={`brand-logo-frame brand-logo-frame-${variant}`} style={`height:${heights[size]};`}>
@@ -29,9 +29,4 @@ const src = '/research-institute-logo.svg';
   width: auto;
   max-width: none;
   transform: translateX(-7px);
-}
-.brand-logo-frame-light .brand-logo-img {
-  filter: invert(1) grayscale(1) brightness(2.2);
-  opacity: 0.92;
-}
-</style>
+}</style>

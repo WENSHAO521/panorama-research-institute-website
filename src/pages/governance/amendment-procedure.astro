@@ -21,7 +21,7 @@ import PageHero from '../../components/PageHero.astro';
           { step: "6", title: "Interpretation", body: "The Institute Director has final interpretive authority over the Charter and governance documents. Where ambiguity arises, the interpretation most consistent with the Institute's mission is preferred, and in the event of a conflict the Charter prevails over any subsidiary governance document. Interpretations are documented and published where appropriate." },
         ].map((s) => (
           <div style="display:grid;grid-template-columns:48px 1fr;gap:20px;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border-light);">
-            <div style="font-family:var(--font-mono);font-size:28px;color:var(--border-medium);font-weight:700;line-height:1;">{s.step}</div>
+            <div style="font-family:var(--font-mono);font-size:28px;color:var(--pri-accent);font-weight:700;line-height:1;">{s.step}</div>
             <div>
               <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:12px;font-weight:400;">{s.title}</h2>
               <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">{s.body}</p>

@@ -31,7 +31,7 @@ const prefix = lang === 'en' ? '' : `/${lang}`;
     </div>
     <div style="text-align:right;">
       <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
-        {v.current && <a href={`${prefix}/charter`} class="btn btn-primary" style="font-size:12px;padding:7px 14px;">{c.online} &rarr;</a>}
+        {v.current && <a href={`${prefix}/charter`} class="btn btn-primary" style="font-size:12px;padding:7px 14px;">{c.online}</a>}
         {keys.map((k, i) => (
           <a href={v.pdf[k]} class="btn btn-secondary" style="font-size:12px;padding:7px 14px;" download>{c.langs[i]} PDF</a>
         ))}

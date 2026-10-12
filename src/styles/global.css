@@ -485,7 +485,6 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   background: var(--pri-hover-wash);
   border-left-color: var(--pri-primary);
 }
-.dropdown-link.external::after { content: ' ↗'; color: var(--text-muted); font-size: 11px; }
 
 /* ── Mega Menu ── */
 .mega-menu {

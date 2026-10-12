@@ -51,7 +51,7 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
         <div style="display:flex;flex-wrap:wrap;gap:12px;">
           <a href="/zh-tw/about"            class="btn btn-primary">了解研究院</a>
           <a href="/zh-tw/research-centers" class="btn btn-secondary">查看研究中心</a>
-          <a href="/zh-tw/charter"          class="btn btn-ghost">閱讀章程 →</a>
+          <a href="/zh-tw/charter"          class="btn btn-ghost">閱讀章程</a>
         </div>
       </div>
 
@@ -144,7 +144,7 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
           <div>
             <h3 class="announcement-title">{item.title}</h3>
             {item.summary && <p class="announcement-desc">{item.summary}</p>}
-            <span class="announcement-link">閱讀更多 &rarr;</span>
+            <span class="announcement-link">閱讀更多</span>
           </div>
         </a>
       ))}
@@ -253,7 +253,7 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
               {center.upcoming && <span class="tag tag-steel">即將開展</span>}
             </div>
           </div>
-          <a href={center.href} class="btn btn-ghost" style="padding-top:0;">查看中心 →</a>
+          <a href={center.href} class="btn btn-ghost" style="padding-top:0;">查看中心</a>
         </div>
       ))}
     </div>
@@ -283,7 +283,7 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
           <h3 class="project-title">{p.title}</h3>
           <p class="project-desc">{p.desc}</p>
           <a href={p.href} style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;font-size:13.5px;font-weight:500;color:var(--accent-steel);font-family:var(--font-sans);">
-            查看項目 →
+            查看項目
           </a>
         </div>
       ))}
@@ -319,7 +319,7 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
           </div>
           <div style="text-align:right;">
             <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px;">{pub.year}</div>
-            <a href="/zh-tw/publications" class="btn btn-ghost" style="font-size:13px;">查看詳情 →</a>
+            <a href="/zh-tw/publications" class="btn btn-ghost" style="font-size:13px;">查看詳情</a>
           </div>
         </div>
       ))}
@@ -353,7 +353,6 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
         ].map((item) => (
           <a href={item.href} style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border-light);font-size:14.5px;color:var(--text-main);transition:color 0.15s;font-family:var(--font-sans);">
             {item.label}
-            <span style="color:var(--text-muted);font-size:13px;">&rarr;</span>
           </a>
         ))}
       </div>
@@ -449,7 +448,7 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
               <div class="platform-card-name">{p.name}</div>
               <div class="platform-card-desc">{p.desc}</div>
             </div>
-            <div class="platform-card-action">訪問 <span aria-hidden="true">&rarr;</span></div>
+            <div class="platform-card-action">訪問</div>
           </div>
         </a>
       ))}

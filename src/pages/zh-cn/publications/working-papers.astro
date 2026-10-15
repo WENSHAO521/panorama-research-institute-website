@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
-import PublicationsEmpty from '../../../components/PublicationsEmpty.astro';
+import WorkingPaperList from '../../../components/WorkingPaperList.astro';
 ---
 <BaseLayout title="工作论文" description="全景研究院工作论文，呈现初步研究发现与学术论点。">
   <PageHero
@@ -42,7 +42,7 @@ import PublicationsEmpty from '../../../components/PublicationsEmpty.astro';
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
             所有工作论文均以开放获取方式发布并获得 DOI。研究院工作论文系列接受隶属研究员、访问学者以及在研究院研究领域内工作的受邀贡献者投稿。
           </p>
-          <PublicationsEmpty lang="zh-cn" />
+          <WorkingPaperList lang="zh-cn" />
         </div>
       </div>
     </div>

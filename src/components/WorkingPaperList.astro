@@ -1,0 +1,38 @@
+---
+// Lists the Institute's working papers, localized by `lang`; shows the empty notice when there are none.
+import type { Lang } from '../i18n/utils';
+import { workingPapers } from '../data/workingPapers';
+import PublicationsEmpty from './PublicationsEmpty.astro';
+
+const copy: Record<Lang, { type: string; view: string }> = {
+  en: { type: 'Working Paper', view: 'View Paper' },
+  'zh-cn': { type: '工作论文', view: '查看论文' },
+  'zh-tw': { type: '工作論文', view: '查看論文' },
+};
+
+interface Props { lang?: Lang; }
+const { lang = 'en' } = Astro.props;
+const c = copy[lang];
+---
+
+{workingPapers.length === 0 ? (
+  <PublicationsEmpty lang={lang} />
+) : (
+  workingPapers.map((p) => (
+    <div class="publication-item" data-type={c.type}>
+      <div>
+        <div class="pub-type">{c.type}</div>
+      </div>
+      <div>
+        <div class="pub-title">{p.title}</div>
+        <div class="pub-meta" style="margin-top:6px;">{p.authors}</div>
+        <div class="pub-meta" style="margin-top:4px;">{p.number} · DOI: {p.doiRegistered === false ? p.doi : <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer">{p.doi}</a>}</div>
+        {p.abstract && <p class="pub-meta" style="margin-top:8px;">{p.abstract}</p>}
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:16px;">{p.date.slice(0, 4)}</div>
+        <a href={p.url} target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:12px;padding:7px 14px;" aria-label={`${c.view}: ${p.title}`}>{c.view}</a>
+      </div>
+    </div>
+  ))
+)}

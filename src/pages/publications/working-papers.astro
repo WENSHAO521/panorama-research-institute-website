@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
-import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
+import WorkingPaperList from '../../components/WorkingPaperList.astro';
 ---
 <BaseLayout title="Working Papers" description="Working papers presenting preliminary research findings and scholarly arguments from Panorama Research Institute.">
   <PageHero
@@ -21,8 +21,7 @@ import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
               { label: "Typical Length", value: "5,000–15,000 words" },
               { label: "Review",         value: "Internal editorial review" },
               { label: "Access",         value: "Open access" },
-              { label: "DOI",            value: "Registered (Crossref)" },
-              { label: "ISSN",           value: "Applied for" },
+              { label: "DOI",            value: "Assigned via Zenodo" },
             ].map((item) => (
               <div>
                 <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
@@ -42,7 +41,7 @@ import PublicationsEmpty from '../../components/PublicationsEmpty.astro';
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
             All working papers are published under open access terms and receive DOIs. The Institute's working paper series is open to submissions from affiliated research fellows, visiting scholars, and invited contributors working within the Institute's research areas.
           </p>
-          <PublicationsEmpty lang="en" />
+          <WorkingPaperList lang="en" />
         </div>
       </div>
     </div>

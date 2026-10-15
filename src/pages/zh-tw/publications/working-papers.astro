@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageHero from '../../../components/PageHero.astro';
-import PublicationsEmpty from '../../../components/PublicationsEmpty.astro';
+import WorkingPaperList from '../../../components/WorkingPaperList.astro';
 ---
 <BaseLayout title="工作論文" description="全景研究院工作論文，呈現初步研究發現與學術論點。">
   <PageHero
@@ -21,8 +21,7 @@ import PublicationsEmpty from '../../../components/PublicationsEmpty.astro';
               { label: "通常篇幅", value: "5,000–15,000 詞" },
               { label: "評審",         value: "內部編輯評審" },
               { label: "取得方式",         value: "開放取用" },
-              { label: "DOI",            value: "已註冊（Crossref）" },
-              { label: "ISSN",           value: "已申請" },
+              { label: "DOI",            value: "透過 Zenodo 分配" },
             ].map((item) => (
               <div>
                 <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
@@ -42,7 +41,7 @@ import PublicationsEmpty from '../../../components/PublicationsEmpty.astro';
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:32px;">
             所有工作論文均以開放取用方式發布並獲得 DOI。研究院工作論文系列接受隸屬研究員、訪問學者以及在研究院研究領域內工作的受邀貢獻者投稿。
           </p>
-          <PublicationsEmpty lang="zh-tw" />
+          <WorkingPaperList lang="zh-tw" />
         </div>
       </div>
     </div>

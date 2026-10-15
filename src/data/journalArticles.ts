@@ -19,6 +19,24 @@ export interface JournalArticle {
 
 export const journalArticles: JournalArticle[] = [
   {
+    title: "From Urban–Rural Antagonism to Urban–Rural Integration: A Contemporary Interpretation of Marx’s Theory of Urban–Rural Relations",
+    authors: "Xinmeng Wang, Junyu Zhu",
+    journal: "Contemporary Review of Political Thought",
+    volume: "Vol. 1", pages: "27–37", year: "2026",
+    doi: "10.63802/cropt.2026.363",
+    url: "https://journals.panorama-sg.com/cropt/article/view/363",
+    sponsorNo: "PSG-PRI-SPN-2026-000024", instituteAuthors: false, centers: [],
+  },
+  {
+    title: "Human Oversight Is Not Enough: Rethinking Accountability in AI-Assisted Clinical Decision-Making",
+    authors: "Yangyi Ren",
+    journal: "Health Nexus: Digital Health and Medical AI",
+    volume: "Vol. 1, No. 1", pages: "61–71", year: "2026",
+    doi: "10.63802/hndh.V1.I1.362",
+    url: "https://journals.panorama-sg.com/hndh/article/view/362",
+    sponsorNo: "PSG-PRI-SPN-2026-000018", instituteAuthors: false, centers: [],
+  },
+  {
     title: "Assessing the quality and reliability of short video platforms as sources of information on depression among Chinese adolescents: a comparative study with data from Douyin, Bilibili, WeChat, and Xiaohongshu APPs",
     authors: "Qilong Wang, Xixi Fan, Xin Qi, Yuyu Zhang, Yayan Wang, Chen Wang, Qian Wu, Chengwen Song, Siheng Ma",
     journal: "Health Nexus: Digital Health and Medical AI",

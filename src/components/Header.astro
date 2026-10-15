@@ -1,6 +1,7 @@
 ---
 import OriginalResearchLogo from './OriginalResearchLogo.astro';
 import LanguagePicker from './LanguagePicker.astro';
+import ThemeToggle from './ThemeToggle.astro';
 import { getNavigation } from '../i18n/navigation';
 import { translate } from '../i18n/dictionary';
 import type { Lang } from '../i18n/utils';
@@ -89,6 +90,7 @@ const currentPath = Astro.url.pathname;
     <div class="header-right">
       <a href={lang === 'en' ? '/contact' : `/${lang}/contact`} class="btn btn-primary">{t('Contact')}</a>
       <LanguagePicker />
+      <ThemeToggle lang={lang} />
       <button class="menu-toggle" aria-label={t('Open menu')} id="menu-toggle" type="button">
         <span></span><span></span><span></span>
       </button>

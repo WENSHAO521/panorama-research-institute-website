@@ -57,11 +57,18 @@ const organizationJsonLd = {
 ---
 
 <!doctype html>
-<html lang={lang === 'zh-cn' ? 'zh-CN' : lang === 'zh-tw' ? 'zh-TW' : 'en'}>
+<html lang={lang === 'zh-cn' ? 'zh-CN' : lang === 'zh-tw' ? 'zh-TW' : 'en'} data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+
+    <script is:inline>
+      try {
+        var savedTheme = localStorage.getItem('pri-theme');
+        if (savedTheme === 'dark' || savedTheme === 'light') document.documentElement.setAttribute('data-theme', savedTheme);
+      } catch (e) {}
+    </script>
 
     <title>{fullTitle}</title>
     <meta name="description" content={resolvedDescription} />
@@ -105,6 +112,14 @@ const organizationJsonLd = {
       document.addEventListener('click', (event) => {
         const target = event.target;
         if (!(target instanceof Element)) return;
+
+        if (target.closest('[data-theme-toggle]')) {
+          const root = document.documentElement;
+          const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', next);
+          try { localStorage.setItem('pri-theme', next); } catch (e) {}
+          return;
+        }
 
         const menuToggle = target.closest('#menu-toggle');
         if (menuToggle) {

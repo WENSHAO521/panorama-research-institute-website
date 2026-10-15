@@ -8,11 +8,12 @@
 // Articles found in either source are merged by DOI and recorded the ones not yet listed in
 // src/data/journalArticles.ts into src/data/journalArticleCandidates.json.
 //
-// Nothing here is shown on the website. A maintainer reviews each candidate,
-// and if the Institute sponsored it, adds it to journalArticles.ts together
-// with the sponsorship number, research center(s) and whether Institute
-// members are among the authors (OAI does not carry that information).
-// Safe to re-run: it only rewrites the candidates file.
+// Each new article's own page is then read: journals list the Institute as a
+// supporting agency ("Panorama Research Institute Sponsorship No.: PSG-PRI-SPN-...").
+// Articles carrying that number are appended to journalArticles.ts automatically
+// (the PR opened by the workflow is the review step); the rest stay in
+// journalArticleCandidates.json for a maintainer to look at.
+// Safe to re-run: it only rewrites those two files.
 
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -38,6 +39,14 @@ const MIN_YEAR = 2026;
 // than by name matters: unrelated organizations are also called "Panorama
 // Research Institute". Can be overridden with the INSTITUTE_ROR_ID env var.
 const INSTITUTE_ROR_ID = process.env.INSTITUTE_ROR_ID ?? '';
+
+// Journals whose research center is known; others get centers: [] and are flagged for review.
+const CENTER_BY_JOURNAL = [
+  [/^Health Nexus/i, 'health-medical-research'],
+  [/^Resonance/i, 'arts-culture-embodiment'],
+  [/^PoliEcoM/i, 'policy-social-research'],
+  [/^AI & Future Society/i, 'ai-future-society'],
+];
 
 const decode = (t) =>
   t.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
@@ -131,19 +140,33 @@ async function fetchCrossref(filter, extra = {}) {
   return out;
 }
 
+// Reads the article page and returns { sponsorNo, instituteAuthors }, or null if
+// the page has no sponsorship number.
+async function fetchSponsorship(url) {
+  const res = await fetch(url, { headers: OAI_HEADERS });
+  if (!res.ok) throw new Error(`${url} -> HTTP ${res.status}`);
+  const html = await res.text();
+  const sponsorNo = html.match(/PSG-PRI-SPN-\d{4}-\d{6}/)?.[0];
+  if (!sponsorNo) return null;
+  const instituteAuthors = [...html.matchAll(/<meta name="citation_author_institution" content="([^"]*)"/g)]
+    .some((m) => /Panorama Research Institute/i.test(decode(m[1])));
+  return { sponsorNo, instituteAuthors };
+}
+
 const curated = await readFile(CURATED_PATH, 'utf8');
 const known = new Set([...curated.matchAll(/doi:\s*"([^"]+)"/g)].map((m) => m[1].toLowerCase()));
 
 let failed = false;
 const byDoi = new Map();
+const inCrossref = new Set();
 try {
-  for (const c of await fetchCrossref(`prefix:${DOI_PREFIX}`)) if (c.title && c.doi) byDoi.set(c.doi.toLowerCase(), c);
+  for (const c of await fetchCrossref(`prefix:${DOI_PREFIX}`)) if (c.title && c.doi) { byDoi.set(c.doi.toLowerCase(), c); inCrossref.add(c.doi.toLowerCase()); }
   const ror = INSTITUTE_ROR_ID.replace(/^https?:\/\/ror\.org\//, '');
   if (ror) {
     // Articles with Institute-affiliated authors, from any publisher.
     for (const c of await fetchCrossref(`ror-id:${ror},from-pub-date:${MIN_YEAR}-01-01`, { matchedByRor: true })) {
       const key = c.doi.toLowerCase();
-      if (c.title && c.doi && !byDoi.has(key)) byDoi.set(key, c);
+      if (c.title && c.doi && !byDoi.has(key)) { byDoi.set(key, c); inCrossref.add(key); }
     }
   }
 } catch (err) {
@@ -167,11 +190,50 @@ if (failed) {
   console.error('Crossref could not be read; leaving journalArticleCandidates.json unchanged.');
   process.exit(1);
 }
-const candidates = [...byDoi.entries()].filter(([doi, c]) => !known.has(doi) && Number(c.year) >= MIN_YEAR).map(([, c]) => c);
-candidates.sort((a, b) => b.published.localeCompare(a.published));
+const fresh = [...byDoi.entries()].filter(([doi, c]) => !known.has(doi) && Number(c.year) >= MIN_YEAR);
+fresh.sort((a, b) => b[1].published.localeCompare(a[1].published));
+
+// Split new articles into sponsored (page shows a sponsorship number) and plain candidates.
+const knownSponsorNos = new Set([...curated.matchAll(/sponsorNo:\s*"([^"]+)"/g)].map((m) => m[1]));
+const sponsored = [];
+const candidates = [];
+for (const [doi, c] of fresh) {
+  let info = null;
+  try {
+    info = c.url ? await fetchSponsorship(c.url) : null;
+  } catch (err) {
+    console.warn(`Could not read article page for sponsorship (${c.doi}): ${err.message}`);
+  }
+  if (info && !knownSponsorNos.has(info.sponsorNo)) {
+    const { matchedByRor, published, ...rest } = c;
+    const center = CENTER_BY_JOURNAL.find(([re]) => re.test(c.journal))?.[1];
+    sponsored.push({ ...rest, ...info, centers: center ? [center] : [], doiRegistered: inCrossref.has(doi) });
+    knownSponsorNos.add(info.sponsorNo);
+  } else {
+    candidates.push(c);
+  }
+}
+sponsored.sort((a, b) => b.sponsorNo.localeCompare(a.sponsorNo));
+
+const entry = (a) => `  {
+    title: ${JSON.stringify(a.title)},
+    authors: ${JSON.stringify(a.authors)},
+    journal: ${JSON.stringify(a.journal)},
+    volume: ${JSON.stringify(a.volume)}, pages: ${JSON.stringify(a.pages)}, year: ${JSON.stringify(a.year)},
+    doi: ${JSON.stringify(a.doi)},
+    url: ${JSON.stringify(a.url)},
+    sponsorNo: ${JSON.stringify(a.sponsorNo)},${a.doiRegistered ? '' : ' doiRegistered: false,'} instituteAuthors: ${a.instituteAuthors}, centers: ${JSON.stringify(a.centers)},
+  },
+`;
+if (sponsored.length) {
+  const marker = 'export const journalArticles: JournalArticle[] = [\n';
+  if (!curated.includes(marker)) throw new Error('journalArticles.ts: array marker not found');
+  await writeFile(CURATED_PATH, curated.replace(marker, marker + sponsored.map(entry).join('')));
+  for (const a of sponsored) console.log(`Added sponsored article ${a.sponsorNo}: ${a.title}${a.centers.length ? '' : ' (research center unknown; set centers)'}`);
+}
 
 let previous = '';
 try { previous = await readFile(OUTPUT_PATH, 'utf8'); } catch {}
 const next = JSON.stringify({ source: BASE_URL, candidates }, null, 2) + '\n';
 if (next !== previous) await writeFile(OUTPUT_PATH, next);
-console.log(`${candidates.length} candidate article(s) not yet in journalArticles.ts.`);
+console.log(`${sponsored.length} sponsored article(s) added to journalArticles.ts; ${candidates.length} other candidate(s) recorded.`);

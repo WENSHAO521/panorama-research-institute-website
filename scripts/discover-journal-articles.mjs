@@ -28,6 +28,8 @@ const OUTPUT_PATH = path.join(DATA_DIR, 'journalArticleCandidates.json');
 const JOURNALS = ['hndh', 'Resonance', 'pemr'];
 const BASE_URL = 'https://journals.panorama-sg.com';
 const DOI_PREFIX = '10.63802';
+// The journals' host answers 403 to the default Node/CI user agent, so OAI requests identify as a browser.
+const OAI_HEADERS = { 'User-Agent': 'Mozilla/5.0 (compatible; PanoramaInstituteBot/1.0; +https://github.com/wenshao521/panorama-research-institute-website)', Accept: 'application/xml,text/xml,*/*' };
 // The Institute was established in 2026; earlier articles cannot be Institute-sponsored.
 const MIN_YEAR = 2026;
 // The Institute's ROR ID (e.g. "05gq02987", or the full https://ror.org/... URL).
@@ -51,7 +53,7 @@ async function fetchRecords(slug) {
   const records = [];
   let url = `${BASE_URL}/${slug}/oai?verb=ListRecords&metadataPrefix=oai_dc`;
   while (url) {
-    const res = await fetch(url);
+    const res = await fetch(url, { headers: OAI_HEADERS });
     if (!res.ok) throw new Error(`${url} -> HTTP ${res.status}`);
     const xml = await res.text();
     for (const m of xml.matchAll(/<record>([\s\S]*?)<\/record>/g)) {
@@ -65,7 +67,7 @@ async function fetchRecords(slug) {
 }
 
 async function fetchJournalName(slug) {
-  const res = await fetch(`${BASE_URL}/${slug}/oai?verb=Identify`);
+  const res = await fetch(`${BASE_URL}/${slug}/oai?verb=Identify`, { headers: OAI_HEADERS });
   if (!res.ok) throw new Error(`Identify ${slug} -> HTTP ${res.status}`);
   const m = (await res.text()).match(/<repositoryName>([^<]+)<\/repositoryName>/);
   return m ? decode(m[1]) : '';

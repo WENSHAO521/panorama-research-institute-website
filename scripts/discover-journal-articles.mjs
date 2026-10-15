@@ -4,6 +4,7 @@
 //      journals are picked up automatically), and
 //   2. the journals' own OAI-PMH interface (journals.panorama-sg.com, an
 //      OJS/PKP platform), which lists articles before their DOIs reach Crossref.
+// Crossref (DOI prefix) is the primary source; OAI is best-effort and its failure is not fatal.
 // Articles found in either source are merged by DOI and recorded the ones not yet listed in
 // src/data/journalArticles.ts into src/data/journalArticleCandidates.json.
 //
@@ -155,13 +156,13 @@ for (const slug of JOURNALS) {
       if (c) byDoi.set(c.doi.toLowerCase(), c); // OAI data is authoritative for DOI casing and URLs
     }
   } catch (err) {
-    // Keep checking the other journals, but do not rewrite the candidates file afterwards.
-    console.error(`Failed to read ${slug}: ${err.message}`);
-    failed = true;
+    // OAI is optional (it is often blocked for CI runners, e.g. HTTP 403) and Crossref
+    // already covers the DOI prefix, so only warn and keep going.
+    console.warn(`Skipping ${slug}: ${err.message}`);
   }
 }
 if (failed) {
-  console.error('At least one source could not be read; leaving journalArticleCandidates.json unchanged.');
+  console.error('Crossref could not be read; leaving journalArticleCandidates.json unchanged.');
   process.exit(1);
 }
 const candidates = [...byDoi.entries()].filter(([doi, c]) => !known.has(doi) && Number(c.year) >= MIN_YEAR).map(([, c]) => c);

@@ -28,15 +28,6 @@ export const journalArticles: JournalArticle[] = [
     sponsorNo: "PSG-PRI-SPN-2026-000024", instituteAuthors: false, centers: [],
   },
   {
-    title: "Quality and Reliability of Chinese-Language Lumbar Disc Herniation Videos on TikTok and Bilibili: A Cross-Sectional Multiplatform Study",
-    authors: "Chen Wang, Chao Yan, Yibo Ma, Guoyi Wang, Yuyu Zhang, Yayan Wang, Qian Wu, Xin Qi, Qilong Wang, Chengwen Song",
-    journal: "Health Nexus: Digital Health and Medical AI",
-    volume: "Vol. 1, No. 1", pages: "37–60", year: "2026",
-    doi: "10.63802/hndh.V1.I1.361",
-    url: "https://journals.panorama-sg.com/hndh/article/view/361",
-    sponsorNo: "PSG-PRI-SPN-2026-000019", instituteAuthors: true, centers: [],
-  },
-  {
     title: "Human Oversight Is Not Enough: Rethinking Accountability in AI-Assisted Clinical Decision-Making",
     authors: "Yangyi Ren",
     journal: "Health Nexus: Digital Health and Medical AI",

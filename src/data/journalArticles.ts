@@ -34,7 +34,7 @@ export const journalArticles: JournalArticle[] = [
     volume: "Vol. 1, No. 1", pages: "37–60", year: "2026",
     doi: "10.63802/hndh.V1.I1.361",
     url: "https://journals.panorama-sg.com/hndh/article/view/361",
-    sponsorNo: "PSG-PRI-SPN-2026-000019", instituteAuthors: true, centers: ["health-medical-research"],
+    sponsorNo: "PSG-PRI-SPN-2026-000019", instituteAuthors: true, centers: [],
   },
   {
     title: "Human Oversight Is Not Enough: Rethinking Accountability in AI-Assisted Clinical Decision-Making",
@@ -43,7 +43,7 @@ export const journalArticles: JournalArticle[] = [
     volume: "Vol. 1, No. 1", pages: "61–71", year: "2026",
     doi: "10.63802/hndh.V1.I1.362",
     url: "https://journals.panorama-sg.com/hndh/article/view/362",
-    sponsorNo: "PSG-PRI-SPN-2026-000018", instituteAuthors: false, centers: ["health-medical-research"],
+    sponsorNo: "PSG-PRI-SPN-2026-000018", instituteAuthors: false, centers: [],
   },
   {
     title: "Assessing the quality and reliability of short video platforms as sources of information on depression among Chinese adolescents: a comparative study with data from Douyin, Bilibili, WeChat, and Xiaohongshu APPs",

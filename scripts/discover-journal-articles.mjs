@@ -11,7 +11,7 @@
 // Each new article's own page is then read: journals list the Institute as a
 // supporting agency ("Panorama Research Institute Sponsorship No.: PSG-PRI-SPN-...").
 // Articles carrying that number are appended to journalArticles.ts automatically
-// (the PR opened by the workflow is the review step); the rest stay in
+// (centers stay empty: the journals are not the Institute's, so a maintainer assigns research centers by topic in the PR); the rest stay in
 // journalArticleCandidates.json for a maintainer to look at.
 // Safe to re-run: it only rewrites those two files.
 
@@ -39,14 +39,6 @@ const MIN_YEAR = 2026;
 // than by name matters: unrelated organizations are also called "Panorama
 // Research Institute". Can be overridden with the INSTITUTE_ROR_ID env var.
 const INSTITUTE_ROR_ID = process.env.INSTITUTE_ROR_ID ?? '';
-
-// Journals whose research center is known; others get centers: [] and are flagged for review.
-const CENTER_BY_JOURNAL = [
-  [/^Health Nexus/i, 'health-medical-research'],
-  [/^Resonance/i, 'arts-culture-embodiment'],
-  [/^PoliEcoM/i, 'policy-social-research'],
-  [/^AI & Future Society/i, 'ai-future-society'],
-];
 
 const decode = (t) =>
   t.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
@@ -206,8 +198,7 @@ for (const [doi, c] of fresh) {
   }
   if (info && !knownSponsorNos.has(info.sponsorNo)) {
     const { matchedByRor, published, ...rest } = c;
-    const center = CENTER_BY_JOURNAL.find(([re]) => re.test(c.journal))?.[1];
-    sponsored.push({ ...rest, ...info, centers: center ? [center] : [], doiRegistered: inCrossref.has(doi) });
+    sponsored.push({ ...rest, ...info, centers: [], doiRegistered: inCrossref.has(doi) });
     knownSponsorNos.add(info.sponsorNo);
   } else {
     candidates.push(c);
@@ -229,7 +220,7 @@ if (sponsored.length) {
   const marker = 'export const journalArticles: JournalArticle[] = [\n';
   if (!curated.includes(marker)) throw new Error('journalArticles.ts: array marker not found');
   await writeFile(CURATED_PATH, curated.replace(marker, marker + sponsored.map(entry).join('')));
-  for (const a of sponsored) console.log(`Added sponsored article ${a.sponsorNo}: ${a.title}${a.centers.length ? '' : ' (research center unknown; set centers)'}`);
+  for (const a of sponsored) console.log(`Added sponsored article ${a.sponsorNo}: ${a.title} (set its research center(s) in centers)`);
 }
 
 let previous = '';

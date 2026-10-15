@@ -1,4 +1,5 @@
 // Working papers published by Panorama Research Institute, newest first.
+// Each paper is deposited on Zenodo, which assigns its DOI.
 // Numbering: PRI-WP-<year>-<three-digit sequence>, e.g. "PRI-WP-2026-001".
 // While this list is empty the working papers page shows the "not released yet" notice.
 export interface WorkingPaper {

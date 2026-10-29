@@ -14,7 +14,7 @@ import PageHero from '../../../components/PageHero.astro';
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;">
         <div>
           <div class="section-label">使命</div>
-          <h2 style="font-family:var(--font-serif);font-size:32px;color:var(--text-main);margin-bottom:24px;font-weight:400;line-height:1.25;letter-spacing:-0.02em;">
+          <h2 style="font-family:var(--font-serif);font-size:32px;color:var(--text-main);margin-bottom:24px;font-weight:400;line-height:1.35;">
             通過嚴謹、獨立和跨學科研究推進學術知識發展
           </h2>
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
@@ -26,7 +26,7 @@ import PageHero from '../../../components/PageHero.astro';
         </div>
         <div>
           <div class="section-label">願景</div>
-          <h2 style="font-family:var(--font-serif);font-size:32px;color:var(--text-main);margin-bottom:24px;font-weight:400;line-height:1.25;letter-spacing:-0.02em;">
+          <h2 style="font-family:var(--font-serif);font-size:32px;color:var(--text-main);margin-bottom:24px;font-weight:400;line-height:1.35;">
             一個值得信賴並可持續發展的獨立學術探究平台
           </h2>
           <p style="font-size:16px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
@@ -103,7 +103,7 @@ import PageHero from '../../../components/PageHero.astro';
 </BaseLayout>
 <style>
 @media (max-width: 768px) {
-  div[style*="grid-template-columns:1fr 1fr"] { display: block !important; }
-  div[style*="grid-template-columns:repeat(3,1fr)"] { display: block !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
 }
 </style>

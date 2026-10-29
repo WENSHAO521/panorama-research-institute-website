@@ -69,7 +69,7 @@ const lang = Astro.currentLocale ?? 'en';
 <style>
 @media (max-width: 600px) {
   div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
-  div[style*="display:flex;gap:40px"] { display: block !important; }
+  div[style*="display:flex;gap:40px"] { flex-direction: column !important; }
   .charter-cover-thumb { margin-bottom: 24px; }
 }
 .charter-cover-thumb {

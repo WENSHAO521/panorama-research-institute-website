@@ -528,7 +528,7 @@ const articles = [
 
 <style>
 @media (max-width: 900px) {
-  .container > div[style*="grid-template-columns:280px"] { display: block !important; }
+  .container > div[style*="grid-template-columns:280px"] { grid-template-columns: 1fr !important; }
   .container > div[style*="grid-template-columns:280px"] > div:first-child { display: none !important; }
 }
 div[style*="grid-template-columns:160px 1fr"],
@@ -537,6 +537,6 @@ div[style*="grid-template-columns:32px 1fr"] {
 }
 @media (max-width: 600px) {
   div[style*="grid-template-columns:160px 1fr"],
-  div[style*="grid-template-columns:32px 1fr"] { display: block !important; }
+  div[style*="grid-template-columns:32px 1fr"] { grid-template-columns: 1fr !important; }
 }
 </style>

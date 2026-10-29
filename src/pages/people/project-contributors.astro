@@ -53,6 +53,7 @@ import PageHero from '../../components/PageHero.astro';
   div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
 }
 @media (max-width: 500px) {
-  div[style*="grid-template-columns:repeat(2,1fr)"] { grid-template-columns: 1fr !important; }
+  div[style*="grid-template-columns:repeat(2,1fr)"],
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
 }
 </style>

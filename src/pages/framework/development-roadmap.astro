@@ -21,7 +21,7 @@ const doneLabel = roadmapDoneLabel['en'];
 
         {roadmap.map((phase) => (
           <div style="margin-bottom:56px;padding-bottom:56px;border-bottom:1px solid var(--border-light);">
-            <div style="display:grid;grid-template-columns:160px 1fr;gap:40px;align-items:start;">
+            <div style="display:grid;grid-template-columns:190px 1fr;gap:40px;align-items:start;">
               <div>
                 <div style={`font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:${phase.color};margin-bottom:8px;`}>{phase.phase}</div>
                 <div style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:6px;">{phase.label}</div>
@@ -63,6 +63,6 @@ const doneLabel = roadmapDoneLabel['en'];
 </BaseLayout>
 <style>
 @media (max-width: 768px) {
-  div[style*="grid-template-columns:160px 1fr"] { grid-template-columns: 1fr !important; }
+  div[style*="grid-template-columns:190px 1fr"] { grid-template-columns: 1fr !important; }
 }
 </style>

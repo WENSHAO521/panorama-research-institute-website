@@ -35,7 +35,7 @@ const lang = Astro.currentLocale ?? 'en';
               ].map((item) => (
                 <div>
                   <div style="font-size:10px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:3px;">{item.label}</div>
-                  <div style="font-size:13.5px;color:var(--text-main);">{item.value}</div>
+                  <div style="font-size:13.5px;color:var(--text-main);">{item.value.split(/(\d{4}-\d{2}-\d{2})/).map((part, i) => i % 2 ? <span class="nowrap">{part}</span> : part)}</div>
                 </div>
               ))}
             </div>

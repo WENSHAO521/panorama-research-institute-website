@@ -33,7 +33,7 @@ const c = copy[lang];
       <div class="pub-meta" style="margin-top:4px;">
         {b.isbn && <span>ISBN {b.isbn} · </span>}
         {b.doi && <span>DOI: <a href={`https://doi.org/${b.doi}`} target="_blank" rel="noopener noreferrer">{b.doi}</a> · </span>}
-        {c.no} {b.sponsorNo}
+        {c.no} <span class="nowrap">{b.sponsorNo}</span>
       </div>
     </div>
     <div style="text-align:right;">

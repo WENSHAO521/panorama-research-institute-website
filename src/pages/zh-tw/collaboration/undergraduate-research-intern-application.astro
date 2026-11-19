@@ -27,7 +27,7 @@ import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.ast
               { label:"聯絡",         value:"fellows@panorama-sg.com" },
             ].map((item) => (
               <div>
-                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
                 <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
               </div>
             ))}
@@ -52,13 +52,13 @@ import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.ast
                 { label:"年級與科系",     id:"ug-year",  type:"text",  placeholder:"例如：大三，經濟學" },
               ] as { label: string; id: string; name?: string; type: 'text' | 'email'; placeholder: string }[]).map((f) => (
                 <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
-                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <label for={f.id} style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
                   <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
                 </div>
               ))}
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="ug-center" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">首選研究中心</label>
+              <label for="ug-center" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">首選研究中心</label>
               <select id="ug-center" name="ug-center" class="form-input" style="width:100%;">
                 <option value="">請選擇研究中心...</option>
                 <option>學術出版研究中心</option>
@@ -71,11 +71,11 @@ import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.ast
               </select>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="ug-motivation" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">申請動機與研究方向（200–500 詞）</label>
+              <label for="ug-motivation" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">申請動機與研究方向（200–500 詞）</label>
               <textarea id="ug-motivation" name="ug-motivation" rows="8" placeholder="請說明您對研究院研究領域的興趣、申請實習的原因，以及希望從中學習或作出的貢獻。" class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="ug-experience" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">相關課程或經歷（不超過 300 詞）</label>
+              <label for="ug-experience" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">相關課程或經歷（不超過 300 詞）</label>
               <textarea id="ug-experience" name="ug-experience" rows="5" placeholder="與研究方法相關的課程、以往參與的專案、語言能力或其他與本實習相關的經歷。" class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">

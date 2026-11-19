@@ -13,7 +13,7 @@ import PageHero from '../../components/PageHero.astro';
     <div class="container">
       <div style="max-width:860px;">
         <div style="padding:32px;background:var(--bg-soft);border:1px solid var(--border-light);margin-bottom:48px;">
-          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Current Status</div>
+          <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">Current Status</div>
           <p style="font-size:15.5px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;">
             No calls for chapters are currently open. Panorama Research Institute's edited volume program is in its planning stage, and the first volume will be announced here once confirmed.
           </p>
@@ -37,7 +37,7 @@ import PageHero from '../../components/PageHero.astro';
             { title:"Journal Evaluation Beyond the Impact Factor: Alternative Frameworks and Approaches", theme:"Scholarly Indexing and Evaluation", year:"To be announced" },
           ].map((item) => (
             <div style="padding:24px;border-bottom:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:8px;">{item.theme} &bull; {item.year}</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:8px;">{item.theme} &bull; {item.year}</div>
               <h3 style="font-family:var(--font-serif);font-size:18px;color:var(--text-main);font-weight:400;">{item.title}</h3>
             </div>
           ))}

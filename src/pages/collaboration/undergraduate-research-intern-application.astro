@@ -27,7 +27,7 @@ import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro'
               { label:"Contact",         value:"fellows@panorama-sg.com" },
             ].map((item) => (
               <div>
-                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
                 <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
               </div>
             ))}
@@ -52,13 +52,13 @@ import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro'
                 { label:"Year of Study & Major", id:"ug-year", type:"text", placeholder:"e.g. Third-year, Economics" },
               ] as { label: string; id: string; name?: string; type: 'text' | 'email'; placeholder: string }[]).map((f) => (
                 <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
-                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <label for={f.id} style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
                   <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
                 </div>
               ))}
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="ug-center" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Preferred Research Center</label>
+              <label for="ug-center" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">Preferred Research Center</label>
               <select id="ug-center" name="ug-center" class="form-input" style="width:100%;">
                 <option value="">Select a research center...</option>
                 <option>Center for Scholarly Publishing Studies</option>
@@ -71,11 +71,11 @@ import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro'
               </select>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="ug-motivation" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Motivation and Research Interest (200–500 words)</label>
+              <label for="ug-motivation" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">Motivation and Research Interest (200–500 words)</label>
               <textarea id="ug-motivation" name="ug-motivation" rows="8" placeholder="Describe your interest in the Institute's research areas, why you want to intern with the Institute, and what you hope to learn or contribute." class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="ug-experience" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Relevant Coursework or Experience (up to 300 words)</label>
+              <label for="ug-experience" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">Relevant Coursework or Experience (up to 300 words)</label>
               <textarea id="ug-experience" name="ug-experience" rows="5" placeholder="Relevant coursework, research methods training, prior projects, language skills, or other experience relevant to the internship." class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">

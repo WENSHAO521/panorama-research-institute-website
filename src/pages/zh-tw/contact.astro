@@ -28,22 +28,22 @@ import { site } from '../../data/site';
             <h2 style="font-family:var(--font-serif);font-size:26px;color:var(--text-main);margin-bottom:20px;font-weight:400;">聯絡</h2>
             <div style="display:flex;flex-direction:column;gap:20px;">
               <div>
-                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:6px;">電子郵箱</div>
+                <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">電子郵箱</div>
                 <a href="mailto:research@panorama-sg.com" style="font-size:16px;color:var(--accent-steel);">research@panorama-sg.com</a>
               </div>
               <div>
-                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:6px;">網站</div>
+                <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">網站</div>
                 <a href="https://research.panorama-sg.com" style="font-size:15px;color:var(--text-secondary);">research.panorama-sg.com</a>
               </div>
               <div>
-                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:6px;">地址</div>
+                <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">地址</div>
                 <address style="font-style:normal;font-size:15px;line-height:1.65;color:var(--text-secondary);">
                   <span style="display:block;color:var(--text-muted);font-size:13px;">香港辦公室</span>
                   <span data-no-translate>{site.address.lines.map((line) => <span style="display:block;">{line}</span>)}<span style="display:block;">{site.address.city}</span></span>
                 </address>
               </div>
               <div>
-                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:6px;">所屬機構</div>
+                <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">所屬機構</div>
                 <div style="display:flex;align-items:center;gap:8px;">
                   <a href="https://www.panorama-sg.com" target="_blank" rel="noopener" style="font-size:15px;color:var(--text-secondary);">全景學術集團</a>
                   <RorLogo href={site.parentRor} label="全景學術集團 – ROR ID" size={14} />
@@ -53,14 +53,14 @@ import { site } from '../../data/site';
           </div>
 
           <div class="statement-box">
-            <div style="font-size:12px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:10px;">機構性質</div>
+            <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:10px;">機構性質</div>
             <p style="font-size:13.5px;line-height:1.65;color:var(--text-secondary);">
               全景研究院是由全景學術集團設立、具有自身學術治理體系與機構身分的研究機構。PSG 是其上級機構，負責其法律與行政事務。PRI 不具有獨立法人資格。
             </p>
           </div>
 
           <div style="margin-top:32px;">
-            <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:16px;">常見諮詢</div>
+            <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:16px;">常見諮詢</div>
             {[
               { label: "研究合作",   href: "/zh-tw/collaboration" },
               { label: "訪問學者申請", href: "/zh-tw/collaboration/visiting-scholar-application" },

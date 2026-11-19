@@ -27,7 +27,7 @@ import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro'
               { label:"Contact",         value:"scholars@panorama-sg.com" },
             ].map((item) => (
               <div>
-                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
                 <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
               </div>
             ))}
@@ -51,7 +51,7 @@ import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro'
                 { label:"Position/Title", id:"vs-title",   type:"text",  placeholder:"e.g. Senior Lecturer" },
               ] as { label: string; id: string; name?: string; type: 'text' | 'email'; placeholder: string }[]).map((f) => (
                 <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
-                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <label for={f.id} style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
                   <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
                 </div>
               ))}
@@ -62,13 +62,13 @@ import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro'
                 { label:"Proposed Duration",   id:"vs-dur",   type:"text", placeholder:"e.g. 6 months" },
               ] as const).map((f) => (
                 <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
-                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <label for={f.id} style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
                   <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
                 </div>
               ))}
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="vs-center" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Preferred Research Center Host</label>
+              <label for="vs-center" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">Preferred Research Center Host</label>
               <select id="vs-center" name="vs-center" class="form-input" style="width:100%;">
                 <option value="">Select a research center...</option>
                 <option>Center for Scholarly Publishing Studies</option>
@@ -81,11 +81,11 @@ import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro'
               </select>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="vs-research" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Research Plan and Objectives (300–800 words)</label>
+              <label for="vs-research" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">Research Plan and Objectives (300–800 words)</label>
               <textarea id="vs-research" name="vs-research" rows="8" placeholder="Describe the research you intend to pursue during the visiting period, its relation to the Institute's research program, and any specific collaboration or output plans." class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="vs-cv" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Academic Profile / CV Summary (up to 400 words)</label>
+              <label for="vs-cv" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">Academic Profile / CV Summary (up to 400 words)</label>
               <textarea id="vs-cv" name="vs-cv" rows="5" placeholder="Academic bio, key publications, and any other relevant experience." class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">

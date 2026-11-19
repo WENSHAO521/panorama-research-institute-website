@@ -38,8 +38,8 @@ body { overflow-x: hidden; background: var(--bg-main); color: var(--text-main); 
 
 .skip-link {
   position: absolute; left: 12px; top: -48px; z-index: 400;
-  padding: 10px 16px; background: var(--pri-primary); color: var(--pri-on-primary);
-  font-size: 14px; font-weight: 600; border-radius: 2px;
+  padding: 8px 16px; background: var(--pri-primary); color: var(--pri-on-primary);
+  font-size: 14px; font-weight: 500; border-radius: 4px;
 }
 .skip-link:focus { top: 12px; }
 
@@ -56,7 +56,7 @@ h2 { font-size: clamp(28px, 3.5vw, 40px); }
 h3 { font-size: clamp(22px, 2.5vw, 28px); }
 h4 { font-size: clamp(18px, 2vw, 22px); }
 /* Smaller headings often wrap inside cards and list rows; 1.15 left those lines nearly touching. */
-h3, h4, h5, h6 { line-height: 1.3; }
+h3, h4, h5, h6 { line-height: 1.3; letter-spacing: 0; }
 
 /* IBM Plex does have the curly quotes, em dash and ellipsis, so on Chinese pages those
    came out as narrow Latin glyphs (“资助” looked jammed against the characters around it,
@@ -132,10 +132,8 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 /* ── Section Header ── */
 .section-label {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
   color: var(--text-muted);
   margin-bottom: 16px;
 }
@@ -160,11 +158,11 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 22px;
-  border-radius: 2px;
+  padding: 12px 20px;
+  border-radius: 4px;
   font-family: var(--font-sans);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   white-space: nowrap;
 }
@@ -179,7 +177,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .btn-secondary {
   background: transparent;
   color: var(--text-main);
-  border: 1px solid var(--pri-accent);
+  border: 1px solid var(--pri-border-strong);
 }
 .btn-secondary:hover { border-color: var(--pri-primary); background: var(--bg-soft); }
 
@@ -194,11 +192,42 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 .btn-ghost:hover { color: var(--text-main); text-decoration: underline; text-underline-offset: 4px; }
 
+/* Quiet "see all" link used at the head of home sections */
+.link-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-steel);
+  text-decoration: underline;
+  text-decoration-color: var(--pri-border-strong);
+  text-underline-offset: 4px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+.link-more::after { content: "\2192"; text-decoration: none; display: inline-block; transition: transform 0.15s ease; }
+.link-more:hover { color: var(--text-main); text-decoration-color: currentColor; }
+.link-more:hover::after { transform: translateX(2px); }
+
+/* Section head: title + description on the left, quiet link on the right */
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.section-head .section-title { margin-bottom: 12px; }
+.section-head .link-more { padding-bottom: 6px; }
+
 /* ── Cards ── */
 .card {
   background: var(--bg-white);
   border: 1px solid var(--border-light);
-  border-radius: 2px;
+  border-radius: 4px;
   padding: 32px;
   transition: border-color 0.15s ease, background-color 0.15s ease;
 }
@@ -208,17 +237,17 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .tag {
   display: inline-flex;
   align-items: center;
-  padding: 4px 10px;
+  padding: 4px 8px;
   background: var(--pri-tag-bg);
   border: 1px solid var(--border-light);
-  border-radius: 2px;
+  border-radius: 4px;
   font-size: 12px;
   font-family: var(--font-sans);
   font-weight: 500;
   color: var(--text-secondary);
   white-space: nowrap;
 }
-.tag-active   { background: var(--pri-primary); color: var(--pri-on-primary); border-color: var(--pri-primary); }
+.tag-active   { background: var(--pri-tag-primary-bg); color: var(--pri-tag-primary-fg); border-color: var(--pri-border-strong); }
 .tag-steel    { background: var(--pri-tag-primary-bg); color: var(--pri-tag-primary-fg); border-color: var(--pri-border-strong); }
 
 /* ── Divider ── */
@@ -242,25 +271,8 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   overflow: hidden;
   background: var(--bg-white);
   border: 1px solid var(--border-light);
-  padding: 32px 36px;
-}
-.statement-box::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--pri-gold) 0 76px, var(--border-light) 76px 100%);
-}
-.statement-box::after {
-  content: "";
-  position: absolute;
-  top: 22px;
-  bottom: 22px;
-  left: 18px;
-  width: 1px;
-  background: var(--border-light);
+  border-radius: 4px;
+  padding: 32px;
 }
 
 /* ── Organization Structure ── */
@@ -268,19 +280,11 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   position: relative;
   max-width: 980px;
   margin-top: 8px;
-  padding: 42px;
+  padding: 40px;
   border: 1px solid var(--border-light);
+  border-radius: 4px;
   background: var(--bg-white);
   overflow: hidden;
-}
-.org-structure-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--pri-gold) 0 84px, var(--border-light) 84px 100%);
 }
 .org-hierarchy {
   position: relative;
@@ -290,25 +294,24 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 .org-node {
   min-width: min(100%, 300px);
-  padding: 15px 24px;
+  padding: 16px 24px;
   text-align: center;
   font-family: var(--font-sans);
-  letter-spacing: 0.03em;
 }
 .org-node-parent {
   border: 1px solid var(--border-light);
   background: var(--bg-white);
   color: var(--text-muted);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
 }
 .org-node-institute {
   border: 1px solid var(--pri-primary);
-  box-shadow: inset 0 0 0 1px var(--pri-primary);
   background: var(--bg-white);
   color: var(--text-main);
-  font-size: 15px;
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 400;
 }
 .org-connector {
   width: 1px;
@@ -341,7 +344,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 .org-unit-card {
-  min-height: 126px;
+  min-height: 124px;
   padding: 20px;
   background: var(--bg-white);
   display: flex;
@@ -358,14 +361,14 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 .org-unit-title {
   font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 500;
   line-height: 1.35;
   color: var(--text-main);
 }
 .org-unit-role {
-  margin-top: 8px;
-  font-size: 12.5px;
+  margin-top: 4px;
+  font-size: 13px;
   line-height: 1.55;
   color: var(--text-muted);
 }
@@ -380,11 +383,9 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   align-items: start;
 }
 .pub-type {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   font-family: var(--font-sans);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   color: var(--text-muted);
 }
 .pub-title {
@@ -405,6 +406,19 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   border-bottom: 1px solid var(--border-light);
   align-items: start;
 }
+.center-name {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+.center-areas {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.center-areas .tag { margin-left: 8px; vertical-align: 1px; }
 .center-num {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -419,10 +433,10 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   gap: 14px;
 }
 .platform-card {
-  min-height: 278px;
-  padding: 18px;
+  min-height: 280px;
+  padding: 20px;
   border: 1px solid var(--border-light);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--bg-white);
   transition: border-color 0.15s ease;
 }
@@ -431,7 +445,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   font-family: var(--font-sans);
   font-size: 15px;
   line-height: 1.35;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-main);
   margin-bottom: 8px;
 }
@@ -570,10 +584,8 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 .mega-col-title {
   font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--text-muted);
   margin-bottom: 16px;
   padding-bottom: 12px;
@@ -611,7 +623,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   width: 22px;
   height: 1.5px;
   background: var(--text-main);
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 .mobile-nav {
   display: none;
@@ -692,9 +704,8 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 .footer-site-name {
   font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-size: 15px;
+  font-weight: 500;
   color: var(--pri-footer-text);
   margin-bottom: 4px;
 }
@@ -721,11 +732,9 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   color: var(--pri-footer-muted);
 }
 .footer-col-title {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--pri-footer-muted);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--pri-footer-text);
   margin-bottom: 16px;
 }
 .footer-link {
@@ -773,7 +782,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   width: 100%;
   padding: 11px 14px;
   border: 1px solid var(--pri-accent);
-  border-radius: 2px;
+  border-radius: 4px;
   font-family: var(--font-sans);
   font-size: 15px;
   color: var(--text-main);
@@ -803,8 +812,6 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
   line-height: 1.5;
 }
 .event-title {
@@ -826,7 +833,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 .announcement-item:first-child { padding-top: 0; }
 .announcement-item:hover .announcement-title { color: var(--accent-steel); }
-.announcement-item:hover .announcement-link { gap: 9px; }
+.announcement-item:hover .announcement-link { text-decoration: underline; text-underline-offset: 4px; }
 .announcement-meta {
   display: flex;
   flex-direction: column;
@@ -857,11 +864,10 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 10px;
+  margin-top: 8px;
   font-size: 13px;
   font-weight: 500;
   color: var(--accent-steel);
-  transition: gap 0.15s;
 }
 @media (max-width: 640px) {
   .announcement-item { grid-template-columns: 1fr; gap: 8px; }
@@ -887,7 +893,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   border: 1px solid var(--border-light);
   padding: 32px;
   min-height: 240px;
-  border-radius: 2px;
+  border-radius: 4px;
   transition: border-color 0.15s ease;
 }
 .area-card:hover { border-color: var(--pri-accent); }
@@ -911,7 +917,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   background: var(--bg-white);
   border: 1px solid var(--border-light);
   padding: 28px;
-  border-radius: 2px;
+  border-radius: 4px;
   transition: border-color 0.15s ease;
 }
 .project-card:hover { border-color: var(--pri-accent); }

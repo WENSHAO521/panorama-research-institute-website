@@ -39,7 +39,7 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
     <div class="hero-inner">
       <!-- Left: text -->
       <div class="hero-text">
-        <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:28px;">
+        <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:28px;">
           全景学术集团内部的研究院
         </div>
         <h1 style="font-family:var(--font-serif);font-size:clamp(38px,5.5vw,60px);line-height:1.3;color:var(--text-main);margin-bottom:28px;max-width:600px;">
@@ -51,7 +51,6 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
         <div style="display:flex;flex-wrap:wrap;gap:12px;">
           <a href="/zh-cn/about"            class="btn btn-primary">了解研究院</a>
           <a href="/zh-cn/research-centers" class="btn btn-secondary">查看研究中心</a>
-          <a href="/zh-cn/charter"          class="btn btn-ghost">阅读章程</a>
         </div>
       </div>
 
@@ -68,55 +67,55 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
 
           <!-- Central node: PRI -->
           <rect x="170" y="160" width="140" height="80" rx="2" stroke-width="1.5" style="fill:var(--bg-white);stroke:var(--text-main)" />
-          <text x="240" y="195" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="11" font-weight="600" letter-spacing="1" style="fill:var(--text-main)">全景</text>
-          <text x="240" y="212" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="10" letter-spacing="0.5" style="fill:var(--text-secondary)">研究院</text>
+          <text x="240" y="195" text-anchor="middle"  font-size="16" style="font-family:var(--font-serif);fill:var(--text-main)">全景</text>
+          <text x="240" y="212" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="12" style="fill:var(--text-secondary)">研究院</text>
 
           <!-- Top node: Research Centers -->
           <rect x="166" y="40" width="148" height="56" rx="2" stroke-width="1" style="fill:var(--bg-white);stroke:var(--border-light)" />
-          <text x="240" y="65" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="10" font-weight="600" style="fill:var(--text-main)">研究中心</text>
-          <text x="240" y="82" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="9" style="fill:var(--text-muted)">5 个运行中的研究中心</text>
+          <text x="240" y="65" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="12.5" font-weight="500" style="fill:var(--text-main)">研究中心</text>
+          <text x="240" y="82" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="11" style="fill:var(--text-muted)">5 个运行中的研究中心</text>
           <line x1="240" y1="96" x2="240" y2="160" stroke-width="1" stroke-dasharray="4 3" style="stroke:var(--border-light)" />
 
           <!-- Bottom node: Publications -->
           <rect x="166" y="304" width="148" height="56" rx="2" stroke-width="1" style="fill:var(--bg-white);stroke:var(--border-light)" />
-          <text x="240" y="329" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="10" font-weight="600" style="fill:var(--text-main)">出版成果</text>
-          <text x="240" y="346" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="9" style="fill:var(--text-muted)">报告 · 论文 · 简报</text>
+          <text x="240" y="329" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="12.5" font-weight="500" style="fill:var(--text-main)">出版成果</text>
+          <text x="240" y="346" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="11" style="fill:var(--text-muted)">报告 · 论文 · 简报</text>
           <line x1="240" y1="240" x2="240" y2="304" stroke-width="1" stroke-dasharray="4 3" style="stroke:var(--border-light)" />
 
           <!-- Left node: Projects -->
           <rect x="20" y="164" width="120" height="56" rx="2" stroke-width="1" style="fill:var(--bg-white);stroke:var(--border-light)" />
-          <text x="80" y="189" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="10" font-weight="600" style="fill:var(--text-main)">项目</text>
-          <text x="80" y="206" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="9" style="fill:var(--text-muted)">5 个进行中的项目</text>
+          <text x="80" y="189" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="12.5" font-weight="500" style="fill:var(--text-main)">项目</text>
+          <text x="80" y="206" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="11" style="fill:var(--text-muted)">5 个进行中的项目</text>
           <line x1="140" y1="192" x2="170" y2="200" stroke-width="1" stroke-dasharray="4 3" style="stroke:var(--border-light)" />
 
           <!-- Right node: Scholars -->
           <rect x="340" y="164" width="120" height="56" rx="2" stroke-width="1" style="fill:var(--bg-white);stroke:var(--border-light)" />
-          <text x="400" y="189" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="10" font-weight="600" style="fill:var(--text-main)">学者</text>
-          <text x="400" y="206" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="9" style="fill:var(--text-muted)">研究员 · 访问学者</text>
+          <text x="400" y="189" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="12.5" font-weight="500" style="fill:var(--text-main)">学者</text>
+          <text x="400" y="206" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="11" style="fill:var(--text-muted)">研究员 · 访问学者</text>
           <line x1="310" y1="192" x2="340" y2="200" stroke-width="1" stroke-dasharray="4 3" style="stroke:var(--border-light)" />
 
           <!-- Top-left: Scholarly Indexing -->
           <rect x="20" y="40" width="128" height="52" rx="2" stroke-width="1" style="fill:var(--bg-main);stroke:var(--pri-border-strong)" />
-          <text x="84" y="63" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="9.5" font-weight="600" style="fill:var(--accent-steel)">学术索引</text>
-          <text x="84" y="79" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="8.5" style="fill:var(--text-muted)">POSI 项目</text>
+          <text x="84" y="63" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="12.5" font-weight="500" style="fill:var(--text-main)">学术索引</text>
+          <text x="84" y="79" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="11" style="fill:var(--text-muted)">POSI 项目</text>
           <line x1="148" y1="66" x2="170" y2="175" stroke-width="1" style="stroke:var(--border-light)" />
 
           <!-- Top-right: Policy Research -->
           <rect x="332" y="40" width="128" height="52" rx="2" stroke-width="1" style="fill:var(--bg-main);stroke:var(--pri-border-strong)" />
-          <text x="396" y="63" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="9.5" font-weight="600" style="fill:var(--accent-steel)">政策研究</text>
-          <text x="396" y="79" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="8.5" style="fill:var(--text-muted)">社会 · 治理</text>
+          <text x="396" y="63" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="12.5" font-weight="500" style="fill:var(--text-main)">政策研究</text>
+          <text x="396" y="79" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="11" style="fill:var(--text-muted)">社会 · 治理</text>
           <line x1="332" y1="66" x2="310" y2="175" stroke-width="1" style="stroke:var(--border-light)" />
 
           <!-- Bottom-left: Academic Events -->
           <rect x="20" y="308" width="128" height="52" rx="2" stroke-width="1" style="fill:var(--bg-main);stroke:var(--pri-border-strong)" />
-          <text x="84" y="331" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="9.5" font-weight="600" style="fill:var(--accent-steel)">学术活动</text>
-          <text x="84" y="347" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="8.5" style="fill:var(--text-muted)">会议 · 研讨会</text>
+          <text x="84" y="331" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="12.5" font-weight="500" style="fill:var(--text-main)">学术活动</text>
+          <text x="84" y="347" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="11" style="fill:var(--text-muted)">会议 · 研讨会</text>
           <line x1="148" y1="334" x2="170" y2="240" stroke-width="1" style="stroke:var(--border-light)" />
 
           <!-- Bottom-right: Collaboration -->
           <rect x="332" y="308" width="128" height="52" rx="2" stroke-width="1" style="fill:var(--bg-main);stroke:var(--pri-border-strong)" />
-          <text x="396" y="331" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="9.5" font-weight="600" style="fill:var(--accent-steel)">学术合作</text>
-          <text x="396" y="347" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="8.5" style="fill:var(--text-muted)">机构 · 伙伴</text>
+          <text x="396" y="331" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="12.5" font-weight="500" style="fill:var(--text-main)">学术合作</text>
+          <text x="396" y="347" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="11" style="fill:var(--text-muted)">机构 · 伙伴</text>
           <line x1="332" y1="334" x2="310" y2="240" stroke-width="1" style="stroke:var(--border-light)" />
         </svg>
       </div>
@@ -127,12 +126,12 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
 <!-- ── 02A Announcements ── -->
 <section class="section-compact" style="background:var(--bg-white);border-bottom:1px solid var(--border-light);">
   <div class="container">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;gap:24px;flex-wrap:wrap;">
+    <div class="section-head">
       <div>
-        <h2 class="section-title" style="margin-bottom:12px;">公告</h2>
+        <h2 class="section-title">公告</h2>
         <p class="section-desc">全景研究院的公告、更新与招募信息。</p>
       </div>
-      <a href="/zh-cn/announcements" class="btn btn-secondary" style="flex-shrink:0;">全部公告</a>
+      <a href="/zh-cn/announcements" class="link-more">全部公告</a>
     </div>
     <div>
       {announcements.map((item) => (
@@ -157,13 +156,13 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
   <div class="container">
     <div style="max-width:880px;">
       <div class="statement-box">
-        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;">
+        <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:14px;">
           机构性质
         </div>
         <h2 style="font-family:var(--font-serif);font-size:22px;color:var(--text-main);margin-bottom:14px;font-weight:400;">
           全景学术集团内部的研究院
         </h2>
-        <p style="font-size:15.5px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;">
+        <p style="font-size:15.5px;line-height:1.7;color:var(--text-secondary);">
           全景研究院（Panorama Research Institute，PRI）是由全景学术集团（Panorama Scholarly Group，PSG）设立的研究机构。研究院在 PSG 总体治理、法律与行政框架下运行，同时拥有自身的学术治理体系、研究项目、研究中心、学术人员体系、出版体系和机构身份，并在研究、出版及其他学术活动中保持独立的学术判断。PSG 是研究院的上级机构（parent organization），负责其法律与行政事务。PRI 不具有独立法人资格。
         </p>
       </div>
@@ -174,14 +173,17 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
 <!-- ── 04 Institute Framework Preview ── -->
 <section class="section" style="background:var(--bg-main);">
   <div class="container">
-    <div style="margin-bottom:56px;">
+    <div class="section-head">
+      <div>
       <h2 class="section-title">研究院组织与职能框架</h2>
       <p class="section-desc">
         一个结构化的研究与学术发展平台，为研究项目、学术出版、研究中心、学术活动、学者计划与机构合作提供支撑。
       </p>
+      </div>
+      <a href="/zh-cn/framework" class="link-more">查看完整框架</a>
     </div>
 
-    <div class="org-structure-card" style="margin-bottom:48px;">
+    <div class="org-structure-card">
       <div class="org-hierarchy">
         <div class="org-node org-node-parent">
           全景学术集团
@@ -204,19 +206,20 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
         </div>
       </div>
     </div>
-
-    <a href="/zh-cn/framework" class="btn btn-secondary">查看完整框架</a>
   </div>
 </section>
 
 <!-- ── 05 Research Areas ── -->
 <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
   <div class="container">
-    <div style="margin-bottom:56px;">
+    <div class="section-head">
+      <div>
       <h2 class="section-title">研究领域</h2>
       <p class="section-desc">
         研究院聚焦连接学术传播、期刊评价、公共政策、教育、技术、文化研究和健康研究的研究领域。
       </p>
+      </div>
+      <a href="/zh-cn/research-areas" class="link-more">查看全部研究领域</a>
     </div>
     <div class="areas-grid">
       {researchAreas.map((area) => (
@@ -227,38 +230,32 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
         </div>
       ))}
     </div>
-    <div style="margin-top:40px;">
-      <a href="/zh-cn/research-areas" class="btn btn-secondary">查看全部研究领域</a>
-    </div>
   </div>
 </section>
 
 <!-- ── 06 Research Centers ── -->
 <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
   <div class="container">
-    <div style="margin-bottom:48px;">
+    <div class="section-head">
+      <div>
       <h2 class="section-title">研究中心</h2>
       <p class="section-desc">
         研究院通过专业研究中心组织学术活动，支持研究项目、出版成果、学术活动和合作关系。
       </p>
+      </div>
+      <a href="/zh-cn/research-centers" class="link-more">全部研究中心</a>
     </div>
     <div>
       {researchCenters.map((center) => (
         <div class="center-card">
           <div class="center-num">{center.num}</div>
           <div>
-            <h3 style="font-family:var(--font-serif);font-size:20px;color:var(--text-main);margin-bottom:6px;">{center.name}</h3>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;">
-              {center.areas.map((a) => <span class="tag">{a}</span>)}
-              {center.upcoming && <span class="tag tag-steel">即将开展</span>}
-            </div>
+            <h3 class="center-name">{center.name}</h3>
+            <p class="center-areas">{center.areas.join("、")}{center.upcoming && <span class="tag tag-steel">即将开展</span>}</p>
           </div>
-          <a href={center.href} class="btn btn-ghost" style="padding-top:0;">查看中心</a>
+          <a href={center.href} class="btn btn-ghost center-link">查看中心</a>
         </div>
       ))}
-    </div>
-    <div style="margin-top:40px;">
-      <a href="/zh-cn/research-centers" class="btn btn-secondary">全部研究中心</a>
     </div>
   </div>
 </section>
@@ -266,11 +263,14 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
 <!-- ── 07 Featured Projects ── -->
 <section class="section" style="background:var(--bg-white);border-top:1px solid var(--border-light);">
   <div class="container">
-    <div style="margin-bottom:56px;">
+    <div class="section-head">
+      <div>
       <h2 class="section-title">重点项目</h2>
       <p class="section-desc">
         全景研究院开发或支持的当前研究项目。
       </p>
+      </div>
+      <a href="/zh-cn/projects" class="link-more">全部研究项目</a>
     </div>
     <div class="projects-grid">
       {featuredProjects.map((p) => (
@@ -288,23 +288,20 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
         </div>
       ))}
     </div>
-    <div style="margin-top:40px;">
-      <a href="/zh-cn/projects" class="btn btn-secondary">全部研究项目</a>
-    </div>
   </div>
 </section>
 
 <!-- ── 08 Publications ── -->
 <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
   <div class="container">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap;">
+    <div class="section-head">
       <div>
-        <h2 class="section-title" style="margin-bottom:12px;">出版成果</h2>
+        <h2 class="section-title">出版成果</h2>
         <p class="section-desc">
           研究院撰写或支持的研究报告、工作论文、政策简报、主编文集、年度报告和期刊论文。
         </p>
       </div>
-      <a href="/zh-cn/publications" class="btn btn-secondary" style="flex-shrink:0;">全部出版成果</a>
+      <a href="/zh-cn/publications" class="link-more">全部出版成果</a>
     </div>
 
     <div>
@@ -363,12 +360,12 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
 <!-- ── 10 Events & Calls ── -->
 <section class="section" style="background:var(--bg-main);border-top:1px solid var(--border-light);">
   <div class="container">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap;">
+    <div class="section-head">
       <div>
-        <h2 class="section-title" style="margin-bottom:12px;">活动与征集</h2>
+        <h2 class="section-title">活动与征集</h2>
         <p class="section-desc">即将开展的会议、研讨会、工作坊、论文征稿和章节征集。</p>
       </div>
-      <a href="/zh-cn/events" class="btn btn-secondary" style="flex-shrink:0;">全部活动</a>
+      <a href="/zh-cn/events" class="link-more">全部活动</a>
     </div>
     <div>
       {upcomingEvents.length === 0 && <EventsEmpty lang="zh-cn" />}
@@ -386,9 +383,9 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
         </div>
       ))}
     </div>
-    <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;">
-      <a href="/zh-cn/events/calls-for-papers"   class="btn btn-secondary">论文征稿</a>
-      <a href="/zh-cn/events/calls-for-chapters" class="btn btn-secondary">章节征集</a>
+    <div style="margin-top:32px;display:flex;gap:32px;flex-wrap:wrap;">
+      <a href="/zh-cn/events/calls-for-papers" class="link-more">论文征稿</a>
+      <a href="/zh-cn/events/calls-for-chapters" class="link-more">章节征集</a>
     </div>
   </div>
 </section>
@@ -420,8 +417,7 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
           "研究助理申请",
           "学术活动合作",
         ].map((type) => (
-          <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--pri-footer-border);">
-            <span style="width:5px;height:5px;background:var(--pri-gold);border-radius:50%;flex-shrink:0;"></span>
+          <div style="padding:12px 0;border-bottom:1px solid var(--pri-footer-border);">
             <span style="font-size:14.5px;color:var(--pri-footer-text);font-family:var(--font-sans);">{type}</span>
           </div>
         ))}
@@ -460,7 +456,7 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
 
 <style>
 .hero-section {
-  padding: 100px 0 96px;
+  padding: 96px 0;
 }
 .hero-inner {
   display: grid;
@@ -488,6 +484,12 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
   transform: none;
   background: var(--bg-soft);
 }
+.areas-grid .area-card:last-child:nth-child(3n+1) {
+  grid-column: 1 / -1;
+  min-height: 0;
+}
+.areas-grid .area-card:last-child:nth-child(3n+1) .area-text { max-width: 640px; }
+.center-link { padding-top: 0; }
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -504,14 +506,14 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
   background: var(--bg-soft);
 }
 .platform-logo-box {
-  min-height: 116px;
+  height: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 22px 20px;
-  margin-bottom: 22px;
+  padding: 20px;
+  margin-bottom: 20px;
   border: 1px solid var(--border-light);
   border-radius: 4px;
   background: var(--pri-palette-shironeri);
@@ -522,20 +524,12 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
 }
 .platform-logo {
   width: auto;
-  max-width: 92%;
-  max-height: 44px;
+  height: 64px;
+  max-width: 88%;
   object-fit: contain;
 }
 .platform-logo-fallback {
-  max-width: 100%;
-  color: #46514F;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  line-height: 1.25;
-  text-align: center;
-  text-transform: uppercase;
+  display: none;
 }
 .platform-logo-box-dark .platform-logo-fallback {
   color: #F3EFE5;
@@ -545,15 +539,15 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 18px;
+  gap: 16px;
 }
 .platform-card-action {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   width: fit-content;
-  font-size: 12.5px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--accent-steel);
   border-bottom: 1px solid var(--pri-border-strong);
   line-height: 1.35;
@@ -564,13 +558,14 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
   .hero-graphic { display: none; }
   .hero-section { padding: 64px 0; }
   .areas-grid { grid-template-columns: repeat(2, 1fr); }
+  .areas-grid .area-card:last-child:nth-child(odd) { grid-column: 1 / -1; min-height: 0; }
   .projects-grid { grid-template-columns: 1fr; }
   .platform-logo-box {
-    min-height: 108px;
+    height: 112px;
     padding: 20px 18px;
   }
   .platform-logo {
-    max-height: 40px;
+    height: 56px;
   }
 }
 
@@ -580,7 +575,7 @@ import EventsEmpty from '../../components/EventsEmpty.astro';
     grid-template-columns: 1fr !important;
   }
   .platform-logo-box {
-    min-height: 104px;
+    height: 112px;
     margin-bottom: 18px;
   }
 }

@@ -20,7 +20,7 @@ function formatDate(iso: string) {
     <div class="container">
       <div style="max-width:860px;">
         <div style="padding:32px;background:var(--bg-soft);border:1px solid var(--border-light);margin-bottom:48px;">
-          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Current Status</div>
+          <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">Current Status</div>
           <p style="font-size:15.5px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;">
             Panorama Research Institute is currently in its foundational phase. No calls for papers are currently open. Calls for papers will be published here and distributed via the Institute's mailing list when announced.
           </p>
@@ -32,7 +32,7 @@ function formatDate(iso: string) {
         <div style="border:1px solid var(--border-light);margin-bottom:48px;">
           <div style="padding:24px 28px;border-bottom:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;">
             <div>
-              <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-steel);margin-bottom:8px;">Panorama Journals</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--accent-steel);margin-bottom:8px;">Panorama Journals</div>
               <h3 style="font-family:var(--font-serif);font-size:19px;color:var(--text-main);margin:0;font-weight:400;">Open Calls from the Panorama Journals Platform</h3>
             </div>
             <a href="https://journals.panorama-sg.com/" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--accent-steel);white-space:nowrap;">Visit Panorama Journals</a>
@@ -42,7 +42,7 @@ function formatDate(iso: string) {
               {journalAnnouncements.items.map((item) => (
                 <div style="padding:20px 28px;border-bottom:1px solid var(--border-light);">
                   <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:6px;">
-                    <span style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);">{item.journal}</span>
+                    <span style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);">{item.journal}</span>
                     <span style="font-size:12px;color:var(--text-muted);white-space:nowrap;">{formatDate(item.date)}</span>
                   </div>
                   <a href={item.url} target="_blank" rel="noopener noreferrer" style="font-size:15.5px;font-weight:500;color:var(--text-main);text-decoration:none;display:block;margin-bottom:6px;">{item.title}</a>
@@ -75,7 +75,7 @@ function formatDate(iso: string) {
           ].map((item) => (
             <div style="display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;padding:20px 24px;border-bottom:1px solid var(--border-light);">
               <div>
-                <div style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.08em;">{item.type}</div>
+                <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">{item.type}</div>
                 <div style="font-size:15px;color:var(--text-main);font-weight:500;">{item.event}</div>
                 <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">{item.year}</div>
               </div>

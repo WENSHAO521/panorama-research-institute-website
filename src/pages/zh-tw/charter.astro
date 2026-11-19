@@ -48,7 +48,7 @@ const articles = [
 
         <!-- Sidebar TOC -->
         <div style="position:sticky;top:calc(var(--nav-height) + 24px);">
-          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:20px;">目錄</div>
+          <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:20px;">目錄</div>
           {articles.map((a) => (
             <a href={`#article-${a.num}`} style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border-light);transition:color 0.15s;">
               <span>Art. {a.num}. {a.title}</span>
@@ -62,7 +62,7 @@ const articles = [
 
             <!-- Header -->
             <div style="text-align:center;margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">治理文件</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:16px;">治理文件</div>
               <h2 style="font-family:var(--font-serif);font-size:32px;color:var(--text-main);margin-bottom:16px;">研究院章程</h2>
               <p style="font-size:13px;color:var(--text-muted);font-family:var(--font-mono);">版本 1.2 · 2026-10-10 生效</p>
               <p style="font-size:13px;line-height:1.7;color:var(--text-muted);margin-top:12px;">1.2 版修訂更新研究中心名單，補充現行學者類別與協調員設置，增列期刊論文及會員計劃，明確版權、內部文件和保護期，增加任命、研究不端公正處理、利益衝突、個人信息、生成式人工智慧、語言版本、歷史版本公開存檔及機構延續等規定，並使修訂程序及附屬治理文件與本章程保持一致。第 20 條規定的修訂程序繼續適用。</p>
@@ -71,7 +71,7 @@ const articles = [
 
             <!-- Article 1 -->
             <div id="article-1" style="margin-bottom:48px;">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 1 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 1 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">名稱</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
                 本院正式名稱為全景研究院（Panorama Research Institute），英文簡稱為 PRI。本章程所稱「本院」或「研究院」，均指全景研究院。
@@ -83,7 +83,7 @@ const articles = [
 
             <!-- Article 2 -->
             <div id="article-2" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 2 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 2 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">機構性質</h2>
               <div class="statement-box" style="margin-bottom:20px;">
                 <p style="font-size:15.5px;line-height:1.8;color:var(--text-secondary);">
@@ -100,7 +100,7 @@ const articles = [
 
             <!-- Article 3 -->
             <div id="article-3" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 3 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 3 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">機構隸屬</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
                 集團為本院的設立機構及上級治理機構，並負責本院的法律事務與行政管理。關於本院機構性質、治理關係或法律主體資格的正式說明，應當載明本院由集團設立，具有自身學術治理體系、機構名稱與學術身分，在集團法律與行政框架下運行，且不具有獨立法人資格。
@@ -115,7 +115,7 @@ const articles = [
 
             <!-- Article 4 -->
             <div id="article-4" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 4 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 4 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">使命</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
                 全景研究院的使命是通過嚴謹、獨立和跨學科研究推進學術知識發展；支持全球學術傳播基礎設施建設；並促進學術出版和研究實踐中的開放、透明與誠信。
@@ -127,7 +127,7 @@ const articles = [
 
             <!-- Article 5 -->
             <div id="article-5" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 5 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 5 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">活動範圍</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:16px;">本院開展並支持以下類別的活動：</p>
               {[
@@ -152,7 +152,7 @@ const articles = [
 
             <!-- Article 6 -->
             <div id="article-6" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 6 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 6 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">研究領域</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
                 本院指定以下研究領域，研究中心、項目、出版成果和活動均在這些領域內組織。研究領域可依照第 20 條通過正式修訂本章程進行擴展或調整。
@@ -178,7 +178,7 @@ const articles = [
 
             <!-- Article 7 -->
             <div id="article-7" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 7 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 7 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">組織架構</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
                 本院由以下組織單位構成。各單位負責明確的機構活動領域，並向研究院院長報告。
@@ -202,7 +202,7 @@ const articles = [
 
             <!-- Article 8 -->
             <div id="article-8" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 8 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 8 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">治理</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:16px;">
                 本院依照本條所列架構實施治理。各治理機構應當依據本章程及集團總體治理框架履行各自職責。
@@ -223,7 +223,7 @@ const articles = [
 
             <!-- Article 9 -->
             <div id="article-9" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 9 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 9 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">研究中心</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:16px;">
                 研究中心是本院內部主要學術單位。每個中心設立於本院一個或多個指定研究領域內，負責開發和管理研究項目、產出出版成果、組織活動，並在其領域內建設學術網絡。每個中心由主任領導，並由隸屬研究員及其他學者參與。
@@ -231,7 +231,7 @@ const articles = [
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
                 在擬設中心屬於指定研究領域的前提下，研究院院長可經全景學術集團批准設立新的研究中心。研究中心的設立、調整或關閉不需要修訂本章程，除非相關變化涉及第 6 條的修改。
               </p>
-              <p style="font-size:14.5px;color:var(--text-muted);margin-bottom:10px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;font-size:11px;">已設立研究中心</p>
+              <p style="font-size:14.5px;color:var(--text-muted);margin-bottom:10px;font-family:var(--font-sans);font-size:13px;">已設立研究中心</p>
               {[
                 { num:"01", name:"學術出版研究中心",       status:"進行中" },
                 { num:"02", name:"學術索引與評價研究中心",  status:"進行中" },
@@ -252,7 +252,7 @@ const articles = [
 
             <!-- Article 10 -->
             <div id="article-10" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 10 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 10 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">研究項目</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
                 研究項目是經本院正式批准、隸屬於一個或多個研究中心的研究計劃。每個項目均有明確範圍、研究問題、方法、時間表和預期成果。項目通過正式提案流程發起，由相關研究中心主任評審，並由研究院院長批准。
@@ -267,7 +267,7 @@ const articles = [
 
             <!-- Article 11 -->
             <div id="article-11" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 11 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 11 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">出版成果</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
                 本院發布以下類別的出版成果。所有出版成果發布前均須經過編輯評審、品質控制，並符合本院出版倫理政策。
@@ -294,7 +294,7 @@ const articles = [
 
             <!-- Article 12 -->
             <div id="article-12" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 12 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 12 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">學術活動</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
                 本院組織和聯合組織學術活動，以推動其研究領域內的學術交流並支持研究共同體。活動包括國際會議、學術研討會、研究工作坊、培訓項目及相關學術集會。
@@ -309,7 +309,7 @@ const articles = [
 
             <!-- Article 13 -->
             <div id="article-13" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 13 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 13 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">學者與研究員</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:20px;">
                 本院通過以下正式隸屬類別維護相關學者共同體。每一類別均具有明確職責和權益。除非另有說明，隸屬關係不構成與全景研究院或全景學術集團的僱傭關係。
@@ -339,7 +339,7 @@ const articles = [
 
             <!-- Article 14 -->
             <div id="article-14" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 14 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 14 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">學術合作</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
                 本院與大學、研究機構、出版社、學術協會和其他組織開展學術合作。合作活動必須符合本院使命、研究領域和價值，並不得損害本院研究的學術獨立性或學者誠信。
@@ -367,7 +367,7 @@ const articles = [
 
             <!-- Article 15 -->
             <div id="article-15" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 15 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 15 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">研究倫理</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
                 本院承諾遵循最高標準的研究倫理。所有在本院支持下開展的研究均須遵守適用倫理原則，包括尊重個體、增益、不傷害、公正和透明。
@@ -401,7 +401,7 @@ const articles = [
 
             <!-- Article 16 -->
             <div id="article-16" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 16 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 16 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">利益衝突</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
                 所有與本院相關人員，包括研究員、副研究員、訪問學者、研究助理、研究中心主任和研究院院長，均須揭露任何實際、潛在或可被感知的利益衝突，該衝突可能影響或被認為影響其以本院名義開展的研究、出版、編輯判斷或其他專業活動的完整性。
@@ -422,7 +422,7 @@ const articles = [
 
             <!-- Article 17 -->
             <div id="article-17" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 17 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 17 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">智慧財產權</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
                 在本院支持下形成的研究出版成果版權由署名作者保留，但本條所定義的機構文件除外。鑑於本院不具有獨立法人資格，作者授予集團（供本院使用）非獨占、永久、不可撤銷、全球、免版稅許可，以任何格式（包括數位格式）出版、複製、傳播、存檔並提供該作品。
@@ -452,7 +452,7 @@ const articles = [
 
             <!-- Article 18 -->
             <div id="article-18" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 18 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 18 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">名稱與標誌使用政策</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
                 「Panorama Research Institute」名稱和本院標誌僅可由獲授權人員和組織使用。授權由研究院院長授予；正式機構用途由全景學術集團授權。
@@ -470,7 +470,7 @@ const articles = [
 
             <!-- Article 19 -->
             <div id="article-19" style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 19 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 19 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">財務與行政</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
                 集團負責本院的法律、財務及行政事務，並在集團財務管理框架內統一管理與本院有關的資金、收支、財務紀錄及債務事項。本院不得設立獨立財務帳戶，不得以獨立法律主體身分持有資金、獨立訂立財務合約或以自身名義承擔債務。
@@ -494,7 +494,7 @@ const articles = [
 
             <!-- Article 20 -->
             <div id="article-20" style="padding-top:40px;border-top:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;">第 20 條</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:12px;">第 20 條</div>
               <h2 style="font-family:var(--font-serif);font-size:24px;color:var(--text-main);margin-bottom:16px;font-weight:400;">修訂與解釋</h2>
               <p style="font-size:15.5px;line-height:1.85;color:var(--text-secondary);margin-bottom:12px;">
                 本章程的修訂建議可由研究院領導層、隸屬學者或集團以書面形式提出，修訂由研究院院長作出，並經集團批准。擬議修訂內容應當在通過前至少三十日送交全體研究中心主任及顧問委員會徵求意見。作出通過決定前，應當審議已收到的意見；該等意見不具有約束力。

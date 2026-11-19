@@ -28,7 +28,7 @@ const lang = Astro.currentLocale ?? 'en';
               { label:"Contact",           value:"fellows@panorama-sg.com" },
             ].map((item) => (
               <div>
-                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
                 <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
               </div>
             ))}
@@ -56,13 +56,13 @@ const lang = Astro.currentLocale ?? 'en';
                 { label:"Position/Title",     id:"rf-title",   type:"text",  placeholder:"e.g. PhD Candidate, Postdoctoral Researcher" },
               ] as { label: string; id: string; name?: string; type: 'text' | 'email'; placeholder: string }[]).map((f) => (
                 <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
-                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <label for={f.id} style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
                   <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
                 </div>
               ))}
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="rf-type" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Application Type</label>
+              <label for="rf-type" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">Application Type</label>
               <select id="rf-type" name="rf-type" class="form-input" style="width:100%;">
                 <option value="">Select application type...</option>
                 <option>Research Fellow (mid- or senior-career, PhD required)</option>
@@ -74,7 +74,7 @@ const lang = Astro.currentLocale ?? 'en';
               </select>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="rf-center" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Preferred Research Center</label>
+              <label for="rf-center" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">Preferred Research Center</label>
               <select id="rf-center" name="rf-center" class="form-input" style="width:100%;">
                 <option value="">Select a research center...</option>
                 <option>Center for Scholarly Publishing Studies</option>
@@ -87,11 +87,11 @@ const lang = Astro.currentLocale ?? 'en';
               </select>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="rf-research" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Research Interests and Contribution Statement (400–1,000 words)</label>
+              <label for="rf-research" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">Research Interests and Contribution Statement (400–1,000 words)</label>
               <textarea id="rf-research" name="rf-research" rows="10" placeholder="Describe your research interests, how they relate to the Institute's program, and what you intend to contribute as a Fellow (publications, events, mentoring, etc.)." class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="rf-cv" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Academic Profile / Publication List (up to 500 words)</label>
+              <label for="rf-cv" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">Academic Profile / Publication List (up to 500 words)</label>
               <textarea id="rf-cv" name="rf-cv" rows="6" placeholder="Academic bio and list of relevant publications, presentations, or other scholarly outputs." class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">

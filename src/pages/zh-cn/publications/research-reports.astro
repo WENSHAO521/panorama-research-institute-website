@@ -24,7 +24,7 @@ import PageHero from '../../../components/PageHero.astro';
               { label: "语言",        value: "英文为主；部分中文" },
             ].map((item) => (
               <div>
-                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
                 <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
               </div>
             ))}
@@ -45,7 +45,7 @@ import PageHero from '../../../components/PageHero.astro';
           <div style="margin-top:40px;">
             <div class="section-label">当前报告</div>
             <div style="margin-top:12px;padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">说明</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:8px;">说明</div>
               <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
                 全景研究院目前处于基础建设阶段。当前项目的研究报告正在筹备中，将在完成后陆续发布。请稍后查看，或参阅 <a href="/zh-cn/publications" style="color:var(--accent-steel);">出版成果概览</a> 了解最新成果。
               </p>
@@ -61,7 +61,7 @@ import PageHero from '../../../components/PageHero.astro';
               ].map((pub) => (
                 <div class="publication-item">
                   <div>
-                    <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{pub.project}</div>
+                    <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:4px;">{pub.project}</div>
                     <div class="pub-title">{pub.title}</div>
                   </div>
                   <div style="text-align:right;flex-shrink:0;">

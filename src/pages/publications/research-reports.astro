@@ -24,7 +24,7 @@ import PageHero from '../../components/PageHero.astro';
               { label: "Language",        value: "English (primary); Chinese (selected)" },
             ].map((item) => (
               <div>
-                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
                 <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
               </div>
             ))}
@@ -45,7 +45,7 @@ import PageHero from '../../components/PageHero.astro';
           <div style="margin-top:40px;">
             <div class="section-label">Current Reports</div>
             <div style="margin-top:12px;padding:24px;background:var(--bg-soft);border:1px solid var(--border-light);">
-              <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Notice</div>
+              <div style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin-bottom:8px;">Notice</div>
               <p style="font-size:14.5px;color:var(--text-secondary);margin:0;line-height:1.7;">
                 Panorama Research Institute is currently in its foundational phase. Research reports from active projects are currently in preparation and will be published as they are completed. Please check back or see the <a href="/publications" style="color:var(--accent-steel);">publications overview</a> for the most recent outputs.
               </p>
@@ -61,7 +61,7 @@ import PageHero from '../../components/PageHero.astro';
               ].map((pub) => (
                 <div class="publication-item">
                   <div>
-                    <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{pub.project}</div>
+                    <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:4px;">{pub.project}</div>
                     <div class="pub-title">{pub.title}</div>
                   </div>
                   <div style="text-align:right;flex-shrink:0;">

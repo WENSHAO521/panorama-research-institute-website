@@ -27,7 +27,7 @@ import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.ast
               { label:"聯絡",         value:"scholars@panorama-sg.com" },
             ].map((item) => (
               <div>
-                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
                 <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
               </div>
             ))}
@@ -51,7 +51,7 @@ import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.ast
                 { label:"職位 / 頭銜", id:"vs-title",   type:"text",  placeholder:"例如：高級講師" },
               ] as { label: string; id: string; name?: string; type: 'text' | 'email'; placeholder: string }[]).map((f) => (
                 <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
-                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <label for={f.id} style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
                   <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
                 </div>
               ))}
@@ -62,13 +62,13 @@ import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.ast
                 { label:"擬議時長",   id:"vs-dur",   type:"text", placeholder:"例如：6 個月" },
               ] as const).map((f) => (
                 <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
-                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <label for={f.id} style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
                   <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
                 </div>
               ))}
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="vs-center" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">首選接待研究中心</label>
+              <label for="vs-center" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">首選接待研究中心</label>
               <select id="vs-center" name="vs-center" class="form-input" style="width:100%;">
                 <option value="">請選擇研究中心...</option>
                 <option>學術出版研究中心</option>
@@ -81,11 +81,11 @@ import MultiAttachmentUpload from '../../../components/MultiAttachmentUpload.ast
               </select>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="vs-research" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">研究計劃與目標（300–800 詞）</label>
+              <label for="vs-research" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">研究計劃與目標（300–800 詞）</label>
               <textarea id="vs-research" name="vs-research" rows="8" placeholder="請說明您在訪問期間擬開展的研究、其與研究院研究項目的關係，以及任何具體合作或成果計劃。" class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="vs-cv" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">學術簡介 / 簡歷摘要（不超過 400 詞）</label>
+              <label for="vs-cv" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">學術簡介 / 簡歷摘要（不超過 400 詞）</label>
               <textarea id="vs-cv" name="vs-cv" rows="5" placeholder="學術簡介、主要出版物和其他相關經歷。" class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">

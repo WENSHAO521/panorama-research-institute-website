@@ -1,0 +1,423 @@
+---
+// The home page body, shared by /, /zh-cn and /zh-tw. Copy lives in `copy` below;
+// data (areas, centers, projects, articles, platforms) comes from src/data.
+import { getPlatforms, getResearchAreas, getResearchCenters, getFeaturedProjects, getFeaturedPublications, getUpcomingEvents } from '../data/site';
+import { getAnnouncements, localizeAnnouncementHref } from '../data/announcements';
+import { journalArticles } from '../data/journalArticles';
+import PublicationsEmpty from './PublicationsEmpty.astro';
+import EventsEmpty from './EventsEmpty.astro';
+import type { Lang } from '../i18n/utils';
+import '../styles/home.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const href = (path: string) => (lang === 'en' ? path : `/${lang}${path}`);
+
+const copy = {
+  en: {
+    eyebrow: 'A Research Institute within Panorama Scholarly Group',
+    title: 'Panorama Research Institute',
+    lede: 'Research, scholarly infrastructure, and academic collaboration. The Institute supports interdisciplinary research, scholarly publishing studies, journal indexing and evaluation, policy analysis, and the development of global scholarly communication infrastructure.',
+    explore: 'Explore the Institute', centersBtn: 'View research centers',
+    catalogCaption: 'Journal articles sponsored by the Institute',
+    sponsorNo: 'Sponsorship No.', members: 'Institute members among authors',
+    annTitle: 'Announcements', annDesc: 'Notices, updates, and recruitment announcements from Panorama Research Institute.', annAll: 'All announcements', readMore: 'Read more',
+    statusLabel: 'Institutional Status', statusTitle: 'A Research Institute within Panorama Scholarly Group',
+    statusBody: "Panorama Research Institute (PRI) is a research institute established by Panorama Scholarly Group (PSG). The Institute operates within PSG's overall governance, legal, and administrative framework while maintaining its own academic governance, research programs, research centers, scholarly appointments, publications, and institutional identity. PRI exercises independent academic judgment in research, publication, and scholarly activities. PSG serves as its parent organization and legal and administrative entity. PRI is not a separate legal entity.",
+    fwTitle: 'Institute Framework', fwDesc: 'A structured research and academic development platform supporting projects, publications, centers, events, scholars, and institutional collaboration.', fwAll: 'Full framework',
+    psg: 'Panorama Scholarly Group', pri: 'Panorama Research Institute',
+    units: [
+      ['Research Centers', 'Specialized academic units'],
+      ['Project Teams', 'Institute-supported initiatives'],
+      ['Publications Unit', 'Reports, papers, briefs'],
+      ['Academic Events Unit', 'Conferences, seminars, workshops'],
+      ['Scholar and Fellowship Program', 'Fellows, visitors, research assistants'],
+      ['Collaboration Office', 'Partnerships, proposals, MoUs'],
+    ],
+    areasTitle: 'Research Areas', areasDesc: 'The Institute focuses on research fields that connect scholarly communication, journal evaluation, public policy, education, technology, cultural studies, and health.', areasAll: 'All research areas',
+    centersTitle: 'Research Centers', centersDesc: 'The Institute organizes its academic activities through specialized research centers that support projects, publications, events, and partnerships.', centersAll: 'All research centers', upcoming: 'Upcoming', viewCenter: 'View center', sep: ' · ',
+    projTitle: 'Featured Projects', projDesc: 'Current research initiatives developed or supported by Panorama Research Institute.', projAll: 'All research projects', viewProject: 'View project',
+    pubTitle: 'Publications', pubDesc: 'Research reports, working papers, policy briefs, edited volumes, annual reports, and journal articles produced or supported by the Institute.', pubAll: 'All publications', viewArticle: 'View article', details: 'Details',
+    charterTitle: 'Charter & Governance', charterDesc: 'The Institute operates through a structured internal charter, governance rules, research ethics principles, publication policies, and collaboration procedures.', readCharter: 'Read the Charter', policies: 'Governance policies',
+    policyList: ['Institute Charter', 'Governance Rules', 'Research Ethics Policy', 'Academic Independence Policy', 'Conflict of Interest Policy', 'Publication and Reporting Policy', 'Data and Documentation Policy'],
+    evTitle: 'Events & Calls', evDesc: 'Upcoming conferences, seminars, workshops, and calls for papers and chapters.', evAll: 'All events', cfp: 'Calls for papers', cfc: 'Calls for chapters',
+    collabTitle: 'Collaborate with Panorama Research Institute', collabDesc: 'The Institute welcomes academic collaboration, institutional partnerships, research project proposals, edited volume proposals, visiting scholar applications, and academic event cooperation.', submit: 'Submit a proposal', contact: 'Contact the Institute',
+    collabTypes: ['Institutional Cooperation', 'Research Project Proposal', 'Edited Volume Proposal', 'Special Issue Proposal', 'Visiting Scholar Application', 'Research Fellow Application', 'Research Assistant Application', 'Academic Event Cooperation'],
+    ecoTitle: 'Part of the Panorama Scholarly Ecosystem', visit: 'Visit',
+  },
+  'zh-cn': {
+    eyebrow: '全景学术集团内部的研究院',
+    title: '全景研究院',
+    lede: '研究、学术基础设施与学术合作。研究院支持跨学科研究、学术出版研究、期刊索引与评价、政策分析，以及全球学术传播基础设施的发展。',
+    explore: '了解研究院', centersBtn: '查看研究中心',
+    catalogCaption: '研究院资助的期刊论文',
+    sponsorNo: '资助编号', members: '作者含研究院成员',
+    annTitle: '公告', annDesc: '全景研究院的公告、更新与招募信息。', annAll: '全部公告', readMore: '阅读更多',
+    statusLabel: '机构性质', statusTitle: '全景学术集团内部的研究院',
+    statusBody: '全景研究院（Panorama Research Institute，PRI）是由全景学术集团（Panorama Scholarly Group，PSG）设立的研究机构。研究院在 PSG 总体治理、法律与行政框架下运行，同时拥有自身的学术治理体系、研究项目、研究中心、学术人员体系、出版体系和机构身份，并在研究、出版及其他学术活动中保持独立的学术判断。PSG 是研究院的上级机构（parent organization），负责其法律与行政事务。PRI 不具有独立法人资格。',
+    fwTitle: '研究院组织与职能框架', fwDesc: '一个结构化的研究与学术发展平台，为研究项目、学术出版、研究中心、学术活动、学者计划与机构合作提供支撑。', fwAll: '查看完整框架',
+    psg: '全景学术集团', pri: '全景研究院',
+    units: [
+      ['研究中心', '专业学术单位'],
+      ['研究项目组', '研究院支持的项目'],
+      ['学术出版事务部', '报告、论文与简报'],
+      ['学术活动事务部', '会议、研讨会、工作坊'],
+      ['学者计划', '研究员、访问学者与研究助理'],
+      ['合作事务办公室', '伙伴关系、提案与谅解备忘录'],
+    ],
+    areasTitle: '研究领域', areasDesc: '研究院聚焦连接学术传播、期刊评价、公共政策、教育、技术、文化研究和健康研究的研究领域。', areasAll: '查看全部研究领域',
+    centersTitle: '研究中心', centersDesc: '研究院通过专业研究中心组织学术活动，支持研究项目、出版成果、学术活动和合作关系。', centersAll: '全部研究中心', upcoming: '即将开展', viewCenter: '查看中心', sep: '、',
+    projTitle: '重点项目', projDesc: '全景研究院开发或支持的当前研究项目。', projAll: '全部研究项目', viewProject: '查看项目',
+    pubTitle: '出版成果', pubDesc: '研究院撰写或支持的研究报告、工作论文、政策简报、主编文集、年度报告和期刊论文。', pubAll: '全部出版成果', viewArticle: '查看文章', details: '查看详情',
+    charterTitle: '章程与治理', charterDesc: '研究院通过结构化的内部章程、治理规则、研究伦理原则、出版政策和合作程序运行。', readCharter: '阅读章程', policies: '查看治理政策',
+    policyList: ['研究院章程', '治理规则', '研究伦理政策', '学术独立政策', '利益冲突政策', '出版与报告政策', '数据与文档政策'],
+    evTitle: '活动与征集', evDesc: '即将开展的会议、研讨会、工作坊、论文征稿和章节征集。', evAll: '全部活动', cfp: '论文征稿', cfc: '章节征集',
+    collabTitle: '与全景研究院合作', collabDesc: '研究院欢迎学术合作、机构伙伴关系、研究项目提案、主编文集提案、访问学者申请和学术活动合作。', submit: '提交提案', contact: '联系研究院',
+    collabTypes: ['机构合作', '研究项目提案', '主编文集提案', '特刊提案', '访问学者申请', '研究员申请', '研究助理申请', '学术活动合作'],
+    ecoTitle: '全景学术生态体系组成部分', visit: '访问',
+  },
+  'zh-tw': {
+    eyebrow: '全景學術集團內部的研究院',
+    title: '全景研究院',
+    lede: '研究、學術基礎設施與學術合作。研究院支持跨學科研究、學術出版研究、期刊索引與評價、政策分析，以及全球學術傳播基礎設施的發展。',
+    explore: '了解研究院', centersBtn: '查看研究中心',
+    catalogCaption: '研究院資助的期刊論文',
+    sponsorNo: '資助編號', members: '作者含研究院成員',
+    annTitle: '公告', annDesc: '全景研究院的公告、更新與招募資訊。', annAll: '全部公告', readMore: '閱讀更多',
+    statusLabel: '機構性質', statusTitle: '全景學術集團內部的研究院',
+    statusBody: '全景研究院（Panorama Research Institute，PRI）是由全景學術集團（Panorama Scholarly Group，PSG）設立的研究機構。研究院在 PSG 總體治理、法律與行政框架下運行，同時擁有自身的學術治理體系、研究項目、研究中心、學術人員體系、出版體系和機構身分，並在研究、出版及其他學術活動中保持獨立的學術判斷。PSG 是研究院的上級機構（parent organization），負責其法律與行政事務。PRI 不具有獨立法人資格。',
+    fwTitle: '研究院組織與職能框架', fwDesc: '一個結構化的研究與學術發展平台，為研究項目、學術出版、研究中心、學術活動、學者計劃與機構合作提供支撐。', fwAll: '查看完整框架',
+    psg: '全景學術集團', pri: '全景研究院',
+    units: [
+      ['研究中心', '專業學術單位'],
+      ['研究項目組', '研究院支持的項目'],
+      ['學術出版事務部', '報告、論文與簡報'],
+      ['學術活動事務部', '會議、研討會、工作坊'],
+      ['學者計劃', '研究員、訪問學者與研究助理'],
+      ['合作事務辦公室', '夥伴關係、提案與諒解備忘錄'],
+    ],
+    areasTitle: '研究領域', areasDesc: '研究院聚焦連接學術傳播、期刊評價、公共政策、教育、技術、文化研究和健康研究的研究領域。', areasAll: '查看全部研究領域',
+    centersTitle: '研究中心', centersDesc: '研究院通過專業研究中心組織學術活動，支持研究項目、出版成果、學術活動和合作關係。', centersAll: '全部研究中心', upcoming: '即將開展', viewCenter: '查看中心', sep: '、',
+    projTitle: '重點項目', projDesc: '全景研究院開發或支持的當前研究項目。', projAll: '全部研究項目', viewProject: '查看項目',
+    pubTitle: '出版成果', pubDesc: '研究院撰寫或支持的研究報告、工作論文、政策簡報、主編文集、年度報告和期刊論文。', pubAll: '全部出版成果', viewArticle: '查看文章', details: '查看詳情',
+    charterTitle: '章程與治理', charterDesc: '研究院通過結構化的內部章程、治理規則、研究倫理原則、出版政策和合作程序運行。', readCharter: '閱讀章程', policies: '查看治理政策',
+    policyList: ['研究院章程', '治理規則', '研究倫理政策', '學術獨立政策', '利益衝突政策', '出版與報告政策', '資料與文件政策'],
+    evTitle: '活動與徵集', evDesc: '即將開展的會議、研討會、工作坊、論文徵稿和章節徵集。', evAll: '全部活動', cfp: '論文徵稿', cfc: '章節徵集',
+    collabTitle: '與全景研究院合作', collabDesc: '研究院歡迎學術合作、機構夥伴關係、研究項目提案、主編文集提案、訪問學者申請和學術活動合作。', submit: '提交提案', contact: '聯絡研究院',
+    collabTypes: ['機構合作', '研究項目提案', '主編文集提案', '特刊提案', '訪問學者申請', '研究員申請', '研究助理申請', '學術活動合作'],
+    ecoTitle: '全景學術生態體系組成部分', visit: '訪問',
+  },
+} as const;
+const c = copy[lang];
+
+const platforms = getPlatforms(lang);
+const researchAreas = getResearchAreas(lang);
+const researchCenters = getResearchCenters(lang);
+const featuredProjects = getFeaturedProjects(lang);
+const featuredPublications = getFeaturedPublications(lang);
+const upcomingEvents = getUpcomingEvents(lang);
+const announcements = getAnnouncements(lang).slice(0, 3);
+
+const policyHrefs = ['/charter', '/governance/rules', '/governance/research-ethics', '/governance/academic-independence', '/governance/conflict-of-interest', '/governance/publication-report-policy', '/governance/data-documentation-policy'];
+
+// Hero catalogue: articles with Institute members among the authors first, then the rest.
+const memberArticles = journalArticles.filter((a) => a.instituteAuthors);
+const catalog = [...memberArticles, ...journalArticles.filter((a) => !a.instituteAuthors)].slice(0, 3);
+const [front, ...behind] = catalog;
+
+// Project status → quiet dot colour. Statuses arrive translated, so compare by position in the source list.
+const statusKind = ['active', 'active', 'development', 'call'];
+---
+
+<!-- ── Hero ── -->
+<section class="home-hero">
+  <div class="container home-hero-inner">
+    <div class="home-hero-text">
+      <p class="home-eyebrow">{c.eyebrow}</p>
+      <h1 class="home-title">{c.title}</h1>
+      <p class="home-lede">{c.lede}</p>
+      <div class="home-actions">
+        <a href={href('/about')} class="btn btn-primary">{c.explore}</a>
+        <a href={href('/research-centers')} class="btn btn-secondary">{c.centersBtn}</a>
+      </div>
+    </div>
+
+    {front && (
+      <figure class="catalog" aria-label={c.catalogCaption}>
+        <div class="catalog-stack">
+          {behind.reverse().map((a, i) => (
+            <div class={`catalog-card catalog-card-back catalog-card-back-${i + 1}`} aria-hidden="true">
+              <div class="catalog-card-head">
+                <span>{a.sponsorNo}</span>
+                <span>{a.year}</span>
+              </div>
+            </div>
+          ))}
+          <a class="catalog-card catalog-card-front" href={front.url} target="_blank" rel="noopener noreferrer">
+            <div class="catalog-card-head">
+              <span><span class="catalog-card-label">{c.sponsorNo}</span> {front.sponsorNo}</span>
+              <span>{front.year}</span>
+            </div>
+            <div class="catalog-card-body">
+              <p class="catalog-card-title">{front.title}</p>
+              <p class="catalog-card-authors">{front.authors}</p>
+              <p class="catalog-card-journal">{front.journal}, {front.volume}, pp. {front.pages}</p>
+              <p class="catalog-card-doi">DOI {front.doi}</p>
+            </div>
+            {front.instituteAuthors && <span class="catalog-stamp">{c.members}</span>}
+          </a>
+        </div>
+        <figcaption class="catalog-caption">
+          <a href={href('/sponsorship/journal-articles')} class="link-more">{c.catalogCaption} · {journalArticles.length}</a>
+        </figcaption>
+      </figure>
+    )}
+  </div>
+</section>
+
+<!-- ── Announcements ── -->
+<section class="home-section">
+  <div class="container home-row">
+    <header class="home-row-head">
+      <h2 class="home-row-title">{c.annTitle}</h2>
+      <p class="home-row-desc">{c.annDesc}</p>
+      <a href={href('/announcements')} class="link-more">{c.annAll}</a>
+    </header>
+    <div class="home-row-body">
+      {announcements.map((item) => (
+        <a href={localizeAnnouncementHref(lang, item.slug)} class="ann">
+          <div class="ann-meta">
+            <span class="ann-date">{item.date}</span>
+            <span class="ann-tag">{item.tag}</span>
+          </div>
+          <h3 class="ann-title">{item.title}</h3>
+          {item.summary && <p class="ann-desc">{item.summary}</p>}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Institutional status ── -->
+<section class="home-section">
+  <div class="container home-row">
+    <header class="home-row-head">
+      <p class="home-row-label">{c.statusLabel}</p>
+    </header>
+    <div class="home-row-body">
+      <h2 class="status-title">{c.statusTitle}</h2>
+      <p class="status-body">{c.statusBody}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Framework ── -->
+<section class="home-section">
+  <div class="container home-row">
+    <header class="home-row-head">
+      <h2 class="home-row-title">{c.fwTitle}</h2>
+      <p class="home-row-desc">{c.fwDesc}</p>
+      <a href={href('/framework')} class="link-more">{c.fwAll}</a>
+    </header>
+    <div class="home-row-body">
+      <div class="fw">
+        <div class="fw-parent">{c.psg}</div>
+        <div class="fw-line"></div>
+        <div class="fw-institute">{c.pri}</div>
+        <div class="fw-line"></div>
+        <ol class="fw-units">
+          {c.units.map(([unit, role], i) => (
+            <li class="fw-unit">
+              <span class="fw-num">{String(i + 1).padStart(2, '0')}</span>
+              <span class="fw-unit-title">{unit}</span>
+              <span class="fw-unit-role">{role}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Research areas ── -->
+<section class="home-section">
+  <div class="container home-row">
+    <header class="home-row-head">
+      <h2 class="home-row-title">{c.areasTitle}</h2>
+      <p class="home-row-desc">{c.areasDesc}</p>
+      <a href={href('/research-areas')} class="link-more">{c.areasAll}</a>
+    </header>
+    <ol class="home-row-body toc">
+      {researchAreas.map((area) => (
+        <li class="toc-item">
+          <span class="toc-num">{area.num}</span>
+          <h3 class="toc-title">{area.title}</h3>
+          <p class="toc-desc">{area.desc}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<!-- ── Research centers ── -->
+<section class="home-section">
+  <div class="container home-row">
+    <header class="home-row-head">
+      <h2 class="home-row-title">{c.centersTitle}</h2>
+      <p class="home-row-desc">{c.centersDesc}</p>
+      <a href={href('/research-centers')} class="link-more">{c.centersAll}</a>
+    </header>
+    <ol class="home-row-body toc">
+      {researchCenters.map((center) => (
+        <li>
+          <a href={center.href} class="toc-item toc-link">
+            <span class="toc-num">{center.num}</span>
+            <h3 class="toc-title">
+              {center.name}
+              {center.upcoming && <span class="status status-call"><span class="status-dot"></span>{c.upcoming}</span>}
+            </h3>
+            <p class="toc-desc">{center.areas.join(c.sep)}</p>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<!-- ── Featured projects ── -->
+<section class="home-section">
+  <div class="container home-row">
+    <header class="home-row-head">
+      <h2 class="home-row-title">{c.projTitle}</h2>
+      <p class="home-row-desc">{c.projDesc}</p>
+      <a href={href('/projects')} class="link-more">{c.projAll}</a>
+    </header>
+    <div class="home-row-body projects">
+      {featuredProjects.map((p, i) => (
+        <a href={p.href} class="project">
+          <span class={`status status-${statusKind[i] ?? 'development'}`}><span class="status-dot"></span>{p.status}</span>
+          <h3 class="project-name">{p.title}</h3>
+          <p class="project-text">{p.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Publications ── -->
+<section class="home-section">
+  <div class="container home-row">
+    <header class="home-row-head">
+      <h2 class="home-row-title">{c.pubTitle}</h2>
+      <p class="home-row-desc">{c.pubDesc}</p>
+      <a href={href('/publications')} class="link-more">{c.pubAll}</a>
+    </header>
+    <div class="home-row-body">
+      {featuredPublications.length === 0 && memberArticles.length === 0 && <PublicationsEmpty lang={lang} />}
+      {memberArticles.map((a) => (
+        <article class="cite">
+          <div class="cite-meta">
+            <span>{a.sponsorNo}</span>
+            <span>{a.year}</span>
+          </div>
+          <h3 class="cite-title"><a href={a.url} target="_blank" rel="noopener noreferrer">{a.title}</a></h3>
+          <p class="cite-line">{a.authors}</p>
+          <p class="cite-line cite-journal">{a.journal}, {a.volume}, pp. {a.pages}</p>
+          <p class="cite-line cite-doi">
+            DOI {a.doiRegistered === false ? a.doi : <a href={`https://doi.org/${a.doi}`} target="_blank" rel="noopener noreferrer">{a.doi}</a>}
+            <span class="cite-flag">{c.members}</span>
+          </p>
+        </article>
+      ))}
+      {featuredPublications.map((pub) => (
+        <article class="cite">
+          <div class="cite-meta"><span>{pub.type}</span><span>{pub.year}</span></div>
+          <h3 class="cite-title">{pub.title}</h3>
+          <p class="cite-line">{pub.team}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Charter & governance ── -->
+<section class="home-section">
+  <div class="container home-row">
+    <header class="home-row-head">
+      <h2 class="home-row-title">{c.charterTitle}</h2>
+      <p class="home-row-desc">{c.charterDesc}</p>
+      <div class="home-actions">
+        <a href={href('/charter')} class="btn btn-primary">{c.readCharter}</a>
+        <a href={href('/governance/research-ethics')} class="btn btn-secondary">{c.policies}</a>
+      </div>
+    </header>
+    <ol class="home-row-body policies">
+      {c.policyList.map((label, i) => (
+        <li><a href={href(policyHrefs[i])} class="policy"><span class="toc-num">§ {i + 1}</span>{label}</a></li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<!-- ── Events & calls ── -->
+<section class="home-section">
+  <div class="container home-row">
+    <header class="home-row-head">
+      <h2 class="home-row-title">{c.evTitle}</h2>
+      <p class="home-row-desc">{c.evDesc}</p>
+      <a href={href('/events')} class="link-more">{c.evAll}</a>
+    </header>
+    <div class="home-row-body">
+      {upcomingEvents.length === 0 && <EventsEmpty lang={lang} />}
+      {upcomingEvents.map((ev) => (
+        <div class="ann">
+          <div class="ann-meta"><span class="ann-date">{ev.date}</span><span class="ann-tag">{ev.type}</span></div>
+          <h3 class="ann-title">{ev.title}</h3>
+          <p class="ann-desc">{ev.location} · {ev.status}</p>
+        </div>
+      ))}
+      <div class="calls">
+        <a href={href('/events/calls-for-papers')} class="link-more">{c.cfp}</a>
+        <a href={href('/events/calls-for-chapters')} class="link-more">{c.cfc}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Collaboration ── -->
+<section class="home-collab">
+  <div class="container home-row">
+    <header class="home-row-head">
+      <h2 class="home-row-title">{c.collabTitle}</h2>
+      <p class="home-row-desc">{c.collabDesc}</p>
+      <div class="home-actions">
+        <a href={href('/collaboration/submit')} class="btn btn-inverse">{c.submit}</a>
+        <a href={href('/contact')} class="btn btn-inverse-outline">{c.contact}</a>
+      </div>
+    </header>
+    <ol class="home-row-body collab-types">
+      {c.collabTypes.map((type, i) => (
+        <li><span class="toc-num">{String(i + 1).padStart(2, '0')}</span>{type}</li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<!-- ── Ecosystem ── -->
+<section class="home-section home-eco">
+  <div class="container">
+    <h2 class="home-row-title home-eco-title">{c.ecoTitle}</h2>
+    <div class="eco-grid">
+      {platforms.map((p) => (
+        <a href={p.href} target="_blank" rel="noopener noreferrer" class="eco-card">
+          <div class={`eco-plate ${p.logoTheme === 'dark' ? 'eco-plate-dark' : ''}`}>
+            <img src={p.logo} alt={`${p.name} logo`} loading="lazy" />
+          </div>
+          <div class="eco-name">{p.name}</div>
+          <div class="eco-desc">{p.desc}</div>
+          <span class="eco-visit">{c.visit}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

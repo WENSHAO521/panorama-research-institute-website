@@ -26,7 +26,7 @@ import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro'
               { label:"Affiliation Required", value:"Not required (proposals from non-affiliated scholars welcome)" },
             ].map((item) => (
               <div>
-                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
                 <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
               </div>
             ))}
@@ -78,13 +78,13 @@ import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro'
               { label:"Position/Title",  id:"title",  type:"text",  placeholder:"e.g. Associate Professor" },
             ] as const).map((f) => (
               <div style="padding:12px;border:1px solid var(--border-light);border-collapse:collapse;margin:-0.5px;">
-                <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                <label for={f.id} style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
                 <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
               </div>
             ))}
           </div>
           <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-            <label for="center" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Proposed Research Center</label>
+            <label for="center" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">Proposed Research Center</label>
             <select id="center" name="center" class="form-input" style="width:100%;">
               <option value="">Select a research center...</option>
               <option>Center for Scholarly Publishing Studies</option>
@@ -97,7 +97,7 @@ import MultiAttachmentUpload from '../../components/MultiAttachmentUpload.astro'
             </select>
           </div>
           <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-            <label for="proposal" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">Research Proposal Summary (1,000–3,000 words)</label>
+            <label for="proposal" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">Research Proposal Summary (1,000–3,000 words)</label>
             <textarea id="proposal" name="proposal" rows="12" placeholder="Please include all required sections as described in the proposal guidelines above, or provide a summary here and attach the completed proposal template below." class="form-input" style="width:100%;resize:vertical;"></textarea>
           </div>
           <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">

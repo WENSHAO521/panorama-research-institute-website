@@ -28,7 +28,7 @@ const lang = Astro.currentLocale ?? 'en';
               { label:"聯絡",           value:"fellows@panorama-sg.com" },
             ].map((item) => (
               <div>
-                <div style="font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
+                <div style="font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:4px;">{item.label}</div>
                 <div style="font-size:14.5px;color:var(--text-main);">{item.value}</div>
               </div>
             ))}
@@ -56,13 +56,13 @@ const lang = Astro.currentLocale ?? 'en';
                 { label:"職位 / 頭銜",     id:"rf-title",   type:"text",  placeholder:"例如：博士候選人、博士後研究員" },
               ] as { label: string; id: string; name?: string; type: 'text' | 'email'; placeholder: string }[]).map((f) => (
                 <div style="padding:12px;border:1px solid var(--border-light);margin:-0.5px;">
-                  <label for={f.id} style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
+                  <label for={f.id} style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">{f.label}</label>
                   <input id={f.id} name={f.name ?? f.id} type={f.type} placeholder={f.placeholder} class="form-input" style="width:100%;" />
                 </div>
               ))}
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="rf-type" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">申請類型</label>
+              <label for="rf-type" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">申請類型</label>
               <select id="rf-type" name="rf-type" class="form-input" style="width:100%;">
                 <option value="">請選擇申請類型...</option>
                 <option>研究員（中高級職業階段，須具博士學位）</option>
@@ -74,7 +74,7 @@ const lang = Astro.currentLocale ?? 'en';
               </select>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="rf-center" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">首選研究中心</label>
+              <label for="rf-center" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">首選研究中心</label>
               <select id="rf-center" name="rf-center" class="form-input" style="width:100%;">
                 <option value="">請選擇研究中心...</option>
                 <option>學術出版研究中心</option>
@@ -87,11 +87,11 @@ const lang = Astro.currentLocale ?? 'en';
               </select>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="rf-research" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">研究方向與貢獻說明（400–1,000 詞）</label>
+              <label for="rf-research" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">研究方向與貢獻說明（400–1,000 詞）</label>
               <textarea id="rf-research" name="rf-research" rows="10" placeholder="請說明您的研究方向、其與研究院項目的關聯，以及您作為研究員擬作出的貢獻（出版成果、活動、指導等）。" class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">
-              <label for="rf-cv" style="display:block;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:6px;">學術簡介 / 出版清單（不超過 500 詞）</label>
+              <label for="rf-cv" style="display:block;font-size:13px;font-family:var(--font-sans);color:var(--text-muted);margin-bottom:6px;">學術簡介 / 出版清單（不超過 500 詞）</label>
               <textarea id="rf-cv" name="rf-cv" rows="6" placeholder="學術簡介以及相關出版物、報告或其他學術成果清單。" class="form-input" style="width:100%;resize:vertical;"></textarea>
             </div>
             <div style="padding:12px;border:1px solid var(--border-light);margin-top:-0.5px;">

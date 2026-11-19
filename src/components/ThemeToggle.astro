@@ -27,8 +27,8 @@ const label = lang === 'zh-cn' ? '切换日间/夜间模式' : lang === 'zh-tw' 
   width: 40px;
   height: 40px;
   padding: 0;
-  border: 1px solid var(--pri-accent);
-  border-radius: 999px;
+  border: 1px solid var(--pri-border-strong);
+  border-radius: 4px;
   background: var(--bg-white);
   color: var(--accent-steel);
   cursor: pointer;
@@ -49,6 +49,6 @@ const label = lang === 'zh-cn' ? '切换日间/夜间模式' : lang === 'zh-tw' 
 :root[data-theme="dark"] .theme-icon-sun { display: none; }
 :root[data-theme="dark"] .theme-icon-moon { display: block; }
 @media (max-width: 768px) {
-  .theme-toggle { width: 38px; height: 38px; }
+  .theme-toggle { width: 40px; height: 40px; }
 }
 </style>

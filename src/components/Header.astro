@@ -13,6 +13,9 @@ const { lang = 'en' } = Astro.props;
 const navigation = getNavigation(lang);
 const t = (key: string) => translate(lang, key);
 const currentPath = Astro.url.pathname;
+const normPath = currentPath.replace(/\/$/, '') || '/';
+const isMegaActive = (item: { groups?: { links: { href: string; external?: boolean }[] }[] }) =>
+  !!item.groups?.some((g) => g.links.some((l) => !l.external && l.href !== '/' && (normPath === l.href || normPath.startsWith(l.href + '/'))));
 ---
 
 <header class="site-header" id="site-header">
@@ -29,7 +32,7 @@ const currentPath = Astro.url.pathname;
           {item.mega ? (
             <>
               <button
-                class={`nav-trigger${currentPath.includes('/research') || currentPath.includes('/projects') ? ' active' : ''}`}
+                class={`nav-trigger${isMegaActive(item) ? ' active' : ''}`}
                 aria-haspopup="true"
                 aria-expanded="false"
                 type="button"
